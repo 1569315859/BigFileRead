@@ -1,0 +1,148 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake: configure-debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--preset", "debug"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "配置 Debug (GUI) 构建"
+        },
+        {
+            "label": "CMake: configure-release",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--preset", "release"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "配置 Release (GUI) 构建"
+        },
+        {
+            "label": "CMake: configure-relwithdebinfo",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--preset", "relwithdebinfo"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "配置 RelWithDebInfo (GUI) 构建"
+        },
+        {
+            "label": "CMake: configure-minsizerel",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--preset", "minsizerel"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "配置 MinSizeRel (GUI) 构建"
+        },
+        {
+            "label": "CMake: configure-debug-console",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--preset", "debug-console"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "配置 Debug (Console) 构建"
+        },
+        {
+            "label": "CMake: configure-release-console",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--preset", "release-console"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "配置 Release (Console) 构建"
+        },
+        {
+            "label": "CMake: build-debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build", "--preset", "build-debug"],
+            "group": {"kind": "build", "isDefault": true},
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "构建 Debug (GUI) 版本",
+            "dependsOn": ["CMake: configure-debug"]
+        },
+        {
+            "label": "CMake: build-release",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build", "--preset", "build-release"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "构建 Release (GUI) 版本",
+            "dependsOn": ["CMake: configure-release"]
+        },
+        {
+            "label": "CMake: build-relwithdebinfo",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build", "--preset", "build-relwithdebinfo"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "构建 RelWithDebInfo (GUI) 版本",
+            "dependsOn": ["CMake: configure-relwithdebinfo"]
+        },
+        {
+            "label": "CMake: build-minsizerel",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build", "--preset", "build-minsizerel"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "构建 MinSizeRel (GUI) 版本",
+            "dependsOn": ["CMake: configure-minsizerel"]
+        },
+        {
+            "label": "CMake: build-debug-console",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build", "--preset", "build-debug-console"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "构建 Debug (Console) 版本",
+            "dependsOn": ["CMake: configure-debug-console"]
+        },
+        {
+            "label": "CMake: build-release-console",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build", "--preset", "build-release-console"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "构建 Release (Console) 版本",
+            "dependsOn": ["CMake: configure-release-console"]
+        },
+        {
+            "label": "CMake: clean-all",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["-E", "remove_directory", "${workspaceFolder}/build"],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "清理所有构建目录"
+        },
+        {
+            "label": "CMake: rebuild-debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build", "--preset", "build-debug", "--clean-first"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "清理并重新构建 Debug (GUI) 版本",
+            "dependsOn": ["CMake: configure-debug"]
+        },
+        {
+            "label": "CMake: rebuild-release",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build", "--preset", "build-release", "--clean-first"],
+            "group": "build",
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "detail": "清理并重新构建 Release (GUI) 版本",
+            "dependsOn": ["CMake: configure-release"]
+        }
+    ]
+}

@@ -1,0 +1,189 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 16,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "base",
+            "description": "基础配置预设 - 所有预设的公共设置",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/install/${presetName}",
+            "toolset": {
+                "value": "host=x64",
+                "strategy": "external"
+            },
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "hostOS": [ "Windows" ],
+                    "intelliSenseMode": "windows-msvc-x64"
+                }
+            }
+        },
+        {
+            "name": "base-gui",
+            "description": "GUI模式基础配置 - 启用Qt支持",
+            "hidden": true,
+            "inherits": "base",
+            "cacheVariables": {
+                "ENABLE_GUI": "ON"
+            }
+        },
+        {
+            "name": "base-console",
+            "description": "控制台模式基础配置 - 禁用Qt支持",
+            "hidden": true,
+            "inherits": "base",
+            "cacheVariables": {
+                "ENABLE_GUI": "OFF"
+            }
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug (GUI)",
+            "description": "调试版本：包含完整调试信息，无代码优化，启用Qt GUI",
+            "inherits": "base-gui",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "displayName": "Release (GUI)",
+            "description": "发布版本：完全优化，无调试信息，启用Qt GUI",
+            "inherits": "base-gui",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "relwithdebinfo",
+            "displayName": "RelWithDebInfo (GUI)",
+            "description": "带调试信息的发布版本：代码优化同时保留调试信息，启用Qt GUI",
+            "inherits": "base-gui",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "minsizerel",
+            "displayName": "MinSizeRel (GUI)",
+            "description": "最小体积发布版本：优化代码体积而非速度，启用Qt GUI",
+            "inherits": "base-gui",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        },
+        {
+            "name": "debug-console",
+            "displayName": "Debug (Console)",
+            "description": "调试版本：包含完整调试信息，无代码优化，控制台程序",
+            "inherits": "base-console",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release-console",
+            "displayName": "Release (Console)",
+            "description": "发布版本：完全优化，无调试信息，控制台程序",
+            "inherits": "base-console",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "relwithdebinfo-console",
+            "displayName": "RelWithDebInfo (Console)",
+            "description": "带调试信息的发布版本，控制台程序",
+            "inherits": "base-console",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "minsizerel-console",
+            "displayName": "MinSizeRel (Console)",
+            "description": "最小体积发布版本，控制台程序",
+            "inherits": "base-console",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "build-debug",
+            "displayName": "构建 Debug (GUI)",
+            "description": "构建调试版本（Qt GUI）",
+            "configurePreset": "debug"
+        },
+        {
+            "name": "build-release",
+            "displayName": "构建 Release (GUI)",
+            "description": "构建发布版本（Qt GUI）",
+            "configurePreset": "release"
+        },
+        {
+            "name": "build-relwithdebinfo",
+            "displayName": "构建 RelWithDebInfo (GUI)",
+            "description": "构建带调试信息的发布版本（Qt GUI）",
+            "configurePreset": "relwithdebinfo"
+        },
+        {
+            "name": "build-minsizerel",
+            "displayName": "构建 MinSizeRel (GUI)",
+            "description": "构建最小体积发布版本（Qt GUI）",
+            "configurePreset": "minsizerel"
+        },
+        {
+            "name": "build-debug-console",
+            "displayName": "构建 Debug (Console)",
+            "description": "构建调试版本（控制台）",
+            "configurePreset": "debug-console"
+        },
+        {
+            "name": "build-release-console",
+            "displayName": "构建 Release (Console)",
+            "description": "构建发布版本（控制台）",
+            "configurePreset": "release-console"
+        },
+        {
+            "name": "build-relwithdebinfo-console",
+            "displayName": "构建 RelWithDebInfo (Console)",
+            "description": "构建带调试信息的发布版本（控制台）",
+            "configurePreset": "relwithdebinfo-console"
+        },
+        {
+            "name": "build-minsizerel-console",
+            "displayName": "构建 MinSizeRel (Console)",
+            "description": "构建最小体积发布版本（控制台）",
+            "configurePreset": "minsizerel-console"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "test-debug",
+            "displayName": "测试 Debug",
+            "description": "运行调试版本的测试",
+            "configurePreset": "debug"
+        },
+        {
+            "name": "test-release",
+            "displayName": "测试 Release",
+            "description": "运行发布版本的测试",
+            "configurePreset": "release"
+        }
+    ]
+}
