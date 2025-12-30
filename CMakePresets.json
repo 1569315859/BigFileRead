@@ -1,189 +1,359 @@
 {
-    "version": 6,
-    "cmakeMinimumRequired": {
-        "major": 3,
-        "minor": 16,
-        "patch": 0
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 23,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "默认配置",
+      "description": "所有预设的基础配置",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "installDir": "${sourceDir}/install/${presetName}",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
     },
-    "configurePresets": [
-        {
-            "name": "base",
-            "description": "基础配置预设 - 所有预设的公共设置",
-            "hidden": true,
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "installDir": "${sourceDir}/install/${presetName}",
-            "toolset": {
-                "value": "host=x64",
-                "strategy": "external"
-            },
-            "architecture": {
-                "value": "x64",
-                "strategy": "external"
-            },
-            "cacheVariables": {
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
-            },
-            "vendor": {
-                "microsoft.com/VisualStudioSettings/CMake/1.0": {
-                    "hostOS": [ "Windows" ],
-                    "intelliSenseMode": "windows-msvc-x64"
-                }
-            }
-        },
-        {
-            "name": "base-gui",
-            "description": "GUI模式基础配置 - 启用Qt支持",
-            "hidden": true,
-            "inherits": "base",
-            "cacheVariables": {
-                "ENABLE_GUI": "ON"
-            }
-        },
-        {
-            "name": "base-console",
-            "description": "控制台模式基础配置 - 禁用Qt支持",
-            "hidden": true,
-            "inherits": "base",
-            "cacheVariables": {
-                "ENABLE_GUI": "OFF"
-            }
-        },
-        {
-            "name": "debug",
-            "displayName": "Debug (GUI)",
-            "description": "调试版本：包含完整调试信息，无代码优化，启用Qt GUI",
-            "inherits": "base-gui",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "release",
-            "displayName": "Release (GUI)",
-            "description": "发布版本：完全优化，无调试信息，启用Qt GUI",
-            "inherits": "base-gui",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "relwithdebinfo",
-            "displayName": "RelWithDebInfo (GUI)",
-            "description": "带调试信息的发布版本：代码优化同时保留调试信息，启用Qt GUI",
-            "inherits": "base-gui",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
-            }
-        },
-        {
-            "name": "minsizerel",
-            "displayName": "MinSizeRel (GUI)",
-            "description": "最小体积发布版本：优化代码体积而非速度，启用Qt GUI",
-            "inherits": "base-gui",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "MinSizeRel"
-            }
-        },
-        {
-            "name": "debug-console",
-            "displayName": "Debug (Console)",
-            "description": "调试版本：包含完整调试信息，无代码优化，控制台程序",
-            "inherits": "base-console",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "release-console",
-            "displayName": "Release (Console)",
-            "description": "发布版本：完全优化，无调试信息，控制台程序",
-            "inherits": "base-console",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "relwithdebinfo-console",
-            "displayName": "RelWithDebInfo (Console)",
-            "description": "带调试信息的发布版本，控制台程序",
-            "inherits": "base-console",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
-            }
-        },
-        {
-            "name": "minsizerel-console",
-            "displayName": "MinSizeRel (Console)",
-            "description": "最小体积发布版本，控制台程序",
-            "inherits": "base-console",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "MinSizeRel"
-            }
+    {
+      "name": "windows-base",
+      "displayName": "Windows基础配置",
+      "description": "Windows平台的基础配置",
+      "hidden": true,
+      "inherits": "default",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": "Windows"
         }
-    ],
-    "buildPresets": [
-        {
-            "name": "build-debug",
-            "displayName": "构建 Debug (GUI)",
-            "description": "构建调试版本（Qt GUI）",
-            "configurePreset": "debug"
-        },
-        {
-            "name": "build-release",
-            "displayName": "构建 Release (GUI)",
-            "description": "构建发布版本（Qt GUI）",
-            "configurePreset": "release"
-        },
-        {
-            "name": "build-relwithdebinfo",
-            "displayName": "构建 RelWithDebInfo (GUI)",
-            "description": "构建带调试信息的发布版本（Qt GUI）",
-            "configurePreset": "relwithdebinfo"
-        },
-        {
-            "name": "build-minsizerel",
-            "displayName": "构建 MinSizeRel (GUI)",
-            "description": "构建最小体积发布版本（Qt GUI）",
-            "configurePreset": "minsizerel"
-        },
-        {
-            "name": "build-debug-console",
-            "displayName": "构建 Debug (Console)",
-            "description": "构建调试版本（控制台）",
-            "configurePreset": "debug-console"
-        },
-        {
-            "name": "build-release-console",
-            "displayName": "构建 Release (Console)",
-            "description": "构建发布版本（控制台）",
-            "configurePreset": "release-console"
-        },
-        {
-            "name": "build-relwithdebinfo-console",
-            "displayName": "构建 RelWithDebInfo (Console)",
-            "description": "构建带调试信息的发布版本（控制台）",
-            "configurePreset": "relwithdebinfo-console"
-        },
-        {
-            "name": "build-minsizerel-console",
-            "displayName": "构建 MinSizeRel (Console)",
-            "description": "构建最小体积发布版本（控制台）",
-            "configurePreset": "minsizerel-console"
+      }
+    },
+    {
+      "name": "linux-base",
+      "displayName": "Linux基础配置",
+      "description": "Linux平台的基础配置",
+      "hidden": true,
+      "inherits": "default",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
+      "name": "macos-base",
+      "displayName": "macOS基础配置",
+      "description": "macOS平台的基础配置",
+      "hidden": true,
+      "inherits": "default",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      }
+    },
+    {
+      "name": "windows-msvc-debug",
+      "displayName": "Windows MSVC Debug",
+      "description": "Windows平台使用MSVC编译器的Debug配置",
+      "inherits": "windows-base",
+      "generator": "Visual Studio 17 2022",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      }
+    },
+    {
+      "name": "windows-msvc-release",
+      "displayName": "Windows MSVC Release",
+      "description": "Windows平台使用MSVC编译器的Release配置",
+      "inherits": "windows-base",
+      "generator": "Visual Studio 17 2022",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      }
+    },
+    {
+      "name": "windows-msvc-relwithdebinfo",
+      "displayName": "Windows MSVC RelWithDebInfo",
+      "description": "Windows平台使用MSVC编译器的RelWithDebInfo配置",
+      "inherits": "windows-base",
+      "generator": "Visual Studio 17 2022",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      }
+    },
+    {
+      "name": "windows-ninja-debug",
+      "displayName": "Windows Ninja Debug",
+      "description": "Windows平台使用Ninja构建工具的Debug配置",
+      "inherits": "windows-base",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      }
+    },
+    {
+      "name": "windows-ninja-release",
+      "displayName": "Windows Ninja Release",
+      "description": "Windows平台使用Ninja构建工具的Release配置",
+      "inherits": "windows-base",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      }
+    },
+    {
+      "name": "windows-ninja-relwithdebinfo",
+      "displayName": "Windows Ninja RelWithDebInfo",
+      "description": "Windows平台使用Ninja构建工具的RelWithDebInfo配置",
+      "inherits": "windows-base",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      }
+    },
+    {
+      "name": "windows-ninja-minsizerel",
+      "displayName": "Windows Ninja MinSizeRel",
+      "description": "Windows平台使用Ninja构建工具的MinSizeRel配置",
+      "inherits": "windows-base",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "MinSizeRel",
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      }
+    },
+    {
+      "name": "windows-clang-debug",
+      "displayName": "Windows Clang Debug",
+      "description": "Windows平台使用Clang编译器的Debug配置",
+      "inherits": "windows-base",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      }
+    },
+    {
+      "name": "windows-clang-release",
+      "displayName": "Windows Clang Release",
+      "description": "Windows平台使用Clang编译器的Release配置",
+      "inherits": "windows-base",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      }
+    },
+    {
+      "name": "linux-gcc-debug",
+      "displayName": "Linux GCC Debug",
+      "description": "Linux平台使用GCC编译器的Debug配置",
+      "inherits": "linux-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
+      }
+    },
+    {
+      "name": "linux-gcc-release",
+      "displayName": "Linux GCC Release",
+      "description": "Linux平台使用GCC编译器的Release配置",
+      "inherits": "linux-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
+      }
+    },
+    {
+      "name": "linux-gcc-relwithdebinfo",
+      "displayName": "Linux GCC RelWithDebInfo",
+      "description": "Linux平台使用GCC编译器的RelWithDebInfo配置",
+      "inherits": "linux-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
+      }
+    },
+    {
+      "name": "linux-gcc-minsizerel",
+      "displayName": "Linux GCC MinSizeRel",
+      "description": "Linux平台使用GCC编译器的MinSizeRel配置",
+      "inherits": "linux-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "MinSizeRel",
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
+      }
+    },
+    {
+      "name": "linux-clang-debug",
+      "displayName": "Linux Clang Debug",
+      "description": "Linux平台使用Clang编译器的Debug配置",
+      "inherits": "linux-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      }
+    },
+    {
+      "name": "linux-clang-release",
+      "displayName": "Linux Clang Release",
+      "description": "Linux平台使用Clang编译器的Release配置",
+      "inherits": "linux-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      }
+    },
+    {
+      "name": "macos-clang-debug",
+      "displayName": "macOS Clang Debug",
+      "description": "macOS平台使用Clang编译器的Debug配置",
+      "inherits": "macos-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      }
+    },
+    {
+      "name": "macos-clang-release",
+      "displayName": "macOS Clang Release",
+      "description": "macOS平台使用Clang编译器的Release配置",
+      "inherits": "macos-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      }
+    },
+    {
+      "name": "macos-clang-relwithdebinfo",
+      "displayName": "macOS Clang RelWithDebInfo",
+      "description": "macOS平台使用Clang编译器的RelWithDebInfo配置",
+      "inherits": "macos-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      }
+    },
+    {
+      "hidden": true,
+      "name": "Qt",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "$env{QTDIR}"
+      },
+      "vendor": {
+        "qt-project.org/Qt": {
+          "checksum": "wVa86FgEkvdCTVp1/nxvrkaemJc="
         }
-    ],
-    "testPresets": [
-        {
-            "name": "test-debug",
-            "displayName": "测试 Debug",
-            "description": "运行调试版本的测试",
-            "configurePreset": "debug"
-        },
-        {
-            "name": "test-release",
-            "displayName": "测试 Release",
-            "description": "运行发布版本的测试",
-            "configurePreset": "release"
-        }
-    ]
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-msvc-debug",
+      "displayName": "Windows MSVC Debug Build",
+      "configurePreset": "windows-msvc-debug",
+      "configuration": "Debug"
+    },
+    {
+      "name": "windows-msvc-release",
+      "displayName": "Windows MSVC Release Build",
+      "configurePreset": "windows-msvc-release",
+      "configuration": "Release"
+    },
+    {
+      "name": "windows-ninja-debug",
+      "displayName": "Windows Ninja Debug Build",
+      "configurePreset": "windows-ninja-debug"
+    },
+    {
+      "name": "windows-ninja-release",
+      "displayName": "Windows Ninja Release Build",
+      "configurePreset": "windows-ninja-release"
+    },
+    {
+      "name": "linux-gcc-debug",
+      "displayName": "Linux GCC Debug Build",
+      "configurePreset": "linux-gcc-debug"
+    },
+    {
+      "name": "linux-gcc-release",
+      "displayName": "Linux GCC Release Build",
+      "configurePreset": "linux-gcc-release"
+    },
+    {
+      "name": "linux-clang-debug",
+      "displayName": "Linux Clang Debug Build",
+      "configurePreset": "linux-clang-debug"
+    },
+    {
+      "name": "linux-clang-release",
+      "displayName": "Linux Clang Release Build",
+      "configurePreset": "linux-clang-release"
+    },
+    {
+      "name": "macos-clang-debug",
+      "displayName": "macOS Clang Debug Build",
+      "configurePreset": "macos-clang-debug"
+    },
+    {
+      "name": "macos-clang-release",
+      "displayName": "macOS Clang Release Build",
+      "configurePreset": "macos-clang-release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "default-test",
+      "displayName": "默认测试配置",
+      "configurePreset": "windows-msvc-debug",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "noTestsAction": "error",
+        "stopOnFailure": false
+      }
+    }
+  ],
+  "vendor": {
+    "qt-project.org/Presets": {
+      "checksum": "MwnZFipYSH/17YogC2hoyiWVe3A="
+    }
+  }
 }
