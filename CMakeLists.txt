@@ -8,16 +8,16 @@ cmake_minimum_required(VERSION 3.16)
 # ============================================================================
 # 项目配置区域
 # ============================================================================
-project(SeismicDataOperatteTool VERSION 1.0.0 LANGUAGES CXX C)
+project(BigFileViewer VERSION 1.0.0 LANGUAGES CXX C)
 
 # ============================================================================
 # 全局开关配置（在这里统一管理所有功能开关）
 # ============================================================================
-option(ENABLE_QT "启用Qt支持" OFF)
+option(ENABLE_QT "启用Qt支持" ON)
 option(USE_QT6 "使用Qt6（OFF则使用Qt5）" OFF)
-option(ENABLE_MFC "启用MFC支持（仅Windows）" ON)
-option(BUILD_SHARED_LIBS "构建动态库（OFF则构建静态库或可执行文件）" ON)
-option(BUILD_EXECUTABLE "构建可执行文件（OFF则构建库）" OFF)
+option(ENABLE_MFC "启用MFC支持（仅Windows）" OFF)
+option(BUILD_SHARED_LIBS "构建动态库（OFF则构建静态库或可执行文件）" OFF)
+option(BUILD_EXECUTABLE "构建可执行文件（OFF则构建库）" ON)
 option(ENABLE_QT_TRANSLATION "启用Qt翻译支持" ON)
 option(ENABLE_TESTING "启用单元测试" OFF)
 option(ENABLE_INSTALLER "启用安装程序打包" OFF)
@@ -27,7 +27,7 @@ option(ENABLE_LTO "启用链接时优化（LTO）" OFF)
 option(ENABLE_ASAN "启用地址消毒器（Address Sanitizer）" OFF)
 option(ENABLE_TSAN "启用线程消毒器（Thread Sanitizer）" OFF)
 option(STRIP_RELEASE "Release模式下移除调试符号" ON)
-option(USE_GBK_ENCODING "源码使用GBK编码（OFF则使用UTF-8）" ON)
+option(USE_GBK_ENCODING "源码使用GBK编码（OFF则使用UTF-8）" OFF)
 option(ENABLE_PLATFORM_LIBS "启用平台特定库（通常Qt项目不需要）" OFF)
 
 # 第三方依赖管理选项
@@ -58,17 +58,9 @@ set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "RelWithD
 # ============================================================================
 # 输出目录配置
 # ============================================================================
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../CommonSpace/testR-64)  # 可执行文件输出目录
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../CommonSpace/testR-64)  # 动态库输出目录（.so, .dylib）
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../CommonSpace/CommonFile-64)  # 静态库输出目录（.a, .lib）
-
-# Windows下DLL
-if(WIN32)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../CommonSpace/testR-64)
-else()
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../CommonSpace/testR)
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../CommonSpace/testR) 
-endif()
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)  # 可执行文件输出目录
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)  # 动态库输出目录（.so, .dylib）
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)  # 静态库输出目录（.a, .lib）
 
 # 禁用 Visual Studio 生成器自动添加配置名称子目录（Debug/Release）
 # 使所有配置的输出都在同一目录下
@@ -92,7 +84,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
 # ============================================================================
 if(ENABLE_QT)
     # 允许用户指定Qt安装路径
-    set(QT_DIR "" CACHE PATH "Qt安装路径（例如：C:/Qt/6.5.0/msvc2019_64）")
+    set(QT_DIR "D:/env/msvc2019_64" CACHE PATH "Qt安装路径（例如：C:/Qt/6.5.0/msvc2019_64）")
     
     if(QT_DIR)
         list(APPEND CMAKE_PREFIX_PATH ${QT_DIR})
@@ -106,7 +98,7 @@ if(ENABLE_QT)
     
     # 选择Qt版本
     if(USE_QT6)
-        find_package(Qt6 COMPONENTS Core Widgets Gui LinguistTools QUIET)
+        find_package(Qt6 COMPONENTS Core Widgets Gui Concurrent LinguistTools QUIET)
         if(Qt6_FOUND)
             set(QT_VERSION_MAJOR 6)
             message(STATUS "找到Qt6: ${Qt6_VERSION}")
@@ -114,7 +106,7 @@ if(ENABLE_QT)
             message(FATAL_ERROR "未找到Qt6！请检查QT_DIR设置或安装Qt6")
         endif()
     else()
-        find_package(Qt5 COMPONENTS Core Widgets Gui LinguistTools QUIET)
+        find_package(Qt5 COMPONENTS Core Widgets Gui Concurrent LinguistTools QUIET)
         if(Qt5_FOUND)
             set(QT_VERSION_MAJOR 5)
             message(STATUS "找到Qt5: ${Qt5_VERSION}")
@@ -142,7 +134,8 @@ if(MSVC)
     # Visual Studio编译器选项
     add_compile_options(/W4)            # 警告级别4
     add_compile_options(/MP)            # 多进程编译
-    
+    #add_compile_options("/utf-8")
+
     # 源码编码设置
     if(USE_GBK_ENCODING)
         # GBK编码支持（中文Windows环境常用）
@@ -518,38 +511,18 @@ if(ENABLE_PCH AND EXISTS "${CMAKE_SOURCE_DIR}/src/pch.h")
     message(STATUS "预编译头已启用")
 endif()
 #=============================================================================
-# 添加公共空间头文件目录和链接库
+# 添加头文件目录
 #=============================================================================
 target_include_directories(${PROJECT_NAME} PRIVATE
     # 当前项目目录
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
     
     # 生成目录 (AUTOMOC生成的文件)
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${COMMON_SPACE_DIR}/${HEAD_DIR}
-    ${COMMON_SPACE_DIR}/${HEAD_DIR}/PortableKSLib
-    $ENV{BOOST_ROOT}
-    $ENV{LOG4CPLUSPATH}/include
-    $ENV{CURL_INCLUDE_PATH}
-    $ENV{VCPKG_INCLUDE_ROOT}
-    ${CMAKE_CURRENT_SOURCE_DIR}/../shared_ptr
-    
+)
 
-)
-target_link_directories(${PROJECT_NAME} PRIVATE
-    ${COMMON_SPACE_DIR}/${HEAD_DIR}
-    ${COMMON_SPACE_DIR}/${HEAD_DIR}/PortableKSLib
-)
-target_link_libraries(${PROJECT_NAME} PRIVATE
-BaseStructFunctor.lib
-CommonShell.lib
-KSAlgorithm.lib
-PortableKSLib.lib
-SEGFile_SeismicDataProcess.lib
-ConvertCoor.lib
-SeisDBServer.lib
-log4cplus.lib
-)
+# 注意：外部依赖库已移除，BigFileViewer 仅依赖 Qt
 
 # ============================================================================
 # Qt链接库
@@ -560,12 +533,14 @@ if(ENABLE_QT)
             Qt6::Core 
             Qt6::Widgets 
             Qt6::Gui
+            Qt6::Concurrent
         )
     else()
         target_link_libraries(${TARGET_NAME} PRIVATE 
             Qt5::Core 
             Qt5::Widgets 
             Qt5::Gui
+            Qt5::Concurrent
         )
     endif()
     

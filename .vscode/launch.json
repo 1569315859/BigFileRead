@@ -2,102 +2,37 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug (GUI) - Windows MSVC",
+            "name": "Debug BigFileViewer",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/debug/BigFileRead.exe",
+            "program": "${workspaceFolder}/bin/BigFileViewer.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-            "environment": [],
-            "console": "integratedTerminal",
-            "preLaunchTask": "CMake: build-debug"
-        },
-        {
-            "name": "Release (GUI) - Windows MSVC",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/release/BigFileRead.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "console": "integratedTerminal",
-            "preLaunchTask": "CMake: build-release"
-        },
-        {
-            "name": "RelWithDebInfo (GUI) - Windows MSVC",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/relwithdebinfo/BigFileRead.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "console": "integratedTerminal",
-            "preLaunchTask": "CMake: build-relwithdebinfo"
-        },
-        {
-            "name": "MinSizeRel (GUI) - Windows MSVC",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/minsizerel/BigFileRead.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "console": "integratedTerminal",
-            "preLaunchTask": "CMake: build-minsizerel"
-        },
-        {
-            "name": "Debug (Console) - Windows MSVC",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/debug-console/BigFileRead.exe",
-            "args": ["${input:filePath}"],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "console": "integratedTerminal",
-            "preLaunchTask": "CMake: build-debug-console"
-        },
-        {
-            "name": "Release (Console) - Windows MSVC",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/release-console/BigFileRead.exe",
-            "args": ["${input:filePath}"],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "console": "integratedTerminal",
-            "preLaunchTask": "CMake: build-release-console"
-        },
-        {
-            "name": "Debug (GDB/LLDB) - Linux/macOS",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/debug/BigFileRead",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
+            "environment": [
                 {
-                    "description": "启用GDB美化打印",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "设置反汇编风格为Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
+                    "name": "PATH",
+                    // 注意：下面这个路径要换成你电脑上真实的 Qt bin 路径！
+                    // 比如: D:/Qt/6.5.3/msvc2019_64/bin
+                    // ${env:PATH} 表示保留系统原本的 PATH，不要覆盖掉了
+                    "value": "D:/env/msvc2019_64/bin;${env:PATH}"
                 }
-            ],
-            "preLaunchTask": "CMake: build-debug"
+                ],
+            "console": "integratedTerminal"
+            
         },
+        {
+            "name": "Debug with File",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/BigFileViewer.exe",
+            "args": ["${input:filePath}"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "integratedTerminal"
+        },
+        
         {
             "name": "Attach to Process",
             "type": "cppvsdbg",
@@ -105,11 +40,12 @@
             "processId": "${command:pickProcess}"
         }
     ],
+    
     "inputs": [
         {
             "id": "filePath",
             "type": "promptString",
-            "description": "输入要读取的文件路径（控制台模式）",
+            "description": "输入要打开的文件路径",
             "default": ""
         }
     ]

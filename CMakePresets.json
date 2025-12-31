@@ -335,6 +335,12 @@
       "name": "macos-clang-release",
       "displayName": "macOS Clang Release Build",
       "configurePreset": "macos-clang-release"
+    },
+    {
+      "name": "reldebug",
+      "description": "",
+      "displayName": "",
+      "configurePreset": "windows-ninja-relwithdebinfo"
     }
   ],
   "testPresets": [
@@ -353,7 +359,7 @@
   ],
   "vendor": {
     "qt-project.org/Presets": {
-      "checksum": "MwnZFipYSH/17YogC2hoyiWVe3A="
+      "checksum": "EbjylOIJ8zZWBH+IaK983u3PoEs="
     }
   }
 }
