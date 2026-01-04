@@ -1,365 +1,247 @@
 {
-  "version": 6,
-  "cmakeMinimumRequired": {
-    "major": 3,
-    "minor": 23,
-    "patch": 0
-  },
-  "configurePresets": [
-    {
-      "name": "default",
-      "displayName": "默认配置",
-      "description": "所有预设的基础配置",
-      "hidden": true,
-      "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build/${presetName}",
-      "installDir": "${sourceDir}/install/${presetName}",
-      "cacheVariables": {
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
-      }
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
     },
-    {
-      "name": "windows-base",
-      "displayName": "Windows基础配置",
-      "description": "Windows平台的基础配置",
-      "hidden": true,
-      "inherits": "default",
-      "condition": {
-        "type": "equals",
-        "lhs": "${hostSystemName}",
-        "rhs": "Windows"
-      },
-      "architecture": {
-        "value": "x64",
-        "strategy": "external"
-      },
-      "vendor": {
-        "microsoft.com/VisualStudioSettings/CMake/1.0": {
-          "hostOS": "Windows"
+
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "description": "基础配置，供所有平台继承",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/install/${presetName}",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "BUILD_SHARED_LIBS": "ON"
+            }
+        },
+
+        {
+            "name": "windows-base",
+            "hidden": true,
+            "inherits": "base",
+            "description": "Windows MSVC + Ninja 基础配置",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl.exe",
+                "CMAKE_CXX_COMPILER": "cl.exe"
+            }
+        },
+
+        {
+            "name": "linux-base",
+            "hidden": true,
+            "inherits": "base",
+            "description": "Linux GCC + Ninja 基础配置",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            },
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++"
+            }
+        },
+
+        {
+            "name": "macos-base",
+            "hidden": true,
+            "inherits": "base",
+            "description": "macOS Clang + Ninja 基础配置",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            },
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++"
+            }
+        },
+
+        {
+            "name": "windows-debug",
+            "displayName": "Windows Debug",
+            "description": "Windows + MSVC + Ninja + Debug",
+            "inherits": "windows-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "windows-release",
+            "displayName": "Windows Release",
+            "description": "Windows + MSVC + Ninja + Release",
+            "inherits": "windows-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "windows-relwithdebinfo",
+            "displayName": "Windows RelWithDebInfo",
+            "description": "Windows + MSVC + Ninja + RelWithDebInfo",
+            "inherits": "windows-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "windows-minsizerel",
+            "displayName": "Windows MinSizeRel",
+            "description": "Windows + MSVC + Ninja + MinSizeRel",
+            "inherits": "windows-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        },
+
+        {
+            "name": "linux-debug",
+            "displayName": "Linux Debug",
+            "description": "Linux + GCC + Ninja + Debug",
+            "inherits": "linux-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "linux-release",
+            "displayName": "Linux Release",
+            "description": "Linux + GCC + Ninja + Release",
+            "inherits": "linux-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "linux-relwithdebinfo",
+            "displayName": "Linux RelWithDebInfo",
+            "description": "Linux + GCC + Ninja + RelWithDebInfo",
+            "inherits": "linux-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "linux-minsizerel",
+            "displayName": "Linux MinSizeRel",
+            "description": "Linux + GCC + Ninja + MinSizeRel",
+            "inherits": "linux-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        },
+
+        {
+            "name": "macos-debug",
+            "displayName": "macOS Debug",
+            "description": "macOS + Clang + Ninja + Debug",
+            "inherits": "macos-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "macos-release",
+            "displayName": "macOS Release",
+            "description": "macOS + Clang + Ninja + Release",
+            "inherits": "macos-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "macos-relwithdebinfo",
+            "displayName": "macOS RelWithDebInfo",
+            "description": "macOS + Clang + Ninja + RelWithDebInfo",
+            "inherits": "macos-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "macos-minsizerel",
+            "displayName": "macOS MinSizeRel",
+            "description": "macOS + Clang + Ninja + MinSizeRel",
+            "inherits": "macos-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
         }
-      }
-    },
-    {
-      "name": "linux-base",
-      "displayName": "Linux基础配置",
-      "description": "Linux平台的基础配置",
-      "hidden": true,
-      "inherits": "default",
-      "condition": {
-        "type": "equals",
-        "lhs": "${hostSystemName}",
-        "rhs": "Linux"
-      }
-    },
-    {
-      "name": "macos-base",
-      "displayName": "macOS基础配置",
-      "description": "macOS平台的基础配置",
-      "hidden": true,
-      "inherits": "default",
-      "condition": {
-        "type": "equals",
-        "lhs": "${hostSystemName}",
-        "rhs": "Darwin"
-      }
-    },
-    {
-      "name": "windows-msvc-debug",
-      "displayName": "Windows MSVC Debug",
-      "description": "Windows平台使用MSVC编译器的Debug配置",
-      "inherits": "windows-base",
-      "generator": "Visual Studio 17 2022",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_C_COMPILER": "cl",
-        "CMAKE_CXX_COMPILER": "cl"
-      }
-    },
-    {
-      "name": "windows-msvc-release",
-      "displayName": "Windows MSVC Release",
-      "description": "Windows平台使用MSVC编译器的Release配置",
-      "inherits": "windows-base",
-      "generator": "Visual Studio 17 2022",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_C_COMPILER": "cl",
-        "CMAKE_CXX_COMPILER": "cl"
-      }
-    },
-    {
-      "name": "windows-msvc-relwithdebinfo",
-      "displayName": "Windows MSVC RelWithDebInfo",
-      "description": "Windows平台使用MSVC编译器的RelWithDebInfo配置",
-      "inherits": "windows-base",
-      "generator": "Visual Studio 17 2022",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
-        "CMAKE_C_COMPILER": "cl",
-        "CMAKE_CXX_COMPILER": "cl"
-      }
-    },
-    {
-      "name": "windows-ninja-debug",
-      "displayName": "Windows Ninja Debug",
-      "description": "Windows平台使用Ninja构建工具的Debug配置",
-      "inherits": "windows-base",
-      "generator": "Ninja",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_C_COMPILER": "cl",
-        "CMAKE_CXX_COMPILER": "cl"
-      }
-    },
-    {
-      "name": "windows-ninja-release",
-      "displayName": "Windows Ninja Release",
-      "description": "Windows平台使用Ninja构建工具的Release配置",
-      "inherits": "windows-base",
-      "generator": "Ninja",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_C_COMPILER": "cl",
-        "CMAKE_CXX_COMPILER": "cl"
-      }
-    },
-    {
-      "name": "windows-ninja-relwithdebinfo",
-      "displayName": "Windows Ninja RelWithDebInfo",
-      "description": "Windows平台使用Ninja构建工具的RelWithDebInfo配置",
-      "inherits": "windows-base",
-      "generator": "Ninja",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
-        "CMAKE_C_COMPILER": "cl",
-        "CMAKE_CXX_COMPILER": "cl"
-      }
-    },
-    {
-      "name": "windows-ninja-minsizerel",
-      "displayName": "Windows Ninja MinSizeRel",
-      "description": "Windows平台使用Ninja构建工具的MinSizeRel配置",
-      "inherits": "windows-base",
-      "generator": "Ninja",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "MinSizeRel",
-        "CMAKE_C_COMPILER": "cl",
-        "CMAKE_CXX_COMPILER": "cl"
-      }
-    },
-    {
-      "name": "windows-clang-debug",
-      "displayName": "Windows Clang Debug",
-      "description": "Windows平台使用Clang编译器的Debug配置",
-      "inherits": "windows-base",
-      "generator": "Ninja",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++"
-      }
-    },
-    {
-      "name": "windows-clang-release",
-      "displayName": "Windows Clang Release",
-      "description": "Windows平台使用Clang编译器的Release配置",
-      "inherits": "windows-base",
-      "generator": "Ninja",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++"
-      }
-    },
-    {
-      "name": "linux-gcc-debug",
-      "displayName": "Linux GCC Debug",
-      "description": "Linux平台使用GCC编译器的Debug配置",
-      "inherits": "linux-base",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_C_COMPILER": "gcc",
-        "CMAKE_CXX_COMPILER": "g++"
-      }
-    },
-    {
-      "name": "linux-gcc-release",
-      "displayName": "Linux GCC Release",
-      "description": "Linux平台使用GCC编译器的Release配置",
-      "inherits": "linux-base",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_C_COMPILER": "gcc",
-        "CMAKE_CXX_COMPILER": "g++"
-      }
-    },
-    {
-      "name": "linux-gcc-relwithdebinfo",
-      "displayName": "Linux GCC RelWithDebInfo",
-      "description": "Linux平台使用GCC编译器的RelWithDebInfo配置",
-      "inherits": "linux-base",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
-        "CMAKE_C_COMPILER": "gcc",
-        "CMAKE_CXX_COMPILER": "g++"
-      }
-    },
-    {
-      "name": "linux-gcc-minsizerel",
-      "displayName": "Linux GCC MinSizeRel",
-      "description": "Linux平台使用GCC编译器的MinSizeRel配置",
-      "inherits": "linux-base",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "MinSizeRel",
-        "CMAKE_C_COMPILER": "gcc",
-        "CMAKE_CXX_COMPILER": "g++"
-      }
-    },
-    {
-      "name": "linux-clang-debug",
-      "displayName": "Linux Clang Debug",
-      "description": "Linux平台使用Clang编译器的Debug配置",
-      "inherits": "linux-base",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++"
-      }
-    },
-    {
-      "name": "linux-clang-release",
-      "displayName": "Linux Clang Release",
-      "description": "Linux平台使用Clang编译器的Release配置",
-      "inherits": "linux-base",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++"
-      }
-    },
-    {
-      "name": "macos-clang-debug",
-      "displayName": "macOS Clang Debug",
-      "description": "macOS平台使用Clang编译器的Debug配置",
-      "inherits": "macos-base",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++"
-      }
-    },
-    {
-      "name": "macos-clang-release",
-      "displayName": "macOS Clang Release",
-      "description": "macOS平台使用Clang编译器的Release配置",
-      "inherits": "macos-base",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++"
-      }
-    },
-    {
-      "name": "macos-clang-relwithdebinfo",
-      "displayName": "macOS Clang RelWithDebInfo",
-      "description": "macOS平台使用Clang编译器的RelWithDebInfo配置",
-      "inherits": "macos-base",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
-        "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++"
-      }
-    },
-    {
-      "hidden": true,
-      "name": "Qt",
-      "cacheVariables": {
-        "CMAKE_PREFIX_PATH": "$env{QTDIR}"
-      },
-      "vendor": {
-        "qt-project.org/Qt": {
-          "checksum": "wVa86FgEkvdCTVp1/nxvrkaemJc="
+    ],
+
+    "buildPresets": [
+        {
+            "name": "windows-debug",
+            "configurePreset": "windows-debug",
+            "displayName": "Build Windows Debug"
+        },
+        {
+            "name": "windows-release",
+            "configurePreset": "windows-release",
+            "displayName": "Build Windows Release"
+        },
+        {
+            "name": "windows-relwithdebinfo",
+            "configurePreset": "windows-relwithdebinfo",
+            "displayName": "Build Windows RelWithDebInfo"
+        },
+        {
+            "name": "windows-minsizerel",
+            "configurePreset": "windows-minsizerel",
+            "displayName": "Build Windows MinSizeRel"
+        },
+
+        {
+            "name": "linux-debug",
+            "configurePreset": "linux-debug",
+            "displayName": "Build Linux Debug"
+        },
+        {
+            "name": "linux-release",
+            "configurePreset": "linux-release",
+            "displayName": "Build Linux Release"
+        },
+        {
+            "name": "linux-relwithdebinfo",
+            "configurePreset": "linux-relwithdebinfo",
+            "displayName": "Build Linux RelWithDebInfo"
+        },
+        {
+            "name": "linux-minsizerel",
+            "configurePreset": "linux-minsizerel",
+            "displayName": "Build Linux MinSizeRel"
+        },
+
+        {
+            "name": "macos-debug",
+            "configurePreset": "macos-debug",
+            "displayName": "Build macOS Debug"
+        },
+        {
+            "name": "macos-release",
+            "configurePreset": "macos-release",
+            "displayName": "Build macOS Release"
+        },
+        {
+            "name": "macos-relwithdebinfo",
+            "configurePreset": "macos-relwithdebinfo",
+            "displayName": "Build macOS RelWithDebInfo"
+        },
+        {
+            "name": "macos-minsizerel",
+            "configurePreset": "macos-minsizerel",
+            "displayName": "Build macOS MinSizeRel"
         }
-      }
-    }
-  ],
-  "buildPresets": [
-    {
-      "name": "windows-msvc-debug",
-      "displayName": "Windows MSVC Debug Build",
-      "configurePreset": "windows-msvc-debug",
-      "configuration": "Debug"
-    },
-    {
-      "name": "windows-msvc-release",
-      "displayName": "Windows MSVC Release Build",
-      "configurePreset": "windows-msvc-release",
-      "configuration": "Release"
-    },
-    {
-      "name": "windows-ninja-debug",
-      "displayName": "Windows Ninja Debug Build",
-      "configurePreset": "windows-ninja-debug"
-    },
-    {
-      "name": "windows-ninja-release",
-      "displayName": "Windows Ninja Release Build",
-      "configurePreset": "windows-ninja-release"
-    },
-    {
-      "name": "linux-gcc-debug",
-      "displayName": "Linux GCC Debug Build",
-      "configurePreset": "linux-gcc-debug"
-    },
-    {
-      "name": "linux-gcc-release",
-      "displayName": "Linux GCC Release Build",
-      "configurePreset": "linux-gcc-release"
-    },
-    {
-      "name": "linux-clang-debug",
-      "displayName": "Linux Clang Debug Build",
-      "configurePreset": "linux-clang-debug"
-    },
-    {
-      "name": "linux-clang-release",
-      "displayName": "Linux Clang Release Build",
-      "configurePreset": "linux-clang-release"
-    },
-    {
-      "name": "macos-clang-debug",
-      "displayName": "macOS Clang Debug Build",
-      "configurePreset": "macos-clang-debug"
-    },
-    {
-      "name": "macos-clang-release",
-      "displayName": "macOS Clang Release Build",
-      "configurePreset": "macos-clang-release"
-    },
-    {
-      "name": "reldebug",
-      "description": "",
-      "displayName": "",
-      "configurePreset": "windows-ninja-relwithdebinfo"
-    }
-  ],
-  "testPresets": [
-    {
-      "name": "default-test",
-      "displayName": "默认测试配置",
-      "configurePreset": "windows-msvc-debug",
-      "output": {
-        "outputOnFailure": true
-      },
-      "execution": {
-        "noTestsAction": "error",
-        "stopOnFailure": false
-      }
-    }
-  ],
-  "vendor": {
-    "qt-project.org/Presets": {
-      "checksum": "EbjylOIJ8zZWBH+IaK983u3PoEs="
-    }
-  }
+    ]
 }

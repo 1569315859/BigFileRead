@@ -14,7 +14,7 @@ project(BigFileViewer VERSION 1.0.0 LANGUAGES CXX C)
 # 全局开关配置（在这里统一管理所有功能开关）
 # ============================================================================
 option(ENABLE_QT "启用Qt支持" ON)
-option(USE_QT6 "使用Qt6（OFF则使用Qt5）" OFF)
+option(USE_QT6 "使用Qt6（OFF则使用Qt5）" ON)
 option(ENABLE_MFC "启用MFC支持（仅Windows）" OFF)
 option(BUILD_SHARED_LIBS "构建动态库（OFF则构建静态库或可执行文件）" OFF)
 option(BUILD_EXECUTABLE "构建可执行文件（OFF则构建库）" ON)
@@ -43,7 +43,7 @@ option(ENABLE_CPPCHECK "启用CppCheck静态分析" OFF)
 # ============================================================================
 # C++标准设置
 # ============================================================================
-set(CMAKE_CXX_STANDARD 14)              # 设置C++标准版本
+set(CMAKE_CXX_STANDARD 17)              # 设置C++标准版本
 set(CMAKE_CXX_STANDARD_REQUIRED ON)     # 要求必须支持该标准
 set(CMAKE_CXX_EXTENSIONS OFF)           # 禁用编译器扩展
 
@@ -84,7 +84,12 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
 # ============================================================================
 if(ENABLE_QT)
     # 允许用户指定Qt安装路径
-    set(QT_DIR "D:/env/msvc2019_64" CACHE PATH "Qt安装路径（例如：C:/Qt/6.5.0/msvc2019_64）")
+    
+    if(USE_QT6)
+        set(QT_DIR "E:/QT/6.10.1/msvc2022_64" CACHE PATH "Qt安装路径（例如：C:/Qt/6.5.0/msvc2019_64）")
+    else()
+        set(QT_DIR "D:/env/msvc2019_64" CACHE PATH "Qt安装路径（例如：C:/Qt/6.5.0/msvc2019_64）")
+    endif()
     
     if(QT_DIR)
         list(APPEND CMAKE_PREFIX_PATH ${QT_DIR})

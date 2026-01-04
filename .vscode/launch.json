@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug BigFileViewer",
+            "name": "Debug BigFileViewer(5)",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/BigFileViewer.exe",
@@ -17,22 +17,41 @@
                     // ${env:PATH} 表示保留系统原本的 PATH，不要覆盖掉了
                     "value": "D:/env/msvc2019_64/bin;${env:PATH}"
                 }
-                ],
+            ],
             "console": "integratedTerminal"
-            
+        },
+        {
+            "name": "Debug BigFileViewer(6)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/BigFileViewer.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [
+                {
+                    "name": "PATH",
+                    // 注意：下面这个路径要换成你电脑上真实的 Qt bin 路径！
+                    // 比如: D:/Qt/6.5.3/msvc2019_64/bin
+                    // ${env:PATH} 表示保留系统原本的 PATH，不要覆盖掉了
+                    "value": "E:/QT/6.10.1/msvc2022_64/bin;${env:PATH}"
+                }
+            ],
+            "console": "integratedTerminal"
         },
         {
             "name": "Debug with File",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/BigFileViewer.exe",
-            "args": ["${input:filePath}"],
+            "args": [
+                "${input:filePath}"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "console": "integratedTerminal"
         },
-        
         {
             "name": "Attach to Process",
             "type": "cppvsdbg",
@@ -40,7 +59,6 @@
             "processId": "${command:pickProcess}"
         }
     ],
-    
     "inputs": [
         {
             "id": "filePath",

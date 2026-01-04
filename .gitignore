@@ -4,7 +4,7 @@ build-*/
 CMakeCache.txt
 CMakeFiles/
 CMakeSettings.json
-
+bin/
 #忽略vscode
 .vscode/*
 !.vscode/extensions.json
