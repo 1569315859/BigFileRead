@@ -26,6 +26,7 @@
 #include <QMessageBox>
 #include <QPlainTextEdit>
 #include <QProgressBar>
+#include <QRegularExpression>
 #include <QResizeEvent>
 #include <QShortcut>
 #include <QSplitter>
@@ -592,6 +593,35 @@ void MainWindow::setupUi() {
   );
   m_filterToolBar->addWidget(m_filterInput);
 
+  // 正则表达式切换按钮 [.*]
+  m_regexToggleBtn = new QToolButton(this);
+  m_regexToggleBtn->setText(".*");
+  m_regexToggleBtn->setToolTip(tr("Use Regular Expression"));
+  m_regexToggleBtn->setCheckable(true);
+  m_regexToggleBtn->setChecked(false);
+  m_regexToggleBtn->setStyleSheet(
+      "QToolButton {"
+      "   min-width: 32px;"
+      "   background-color: #3e3e42;"
+      "   color: #d4d4d4;"
+      "   border: 1px solid #555555;"
+      "   border-radius: 3px;"
+      "   padding: 4px 8px;"
+      "   font-family: Consolas, monospace;"
+      "   font-weight: bold;"
+      "}"
+      "QToolButton:hover {"
+      "   background-color: #505050;"
+      "   border-color: #007acc;"
+      "}"
+      "QToolButton:checked {"
+      "   background-color: #094771;"
+      "   border-color: #007acc;"
+      "   color: #ffffff;"
+      "}"
+  );
+  m_filterToolBar->addWidget(m_regexToggleBtn);
+
   // 统一按钮样式 (Apply 和 Clear 保持一致)
   QString filterBtnStyle = 
       "QToolButton {"
@@ -673,7 +703,7 @@ void MainWindow::setupUi() {
   m_searchBar = new SearchBar(this);
   m_searchBar->hide();
 
-  // 连接搜索栏信号
+  // 连接搜索栏信号（新版本带 useRegex 参数）
   connect(m_searchBar, &SearchBar::searchRequested, this,
           &MainWindow::onSearchRequested);
   connect(m_searchBar, &SearchBar::closed, this, [this]() {
@@ -725,6 +755,17 @@ void MainWindow::createMenus() {
   QAction *gotoAction = editMenu->addAction(tr("Go to Line(&G)..."));
   gotoAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_G));
   connect(gotoAction, &QAction::triggered, this, &MainWindow::onGoToLine);
+
+  editMenu->addSeparator();
+
+  // 书签功能
+  m_toggleBookmarkAction = editMenu->addAction(tr("Toggle Bookmark(&B)"));
+  m_toggleBookmarkAction->setShortcut(QKeySequence(Qt::Key_F2));
+  connect(m_toggleBookmarkAction, &QAction::triggered, this, &MainWindow::onToggleBookmark);
+
+  m_nextBookmarkAction = editMenu->addAction(tr("Next Bookmark(&N)"));
+  m_nextBookmarkAction->setShortcut(QKeySequence(Qt::Key_F3));
+  connect(m_nextBookmarkAction, &QAction::triggered, this, &MainWindow::onNextBookmark);
 
   // 视图菜单
   QMenu *viewMenu = menuBar()->addMenu(tr("View(&V)"));
@@ -866,7 +907,7 @@ void MainWindow::onShowSearch() {
   m_searchBar->raise();
 }
 
-void MainWindow::onSearchRequested(const QString &text, int direction) {
+void MainWindow::onSearchRequested(const QString &text, int direction, bool useRegex) {
   if (text.isEmpty()) {
     m_currentSearchIndex = -1;
     m_searchBar->updateResultInfo(0, 0);
@@ -876,14 +917,18 @@ void MainWindow::onSearchRequested(const QString &text, int direction) {
   // 如果是新搜索，启动异步搜索
   const auto &currentResults = m_model->searchResults();
   if (currentResults.empty() || m_searchBar->searchText() != text) {
-    // 开始新搜索
-    m_model->search(text);
+    // 开始新搜索（传递正则表达式标志）
+    m_model->search(text, useRegex);
     m_currentSearchIndex = -1;
 
-    // 更新委托高亮
+    // 更新委托高亮（支持正则和普通模式）
     auto delegate =
         static_cast<CompactLineDelegate *>(m_listView->itemDelegate());
-    delegate->setHighlightTerm(text, Qt::CaseInsensitive);
+    if (useRegex) {
+      delegate->setHighlightRegex(text);
+    } else {
+      delegate->setHighlightTerm(text, Qt::CaseInsensitive);
+    }
     m_listView->viewport()->update();
 
     return;
@@ -961,7 +1006,10 @@ void MainWindow::onSearchFinished(const std::vector<int> &results) {
     m_listView->viewport()->update();
 
     m_searchBar->updateResultInfo(1, totalResults);
-    m_statusLabel->setText(tr("Found %1 matches").arg(totalResults));
+    
+    // 显示正则/普通模式提示
+    QString modeText = m_searchBar->isRegexMode() ? tr(" (Regex)") : "";
+    m_statusLabel->setText(tr("Found %1 matches%2").arg(totalResults).arg(modeText));
   }
 }
 
@@ -1085,12 +1133,30 @@ void MainWindow::onFilterRequested()
         return;
     }
 
-    // 更新状态
-    m_filterStatusLabel->setText(tr("Filtering..."));
-    m_statusLabel->setText(tr("Applying filter: %1").arg(keyword));
+    // 获取正则表达式开关状态
+    bool useRegex = m_regexToggleBtn && m_regexToggleBtn->isChecked();
 
-    // 应用过滤
-    m_model->applyFilter(keyword);
+    // 如果启用正则表达式，验证正则表达式是否有效
+    if (useRegex) {
+        QRegularExpression regex(keyword, QRegularExpression::CaseInsensitiveOption);
+        if (!regex.isValid()) {
+            QMessageBox::warning(this, tr("Invalid Regex"),
+                tr("The regular expression is invalid:\n%1\n\nError at position %2")
+                .arg(regex.errorString())
+                .arg(regex.patternErrorOffset()));
+            m_filterInput->setFocus();
+            m_filterInput->selectAll();
+            return;
+        }
+    }
+
+    // 更新状态
+    QString modeText = useRegex ? tr("(Regex)") : "";
+    m_filterStatusLabel->setText(tr("Filtering..."));
+    m_statusLabel->setText(tr("Applying filter %1: %2").arg(modeText).arg(keyword));
+
+    // 应用过滤（传递正则表达式开关）
+    m_model->applyFilter(keyword, useRegex);
 
     // 更新委托高亮（显示过滤关键词）
     auto delegate = static_cast<CompactLineDelegate *>(m_listView->itemDelegate());
@@ -1155,3 +1221,35 @@ void MainWindow::onClearFilter()
     });
 }
 
+// ========== 书签功能 ==========
+
+void MainWindow::onToggleBookmark() {
+  QModelIndex currentIndex = m_listView->currentIndex();
+  if (!currentIndex.isValid()) {
+    m_statusLabel->setText(tr("No line selected"));
+    return;
+  }
+
+  m_model->toggleBookmark(currentIndex.row());
+  
+  // 更新视图以显示书签图标变化
+  m_listView->viewport()->update();
+}
+
+void MainWindow::onNextBookmark() {
+  if (!m_model) {
+    return;
+  }
+
+  int currentRow = m_listView->currentIndex().isValid() ? m_listView->currentIndex().row() : -1;
+  int nextRow = m_model->getNextBookmark(currentRow);
+
+  if (nextRow >= 0) {
+    QModelIndex nextIndex = m_model->index(nextRow, 0);
+    m_listView->setCurrentIndex(nextIndex);
+    m_listView->scrollTo(nextIndex, QAbstractItemView::PositionAtCenter);
+    m_statusLabel->setText(tr("Jumped to bookmark at line %1").arg(m_model->toRealRow(nextRow) + 1));
+  } else {
+    m_statusLabel->setText(tr("No bookmarks found"));
+  }
+}

@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QElapsedTimer>
 #include <QFileInfo>
+#include <QRegularExpression>
 #include <QtConcurrent>
 #include <algorithm> // for std::search
 #include <cctype>    // for std::tolower
@@ -522,6 +523,10 @@ QVariant BigFileModel::data(const QModelIndex &index, int role) const {
     return tr("行 %1").arg(realRow + 1);
   }
 
+  case BookmarkRole:
+    // 返回该行是否已添加书签
+    return m_bookmarks.contains(static_cast<qint64>(realRow));
+
   default:
     return QVariant();
   }
@@ -627,7 +632,7 @@ void BigFileModel::onFileChanged(const QString &path) {
 
 // ========== 搜索功能实现 ==========
 
-void BigFileModel::search(const QString &text) {
+void BigFileModel::search(const QString &text, bool useRegex) {
   // 取消之前的搜索
   if (m_isSearching.load()) {
     cancelSearch();
@@ -648,14 +653,14 @@ void BigFileModel::search(const QString &text) {
   m_isSearching.store(true);
 
   QFuture<void> future =
-      QtConcurrent::run([this, text]() { executeSearchAsync(text); });
+      QtConcurrent::run([this, text, useRegex]() { executeSearchAsync(text, useRegex); });
   m_searchWatcher.setFuture(future);
 }
 
 void BigFileModel::cancelSearch() { m_searchCancelRequested.store(true); }
 
-void BigFileModel::executeSearchAsync(const QString &searchText) {
-  // === 后台线程：行级并行搜索（不构造 QString，直接操作原始内存）===
+void BigFileModel::executeSearchAsync(const QString &searchText, bool useRegex) {
+  // === 后台线程：行级搜索（支持正则和普通字符串）===
 
   QElapsedTimer timer;
   timer.start();
@@ -663,113 +668,127 @@ void BigFileModel::executeSearchAsync(const QString &searchText) {
   std::vector<int> results;
   results.reserve(10000); // 预分配，避免频繁扩容
 
-  // 转换搜索文本为 UTF-8 字节数组
-  QByteArray searchBytes = searchText.toUtf8();
-  const char *searchPtr = searchBytes.constData();
-  const int searchLen = searchBytes.size();
-
-  if (searchLen == 0) {
-    m_isSearching.store(false);
-    emit searchFinished(results);
-    return;
-  }
-
-  // === 准备搜索参数 ===
-  const char *fileStart = reinterpret_cast<const char *>(m_mapPtr);
   const int totalLines = static_cast<int>(m_lineOffsets.size());
   int lastPercent = 0;
 
-  // 大小写不敏感比较器（用于 std::search）
-  auto caseInsensitiveEqual = [](char a, char b) {
-    return std::tolower(static_cast<unsigned char>(a)) ==
-           std::tolower(static_cast<unsigned char>(b));
-  };
-
-  // === 行级迭代搜索 ===
-  for (int row = 0; row < totalLines; ++row) {
-    // 定期检查取消请求和报告进度（每 1000 行）
-    if (row % 1000 == 0) {
-      if (m_searchCancelRequested.load()) {
-        qDebug() << "Search cancelled by user";
-        m_isSearching.store(false);
-        return;
-      }
-
-      // 报告进度
-      int percent = (row * 100) / totalLines;
-      if (percent > lastPercent) {
-        lastPercent = percent;
-        emit searchProgress(percent);
-      }
+  // === 正则表达式搜索 ===
+  if (useRegex) {
+    QRegularExpression regex(searchText, QRegularExpression::CaseInsensitiveOption);
+    if (!regex.isValid()) {
+      qWarning() << "Invalid regex pattern:" << regex.errorString();
+      m_isSearching.store(false);
+      emit searchFinished(results);
+      return;
     }
 
-    // === 获取行边界（关键：使用 m_lineOffsets）===
-    const qint64 lineStart = m_lineOffsets[row];
-    qint64 lineEnd;
-
-    if (row + 1 < totalLines) {
-      lineEnd = m_lineOffsets[row + 1];
-    } else {
-      lineEnd = m_fileSize;
-    }
-
-    qint64 lineLength = lineEnd - lineStart;
-    if (lineLength <= 0) {
-      continue;
-    }
-
-    // 去除换行符（\n 或 \r\n）
-    const char *linePtr = fileStart + lineStart;
-    if (lineLength > 0 && linePtr[lineLength - 1] == '\n') {
-      --lineLength;
-    }
-    if (lineLength > 0 && linePtr[lineLength - 1] == '\r') {
-      --lineLength;
-    }
-
-    if (lineLength < searchLen) {
-      continue; // 行太短，不可能包含搜索文本
-    }
-
-    // === 原始内存搜索 - 找到该行的所有匹配 ===
-    // 使用 while 循环查找同一行中的多个匹配
-    const char *searchStart = linePtr;
-    const char *lineEndPtr = linePtr + lineLength;
-
-    while (searchStart < lineEndPtr) {
-      // 在剩余部分中搜索
-      const char *found =
-          std::search(searchStart, lineEndPtr, searchPtr, searchPtr + searchLen,
-                      caseInsensitiveEqual);
-
-      if (found != lineEndPtr) {
-        // 找到匹配：存储行索引（允许同一行多次出现）
-        results.push_back(row);
-
-        // 限制结果数量
-        if (static_cast<int>(results.size()) >= MAX_SEARCH_RESULTS) {
-          qDebug() << "Search limit reached:" << MAX_SEARCH_RESULTS
-                   << "results";
-          break; // 跳出 while 循环
+    for (int row = 0; row < totalLines; ++row) {
+      // 定期检查取消请求和报告进度
+      if (row % 1000 == 0) {
+        if (m_searchCancelRequested.load()) {
+          qDebug() << "Search cancelled by user";
+          m_isSearching.store(false);
+          return;
         }
+        int percent = (row * 100) / totalLines;
+        if (percent > lastPercent) {
+          lastPercent = percent;
+          emit searchProgress(percent);
+        }
+      }
 
-        // 前进搜索位置（跳过当前匹配，继续查找下一个）
-        searchStart = found + searchLen;
-      } else {
-        // 该行剩余部分没有更多匹配
+      // 获取行文本（需要构造 QString 用于正则匹配）
+      QString lineText = getLine(row);
+      
+      // 使用正则匹配
+      QRegularExpressionMatchIterator it = regex.globalMatch(lineText);
+      while (it.hasNext()) {
+        it.next();
+        results.push_back(row);
+        
+        if (static_cast<int>(results.size()) >= MAX_SEARCH_RESULTS) {
+          break;
+        }
+      }
+
+      if (static_cast<int>(results.size()) >= MAX_SEARCH_RESULTS) {
+        qDebug() << "Search limit reached:" << MAX_SEARCH_RESULTS << "results";
         break;
       }
     }
+  }
+  // === 普通字符串搜索（高性能原始内存搜索）===
+  else {
+    // 转换搜索文本为 UTF-8 字节数组
+    QByteArray searchBytes = searchText.toUtf8();
+    const char *searchPtr = searchBytes.constData();
+    const int searchLen = searchBytes.size();
 
-    // 检查是否已达到全局限制（需要跳出外层 for 循环）
-    if (static_cast<int>(results.size()) >= MAX_SEARCH_RESULTS) {
-      break;
+    if (searchLen == 0) {
+      m_isSearching.store(false);
+      emit searchFinished(results);
+      return;
+    }
+
+    const char *fileStart = reinterpret_cast<const char *>(m_mapPtr);
+
+    // 大小写不敏感比较器
+    auto caseInsensitiveEqual = [](char a, char b) {
+      return std::tolower(static_cast<unsigned char>(a)) ==
+             std::tolower(static_cast<unsigned char>(b));
+    };
+
+    for (int row = 0; row < totalLines; ++row) {
+      if (row % 1000 == 0) {
+        if (m_searchCancelRequested.load()) {
+          qDebug() << "Search cancelled by user";
+          m_isSearching.store(false);
+          return;
+        }
+        int percent = (row * 100) / totalLines;
+        if (percent > lastPercent) {
+          lastPercent = percent;
+          emit searchProgress(percent);
+        }
+      }
+
+      const qint64 lineStart = m_lineOffsets[row];
+      qint64 lineEnd = (row + 1 < totalLines) ? m_lineOffsets[row + 1] : m_fileSize;
+      qint64 lineLength = lineEnd - lineStart;
+
+      if (lineLength <= 0) continue;
+
+      const char *linePtr = fileStart + lineStart;
+      if (lineLength > 0 && linePtr[lineLength - 1] == '\n') --lineLength;
+      if (lineLength > 0 && linePtr[lineLength - 1] == '\r') --lineLength;
+      if (lineLength < searchLen) continue;
+
+      const char *searchStart = linePtr;
+      const char *lineEndPtr = linePtr + lineLength;
+
+      while (searchStart < lineEndPtr) {
+        const char *found = std::search(searchStart, lineEndPtr, 
+                                        searchPtr, searchPtr + searchLen,
+                                        caseInsensitiveEqual);
+        if (found != lineEndPtr) {
+          results.push_back(row);
+          if (static_cast<int>(results.size()) >= MAX_SEARCH_RESULTS) break;
+          searchStart = found + searchLen;
+        } else {
+          break;
+        }
+      }
+
+      if (static_cast<int>(results.size()) >= MAX_SEARCH_RESULTS) {
+        qDebug() << "Search limit reached:" << MAX_SEARCH_RESULTS << "results";
+        break;
+      }
     }
   }
 
   qint64 elapsed = timer.elapsed();
   qDebug() << "Search completed:" << results.size() << "total occurrences in"
-           << elapsed << "ms (" << (totalLines / (elapsed + 1)) << "lines/ms)";
+           << elapsed << "ms (" << (totalLines / (elapsed + 1)) << "lines/ms)"
+           << (useRegex ? "[Regex]" : "[Plain]");
 
   // 保存结果并通知主线程
   m_searchResults = results;
@@ -796,7 +815,7 @@ int BigFileModel::toRealRow(int viewRow) const {
 
 // ========== 日志过滤功能实现 (Virtual Mapping Vector) ==========
 
-void BigFileModel::applyFilter(const QString &keyword) {
+void BigFileModel::applyFilter(const QString &keyword, bool useRegex) {
   // 取消之前的过滤操作
   if (m_isFiltering.load()) {
     cancelFilter();
@@ -817,7 +836,7 @@ void BigFileModel::applyFilter(const QString &keyword) {
   m_isFiltering.store(true);
 
   QFuture<void> future =
-      QtConcurrent::run([this, keyword]() { executeFilterAsync(keyword); });
+      QtConcurrent::run([this, keyword, useRegex]() { executeFilterAsync(keyword, useRegex); });
   m_filterWatcher.setFuture(future);
 }
 
@@ -849,8 +868,8 @@ void BigFileModel::cancelFilter() {
   m_filterCancelRequested.store(true);
 }
 
-void BigFileModel::executeFilterAsync(const QString &keyword) {
-  // === 后台线程：高性能行级过滤 ===
+void BigFileModel::executeFilterAsync(const QString &keyword, bool useRegex) {
+  // === 后台线程：高性能行级过滤（支持正则和普通字符串）===
   
   QElapsedTimer timer;
   timer.start();
@@ -858,93 +877,100 @@ void BigFileModel::executeFilterAsync(const QString &keyword) {
   std::vector<int> matchedRows;
   matchedRows.reserve(100000);  // 预分配
 
-  // 转换关键词为 UTF-8 字节数组
-  QByteArray keywordBytes = keyword.toUtf8();
-  const char *keywordPtr = keywordBytes.constData();
-  const int keywordLen = keywordBytes.size();
-
-  if (keywordLen == 0) {
-    m_isFiltering.store(false);
-    return;
-  }
-
-  // 准备参数
-  const char *fileStart = reinterpret_cast<const char *>(m_mapPtr);
   const int totalLines = static_cast<int>(m_lineOffsets.size());
   int lastPercent = 0;
 
-  // 大小写不敏感比较器
-  auto caseInsensitiveEqual = [](char a, char b) {
-    return std::tolower(static_cast<unsigned char>(a)) ==
-           std::tolower(static_cast<unsigned char>(b));
-  };
+  // === 正则表达式过滤 ===
+  if (useRegex) {
+    QRegularExpression regex(keyword, QRegularExpression::CaseInsensitiveOption);
+    if (!regex.isValid()) {
+      qWarning() << "Invalid regex pattern:" << regex.errorString();
+      m_isFiltering.store(false);
+      return;
+    }
 
-  // === 逐行扫描，记录匹配行的索引 ===
-  for (int row = 0; row < totalLines; ++row) {
-    // 定期检查取消和进度（每 5000 行）
-    if (row % 5000 == 0) {
-      if (m_filterCancelRequested.load()) {
-        qDebug() << "Filter cancelled by user";
-        m_isFiltering.store(false);
-        return;
+    for (int row = 0; row < totalLines; ++row) {
+      if (row % 5000 == 0) {
+        if (m_filterCancelRequested.load()) {
+          qDebug() << "Filter cancelled by user";
+          m_isFiltering.store(false);
+          return;
+        }
+        int percent = (row * 100) / totalLines;
+        if (percent > lastPercent) {
+          lastPercent = percent;
+          emit filterProgress(percent);
+        }
       }
 
-      int percent = (row * 100) / totalLines;
-      if (percent > lastPercent) {
-        lastPercent = percent;
-        emit filterProgress(percent);
+      // 获取行文本（需要构造 QString 用于正则匹配）
+      QString lineText = getLine(row);
+      
+      if (regex.match(lineText).hasMatch()) {
+        matchedRows.push_back(row);
       }
     }
+  }
+  // === 普通字符串过滤（高性能原始内存搜索）===
+  else {
+    QByteArray keywordBytes = keyword.toUtf8();
+    const char *keywordPtr = keywordBytes.constData();
+    const int keywordLen = keywordBytes.size();
 
-    // 获取行边界
-    const qint64 lineStart = m_lineOffsets[row];
-    qint64 lineEnd;
-
-    if (row + 1 < totalLines) {
-      lineEnd = m_lineOffsets[row + 1];
-    } else {
-      lineEnd = m_fileSize;
+    if (keywordLen == 0) {
+      m_isFiltering.store(false);
+      return;
     }
 
-    qint64 lineLength = lineEnd - lineStart;
-    if (lineLength <= 0 || lineLength < keywordLen) {
-      continue;
-    }
+    const char *fileStart = reinterpret_cast<const char *>(m_mapPtr);
 
-    // 去除换行符
-    const char *linePtr = fileStart + lineStart;
-    if (lineLength > 0 && linePtr[lineLength - 1] == '\n') {
-      --lineLength;
-    }
-    if (lineLength > 0 && linePtr[lineLength - 1] == '\r') {
-      --lineLength;
-    }
+    auto caseInsensitiveEqual = [](char a, char b) {
+      return std::tolower(static_cast<unsigned char>(a)) ==
+             std::tolower(static_cast<unsigned char>(b));
+    };
 
-    if (lineLength < keywordLen) {
-      continue;
-    }
+    for (int row = 0; row < totalLines; ++row) {
+      if (row % 5000 == 0) {
+        if (m_filterCancelRequested.load()) {
+          qDebug() << "Filter cancelled by user";
+          m_isFiltering.store(false);
+          return;
+        }
+        int percent = (row * 100) / totalLines;
+        if (percent > lastPercent) {
+          lastPercent = percent;
+          emit filterProgress(percent);
+        }
+      }
 
-    // === 在该行中搜索关键词（只需判断是否存在，无需找所有位置）===
-    const char *lineEndPtr = linePtr + lineLength;
-    const char *found = std::search(
-        linePtr, lineEndPtr, 
-        keywordPtr, keywordPtr + keywordLen,
-        caseInsensitiveEqual);
+      const qint64 lineStart = m_lineOffsets[row];
+      qint64 lineEnd = (row + 1 < totalLines) ? m_lineOffsets[row + 1] : m_fileSize;
+      qint64 lineLength = lineEnd - lineStart;
 
-    if (found != lineEndPtr) {
-      // 匹配！记录这一行的原始索引
-      matchedRows.push_back(row);
+      if (lineLength <= 0 || lineLength < keywordLen) continue;
+
+      const char *linePtr = fileStart + lineStart;
+      if (lineLength > 0 && linePtr[lineLength - 1] == '\n') --lineLength;
+      if (lineLength > 0 && linePtr[lineLength - 1] == '\r') --lineLength;
+      if (lineLength < keywordLen) continue;
+
+      const char *lineEndPtr = linePtr + lineLength;
+      const char *found = std::search(linePtr, lineEndPtr, 
+                                      keywordPtr, keywordPtr + keywordLen,
+                                      caseInsensitiveEqual);
+      if (found != lineEndPtr) {
+        matchedRows.push_back(row);
+      }
     }
   }
 
   qint64 elapsed = timer.elapsed();
   qDebug() << "Filter completed:" << matchedRows.size() << "matching rows out of"
-           << totalLines << "in" << elapsed << "ms";
+           << totalLines << "in" << elapsed << "ms"
+           << (useRegex ? "[Regex]" : "[Plain]");
 
   // === 在主线程更新模型 ===
-  // 使用 QMetaObject::invokeMethod 确保在主线程执行
   QMetaObject::invokeMethod(this, [this, matchedRows = std::move(matchedRows)]() {
-    // 重置模型并切换到过滤模式
     beginResetModel();
     m_filteredRows = std::move(matchedRows);
     m_filterMode.store(true);
@@ -954,4 +980,77 @@ void BigFileModel::executeFilterAsync(const QString &keyword) {
     emit filterProgress(100);
     emit filterFinished(static_cast<int>(m_filteredRows.size()));
   }, Qt::QueuedConnection);
+}
+
+// ========== 书签功能实现 ==========
+
+void BigFileModel::toggleBookmark(int viewRow) {
+  // 转换为真实行号
+  int realRow = toRealRow(viewRow);
+  if (realRow < 0 || realRow >= static_cast<int>(m_lineOffsets.size())) {
+    return;
+  }
+
+  qint64 realRowKey = static_cast<qint64>(realRow);
+  
+  if (m_bookmarks.contains(realRowKey)) {
+    // 移除书签
+    m_bookmarks.remove(realRowKey);
+    qDebug() << "Bookmark removed at line" << (realRow + 1);
+  } else {
+    // 添加书签
+    m_bookmarks.insert(realRowKey);
+    qDebug() << "Bookmark added at line" << (realRow + 1);
+  }
+
+  // 通知视图该行需要重绘
+  QModelIndex idx = index(viewRow, 0);
+  emit dataChanged(idx, idx, {BookmarkRole});
+}
+
+bool BigFileModel::isBookmarked(int viewRow) const {
+  int realRow = toRealRow(viewRow);
+  if (realRow < 0) {
+    return false;
+  }
+  return m_bookmarks.contains(static_cast<qint64>(realRow));
+}
+
+int BigFileModel::getNextBookmark(int currentViewRow) const {
+  if (m_bookmarks.isEmpty()) {
+    return -1;
+  }
+
+  int totalViewRows = rowCount();
+  
+  // 从当前行的下一行开始搜索
+  for (int viewRow = currentViewRow + 1; viewRow < totalViewRows; ++viewRow) {
+    int realRow = toRealRow(viewRow);
+    if (realRow >= 0 && m_bookmarks.contains(static_cast<qint64>(realRow))) {
+      return viewRow;
+    }
+  }
+  
+  // 循环回到开头继续搜索
+  for (int viewRow = 0; viewRow <= currentViewRow && viewRow < totalViewRows; ++viewRow) {
+    int realRow = toRealRow(viewRow);
+    if (realRow >= 0 && m_bookmarks.contains(static_cast<qint64>(realRow))) {
+      return viewRow;
+    }
+  }
+  
+  return -1;  // 没有找到书签
+}
+
+void BigFileModel::clearAllBookmarks() {
+  if (m_bookmarks.isEmpty()) {
+    return;
+  }
+  
+  m_bookmarks.clear();
+  
+  // 通知视图所有行都可能需要重绘
+  emit dataChanged(index(0, 0), index(rowCount() - 1, 0), {BookmarkRole});
+  
+  qDebug() << "All bookmarks cleared";
 }

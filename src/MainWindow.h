@@ -19,6 +19,7 @@ class QComboBox;
 class QAction;
 class QLineEdit;
 class QToolBar;
+class QToolButton;
 class QCloseEvent;
 class BigFileModel;
 class SearchBar;
@@ -64,8 +65,11 @@ private slots:
 
   /**
    * @brief 处理搜索请求
+   * @param text 搜索文本
+   * @param direction 搜索方向
+   * @param useRegex 是否使用正则表达式
    */
-  void onSearchRequested(const QString &text, int direction);
+  void onSearchRequested(const QString &text, int direction, bool useRegex = false);
 
   /**
    * @brief 处理搜索完成
@@ -106,6 +110,16 @@ private slots:
    * @brief 清除过滤
    */
   void onClearFilter();
+
+  /**
+   * @brief 切换当前行书签
+   */
+  void onToggleBookmark();
+
+  /**
+   * @brief 跳转到下一个书签
+   */
+  void onNextBookmark();
 
 private:
   /**
@@ -179,6 +193,11 @@ private:
   QLineEdit *m_filterInput = nullptr;     ///< 过滤输入框
   QLabel *m_filterStatusLabel = nullptr;  ///< 过滤状态标签
   QAction *m_toggleFilterAction = nullptr; ///< 切换过滤栏显示
+  QToolButton *m_regexToggleBtn = nullptr; ///< 正则表达式开关
+
+  // 书签功能
+  QAction *m_toggleBookmarkAction = nullptr;  ///< 切换书签 (F2)
+  QAction *m_nextBookmarkAction = nullptr;    ///< 下一个书签 (F3)
 };
 
 #endif // MAINWINDOW_H

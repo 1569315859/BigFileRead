@@ -15,6 +15,7 @@
 #include <QFileSystemWatcher>
 #include <QFutureWatcher>
 #include <QMutex>
+#include <QSet>
 #include <QString>
 #include <QStringConverter>
 #include <QTimer>
@@ -34,6 +35,9 @@ public:
   static constexpr int MAX_DISPLAY_LENGTH = 2000;
   /// 搜索结果最大数量限制（1百万结果 ≈ 4MB RAM）
   static constexpr int MAX_SEARCH_RESULTS = 1000000;
+  
+  /// 书签数据角色 (用于 data() 返回书签状态)
+  static constexpr int BookmarkRole = Qt::UserRole + 5;
 
   explicit BigFileModel(QObject *parent = nullptr);
   ~BigFileModel() override;
@@ -83,9 +87,10 @@ public:
   /**
    * @brief 异步搜索文本
    * @param text 搜索文本（区分大小写）
+   * @param useRegex 是否使用正则表达式
    * @note 使用 QtConcurrent::run 在后台线程执行，不阻塞主线程
    */
-  void search(const QString &text);
+  void search(const QString &text, bool useRegex = false);
 
   /**
    * @brief 取消正在进行的搜索
@@ -113,9 +118,10 @@ public:
   /**
    * @brief 异步应用过滤器
    * @param keyword 过滤关键词（为空则清除过滤）
+   * @param useRegex 是否使用正则表达式
    * @note 使用虚拟行映射，不复制数据，内存开销极低
    */
-  void applyFilter(const QString &keyword);
+  void applyFilter(const QString &keyword, bool useRegex = false);
 
   /**
    * @brief 清除过滤器，显示所有行
@@ -148,6 +154,34 @@ public:
    * @return 原始文件中的行号（如果不在过滤模式，返回 viewRow 本身）
    */
   int toRealRow(int viewRow) const;
+
+  // ============ 书签功能 ============
+
+  /**
+   * @brief 切换指定视图行的书签状态
+   * @param viewRow 视图中的行号
+   * @note 内部会转换为真实行号并存储，过滤时书签不会丢失
+   */
+  void toggleBookmark(int viewRow);
+
+  /**
+   * @brief 检查指定视图行是否已添加书签
+   * @param viewRow 视图中的行号
+   * @return 如果该行已添加书签返回 true
+   */
+  bool isBookmarked(int viewRow) const;
+
+  /**
+   * @brief 获取当前视图行之后的下一个书签行
+   * @param currentViewRow 当前视图行号
+   * @return 下一个书签的视图行号，如果没有则返回 -1
+   */
+  int getNextBookmark(int currentViewRow) const;
+
+  /**
+   * @brief 清除所有书签
+   */
+  void clearAllBookmarks();
 
   // QAbstractListModel 接口实现
   int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -248,14 +282,16 @@ private:
   /**
    * @brief 异步执行搜索（在后台线程执行）
    * @param searchText 搜索文本
+   * @param useRegex 是否使用正则表达式
    */
-  void executeSearchAsync(const QString &searchText);
+  void executeSearchAsync(const QString &searchText, bool useRegex);
 
   /**
    * @brief 异步执行过滤（在后台线程执行）
    * @param keyword 过滤关键词
+   * @param useRegex 是否使用正则表达式
    */
-  void executeFilterAsync(const QString &keyword);
+  void executeFilterAsync(const QString &keyword, bool useRegex);
 
 private:
   QFile m_file;              ///< 文件对象
@@ -293,6 +329,9 @@ private:
   std::atomic<bool> m_filterCancelRequested{false}; ///< 是否请求取消过滤
   std::atomic<bool> m_filterMode{false};          ///< 是否处于过滤模式
   QFutureWatcher<void> m_filterWatcher;           ///< 过滤任务监视器
+
+  // ============ 书签功能 ============
+  QSet<qint64> m_bookmarks;  ///< 书签集合（存储原始行索引，过滤时保持有效）
 };
 
 #endif // BIGFILEMODEL_H

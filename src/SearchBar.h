@@ -1,7 +1,7 @@
 /**
  * @file SearchBar.h
  * @brief 浮动搜索栏 - 类似 Chrome/VS Code 的查找界面
- * @version 1.0 - Phase 2
+ * @version 1.1 - 添加正则表达式支持
  */
 
 #ifndef SEARCHBAR_H
@@ -39,13 +39,19 @@ public:
    */
   QString searchText() const;
 
+  /**
+   * @brief 是否启用正则表达式模式
+   */
+  bool isRegexMode() const;
+
 signals:
   /**
    * @brief 搜索请求信号
    * @param text 搜索文本
    * @param direction 搜索方向
+   * @param useRegex 是否使用正则表达式
    */
-  void searchRequested(const QString &text, SearchDirection direction);
+  void searchRequested(const QString &text, SearchDirection direction, bool useRegex);
 
   /**
    * @brief 关闭信号
@@ -63,6 +69,7 @@ private slots:
   void onPreviousClicked();
   void onNextClicked();
   void onCloseClicked();
+  void onRegexToggled(bool checked);
 
 private:
   void setupUi();
@@ -74,6 +81,7 @@ private:
   QToolButton *m_prevButton = nullptr;
   QToolButton *m_nextButton = nullptr;
   QToolButton *m_closeButton = nullptr;
+  QToolButton *m_regexButton = nullptr;  ///< 正则表达式切换按钮
 };
 
 #endif // SEARCHBAR_H

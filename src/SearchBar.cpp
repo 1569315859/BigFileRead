@@ -1,7 +1,7 @@
 /**
  * @file SearchBar.cpp
  * @brief 浮动搜索栏实现 - VS Code 风格
- * @version 1.0 - Phase 2
+ * @version 1.1 - 添加正则表达式支持
  */
 
 #include "SearchBar.h"
@@ -25,6 +25,8 @@ SearchBar::SearchBar(QWidget *parent) : QWidget(parent) {
   connect(m_nextButton, &QToolButton::clicked, this, &SearchBar::onNextClicked);
   connect(m_closeButton, &QToolButton::clicked, this,
           &SearchBar::onCloseClicked);
+  connect(m_regexButton, &QToolButton::toggled, this,
+          &SearchBar::onRegexToggled);
 }
 
 SearchBar::~SearchBar() {}
@@ -33,14 +35,23 @@ void SearchBar::setupUi() {
   // 水平布局 - VS Code 风格
   QHBoxLayout *layout = new QHBoxLayout(this);
   layout->setContentsMargins(10, 8, 10, 8);
-  layout->setSpacing(8);
+  layout->setSpacing(6);
 
   // 搜索输入框 - 更宽，更易用
   m_searchInput = new QLineEdit(this);
   m_searchInput->setPlaceholderText(tr("Find"));
-  m_searchInput->setMinimumWidth(220);
+  m_searchInput->setMinimumWidth(200);
   m_searchInput->setFixedHeight(26);
   layout->addWidget(m_searchInput);
+
+  // 正则表达式切换按钮 [.*]
+  m_regexButton = new QToolButton(this);
+  m_regexButton->setText(".*");
+  m_regexButton->setToolTip(tr("Use Regular Expression"));
+  m_regexButton->setCheckable(true);
+  m_regexButton->setChecked(false);
+  m_regexButton->setFixedSize(28, 24);
+  layout->addWidget(m_regexButton);
 
   // Previous 按钮
   m_prevButton = new QToolButton(this);
@@ -58,7 +69,7 @@ void SearchBar::setupUi() {
 
   // 结果信息标签 - 紧凑显示
   m_resultLabel = new QLabel(tr("No results"), this);
-  m_resultLabel->setMinimumWidth(80);
+  m_resultLabel->setMinimumWidth(70);
   m_resultLabel->setAlignment(Qt::AlignCenter);
   layout->addWidget(m_resultLabel);
 
@@ -72,7 +83,7 @@ void SearchBar::setupUi() {
   setLayout(layout);
 
   // 固定大小 - 类似 VS Code
-  setFixedSize(450, 42);
+  setFixedSize(480, 42);
 }
 
 void SearchBar::applyStyle() {
@@ -119,6 +130,11 @@ void SearchBar::applyStyle() {
         QToolButton:pressed {
             background-color: #007acc;
         }
+        QToolButton:checked {
+            background-color: #094771;
+            border: 1px solid #007acc;
+            color: #ffffff;
+        }
         QToolButton:disabled {
             color: #6d6d6d;
             background-color: transparent;
@@ -152,6 +168,10 @@ void SearchBar::updateResultInfo(int current, int total) {
 
 QString SearchBar::searchText() const { return m_searchInput->text(); }
 
+bool SearchBar::isRegexMode() const { 
+  return m_regexButton && m_regexButton->isChecked(); 
+}
+
 void SearchBar::keyPressEvent(QKeyEvent *event) {
   if (event->key() == Qt::Key_Escape) {
     onCloseClicked();
@@ -164,7 +184,7 @@ void SearchBar::keyPressEvent(QKeyEvent *event) {
 void SearchBar::onSearchTextChanged() {
   QString text = m_searchInput->text();
   if (!text.isEmpty()) {
-    emit searchRequested(text, Next);
+    emit searchRequested(text, Next, isRegexMode());
   } else {
     updateResultInfo(0, 0);
   }
@@ -173,18 +193,27 @@ void SearchBar::onSearchTextChanged() {
 void SearchBar::onPreviousClicked() {
   QString text = m_searchInput->text();
   if (!text.isEmpty()) {
-    emit searchRequested(text, Previous);
+    emit searchRequested(text, Previous, isRegexMode());
   }
 }
 
 void SearchBar::onNextClicked() {
   QString text = m_searchInput->text();
   if (!text.isEmpty()) {
-    emit searchRequested(text, Next);
+    emit searchRequested(text, Next, isRegexMode());
   }
 }
 
 void SearchBar::onCloseClicked() {
   hide();
   emit closed();
+}
+
+void SearchBar::onRegexToggled(bool checked) {
+  Q_UNUSED(checked)
+  // 切换正则模式时重新触发搜索
+  QString text = m_searchInput->text();
+  if (!text.isEmpty()) {
+    emit searchRequested(text, Next, isRegexMode());
+  }
 }
