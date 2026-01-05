@@ -68,6 +68,31 @@ public:
     }
 
     /**
+     * @brief 计算行号槽宽度
+     * @param fm 字体度量
+     * @param totalRows 总行数
+     * @return 行号槽宽度（像素）
+     */
+    int calculateGutterWidth(const QFontMetrics &fm, int totalRows) const
+    {
+        // 计算需要的位数
+        int digitCount = 1;
+        int temp = totalRows;
+        while (temp >= 10) {
+            temp /= 10;
+            digitCount++;
+        }
+        // 至少显示 4 位数
+        digitCount = qMax(digitCount, 4);
+        
+        // 宽度 = 数字宽度 * 位数 + 左右内边距
+        return fm.horizontalAdvance('9') * digitCount + GUTTER_PADDING * 2;
+    }
+    
+    /// 行号槽内边距
+    static constexpr int GUTTER_PADDING = 8;
+
+    /**
      * @brief 设置固定行高
      * @param height 行高（像素）
      */
@@ -105,7 +130,7 @@ public:
     }
 
     /**
-     * @brief 自定义绘制（含搜索高亮和活动匹配区分）
+     * @brief 自定义绘制（含行号、搜索高亮和语法高亮）
      */
     void paint(QPainter *painter,
                const QStyleOptionViewItem &option,
@@ -114,13 +139,44 @@ public:
         QString text = index.data(Qt::DisplayRole).toString();
         painter->save();
 
-        // 绘制背景
+        // 获取总行数用于计算行号槽宽度
+        int totalRows = index.model() ? index.model()->rowCount() : 1;
+        QFontMetrics fm(option.font);
+        int gutterWidth = calculateGutterWidth(fm, totalRows);
+
+        // === 绘制行号槽背景 ===
+        QRect gutterRect(option.rect.left(), option.rect.top(), gutterWidth, option.rect.height());
+        QColor gutterBgColor("#252526");  // 比主背景稍亮
+        painter->fillRect(gutterRect, gutterBgColor);
+        
+        // === 绘制行号 ===
+        QString lineNumber = QString::number(index.row() + 1);
+        QColor lineNumberColor("#858585");  // 暗灰色
+        painter->setPen(lineNumberColor);
+        painter->setFont(option.font);
+        
+        // 行号右对齐，留出右边距
+        QRect lineNumTextRect = gutterRect.adjusted(0, 0, -GUTTER_PADDING, 0);
+        
+        // 使用基线绘制确保垂直居中
+        int textY = lineNumTextRect.top() + (lineNumTextRect.height() - fm.height()) / 2 + fm.ascent();
+        int textX = lineNumTextRect.right() - fm.horizontalAdvance(lineNumber);
+        painter->drawText(textX, textY, lineNumber);
+
+        // === 绘制内容区背景（选中/悬停状态）===
+        QRect contentRect = option.rect;
+        contentRect.setLeft(option.rect.left() + gutterWidth);
+        
+        // 创建修改后的 option 用于内容区域
+        QStyleOptionViewItem contentOption = option;
+        contentOption.rect = contentRect;
+        
         QStyle *style = option.widget ? option.widget->style() : QApplication::style();
-        style->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, option.widget);
+        style->drawPrimitive(QStyle::PE_PanelItemViewItem, &contentOption, painter, option.widget);
 
         // === 搜索高亮绘制（在文本之前）===
         if (!m_highlightText.isEmpty() && !text.isEmpty()) {
-            QFontMetrics fm(option.font);
+            // 使用已计算的 fm
             
             // 普通匹配颜色 - 半透明黄色
             QColor normalMatchColor(234, 92, 0, 100);
@@ -130,6 +186,9 @@ public:
             int searchPos = 0;
             const int matchLength = m_highlightText.length();
             int matchCounter = 0;  // 该行内的匹配计数器
+            
+            // 内容区域起始 X 坐标（行号槽之后）
+            int contentLeft = option.rect.left() + gutterWidth + 4;
             
             // 查找所有匹配并绘制高亮背景
             while (searchPos < text.length()) {
@@ -145,9 +204,9 @@ public:
                 int startX = fm.horizontalAdvance(beforeMatch);
                 int matchWidth = fm.horizontalAdvance(matchText);
                 
-                // 绘制高亮矩形
+                // 绘制高亮矩形（考虑行号槽偏移）
                 QRect highlightRect(
-                    option.rect.left() + 4 + startX,
+                    contentLeft + startX,
                     option.rect.top(),
                     matchWidth,
                     option.rect.height()
@@ -187,13 +246,12 @@ public:
         
         painter->setPen(penColor);
 
-        // 计算文本区域（带左边距）
+        // 计算文本区域（行号槽之后 + 左边距）
         QRect textRect = option.rect;
-        textRect.setLeft(textRect.left() + 4);
+        textRect.setLeft(option.rect.left() + gutterWidth + 4);
         
-        // 使用 QFontMetrics 计算正确的基线位置
-        QFontMetrics fm(option.font);
-        int textY = textRect.top() + (textRect.height() - fm.height()) / 2 + fm.ascent();
+        // 使用已计算的 fm 计算正确的基线位置
+        textY = textRect.top() + (textRect.height() - fm.height()) / 2 + fm.ascent();
         
         // 绘制文本（使用计算的基线位置，避免 Qt 对齐问题）
         painter->setFont(option.font);
