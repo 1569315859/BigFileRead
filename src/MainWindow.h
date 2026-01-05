@@ -17,6 +17,9 @@ class QPlainTextEdit;
 class QSplitter;
 class QComboBox;
 class QAction;
+class QLineEdit;
+class QToolBar;
+class QCloseEvent;
 class BigFileModel;
 class SearchBar;
 
@@ -89,6 +92,21 @@ private slots:
    */
   void onLogAppended();
 
+  /**
+   * @brief 处理过滤请求
+   */
+  void onFilterRequested();
+
+  /**
+   * @brief 处理过滤完成
+   */
+  void onFilterFinished(int matchCount);
+
+  /**
+   * @brief 清除过滤
+   */
+  void onClearFilter();
+
 private:
   /**
    * @brief 初始化 UI 组件
@@ -120,6 +138,21 @@ private:
    */
   void resizeEvent(QResizeEvent *event) override;
 
+  /**
+   * @brief 窗口关闭事件（保存设置）
+   */
+  void closeEvent(QCloseEvent *event) override;
+
+  /**
+   * @brief 加载用户设置
+   */
+  void loadSettings();
+
+  /**
+   * @brief 保存用户设置
+   */
+  void saveSettings();
+
 private:
   QListView *m_listView = nullptr;       ///< 文件内容视图（主列表）
   QPlainTextEdit *m_detailTextEdit = nullptr; ///< 详细文本视图（支持部分选择）
@@ -140,6 +173,12 @@ private:
 
   // 实时日志监控
   QAction *m_followTailAction = nullptr;  ///< 跟踪尾部开关
+
+  // 日志过滤 (Filter Bar)
+  QToolBar *m_filterToolBar = nullptr;    ///< 过滤工具栏
+  QLineEdit *m_filterInput = nullptr;     ///< 过滤输入框
+  QLabel *m_filterStatusLabel = nullptr;  ///< 过滤状态标签
+  QAction *m_toggleFilterAction = nullptr; ///< 切换过滤栏显示
 };
 
 #endif // MAINWINDOW_H

@@ -71,9 +71,14 @@ public:
   qint64 fileSize() const { return m_fileSize; }
 
   /**
-   * @brief 获取当前已索引的行数
+   * @brief 获取当前已索引的行数（受过滤影响）
    */
   int lineCount() const;
+
+  /**
+   * @brief 获取总行数（不受过滤影响）
+   */
+  int totalLineCount() const { return static_cast<int>(m_lineOffsets.size()); }
 
   /**
    * @brief 异步搜索文本
@@ -102,6 +107,47 @@ public:
    * @param encoding 编码类型 (Utf8, System/Local 等)
    */
   void setEncoding(QStringConverter::Encoding encoding);
+
+  // ============ 日志过滤功能 (Virtual Mapping Vector) ============
+
+  /**
+   * @brief 异步应用过滤器
+   * @param keyword 过滤关键词（为空则清除过滤）
+   * @note 使用虚拟行映射，不复制数据，内存开销极低
+   */
+  void applyFilter(const QString &keyword);
+
+  /**
+   * @brief 清除过滤器，显示所有行
+   */
+  void clearFilter();
+
+  /**
+   * @brief 取消正在进行的过滤操作
+   */
+  void cancelFilter();
+
+  /**
+   * @brief 是否正在过滤中
+   */
+  bool isFiltering() const { return m_isFiltering.load(); }
+
+  /**
+   * @brief 是否处于过滤模式（显示过滤结果）
+   */
+  bool isFilterMode() const { return m_filterMode.load(); }
+
+  /**
+   * @brief 获取当前过滤关键词
+   */
+  QString filterKeyword() const { return m_filterKeyword; }
+
+  /**
+   * @brief 将视图行号转换为原始行号
+   * @param viewRow 视图中的行号
+   * @return 原始文件中的行号（如果不在过滤模式，返回 viewRow 本身）
+   */
+  int toRealRow(int viewRow) const;
 
   // QAbstractListModel 接口实现
   int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -151,6 +197,20 @@ signals:
    */
   void logAppended();
 
+  // ============ 过滤信号 ============
+
+  /**
+   * @brief 过滤进度信号
+   * @param percent 进度百分比 (0-100)
+   */
+  void filterProgress(int percent);
+
+  /**
+   * @brief 过滤完成信号
+   * @param matchCount 匹配的行数
+   */
+  void filterFinished(int matchCount);
+
 private slots:
   /**
    * @brief Timer 超时处理 - 将 pending 数据合并到主模型
@@ -191,6 +251,12 @@ private:
    */
   void executeSearchAsync(const QString &searchText);
 
+  /**
+   * @brief 异步执行过滤（在后台线程执行）
+   * @param keyword 过滤关键词
+   */
+  void executeFilterAsync(const QString &keyword);
+
 private:
   QFile m_file;              ///< 文件对象
   QString m_filePath;        ///< 文件路径
@@ -219,6 +285,14 @@ private:
 
   // 文件监控（实时日志）
   QFileSystemWatcher *m_watcher = nullptr;  ///< 文件变化监视器
+
+  // ============ 日志过滤 (Virtual Mapping Vector) ============
+  std::vector<int> m_filteredRows;                ///< 虚拟映射向量：存储匹配行的原始索引
+  QString m_filterKeyword;                        ///< 当前过滤关键词
+  std::atomic<bool> m_isFiltering{false};         ///< 是否正在执行过滤
+  std::atomic<bool> m_filterCancelRequested{false}; ///< 是否请求取消过滤
+  std::atomic<bool> m_filterMode{false};          ///< 是否处于过滤模式
+  QFutureWatcher<void> m_filterWatcher;           ///< 过滤任务监视器
 };
 
 #endif // BIGFILEMODEL_H

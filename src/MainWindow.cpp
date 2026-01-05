@@ -19,6 +19,7 @@
 #include <QGuiApplication>
 #include <QInputDialog>
 #include <QLabel>
+#include <QLineEdit>
 #include <QListView>
 #include <QMenu>
 #include <QMenuBar>
@@ -32,8 +33,11 @@
 #include <QStringConverter>
 #include <QStyle>
 #include <QTimer>
+#include <QToolBar>
 #include <QToolButton>
 #include <QVBoxLayout>
+#include <QSettings>
+#include <QCloseEvent>
 
 #include <algorithm>  // for std::sort
 
@@ -77,9 +81,89 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
       m_lineCountLabel->setText(tr("Lines: %1").arg(m_model->lineCount()));
     }
   });
+
+  // 加载用户设置（必须在所有 UI 初始化完成后调用）
+  loadSettings();
 }
 
 MainWindow::~MainWindow() {}
+
+// ========== 设置持久化 (QSettings) ==========
+
+void MainWindow::loadSettings() {
+  QSettings settings;
+
+  // 恢复窗口几何信息
+  if (settings.contains("geometry")) {
+    restoreGeometry(settings.value("geometry").toByteArray());
+  }
+
+  // 恢复窗口状态（工具栏/Dock 位置）
+  if (settings.contains("windowState")) {
+    restoreState(settings.value("windowState").toByteArray());
+  }
+
+  // 恢复分隔器状态
+  if (settings.contains("splitterState") && m_splitter) {
+    m_splitter->restoreState(settings.value("splitterState").toByteArray());
+  }
+
+  // 恢复 Follow Tail 状态
+  if (settings.contains("followTail") && m_followTailAction) {
+    m_followTailAction->setChecked(settings.value("followTail").toBool());
+  }
+
+  // 恢复编码选择
+  if (settings.contains("encodingIndex") && m_encodingCombo) {
+    int index = settings.value("encodingIndex").toInt();
+    if (index >= 0 && index < m_encodingCombo->count()) {
+      m_encodingCombo->setCurrentIndex(index);
+    }
+  }
+
+  // 恢复过滤栏显示状态
+  if (settings.contains("filterBarVisible") && m_toggleFilterAction) {
+    m_toggleFilterAction->setChecked(settings.value("filterBarVisible").toBool());
+  }
+}
+
+void MainWindow::saveSettings() {
+  QSettings settings;
+
+  // 保存窗口几何信息
+  settings.setValue("geometry", saveGeometry());
+
+  // 保存窗口状态（工具栏/Dock 位置）
+  settings.setValue("windowState", saveState());
+
+  // 保存分隔器状态
+  if (m_splitter) {
+    settings.setValue("splitterState", m_splitter->saveState());
+  }
+
+  // 保存 Follow Tail 状态
+  if (m_followTailAction) {
+    settings.setValue("followTail", m_followTailAction->isChecked());
+  }
+
+  // 保存编码选择
+  if (m_encodingCombo) {
+    settings.setValue("encodingIndex", m_encodingCombo->currentIndex());
+  }
+
+  // 保存过滤栏显示状态
+  if (m_toggleFilterAction) {
+    settings.setValue("filterBarVisible", m_toggleFilterAction->isChecked());
+  }
+}
+
+void MainWindow::closeEvent(QCloseEvent *event) {
+  // 保存用户设置
+  saveSettings();
+
+  // 调用父类实现
+  QMainWindow::closeEvent(event);
+}
 
 void MainWindow::applyDarkTheme() {
   QString styleSheet = QStringLiteral(R"(
@@ -468,6 +552,92 @@ void MainWindow::setupUi() {
   // 连接日志追加信号
   connect(m_model, &BigFileModel::logAppended, this, &MainWindow::onLogAppended);
 
+  // ========== 过滤工具栏 (Filter Bar) ==========
+  m_filterToolBar = addToolBar(tr("Filter"));
+  m_filterToolBar->setMovable(false);
+  m_filterToolBar->setVisible(false);  // 默认隐藏
+  m_filterToolBar->setStyleSheet(
+      "QToolBar {"
+      "   background-color: #252526;"
+      "   border-bottom: 1px solid #3c3c3c;"
+      "   spacing: 6px;"
+      "   padding: 4px 8px;"
+      "}"
+  );
+
+  // 过滤标签
+  QLabel *filterLabel = new QLabel(tr("Filter:"), this);
+  filterLabel->setStyleSheet("QLabel { color: #d4d4d4; margin-right: 4px; }");
+  m_filterToolBar->addWidget(filterLabel);
+
+  // 过滤输入框
+  m_filterInput = new QLineEdit(this);
+  m_filterInput->setPlaceholderText(tr("Type keyword to filter... (Enter to apply)"));
+  m_filterInput->setMinimumWidth(300);
+  m_filterInput->setMaximumWidth(500);
+  m_filterInput->setStyleSheet(
+      "QLineEdit {"
+      "   background-color: #3c3c3c;"
+      "   color: #d4d4d4;"
+      "   border: 1px solid #555555;"
+      "   border-radius: 3px;"
+      "   padding: 4px 8px;"
+      "}"
+      "QLineEdit:focus {"
+      "   border-color: #007acc;"
+      "}"
+      "QLineEdit::placeholder {"
+      "   color: #808080;"
+      "}"
+  );
+  m_filterToolBar->addWidget(m_filterInput);
+
+  // 统一按钮样式 (Apply 和 Clear 保持一致)
+  QString filterBtnStyle = 
+      "QToolButton {"
+      "   min-width: 60px;"
+      "   background-color: #3e3e42;"
+      "   color: #d4d4d4;"
+      "   border: 1px solid #555555;"
+      "   border-radius: 3px;"
+      "   padding: 4px 12px;"
+      "}"
+      "QToolButton:hover {"
+      "   background-color: #505050;"
+      "   border-color: #007acc;"
+      "}"
+      "QToolButton:pressed {"
+      "   background-color: #2d2d30;"
+      "}";
+
+  // 应用过滤按钮
+  QToolButton *applyFilterBtn = new QToolButton(this);
+  applyFilterBtn->setText(tr("Apply"));
+  applyFilterBtn->setToolTip(tr("Apply filter (Enter)"));
+  applyFilterBtn->setStyleSheet(filterBtnStyle);
+  m_filterToolBar->addWidget(applyFilterBtn);
+
+  // 清除过滤按钮
+  QToolButton *clearFilterBtn = new QToolButton(this);
+  clearFilterBtn->setText(tr("Clear"));
+  clearFilterBtn->setToolTip(tr("Clear filter and show all lines"));
+  clearFilterBtn->setStyleSheet(filterBtnStyle);
+  m_filterToolBar->addWidget(clearFilterBtn);
+
+  // 过滤状态标签
+  m_filterStatusLabel = new QLabel(this);
+  m_filterStatusLabel->setStyleSheet("QLabel { color: #808080; margin-left: 12px; }");
+  m_filterToolBar->addWidget(m_filterStatusLabel);
+
+  // 连接过滤信号
+  connect(m_filterInput, &QLineEdit::returnPressed, this, &MainWindow::onFilterRequested);
+  connect(applyFilterBtn, &QToolButton::clicked, this, &MainWindow::onFilterRequested);
+  connect(clearFilterBtn, &QToolButton::clicked, this, &MainWindow::onClearFilter);
+  connect(m_model, &BigFileModel::filterFinished, this, &MainWindow::onFilterFinished);
+  connect(m_model, &BigFileModel::filterProgress, this, [this](int percent) {
+    m_filterStatusLabel->setText(tr("Filtering... %1%").arg(percent));
+  });
+
   // 快捷键
   QShortcut *openShortcut = new QShortcut(QKeySequence::Open, this);
   connect(openShortcut, &QShortcut::activated, this, &MainWindow::onOpenFile);
@@ -555,6 +725,21 @@ void MainWindow::createMenus() {
   QAction *gotoAction = editMenu->addAction(tr("Go to Line(&G)..."));
   gotoAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_G));
   connect(gotoAction, &QAction::triggered, this, &MainWindow::onGoToLine);
+
+  // 视图菜单
+  QMenu *viewMenu = menuBar()->addMenu(tr("View(&V)"));
+
+  m_toggleFilterAction = viewMenu->addAction(tr("Toggle Filter(&T)"));
+  m_toggleFilterAction->setShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_F));
+  m_toggleFilterAction->setCheckable(true);
+  m_toggleFilterAction->setChecked(false);
+  connect(m_toggleFilterAction, &QAction::toggled, this, [this](bool checked) {
+    m_filterToolBar->setVisible(checked);
+    if (checked) {
+      m_filterInput->setFocus();
+      m_filterInput->selectAll();
+    }
+  });
 
   // 帮助菜单
   QMenu *helpMenu = menuBar()->addMenu(tr("Help(&H)"));
@@ -881,5 +1066,92 @@ void MainWindow::onLogAppended()
             }
         });
     }
+}
+
+// ========== 日志过滤功能实现 ==========
+
+void MainWindow::onFilterRequested()
+{
+    QString keyword = m_filterInput->text().trimmed();
+    
+    if (keyword.isEmpty()) {
+        onClearFilter();
+        return;
+    }
+
+    // 检查是否有文件加载
+    if (!m_model || m_model->lineCount() == 0) {
+        QMessageBox::information(this, tr("Info"), tr("Please open a file first"));
+        return;
+    }
+
+    // 更新状态
+    m_filterStatusLabel->setText(tr("Filtering..."));
+    m_statusLabel->setText(tr("Applying filter: %1").arg(keyword));
+
+    // 应用过滤
+    m_model->applyFilter(keyword);
+
+    // 更新委托高亮（显示过滤关键词）
+    auto delegate = static_cast<CompactLineDelegate *>(m_listView->itemDelegate());
+    delegate->setHighlightTerm(keyword, Qt::CaseInsensitive);
+    m_listView->viewport()->update();
+}
+
+void MainWindow::onFilterFinished(int matchCount)
+{
+    if (m_model->isFilterMode()) {
+        // 过滤模式
+        int totalLines = m_model->totalLineCount();
+        m_filterStatusLabel->setText(
+            tr("Showing %1 of %2 lines")
+            .arg(matchCount)
+            .arg(totalLines)
+        );
+        m_statusLabel->setText(tr("Filter applied: %1 matches").arg(matchCount));
+        m_lineCountLabel->setText(tr("Lines: %1 (filtered)").arg(matchCount));
+        
+        // 如果有结果，滚动到第一行
+        if (matchCount > 0) {
+            m_listView->scrollToTop();
+        }
+    } else {
+        // 非过滤模式（显示全部）
+        int totalLines = m_model->totalLineCount();
+        m_filterStatusLabel->clear();
+        m_statusLabel->setText(tr("Ready"));
+        m_lineCountLabel->setText(tr("Lines: %1").arg(totalLines));
+    }
+}
+
+void MainWindow::onClearFilter()
+{
+    // 清空输入框
+    m_filterInput->clear();
+    
+    // 清除过滤
+    if (m_model) {
+        m_model->clearFilter();
+    }
+
+    // 清除高亮
+    auto delegate = static_cast<CompactLineDelegate *>(m_listView->itemDelegate());
+    delegate->setHighlightTerm("", Qt::CaseInsensitive);
+    m_listView->viewport()->update();
+
+    // 更新 UI
+    m_filterStatusLabel->clear();
+    m_statusLabel->setText(tr("Filter cleared"));
+    
+    if (m_model) {
+        m_lineCountLabel->setText(tr("Lines: %1").arg(m_model->lineCount()));
+    }
+
+    // 2秒后清除状态
+    QTimer::singleShot(2000, this, [this]() {
+        if (m_statusLabel->text().contains("cleared")) {
+            m_statusLabel->setText(tr("Ready"));
+        }
+    });
 }
 

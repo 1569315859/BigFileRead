@@ -130,6 +130,10 @@ void BigFileModel::closeFile() {
   cancelIndexing();
   m_futureWatcher.waitForFinished();
 
+  // 取消过滤并等待
+  cancelFilter();
+  m_filterWatcher.waitForFinished();
+
   // 停止 Timer
   if (m_refreshTimer) {
     m_refreshTimer->stop();
@@ -154,6 +158,12 @@ void BigFileModel::closeFile() {
   m_lineOffsets.clear();
   m_lineOffsets.shrink_to_fit();
 
+  // 清理过滤状态
+  m_filteredRows.clear();
+  m_filteredRows.shrink_to_fit();
+  m_filterKeyword.clear();
+  m_filterMode.store(false);
+
   {
     QMutexLocker locker(&m_pendingMutex);
     m_pendingOffsets.clear();
@@ -169,6 +179,10 @@ void BigFileModel::closeFile() {
 }
 
 int BigFileModel::lineCount() const {
+  // 过滤模式下返回过滤后的行数
+  if (m_filterMode.load()) {
+    return static_cast<int>(m_filteredRows.size());
+  }
   return static_cast<int>(m_lineOffsets.size());
 }
 
@@ -473,6 +487,10 @@ int BigFileModel::rowCount(const QModelIndex &parent) const {
   if (parent.isValid()) {
     return 0;
   }
+  // *** 关键：过滤模式下返回过滤后的行数 ***
+  if (m_filterMode.load()) {
+    return static_cast<int>(m_filteredRows.size());
+  }
   return static_cast<int>(m_lineOffsets.size());
 }
 
@@ -481,23 +499,27 @@ QVariant BigFileModel::data(const QModelIndex &index, int role) const {
     return QVariant();
   }
 
-  int row = index.row();
-  if (row < 0 || row >= static_cast<int>(m_lineOffsets.size())) {
+  int viewRow = index.row();
+  
+  // *** 关键：视图行号 -> 真实行号转换 ***
+  int realRow = toRealRow(viewRow);
+  
+  if (realRow < 0 || realRow >= static_cast<int>(m_lineOffsets.size())) {
     return QVariant();
   }
 
   switch (role) {
   case Qt::DisplayRole:
   case Qt::EditRole:
-    return getLine(row);
+    return getLine(realRow);
 
   case Qt::ToolTipRole: {
-    // 显示行号和原始长度
-    qint64 len = getLineLength(row);
+    // 显示真实行号和原始长度
+    qint64 len = getLineLength(realRow);
     if (len > MAX_DISPLAY_LENGTH) {
-      return tr("行 %1 (原始长度: %2 字符, 已截断)").arg(row + 1).arg(len);
+      return tr("行 %1 (原始长度: %2 字符, 已截断)").arg(realRow + 1).arg(len);
     }
-    return tr("行 %1").arg(row + 1);
+    return tr("行 %1").arg(realRow + 1);
   }
 
   default:
@@ -754,4 +776,182 @@ void BigFileModel::executeSearchAsync(const QString &searchText) {
   m_isSearching.store(false);
   emit searchProgress(100);
   emit searchFinished(results);
+}
+
+// ========== 虚拟行映射辅助函数 ==========
+
+int BigFileModel::toRealRow(int viewRow) const {
+  if (!m_filterMode.load()) {
+    // 非过滤模式：视图行号 = 真实行号
+    return viewRow;
+  }
+  
+  // 过滤模式：通过映射向量获取真实行号
+  if (viewRow >= 0 && viewRow < static_cast<int>(m_filteredRows.size())) {
+    return m_filteredRows[viewRow];
+  }
+  
+  return -1;  // 无效行号
+}
+
+// ========== 日志过滤功能实现 (Virtual Mapping Vector) ==========
+
+void BigFileModel::applyFilter(const QString &keyword) {
+  // 取消之前的过滤操作
+  if (m_isFiltering.load()) {
+    cancelFilter();
+    m_filterWatcher.waitForFinished();
+  }
+
+  // 空关键词 = 清除过滤
+  if (keyword.isEmpty()) {
+    clearFilter();
+    return;
+  }
+
+  // 保存关键词
+  m_filterKeyword = keyword;
+  
+  // 启动异步过滤
+  m_filterCancelRequested.store(false);
+  m_isFiltering.store(true);
+
+  QFuture<void> future =
+      QtConcurrent::run([this, keyword]() { executeFilterAsync(keyword); });
+  m_filterWatcher.setFuture(future);
+}
+
+void BigFileModel::clearFilter() {
+  // 取消正在进行的过滤
+  if (m_isFiltering.load()) {
+    cancelFilter();
+    m_filterWatcher.waitForFinished();
+  }
+
+  // 如果不在过滤模式，无需操作
+  if (!m_filterMode.load()) {
+    return;
+  }
+
+  // 切换回非过滤模式
+  beginResetModel();
+  m_filterMode.store(false);
+  m_filteredRows.clear();
+  m_filteredRows.shrink_to_fit();
+  m_filterKeyword.clear();
+  endResetModel();
+
+  qDebug() << "Filter cleared, showing all" << m_lineOffsets.size() << "lines";
+  emit filterFinished(static_cast<int>(m_lineOffsets.size()));
+}
+
+void BigFileModel::cancelFilter() {
+  m_filterCancelRequested.store(true);
+}
+
+void BigFileModel::executeFilterAsync(const QString &keyword) {
+  // === 后台线程：高性能行级过滤 ===
+  
+  QElapsedTimer timer;
+  timer.start();
+
+  std::vector<int> matchedRows;
+  matchedRows.reserve(100000);  // 预分配
+
+  // 转换关键词为 UTF-8 字节数组
+  QByteArray keywordBytes = keyword.toUtf8();
+  const char *keywordPtr = keywordBytes.constData();
+  const int keywordLen = keywordBytes.size();
+
+  if (keywordLen == 0) {
+    m_isFiltering.store(false);
+    return;
+  }
+
+  // 准备参数
+  const char *fileStart = reinterpret_cast<const char *>(m_mapPtr);
+  const int totalLines = static_cast<int>(m_lineOffsets.size());
+  int lastPercent = 0;
+
+  // 大小写不敏感比较器
+  auto caseInsensitiveEqual = [](char a, char b) {
+    return std::tolower(static_cast<unsigned char>(a)) ==
+           std::tolower(static_cast<unsigned char>(b));
+  };
+
+  // === 逐行扫描，记录匹配行的索引 ===
+  for (int row = 0; row < totalLines; ++row) {
+    // 定期检查取消和进度（每 5000 行）
+    if (row % 5000 == 0) {
+      if (m_filterCancelRequested.load()) {
+        qDebug() << "Filter cancelled by user";
+        m_isFiltering.store(false);
+        return;
+      }
+
+      int percent = (row * 100) / totalLines;
+      if (percent > lastPercent) {
+        lastPercent = percent;
+        emit filterProgress(percent);
+      }
+    }
+
+    // 获取行边界
+    const qint64 lineStart = m_lineOffsets[row];
+    qint64 lineEnd;
+
+    if (row + 1 < totalLines) {
+      lineEnd = m_lineOffsets[row + 1];
+    } else {
+      lineEnd = m_fileSize;
+    }
+
+    qint64 lineLength = lineEnd - lineStart;
+    if (lineLength <= 0 || lineLength < keywordLen) {
+      continue;
+    }
+
+    // 去除换行符
+    const char *linePtr = fileStart + lineStart;
+    if (lineLength > 0 && linePtr[lineLength - 1] == '\n') {
+      --lineLength;
+    }
+    if (lineLength > 0 && linePtr[lineLength - 1] == '\r') {
+      --lineLength;
+    }
+
+    if (lineLength < keywordLen) {
+      continue;
+    }
+
+    // === 在该行中搜索关键词（只需判断是否存在，无需找所有位置）===
+    const char *lineEndPtr = linePtr + lineLength;
+    const char *found = std::search(
+        linePtr, lineEndPtr, 
+        keywordPtr, keywordPtr + keywordLen,
+        caseInsensitiveEqual);
+
+    if (found != lineEndPtr) {
+      // 匹配！记录这一行的原始索引
+      matchedRows.push_back(row);
+    }
+  }
+
+  qint64 elapsed = timer.elapsed();
+  qDebug() << "Filter completed:" << matchedRows.size() << "matching rows out of"
+           << totalLines << "in" << elapsed << "ms";
+
+  // === 在主线程更新模型 ===
+  // 使用 QMetaObject::invokeMethod 确保在主线程执行
+  QMetaObject::invokeMethod(this, [this, matchedRows = std::move(matchedRows)]() {
+    // 重置模型并切换到过滤模式
+    beginResetModel();
+    m_filteredRows = std::move(matchedRows);
+    m_filterMode.store(true);
+    endResetModel();
+
+    m_isFiltering.store(false);
+    emit filterProgress(100);
+    emit filterFinished(static_cast<int>(m_filteredRows.size()));
+  }, Qt::QueuedConnection);
 }
