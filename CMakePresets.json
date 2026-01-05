@@ -5,7 +5,6 @@
         "minor": 21,
         "patch": 0
     },
-
     "configurePresets": [
         {
             "name": "base",
@@ -19,7 +18,6 @@
                 "BUILD_SHARED_LIBS": "ON"
             }
         },
-
         {
             "name": "windows-base",
             "hidden": true,
@@ -35,7 +33,6 @@
                 "CMAKE_CXX_COMPILER": "cl.exe"
             }
         },
-
         {
             "name": "linux-base",
             "hidden": true,
@@ -51,7 +48,6 @@
                 "CMAKE_CXX_COMPILER": "g++"
             }
         },
-
         {
             "name": "macos-base",
             "hidden": true,
@@ -67,7 +63,6 @@
                 "CMAKE_CXX_COMPILER": "clang++"
             }
         },
-
         {
             "name": "windows-debug",
             "displayName": "Windows Debug",
@@ -104,7 +99,6 @@
                 "CMAKE_BUILD_TYPE": "MinSizeRel"
             }
         },
-
         {
             "name": "linux-debug",
             "displayName": "Linux Debug",
@@ -141,7 +135,6 @@
                 "CMAKE_BUILD_TYPE": "MinSizeRel"
             }
         },
-
         {
             "name": "macos-debug",
             "displayName": "macOS Debug",
@@ -179,7 +172,6 @@
             }
         }
     ],
-
     "buildPresets": [
         {
             "name": "windows-debug",
@@ -201,7 +193,6 @@
             "configurePreset": "windows-minsizerel",
             "displayName": "Build Windows MinSizeRel"
         },
-
         {
             "name": "linux-debug",
             "configurePreset": "linux-debug",
@@ -222,7 +213,6 @@
             "configurePreset": "linux-minsizerel",
             "displayName": "Build Linux MinSizeRel"
         },
-
         {
             "name": "macos-debug",
             "configurePreset": "macos-debug",

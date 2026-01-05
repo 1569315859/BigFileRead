@@ -9,6 +9,7 @@
 #include "BigFileModel.h"
 #include <QDebug>
 #include <QElapsedTimer>
+#include <QFileInfo>
 #include <QtConcurrent>
 #include <algorithm> // for std::search
 #include <cctype>    // for std::tolower
@@ -24,6 +25,11 @@ BigFileModel::BigFileModel(QObject *parent) : QAbstractListModel(parent) {
   // 连接索引完成信号（跨线程）
   connect(this, &BigFileModel::indexingFinished, this,
           &BigFileModel::onIndexingFinished, Qt::QueuedConnection);
+
+  // 创建文件监视器（用于实时日志监控）
+  m_watcher = new QFileSystemWatcher(this);
+  connect(m_watcher, &QFileSystemWatcher::fileChanged, this,
+          &BigFileModel::onFileChanged);
 }
 
 BigFileModel::~BigFileModel() {
@@ -108,6 +114,9 @@ bool BigFileModel::loadFile(const QString &filePath) {
   QFuture<void> future = QtConcurrent::run([this]() { buildIndexAsync(); });
   m_futureWatcher.setFuture(future);
 
+  // 添加文件监控（用于实时日志追踪）
+  m_watcher->addPath(filePath);
+
   // 通知 UI 已开始加载（第一行已可用）
   qDebug() << "File loading started, first line available";
 
@@ -124,6 +133,11 @@ void BigFileModel::closeFile() {
   // 停止 Timer
   if (m_refreshTimer) {
     m_refreshTimer->stop();
+  }
+
+  // 移除文件监控
+  if (!m_filePath.isEmpty()) {
+    m_watcher->removePath(m_filePath);
   }
 
   beginResetModel();
@@ -443,10 +457,10 @@ QString BigFileModel::getLine(int row) const {
     truncated = true;
   }
 
-  // 从映射内存创建 QString（假设 UTF-8 编码）
+  // 使用配置的解码器从映射内存创建 QString
   const char *lineStart =
       reinterpret_cast<const char *>(m_mapPtr + startOffset);
-  QString result = QString::fromUtf8(lineStart, static_cast<int>(length));
+  QString result = m_decoder.decode(QByteArrayView(lineStart, static_cast<qsizetype>(length)));
 
   if (truncated) {
     result += QStringLiteral("  ... [truncated]");
@@ -488,6 +502,104 @@ QVariant BigFileModel::data(const QModelIndex &index, int role) const {
 
   default:
     return QVariant();
+  }
+}
+
+// ========== 编码设置实现 ==========
+
+void BigFileModel::setEncoding(QStringConverter::Encoding encoding) {
+  // 重新创建解码器
+  m_decoder = QStringDecoder(encoding);
+  
+  // 通知视图刷新所有数据
+  beginResetModel();
+  endResetModel();
+  
+  qDebug() << "Encoding changed to:" << (encoding == QStringConverter::Utf8 ? "UTF-8" : "System");
+}
+
+// ========== 实时日志监控实现 ==========
+
+void BigFileModel::onFileChanged(const QString &path) {
+  // 忽略正在索引时的变化
+  if (m_isIndexing.load()) {
+    return;
+  }
+  
+  // 检查新文件大小
+  QFileInfo fi(path);
+  qint64 newSize = fi.size();
+  
+  // 忽略文件缩小或未变化的情况
+  if (newSize <= m_fileSize) {
+    // 重新添加监控（某些系统会在文件变化后移除监控）
+    if (!m_watcher->files().contains(path)) {
+      m_watcher->addPath(path);
+    }
+    return;
+  }
+  
+  qDebug() << "File changed, new size:" << newSize << "old size:" << m_fileSize;
+  
+  // 保存旧的行数
+  int oldRowCount = static_cast<int>(m_lineOffsets.size());
+  qint64 oldSize = m_fileSize;
+  
+  // === 重新映射文件 ===
+  if (m_mapPtr) {
+    m_file.unmap(m_mapPtr);
+    m_mapPtr = nullptr;
+  }
+  
+  m_mapPtr = m_file.map(0, newSize);
+  if (!m_mapPtr) {
+    qWarning() << "Failed to remap file to new size:" << newSize;
+    // 尝试恢复旧映射
+    m_mapPtr = m_file.map(0, m_fileSize);
+    return;
+  }
+  
+  // === 增量扫描新内容 ===
+  const uchar *start = m_mapPtr + oldSize;
+  const uchar *end = m_mapPtr + newSize;
+  
+  // 使用 memchr 快速查找换行符
+  const uchar *ptr = start;
+  while (ptr < end) {
+    const uchar *found = static_cast<const uchar *>(
+        std::memchr(ptr, '\n', static_cast<size_t>(end - ptr)));
+    
+    if (found) {
+      // 找到换行符，下一行的偏移量是换行符后一个位置
+      qint64 nextLineOffset = (found - m_mapPtr) + 1;
+      if (nextLineOffset < newSize) {
+        m_lineOffsets.push_back(nextLineOffset);
+      }
+      ptr = found + 1;
+    } else {
+      break;  // 没有更多换行符
+    }
+  }
+  
+  int newRowCount = static_cast<int>(m_lineOffsets.size());
+  
+  // 通知视图有新行插入
+  if (newRowCount > oldRowCount) {
+    beginInsertRows(QModelIndex(), oldRowCount, newRowCount - 1);
+    endInsertRows();
+    
+    qDebug() << "Added" << (newRowCount - oldRowCount) << "new lines";
+  }
+  
+  // 更新文件大小
+  m_fileSize = newSize;
+  
+  // 发射日志追加信号
+  emit logAppended();
+  
+  // 重新添加监控（某些系统会在文件变化后移除监控）
+  if (!m_watcher->files().contains(path)) {
+    m_watcher->addPath(path);
   }
 }
 

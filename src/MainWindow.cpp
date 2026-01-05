@@ -11,6 +11,7 @@
 
 #include <QApplication>
 #include <QClipboard>
+#include <QComboBox>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFont>
@@ -28,8 +29,10 @@
 #include <QShortcut>
 #include <QSplitter>
 #include <QStatusBar>
+#include <QStringConverter>
 #include <QStyle>
 #include <QTimer>
+#include <QToolButton>
 #include <QVBoxLayout>
 
 #include <algorithm>  // for std::sort
@@ -285,13 +288,16 @@ void MainWindow::setupUi() {
   // insertRows 增长 m_listView->setLayoutMode(QListView::Batched);
   // m_listView->setBatchSize(200);
 
-  // 使用 ScrollPerItem 而非 ScrollPerPixel，对大文件更流畅
-  m_listView->setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
+  // 使用 ScrollPerPixel 实现像素级滚动，防止最后一行被裁剪
+  m_listView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
   m_listView->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
 
   m_listView->setWordWrap(false);
   m_listView->setTextElideMode(Qt::ElideNone);
   m_listView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+  
+  // 添加行间距，防止最后一行被裁剪
+  m_listView->setSpacing(1);
 
   // 使用等宽字体
 #if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
@@ -311,6 +317,12 @@ void MainWindow::setupUi() {
   m_detailTextEdit = new QPlainTextEdit(this);
   m_detailTextEdit->setReadOnly(true);  // 只读
   m_detailTextEdit->setFont(monoFont);  // 使用相同的等宽字体
+  
+  // 修复 Tab 宽度：设置为 4 个空格的宽度
+  QFontMetricsF fm(m_detailTextEdit->font());
+  qreal spaceWidth = fm.horizontalAdvance(' ');
+  m_detailTextEdit->setTabStopDistance(spaceWidth * 4);
+  
   m_detailTextEdit->setPlaceholderText(tr("Select a line above to view details here..."));
   m_detailTextEdit->setMaximumHeight(150);  // 限制最大高度
   
@@ -376,6 +388,85 @@ void MainWindow::setupUi() {
   m_progressBar->setFormat("%p%");
   m_progressBar->setVisible(false);
   statusBar()->addPermanentWidget(m_progressBar);
+
+  // 编码选择器
+  m_encodingCombo = new QComboBox(this);
+  m_encodingCombo->setToolTip(tr("Text Encoding"));
+  m_encodingCombo->setMinimumWidth(100);
+  m_encodingCombo->setMaximumWidth(120);
+  
+  // 添加编码选项（使用 UserRole 存储枚举值）
+  m_encodingCombo->addItem("UTF-8", static_cast<int>(QStringConverter::Utf8));
+  m_encodingCombo->addItem("GBK/System", static_cast<int>(QStringConverter::System));
+  
+  // 设置下拉框样式以匹配暗色主题
+  m_encodingCombo->setStyleSheet(
+      "QComboBox {"
+      "   background-color: #3c3c3c;"
+      "   color: #d4d4d4;"
+      "   border: 1px solid #555555;"
+      "   border-radius: 3px;"
+      "   padding: 2px 6px;"
+      "}"
+      "QComboBox:hover {"
+      "   border-color: #007acc;"
+      "}"
+      "QComboBox::drop-down {"
+      "   border: none;"
+      "}"
+      "QComboBox QAbstractItemView {"
+      "   background-color: #252526;"
+      "   color: #d4d4d4;"
+      "   selection-background-color: #094771;"
+      "}"
+  );
+  
+  statusBar()->addPermanentWidget(m_encodingCombo);
+  
+  // 连接编码切换信号
+  connect(m_encodingCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
+          this, [this](int index) {
+              QVariant data = m_encodingCombo->itemData(index);
+              auto encoding = static_cast<QStringConverter::Encoding>(data.toInt());
+              m_model->setEncoding(encoding);
+              
+              // 更新详细视图（如果有当前选中的行）
+              QModelIndex current = m_listView->currentIndex();
+              if (current.isValid()) {
+                  m_detailTextEdit->setPlainText(current.data().toString());
+              }
+          });
+
+  // Follow Tail 按钮（实时日志跟踪）
+  m_followTailAction = new QAction(tr("Follow Tail"), this);
+  m_followTailAction->setCheckable(true);
+  m_followTailAction->setChecked(false);
+  m_followTailAction->setToolTip(tr("Auto-scroll to new content (Tail -f mode)"));
+  
+  // 创建一个按钮放入状态栏
+  QToolButton *followButton = new QToolButton(this);
+  followButton->setDefaultAction(m_followTailAction);
+  followButton->setStyleSheet(
+      "QToolButton {"
+      "   background-color: transparent;"
+      "   color: #d4d4d4;"
+      "   border: 1px solid #555555;"
+      "   border-radius: 3px;"
+      "   padding: 2px 8px;"
+      "}"
+      "QToolButton:hover {"
+      "   background-color: #3c3c3c;"
+      "   border-color: #007acc;"
+      "}"
+      "QToolButton:checked {"
+      "   background-color: #094771;"
+      "   border-color: #007acc;"
+      "}"
+  );
+  statusBar()->addPermanentWidget(followButton);
+  
+  // 连接日志追加信号
+  connect(m_model, &BigFileModel::logAppended, this, &MainWindow::onLogAppended);
 
   // 快捷键
   QShortcut *openShortcut = new QShortcut(QKeySequence::Open, this);
@@ -447,6 +538,19 @@ void MainWindow::createMenus() {
 
   // 编辑菜单
   QMenu *editMenu = menuBar()->addMenu(tr("Edit(&E)"));
+
+  QAction *findAction = editMenu->addAction(tr("Find(&F)..."));
+  findAction->setShortcut(QKeySequence::Find);
+  connect(findAction, &QAction::triggered, this, [this]() {
+    m_searchBar->show();
+    m_searchBar->raise();
+    m_searchBar->setFocus();
+    // 触发 resize 事件以正确定位搜索栏
+    QResizeEvent event(size(), size());
+    resizeEvent(&event);
+  });
+  
+  editMenu->addSeparator();
 
   QAction *gotoAction = editMenu->addAction(tr("Go to Line(&G)..."));
   gotoAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_G));
@@ -756,5 +860,26 @@ void MainWindow::onCustomContextMenu(const QPoint &pos)
     
     // 显示菜单
     contextMenu.exec(m_listView->viewport()->mapToGlobal(pos));
+}
+
+// ========== 实时日志监控实现 ==========
+
+void MainWindow::onLogAppended()
+{
+    // 检查是否启用了 Follow Tail
+    if (m_followTailAction && m_followTailAction->isChecked()) {
+        // 滚动到底部
+        m_listView->scrollToBottom();
+        
+        // 更新状态栏
+        m_statusLabel->setText(tr("New log content detected"));
+        
+        // 2秒后清除提示
+        QTimer::singleShot(2000, this, [this]() {
+            if (m_statusLabel->text().contains("New log")) {
+                m_statusLabel->setText(tr("Ready"));
+            }
+        });
+    }
 }
 

@@ -15,22 +15,56 @@
 /**
  * @brief 紧凑行委托类
  * @description 固定行高和宽度，避免 Qt 为每行计算尺寸导致的性能问题
- *              同时确保水平滚动条正常显示，并支持搜索词高亮及活动匹配区分
+ *              同时确保水平滚动条正常显示，并支持搜索词高亮及语法高亮
  */
 class CompactLineDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 
 public:
-    /// 行的垂直内边距（上下各 2 像素）
-    static constexpr int VERTICAL_PADDING = 2;
+    /// 行的垂直内边距（上下各 4 像素，防止最后一行被裁剪）
+    static constexpr int VERTICAL_PADDING = 4;
     /// 固定宽度（确保水平滚动条出现）
     static constexpr int FIXED_WIDTH = 8000;
+
+    /// 语法高亮规则
+    struct KeywordRule {
+        QString text;   ///< 关键词
+        QColor color;   ///< 高亮颜色
+    };
 
     explicit CompactLineDelegate(QObject *parent = nullptr)
         : QStyledItemDelegate(parent)
         , m_rowHeight(0)
     {
+        // 初始化默认语法高亮规则（日志关键词）
+        // 错误类（红色）
+        m_syntaxRules.append({"Error", QColor("#ff5252")});
+        m_syntaxRules.append({"Fatal", QColor("#ff5252")});
+        m_syntaxRules.append({"FATAL", QColor("#ff5252")});
+        m_syntaxRules.append({"ERROR", QColor("#ff5252")});
+        m_syntaxRules.append({"错误", QColor("#ff5252")});
+        m_syntaxRules.append({"失败", QColor("#ff5252")});
+        
+        // 警告类（橙黄色）
+        m_syntaxRules.append({"Warning", QColor("#ffb74d")});
+        m_syntaxRules.append({"Warn", QColor("#ffb74d")});
+        m_syntaxRules.append({"WARNING", QColor("#ffb74d")});
+        m_syntaxRules.append({"WARN", QColor("#ffb74d")});
+        m_syntaxRules.append({"警告", QColor("#ffb74d")});
+        
+        // 信息类（浅绿色，可选）
+        m_syntaxRules.append({"Info", QColor("#81c784")});
+        m_syntaxRules.append({"INFO", QColor("#81c784")});
+        m_syntaxRules.append({"信息", QColor("#81c784")});
+    }
+
+    /**
+     * @brief 添加语法高亮规则
+     */
+    void addSyntaxRule(const QString &text, const QColor &color)
+    {
+        m_syntaxRules.append({text, color});
     }
 
     /**
@@ -133,20 +167,37 @@ public:
             }
         }
 
-        // 设置文本颜色
-        if (option.state & QStyle::State_Selected) {
-            painter->setPen(option.palette.color(QPalette::HighlightedText));
-        } else {
-            painter->setPen(option.palette.color(QPalette::Text));
+        // === 确定文本颜色（语法高亮）===
+        QColor penColor = option.palette.color(QPalette::Text);  // 默认文本色
+        
+        // 检查语法高亮规则
+        if (!text.isEmpty()) {
+            for (const KeywordRule &rule : m_syntaxRules) {
+                if (text.contains(rule.text, Qt::CaseInsensitive)) {
+                    penColor = rule.color;
+                    break;  // 使用第一个匹配的规则
+                }
+            }
         }
+        
+        // 选中状态时强制使用白色文本（确保对比度）
+        if (option.state & QStyle::State_Selected) {
+            penColor = QColor("#ffffff");
+        }
+        
+        painter->setPen(penColor);
 
         // 计算文本区域（带左边距）
         QRect textRect = option.rect;
         textRect.setLeft(textRect.left() + 4);
-
-        // 绘制文本，垂直居中
+        
+        // 使用 QFontMetrics 计算正确的基线位置
+        QFontMetrics fm(option.font);
+        int textY = textRect.top() + (textRect.height() - fm.height()) / 2 + fm.ascent();
+        
+        // 绘制文本（使用计算的基线位置，避免 Qt 对齐问题）
         painter->setFont(option.font);
-        painter->drawText(textRect, Qt::AlignLeft | Qt::AlignVCenter, text);
+        painter->drawText(textRect.left(), textY, text);
 
         painter->restore();
     }
@@ -177,6 +228,7 @@ private:
     Qt::CaseSensitivity m_caseSensitivity = Qt::CaseInsensitive;  ///< 大小写敏感性
     int m_activeRow = -1;  ///< 当前激活匹配的行号
     int m_activeMatchIndex = -1;  ///< 当前激活匹配在该行内的索引
+    QList<KeywordRule> m_syntaxRules;  ///< 语法高亮规则列表
 };
 
 #endif // COMPACTLINEDELEGATE_H

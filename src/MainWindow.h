@@ -15,6 +15,8 @@ class QProgressBar;
 class QTimer;
 class QPlainTextEdit;
 class QSplitter;
+class QComboBox;
+class QAction;
 class BigFileModel;
 class SearchBar;
 
@@ -82,6 +84,11 @@ private slots:
    */
   void onCustomContextMenu(const QPoint &pos);
 
+  /**
+   * @brief 处理日志追加（实时监控）
+   */
+  void onLogAppended();
+
 private:
   /**
    * @brief 初始化 UI 组件
@@ -127,6 +134,12 @@ private:
   // 搜索相关
   SearchBar *m_searchBar = nullptr; ///< 浮动搜索栏
   int m_currentSearchIndex = -1;    ///< 当前搜索结果索引
+
+  // 编码选择
+  QComboBox *m_encodingCombo = nullptr;  ///< 编码选择下拉框
+
+  // 实时日志监控
+  QAction *m_followTailAction = nullptr;  ///< 跟踪尾部开关
 };
 
 #endif // MAINWINDOW_H

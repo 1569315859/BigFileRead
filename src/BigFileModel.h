@@ -12,9 +12,11 @@
 
 #include <QAbstractListModel>
 #include <QFile>
+#include <QFileSystemWatcher>
 #include <QFutureWatcher>
 #include <QMutex>
 #include <QString>
+#include <QStringConverter>
 #include <QTimer>
 #include <atomic>
 #include <vector>
@@ -95,6 +97,12 @@ public:
    */
   const std::vector<int> &searchResults() const { return m_searchResults; }
 
+  /**
+   * @brief 设置文本编码
+   * @param encoding 编码类型 (Utf8, System/Local 等)
+   */
+  void setEncoding(QStringConverter::Encoding encoding);
+
   // QAbstractListModel 接口实现
   int rowCount(const QModelIndex &parent = QModelIndex()) const override;
   QVariant data(const QModelIndex &index,
@@ -138,6 +146,11 @@ signals:
    */
   void searchProgress(int percent);
 
+  /**
+   * @brief 日志追加信号（文件尾部有新内容）
+   */
+  void logAppended();
+
 private slots:
   /**
    * @brief Timer 超时处理 - 将 pending 数据合并到主模型
@@ -148,6 +161,11 @@ private slots:
    * @brief 处理索引完成
    */
   void onIndexingFinished(bool success, const QString &message);
+
+  /**
+   * @brief 处理文件变化（用于实时日志监控）
+   */
+  void onFileChanged(const QString &path);
 
 private:
   /**
@@ -195,6 +213,12 @@ private:
   std::atomic<bool> m_isSearching{false};           ///< 是否正在搜索
   std::atomic<bool> m_searchCancelRequested{false}; ///< 是否请求取消搜索
   QFutureWatcher<void> m_searchWatcher;             ///< 搜索任务监视器
+
+  // 文本编码
+  mutable QStringDecoder m_decoder{QStringConverter::Utf8};  ///< 字符解码器（默认 UTF-8）
+
+  // 文件监控（实时日志）
+  QFileSystemWatcher *m_watcher = nullptr;  ///< 文件变化监视器
 };
 
 #endif // BIGFILEMODEL_H
