@@ -21,6 +21,9 @@ class QLineEdit;
 class QToolBar;
 class QToolButton;
 class QCloseEvent;
+class QDragEnterEvent;
+class QDropEvent;
+class QMenu;
 class BigFileModel;
 class SearchBar;
 
@@ -121,6 +124,21 @@ private slots:
    */
   void onNextBookmark();
 
+  /**
+   * @brief 导出当前可见行（尊重过滤状态）
+   */
+  void exportVisibleLines();
+
+  /**
+   * @brief 打开文件所在文件夹
+   */
+  void openContainingFolder();
+
+  /**
+   * @brief 清除最近文件列表
+   */
+  void clearRecentFiles();
+
 private:
   /**
    * @brief 初始化 UI 组件
@@ -158,6 +176,16 @@ private:
   void closeEvent(QCloseEvent *event) override;
 
   /**
+   * @brief 拖拽进入事件
+   */
+  void dragEnterEvent(QDragEnterEvent *event) override;
+
+  /**
+   * @brief 拖放事件
+   */
+  void dropEvent(QDropEvent *event) override;
+
+  /**
    * @brief 加载用户设置
    */
   void loadSettings();
@@ -166,6 +194,17 @@ private:
    * @brief 保存用户设置
    */
   void saveSettings();
+
+  /**
+   * @brief 添加文件到最近文件列表
+   * @param filePath 文件路径
+   */
+  void addToRecentFiles(const QString &filePath);
+
+  /**
+   * @brief 更新最近文件菜单
+   */
+  void updateRecentFilesMenu();
 
 private:
   QListView *m_listView = nullptr;       ///< 文件内容视图（主列表）
@@ -198,6 +237,11 @@ private:
   // 书签功能
   QAction *m_toggleBookmarkAction = nullptr;  ///< 切换书签 (F2)
   QAction *m_nextBookmarkAction = nullptr;    ///< 下一个书签 (F3)
+
+  // 最近文件菜单
+  QMenu *m_recentFilesMenu = nullptr;  ///< 最近文件子菜单
+  static constexpr int MAX_RECENT_FILES = 10;  ///< 最大最近文件数
 };
 
 #endif // MAINWINDOW_H
+

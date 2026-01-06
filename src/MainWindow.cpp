@@ -39,6 +39,12 @@
 #include <QVBoxLayout>
 #include <QSettings>
 #include <QCloseEvent>
+#include <QDesktopServices>
+#include <QTextStream>
+#include <QUrl>
+#include <QMimeData>
+#include <QDragEnterEvent>
+#include <QDropEvent>
 
 #include <algorithm>  // for std::sort
 
@@ -85,6 +91,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
   // 加载用户设置（必须在所有 UI 初始化完成后调用）
   loadSettings();
+
+  // 启用拖放支持
+  setAcceptDrops(true);
+
+  // 初始化最近文件菜单
+  updateRecentFilesMenu();
 }
 
 MainWindow::~MainWindow() {}
@@ -730,6 +742,9 @@ void MainWindow::createMenus() {
   openAction->setShortcut(QKeySequence::Open);
   connect(openAction, &QAction::triggered, this, &MainWindow::onOpenFile);
 
+  // 最近文件子菜单
+  m_recentFilesMenu = fileMenu->addMenu(tr("Open Recent"));
+
   fileMenu->addSeparator();
 
   QAction *exitAction = fileMenu->addAction(tr("Exit(&X)"));
@@ -839,6 +854,9 @@ void MainWindow::openFile(const QString &filePath) {
 
   m_model->loadFile(filePath);
   updateWindowTitle();
+
+  // 添加到最近文件列表
+  addToRecentFiles(filePath);
 }
 
 void MainWindow::onFileLoaded(bool success, const QString &message) {
@@ -1090,6 +1108,28 @@ void MainWindow::onCustomContextMenu(const QPoint &pos)
     // 检查是否有选中内容
     bool hasSelection = !m_listView->selectionModel()->selectedIndexes().isEmpty();
     copyAction->setEnabled(hasSelection);
+
+    contextMenu.addSeparator();
+
+    // 书签操作
+    QAction *bookmarkAction = contextMenu.addAction(tr("Toggle Bookmark"));
+    bookmarkAction->setShortcut(QKeySequence(Qt::Key_F2));
+    connect(bookmarkAction, &QAction::triggered, this, &MainWindow::onToggleBookmark);
+
+    contextMenu.addSeparator();
+
+    // 导出操作
+    QAction *exportAction = contextMenu.addAction(tr("Export Visible Lines..."));
+    connect(exportAction, &QAction::triggered, this, &MainWindow::exportVisibleLines);
+
+    // 打开文件夹操作
+    QAction *openFolderAction = contextMenu.addAction(tr("Open Containing Folder"));
+    connect(openFolderAction, &QAction::triggered, this, &MainWindow::openContainingFolder);
+
+    // 如果没有加载文件，禁用部分操作
+    bool hasFile = m_model && !m_model->filePath().isEmpty();
+    exportAction->setEnabled(hasFile && m_model->rowCount() > 0);
+    openFolderAction->setEnabled(hasFile);
     
     // 显示菜单
     contextMenu.exec(m_listView->viewport()->mapToGlobal(pos));
@@ -1252,4 +1292,204 @@ void MainWindow::onNextBookmark() {
   } else {
     m_statusLabel->setText(tr("No bookmarks found"));
   }
+}
+
+
+void MainWindow::exportVisibleLines() {
+  if (!m_model || m_model->rowCount() == 0) {
+    QMessageBox::warning(this, tr("Export"), tr("No lines to export."));
+    return;
+  }
+
+  // 构建默认文件名
+  QString defaultFileName;
+  if (!m_model->filePath().isEmpty()) {
+    QFileInfo fi(m_model->filePath());
+    QString suffix = m_model->isFilterMode() ? "_filtered" : "_export";
+    defaultFileName = fi.absolutePath() + "/" + fi.baseName() + suffix + ".txt";
+  } else {
+    defaultFileName = "export.txt";
+  }
+
+  // 打开保存文件对话框
+  QString filePath = QFileDialog::getSaveFileName(
+      this,
+      tr("Export Visible Lines"),
+      defaultFileName,
+      tr("Text Files (*.txt);;Log Files (*.log);;All Files (*)")
+  );
+
+  if (filePath.isEmpty()) {
+    return;  // 用户取消
+  }
+
+  // 打开文件写入
+  QFile file(filePath);
+  if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    QMessageBox::critical(this, tr("Export Error"),
+                          tr("Failed to open file for writing:\n%1").arg(file.errorString()));
+    return;
+  }
+
+  QTextStream stream(&file);
+  stream.setEncoding(QStringConverter::Utf8);
+
+  // 导出所有可见行（模型已经处理了过滤逻辑）
+  int totalRows = m_model->rowCount();
+  for (int row = 0; row < totalRows; ++row) {
+    QModelIndex index = m_model->index(row, 0);
+    QString lineText = m_model->data(index, Qt::DisplayRole).toString();
+    stream << lineText << "\n";
+  }
+
+  file.close();
+
+  // 显示成功消息
+  QString message = m_model->isFilterMode()
+      ? tr("Successfully exported %1 filtered lines to:\n%2").arg(totalRows).arg(filePath)
+      : tr("Successfully exported %1 lines to:\n%2").arg(totalRows).arg(filePath);
+
+  QMessageBox::information(this, tr("Export Successful"), message);
+  m_statusLabel->setText(tr("Exported %1 lines").arg(totalRows));
+}
+
+void MainWindow::openContainingFolder() {
+  if (!m_model || m_model->filePath().isEmpty()) {
+    QMessageBox::warning(this, tr("Open Folder"), tr("No file is currently loaded."));
+    return;
+  }
+
+  QString filePath = m_model->filePath();
+  QFileInfo fi(filePath);
+  QString folderPath = fi.absolutePath();
+
+  // 打开文件所在目录
+  bool success = QDesktopServices::openUrl(QUrl::fromLocalFile(folderPath));
+  
+  if (success) {
+    m_statusLabel->setText(tr("Opened folder: %1").arg(folderPath));
+  } else {
+    QMessageBox::warning(this, tr("Open Folder"),
+                         tr("Failed to open folder:\n%1").arg(folderPath));
+  }
+}
+
+// ========== 拖放支持 ==========
+
+void MainWindow::dragEnterEvent(QDragEnterEvent *event) {
+  // 检查是否包含文件 URL
+  if (event->mimeData()->hasUrls()) {
+    // 检查是否有有效的本地文件
+    const QList<QUrl> urls = event->mimeData()->urls();
+    for (const QUrl &url : urls) {
+      if (url.isLocalFile()) {
+        event->acceptProposedAction();
+        return;
+      }
+    }
+  }
+}
+
+void MainWindow::dropEvent(QDropEvent *event) {
+  const QList<QUrl> urls = event->mimeData()->urls();
+  
+  if (!urls.isEmpty()) {
+    // 取第一个文件
+    QString filePath = urls.first().toLocalFile();
+    
+    if (!filePath.isEmpty() && QFileInfo::exists(filePath)) {
+      openFile(filePath);
+      m_statusLabel->setText(tr("Opened via drag & drop: %1").arg(QFileInfo(filePath).fileName()));
+    }
+  }
+}
+
+// ========== 最近文件功能 ==========
+
+void MainWindow::addToRecentFiles(const QString &filePath) {
+  if (filePath.isEmpty()) {
+    return;
+  }
+
+  QSettings settings;
+  QStringList recentFiles = settings.value("recentFileList").toStringList();
+
+  // 移除已存在的路径（如果有的话）
+  recentFiles.removeAll(filePath);
+
+  // 添加到列表开头
+  recentFiles.prepend(filePath);
+
+  // 限制最大数量
+  while (recentFiles.size() > MAX_RECENT_FILES) {
+    recentFiles.removeLast();
+  }
+
+  // 保存到设置
+  settings.setValue("recentFileList", recentFiles);
+
+  // 更新菜单
+  updateRecentFilesMenu();
+}
+
+void MainWindow::updateRecentFilesMenu() {
+  if (!m_recentFilesMenu) {
+    return;
+  }
+
+  // 清空现有菜单项
+  m_recentFilesMenu->clear();
+
+  QSettings settings;
+  QStringList recentFiles = settings.value("recentFileList").toStringList();
+
+  if (recentFiles.isEmpty()) {
+    // 如果没有最近文件，显示禁用的提示
+    QAction *emptyAction = m_recentFilesMenu->addAction(tr("(No recent files)"));
+    emptyAction->setEnabled(false);
+  } else {
+    // 添加最近文件项
+    int index = 1;
+    for (const QString &filePath : recentFiles) {
+      // 获取文件名用于显示
+      QFileInfo fi(filePath);
+      QString displayName = QString("%1. %2").arg(index).arg(fi.fileName());
+      
+      QAction *action = m_recentFilesMenu->addAction(displayName);
+      action->setToolTip(filePath);  // 完整路径作为提示
+      action->setData(filePath);     // 存储完整路径
+      
+      // 连接信号 - 点击时打开文件
+      connect(action, &QAction::triggered, this, [this, filePath]() {
+        if (QFileInfo::exists(filePath)) {
+          openFile(filePath);
+        } else {
+          QMessageBox::warning(this, tr("File Not Found"),
+                              tr("The file no longer exists:\n%1").arg(filePath));
+          // 从列表中移除不存在的文件
+          QSettings settings;
+          QStringList recentFiles = settings.value("recentFileList").toStringList();
+          recentFiles.removeAll(filePath);
+          settings.setValue("recentFileList", recentFiles);
+          updateRecentFilesMenu();
+        }
+      });
+      
+      ++index;
+    }
+
+    // 添加分隔线和清除选项
+    m_recentFilesMenu->addSeparator();
+    
+    QAction *clearAction = m_recentFilesMenu->addAction(tr("Clear Recent List"));
+    connect(clearAction, &QAction::triggered, this, &MainWindow::clearRecentFiles);
+  }
+}
+
+void MainWindow::clearRecentFiles() {
+  QSettings settings;
+  settings.remove("recentFileList");
+  
+  updateRecentFilesMenu();
+  m_statusLabel->setText(tr("Recent files list cleared"));
 }
