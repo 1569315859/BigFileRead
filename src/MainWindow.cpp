@@ -45,6 +45,9 @@
 #include <QMimeData>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QItemSelection>
+#include <QJsonDocument>
+#include <QJsonParseError>
 
 #include <algorithm>  // for std::sort
 
@@ -458,16 +461,62 @@ void MainWindow::setupUi() {
   m_model = new BigFileModel(this);
   m_listView->setModel(m_model);
   
-  // 连接选择变化信号 - 更新详细视图
-  connect(m_listView->selectionModel(), &QItemSelectionModel::currentRowChanged,
-          this, [this](const QModelIndex &current, const QModelIndex &previous) {
-              Q_UNUSED(previous)
-              if (current.isValid()) {
-                  QString lineText = current.data().toString();
-                  m_detailTextEdit->setPlainText(lineText);
-              } else {
+  // 连接选择变化信号 - 更新详细视图（支持多行选择）
+  connect(m_listView->selectionModel(), &QItemSelectionModel::selectionChanged,
+          this, [this](const QItemSelection &selected, const QItemSelection &deselected) {
+              Q_UNUSED(selected)
+              Q_UNUSED(deselected)
+              
+              // 获取所有选中的行
+              QModelIndexList rows = m_listView->selectionModel()->selectedRows();
+              
+              if (rows.isEmpty()) {
                   m_detailTextEdit->clear();
+                  return;
               }
+              
+              // 按行号排序，确保日志顺序正确
+              std::sort(rows.begin(), rows.end(), [](const QModelIndex &a, const QModelIndex &b) {
+                  return a.row() < b.row();
+              });
+              
+              // 性能保护：选择过多行时显示警告
+              if (rows.size() > 2000) {
+                  m_detailTextEdit->setPlainText(
+                      tr("--- Selected %1 lines (Too many to display in preview) ---\n"
+                         "Use 'Copy' (Ctrl+C) or 'Export' to save selected lines.")
+                      .arg(rows.size()));
+                  return;
+              }
+              
+              // 聚合选中行的文本
+              QString fullText;
+              fullText.reserve(rows.size() * 100);  // 预分配内存提升性能
+              
+              for (const QModelIndex &idx : rows) {
+                  if (!fullText.isEmpty()) {
+                      fullText.append('\n');
+                  }
+                  fullText.append(idx.data(Qt::DisplayRole).toString());
+              }
+              
+              // JSON 自动美化：检测并格式化 JSON 内容
+              QByteArray data = fullText.toUtf8().trimmed();
+              if ((data.startsWith('{') && data.endsWith('}')) ||
+                  (data.startsWith('[') && data.endsWith(']'))) {
+                  
+                  QJsonParseError error;
+                  QJsonDocument doc = QJsonDocument::fromJson(data, &error);
+                  
+                  if (error.error == QJsonParseError::NoError) {
+                      // 有效的 JSON，进行美化输出
+                      m_detailTextEdit->setPlainText(QString::fromUtf8(doc.toJson(QJsonDocument::Indented)));
+                      return;
+                  }
+              }
+              
+              // 普通文本，直接显示
+              m_detailTextEdit->setPlainText(fullText);
           });
 
   // 状态栏组件
