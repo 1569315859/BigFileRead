@@ -139,6 +139,11 @@ private slots:
    */
   void clearRecentFiles();
 
+  /**
+   * @brief 显示许可证注册对话框
+   */
+  void showRegisterDialog();
+
 private:
   /**
    * @brief 初始化 UI 组件
@@ -211,6 +216,12 @@ private:
    * @brief 更新最近文件菜单
    */
   void updateRecentFilesMenu();
+
+  /**
+   * @brief 检查许可证/试用状态
+   * @details 在启动时调用，检查是否已注册或试用是否过期
+   */
+  void checkLicenseStatus();
 
 private:
   QListView *m_listView = nullptr;       ///< 文件内容视图（主列表）

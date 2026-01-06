@@ -29,6 +29,7 @@ option(ENABLE_TSAN "启用线程消毒器（Thread Sanitizer）" OFF)
 option(STRIP_RELEASE "Release模式下移除调试符号" ON)
 option(USE_GBK_ENCODING "源码使用GBK编码（OFF则使用UTF-8）" OFF)
 option(ENABLE_PLATFORM_LIBS "启用平台特定库（通常Qt项目不需要）" OFF)
+option(ENABLE_LICENSE_SYSTEM "启用RSA许可证验证系统（需要OpenSSL）" OFF)
 
 # 第三方依赖管理选项
 option(ENABLE_FETCHCONTENT "启用FetchContent自动下载依赖" OFF)
@@ -103,7 +104,7 @@ if(ENABLE_QT)
     
     # 选择Qt版本
     if(USE_QT6)
-        find_package(Qt6 COMPONENTS Core Widgets Gui Concurrent LinguistTools QUIET)
+        find_package(Qt6 COMPONENTS Core Widgets Gui Concurrent Network LinguistTools QUIET)
         if(Qt6_FOUND)
             set(QT_VERSION_MAJOR 6)
             message(STATUS "找到Qt6: ${Qt6_VERSION}")
@@ -111,7 +112,7 @@ if(ENABLE_QT)
             message(FATAL_ERROR "未找到Qt6！请检查QT_DIR设置或安装Qt6")
         endif()
     else()
-        find_package(Qt5 COMPONENTS Core Widgets Gui Concurrent LinguistTools QUIET)
+        find_package(Qt5 COMPONENTS Core Widgets Gui Concurrent Network LinguistTools QUIET)
         if(Qt5_FOUND)
             set(QT_VERSION_MAJOR 5)
             message(STATUS "找到Qt5: ${Qt5_VERSION}")
@@ -539,6 +540,7 @@ if(ENABLE_QT)
             Qt6::Widgets 
             Qt6::Gui
             Qt6::Concurrent
+            Qt6::Network
         )
     else()
         target_link_libraries(${TARGET_NAME} PRIVATE 
@@ -546,6 +548,7 @@ if(ENABLE_QT)
             Qt5::Widgets 
             Qt5::Gui
             Qt5::Concurrent
+            Qt5::Network
         )
     endif()
     
@@ -565,6 +568,66 @@ if(ENABLE_QT)
         install(FILES ${QM_FILES} DESTINATION translations)
         message(STATUS "Qt翻译支持已启用，找到 ${TS_FILES} 个翻译文件")
     endif()
+endif()
+
+# ============================================================================
+# OpenSSL配置（RSA许可证验证）
+# ============================================================================
+if(ENABLE_LICENSE_SYSTEM)
+    message(STATUS "许可证验证系统已启用，正在查找OpenSSL...")
+    
+    # Windows用户注意：
+    # 1. 如果使用vcpkg: vcpkg install openssl:x64-windows
+    # 2. 如果手动安装: 从 https://slproweb.com/products/Win32OpenSSL.html 下载
+    #    并设置 OPENSSL_ROOT_DIR 环境变量指向安装目录
+    # 3. Qt 6.5+ 通常自带 OpenSSL，可以尝试使用 Qt 的 OpenSSL 路径
+    
+    # Windows: 尝试常见的 OpenSSL 安装路径
+    if(WIN32)
+        set(OPENSSL_HINTS
+            "C:/Program Files/OpenSSL-Win64"
+            "C:/Program Files/OpenSSL"
+            "C:/OpenSSL-Win64"
+            "C:/OpenSSL"
+            "$ENV{OPENSSL_ROOT_DIR}"
+            "${QT_DIR}/../../../Tools/OpenSSL/Win_x64"  # Qt 自带的 OpenSSL
+        )
+        
+        # 设置搜索路径
+        foreach(hint ${OPENSSL_HINTS})
+            if(EXISTS "${hint}")
+                list(APPEND CMAKE_PREFIX_PATH "${hint}")
+                set(OPENSSL_ROOT_DIR "${hint}" CACHE PATH "OpenSSL root directory" FORCE)
+                message(STATUS "  尝试 OpenSSL 路径: ${hint}")
+                break()
+            endif()
+        endforeach()
+    endif()
+    
+    # 查找 OpenSSL 包
+    find_package(OpenSSL REQUIRED)
+    
+    if(OpenSSL_FOUND)
+        message(STATUS "找到OpenSSL: ${OPENSSL_VERSION}")
+        message(STATUS "  OpenSSL Include: ${OPENSSL_INCLUDE_DIR}")
+        message(STATUS "  OpenSSL Libraries: ${OPENSSL_LIBRARIES}")
+        
+        # 定义宏以在代码中启用许可证功能
+        target_compile_definitions(${TARGET_NAME} PRIVATE ENABLE_LICENSE_SYSTEM)
+        
+        # 链接 OpenSSL 库到目标
+        target_link_libraries(${TARGET_NAME} PRIVATE 
+            OpenSSL::SSL 
+            OpenSSL::Crypto
+        )
+        
+        # 添加 OpenSSL 头文件目录（通常不需要，find_package 会自动处理）
+        target_include_directories(${TARGET_NAME} PRIVATE ${OPENSSL_INCLUDE_DIR})
+    else()
+        message(FATAL_ERROR "未找到OpenSSL！请安装OpenSSL并设置OPENSSL_ROOT_DIR环境变量")
+    endif()
+else()
+    message(STATUS "许可证验证系统已禁用 (设置 -DENABLE_LICENSE_SYSTEM=ON 启用)")
 endif()
 
 # ============================================================================

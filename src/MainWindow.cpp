@@ -8,6 +8,9 @@
 #include "BigFileModel.h"
 #include "CompactLineDelegate.h"
 #include "SearchBar.h"
+#include "LicenseManager.h"
+#include "TrialManager.h"
+#include "RegistrationDialog.h"
 
 #include <QApplication>
 #include <QClipboard>
@@ -48,8 +51,13 @@
 #include <QItemSelection>
 #include <QJsonDocument>
 #include <QJsonParseError>
+#include <QPushButton>
+#include <QDialog>
+#include <QHBoxLayout>
+#include <QDateTime>
 
 #include <algorithm>  // for std::sort
+#include <cstdlib>    // for std::exit
 
 // VS Code Dark Theme Colors
 namespace VSCodeDark {
@@ -100,6 +108,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
   // 初始化最近文件菜单
   updateRecentFilesMenu();
+
+  // ========== License/Trial Startup Check ==========
+  checkLicenseStatus();
 }
 
 MainWindow::~MainWindow() {}
@@ -862,6 +873,34 @@ void MainWindow::createMenus() {
   // 帮助菜单
   QMenu *helpMenu = menuBar()->addMenu(tr("Help(&H)"));
 
+  // Register License
+  QAction *registerAction = helpMenu->addAction(tr("Register License(&R)..."));
+  registerAction->setShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_R));
+  connect(registerAction, &QAction::triggered, this, &MainWindow::showRegisterDialog);
+
+  // License Status
+  QAction *licenseStatusAction = helpMenu->addAction(tr("License Status(&L)"));
+  connect(licenseStatusAction, &QAction::triggered, this, [this]() {
+    bool isRegistered = LicenseManager::instance().isRegistered();
+    QString status;
+    
+    if (isRegistered) {
+      status = tr("✓ Licensed Version\n\nThank you for registering BigFileViewer!");
+    } else {
+      int daysLeft = TrialManager::instance().daysRemaining();
+      if (daysLeft > 0) {
+        status = tr("Trial Version\n\n%1 days remaining in your trial.\n\n"
+                   "Click Help > Register License to activate.").arg(daysLeft);
+      } else {
+        status = tr("⚠ Trial Expired\n\nPlease register to continue using BigFileViewer.");
+      }
+    }
+    
+    QMessageBox::information(this, tr("License Status"), status);
+  });
+
+  helpMenu->addSeparator();
+
   QAction *aboutAction = helpMenu->addAction(tr("About(&A)"));
   connect(aboutAction, &QAction::triggered, this, [this]() {
     QMessageBox::about(this, tr("About BigFileViewer"),
@@ -1615,4 +1654,197 @@ void MainWindow::clearRecentFiles() {
   
   updateRecentFilesMenu();
   m_statusLabel->setText(tr("Recent files list cleared"));
+}
+
+// ============================================================================
+// License Registration Dialog
+// ============================================================================
+
+void MainWindow::showRegisterDialog() {
+  // Get Machine ID
+  QString machineId = LicenseManager::instance().getMachineId();
+  
+  // Create a custom dialog with machine ID display and license key input
+  QDialog dialog(this);
+  dialog.setWindowTitle(tr("Register License"));
+  dialog.setMinimumWidth(500);
+  
+  QVBoxLayout *layout = new QVBoxLayout(&dialog);
+  
+  // Machine ID section
+  QLabel *machineLabel = new QLabel(tr("Your Machine ID (send this to the vendor):"), &dialog);
+  layout->addWidget(machineLabel);
+  
+  QLineEdit *machineIdEdit = new QLineEdit(&dialog);
+  machineIdEdit->setText(machineId);
+  machineIdEdit->setReadOnly(true);
+  machineIdEdit->setStyleSheet(
+      "QLineEdit { "
+      "   background-color: #2d2d30; "
+      "   color: #9cdcfe; "
+      "   font-family: Consolas, monospace; "
+      "   padding: 8px; "
+      "   border: 1px solid #3c3c3c; "
+      "}"
+  );
+  layout->addWidget(machineIdEdit);
+  
+  // Copy button for machine ID
+  QPushButton *copyBtn = new QPushButton(tr("Copy Machine ID"), &dialog);
+  connect(copyBtn, &QPushButton::clicked, [machineId]() {
+      QApplication::clipboard()->setText(machineId);
+  });
+  layout->addWidget(copyBtn);
+  
+  layout->addSpacing(20);
+  
+  // License key input section
+  QLabel *keyLabel = new QLabel(tr("Enter License Key:"), &dialog);
+  layout->addWidget(keyLabel);
+  
+  QLineEdit *keyEdit = new QLineEdit(&dialog);
+  keyEdit->setPlaceholderText(tr("Paste your license key here..."));
+  keyEdit->setStyleSheet(
+      "QLineEdit { "
+      "   background-color: #3c3c3c; "
+      "   color: #d4d4d4; "
+      "   padding: 8px; "
+      "   border: 1px solid #555555; "
+      "}"
+      "QLineEdit:focus { border-color: #007acc; }"
+  );
+  layout->addWidget(keyEdit);
+  
+  layout->addSpacing(10);
+  
+  // Buttons
+  QHBoxLayout *buttonLayout = new QHBoxLayout();
+  
+  QPushButton *verifyBtn = new QPushButton(tr("Verify && Activate"), &dialog);
+  verifyBtn->setDefault(true);
+  verifyBtn->setStyleSheet(
+      "QPushButton { "
+      "   background-color: #0e639c; "
+      "   color: white; "
+      "   padding: 8px 20px; "
+      "   border: none; "
+      "   border-radius: 3px; "
+      "}"
+      "QPushButton:hover { background-color: #1177bb; }"
+  );
+  
+  QPushButton *cancelBtn = new QPushButton(tr("Cancel"), &dialog);
+  cancelBtn->setStyleSheet(
+      "QPushButton { "
+      "   background-color: #3c3c3c; "
+      "   color: #d4d4d4; "
+      "   padding: 8px 20px; "
+      "   border: 1px solid #555555; "
+      "   border-radius: 3px; "
+      "}"
+      "QPushButton:hover { background-color: #505050; }"
+  );
+  
+  buttonLayout->addStretch();
+  buttonLayout->addWidget(cancelBtn);
+  buttonLayout->addWidget(verifyBtn);
+  layout->addLayout(buttonLayout);
+  
+  // Connect buttons
+  connect(cancelBtn, &QPushButton::clicked, &dialog, &QDialog::reject);
+  connect(verifyBtn, &QPushButton::clicked, [&]() {
+      QString licenseKey = keyEdit->text().trimmed();
+      
+      if (licenseKey.isEmpty()) {
+          QMessageBox::warning(&dialog, tr("Error"), 
+              tr("Please enter a license key."));
+          return;
+      }
+      
+      // Verify the license
+      if (LicenseManager::instance().verifyLicense(licenseKey)) {
+          // Save valid license to settings
+          QSettings settings;
+          settings.setValue("license/key", licenseKey);
+          settings.setValue("license/activationDate", QDateTime::currentDateTime());
+          
+          QMessageBox::information(&dialog, tr("Success"), 
+              tr("License activated successfully!\n\nThank you for registering."));
+          dialog.accept();
+      } else {
+          QString error = LicenseManager::instance().lastError();
+          QMessageBox::critical(&dialog, tr("Invalid License"), 
+              tr("The license key is not valid for this machine.\n\nError: %1").arg(error));
+      }
+  });
+  
+  // Apply dark theme to dialog
+  dialog.setStyleSheet(
+      "QDialog { background-color: #252526; }"
+      "QLabel { color: #d4d4d4; }"
+  );
+  
+  dialog.exec();
+}
+
+// ============================================================================
+// License/Trial Status Check (Startup)
+// ============================================================================
+
+void MainWindow::checkLicenseStatus() {
+  // Step 1: Check if already registered
+  if (LicenseManager::instance().isRegistered()) {
+    // User is registered - unlock full features
+    setWindowTitle(tr("BigFileViewer (Pro) - Licensed"));
+    m_statusLabel->setText(tr("Licensed version - All features unlocked"));
+    return;
+  }
+
+  // Step 2: Not registered - check trial status
+  TrialManager &trial = TrialManager::instance();
+  
+  if (trial.isTrialExpired()) {
+    // Trial has expired - MUST register
+    QMessageBox::critical(this, tr("Trial Expired"),
+        tr("Your 30-day trial period has expired.\n\n"
+           "Please register to continue using BigFileViewer.\n"
+           "Click OK to open the registration dialog."));
+    
+    // Force registration - strict exit if cancelled
+    RegistrationDialog dlg(this);
+    if (dlg.exec() != QDialog::Accepted) {
+      // User cancelled or closed dialog - EXIT APPLICATION
+      QMessageBox::warning(this, tr("Registration Required"),
+          tr("BigFileViewer requires a valid license to continue.\n\n"
+             "The application will now close."));
+      
+      // Schedule exit after event loop processes
+      QTimer::singleShot(0, []() {
+        std::exit(0);
+      });
+      return;
+    }
+    
+    // Registration successful - update title
+    setWindowTitle(tr("BigFileViewer (Pro) - Licensed"));
+    m_statusLabel->setText(tr("Licensed version - Thank you for registering!"));
+    
+  } else {
+    // Trial still active - show remaining days
+    int daysLeft = trial.daysRemaining();
+    
+    setWindowTitle(tr("BigFileViewer (Trial) - %1 days remaining").arg(daysLeft));
+    
+    // Show trial notice in status bar
+    QString trialMsg = tr("Trial Mode: %1 days remaining | Click Help > Register to unlock").arg(daysLeft);
+    m_statusLabel->setText(trialMsg);
+    
+    // Optional: Show reminder when trial is almost over (< 7 days)
+    if (daysLeft <= 7 && daysLeft > 0) {
+      QMessageBox::information(this, tr("Trial Ending Soon"),
+          tr("Your trial will expire in %1 days.\n\n"
+             "Please consider registering to continue using BigFileViewer.\n"
+             "Go to Help > Register License to activate.").arg(daysLeft));
+    }
+  }
 }
