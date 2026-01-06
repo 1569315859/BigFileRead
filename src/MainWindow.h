@@ -161,6 +161,12 @@ private:
   void updateWindowTitle();
 
   /**
+   * @brief 更新状态栏统计信息
+   * @details 显示光标位置、选中行数、文件大小和编码
+   */
+  void updateStatusBar();
+
+  /**
    * @brief 设置加载状态
    */
   void setLoadingState(bool loading);

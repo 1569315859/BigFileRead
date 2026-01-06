@@ -519,6 +519,19 @@ void MainWindow::setupUi() {
               m_detailTextEdit->setPlainText(fullText);
           });
 
+  // ========== 状态栏统计信号连接 ==========
+  // 光标移动时更新
+  connect(m_listView->selectionModel(), &QItemSelectionModel::currentChanged,
+          this, &MainWindow::updateStatusBar);
+  
+  // 选择变化时更新
+  connect(m_listView->selectionModel(), &QItemSelectionModel::selectionChanged,
+          this, &MainWindow::updateStatusBar);
+  
+  // 模型重置时更新（过滤后行数变化）
+  connect(m_model, &QAbstractItemModel::modelReset,
+          this, &MainWindow::updateStatusBar);
+
   // 状态栏组件
   m_statusLabel = new QLabel(tr("Ready"));
   statusBar()->addWidget(m_statusLabel, 1);
@@ -914,6 +927,9 @@ void MainWindow::onFileLoaded(bool success, const QString &message) {
   if (success) {
     m_statusLabel->setText(message);
     m_lineCountLabel->setText(tr("Lines: %1").arg(m_model->lineCount()));
+    
+    // 更新状态栏统计信息
+    updateStatusBar();
   } else {
     m_statusLabel->setText(tr("Load failed"));
     m_lineCountLabel->clear();
@@ -960,6 +976,63 @@ void MainWindow::updateWindowTitle() {
     title += tr(" [Indexing...]");
   }
   setWindowTitle(title);
+}
+
+void MainWindow::updateStatusBar() {
+  // 安全检查：防止在析构期间访问已销毁的对象
+  if (!m_listView || !m_model || !m_statusLabel) {
+    return;
+  }
+  
+  QItemSelectionModel *selModel = m_listView->selectionModel();
+  if (!selModel) {
+    return;
+  }
+
+  // 获取当前光标位置
+  QModelIndex current = m_listView->currentIndex();
+  int currentRow = current.isValid() ? current.row() + 1 : 0;
+
+  // 获取总行数
+  int totalRows = m_model->rowCount();
+
+  // 获取选中行数
+  int selectedCount = selModel->selectedRows().count();
+
+  // 获取文件大小并格式化
+  qint64 fileSize = m_model->fileSize();
+  QString sizeStr;
+  if (fileSize >= 1024 * 1024 * 1024) {
+    // GB
+    sizeStr = QString::number(static_cast<double>(fileSize) / (1024.0 * 1024.0 * 1024.0), 'f', 2) + " GB";
+  } else if (fileSize >= 1024 * 1024) {
+    // MB
+    sizeStr = QString::number(static_cast<double>(fileSize) / (1024.0 * 1024.0), 'f', 2) + " MB";
+  } else if (fileSize >= 1024) {
+    // KB
+    sizeStr = QString::number(static_cast<double>(fileSize) / 1024.0, 'f', 2) + " KB";
+  } else {
+    // Bytes
+    sizeStr = QString::number(fileSize) + " B";
+  }
+
+  // 获取编码
+  QString encoding = m_encodingCombo ? m_encodingCombo->currentText() : "UTF-8";
+
+  // 格式化状态栏文本
+  QString info;
+  if (totalRows == 0) {
+    info = tr("Ready");
+  } else {
+    info = QString("Line: %1 / %2 | Selected: %3 | Size: %4 | %5")
+               .arg(currentRow)
+               .arg(totalRows)
+               .arg(selectedCount)
+               .arg(sizeStr)
+               .arg(encoding);
+  }
+
+  m_statusLabel->setText(info);
 }
 
 // ========== 搜索功能实现 ==========
@@ -1263,7 +1336,6 @@ void MainWindow::onFilterFinished(int matchCount)
             .arg(matchCount)
             .arg(totalLines)
         );
-        m_statusLabel->setText(tr("Filter applied: %1 matches").arg(matchCount));
         m_lineCountLabel->setText(tr("Lines: %1 (filtered)").arg(matchCount));
         
         // 如果有结果，滚动到第一行
@@ -1274,9 +1346,11 @@ void MainWindow::onFilterFinished(int matchCount)
         // 非过滤模式（显示全部）
         int totalLines = m_model->totalLineCount();
         m_filterStatusLabel->clear();
-        m_statusLabel->setText(tr("Ready"));
         m_lineCountLabel->setText(tr("Lines: %1").arg(totalLines));
     }
+    
+    // 更新状态栏统计信息
+    updateStatusBar();
 }
 
 void MainWindow::onClearFilter()
