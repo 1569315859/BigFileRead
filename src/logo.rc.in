@@ -1,0 +1,5 @@
+// Windows Application Icon Resource
+// This file tells Windows Explorer to display this icon for the .exe file
+// Generated with absolute path for MSVC resource compiler compatibility
+
+IDI_ICON1 ICON DISCARDABLE "@ICON_PATH@"

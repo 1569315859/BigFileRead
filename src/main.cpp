@@ -7,6 +7,7 @@
 #include <QApplication>
 #include <QCoreApplication>
 #include <QSettings>
+#include <QIcon>
 #include "MainWindow.h"
 
 /**
@@ -34,6 +35,9 @@ int main(int argc, char *argv[])
 
     // 创建 Qt 应用程序实例
     QApplication app(argc, argv);
+
+    // ★★★ 设置应用程序图标（用于窗口标题栏和任务栏）★★★
+    app.setWindowIcon(QIcon(":/app_icon.ico"));
 
     // 创建并显示主窗口
     MainWindow mainWindow;

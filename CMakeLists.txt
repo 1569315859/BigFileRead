@@ -431,6 +431,29 @@ if(ENABLE_QT)
         )
     endif()
 endif()
+
+# Windows资源文件（应用程序图标等）
+# 注意：如果 app_icon.ico 实际上是 PNG 文件（重命名的），需要使用工具转换为真正的 ICO 格式
+# 可以使用 ImageMagick: magick convert app_icon.png app_icon.ico
+# 或在线工具: https://icoconvert.com/
+if(WIN32)
+    # 直接使用 src/logo.rc 文件（包含应用程序图标）
+    set(RC_FILES "${CMAKE_SOURCE_DIR}/src/logo.rc")
+    if(EXISTS "${RC_FILES}")
+        # 检查.ico文件是否存在
+        set(ICON_FILE "${CMAKE_SOURCE_DIR}/src/app_icon.ico")
+        if(EXISTS "${ICON_FILE}")
+            # 暂时禁用 .rc 文件 - 需要将 PNG 转换为真正的 ICO 格式
+            # message(STATUS "Windows资源文件: ${RC_FILES}")
+            #message(STATUS "注意: app_icon.ico 是 PNG 格式，需要转换为 ICO 格式才能嵌入到 EXE")
+            #message(STATUS "临时禁用 Windows 资源文件，请使用 ImageMagick 或在线工具转换图标")
+            #set(RC_FILES "")  # 临时禁用
+        endif()
+    else()
+        message(WARNING "未找到Windows资源文件: ${RC_FILES}")
+        set(RC_FILES "")
+    endif()
+endif()
 if(WIN32)
     set(HEAD_DIR "CommonFile-64")
     set(OUTPUT_DIR "-64")
@@ -462,6 +485,7 @@ if(BUILD_EXECUTABLE)
             ${HEADER_FILES} 
             ${UI_FILES} 
             ${QRC_FILES}
+            ${RC_FILES}  # Windows资源文件（应用程序图标）
         )
     elseif(APPLE AND ENABLE_QT)
         # macOS下Qt应用程序（Bundle）
