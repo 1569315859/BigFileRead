@@ -65,7 +65,7 @@ bool BigFileModel::loadFile(const QString &filePath) {
 
   // 以只读方式打开文件
   if (!m_file.open(QIODevice::ReadOnly)) {
-    emit fileLoaded(false, tr("无法打开文件: %1").arg(m_file.errorString()));
+    emit fileLoaded(false, tr("Cannot open file: %1").arg(m_file.errorString()));
     return false;
   }
 
@@ -76,7 +76,7 @@ bool BigFileModel::loadFile(const QString &filePath) {
     beginResetModel();
     m_lineOffsets.clear();
     endResetModel();
-    emit fileLoaded(true, tr("文件为空"));
+    emit fileLoaded(true, tr("File is empty"));
     return true;
   }
 
@@ -84,7 +84,7 @@ bool BigFileModel::loadFile(const QString &filePath) {
   m_mapPtr = m_file.map(0, m_fileSize);
   if (!m_mapPtr) {
     m_file.close();
-    emit fileLoaded(false, tr("内存映射失败: %1").arg(m_file.errorString()));
+    emit fileLoaded(false, tr("Memory mapping failed: %1").arg(m_file.errorString()));
     return false;
   }
 
@@ -280,7 +280,7 @@ void BigFileModel::onUpdateTimerTimeout() {
     qDebug() << "Full Load Complete. Total lines:" << m_lineOffsets.size();
 
     // 这里发送最终完成信号
-    emit fileLoaded(true, tr("加载完成: %1 行").arg(m_lineOffsets.size()));
+    emit fileLoaded(true, tr("Load complete: %1 lines").arg(m_lineOffsets.size()));
   }
 }
 
@@ -518,9 +518,9 @@ QVariant BigFileModel::data(const QModelIndex &index, int role) const {
     // 显示真实行号和原始长度
     qint64 len = getLineLength(realRow);
     if (len > MAX_DISPLAY_LENGTH) {
-      return tr("行 %1 (原始长度: %2 字符, 已截断)").arg(realRow + 1).arg(len);
+      return tr("Line %1 (Original length: %2 chars, truncated)").arg(realRow + 1).arg(len);
     }
-    return tr("行 %1").arg(realRow + 1);
+    return tr("Line %1").arg(realRow + 1);
   }
 
   case BookmarkRole:

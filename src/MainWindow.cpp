@@ -11,6 +11,7 @@
 #include "LicenseManager.h"
 #include "TrialManager.h"
 #include "RegistrationDialog.h"
+#include "LanguageManager.h"
 
 #include <QApplication>
 #include <QClipboard>
@@ -55,6 +56,7 @@
 #include <QDialog>
 #include <QHBoxLayout>
 #include <QDateTime>
+#include <QActionGroup>
 
 #include <algorithm>  // for std::sort
 #include <cstdlib>    // for std::exit
@@ -190,6 +192,61 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 
   // 调用父类实现
   QMainWindow::closeEvent(event);
+}
+
+void MainWindow::changeEvent(QEvent *event) {
+  if (event->type() == QEvent::LanguageChange) {
+    // 语言发生变化，更新 UI 字符串
+    updateLocalizedStrings();
+  }
+  
+  // 调用父类实现
+  QMainWindow::changeEvent(event);
+}
+
+void MainWindow::updateLocalizedStrings() {
+  // ========== 更新状态栏文字 ==========
+  // 状态栏会在 updateStatusBar() 中自动更新，这里只更新静态文本
+  if (m_model && m_model->rowCount() == 0) {
+    m_statusLabel->setText(tr("Ready"));
+  }
+  
+  // ========== 更新工具提示 ==========
+  if (m_encodingCombo) {
+    m_encodingCombo->setToolTip(tr("Text Encoding"));
+  }
+  
+  if (m_followTailAction) {
+    m_followTailAction->setText(tr("Follow Tail"));
+    m_followTailAction->setToolTip(tr("Auto-scroll to new content (Tail -f mode)"));
+  }
+  
+  // ========== 更新过滤栏文字 ==========
+  if (m_filterInput) {
+    m_filterInput->setPlaceholderText(tr("Type keyword to filter... (Enter to apply)"));
+  }
+  
+  if (m_regexToggleBtn) {
+    m_regexToggleBtn->setToolTip(tr("Use Regular Expression"));
+  }
+  
+  // ========== 更新详细视图占位符 ==========
+  if (m_detailTextEdit) {
+    m_detailTextEdit->setPlaceholderText(tr("Select a line above to view details here..."));
+  }
+  
+  // ========== 更新窗口标题 ==========
+  updateWindowTitle();
+  
+  // ========== 更新状态栏统计信息 ==========
+  updateStatusBar();
+  
+  // ========== 重建菜单栏（完整更新菜单文字）==========
+  // 注意：菜单栏的 tr() 文字需要重新创建菜单才能生效
+  // 这里采用简化方案：清除并重建菜单
+  menuBar()->clear();
+  createMenus();
+  updateRecentFilesMenu();
 }
 
 void MainWindow::applyDarkTheme() {
@@ -869,6 +926,33 @@ void MainWindow::createMenus() {
       m_filterInput->selectAll();
     }
   });
+
+  // ========== 设置菜单 ==========
+  QMenu *settingsMenu = menuBar()->addMenu(tr("Settings(&S)"));
+
+  // 语言子菜单
+  m_languageMenu = settingsMenu->addMenu(tr("Language(&L)"));
+  m_languageActionGroup = new QActionGroup(this);
+  m_languageActionGroup->setExclusive(true);  // 单选
+
+  // 获取可用语言列表
+  auto languages = LanguageManager::instance().availableLanguages();
+  QString currentLang = LanguageManager::instance().currentLanguage();
+
+  for (const auto& langPair : languages) {
+    const QString& code = langPair.first;
+    const QString& displayName = langPair.second;
+
+    QAction *langAction = m_languageMenu->addAction(displayName);
+    langAction->setCheckable(true);
+    langAction->setData(code);  // 存储语言代码
+    langAction->setChecked(code == currentLang);
+    m_languageActionGroup->addAction(langAction);
+
+    connect(langAction, &QAction::triggered, this, [this, code]() {
+      LanguageManager::instance().loadLanguage(code);
+    });
+  }
 
   // 帮助菜单
   QMenu *helpMenu = menuBar()->addMenu(tr("Help(&H)"));

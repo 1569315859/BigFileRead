@@ -423,12 +423,40 @@ if(ENABLE_QT)
         "${CMAKE_SOURCE_DIR}/*.qrc"
     )
     
-    # Qt翻译文件
+    # =========================================================================
+    # Qt 自动化国际化 (i18n) 配置
+    # =========================================================================
+    # 使用 qt_create_translation 实现自动化：
+    # - 自动运行 lupdate 扫描源文件中的 tr() 字符串
+    # - 自动创建/更新 .ts 翻译文件
+    # - 自动编译 .ts -> .qm
+    # - 将 .qm 嵌入到可执行文件资源中
+    # =========================================================================
     if(ENABLE_QT_TRANSLATION)
-        file(GLOB_RECURSE TS_FILES 
-            "${CMAKE_SOURCE_DIR}/*.ts"
-            "${CMAKE_SOURCE_DIR}/*.ts"
+        message(STATUS "正在配置自动化国际化 (i18n)...")
+        
+        # 定义翻译文件路径（存放在 translations 目录）
+        set(TRANSLATIONS_DIR "${CMAKE_SOURCE_DIR}/translations")
+        file(MAKE_DIRECTORY ${TRANSLATIONS_DIR})
+        
+        # 定义要生成的翻译文件
+        set(TS_FILES
+            "${TRANSLATIONS_DIR}/BigFileViewer_en_US.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_zh_CN.ts"
+            # 可以添加更多语言：
+            # "${TRANSLATIONS_DIR}/BigFileViewer_ja_JP.ts"
+            # "${TRANSLATIONS_DIR}/BigFileViewer_ko_KR.ts"
         )
+        
+        # 收集需要扫描的源文件（用于 lupdate）
+        set(I18N_SOURCE_FILES
+            ${SOURCE_FILES}
+            ${HEADER_FILES}
+            ${UI_FILES}
+        )
+        
+        message(STATUS "  翻译文件: ${TS_FILES}")
+        message(STATUS "  扫描源文件数量: ${CMAKE_SOURCE_DIR}/src/*.cpp, *.h")
     endif()
 endif()
 
@@ -576,21 +604,57 @@ if(ENABLE_QT)
         )
     endif()
     
-    # Qt翻译处理
+    # =========================================================================
+    # Qt 翻译处理 (自动生成 .ts 文件)
+    # =========================================================================
+    # 使用 qt_create_translation：
+    #   1. 自动运行 lupdate: 扫描源文件 -> 创建/更新 .ts 文件
+    #   2. 自动运行 lrelease: 编译 .ts -> .qm
+    # =========================================================================
     if(ENABLE_QT_TRANSLATION AND TS_FILES)
+        message(STATUS "配置自动化翻译构建...")
+        
+        # 使用 qt_create_translation 自动运行 lupdate + lrelease
+        # 这会扫描源文件中的 tr() 字符串并创建/更新 .ts 文件
         if(QT_VERSION_MAJOR EQUAL 6)
-            qt6_add_translation(QM_FILES ${TS_FILES})
+            qt6_create_translation(QM_FILES
+                ${I18N_SOURCE_FILES}
+                ${TS_FILES}
+            )
         else()
-            qt5_add_translation(QM_FILES ${TS_FILES})
+            qt5_create_translation(QM_FILES
+                ${I18N_SOURCE_FILES}
+                ${TS_FILES}
+            )
         endif()
         
-        # 将翻译文件添加到目标
+        message(STATUS "  .ts 文件: ${TS_FILES}")
+        message(STATUS "  .qm 文件: ${QM_FILES}")
+        
+        # 创建翻译目标
         add_custom_target(translations ALL DEPENDS ${QM_FILES})
         add_dependencies(${TARGET_NAME} translations)
         
-        # 安装翻译文件
-        install(FILES ${QM_FILES} DESTINATION translations)
-        message(STATUS "Qt翻译支持已启用，找到 ${TS_FILES} 个翻译文件")
+        # 将 .qm 文件复制到输出目录的 translations 子目录
+        set(TRANSLATIONS_OUTPUT_DIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations")
+        file(MAKE_DIRECTORY ${TRANSLATIONS_OUTPUT_DIR})
+        
+        foreach(QM_FILE ${QM_FILES})
+            get_filename_component(QM_FILENAME ${QM_FILE} NAME)
+            add_custom_command(TARGET translations POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                    "${QM_FILE}"
+                    "${TRANSLATIONS_OUTPUT_DIR}/${QM_FILENAME}"
+                COMMENT "复制翻译文件: ${QM_FILENAME}"
+            )
+        endforeach()
+        
+        # 安装翻译文件（可选，用于外部部署）
+        install(FILES ${QM_FILES} DESTINATION translations OPTIONAL)
+        
+        message(STATUS "✓ 自动化翻译配置完成")
+        message(STATUS "  - .ts 文件将在构建时自动创建/更新")
+        message(STATUS "  - .qm 文件将复制到: ${TRANSLATIONS_OUTPUT_DIR}")
     endif()
 endif()
 

@@ -24,6 +24,8 @@ class QCloseEvent;
 class QDragEnterEvent;
 class QDropEvent;
 class QMenu;
+class QActionGroup;
+class QEvent;
 class BigFileModel;
 class SearchBar;
 
@@ -197,6 +199,18 @@ private:
   void dropEvent(QDropEvent *event) override;
 
   /**
+   * @brief 语言变更事件
+   * @details 接收 Qt LanguageChange 事件并调用 retranslateUi
+   */
+  void changeEvent(QEvent *event) override;
+
+  /**
+   * @brief 更新本地化字符串
+   * @details 刷新非 .ui 文件定义的字符串（状态栏、菜单等）
+   */
+  void updateLocalizedStrings();
+
+  /**
    * @brief 加载用户设置
    */
   void loadSettings();
@@ -258,6 +272,10 @@ private:
   // 最近文件菜单
   QMenu *m_recentFilesMenu = nullptr;  ///< 最近文件子菜单
   static constexpr int MAX_RECENT_FILES = 10;  ///< 最大最近文件数
+
+  // 语言切换
+  QMenu *m_languageMenu = nullptr;  ///< 语言子菜单
+  QActionGroup *m_languageActionGroup = nullptr;  ///< 语言选项互斥组
 };
 
 #endif // MAINWINDOW_H

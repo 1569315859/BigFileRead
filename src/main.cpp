@@ -9,6 +9,7 @@
 #include <QSettings>
 #include <QIcon>
 #include "MainWindow.h"
+#include "LanguageManager.h"
 
 /**
  * @brief 程序入口点
@@ -38,6 +39,10 @@ int main(int argc, char *argv[])
 
     // ★★★ 设置应用程序图标（用于窗口标题栏和任务栏）★★★
     app.setWindowIcon(QIcon(":/app_icon.ico"));
+
+    // ★★★ 初始化国际化 (i18n) ★★★
+    // 从用户设置加载语言偏好，或使用系统语言
+    LanguageManager::instance().init();
 
     // 创建并显示主窗口
     MainWindow mainWindow;
