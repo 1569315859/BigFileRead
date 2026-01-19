@@ -1,7 +1,7 @@
 /**
  * @file MainWindow.h
  * @brief 主窗口类 - 大文件查看器 GUI
- * @version 1.5 - VS Code 风格暗色主题
+ * @version 2.0 - VS Code 风格暗色主题 + 双视图模式
  */
 
 #ifndef MAINWINDOW_H
@@ -10,6 +10,8 @@
 #include <QMainWindow>
 
 class QListView;
+class QTableView;
+class QStackedWidget;
 class QLabel;
 class QProgressBar;
 class QTimer;
@@ -146,6 +148,11 @@ private slots:
    */
   void showRegisterDialog();
 
+  /**
+   * @brief 切换视图模式（原始文本 / 表格视图）
+   */
+  void toggleViewMode();
+
 private:
   /**
    * @brief 初始化 UI 组件
@@ -237,8 +244,19 @@ private:
    */
   void checkLicenseStatus();
 
+  /**
+   * @brief 设置表格视图（性能优化）
+   */
+  void setupTableView();
+
 private:
-  QListView *m_listView = nullptr;       ///< 文件内容视图（主列表）
+  // ========== 双视图系统 ==========
+  QStackedWidget *m_viewStack = nullptr;     ///< 视图堆栈（切换原始/表格模式）
+  QListView *m_listView = nullptr;           ///< 文件内容视图（原始文本模式）
+  QTableView *m_tableView = nullptr;         ///< 表格视图（结构化日志模式）
+  QAction *m_toggleViewAction = nullptr;     ///< 切换视图动作
+  bool m_isTableViewMode = false;            ///< 当前是否为表格视图模式
+
   QPlainTextEdit *m_detailTextEdit = nullptr; ///< 详细文本视图（支持部分选择）
   QSplitter *m_splitter = nullptr;       ///< 主从视图分隔器
   BigFileModel *m_model = nullptr;       ///< 大文件数据模型
@@ -264,6 +282,7 @@ private:
   QLabel *m_filterStatusLabel = nullptr;  ///< 过滤状态标签
   QAction *m_toggleFilterAction = nullptr; ///< 切换过滤栏显示
   QToolButton *m_regexToggleBtn = nullptr; ///< 正则表达式开关
+  QComboBox *m_logicModeCombo = nullptr;   ///< AND/OR 逻辑选择
 
   // 书签功能
   QAction *m_toggleBookmarkAction = nullptr;  ///< 切换书签 (F2)
@@ -279,4 +298,5 @@ private:
 };
 
 #endif // MAINWINDOW_H
+
 

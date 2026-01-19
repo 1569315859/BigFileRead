@@ -1,7 +1,7 @@
 /**
  * @file MainWindow.cpp
  * @brief 主窗口类实现
- * @version 1.5 - VS Code 风格暗色主题 + 异步加载支持
+ * @version 2.0 - VS Code 风格暗色主题 + 双视图模式（原始/表格）
  */
 
 #include "MainWindow.h"
@@ -12,6 +12,7 @@
 #include "TrialManager.h"
 #include "RegistrationDialog.h"
 #include "LanguageManager.h"
+#include "LogParser.h"
 
 #include <QApplication>
 #include <QClipboard>
@@ -25,6 +26,9 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QListView>
+#include <QTableView>
+#include <QStackedWidget>
+#include <QHeaderView>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
@@ -427,6 +431,56 @@ void MainWindow::applyDarkTheme() {
             border: 1px solid %4;
             padding: 4px;
         }
+
+        /* ========== 修复 QTableView 表头白色块问题 ========== */
+        
+        /* 1. 修复表头容器的背景色 (Fix Header Container Background) */
+        QHeaderView {
+            background-color: %2;
+            border: none;
+        }
+
+        /* 2. 修复表头单元格 (Ensure Sections are also dark) */
+        QHeaderView::section {
+            background-color: %2;
+            color: %3;
+            padding: 4px 8px;
+            border: none;
+            border-right: 1px solid %4;
+            border-bottom: 1px solid %4;
+            font-weight: bold;
+        }
+        QHeaderView::section:hover {
+            background-color: %6;
+        }
+
+        /* 3. 关键：修复表格左上角那个小按钮 (Top-left Corner Button) */
+        QTableCornerButton::section {
+            background-color: %2;
+            border: none;
+            border-right: 1px solid %4;
+            border-bottom: 1px solid %4;
+        }
+
+        /* 4. 修复 QTableView 样式 */
+        QTableView {
+            background-color: %1;
+            color: %3;
+            border: none;
+            outline: none;
+            gridline-color: %4;
+            alternate-background-color: %2;
+        }
+        QTableView::item {
+            padding: 2px 8px;
+            border: none;
+        }
+        QTableView::item:hover {
+            background-color: %6;
+        }
+        QTableView::item:selected {
+            background-color: %7;
+        }
     )")
                            .arg(VSCodeDark::Background)       // %1
                            .arg(VSCodeDark::SidebarBg)        // %2
@@ -506,13 +560,23 @@ void MainWindow::setupUi() {
       "}"
   );
   
+  // ========== 创建表格视图（结构化日志模式） ==========
+  m_tableView = new QTableView(this);
+  setupTableView();
+  
+  // ========== 创建视图堆栈（切换原始/表格模式） ==========
+  m_viewStack = new QStackedWidget(this);
+  m_viewStack->addWidget(m_listView);   // Index 0: 原始文本模式
+  m_viewStack->addWidget(m_tableView);  // Index 1: 表格模式
+  m_viewStack->setCurrentIndex(0);       // 默认原始文本模式
+  
   // === 创建主从布局分隔器 ===
   m_splitter = new QSplitter(Qt::Vertical, this);
-  m_splitter->addWidget(m_listView);         // 上：主列表视图
-  m_splitter->addWidget(m_detailTextEdit);   // 下：详细文本视图
+  m_splitter->addWidget(m_viewStack);       // 上：视图堆栈
+  m_splitter->addWidget(m_detailTextEdit);  // 下：详细文本视图
   
   // 设置默认比例：80% 列表，20% 详细视图
-  m_splitter->setStretchFactor(0, 4);  // 列表视图权重 4
+  m_splitter->setStretchFactor(0, 4);  // 视图堆栈权重 4
   m_splitter->setStretchFactor(1, 1);  // 详细视图权重 1
   
   // 设置分隔条样式（VS Code 主题）
@@ -525,9 +589,10 @@ void MainWindow::setupUi() {
   
   setCentralWidget(m_splitter);
 
-  // 创建模型并绑定视图
+  // 创建模型并绑定到两个视图
   m_model = new BigFileModel(this);
   m_listView->setModel(m_model);
+  m_tableView->setModel(m_model);
   
   // 连接选择变化信号 - 更新详细视图（支持多行选择）
   connect(m_listView->selectionModel(), &QItemSelectionModel::selectionChanged,
@@ -715,7 +780,7 @@ void MainWindow::setupUi() {
 
   // 过滤输入框
   m_filterInput = new QLineEdit(this);
-  m_filterInput->setPlaceholderText(tr("Type keyword to filter... (Enter to apply)"));
+  m_filterInput->setPlaceholderText(tr("Keywords... (Space to separate, \"quotes\" for exact phrases)"));
   m_filterInput->setMinimumWidth(300);
   m_filterInput->setMaximumWidth(500);
   m_filterInput->setStyleSheet(
@@ -781,6 +846,36 @@ void MainWindow::setupUi() {
       "QToolButton:pressed {"
       "   background-color: #2d2d30;"
       "}";
+
+  // ========== AND/OR 逻辑选择（多关键词匹配）==========
+  m_logicModeCombo = new QComboBox(this);
+  m_logicModeCombo->addItem(tr("ALL (AND)"), true);   // userData = true for AND logic
+  m_logicModeCombo->addItem(tr("ANY (OR)"), false);   // userData = false for OR logic
+  m_logicModeCombo->setCurrentIndex(0);  // 默认 AND
+  m_logicModeCombo->setToolTip(tr("Match mode: ALL = all keywords must match, ANY = any keyword matches"));
+  m_logicModeCombo->setMinimumWidth(90);
+  m_logicModeCombo->setStyleSheet(
+      "QComboBox {"
+      "   background-color: #3c3c3c;"
+      "   color: #d4d4d4;"
+      "   border: 1px solid #555555;"
+      "   border-radius: 3px;"
+      "   padding: 3px 6px;"
+      "}"
+      "QComboBox:hover {"
+      "   border-color: #007acc;"
+      "}"
+      "QComboBox::drop-down {"
+      "   border: none;"
+      "   width: 18px;"
+      "}"
+      "QComboBox QAbstractItemView {"
+      "   background-color: #252526;"
+      "   color: #d4d4d4;"
+      "   selection-background-color: #094771;"
+      "}"
+  );
+  m_filterToolBar->addWidget(m_logicModeCombo);
 
   // 应用过滤按钮
   QToolButton *applyFilterBtn = new QToolButton(this);
@@ -927,6 +1022,14 @@ void MainWindow::createMenus() {
     }
   });
 
+  viewMenu->addSeparator();
+
+  // ========== 视图切换（原始文本 / 表格模式）==========
+  m_toggleViewAction = viewMenu->addAction(tr("Grid View"));
+  m_toggleViewAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_T));
+  m_toggleViewAction->setToolTip(tr("Switch to Grid View (structured columns)"));
+  connect(m_toggleViewAction, &QAction::triggered, this, &MainWindow::toggleViewMode);
+
   // ========== 设置菜单 ==========
   QMenu *settingsMenu = menuBar()->addMenu(tr("Settings(&S)"));
 
@@ -1032,10 +1135,28 @@ void MainWindow::onOpenFile() {
 void MainWindow::openFile(const QString &filePath) {
   // *** 允许在加载过程中打开新文件（会自动取消当前加载）***
 
+  // 获取文件大小
+  QFileInfo fileInfo(filePath);
+  qint64 fileSize = fileInfo.size();
+  
   setLoadingState(true);
   m_statusLabel->setText(tr("Loading: %1").arg(filePath));
-  m_lineCountLabel->setText(tr("Lines: 1")); // 第一行立即可用
+  m_lineCountLabel->setText(tr("Lines: 0"));
   m_progressBar->setValue(0);
+
+  // *** 安全网：为小文件设置超时保护 ***
+  // 如果 3 秒内没有收到 fileLoaded 信号，强制完成加载状态
+  if (fileSize < 10 * 1024 * 1024) {  // < 10MB
+    QTimer::singleShot(3000, this, [this]() {
+      if (m_isLoading) {
+        qWarning() << "[MainWindow] Safety timeout triggered - forcing load complete";
+        setLoadingState(false);
+        m_statusLabel->setText(tr("Ready"));
+        m_lineCountLabel->setText(tr("Lines: %1").arg(m_model->lineCount()));
+        updateStatusBar();
+      }
+    });
+  }
 
   m_model->loadFile(filePath);
   updateWindowTitle();
@@ -1045,14 +1166,22 @@ void MainWindow::openFile(const QString &filePath) {
 }
 
 void MainWindow::onFileLoaded(bool success, const QString &message) {
+  // *** 确保加载状态被正确重置 ***
   setLoadingState(false);
+  
+  // *** 强制隐藏进度条 ***
+  m_progressBar->setVisible(false);
+  m_progressBar->setValue(0);
 
   if (success) {
-    m_statusLabel->setText(message);
+    // *** 显式设置状态消息 ***
+    m_statusLabel->setText(tr("Ready - %1").arg(message));
     m_lineCountLabel->setText(tr("Lines: %1").arg(m_model->lineCount()));
     
     // 更新状态栏统计信息
     updateStatusBar();
+    
+    qDebug() << "[MainWindow] File loaded successfully:" << message;
   } else {
     m_statusLabel->setText(tr("Load failed"));
     m_lineCountLabel->clear();
@@ -1405,9 +1534,9 @@ void MainWindow::onLogAppended()
 
 void MainWindow::onFilterRequested()
 {
-    QString keyword = m_filterInput->text().trimmed();
+    QString inputText = m_filterInput->text().trimmed();
     
-    if (keyword.isEmpty()) {
+    if (inputText.isEmpty()) {
         onClearFilter();
         return;
     }
@@ -1420,32 +1549,57 @@ void MainWindow::onFilterRequested()
 
     // 获取正则表达式开关状态
     bool useRegex = m_regexToggleBtn && m_regexToggleBtn->isChecked();
+    
+    // 获取 AND/OR 逻辑（从下拉框）
+    bool andLogic = m_logicModeCombo ? m_logicModeCombo->currentData().toBool() : true;
 
-    // 如果启用正则表达式，验证正则表达式是否有效
-    if (useRegex) {
-        QRegularExpression regex(keyword, QRegularExpression::CaseInsensitiveOption);
-        if (!regex.isValid()) {
-            QMessageBox::warning(this, tr("Invalid Regex"),
-                tr("The regular expression is invalid:\n%1\n\nError at position %2")
-                .arg(regex.errorString())
-                .arg(regex.patternErrorOffset()));
-            m_filterInput->setFocus();
-            m_filterInput->selectAll();
-            return;
+    // 解析空格分隔的关键词（保留引号内的空格）
+    QStringList keywords;
+    QRegularExpression keywordRegex(QStringLiteral("\"([^\"]+)\"|'([^']+)'|(\\S+)"));
+    QRegularExpressionMatchIterator it = keywordRegex.globalMatch(inputText);
+    
+    while (it.hasNext()) {
+        QRegularExpressionMatch match = it.next();
+        if (match.captured(1).length() > 0) {
+            keywords.append(match.captured(1));  // Double-quoted
+        } else if (match.captured(2).length() > 0) {
+            keywords.append(match.captured(2));  // Single-quoted
+        } else {
+            keywords.append(match.captured(3));  // Unquoted word
         }
     }
 
-    // 更新状态
+    // 如果启用正则表达式，验证每个模式
+    if (useRegex) {
+        for (const QString &kw : keywords) {
+            QRegularExpression regex(kw, QRegularExpression::CaseInsensitiveOption);
+            if (!regex.isValid()) {
+                QMessageBox::warning(this, tr("Invalid Regex"),
+                    tr("The regular expression is invalid:\n%1\n\nPattern: %2")
+                    .arg(regex.errorString())
+                    .arg(kw));
+                m_filterInput->setFocus();
+                m_filterInput->selectAll();
+                return;
+            }
+        }
+    }
+
+    // 更新状态（显示 AND/OR 逻辑）
     QString modeText = useRegex ? tr("(Regex)") : "";
-    m_filterStatusLabel->setText(tr("Filtering..."));
-    m_statusLabel->setText(tr("Applying filter %1: %2").arg(modeText).arg(keyword));
+    QString logicText = andLogic ? tr("[AND]") : tr("[OR]");
+    m_filterStatusLabel->setText(tr("Filtering... %1").arg(logicText));
+    m_statusLabel->setText(tr("Applying filter %1 %2: %3 keywords")
+                                .arg(modeText)
+                                .arg(logicText)
+                                .arg(keywords.size()));
 
-    // 应用过滤（传递正则表达式开关）
-    m_model->applyFilter(keyword, useRegex);
+    // 应用高级过滤（支持多关键词 + AND/OR 逻辑）
+    m_model->applyAdvancedFilter(QString(), keywords, andLogic, useRegex);
 
-    // 更新委托高亮（显示过滤关键词）
+    // 更新委托高亮（显示第一个关键词或整个输入）
     auto delegate = static_cast<CompactLineDelegate *>(m_listView->itemDelegate());
-    delegate->setHighlightTerm(keyword, Qt::CaseInsensitive);
+    delegate->setHighlightTerm(keywords.isEmpty() ? inputText : keywords.first(), Qt::CaseInsensitive);
     m_listView->viewport()->update();
 }
 
@@ -1932,3 +2086,138 @@ void MainWindow::checkLicenseStatus() {
     }
   }
 }
+
+// ========== 表格视图设置（性能优化关键！！！） ==========
+
+void MainWindow::setupTableView() {
+  if (!m_tableView) return;
+  
+  // *** 关键性能优化：禁用所有自动调整 ***
+  // ResizeToContents 会扫描所有行来计算宽度，导致 UI 卡死！
+  m_tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+  m_tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+  
+  // 设置固定行高（避免每行计算高度）
+  m_tableView->verticalHeader()->setDefaultSectionSize(22);
+  
+  // 设置默认列宽
+  m_tableView->horizontalHeader()->setDefaultSectionSize(150);
+  
+  // 最后一列自动伸展
+  m_tableView->horizontalHeader()->setStretchLastSection(true);
+  
+  // 使用等宽字体
+#if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
+  QFont monoFont = QFontDatabase::systemFont(QFontDatabase::FixedFont);
+#else
+  QFont monoFont("Consolas", 10);
+#endif
+  monoFont.setPointSize(11);
+  m_tableView->setFont(monoFont);
+  
+  // 选择模式
+  m_tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+  m_tableView->setSelectionMode(QAbstractItemView::ExtendedSelection);
+  
+  // 隐藏垂直表头（行号由模型提供）
+  m_tableView->verticalHeader()->setVisible(true);
+  m_tableView->verticalHeader()->setDefaultAlignment(Qt::AlignRight | Qt::AlignVCenter);
+  m_tableView->verticalHeader()->setFixedWidth(60);
+  
+  // 禁用网格线，使用交替行颜色
+  m_tableView->setShowGrid(false);
+  m_tableView->setAlternatingRowColors(true);
+  
+  // 像素级滚动
+  m_tableView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+  m_tableView->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+  
+  // 应用 VS Code 暗色主题（包含表头白色块修复）
+  m_tableView->setStyleSheet(R"(
+      QTableView {
+          background-color: #1e1e1e;
+          color: #d4d4d4;
+          border: none;
+          outline: none;
+          gridline-color: #3c3c3c;
+      }
+      QTableView::item {
+          padding: 2px 8px;
+          border: none;
+      }
+      QTableView::item:hover {
+          background-color: #2a2d2e;
+      }
+      QTableView::item:selected {
+          background-color: #094771;
+      }
+      QTableView::item:alternate {
+          background-color: #252526;
+      }
+      /* 修复表头容器背景色 */
+      QHeaderView {
+          background-color: #252526;
+          border: none;
+      }
+      QHeaderView::section {
+          background-color: #252526;
+          color: #d4d4d4;
+          border: none;
+          border-right: 1px solid #3c3c3c;
+          border-bottom: 1px solid #3c3c3c;
+          padding: 4px 8px;
+          font-weight: bold;
+      }
+      QHeaderView::section:hover {
+          background-color: #2a2d2e;
+      }
+      /* 关键：修复表格左上角白色块 */
+      QTableCornerButton::section {
+          background-color: #252526;
+          border: none;
+          border-right: 1px solid #3c3c3c;
+          border-bottom: 1px solid #3c3c3c;
+      }
+  )");
+  
+  qDebug() << "[MainWindow] TableView setup complete with performance optimizations";
+}
+
+// ========== 视图切换（原始文本 / 表格视图） ==========
+
+void MainWindow::toggleViewMode() {
+  if (!m_viewStack) return;
+  
+  m_isTableViewMode = !m_isTableViewMode;
+  
+  if (m_isTableViewMode) {
+    // 切换到表格模式
+    m_viewStack->setCurrentIndex(1);
+    m_model->setTableModeEnabled(true);
+    
+    // 更新切换按钮文本
+    if (m_toggleViewAction) {
+      m_toggleViewAction->setText(tr("Raw Text"));
+      m_toggleViewAction->setToolTip(tr("Switch to Raw Text view (high performance)"));
+    }
+    
+    m_statusLabel->setText(tr("Grid View - Structured Log Mode"));
+    
+    qDebug() << "[MainWindow] Switched to TABLE view mode";
+  } else {
+    // 切换到原始文本模式
+    m_viewStack->setCurrentIndex(0);
+    m_model->setTableModeEnabled(false);
+    
+    // 更新切换按钮文本
+    if (m_toggleViewAction) {
+      m_toggleViewAction->setText(tr("Grid View"));
+      m_toggleViewAction->setToolTip(tr("Switch to Grid View (structured columns)"));
+    }
+    
+    m_statusLabel->setText(tr("Raw Text - High Performance Mode"));
+    
+    qDebug() << "[MainWindow] Switched to RAW TEXT view mode";
+  }
+}
+

@@ -1,16 +1,16 @@
 /**
  * @file BigFileModel.h
  * @brief 大文件模型类 - 使用内存映射实现高性能大文件读取
- * @description 继承 QAbstractListModel，通过 QFile::map()
+ * @description 继承 QAbstractTableModel，通过 QFile::map()
  * 将文件映射到虚拟内存， 配合行偏移索引实现按需读取，支持打开 10GB+ 文本文件。
  * @note 目标架构：仅支持 64 位系统，假设虚拟内存空间足够映射整个文件
- * @version 1.5 - 增加异步索引、分块更新、长行截断
+ * @version 2.0 - Upgraded to TableModel with lazy log parsing support
  */
 
 #ifndef BIGFILEMODEL_H
 #define BIGFILEMODEL_H
 
-#include <QAbstractListModel>
+#include <QAbstractTableModel>
 #include <QFile>
 #include <QFileSystemWatcher>
 #include <QFutureWatcher>
@@ -23,7 +23,7 @@
 #include <vector>
 
 
-class BigFileModel : public QAbstractListModel {
+class BigFileModel : public QAbstractTableModel {
   Q_OBJECT
 
 public:
@@ -38,6 +38,12 @@ public:
   
   /// 书签数据角色 (用于 data() 返回书签状态)
   static constexpr int BookmarkRole = Qt::UserRole + 5;
+  /// 原始行号角色 (返回未过滤的真实行号)
+  static constexpr int RealRowRole = Qt::UserRole + 6;
+  /// 原始行文本角色 (返回完整的未解析行文本)
+  static constexpr int RawLineRole = Qt::UserRole + 7;
+  /// 日志级别角色 (返回检测到的日志级别)
+  static constexpr int LogLevelRole = Qt::UserRole + 8;
 
   explicit BigFileModel(QObject *parent = nullptr);
   ~BigFileModel() override;
@@ -113,6 +119,24 @@ public:
    */
   void setEncoding(QStringConverter::Encoding encoding);
 
+  // ============ 表格模式控制 ============
+
+  /**
+   * @brief 启用表格解析模式
+   * @param enabled true = 使用 LogParser 解析列, false = 单列原始文本
+   */
+  void setTableModeEnabled(bool enabled);
+
+  /**
+   * @brief 是否处于表格解析模式
+   */
+  bool isTableModeEnabled() const { return m_tableModeEnabled; }
+
+  /**
+   * @brief 刷新表格结构（列变化后调用）
+   */
+  void refreshTableStructure();
+
   // ============ 日志过滤功能 (Virtual Mapping Vector) ============
 
   /**
@@ -122,6 +146,18 @@ public:
    * @note 使用虚拟行映射，不复制数据，内存开销极低
    */
   void applyFilter(const QString &keyword, bool useRegex = false);
+
+  /**
+   * @brief 应用高级过滤器（支持日志级别和多关键词）
+   * @param level 日志级别过滤（空字符串表示不过滤）
+   * @param keywords 关键词列表
+   * @param andLogic true = 所有关键词都必须匹配, false = 任意关键词匹配即可
+   * @param useRegex 是否使用正则表达式
+   */
+  void applyAdvancedFilter(const QString &level, 
+                           const QStringList &keywords,
+                           bool andLogic = true,
+                           bool useRegex = false);
 
   /**
    * @brief 清除过滤器，显示所有行
@@ -183,10 +219,22 @@ public:
    */
   void clearAllBookmarks();
 
-  // QAbstractListModel 接口实现
+  // ============ 原始行访问 (用于外部访问) ============
+
+  /**
+   * @brief 获取指定行的原始文本
+   * @param row 行号（从 0 开始）
+   * @return 该行的原始 QString 内容（可能被截断）
+   */
+  QString getRawLine(int row) const;
+
+  // QAbstractTableModel 接口实现
   int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+  int columnCount(const QModelIndex &parent = QModelIndex()) const override;
   QVariant data(const QModelIndex &index,
                 int role = Qt::DisplayRole) const override;
+  QVariant headerData(int section, Qt::Orientation orientation,
+                      int role = Qt::DisplayRole) const override;
 
   // 禁用 fetchMore 机制（我们使用 Timer-Pull 模式主动推送数据）
   bool canFetchMore(const QModelIndex &parent) const override;
@@ -293,6 +341,14 @@ private:
    */
   void executeFilterAsync(const QString &keyword, bool useRegex);
 
+  /**
+   * @brief 异步执行高级过滤（在后台线程执行）
+   */
+  void executeAdvancedFilterAsync(const QString &level,
+                                   const QStringList &keywords,
+                                   bool andLogic,
+                                   bool useRegex);
+
 private:
   QFile m_file;              ///< 文件对象
   QString m_filePath;        ///< 文件路径
@@ -321,6 +377,9 @@ private:
 
   // 文件监控（实时日志）
   QFileSystemWatcher *m_watcher = nullptr;  ///< 文件变化监视器
+
+  // ============ 表格模式 ============
+  bool m_tableModeEnabled = false;  ///< 是否启用表格解析模式
 
   // ============ 日志过滤 (Virtual Mapping Vector) ============
   std::vector<int> m_filteredRows;                ///< 虚拟映射向量：存储匹配行的原始索引
