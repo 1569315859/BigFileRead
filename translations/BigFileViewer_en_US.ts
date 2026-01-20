@@ -4,128 +4,108 @@
 <context>
     <name>AdvancedFilterWidget</name>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="49"/>
-        <source>Time:</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="51"/>
+        <source>筛选:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="50"/>
-        <source>Enable time range filtering</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="56"/>
+        <source>级别:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/AdvancedFilterWidget.cpp" line="61"/>
-        <source>to</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="84"/>
-        <source>Level:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="88"/>
         <source>ALL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="89"/>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="62"/>
         <source>TRACE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="90"/>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="63"/>
         <source>DEBUG</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="91"/>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="64"/>
         <source>INFO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="92"/>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="65"/>
         <source>WARN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="93"/>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="66"/>
         <source>ERROR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="94"/>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="67"/>
         <source>FATAL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="111"/>
-        <source>Keywords:</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="72"/>
+        <source>关键词:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="115"/>
-        <source>Space-separated keywords...</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="77"/>
+        <source>空格分隔，&quot;引号&quot;保留短语</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="121"/>
-        <source>AND</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="88"/>
+        <source>全部 (AND)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="122"/>
-        <source>All keywords must match</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="89"/>
+        <source>任意 (OR)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="126"/>
-        <source>OR</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="91"/>
+        <source>AND = 所有关键词匹配, OR = 任意关键词匹配</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="127"/>
-        <source>Any keyword can match</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="96"/>
+        <source>使用正则表达式</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="140"/>
-        <source>Regex</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="107"/>
+        <source>清除筛选条件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="141"/>
-        <source>Use regular expressions for keyword matching</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="83"/>
+        <source>模式:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="144"/>
-        <source>Case</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="95"/>
+        <source>正则</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="145"/>
-        <source>Case-sensitive matching</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="100"/>
+        <source>应用</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="153"/>
-        <source>Apply</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="101"/>
+        <source>应用筛选 (Enter)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="154"/>
-        <source>Apply filters (Enter)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="159"/>
-        <source>Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/AdvancedFilterWidget.cpp" line="160"/>
-        <source>Clear all filters</source>
+        <location filename="../src/AdvancedFilterWidget.cpp" line="106"/>
+        <source>清除</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -157,17 +137,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="448"/>
+        <location filename="../src/BigFileModel.cpp" line="455"/>
         <source>Content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="485"/>
+        <location filename="../src/BigFileModel.cpp" line="492"/>
         <source>Line %1 (Original length: %2 chars, truncated)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="487"/>
+        <location filename="../src/BigFileModel.cpp" line="494"/>
         <source>Line %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -176,22 +156,23 @@
     <name>MainWindow</name>
     <message>
         <location filename="../src/MainWindow.cpp" line="105"/>
-        <location filename="../src/MainWindow.cpp" line="1155"/>
-        <location filename="../src/MainWindow.cpp" line="1179"/>
-        <location filename="../src/MainWindow.cpp" line="1194"/>
-        <location filename="../src/MainWindow.cpp" line="1626"/>
-        <location filename="../src/MainWindow.cpp" line="1653"/>
+        <location filename="../src/MainWindow.cpp" line="1168"/>
+        <location filename="../src/MainWindow.cpp" line="1187"/>
+        <location filename="../src/MainWindow.cpp" line="1214"/>
+        <location filename="../src/MainWindow.cpp" line="1233"/>
+        <location filename="../src/MainWindow.cpp" line="1665"/>
+        <location filename="../src/MainWindow.cpp" line="1692"/>
         <source>Lines: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="215"/>
         <location filename="../src/MainWindow.cpp" line="669"/>
-        <location filename="../src/MainWindow.cpp" line="1154"/>
-        <location filename="../src/MainWindow.cpp" line="1277"/>
-        <location filename="../src/MainWindow.cpp" line="1467"/>
-        <location filename="../src/MainWindow.cpp" line="1527"/>
-        <location filename="../src/MainWindow.cpp" line="1659"/>
+        <location filename="../src/MainWindow.cpp" line="1167"/>
+        <location filename="../src/MainWindow.cpp" line="1316"/>
+        <location filename="../src/MainWindow.cpp" line="1506"/>
+        <location filename="../src/MainWindow.cpp" line="1566"/>
+        <location filename="../src/MainWindow.cpp" line="1698"/>
         <source>Ready</source>
         <translation type="unfinished"></translation>
     </message>
@@ -333,13 +314,13 @@ Use &apos;Copy&apos; (Ctrl+C) or &apos;Export&apos; to save selected lines.</sou
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="1028"/>
-        <location filename="../src/MainWindow.cpp" line="2214"/>
+        <location filename="../src/MainWindow.cpp" line="2253"/>
         <source>Grid View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="1030"/>
-        <location filename="../src/MainWindow.cpp" line="2215"/>
+        <location filename="../src/MainWindow.cpp" line="2254"/>
         <source>Switch to Grid View (structured columns)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -431,107 +412,109 @@ Built with Qt %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1143"/>
+        <location filename="../src/MainWindow.cpp" line="1149"/>
         <source>Loading: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1186"/>
+        <location filename="../src/MainWindow.cpp" line="1172"/>
+        <location filename="../src/MainWindow.cpp" line="1224"/>
         <source>Load failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1188"/>
-        <location filename="../src/MainWindow.cpp" line="1997"/>
+        <location filename="../src/MainWindow.cpp" line="1141"/>
+        <location filename="../src/MainWindow.cpp" line="1227"/>
+        <location filename="../src/MainWindow.cpp" line="2036"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1199"/>
+        <location filename="../src/MainWindow.cpp" line="1238"/>
         <source>Loading cancelled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1204"/>
-        <location filename="../src/MainWindow.cpp" line="1294"/>
-        <location filename="../src/MainWindow.cpp" line="1546"/>
+        <location filename="../src/MainWindow.cpp" line="1243"/>
+        <location filename="../src/MainWindow.cpp" line="1333"/>
+        <location filename="../src/MainWindow.cpp" line="1585"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1204"/>
-        <location filename="../src/MainWindow.cpp" line="1294"/>
-        <location filename="../src/MainWindow.cpp" line="1546"/>
+        <location filename="../src/MainWindow.cpp" line="1243"/>
+        <location filename="../src/MainWindow.cpp" line="1333"/>
+        <location filename="../src/MainWindow.cpp" line="1585"/>
         <source>Please open a file first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1210"/>
+        <location filename="../src/MainWindow.cpp" line="1249"/>
         <source>Go to Line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1211"/>
+        <location filename="../src/MainWindow.cpp" line="1250"/>
         <source>Line number (1 - %1):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1228"/>
+        <location filename="../src/MainWindow.cpp" line="1267"/>
         <source> [Indexing...]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1381"/>
+        <location filename="../src/MainWindow.cpp" line="1420"/>
         <source>No matches found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1403"/>
+        <location filename="../src/MainWindow.cpp" line="1442"/>
         <source> (Regex)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1404"/>
+        <location filename="../src/MainWindow.cpp" line="1443"/>
         <source>Found %1 matches%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1462"/>
+        <location filename="../src/MainWindow.cpp" line="1501"/>
         <source>Copied %1 lines to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1478"/>
+        <location filename="../src/MainWindow.cpp" line="1517"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1489"/>
+        <location filename="../src/MainWindow.cpp" line="1528"/>
         <source>Toggle Bookmark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1496"/>
+        <location filename="../src/MainWindow.cpp" line="1535"/>
         <source>Export Visible Lines...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1500"/>
+        <location filename="../src/MainWindow.cpp" line="1539"/>
         <source>Open Containing Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1522"/>
+        <location filename="../src/MainWindow.cpp" line="1561"/>
         <source>New log content detected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1577"/>
+        <location filename="../src/MainWindow.cpp" line="1616"/>
         <source>Invalid Regex</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1578"/>
+        <location filename="../src/MainWindow.cpp" line="1617"/>
         <source>The regular expression is invalid:
 %1
 
@@ -539,47 +522,47 @@ Pattern: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1590"/>
+        <location filename="../src/MainWindow.cpp" line="1629"/>
         <source>[AND]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1590"/>
+        <location filename="../src/MainWindow.cpp" line="1629"/>
         <source>[OR]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1591"/>
+        <location filename="../src/MainWindow.cpp" line="1630"/>
         <source>Filtering... %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1592"/>
+        <location filename="../src/MainWindow.cpp" line="1631"/>
         <source>Applying filter %1 %2: %3 keywords</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2200"/>
+        <location filename="../src/MainWindow.cpp" line="2239"/>
         <source>Raw Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2201"/>
+        <location filename="../src/MainWindow.cpp" line="2240"/>
         <source>Switch to Raw Text view (high performance)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2204"/>
+        <location filename="../src/MainWindow.cpp" line="2243"/>
         <source>Grid View - Structured Log Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2218"/>
+        <location filename="../src/MainWindow.cpp" line="2257"/>
         <source>Raw Text - High Performance Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1589"/>
+        <location filename="../src/MainWindow.cpp" line="1628"/>
         <source>(Regex)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -599,233 +582,243 @@ Pattern: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1144"/>
+        <location filename="../src/MainWindow.cpp" line="1141"/>
+        <source>File does not exist: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="1150"/>
         <source>Lines: 0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1178"/>
+        <location filename="../src/MainWindow.cpp" line="1186"/>
+        <source>Ready (timeout)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="1213"/>
         <source>Ready - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1612"/>
+        <location filename="../src/MainWindow.cpp" line="1651"/>
         <source>Showing %1 of %2 lines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1616"/>
+        <location filename="../src/MainWindow.cpp" line="1655"/>
         <source>Lines: %1 (filtered)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1650"/>
+        <location filename="../src/MainWindow.cpp" line="1689"/>
         <source>Filter cleared</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1669"/>
+        <location filename="../src/MainWindow.cpp" line="1708"/>
         <source>No line selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1691"/>
+        <location filename="../src/MainWindow.cpp" line="1730"/>
         <source>Jumped to bookmark at line %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1693"/>
+        <location filename="../src/MainWindow.cpp" line="1732"/>
         <source>No bookmarks found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1700"/>
+        <location filename="../src/MainWindow.cpp" line="1739"/>
         <source>Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1700"/>
+        <location filename="../src/MainWindow.cpp" line="1739"/>
         <source>No lines to export.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1717"/>
+        <location filename="../src/MainWindow.cpp" line="1756"/>
         <source>Export Visible Lines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1719"/>
+        <location filename="../src/MainWindow.cpp" line="1758"/>
         <source>Text Files (*.txt);;Log Files (*.log);;All Files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1729"/>
+        <location filename="../src/MainWindow.cpp" line="1768"/>
         <source>Export Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1730"/>
+        <location filename="../src/MainWindow.cpp" line="1769"/>
         <source>Failed to open file for writing:
 %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1749"/>
+        <location filename="../src/MainWindow.cpp" line="1788"/>
         <source>Successfully exported %1 filtered lines to:
 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1750"/>
+        <location filename="../src/MainWindow.cpp" line="1789"/>
         <source>Successfully exported %1 lines to:
 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1752"/>
+        <location filename="../src/MainWindow.cpp" line="1791"/>
         <source>Export Successful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1753"/>
+        <location filename="../src/MainWindow.cpp" line="1792"/>
         <source>Exported %1 lines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1758"/>
-        <location filename="../src/MainWindow.cpp" line="1772"/>
+        <location filename="../src/MainWindow.cpp" line="1797"/>
+        <location filename="../src/MainWindow.cpp" line="1811"/>
         <source>Open Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1758"/>
+        <location filename="../src/MainWindow.cpp" line="1797"/>
         <source>No file is currently loaded.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1770"/>
+        <location filename="../src/MainWindow.cpp" line="1809"/>
         <source>Opened folder: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1773"/>
+        <location filename="../src/MainWindow.cpp" line="1812"/>
         <source>Failed to open folder:
 %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1802"/>
+        <location filename="../src/MainWindow.cpp" line="1841"/>
         <source>Opened via drag &amp; drop: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1848"/>
+        <location filename="../src/MainWindow.cpp" line="1887"/>
         <source>(No recent files)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1867"/>
+        <location filename="../src/MainWindow.cpp" line="1906"/>
         <source>File Not Found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1868"/>
+        <location filename="../src/MainWindow.cpp" line="1907"/>
         <source>The file no longer exists:
 %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1884"/>
+        <location filename="../src/MainWindow.cpp" line="1923"/>
         <source>Clear Recent List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1894"/>
+        <location filename="../src/MainWindow.cpp" line="1933"/>
         <source>Recent files list cleared</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1907"/>
+        <location filename="../src/MainWindow.cpp" line="1946"/>
         <source>Register License</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1913"/>
+        <location filename="../src/MainWindow.cpp" line="1952"/>
         <source>Your Machine ID (send this to the vendor):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1931"/>
+        <location filename="../src/MainWindow.cpp" line="1970"/>
         <source>Copy Machine ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1940"/>
+        <location filename="../src/MainWindow.cpp" line="1979"/>
         <source>Enter License Key:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1944"/>
+        <location filename="../src/MainWindow.cpp" line="1983"/>
         <source>Paste your license key here...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1961"/>
+        <location filename="../src/MainWindow.cpp" line="2000"/>
         <source>Verify &amp;&amp; Activate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1974"/>
+        <location filename="../src/MainWindow.cpp" line="2013"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="1998"/>
+        <location filename="../src/MainWindow.cpp" line="2037"/>
         <source>Please enter a license key.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2009"/>
+        <location filename="../src/MainWindow.cpp" line="2048"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2010"/>
+        <location filename="../src/MainWindow.cpp" line="2049"/>
         <source>License activated successfully!
 
 Thank you for registering.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2014"/>
+        <location filename="../src/MainWindow.cpp" line="2053"/>
         <source>Invalid License</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2015"/>
+        <location filename="../src/MainWindow.cpp" line="2054"/>
         <source>The license key is not valid for this machine.
 
 Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2036"/>
-        <location filename="../src/MainWindow.cpp" line="2067"/>
+        <location filename="../src/MainWindow.cpp" line="2075"/>
+        <location filename="../src/MainWindow.cpp" line="2106"/>
         <source>BigFileViewer (Pro) - Licensed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2037"/>
+        <location filename="../src/MainWindow.cpp" line="2076"/>
         <source>Licensed version - All features unlocked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2046"/>
+        <location filename="../src/MainWindow.cpp" line="2085"/>
         <source>Trial Expired</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2047"/>
+        <location filename="../src/MainWindow.cpp" line="2086"/>
         <source>Your 30-day trial period has expired.
 
 Please register to continue using BigFileViewer.
@@ -833,39 +826,39 @@ Click OK to open the registration dialog.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2055"/>
+        <location filename="../src/MainWindow.cpp" line="2094"/>
         <source>Registration Required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2056"/>
+        <location filename="../src/MainWindow.cpp" line="2095"/>
         <source>BigFileViewer requires a valid license to continue.
 
 The application will now close.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2068"/>
+        <location filename="../src/MainWindow.cpp" line="2107"/>
         <source>Licensed version - Thank you for registering!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2074"/>
+        <location filename="../src/MainWindow.cpp" line="2113"/>
         <source>BigFileViewer (Trial) - %1 days remaining</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2077"/>
+        <location filename="../src/MainWindow.cpp" line="2116"/>
         <source>Trial Mode: %1 days remaining | Click Help &gt; Register to unlock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2082"/>
+        <location filename="../src/MainWindow.cpp" line="2121"/>
         <source>Trial Ending Soon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="2083"/>
+        <location filename="../src/MainWindow.cpp" line="2122"/>
         <source>Your trial will expire in %1 days.
 
 Please consider registering to continue using BigFileViewer.

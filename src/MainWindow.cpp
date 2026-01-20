@@ -1137,33 +1137,68 @@ void MainWindow::openFile(const QString &filePath) {
 
   // 获取文件大小
   QFileInfo fileInfo(filePath);
+  if (!fileInfo.exists()) {
+    QMessageBox::warning(this, tr("Error"), tr("File does not exist: %1").arg(filePath));
+    return;
+  }
+  
   qint64 fileSize = fileInfo.size();
+  const qint64 SMALL_FILE_THRESHOLD = 10 * 1024 * 1024;  // 10 MB
   
   setLoadingState(true);
   m_statusLabel->setText(tr("Loading: %1").arg(filePath));
   m_lineCountLabel->setText(tr("Lines: 0"));
   m_progressBar->setValue(0);
 
-  // *** 安全网：为小文件设置超时保护 ***
-  // 如果 3 秒内没有收到 fileLoaded 信号，强制完成加载状态
-  if (fileSize < 10 * 1024 * 1024) {  // < 10MB
-    QTimer::singleShot(3000, this, [this]() {
+  // ========== 混合加载策略 ==========
+  if (fileSize < SMALL_FILE_THRESHOLD) {
+    // *** 小文件 (<10MB)：同步加载，立即完成 ***
+    qDebug() << "[MainWindow] Small file detected (" << fileSize / 1024 << "KB), using synchronous load";
+    
+    // 加载文件
+    bool success = m_model->loadFile(filePath);
+    
+    // 立即更新 UI 状态
+    setLoadingState(false);
+    m_progressBar->setVisible(false);
+    m_progressBar->setValue(0);
+    
+    if (success) {
+      m_statusLabel->setText(tr("Ready"));
+      m_lineCountLabel->setText(tr("Lines: %1").arg(m_model->lineCount()));
+      updateStatusBar();
+      qDebug() << "[MainWindow] Small file loaded successfully:" << m_model->lineCount() << "lines";
+    } else {
+      m_statusLabel->setText(tr("Load failed"));
+      m_lineCountLabel->clear();
+    }
+    
+  } else {
+    // *** 大文件 (>=10MB)：异步加载 ***
+    qDebug() << "[MainWindow] Large file detected (" << fileSize / (1024 * 1024) << "MB), using async load";
+    
+    // 设置安全超时（30秒，大文件需要更长时间）
+    QTimer::singleShot(30000, this, [this]() {
       if (m_isLoading) {
         qWarning() << "[MainWindow] Safety timeout triggered - forcing load complete";
         setLoadingState(false);
-        m_statusLabel->setText(tr("Ready"));
+        m_progressBar->setVisible(false);
+        m_statusLabel->setText(tr("Ready (timeout)"));
         m_lineCountLabel->setText(tr("Lines: %1").arg(m_model->lineCount()));
         updateStatusBar();
       }
     });
+    
+    // 启动异步加载
+    m_model->loadFile(filePath);
   }
 
-  m_model->loadFile(filePath);
   updateWindowTitle();
 
   // 添加到最近文件列表
   addToRecentFiles(filePath);
 }
+
 
 void MainWindow::onFileLoaded(bool success, const QString &message) {
   // *** 确保加载状态被正确重置 ***
@@ -1181,10 +1216,14 @@ void MainWindow::onFileLoaded(bool success, const QString &message) {
     // 更新状态栏统计信息
     updateStatusBar();
     
+    // *** 关键：更新窗口标题，移除 [Indexing...] ***
+    updateWindowTitle();
+    
     qDebug() << "[MainWindow] File loaded successfully:" << message;
   } else {
     m_statusLabel->setText(tr("Load failed"));
     m_lineCountLabel->clear();
+    updateWindowTitle();  // 同样更新标题
     QMessageBox::critical(this, tr("Error"), message);
   }
 }

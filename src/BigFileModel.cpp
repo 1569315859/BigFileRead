@@ -332,12 +332,19 @@ void BigFileModel::buildIndexAsync() {
 }
 
 void BigFileModel::onIndexingFinished(bool success, const QString &message) {
+  // *** 关键：确保索引标记被正确重置 ***
   m_isIndexing.store(false);
-
-  if (!success) {
+  
+  // 停止刷新定时器
+  if (m_refreshTimer && m_refreshTimer->isActive()) {
+    onUpdateTimerTimeout();  // 最后一次拉取剩余数据
     m_refreshTimer->stop();
-    emit fileLoaded(false, message);
   }
+
+  // *** 无论成功失败都发送 fileLoaded 信号 ***
+  emit fileLoaded(success, message);
+  
+  qDebug() << "[BigFileModel] Indexing finished:" << success << message;
 }
 
 bool BigFileModel::canFetchMore(const QModelIndex &parent) const {

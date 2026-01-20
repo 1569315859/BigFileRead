@@ -1,6 +1,7 @@
 /**
  * @file AdvancedFilterWidget.cpp
  * @brief Advanced Log Filtering UI Widget Implementation
+ * @version 2.0 - 优化布局和统一高度
  */
 
 #include "AdvancedFilterWidget.h"
@@ -37,52 +38,24 @@ AdvancedFilterWidget::AdvancedFilterWidget(QWidget *parent)
 
 void AdvancedFilterWidget::setupUi()
 {
-    // Main horizontal layout
+    // ========== 布局设置 ==========
     QHBoxLayout *mainLayout = new QHBoxLayout(this);
-    mainLayout->setContentsMargins(8, 4, 8, 4);
-    mainLayout->setSpacing(16);
+    mainLayout->setContentsMargins(10, 5, 10, 5);
+    mainLayout->setSpacing(8);
+    mainLayout->setAlignment(Qt::AlignVCenter);  // 垂直居中对齐
 
-    // ========== Time Range Section ==========
-    QHBoxLayout *timeLayout = new QHBoxLayout();
-    timeLayout->setSpacing(6);
-    
-    m_timeRangeCheckBox = new QCheckBox(tr("Time:"), this);
-    m_timeRangeCheckBox->setToolTip(tr("Enable time range filtering"));
-    timeLayout->addWidget(m_timeRangeCheckBox);
-    
-    m_startTimeEdit = new QDateTimeEdit(this);
-    m_startTimeEdit->setDisplayFormat(QStringLiteral("yyyy-MM-dd HH:mm:ss"));
-    m_startTimeEdit->setDateTime(QDateTime::currentDateTime().addDays(-1));
-    m_startTimeEdit->setCalendarPopup(true);
-    m_startTimeEdit->setEnabled(false);
-    m_startTimeEdit->setMinimumWidth(150);
-    timeLayout->addWidget(m_startTimeEdit);
-    
-    m_timeToLabel = new QLabel(tr("to"), this);
-    timeLayout->addWidget(m_timeToLabel);
-    
-    m_endTimeEdit = new QDateTimeEdit(this);
-    m_endTimeEdit->setDisplayFormat(QStringLiteral("yyyy-MM-dd HH:mm:ss"));
-    m_endTimeEdit->setDateTime(QDateTime::currentDateTime());
-    m_endTimeEdit->setCalendarPopup(true);
-    m_endTimeEdit->setEnabled(false);
-    m_endTimeEdit->setMinimumWidth(150);
-    timeLayout->addWidget(m_endTimeEdit);
-    
-    mainLayout->addLayout(timeLayout);
+    // ========== 固定高度常量 ==========
+    const int FIXED_HEIGHT = 30;
 
-    // Separator
-    QFrame *sep1 = new QFrame(this);
-    sep1->setFrameShape(QFrame::VLine);
-    sep1->setFrameShadow(QFrame::Sunken);
-    mainLayout->addWidget(sep1);
+    // ========== 筛选标签 ==========
+    QLabel *filterLabel = new QLabel(tr("筛选:"), this);
+    filterLabel->setAlignment(Qt::AlignVCenter);
+    mainLayout->addWidget(filterLabel);
 
     // ========== Level Section ==========
-    QHBoxLayout *levelLayout = new QHBoxLayout();
-    levelLayout->setSpacing(6);
-    
-    m_levelLabel = new QLabel(tr("Level:"), this);
-    levelLayout->addWidget(m_levelLabel);
+    m_levelLabel = new QLabel(tr("级别:"), this);
+    m_levelLabel->setAlignment(Qt::AlignVCenter);
+    mainLayout->addWidget(m_levelLabel);
     
     m_levelCombo = new QComboBox(this);
     m_levelCombo->addItem(tr("ALL"), static_cast<int>(LogLevel::All));
@@ -93,221 +66,233 @@ void AdvancedFilterWidget::setupUi()
     m_levelCombo->addItem(tr("ERROR"), static_cast<int>(LogLevel::Error));
     m_levelCombo->addItem(tr("FATAL"), static_cast<int>(LogLevel::Fatal));
     m_levelCombo->setCurrentIndex(0);
-    m_levelCombo->setMinimumWidth(80);
-    levelLayout->addWidget(m_levelCombo);
-    
-    mainLayout->addLayout(levelLayout);
-
-    // Separator
-    QFrame *sep2 = new QFrame(this);
-    sep2->setFrameShape(QFrame::VLine);
-    sep2->setFrameShadow(QFrame::Sunken);
-    mainLayout->addWidget(sep2);
+    mainLayout->addWidget(m_levelCombo);
 
     // ========== Keyword Section ==========
-    QHBoxLayout *keywordLayout = new QHBoxLayout();
-    keywordLayout->setSpacing(6);
-    
-    m_keywordLabel = new QLabel(tr("Keywords:"), this);
-    keywordLayout->addWidget(m_keywordLabel);
+    m_keywordLabel = new QLabel(tr("关键词:"), this);
+    m_keywordLabel->setAlignment(Qt::AlignVCenter);
+    mainLayout->addWidget(m_keywordLabel);
     
     m_keywordEdit = new QLineEdit(this);
-    m_keywordEdit->setPlaceholderText(tr("Space-separated keywords..."));
-    m_keywordEdit->setMinimumWidth(200);
+    m_keywordEdit->setPlaceholderText(tr("空格分隔，\"引号\"保留短语"));
     m_keywordEdit->setClearButtonEnabled(true);
-    keywordLayout->addWidget(m_keywordEdit);
-    
-    // AND/OR radio buttons
-    m_andRadio = new QRadioButton(tr("AND"), this);
-    m_andRadio->setToolTip(tr("All keywords must match"));
-    m_andRadio->setChecked(true);
-    keywordLayout->addWidget(m_andRadio);
-    
-    m_orRadio = new QRadioButton(tr("OR"), this);
-    m_orRadio->setToolTip(tr("Any keyword can match"));
-    keywordLayout->addWidget(m_orRadio);
-    
-    QButtonGroup *logicGroup = new QButtonGroup(this);
-    logicGroup->addButton(m_andRadio);
-    logicGroup->addButton(m_orRadio);
-    
-    mainLayout->addLayout(keywordLayout);
+    m_keywordEdit->setMinimumWidth(200);
+    mainLayout->addWidget(m_keywordEdit, 1);  // 伸展因子=1
 
-    // ========== Options Section ==========
-    QHBoxLayout *optionsLayout = new QHBoxLayout();
-    optionsLayout->setSpacing(8);
+    // ========== Mode ComboBox ==========
+    m_modeLabel = new QLabel(tr("模式:"), this);
+    m_modeLabel->setAlignment(Qt::AlignVCenter);
+    mainLayout->addWidget(m_modeLabel);
     
-    m_regexCheckBox = new QCheckBox(tr("Regex"), this);
-    m_regexCheckBox->setToolTip(tr("Use regular expressions for keyword matching"));
-    optionsLayout->addWidget(m_regexCheckBox);
-    
-    m_caseSensitiveCheckBox = new QCheckBox(tr("Case"), this);
-    m_caseSensitiveCheckBox->setToolTip(tr("Case-sensitive matching"));
-    optionsLayout->addWidget(m_caseSensitiveCheckBox);
-    
-    mainLayout->addLayout(optionsLayout);
+    m_modeCombo = new QComboBox(this);
+    m_modeCombo->addItem(tr("全部 (AND)"), true);
+    m_modeCombo->addItem(tr("任意 (OR)"), false);
+    m_modeCombo->setCurrentIndex(0);
+    m_modeCombo->setToolTip(tr("AND = 所有关键词匹配, OR = 任意关键词匹配"));
+    mainLayout->addWidget(m_modeCombo);
+
+    // ========== Options ==========
+    m_regexCheckBox = new QCheckBox(tr("正则"), this);
+    m_regexCheckBox->setToolTip(tr("使用正则表达式"));
+    mainLayout->addWidget(m_regexCheckBox);
 
     // ========== Action Buttons ==========
-    mainLayout->addStretch();
-    
-    m_applyBtn = new QPushButton(tr("Apply"), this);
-    m_applyBtn->setToolTip(tr("Apply filters (Enter)"));
+    m_applyBtn = new QPushButton(tr("应用"), this);
+    m_applyBtn->setToolTip(tr("应用筛选 (Enter)"));
     m_applyBtn->setDefault(true);
-    m_applyBtn->setMinimumWidth(70);
+    m_applyBtn->setMinimumWidth(60);
     mainLayout->addWidget(m_applyBtn);
     
-    m_clearBtn = new QPushButton(tr("Clear"), this);
-    m_clearBtn->setToolTip(tr("Clear all filters"));
-    m_clearBtn->setMinimumWidth(70);
+    m_clearBtn = new QPushButton(tr("清除"), this);
+    m_clearBtn->setToolTip(tr("清除筛选条件"));
+    m_clearBtn->setMinimumWidth(60);
     mainLayout->addWidget(m_clearBtn);
 
-    // Set fixed height for toolbar-like appearance
+    // ========== *** 关键：C++ 硬编码强制高度 *** ==========
+    // 遍历所有需要固定高度的控件
+    QList<QWidget*> fixedHeightWidgets = {
+        m_levelCombo,
+        m_keywordEdit,
+        m_modeCombo,
+        m_applyBtn,
+        m_clearBtn
+    };
+    
+    for (QWidget* w : fixedHeightWidgets) {
+        if (w) {
+            w->setFixedHeight(FIXED_HEIGHT);  // 强制精确高度
+            w->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);  // 水平可伸展，垂直固定
+        }
+    }
+    
+    // CheckBox 也需要固定高度
+    m_regexCheckBox->setFixedHeight(FIXED_HEIGHT);
+    m_regexCheckBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
+    // 设置工具栏总高度 (30px + 5*2 边距)
     setFixedHeight(42);
+    
+    // ========== 保留隐藏的旧控件 ==========
+    m_timeRangeCheckBox = new QCheckBox(this);
+    m_timeRangeCheckBox->hide();
+    m_startTimeEdit = new QDateTimeEdit(this);
+    m_startTimeEdit->hide();
+    m_endTimeEdit = new QDateTimeEdit(this);
+    m_endTimeEdit->hide();
+    m_timeToLabel = new QLabel(this);
+    m_timeToLabel->hide();
+    m_andRadio = new QRadioButton(this);
+    m_andRadio->setChecked(true);
+    m_andRadio->hide();
+    m_orRadio = new QRadioButton(this);
+    m_orRadio->hide();
+    m_caseSensitiveCheckBox = new QCheckBox(this);
+    m_caseSensitiveCheckBox->hide();
 }
 
 void AdvancedFilterWidget::applyDarkTheme()
 {
-    setStyleSheet(R"(
-        AdvancedFilterWidget {
-            background-color: #2d2d30;
-            border-bottom: 1px solid #3c3c3c;
-        }
+    // *** 扁平化样式：移除原生边框，高度由 C++ 控制 ***
+    setStyleSheet(
+        // Widget 容器背景
+        "AdvancedFilterWidget {"
+        "   background-color: #2b2b2b;"
+        "   border-bottom: 1px solid #3c3c3c;"
+        "}"
         
-        QLabel {
-            color: #d4d4d4;
-            font-weight: 500;
-        }
+        // 标签样式
+        "AdvancedFilterWidget QLabel {"
+        "   color: #e0e0e0;"
+        "   font-size: 13px;"
+        "   font-weight: 500;"
+        "   padding: 0px;"
+        "}"
         
-        QCheckBox {
-            color: #d4d4d4;
-        }
-        QCheckBox::indicator {
-            width: 14px;
-            height: 14px;
-        }
-        QCheckBox::indicator:unchecked {
-            border: 1px solid #555555;
-            background-color: #3c3c3c;
-        }
-        QCheckBox::indicator:checked {
-            border: 1px solid #007acc;
-            background-color: #007acc;
-        }
+        // *** 关键：扁平化控件，移除原生边框 ***
+        "AdvancedFilterWidget QComboBox,"
+        "AdvancedFilterWidget QLineEdit,"
+        "AdvancedFilterWidget QPushButton,"
+        "AdvancedFilterWidget QDateTimeEdit {"
+        "   border: 1px solid #555;"   /* 替换原生 3D 边框 */
+        "   border-radius: 4px;"
+        "   background-color: #333;"
+        "   color: white;"
+        "   padding-left: 5px;"
+        "   margin: 0px;"              /* 移除外边距，由布局控制 */
+        "}"
+
+        // 修正 ComboBox 文本对齐
+        "AdvancedFilterWidget QComboBox {"
+        "   padding-right: 20px;"      /* 为箭头预留空间 */
+        "}"
+
+        // LineEdit 文本垂直居中微调
+        "AdvancedFilterWidget QLineEdit {"
+        "   padding-bottom: 2px;"
+        "}"
         
-        QRadioButton {
-            color: #d4d4d4;
-        }
-        QRadioButton::indicator {
-            width: 14px;
-            height: 14px;
-        }
+        // Hover 效果 (蓝色边框)
+        "AdvancedFilterWidget QPushButton:hover, "
+        "AdvancedFilterWidget QLineEdit:hover, "
+        "AdvancedFilterWidget QComboBox:hover {"
+        "   border: 1px solid #3a86ff;"
+        "}"
         
-        QLineEdit {
-            background-color: #3c3c3c;
-            color: #d4d4d4;
-            border: 1px solid #555555;
-            border-radius: 3px;
-            padding: 4px 8px;
-        }
-        QLineEdit:focus {
-            border-color: #007acc;
-        }
+        // Focus 效果
+        "AdvancedFilterWidget QLineEdit:focus {"
+        "   border: 1px solid #007acc;"
+        "}"
         
-        QComboBox {
-            background-color: #3c3c3c;
-            color: #d4d4d4;
-            border: 1px solid #555555;
-            border-radius: 3px;
-            padding: 4px 8px;
-        }
-        QComboBox:hover {
-            border-color: #007acc;
-        }
-        QComboBox::drop-down {
-            border: none;
-            width: 20px;
-        }
-        QComboBox QAbstractItemView {
-            background-color: #252526;
-            color: #d4d4d4;
-            border: 1px solid #555555;
-            selection-background-color: #094771;
-        }
+        // ComboBox 下拉箭头区域
+        "AdvancedFilterWidget QComboBox::drop-down {"
+        "   border: none;"
+        "   width: 20px;"
+        "   subcontrol-origin: padding;"
+        "   subcontrol-position: right center;"
+        "}"
+        "AdvancedFilterWidget QComboBox::down-arrow {"
+        "   image: none;"
+        "   border-left: 5px solid transparent;"
+        "   border-right: 5px solid transparent;"
+        "   border-top: 6px solid #888888;"
+        "   margin-right: 6px;"
+        "}"
+        "AdvancedFilterWidget QComboBox::down-arrow:hover {"
+        "   border-top-color: #e0e0e0;"
+        "}"
         
-        QDateTimeEdit {
-            background-color: #3c3c3c;
-            color: #d4d4d4;
-            border: 1px solid #555555;
-            border-radius: 3px;
-            padding: 4px 8px;
-        }
-        QDateTimeEdit:focus {
-            border-color: #007acc;
-        }
-        QDateTimeEdit:disabled {
-            background-color: #2d2d30;
-            color: #808080;
-        }
+        // ComboBox 下拉列表
+        "AdvancedFilterWidget QComboBox QAbstractItemView {"
+        "   background-color: #252526;"
+        "   color: #e0e0e0;"
+        "   border: 1px solid #555555;"
+        "   selection-background-color: #094771;"
+        "   outline: none;"
+        "}"
         
-        QPushButton {
-            background-color: #3c3c3c;
-            color: #d4d4d4;
-            border: 1px solid #555555;
-            border-radius: 3px;
-            padding: 5px 12px;
-        }
-        QPushButton:hover {
-            background-color: #505050;
-            border-color: #007acc;
-        }
-        QPushButton:pressed {
-            background-color: #2d2d30;
-        }
+        // 按钮特定样式
+        "AdvancedFilterWidget QPushButton {"
+        "   background-color: #444444;"
+        "   font-weight: bold;"
+        "}"
+        "AdvancedFilterWidget QPushButton:pressed {"
+        "   background-color: #222222;"
+        "}"
         
-        QPushButton#applyBtn {
-            background-color: #0e639c;
-            color: white;
-            border: none;
-            font-weight: bold;
-        }
-        QPushButton#applyBtn:hover {
-            background-color: #1177bb;
-        }
+        // 应用按钮（蓝色高亮）
+        "AdvancedFilterWidget QPushButton#applyBtn {"
+        "   background-color: #0e639c;"
+        "   color: white;"
+        "   border: none;"
+        "}"
+        "AdvancedFilterWidget QPushButton#applyBtn:hover {"
+        "   background-color: #1177bb;"
+        "}"
+        "AdvancedFilterWidget QPushButton#applyBtn:pressed {"
+        "   background-color: #094771;"
+        "}"
         
-        QFrame[frameShape="5"] {  /* VLine */
-            background-color: #555555;
-            max-width: 1px;
-        }
-    )");
+        // CheckBox 样式
+        "AdvancedFilterWidget QCheckBox {"
+        "   color: #e0e0e0;"
+        "   font-size: 13px;"
+        "   spacing: 6px;"
+        "}"
+        "AdvancedFilterWidget QCheckBox::indicator {"
+        "   width: 16px;"
+        "   height: 16px;"
+        "   border: 1px solid #555555;"
+        "   border-radius: 3px;"
+        "   background-color: #3c3c3c;"
+        "}"
+        "AdvancedFilterWidget QCheckBox::indicator:checked {"
+        "   background-color: #007acc;"
+        "   border-color: #007acc;"
+        "}"
+        "AdvancedFilterWidget QCheckBox::indicator:hover {"
+        "   border-color: #3a86ff;"
+        "}"
+    );
     
     m_applyBtn->setObjectName(QStringLiteral("applyBtn"));
 }
 
 void AdvancedFilterWidget::connectSignals()
 {
-    // Time range checkbox enables/disables time edits
-    connect(m_timeRangeCheckBox, &QCheckBox::toggled, m_startTimeEdit, &QWidget::setEnabled);
-    connect(m_timeRangeCheckBox, &QCheckBox::toggled, m_endTimeEdit, &QWidget::setEnabled);
-    connect(m_timeRangeCheckBox, &QCheckBox::toggled, this, &AdvancedFilterWidget::onFilterValueChanged);
-    
-    // Time edits
-    connect(m_startTimeEdit, &QDateTimeEdit::dateTimeChanged, this, &AdvancedFilterWidget::onFilterValueChanged);
-    connect(m_endTimeEdit, &QDateTimeEdit::dateTimeChanged, this, &AdvancedFilterWidget::onFilterValueChanged);
-    
     // Level combo
     connect(m_levelCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), 
+            this, &AdvancedFilterWidget::onFilterValueChanged);
+    
+    // Mode combo
+    connect(m_modeCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), 
             this, &AdvancedFilterWidget::onFilterValueChanged);
     
     // Keywords - apply on Enter
     connect(m_keywordEdit, &QLineEdit::returnPressed, this, &AdvancedFilterWidget::onApplyClicked);
     connect(m_keywordEdit, &QLineEdit::textChanged, this, &AdvancedFilterWidget::onFilterValueChanged);
     
-    // Radio buttons
-    connect(m_andRadio, &QRadioButton::toggled, this, &AdvancedFilterWidget::onFilterValueChanged);
-    
     // Checkboxes
     connect(m_regexCheckBox, &QCheckBox::toggled, this, &AdvancedFilterWidget::onFilterValueChanged);
-    connect(m_caseSensitiveCheckBox, &QCheckBox::toggled, this, &AdvancedFilterWidget::onFilterValueChanged);
     
     // Buttons
     connect(m_applyBtn, &QPushButton::clicked, this, &AdvancedFilterWidget::onApplyClicked);
@@ -404,6 +389,12 @@ QStringList AdvancedFilterWidget::keywords() const
 
 AdvancedFilterWidget::KeywordLogic AdvancedFilterWidget::keywordLogic() const
 {
+    // 使用新的 ComboBox 来获取逻辑模式
+    if (m_modeCombo) {
+        bool isAnd = m_modeCombo->currentData().toBool();
+        return isAnd ? KeywordLogic::And : KeywordLogic::Or;
+    }
+    // 回退到旧的 RadioButton（如果存在）
     return m_andRadio->isChecked() ? KeywordLogic::And : KeywordLogic::Or;
 }
 
@@ -448,6 +439,9 @@ void AdvancedFilterWidget::clearFilters()
     m_endTimeEdit->setDateTime(QDateTime::currentDateTime());
     m_levelCombo->setCurrentIndex(0);  // ALL
     m_keywordEdit->clear();
+    if (m_modeCombo) {
+        m_modeCombo->setCurrentIndex(0);  // AND
+    }
     m_andRadio->setChecked(true);
     m_regexCheckBox->setChecked(false);
     m_caseSensitiveCheckBox->setChecked(false);

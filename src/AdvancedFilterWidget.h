@@ -172,9 +172,14 @@ private:
     QCheckBox *m_regexCheckBox = nullptr;
     QCheckBox *m_caseSensitiveCheckBox = nullptr;
 
+    // Mode ComboBox (替代 AND/OR 单选按钮)
+    QLabel *m_modeLabel = nullptr;
+    QComboBox *m_modeCombo = nullptr;
+
     // Action Buttons
     QPushButton *m_applyBtn = nullptr;
     QPushButton *m_clearBtn = nullptr;
+
 
     // Settings
     bool m_liveFilterEnabled = false;  // Filter on every change vs manual apply
