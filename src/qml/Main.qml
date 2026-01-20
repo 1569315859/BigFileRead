@@ -702,15 +702,23 @@ ApplicationWindow {
     Platform.FileDialog {
         id: fileDialog
         title: qsTr("Open Log File")
+        nameFilters: ["Log files (*.log *.txt)", "All files (*)"]
+        
+        Component.onCompleted: {
+            console.log("FileDialog initialized, platform:", Qt.platform.os)
+        }
+        
         onAccepted: {
-            var path = file.toString()
-            if (Qt.platform.os === "windows") {
-                path = path.replace(/^(file:\/{3})/, "")
-            } else {
-                path = path.replace(/^(file:\/\/)/, "")
-            }
+            console.log("FileDialog accepted, file:", file)
+            // 使用 C++ 端的 urlToLocalPath 方法进行更可靠的路径转换
+            var path = _appController.urlToLocalPath(file)
+            console.log("Processed path:", path)
             _logModel.loadFile(path)
             _appController.addRecentFile(path)
+        }
+        
+        onRejected: {
+            console.log("FileDialog rejected/cancelled")
         }
     }
 
@@ -721,12 +729,7 @@ ApplicationWindow {
         defaultSuffix: "txt"
         nameFilters: ["Text files (*.txt)", "Log files (*.log)", "All files (*)"]
         onAccepted: {
-            var path = file.toString()
-            if (Qt.platform.os === "windows") {
-                path = path.replace(/^(file:\/{3})/, "")
-            } else {
-                path = path.replace(/^(file:\/\/)/, "")
-            }
+            var path = _appController.urlToLocalPath(file)
             _logModel.exportToFile(path)
         }
     }

@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QStringList>
 #include <QSettings>
+#include <QUrl>
 
 class AppController : public QObject
 {
@@ -25,6 +26,9 @@ public:
     Q_INVOKABLE bool activateLicense(const QString &key);
     Q_INVOKABLE void copyToClipboard(const QString &text);
     Q_INVOKABLE void openUrl(const QString &url);
+    
+    // File dialog helper for macOS compatibility
+    Q_INVOKABLE QString urlToLocalPath(const QUrl &url) const;
     
     // Recent files management
     QStringList recentFiles() const;

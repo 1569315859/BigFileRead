@@ -1,4 +1,4 @@
 // Windows Application Icon Resource
 // This file tells Windows Explorer to display this icon for the .exe file
 
-IDI_ICON1 ICON DISCARDABLE "E:/qtCode/BigFileRead/src/app_icon.ico"
+IDI_ICON1 ICON DISCARDABLE "E:/devCode/BigFileRead/src/app_icon.ico"

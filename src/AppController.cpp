@@ -79,3 +79,22 @@ void AppController::clearRecentFiles() {
 QString AppController::getFileName(const QString &filePath) const {
     return QFileInfo(filePath).fileName();
 }
+
+QString AppController::urlToLocalPath(const QUrl &url) const {
+    // 将 QUrl 转换为本地文件路径
+    // 这个方法处理 macOS 上的 file:// URL 格式问题
+    if (url.isLocalFile()) {
+        return url.toLocalFile();
+    }
+    // 如果不是本地文件 URL，尝试直接转换
+    QString path = url.toString();
+    // 移除 file:// 前缀
+    if (path.startsWith("file://")) {
+        path = path.mid(7);
+        // macOS 可能会有 localhost
+        if (path.startsWith("localhost")) {
+            path = path.mid(9);
+        }
+    }
+    return path;
+}

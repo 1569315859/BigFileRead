@@ -540,6 +540,14 @@ if(BUILD_EXECUTABLE)
             ${HEADER_FILES} 
             ${UI_FILES} 
             ${QRC_FILES}
+        )        
+        # 设置 macOS Bundle 属性
+        set_target_properties(${TARGET_NAME} PROPERTIES
+            MACOSX_BUNDLE_INFO_PLIST "${CMAKE_SOURCE_DIR}/deploy/Info.plist"
+            MACOSX_BUNDLE_GUI_IDENTIFIER "com.bigfileread.BigFileViewer"
+            MACOSX_BUNDLE_BUNDLE_NAME "BigFileViewer"
+            MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
+            MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
         )
     else()
         # 普通可执行文件
