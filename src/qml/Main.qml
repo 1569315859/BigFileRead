@@ -146,19 +146,48 @@ ApplicationWindow {
         }
     }
     
-    // ========== 关键词高亮配置 ==========
+    // ========== 关键词高亮配置（从 KeywordConfigManager 获取）==========
+    // 默认关键字颜色（如果 _keywordConfig 未加载）
+    property var defaultKeywordColors: ({
+        "FATAL": "#FF0000",
+        "CRITICAL": "#FF0000",
+        "ERROR": "#FF6B6B",
+        "FAIL": "#FF6B6B",
+        "EXCEPTION": "#FF4444",
+        "WARN": "#FFA500",
+        "WARNING": "#FFA500",
+        "INFO": "#00BFFF",
+        "DEBUG": "#DA70D6",
+        "TRACE": "#20B2AA",
+        "SUCCESS": "#32CD32",
+        "OK": "#32CD32"
+    })
+    
     property var keywordColors: {
-        "FATAL": "#FF0000",    // 红色
-        "ERROR": "#FF4444",    // 浅红色
-        "WARN": "#FFA500",     // 橙色
-        "WARNING": "#FFA500",  // 橙色
-        "INFO": "#00BFFF",     // 蓝色
-        "DEBUG": "#888888",    // 灰色
-        "TRACE": "#666666"     // 深灰色
+        var cfg = _keywordConfig ? _keywordConfig.keywords : null
+        if (cfg && Object.keys(cfg).length > 0) {
+            return cfg
+        }
+        return defaultKeywordColors
+    }
+    
+    // 当配置改变时更新
+    Connections {
+        target: _keywordConfig
+        function onKeywordsChanged() {
+            var cfg = _keywordConfig.keywords
+            if (cfg && Object.keys(cfg).length > 0) {
+                keywordColors = cfg
+            }
+        }
     }
     
     property string currentSearchTerm: ""
     property string currentFilterTerm: ""
+    
+    // 侧边导航条的标记数据
+    property var navMarkerData: []
+    property bool isNavBarVisible: true  // 滚动条标记可见性
     
     // 将文本转换为带高亮的富文本 HTML
     function highlightText(text) {
@@ -562,6 +591,18 @@ ApplicationWindow {
                     MenuSeparator {}
                     
                     MenuItem {
+                        text: qsTr("Keyword Colors...")
+                        onTriggered: keywordConfigDialog.open()
+                    }
+                    
+                    MenuItem {
+                        text: isNavBarVisible ? qsTr("Hide Scroll Markers") : qsTr("Show Scroll Markers")
+                        onTriggered: isNavBarVisible = !isNavBarVisible
+                    }
+                    
+                    MenuSeparator {}
+                    
+                    MenuItem {
                         text: qsTr("Register...")
                         onTriggered: registrationDialog.open()
                     }
@@ -656,6 +697,7 @@ ApplicationWindow {
         }
     }
     AdvancedFilterDialog { id: advancedFilterDialog }
+    KeywordConfigDialog { id: keywordConfigDialog }
 
     Platform.FileDialog {
         id: fileDialog
@@ -1019,17 +1061,22 @@ ApplicationWindow {
         }
 
         // ========== 日志视图区域 ==========
-        ColumnLayout {
+        RowLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
             spacing: 0
             
-            // 列标题（仅表格模式显示）
-            Rectangle {
+            ColumnLayout {
                 Layout.fillWidth: true
-                Layout.preferredHeight: isTableViewMode ? 28 : 0
-                visible: isTableViewMode
-                color: panelColor
+                Layout.fillHeight: true
+                spacing: 0
+            
+                // 列标题（仅表格模式显示）
+                Rectangle {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: isTableViewMode ? 28 : 0
+                    visible: isTableViewMode
+                    color: panelColor
                 
                 RowLayout {
                     anchors.fill: parent
@@ -1120,13 +1167,14 @@ ApplicationWindow {
                     }
 
                     MouseArea {
+                        id: rowMouseArea
                         anchors.fill: parent
                         acceptedButtons: Qt.LeftButton | Qt.RightButton
                         onClicked: (mouse) => {
                             selectedRow = row
                             selectedLineText = display
                             if (mouse.button === Qt.RightButton) {
-                                globalContextMenu.popup()
+                                globalContextMenu.popup(rowMouseArea, mouse.x, mouse.y)
                             }
                         }
                         onDoubleClicked: {
@@ -1137,10 +1185,39 @@ ApplicationWindow {
                     }
                 }
                 
-                ScrollBar.vertical: ScrollBar { id: vbar }
+                // 隐藏默认滚动条，使用增强型滚动条
+                ScrollBar.vertical: ScrollBar { 
+                    id: vbar
+                    visible: false  // 隐藏，由 EnhancedScrollBar 替代
+                }
                 ScrollBar.horizontal: ScrollBar { }
             }
-        }
+            }  // End of inner ColumnLayout
+            
+            // ========== 增强型滚动条（集成导航标记）==========
+            EnhancedScrollBar {
+                id: enhancedScrollBar
+                Layout.fillHeight: true
+                Layout.preferredWidth: 16
+                
+                flickable: tableView
+                totalLines: _logModel.lineCount
+                rowHeight: window.rowHeight
+                showMarkers: isNavBarVisible
+                
+                // 各类标记数据
+                bookmarks: _logModel.bookmarkLines || []
+                searchResults: _logModel.searchResultLines || []
+                errorLines: _logModel.errorLines || []
+                warningLines: _logModel.warningLines || []
+                infoLines: _logModel.infoLines || []
+                
+                onLineClicked: function(lineNumber) {
+                    tableView.contentY = lineNumber * rowHeight
+                    selectedRow = lineNumber
+                }
+            }
+        }  // End of RowLayout
         
         // Detail Panel - Expandable bottom panel for selected line
         Rectangle {

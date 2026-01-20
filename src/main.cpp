@@ -13,6 +13,7 @@
 #include "ThemeManager.h"
 #include "AppController.h"
 #include "LanguageManager.h"
+#include "KeywordConfigManager.h"
 
 /**
  * @brief 程序入口点
@@ -48,6 +49,7 @@ int main(int argc, char *argv[]) {
     ThemeManager themeManager;
     BigFileModel logModel;
     AppController appController;
+    KeywordConfigManager keywordConfig;
 
     QQmlApplicationEngine engine;
     
@@ -56,6 +58,7 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("_logModel", &logModel);
     engine.rootContext()->setContextProperty("_appController", &appController);
     engine.rootContext()->setContextProperty("_languageManager", &LanguageManager::instance());
+    engine.rootContext()->setContextProperty("_keywordConfig", &keywordConfig);
 
     const QUrl url(QStringLiteral("qrc:/qml/Main.qml"));
     QObject::connect(

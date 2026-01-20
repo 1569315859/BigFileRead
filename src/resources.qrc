@@ -6,5 +6,8 @@
         <file>qml/RegistrationDialog.qml</file>
         <file>qml/GoToLineDialog.qml</file>
         <file>qml/AdvancedFilterDialog.qml</file>
+        <file>qml/KeywordConfigDialog.qml</file>
+        <file>qml/NavigationBar.qml</file>
+        <file>qml/EnhancedScrollBar.qml</file>
     </qresource>
 </RCC>

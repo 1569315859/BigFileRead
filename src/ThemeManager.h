@@ -13,6 +13,7 @@ class ThemeManager : public QObject
     Q_PROPERTY(QColor accentColor READ accentColor NOTIFY themeChanged)
     Q_PROPERTY(QColor borderColor READ borderColor NOTIFY themeChanged)
     Q_PROPERTY(QString currentTheme READ currentTheme WRITE setTheme NOTIFY themeChanged)
+    Q_PROPERTY(bool isDarkTheme READ isDarkTheme NOTIFY themeChanged)
 
 public:
     explicit ThemeManager(QObject *parent = nullptr);
@@ -24,6 +25,7 @@ public:
     QColor accentColor() const { return m_accentColor; }
     QColor borderColor() const { return m_borderColor; }
     QString currentTheme() const { return m_currentTheme; }
+    bool isDarkTheme() const { return m_isDarkTheme; }
 
     Q_INVOKABLE void setTheme(const QString &themeName);
     
@@ -43,6 +45,7 @@ private:
     QColor m_accentColor;
     QColor m_borderColor;
     QString m_currentTheme;
+    bool m_isDarkTheme = true;
     
     QSettings m_settings;
 };

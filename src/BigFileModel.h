@@ -34,6 +34,11 @@ class BigFileModel : public QAbstractTableModel {
   Q_PROPERTY(bool isFilterMode READ isFilterMode NOTIFY filterModeChanged)
   Q_PROPERTY(bool isIndexing READ isIndexing NOTIFY indexingStateChanged)
   Q_PROPERTY(int searchResultCount READ searchResultCount NOTIFY searchResultCountChanged)
+  Q_PROPERTY(QVariantList bookmarkLines READ bookmarkLines NOTIFY bookmarksChanged)
+  Q_PROPERTY(QVariantList searchResultLines READ searchResultLines NOTIFY searchResultCountChanged)
+  Q_PROPERTY(QVariantList errorLines READ errorLines NOTIFY lineCountChanged)
+  Q_PROPERTY(QVariantList warningLines READ warningLines NOTIFY lineCountChanged)
+  Q_PROPERTY(QVariantList infoLines READ infoLines NOTIFY lineCountChanged)
 
 public:
   /// UI 刷新间隔（毫秒）- 每秒 10 次更新
@@ -254,6 +259,44 @@ public:
    */
   Q_INVOKABLE void clearAllBookmarks();
 
+  /**
+   * @brief 获取所有书签行号列表（用于 NavigationBar）
+   * @return 书签行号的 QVariantList
+   */
+  QVariantList bookmarkLines() const;
+
+  /**
+   * @brief 获取所有搜索结果行号列表（用于 NavigationBar）
+   * @return 搜索结果行号的 QVariantList
+   */
+  QVariantList searchResultLines() const;
+
+  /**
+   * @brief 获取包含错误关键字的行号列表
+   * @return 错误行号的 QVariantList
+   */
+  Q_INVOKABLE QVariantList errorLines() const;
+
+  /**
+   * @brief 获取包含警告关键字的行号列表
+   * @return 警告行号的 QVariantList
+   */
+  Q_INVOKABLE QVariantList warningLines() const;
+
+  /**
+   * @brief 获取包含信息关键字的行号列表
+   * @return 信息行号的 QVariantList
+   */
+  Q_INVOKABLE QVariantList infoLines() const;
+
+  /**
+   * @brief 搜索包含指定关键字的行（用于标记）
+   * @param keywords 关键字列表
+   * @param maxResults 最大结果数量（限制性能开销）
+   * @return 匹配行号列表
+   */
+  Q_INVOKABLE QVariantList findLinesWithKeywords(const QStringList &keywords, int maxResults = 5000) const;
+
   // ============ 原始行访问 (用于外部访问) ============
 
   /**
@@ -330,6 +373,7 @@ signals:
   void filterModeChanged();
   void indexingStateChanged();
   void searchResultCountChanged();
+  void bookmarksChanged();
 
   // ============ 过滤信号 ============
 

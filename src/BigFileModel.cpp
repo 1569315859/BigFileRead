@@ -1195,6 +1195,7 @@ void BigFileModel::toggleBookmark(int viewRow) {
 
   QModelIndex idx = index(viewRow, 0);
   emit dataChanged(idx, idx, {BookmarkRole});
+  emit bookmarksChanged();
 }
 
 bool BigFileModel::isBookmarked(int viewRow) const {
@@ -1263,8 +1264,98 @@ void BigFileModel::clearAllBookmarks() {
   m_bookmarks.clear();
   
   emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1), {BookmarkRole});
+  emit bookmarksChanged();
   
   qDebug() << "All bookmarks cleared";
+}
+
+QVariantList BigFileModel::bookmarkLines() const {
+  QVariantList result;
+  for (qint64 bookmark : m_bookmarks) {
+    // 转换为视图行号（如果在过滤模式下）
+    if (m_filterMode.load() && !m_filteredRows.empty()) {
+      // 在过滤索引中查找
+      auto it = std::lower_bound(m_filteredRows.begin(), m_filteredRows.end(), static_cast<int>(bookmark));
+      if (it != m_filteredRows.end() && *it == static_cast<int>(bookmark)) {
+        result.append(static_cast<int>(std::distance(m_filteredRows.begin(), it)));
+      }
+    } else {
+      result.append(static_cast<int>(bookmark));
+    }
+  }
+  return result;
+}
+
+QVariantList BigFileModel::searchResultLines() const {
+  QVariantList result;
+  // 限制返回数量，避免太多标记影响性能
+  int count = std::min(static_cast<int>(m_searchResults.size()), 10000);
+  for (int i = 0; i < count; ++i) {
+    result.append(m_searchResults[i]);
+  }
+  return result;
+}
+
+QVariantList BigFileModel::errorLines() const {
+  static const QStringList errorKeywords = {
+    "FATAL", "CRITICAL", "ERROR", "FAIL", "FAILED", "EXCEPTION", "PANIC", "ABORT"
+  };
+  return findLinesWithKeywords(errorKeywords, 3000);
+}
+
+QVariantList BigFileModel::warningLines() const {
+  static const QStringList warningKeywords = {
+    "WARN", "WARNING", "ALERT", "CAUTION"
+  };
+  return findLinesWithKeywords(warningKeywords, 3000);
+}
+
+QVariantList BigFileModel::infoLines() const {
+  static const QStringList infoKeywords = {
+    "INFO", "NOTICE"
+  };
+  return findLinesWithKeywords(infoKeywords, 2000);
+}
+
+QVariantList BigFileModel::findLinesWithKeywords(const QStringList &keywords, int maxResults) const {
+  QVariantList result;
+  if (!m_mapPtr || keywords.isEmpty()) return result;
+  
+  int totalRows = m_filterMode.load() ? static_cast<int>(m_filteredRows.size()) 
+                                       : static_cast<int>(m_lineOffsets.size());
+  
+  // 为了性能，采样扫描（大文件时跳过部分行）
+  int step = 1;
+  if (totalRows > 50000) {
+    step = totalRows / 50000 + 1;  // 最多扫描 50000 行
+  }
+  
+  for (int viewRow = 0; viewRow < totalRows && result.size() < maxResults; viewRow += step) {
+    int realRow = m_filterMode.load() ? m_filteredRows[viewRow] : viewRow;
+    
+    if (realRow < 0 || realRow >= static_cast<int>(m_lineOffsets.size())) continue;
+    
+    qint64 start = m_lineOffsets[realRow];
+    qint64 end = (realRow + 1 < static_cast<int>(m_lineOffsets.size())) 
+                 ? m_lineOffsets[realRow + 1] 
+                 : m_fileSize;
+    qint64 len = end - start;
+    
+    // 只检查行首部分（前 200 字符，日志级别通常在行首）
+    len = std::min(len, static_cast<qint64>(200));
+    
+    QByteArray lineData(reinterpret_cast<const char*>(m_mapPtr + start), static_cast<int>(len));
+    QString line = QString::fromUtf8(lineData).toUpper();
+    
+    for (const QString &keyword : keywords) {
+      if (line.contains(keyword)) {
+        result.append(viewRow);
+        break;
+      }
+    }
+  }
+  
+  return result;
 }
 
 bool BigFileModel::exportToFile(const QString &filePath) const {
