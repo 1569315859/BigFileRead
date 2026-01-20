@@ -24,6 +24,7 @@ class QApplication;
  */
 class LanguageManager : public QObject {
     Q_OBJECT
+    Q_PROPERTY(QString currentLanguage READ currentLanguage NOTIFY languageChanged)
 
 public:
     /**
@@ -36,14 +37,14 @@ public:
      * @brief 初始化语言管理器
      * @details 从 QSettings 加载保存的语言偏好并应用
      */
-    void init();
+    Q_INVOKABLE void init();
 
     /**
      * @brief 加载指定语言
      * @param languageCode 语言代码，如 "zh_CN", "en_US"
      * @return 是否成功加载
      */
-    bool loadLanguage(const QString& languageCode);
+    Q_INVOKABLE bool loadLanguage(const QString& languageCode);
 
     /**
      * @brief 获取当前语言代码
@@ -55,7 +56,7 @@ public:
      * @brief 获取可用语言列表
      * @return 语言代码和显示名称的键值对
      */
-    QList<QPair<QString, QString>> availableLanguages() const;
+    Q_INVOKABLE QVariantList availableLanguages() const;
 
 signals:
     /**

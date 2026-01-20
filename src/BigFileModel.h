@@ -25,6 +25,15 @@
 
 class BigFileModel : public QAbstractTableModel {
   Q_OBJECT
+  
+  // ============ Q_PROPERTY 用于 QML 绑定 ============
+  Q_PROPERTY(QString filePath READ filePath NOTIFY filePathChanged)
+  Q_PROPERTY(qint64 fileSize READ fileSize NOTIFY fileSizeChanged)
+  Q_PROPERTY(int lineCount READ lineCount NOTIFY lineCountChanged)
+  Q_PROPERTY(int totalLineCount READ totalLineCount NOTIFY totalLineCountChanged)
+  Q_PROPERTY(bool isFilterMode READ isFilterMode NOTIFY filterModeChanged)
+  Q_PROPERTY(bool isIndexing READ isIndexing NOTIFY indexingStateChanged)
+  Q_PROPERTY(int searchResultCount READ searchResultCount NOTIFY searchResultCountChanged)
 
 public:
   /// UI 刷新间隔（毫秒）- 每秒 10 次更新
@@ -53,42 +62,42 @@ public:
    * @param filePath 文件路径
    * @return 成功启动返回 true
    */
-  bool loadFile(const QString &filePath);
+  Q_INVOKABLE bool loadFile(const QString &filePath);
 
   /**
    * @brief 关闭当前文件并释放资源
    */
-  void closeFile();
+  Q_INVOKABLE void closeFile();
 
   /**
    * @brief 取消正在进行的索引操作
    */
-  void cancelIndexing();
+  Q_INVOKABLE void cancelIndexing();
 
   /**
    * @brief 是否正在索引中
    */
-  bool isIndexing() const { return m_isIndexing.load(); }
+  Q_INVOKABLE bool isIndexing() const { return m_isIndexing.load(); }
 
   /**
    * @brief 获取当前文件路径
    */
-  QString filePath() const { return m_filePath; }
+  Q_INVOKABLE QString filePath() const { return m_filePath; }
 
   /**
    * @brief 获取文件大小（字节）
    */
-  qint64 fileSize() const { return m_fileSize; }
+  Q_INVOKABLE qint64 fileSize() const { return m_fileSize; }
 
   /**
    * @brief 获取当前已索引的行数（受过滤影响）
    */
-  int lineCount() const;
+  Q_INVOKABLE int lineCount() const;
 
   /**
    * @brief 获取总行数（不受过滤影响）
    */
-  int totalLineCount() const { return static_cast<int>(m_lineOffsets.size()); }
+  Q_INVOKABLE int totalLineCount() const { return static_cast<int>(m_lineOffsets.size()); }
 
   /**
    * @brief 异步搜索文本
@@ -96,22 +105,41 @@ public:
    * @param useRegex 是否使用正则表达式
    * @note 使用 QtConcurrent::run 在后台线程执行，不阻塞主线程
    */
-  void search(const QString &text, bool useRegex = false);
+  Q_INVOKABLE void search(const QString &text, bool useRegex = false);
 
   /**
    * @brief 取消正在进行的搜索
    */
-  void cancelSearch();
+  Q_INVOKABLE void cancelSearch();
 
   /**
    * @brief 是否正在搜索中
    */
-  bool isSearching() const { return m_isSearching.load(); }
+  Q_INVOKABLE bool isSearching() const { return m_isSearching.load(); }
 
   /**
    * @brief 获取搜索结果（行索引列表）
    */
   const std::vector<int> &searchResults() const { return m_searchResults; }
+
+  /**
+   * @brief 获取下一个搜索结果的行号
+   * @param currentViewRow 当前视图行号
+   * @return 下一个匹配行的视图行号，如果没有则返回 -1
+   */
+  Q_INVOKABLE int nextSearchResult(int currentViewRow) const;
+
+  /**
+   * @brief 获取上一个搜索结果的行号
+   * @param currentViewRow 当前视图行号
+   * @return 上一个匹配行的视图行号，如果没有则返回 -1
+   */
+  Q_INVOKABLE int prevSearchResult(int currentViewRow) const;
+
+  /**
+   * @brief 获取搜索结果数量
+   */
+  Q_INVOKABLE int searchResultCount() const { return static_cast<int>(m_searchResults.size()); }
 
   /**
    * @brief 设置文本编码
@@ -125,12 +153,12 @@ public:
    * @brief 启用表格解析模式
    * @param enabled true = 使用 LogParser 解析列, false = 单列原始文本
    */
-  void setTableModeEnabled(bool enabled);
+  Q_INVOKABLE void setTableModeEnabled(bool enabled);
 
   /**
    * @brief 是否处于表格解析模式
    */
-  bool isTableModeEnabled() const { return m_tableModeEnabled; }
+  Q_INVOKABLE bool isTableModeEnabled() const { return m_tableModeEnabled; }
 
   /**
    * @brief 刷新表格结构（列变化后调用）
@@ -145,7 +173,7 @@ public:
    * @param useRegex 是否使用正则表达式
    * @note 使用虚拟行映射，不复制数据，内存开销极低
    */
-  void applyFilter(const QString &keyword, bool useRegex = false);
+  Q_INVOKABLE void applyFilter(const QString &keyword, bool useRegex = false);
 
   /**
    * @brief 应用高级过滤器（支持日志级别和多关键词）
@@ -154,7 +182,7 @@ public:
    * @param andLogic true = 所有关键词都必须匹配, false = 任意关键词匹配即可
    * @param useRegex 是否使用正则表达式
    */
-  void applyAdvancedFilter(const QString &level, 
+  Q_INVOKABLE void applyAdvancedFilter(const QString &level, 
                            const QStringList &keywords,
                            bool andLogic = true,
                            bool useRegex = false);
@@ -162,34 +190,34 @@ public:
   /**
    * @brief 清除过滤器，显示所有行
    */
-  void clearFilter();
+  Q_INVOKABLE void clearFilter();
 
   /**
    * @brief 取消正在进行的过滤操作
    */
-  void cancelFilter();
+  Q_INVOKABLE void cancelFilter();
 
   /**
    * @brief 是否正在过滤中
    */
-  bool isFiltering() const { return m_isFiltering.load(); }
+  Q_INVOKABLE bool isFiltering() const { return m_isFiltering.load(); }
 
   /**
    * @brief 是否处于过滤模式（显示过滤结果）
    */
-  bool isFilterMode() const { return m_filterMode.load(); }
+  Q_INVOKABLE bool isFilterMode() const { return m_filterMode.load(); }
 
   /**
    * @brief 获取当前过滤关键词
    */
-  QString filterKeyword() const { return m_filterKeyword; }
+  Q_INVOKABLE QString filterKeyword() const { return m_filterKeyword; }
 
   /**
    * @brief 将视图行号转换为原始行号
    * @param viewRow 视图中的行号
    * @return 原始文件中的行号（如果不在过滤模式，返回 viewRow 本身）
    */
-  int toRealRow(int viewRow) const;
+  Q_INVOKABLE int toRealRow(int viewRow) const;
 
   // ============ 书签功能 ============
 
@@ -198,26 +226,33 @@ public:
    * @param viewRow 视图中的行号
    * @note 内部会转换为真实行号并存储，过滤时书签不会丢失
    */
-  void toggleBookmark(int viewRow);
+  Q_INVOKABLE void toggleBookmark(int viewRow);
 
   /**
    * @brief 检查指定视图行是否已添加书签
    * @param viewRow 视图中的行号
    * @return 如果该行已添加书签返回 true
    */
-  bool isBookmarked(int viewRow) const;
+  Q_INVOKABLE bool isBookmarked(int viewRow) const;
 
   /**
    * @brief 获取当前视图行之后的下一个书签行
    * @param currentViewRow 当前视图行号
    * @return 下一个书签的视图行号，如果没有则返回 -1
    */
-  int getNextBookmark(int currentViewRow) const;
+  Q_INVOKABLE int getNextBookmark(int currentViewRow) const;
+
+  /**
+   * @brief 获取当前视图行之前的上一个书签行
+   * @param currentViewRow 当前视图行号
+   * @return 上一个书签的视图行号，如果没有则返回 -1
+   */
+  Q_INVOKABLE int getPrevBookmark(int currentViewRow) const;
 
   /**
    * @brief 清除所有书签
    */
-  void clearAllBookmarks();
+  Q_INVOKABLE void clearAllBookmarks();
 
   // ============ 原始行访问 (用于外部访问) ============
 
@@ -226,7 +261,14 @@ public:
    * @param row 行号（从 0 开始）
    * @return 该行的原始 QString 内容（可能被截断）
    */
-  QString getRawLine(int row) const;
+  Q_INVOKABLE QString getRawLine(int row) const;
+
+  /**
+   * @brief 导出可见行到文件
+   * @param filePath 导出文件路径
+   * @return 成功返回 true
+   */
+  Q_INVOKABLE bool exportToFile(const QString &filePath) const;
 
   // QAbstractTableModel 接口实现
   int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -235,6 +277,7 @@ public:
                 int role = Qt::DisplayRole) const override;
   QVariant headerData(int section, Qt::Orientation orientation,
                       int role = Qt::DisplayRole) const override;
+  QHash<int, QByteArray> roleNames() const override;
 
   // 禁用 fetchMore 机制（我们使用 Timer-Pull 模式主动推送数据）
   bool canFetchMore(const QModelIndex &parent) const override;
@@ -278,6 +321,15 @@ signals:
    * @brief 日志追加信号（文件尾部有新内容）
    */
   void logAppended();
+
+  // ============ 属性变化信号 (用于 QML 绑定) ============
+  void filePathChanged();
+  void fileSizeChanged();
+  void lineCountChanged();
+  void totalLineCountChanged();
+  void filterModeChanged();
+  void indexingStateChanged();
+  void searchResultCountChanged();
 
   // ============ 过滤信号 ============
 

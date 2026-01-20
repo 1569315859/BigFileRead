@@ -104,7 +104,7 @@ if(ENABLE_QT)
     
     # 选择Qt版本
     if(USE_QT6)
-        find_package(Qt6 COMPONENTS Core Widgets Gui Concurrent Network LinguistTools QUIET)
+        find_package(Qt6 COMPONENTS Core Widgets Gui Concurrent Network LinguistTools Quick Qml QuickControls2 QUIET)
         if(Qt6_FOUND)
             set(QT_VERSION_MAJOR 6)
             message(STATUS "找到Qt6: ${Qt6_VERSION}")
@@ -391,25 +391,6 @@ if(ENABLE_FETCHCONTENT)
     # message(STATUS "  nlohmann/json已通过FetchContent下载")
 endif()
 
-# ============================================================================
-# 自动收集源文件、头文件、UI文件、资源文件
-# ============================================================================
-file(GLOB_RECURSE SOURCE_FILES 
-    "${CMAKE_SOURCE_DIR}/*.cpp"
-    "${CMAKE_SOURCE_DIR}/*.c"
-    "${CMAKE_SOURCE_DIR}/*.cc"
-    "${CMAKE_SOURCE_DIR}/*.cxx"
-)
-
-file(GLOB_RECURSE HEADER_FILES 
-    "${CMAKE_SOURCE_DIR}/*.h"
-    "${CMAKE_SOURCE_DIR}/*.hpp"
-)
-
-# 排除 build 目录下的文件（CMake 编译器检测文件等）
-list(FILTER SOURCE_FILES EXCLUDE REGEX ".*/build/.*")
-list(FILTER HEADER_FILES EXCLUDE REGEX ".*/build/.*")
-
 # Qt UI文件
 if(ENABLE_QT)
     file(GLOB_RECURSE UI_FILES 
@@ -426,7 +407,7 @@ if(ENABLE_QT)
     # =========================================================================
     # Qt 自动化国际化 (i18n) 配置
     # =========================================================================
-    # 使用 qt_create_translation 实现自动化：
+    # 使用 qt_add_translations 或 qt_create_translation 实现自动化：
     # - 自动运行 lupdate 扫描源文件中的 tr() 字符串
     # - 自动创建/更新 .ts 翻译文件
     # - 自动编译 .ts -> .qm
@@ -449,10 +430,12 @@ if(ENABLE_QT)
         )
         
         # 收集需要扫描的源文件（用于 lupdate）
-        set(I18N_SOURCE_FILES
-            ${SOURCE_FILES}
-            ${HEADER_FILES}
-            ${UI_FILES}
+        # 注意：这里直接使用 glob，因为 SOURCE_FILES 变量可能还未定义
+        file(GLOB_RECURSE I18N_SOURCE_FILES
+            "${CMAKE_SOURCE_DIR}/src/*.cpp"
+            "${CMAKE_SOURCE_DIR}/src/*.h"
+            "${CMAKE_SOURCE_DIR}/src/*.hpp"
+            "${CMAKE_SOURCE_DIR}/src/*.ui"
         )
         
         message(STATUS "  翻译文件: ${TS_FILES}")
@@ -490,6 +473,41 @@ else()
     set(OUTPUT_DIR "")
  endif() 
  set(COMMON_SPACE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../CommonSpace") # 公共空间目录
+
+# ============================================================================
+# 源文件收集
+# ============================================================================
+# 收集源文件
+file(GLOB_RECURSE SOURCE_FILES
+    "${CMAKE_SOURCE_DIR}/src/*.cpp"
+    "${CMAKE_SOURCE_DIR}/src/*.cc"
+    "${CMAKE_SOURCE_DIR}/src/*.cxx"
+)
+
+# 收集头文件
+file(GLOB_RECURSE HEADER_FILES
+    "${CMAKE_SOURCE_DIR}/src/*.h"
+    "${CMAKE_SOURCE_DIR}/src/*.hpp"
+)
+
+# ============================================================================
+# QML 重构：排除旧的 QWidgets 文件
+# ============================================================================
+# 这些文件属于旧的 QWidgets 架构，QML 版本不需要编译
+list(FILTER SOURCE_FILES EXCLUDE REGEX ".*MainWindow\\.cpp$")
+list(FILTER SOURCE_FILES EXCLUDE REGEX ".*SearchBar\\.cpp$")
+list(FILTER SOURCE_FILES EXCLUDE REGEX ".*AdvancedFilterWidget\\.cpp$")
+list(FILTER SOURCE_FILES EXCLUDE REGEX ".*RegistrationDialog\\.cpp$")
+
+list(FILTER HEADER_FILES EXCLUDE REGEX ".*MainWindow\\.h$")
+list(FILTER HEADER_FILES EXCLUDE REGEX ".*SearchBar\\.h$")
+list(FILTER HEADER_FILES EXCLUDE REGEX ".*AdvancedFilterWidget\\.h$")
+list(FILTER HEADER_FILES EXCLUDE REGEX ".*RegistrationDialog\\.h$")
+list(FILTER HEADER_FILES EXCLUDE REGEX ".*CompactLineDelegate\\.h$")
+
+message(STATUS "源文件数量: ${SOURCE_FILES}")
+message(STATUS "头文件数量: ${HEADER_FILES}")
+
 # ============================================================================
 # 包含目录设置
 # ============================================================================
@@ -593,6 +611,9 @@ if(ENABLE_QT)
             Qt6::Gui
             Qt6::Concurrent
             Qt6::Network
+            Qt6::Quick
+            Qt6::Qml
+            Qt6::QuickControls2
         )
     else()
         target_link_libraries(${TARGET_NAME} PRIVATE 
@@ -605,17 +626,12 @@ if(ENABLE_QT)
     endif()
     
     # =========================================================================
-    # Qt 翻译处理 (自动生成 .ts 文件)
     # =========================================================================
-    # 使用 qt_create_translation：
-    #   1. 自动运行 lupdate: 扫描源文件 -> 创建/更新 .ts 文件
-    #   2. 自动运行 lrelease: 编译 .ts -> .qm
+    # Qt 翻译处理 (自动生成 .ts 文件)
     # =========================================================================
     if(ENABLE_QT_TRANSLATION AND TS_FILES)
         message(STATUS "配置自动化翻译构建...")
         
-        # 使用 qt_create_translation 自动运行 lupdate + lrelease
-        # 这会扫描源文件中的 tr() 字符串并创建/更新 .ts 文件
         if(QT_VERSION_MAJOR EQUAL 6)
             qt6_create_translation(QM_FILES
                 ${I18N_SOURCE_FILES}
@@ -630,12 +646,9 @@ if(ENABLE_QT)
         
         message(STATUS "  .ts 文件: ${TS_FILES}")
         message(STATUS "  .qm 文件: ${QM_FILES}")
-        
-        # 创建翻译目标
         add_custom_target(translations ALL DEPENDS ${QM_FILES})
         add_dependencies(${TARGET_NAME} translations)
         
-        # 将 .qm 文件复制到输出目录的 translations 子目录
         set(TRANSLATIONS_OUTPUT_DIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations")
         file(MAKE_DIRECTORY ${TRANSLATIONS_OUTPUT_DIR})
         
@@ -649,7 +662,6 @@ if(ENABLE_QT)
             )
         endforeach()
         
-        # 安装翻译文件（可选，用于外部部署）
         install(FILES ${QM_FILES} DESTINATION translations OPTIONAL)
         
         message(STATUS "✓ 自动化翻译配置完成")

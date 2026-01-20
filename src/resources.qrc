@@ -2,5 +2,9 @@
 <RCC version="1.0">
     <qresource prefix="/">
         <file>app_icon.ico</file>
+        <file>qml/Main.qml</file>
+        <file>qml/RegistrationDialog.qml</file>
+        <file>qml/GoToLineDialog.qml</file>
+        <file>qml/AdvancedFilterDialog.qml</file>
     </qresource>
 </RCC>

@@ -4,11 +4,14 @@
  * @description 使用内存映射技术，支持打开 10GB+ 文本文件
  */
 
-#include <QApplication>
-#include <QCoreApplication>
+#include <QGuiApplication>
 #include <QSettings>
 #include <QIcon>
-#include "MainWindow.h"
+#include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include "BigFileModel.h"
+#include "ThemeManager.h"
+#include "AppController.h"
 #include "LanguageManager.h"
 
 /**
@@ -17,14 +20,7 @@
  * @param argv 命令行参数数组
  * @return 程序退出码
  */
-int main(int argc, char *argv[])
-{
-    // 设置应用程序信息（必须在创建 QApplication 之前设置，用于 QSettings）
-    QCoreApplication::setOrganizationName("BigFileRead");
-    QCoreApplication::setOrganizationDomain("bigfileread.local");
-    QCoreApplication::setApplicationName("BigFileViewer");
-    QCoreApplication::setApplicationVersion("1.5.0");
-
+int main(int argc, char *argv[]) {
     // ★★★ 便携模式 (Portable Mode) 配置 ★★★
     // 1. 强制使用 INI 文件格式（不使用 Windows 注册表）
     QSettings::setDefaultFormat(QSettings::IniFormat);
@@ -34,8 +30,12 @@ int main(int argc, char *argv[])
     QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, 
                        QCoreApplication::applicationDirPath());
 
-    // 创建 Qt 应用程序实例
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
+
+    // Set application info
+    app.setOrganizationName("BigFileRead");
+    app.setOrganizationDomain("bigfileread.local");
+    app.setApplicationName("BigFileViewer");
 
     // ★★★ 设置应用程序图标（用于窗口标题栏和任务栏）★★★
     app.setWindowIcon(QIcon(":/app_icon.ico"));
@@ -44,16 +44,36 @@ int main(int argc, char *argv[])
     // 从用户设置加载语言偏好，或使用系统语言
     LanguageManager::instance().init();
 
-    // 创建并显示主窗口
-    MainWindow mainWindow;
-    mainWindow.show();
+    // Create backend objects
+    ThemeManager themeManager;
+    BigFileModel logModel;
+    AppController appController;
+
+    QQmlApplicationEngine engine;
+    
+    // Register context properties
+    engine.rootContext()->setContextProperty("_themeManager", &themeManager);
+    engine.rootContext()->setContextProperty("_logModel", &logModel);
+    engine.rootContext()->setContextProperty("_appController", &appController);
+    engine.rootContext()->setContextProperty("_languageManager", &LanguageManager::instance());
+
+    const QUrl url(QStringLiteral("qrc:/qml/Main.qml"));
+    QObject::connect(
+        &engine, &QQmlApplicationEngine::objectCreated,
+        &app, [url](QObject *obj, const QUrl &objUrl) {
+            if (!obj && url == objUrl)
+                QCoreApplication::exit(-1);
+        },
+        Qt::QueuedConnection);
+    engine.load(url);
 
     // 如果命令行传入了文件路径，直接打开
     if (argc > 1) {
         QString filePath = QString::fromLocal8Bit(argv[1]);
-        mainWindow.openFile(filePath);
+        if (!filePath.isEmpty()) {
+            logModel.loadFile(filePath);
+        }
     }
 
-    // 进入 Qt 事件循环
     return app.exec();
 }

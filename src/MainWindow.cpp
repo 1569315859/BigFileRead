@@ -1039,12 +1039,13 @@ void MainWindow::createMenus() {
   m_languageActionGroup->setExclusive(true);  // 单选
 
   // 获取可用语言列表
-  auto languages = LanguageManager::instance().availableLanguages();
+  QVariantList languages = LanguageManager::instance().availableLanguages();
   QString currentLang = LanguageManager::instance().currentLanguage();
 
-  for (const auto& langPair : languages) {
-    const QString& code = langPair.first;
-    const QString& displayName = langPair.second;
+  for (const QVariant& langVar : languages) {
+    QVariantMap langMap = langVar.toMap();
+    QString code = langMap["code"].toString();
+    QString displayName = langMap["name"].toString();
 
     QAction *langAction = m_languageMenu->addAction(displayName);
     langAction->setCheckable(true);

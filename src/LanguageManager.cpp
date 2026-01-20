@@ -5,12 +5,14 @@
 
 #include "LanguageManager.h"
 
-#include <QApplication>
+#include <QGuiApplication>
 #include <QTranslator>
 #include <QSettings>
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QDebug>
+#include <QVariantList>
+#include <QVariantMap>
 
 LanguageManager& LanguageManager::instance() {
     static LanguageManager instance;
@@ -53,9 +55,9 @@ bool LanguageManager::loadLanguage(const QString& languageCode) {
         return true;
     }
 
-    QApplication* app = qobject_cast<QApplication*>(QCoreApplication::instance());
+    QGuiApplication* app = qobject_cast<QGuiApplication*>(QCoreApplication::instance());
     if (!app) {
-        qWarning() << "LanguageManager: No QApplication instance!";
+        qWarning() << "LanguageManager: No QGuiApplication instance!";
         return false;
     }
 
@@ -136,18 +138,26 @@ void LanguageManager::saveLanguagePreference() {
     settings.sync();
 }
 
-QList<QPair<QString, QString>> LanguageManager::availableLanguages() const {
-    QList<QPair<QString, QString>> languages;
+QVariantList LanguageManager::availableLanguages() const {
+    QVariantList languages;
     
     // 英语（源语言，始终可用）
-    languages.append(qMakePair(QString("en_US"), QString("English")));
+    QVariantMap en;
+    en["code"] = "en_US";
+    en["name"] = "English";
+    languages.append(en);
     
     // 简体中文
-    languages.append(qMakePair(QString("zh_CN"), QString::fromUtf8("简体中文")));
+    QVariantMap zh;
+    zh["code"] = "zh_CN";
+    zh["name"] = QString::fromUtf8("简体中文");
+    languages.append(zh);
     
     // 可以在这里添加更多语言支持...
-    // languages.append(qMakePair(QString("ja_JP"), QString::fromUtf8("日本語")));
-    // languages.append(qMakePair(QString("ko_KR"), QString::fromUtf8("한국어")));
+    // QVariantMap ja;
+    // ja["code"] = "ja_JP";
+    // ja["name"] = QString::fromUtf8("日本語");
+    // languages.append(ja);
     
     return languages;
 }

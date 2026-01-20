@@ -13,6 +13,7 @@
 #include <QElapsedTimer>
 #include <QFileInfo>
 #include <QRegularExpression>
+#include <QTextStream>
 #include <QtConcurrent>
 #include <algorithm> // for std::search
 #include <cctype>    // for std::tolower
@@ -63,6 +64,7 @@ bool BigFileModel::loadFile(const QString &filePath) {
   }
 
   m_filePath = filePath;
+  emit filePathChanged();
   m_file.setFileName(filePath);
 
   // 以只读方式打开文件
@@ -72,6 +74,7 @@ bool BigFileModel::loadFile(const QString &filePath) {
   }
 
   m_fileSize = m_file.size();
+  emit fileSizeChanged();
 
   // 空文件特殊处理
   if (m_fileSize == 0) {
@@ -169,7 +172,13 @@ void BigFileModel::closeFile() {
 
   m_fileSize = 0;
   m_filePath.clear();
+  emit filePathChanged();
+  emit fileSizeChanged();
+  emit lineCountChanged();
+  emit totalLineCountChanged();
+  emit filterModeChanged();
   m_isIndexing.store(false);
+  emit indexingStateChanged();
   m_lastReportedPercent.store(0);
 
   // 清除解析缓存
@@ -233,6 +242,10 @@ void BigFileModel::onUpdateTimerTimeout() {
     beginInsertRows(QModelIndex(), startRow, endRow);
     m_lineOffsets.insert(m_lineOffsets.end(), newData.begin(), newData.end());
     endInsertRows();
+    
+    // 发射行数变化信号以更新 UI
+    emit lineCountChanged();
+    emit totalLineCountChanged();
   }
 
   if (isWorkerDone && isPendingEmpty && newData.empty()) {
@@ -334,12 +347,17 @@ void BigFileModel::buildIndexAsync() {
 void BigFileModel::onIndexingFinished(bool success, const QString &message) {
   // *** 关键：确保索引标记被正确重置 ***
   m_isIndexing.store(false);
+  emit indexingStateChanged();
   
   // 停止刷新定时器
   if (m_refreshTimer && m_refreshTimer->isActive()) {
     onUpdateTimerTimeout();  // 最后一次拉取剩余数据
     m_refreshTimer->stop();
   }
+
+  // 发出行数变化信号
+  emit lineCountChanged();
+  emit totalLineCountChanged();
 
   // *** 无论成功失败都发送 fileLoaded 信号 ***
   emit fileLoaded(success, message);
@@ -417,6 +435,16 @@ QString BigFileModel::getLine(int row) const {
 }
 
 // ========== QAbstractTableModel 接口实现 ==========
+
+QHash<int, QByteArray> BigFileModel::roleNames() const {
+  QHash<int, QByteArray> roles;
+  roles[Qt::DisplayRole] = "display";
+  roles[BookmarkRole] = "isBookmarked";
+  roles[RealRowRole] = "realRow";
+  roles[RawLineRole] = "rawLine";
+  roles[LogLevelRole] = "logLevel";
+  return roles;
+}
 
 int BigFileModel::rowCount(const QModelIndex &parent) const {
   if (parent.isValid()) {
@@ -598,20 +626,12 @@ void BigFileModel::onFileChanged(const QString &path) {
     }
   }
   
-  int newRowCount = static_cast<int>(m_lineOffsets.size());
-  
-  if (newRowCount > oldRowCount) {
-    beginInsertRows(QModelIndex(), oldRowCount, newRowCount - 1);
-    endInsertRows();
-    qDebug() << "Added" << (newRowCount - oldRowCount) << "new lines";
-  }
-  
   m_fileSize = newSize;
+  emit fileSizeChanged();
+  emit lineCountChanged();
+  emit totalLineCountChanged();
   emit logAppended();
-  
-  if (!m_watcher->files().contains(path)) {
-    m_watcher->addPath(path);
-  }
+  emit layoutChanged();
 }
 
 // ========== 搜索功能实现 ==========
@@ -763,7 +783,83 @@ void BigFileModel::executeSearchAsync(const QString &searchText, bool useRegex) 
   m_searchResults = results;
   m_isSearching.store(false);
   emit searchProgress(100);
+  emit searchResultCountChanged();
   emit searchFinished(results);
+}
+
+int BigFileModel::nextSearchResult(int currentViewRow) const {
+  if (m_searchResults.empty()) return -1;
+  
+  int currentRealRow = toRealRow(currentViewRow);
+  
+  // Find first result > currentRealRow
+  auto it = std::upper_bound(m_searchResults.begin(), m_searchResults.end(), currentRealRow);
+  
+  // Wrap around if needed
+  if (it == m_searchResults.end()) {
+    it = m_searchResults.begin();
+  }
+  
+  // Iterate to find a visible match
+  auto startIt = it;
+  do {
+    int matchRealRow = *it;
+    
+    if (!m_filterMode.load()) {
+      return matchRealRow;
+    } else {
+      // Check if matchRealRow is visible
+      auto fit = std::lower_bound(m_filteredRows.begin(), m_filteredRows.end(), matchRealRow);
+      if (fit != m_filteredRows.end() && *fit == matchRealRow) {
+        // Found visible match, return view index
+        return static_cast<int>(std::distance(m_filteredRows.begin(), fit));
+      }
+    }
+    
+    ++it;
+    if (it == m_searchResults.end()) {
+      it = m_searchResults.begin();
+    }
+  } while (it != startIt);
+  
+  return -1;
+}
+
+int BigFileModel::prevSearchResult(int currentViewRow) const {
+  if (m_searchResults.empty()) return -1;
+  
+  int currentRealRow = toRealRow(currentViewRow);
+  
+  // Find first result >= currentRealRow
+  auto it = std::lower_bound(m_searchResults.begin(), m_searchResults.end(), currentRealRow);
+  
+  // Move back to get < currentRealRow
+  if (it == m_searchResults.begin()) {
+    it = m_searchResults.end();
+  }
+  --it;
+  
+  // Iterate backwards to find a visible match
+  auto startIt = it;
+  do {
+    int matchRealRow = *it;
+    
+    if (!m_filterMode.load()) {
+      return matchRealRow;
+    } else {
+      auto fit = std::lower_bound(m_filteredRows.begin(), m_filteredRows.end(), matchRealRow);
+      if (fit != m_filteredRows.end() && *fit == matchRealRow) {
+        return static_cast<int>(std::distance(m_filteredRows.begin(), fit));
+      }
+    }
+    
+    if (it == m_searchResults.begin()) {
+      it = m_searchResults.end();
+    }
+    --it;
+  } while (it != startIt);
+  
+  return -1;
 }
 
 // ========== 虚拟行映射辅助函数 ==========
@@ -845,6 +941,9 @@ void BigFileModel::clearFilter() {
   m_filteredRows.shrink_to_fit();
   m_filterKeyword.clear();
   endResetModel();
+
+  emit filterModeChanged();
+  emit lineCountChanged();
 
   qDebug() << "Filter cleared, showing all" << m_lineOffsets.size() << "lines";
   emit filterFinished(static_cast<int>(m_lineOffsets.size()));
@@ -956,6 +1055,8 @@ void BigFileModel::executeFilterAsync(const QString &keyword, bool useRegex) {
     endResetModel();
 
     m_isFiltering.store(false);
+    emit filterModeChanged();
+    emit lineCountChanged();
     emit filterProgress(100);
     emit filterFinished(static_cast<int>(m_filteredRows.size()));
   }, Qt::QueuedConnection);
@@ -1067,6 +1168,8 @@ void BigFileModel::executeAdvancedFilterAsync(const QString &level,
     endResetModel();
 
     m_isFiltering.store(false);
+    emit filterModeChanged();
+    emit lineCountChanged();
     emit filterProgress(100);
     emit filterFinished(static_cast<int>(m_filteredRows.size()));
   }, Qt::QueuedConnection);
@@ -1126,6 +1229,32 @@ int BigFileModel::getNextBookmark(int currentViewRow) const {
   return -1;
 }
 
+int BigFileModel::getPrevBookmark(int currentViewRow) const {
+  if (m_bookmarks.isEmpty()) {
+    return -1;
+  }
+
+  int totalViewRows = rowCount();
+  
+  // 从当前行向前搜索
+  for (int viewRow = currentViewRow - 1; viewRow >= 0; --viewRow) {
+    int realRow = toRealRow(viewRow);
+    if (realRow >= 0 && m_bookmarks.contains(static_cast<qint64>(realRow))) {
+      return viewRow;
+    }
+  }
+  
+  // 如果没找到，从尾部开始循环搜索
+  for (int viewRow = totalViewRows - 1; viewRow > currentViewRow; --viewRow) {
+    int realRow = toRealRow(viewRow);
+    if (realRow >= 0 && m_bookmarks.contains(static_cast<qint64>(realRow))) {
+      return viewRow;
+    }
+  }
+  
+  return -1;
+}
+
 void BigFileModel::clearAllBookmarks() {
   if (m_bookmarks.isEmpty()) {
     return;
@@ -1136,4 +1265,26 @@ void BigFileModel::clearAllBookmarks() {
   emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1), {BookmarkRole});
   
   qDebug() << "All bookmarks cleared";
+}
+
+bool BigFileModel::exportToFile(const QString &filePath) const {
+  QFile file(filePath);
+  if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    qWarning() << "Failed to open file for export:" << file.errorString();
+    return false;
+  }
+
+  QTextStream stream(&file);
+  stream.setEncoding(QStringConverter::Utf8);
+
+  int totalRows = rowCount();
+  for (int row = 0; row < totalRows; ++row) {
+    QString lineText = data(index(row, 0), Qt::DisplayRole).toString();
+    stream << lineText << "\n";
+  }
+
+  file.close();
+  
+  qDebug() << "Exported" << totalRows << "lines to" << filePath;
+  return true;
 }
