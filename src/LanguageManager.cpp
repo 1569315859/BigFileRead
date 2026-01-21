@@ -153,11 +153,71 @@ QVariantList LanguageManager::availableLanguages() const {
     zh["name"] = QString::fromUtf8("简体中文");
     languages.append(zh);
     
-    // 可以在这里添加更多语言支持...
-    // QVariantMap ja;
-    // ja["code"] = "ja_JP";
-    // ja["name"] = QString::fromUtf8("日本語");
-    // languages.append(ja);
+    // 繁体中文
+    QVariantMap zhTW;
+    zhTW["code"] = "zh_TW";
+    zhTW["name"] = QString::fromUtf8("繁體中文");
+    languages.append(zhTW);
+    
+    // 日语
+    QVariantMap ja;
+    ja["code"] = "ja_JP";
+    ja["name"] = QString::fromUtf8("日本語");
+    languages.append(ja);
+    
+    // 韩语
+    QVariantMap ko;
+    ko["code"] = "ko_KR";
+    ko["name"] = QString::fromUtf8("한국어");
+    languages.append(ko);
+    
+    // 俄语
+    QVariantMap ru;
+    ru["code"] = "ru_RU";
+    ru["name"] = QString::fromUtf8("Русский");
+    languages.append(ru);
+    
+    // 德语
+    QVariantMap de;
+    de["code"] = "de_DE";
+    de["name"] = "Deutsch";
+    languages.append(de);
+    
+    // 法语
+    QVariantMap fr;
+    fr["code"] = "fr_FR";
+    fr["name"] = QString::fromUtf8("Français");
+    languages.append(fr);
+    
+    // 西班牙语
+    QVariantMap es;
+    es["code"] = "es_ES";
+    es["name"] = QString::fromUtf8("Español");
+    languages.append(es);
+    
+    // 葡萄牙语
+    QVariantMap pt;
+    pt["code"] = "pt_BR";
+    pt["name"] = QString::fromUtf8("Português");
+    languages.append(pt);
+    
+    // 意大利语
+    QVariantMap it;
+    it["code"] = "it_IT";
+    it["name"] = QString::fromUtf8("Italiano");
+    languages.append(it);
+    
+    // 阿拉伯语
+    QVariantMap ar;
+    ar["code"] = "ar_SA";
+    ar["name"] = QString::fromUtf8("العربية");
+    languages.append(ar);
+    
+    // 印地语
+    QVariantMap hi;
+    hi["code"] = "hi_IN";
+    hi["name"] = QString::fromUtf8("हिन्दी");
+    languages.append(hi);
     
     return languages;
 }

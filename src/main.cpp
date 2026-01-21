@@ -59,6 +59,10 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("_appController", &appController);
     engine.rootContext()->setContextProperty("_languageManager", &LanguageManager::instance());
     engine.rootContext()->setContextProperty("_keywordConfig", &keywordConfig);
+    
+    // ★★★ 连接语言切换信号，刷新 QML 界面翻译 ★★★
+    QObject::connect(&LanguageManager::instance(), &LanguageManager::languageChanged,
+                     &engine, &QQmlApplicationEngine::retranslate);
 
     const QUrl url(QStringLiteral("qrc:/qml/Main.qml"));
     QObject::connect(

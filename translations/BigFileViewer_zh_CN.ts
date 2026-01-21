@@ -2,14 +2,71 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh-CN">
 <context>
-    <name>AdvancedFilterWidget</name>
+    <name>AdvancedFilterDialog</name>
     <message>
-        <source>Apply</source>
-        <translation type="obsolete">应用</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="32"/>
+        <source>Advanced Filter</source>
+        <translation>高级筛选</translation>
     </message>
     <message>
-        <source>Clear</source>
-        <translation type="obsolete">清除</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="56"/>
+        <source>Enable Time Range Filter</source>
+        <translation>启用时间范围筛选</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="92"/>
+        <source>From:</source>
+        <translation>从：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="112"/>
+        <source>To:</source>
+        <translation>至：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="140"/>
+        <source>Log Level:</source>
+        <translation>日志级别：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="269"/>
+        <source>Keywords (space or comma separated):</source>
+        <translation>关键字（以空格或逗号分隔）：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="278"/>
+        <source>e.g. error timeout database</source>
+        <translation>例如：error timeout database</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="299"/>
+        <source>Logic:</source>
+        <translation>逻辑：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="347"/>
+        <source>Regex</source>
+        <translation>正则</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="363"/>
+        <source>Case</source>
+        <translation>区分大小写</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="387"/>
+        <source>Clear All</source>
+        <translation>全部清除</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="417"/>
+        <source>Apply</source>
+        <translation>应用</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="457"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
@@ -32,7 +89,7 @@
     <message>
         <location filename="../src/BigFileModel.cpp" line="255"/>
         <source>Load complete: %1 lines</source>
-        <translation>加载完成：%1 行</translation>
+        <translation>加载完成：共 %1 行</translation>
     </message>
     <message>
         <location filename="../src/BigFileModel.cpp" line="336"/>
@@ -42,7 +99,7 @@
     <message>
         <location filename="../src/BigFileModel.cpp" line="483"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>内容</translation>
     </message>
     <message>
         <location filename="../src/BigFileModel.cpp" line="525"/>
@@ -56,728 +113,657 @@
     </message>
 </context>
 <context>
-    <name>MainWindow</name>
+    <name>EnhancedScrollBar</name>
     <message>
-        <source>Lines: %1</source>
-        <translation type="vanished">行数：%1</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="112"/>
+        <source>Error at line</source>
+        <translation>错误位于行</translation>
     </message>
     <message>
-        <source>Ready</source>
-        <translation type="vanished">就绪</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="139"/>
+        <source>Warning at line</source>
+        <translation>警告位于行</translation>
     </message>
     <message>
-        <source>Text Encoding</source>
-        <translation type="vanished">文本编码</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="166"/>
+        <source>Info at line</source>
+        <translation>信息位于行</translation>
     </message>
     <message>
-        <source>Follow Tail</source>
-        <translation type="vanished">跟随尾部</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="208"/>
+        <source>Bookmark at line</source>
+        <translation>书签位于行</translation>
     </message>
     <message>
-        <source>Auto-scroll to new content (Tail -f mode)</source>
-        <translation type="vanished">自动滚动到新内容 (Tail -f 模式)</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="234"/>
+        <source>Search result at line</source>
+        <translation>搜索结果位于行</translation>
     </message>
     <message>
-        <source>Type keyword to filter... (Enter to apply)</source>
-        <translation type="vanished">输入关键字以筛选... (按回车应用)</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="319"/>
+        <source>Show Markers</source>
+        <translation>显示标记</translation>
     </message>
     <message>
-        <source>Use Regular Expression</source>
-        <translation type="vanished">使用正则表达式</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="328"/>
+        <source>Errors</source>
+        <translation>错误</translation>
     </message>
     <message>
-        <source>Select a line above to view details here...</source>
-        <translation type="vanished">在上方选择一行以在此处查看详情...</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="336"/>
+        <source>Warnings</source>
+        <translation>警告</translation>
     </message>
     <message>
-        <source>--- Selected %1 lines (Too many to display in preview) ---
-Use &apos;Copy&apos; (Ctrl+C) or &apos;Export&apos; to save selected lines.</source>
-        <translation type="vanished">--- 已选择 %1 行 (行数过多，无法在预览中显示) ---
-请使用“复制” (Ctrl+C) 或“导出”来保存选定的行。</translation>
-    </message>
-    <message>
-        <source>Filter</source>
-        <translation type="vanished">筛选</translation>
-    </message>
-    <message>
-        <source>Filter:</source>
-        <translation type="vanished">筛选：</translation>
-    </message>
-    <message>
-        <source>Apply</source>
-        <translation type="vanished">应用</translation>
-    </message>
-    <message>
-        <source>Apply filter (Enter)</source>
-        <translation type="vanished">应用筛选 (Enter)</translation>
-    </message>
-    <message>
-        <source>Clear</source>
-        <translation type="vanished">清除</translation>
-    </message>
-    <message>
-        <source>Clear filter and show all lines</source>
-        <translation type="vanished">清除筛选并显示所有行</translation>
-    </message>
-    <message>
-        <source>Filtering... %1%</source>
-        <translation type="vanished">正在筛选... %1%</translation>
-    </message>
-    <message>
-        <source>File(&amp;F)</source>
-        <translation type="vanished">文件(&amp;F)</translation>
-    </message>
-    <message>
-        <source>Open(&amp;O)...</source>
-        <translation type="vanished">打开(&amp;O)...</translation>
-    </message>
-    <message>
-        <source>Open Recent</source>
-        <translation type="vanished">打开最近的文件</translation>
-    </message>
-    <message>
-        <source>Exit(&amp;X)</source>
-        <translation type="vanished">退出(&amp;X)</translation>
-    </message>
-    <message>
-        <source>Edit(&amp;E)</source>
-        <translation type="vanished">编辑(&amp;E)</translation>
-    </message>
-    <message>
-        <source>Find(&amp;F)...</source>
-        <translation type="vanished">查找(&amp;F)...</translation>
-    </message>
-    <message>
-        <source>Go to Line(&amp;G)...</source>
-        <translation type="vanished">转到行(&amp;G)...</translation>
-    </message>
-    <message>
-        <source>Toggle Bookmark(&amp;B)</source>
-        <translation type="vanished">切换书签(&amp;B)</translation>
-    </message>
-    <message>
-        <source>Next Bookmark(&amp;N)</source>
-        <translation type="vanished">下一个书签(&amp;N)</translation>
-    </message>
-    <message>
-        <source>View(&amp;V)</source>
-        <translation type="vanished">视图(&amp;V)</translation>
-    </message>
-    <message>
-        <source>Toggle Filter(&amp;T)</source>
-        <translation type="vanished">切换筛选栏(&amp;T)</translation>
-    </message>
-    <message>
-        <source>Settings(&amp;S)</source>
-        <translation type="vanished">设置(&amp;S)</translation>
-    </message>
-    <message>
-        <source>Language(&amp;L)</source>
-        <translation type="vanished">语言(&amp;L)</translation>
-    </message>
-    <message>
-        <source>Help(&amp;H)</source>
-        <translation type="vanished">帮助(&amp;H)</translation>
-    </message>
-    <message>
-        <source>Register License(&amp;R)...</source>
-        <translation type="vanished">注册许可证(&amp;R)...</translation>
-    </message>
-    <message>
-        <source>License Status(&amp;L)</source>
-        <translation type="vanished">许可证状态(&amp;L)</translation>
-    </message>
-    <message>
-        <source>✓ Licensed Version
-
-Thank you for registering BigFileViewer!</source>
-        <translation type="vanished">✓ 授权版本
-
-感谢您注册 BigFileViewer！</translation>
-    </message>
-    <message>
-        <source>Trial Version
-
-%1 days remaining in your trial.
-
-Click Help &gt; Register License to activate.</source>
-        <translation type="vanished">试用版本
-
-您的试用期还剩 %1 天。
-
-点击 帮助 &gt; 注册许可证 进行激活。</translation>
-    </message>
-    <message>
-        <source>⚠ Trial Expired
-
-Please register to continue using BigFileViewer.</source>
-        <translation type="vanished">⚠ 试用期已过
-
-请注册以继续使用 BigFileViewer。</translation>
-    </message>
-    <message>
-        <source>License Status</source>
-        <translation type="vanished">许可证状态</translation>
-    </message>
-    <message>
-        <source>About(&amp;A)</source>
-        <translation type="vanished">关于(&amp;A)</translation>
-    </message>
-    <message>
-        <source>About BigFileViewer</source>
-        <translation type="vanished">关于 BigFileViewer</translation>
-    </message>
-    <message>
-        <source>BigFileViewer v1.5
-
-High-performance large file viewer
-Features:
-  - Memory-mapped file access
-  - Async indexing with progress
-  - Supports 10GB+ text files
-  - VS Code Dark Theme
-
-Built with Qt %1</source>
-        <translation type="vanished">BigFileViewer v1.5
-
-高性能大文件查看器
-功能：
-  - 内存映射文件访问
-  - 带进度的异步索引
-  - 支持 10GB+ 文本文件
-  - VS Code 深色主题
-
-基于 Qt %1 构建</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation type="vanished">打开文件</translation>
-    </message>
-    <message>
-        <source>All Files (*);;Text Files (*.txt *.log *.csv);;Log Files (*.log)</source>
-        <translation type="vanished">所有文件 (*);;文本文件 (*.txt *.log *.csv);;日志文件 (*.log)</translation>
-    </message>
-    <message>
-        <source>Loading: %1</source>
-        <translation type="vanished">正在加载：%1</translation>
-    </message>
-    <message>
-        <source>Lines: 1</source>
-        <translation type="vanished">行数：1</translation>
-    </message>
-    <message>
-        <source>Load failed</source>
-        <translation type="vanished">加载失败</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation type="vanished">错误</translation>
-    </message>
-    <message>
-        <source>Loading cancelled</source>
-        <translation type="vanished">加载已取消</translation>
-    </message>
-    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="344"/>
         <source>Info</source>
-        <translation type="vanished">信息</translation>
+        <translation>信息</translation>
     </message>
     <message>
-        <source>Please open a file first</source>
-        <translation type="vanished">请先打开一个文件</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="352"/>
+        <source>Bookmarks</source>
+        <translation>书签</translation>
     </message>
     <message>
-        <source>Go to Line</source>
-        <translation type="vanished">转到行</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="360"/>
+        <source>Search Results</source>
+        <translation>搜索结果</translation>
+    </message>
+</context>
+<context>
+    <name>GoToLineDialog</name>
+    <message>
+        <location filename="../src/qml/GoToLineDialog.qml" line="35"/>
+        <source>Go To Line</source>
+        <translation>转到行</translation>
     </message>
     <message>
-        <source>Line number (1 - %1):</source>
-        <translation type="vanished">行号 (1 - %1)：</translation>
+        <location filename="../src/qml/GoToLineDialog.qml" line="43"/>
+        <source>Line Number:</source>
+        <translation>行号：</translation>
     </message>
     <message>
-        <source> [Indexing...]</source>
-        <translation type="vanished"> [正在索引...]</translation>
+        <location filename="../src/qml/GoToLineDialog.qml" line="52"/>
+        <source>Enter line number...</source>
+        <translation>输入行号...</translation>
     </message>
     <message>
-        <source>No matches found</source>
-        <translation type="vanished">未找到匹配项</translation>
+        <location filename="../src/qml/GoToLineDialog.qml" line="79"/>
+        <source>OK</source>
+        <translation>确定</translation>
     </message>
     <message>
-        <source> (Regex)</source>
-        <translation type="vanished"> (正则)</translation>
-    </message>
-    <message>
-        <source>Found %1 matches%2</source>
-        <translation type="vanished">找到 %1 个匹配项%2</translation>
-    </message>
-    <message>
-        <source>Copied %1 lines to clipboard</source>
-        <translation type="vanished">已将 %1 行复制到剪贴板</translation>
-    </message>
-    <message>
-        <source>Copy</source>
-        <translation type="vanished">复制</translation>
-    </message>
-    <message>
-        <source>Toggle Bookmark</source>
-        <translation type="vanished">切换书签</translation>
-    </message>
-    <message>
-        <source>Export Visible Lines...</source>
-        <translation type="vanished">导出可见行...</translation>
-    </message>
-    <message>
-        <source>Open Containing Folder</source>
-        <translation type="vanished">打开所在文件夹</translation>
-    </message>
-    <message>
-        <source>New log content detected</source>
-        <translation type="vanished">检测到新的日志内容</translation>
-    </message>
-    <message>
-        <source>Invalid Regex</source>
-        <translation type="vanished">无效的正则表达式</translation>
-    </message>
-    <message>
-        <source>Show All Columns</source>
-        <translation type="vanished">显示所有列</translation>
-    </message>
-    <message>
-        <source>Smart Hide Empty Columns</source>
-        <translation type="vanished">智能隐藏空列</translation>
-    </message>
-    <message>
-        <source>Smart columns: showing %1 of %2 columns</source>
-        <translation type="vanished">智能列：显示 %1 / %2 列</translation>
-    </message>
-    <message>
-        <source>Raw Text</source>
-        <translation type="vanished">原始文本</translation>
-    </message>
-    <message>
-        <source>Switch to Raw Text view (high performance)</source>
-        <translation type="vanished">切换到原始文本视图（高性能）</translation>
-    </message>
-    <message>
-        <source>Grid View - Structured Log Mode</source>
-        <translation type="vanished">表格视图 - 结构化日志模式</translation>
-    </message>
-    <message>
-        <source>Raw Text - High Performance Mode</source>
-        <translation type="vanished">原始文本 - 高性能模式</translation>
-    </message>
-    <message>
-        <source>The regular expression is invalid:
-%1
-
-Error at position %2</source>
-        <translation type="vanished">正则表达式无效：
-%1
-
-错误位置：%2</translation>
-    </message>
-    <message>
-        <source>(Regex)</source>
-        <translation type="vanished">(正则)</translation>
-    </message>
-    <message>
-        <source>Filtering...</source>
-        <translation type="vanished">正在筛选...</translation>
-    </message>
-    <message>
-        <source>Applying filter %1: %2</source>
-        <translation type="vanished">正在应用筛选 %1：%2</translation>
-    </message>
-    <message>
-        <source>Columns(&amp;C)</source>
-        <translation type="vanished">列显示(&amp;C)</translation>
-    </message>
-    <message>
-        <source>Configure which columns to display in Grid View</source>
-        <translation type="vanished">配置表格视图中显示哪些列</translation>
-    </message>
-    <message>
-        <source>Showing %1 of %2 lines</source>
-        <translation type="vanished">显示 %1 / %2 行</translation>
-    </message>
-    <message>
-        <source>Lines: %1 (filtered)</source>
-        <translation type="vanished">行数：%1 (已筛选)</translation>
-    </message>
-    <message>
-        <source>Filter cleared</source>
-        <translation type="vanished">筛选已清除</translation>
-    </message>
-    <message>
-        <source>No line selected</source>
-        <translation type="vanished">未选中任何行</translation>
-    </message>
-    <message>
-        <source>Jumped to bookmark at line %1</source>
-        <translation type="vanished">已跳转至第 %1 行的书签</translation>
-    </message>
-    <message>
-        <source>No bookmarks found</source>
-        <translation type="vanished">未找到书签</translation>
-    </message>
-    <message>
-        <source>Export</source>
-        <translation type="vanished">导出</translation>
-    </message>
-    <message>
-        <source>No lines to export.</source>
-        <translation type="vanished">没有可导出的行。</translation>
-    </message>
-    <message>
-        <source>Export Visible Lines</source>
-        <translation type="vanished">导出可见行</translation>
-    </message>
-    <message>
-        <source>Text Files (*.txt);;Log Files (*.log);;All Files (*)</source>
-        <translation type="vanished">文本文件 (*.txt);;日志文件 (*.log);;所有文件 (*)</translation>
-    </message>
-    <message>
-        <source>Export Error</source>
-        <translation type="vanished">导出错误</translation>
-    </message>
-    <message>
-        <source>Failed to open file for writing:
-%1</source>
-        <translation type="vanished">无法打开文件进行写入：
-%1</translation>
-    </message>
-    <message>
-        <source>Successfully exported %1 filtered lines to:
-%2</source>
-        <translation type="vanished">成功导出 %1 行筛选后的内容至：
-%2</translation>
-    </message>
-    <message>
-        <source>Successfully exported %1 lines to:
-%2</source>
-        <translation type="vanished">成功导出 %1 行至：
-%2</translation>
-    </message>
-    <message>
-        <source>Export Successful</source>
-        <translation type="vanished">导出成功</translation>
-    </message>
-    <message>
-        <source>Exported %1 lines</source>
-        <translation type="vanished">已导出 %1 行</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="vanished">打开文件夹</translation>
-    </message>
-    <message>
-        <source>No file is currently loaded.</source>
-        <translation type="vanished">当前未加载任何文件。</translation>
-    </message>
-    <message>
-        <source>Opened folder: %1</source>
-        <translation type="vanished">已打开文件夹：%1</translation>
-    </message>
-    <message>
-        <source>Failed to open folder:
-%1</source>
-        <translation type="vanished">无法打开文件夹：
-%1</translation>
-    </message>
-    <message>
-        <source>Opened via drag &amp; drop: %1</source>
-        <translation type="vanished">通过拖放打开：%1</translation>
-    </message>
-    <message>
-        <source>(No recent files)</source>
-        <translation type="vanished">（无最近文件）</translation>
-    </message>
-    <message>
-        <source>File Not Found</source>
-        <translation type="vanished">文件未找到</translation>
-    </message>
-    <message>
-        <source>The file no longer exists:
-%1</source>
-        <translation type="vanished">该文件已不存在：
-%1</translation>
-    </message>
-    <message>
-        <source>Clear Recent List</source>
-        <translation type="vanished">清除最近文件列表</translation>
-    </message>
-    <message>
-        <source>Recent files list cleared</source>
-        <translation type="vanished">最近文件列表已清除</translation>
-    </message>
-    <message>
-        <source>Register License</source>
-        <translation type="vanished">注册许可证</translation>
-    </message>
-    <message>
-        <source>Your Machine ID (send this to the vendor):</source>
-        <translation type="vanished">您的机器 ID（请发送给供应商）：</translation>
-    </message>
-    <message>
-        <source>Copy Machine ID</source>
-        <translation type="vanished">复制机器 ID</translation>
-    </message>
-    <message>
-        <source>Enter License Key:</source>
-        <translation type="vanished">输入许可证密钥：</translation>
-    </message>
-    <message>
-        <source>Paste your license key here...</source>
-        <translation type="vanished">在此粘贴您的许可证密钥...</translation>
-    </message>
-    <message>
-        <source>Verify &amp;&amp; Activate</source>
-        <translation type="vanished">验证并激活</translation>
-    </message>
-    <message>
+        <location filename="../src/qml/GoToLineDialog.qml" line="103"/>
         <source>Cancel</source>
-        <translation type="vanished">取消</translation>
+        <translation>取消</translation>
+    </message>
+</context>
+<context>
+    <name>KeywordConfigDialog</name>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="12"/>
+        <source>Keyword Color Configuration</source>
+        <translation>关键字颜色配置</translation>
     </message>
     <message>
-        <source>Please enter a license key.</source>
-        <translation type="vanished">请输入许可证密钥。</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="90"/>
+        <source>Add New Keyword</source>
+        <translation>添加新关键字</translation>
     </message>
     <message>
-        <source>Success</source>
-        <translation type="vanished">成功</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="104"/>
+        <source>Enter keyword...</source>
+        <translation>输入关键字...</translation>
     </message>
     <message>
-        <source>License activated successfully!
-
-Thank you for registering.</source>
-        <translation type="vanished">许可证激活成功！
-
-感谢您的注册。</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="130"/>
+        <source>Click to choose color</source>
+        <translation>点击选择颜色</translation>
     </message>
     <message>
-        <source>Invalid License</source>
-        <translation type="vanished">无效的许可证</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="143"/>
+        <source>Add</source>
+        <translation>添加</translation>
     </message>
     <message>
-        <source>The license key is not valid for this machine.
-
-Error: %1</source>
-        <translation type="vanished">许可证密钥对本机无效。
-
-错误：%1</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="202"/>
+        <source>Keyword</source>
+        <translation>关键字</translation>
     </message>
     <message>
-        <source>BigFileViewer (Pro) - Licensed</source>
-        <translation type="vanished">BigFileViewer (专业版) - 已授权</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="210"/>
+        <source>Color</source>
+        <translation>颜色</translation>
     </message>
     <message>
-        <source>Licensed version - All features unlocked</source>
-        <translation type="vanished">授权版本 - 所有功能已解锁</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="218"/>
+        <source>Preview</source>
+        <translation>预览</translation>
     </message>
     <message>
-        <source>Trial Expired</source>
-        <translation type="vanished">试用期已过</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="226"/>
+        <source>Actions</source>
+        <translation>操作</translation>
     </message>
     <message>
-        <source>Your 30-day trial period has expired.
-
-Please register to continue using BigFileViewer.
-Click OK to open the registration dialog.</source>
-        <translation type="vanished">您的 30 天试用期已结束。
-
-请注册以继续使用 BigFileViewer。
-点击“确定”打开注册对话框。</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="312"/>
+        <source>Edit Color</source>
+        <translation>编辑颜色</translation>
     </message>
     <message>
-        <source>Registration Required</source>
-        <translation type="vanished">需要注册</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="336"/>
+        <source>Delete</source>
+        <translation>删除</translation>
     </message>
     <message>
-        <source>BigFileViewer requires a valid license to continue.
-
-The application will now close.</source>
-        <translation type="vanished">BigFileViewer 需要有效的许可证才能继续。
-
-应用程序即将关闭。</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="362"/>
+        <source>Reset to Defaults</source>
+        <translation>恢复默认设置</translation>
     </message>
     <message>
-        <source>Licensed version - Thank you for registering!</source>
-        <translation type="vanished">授权版本 - 感谢您的注册！</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="381"/>
+        <source>Close</source>
+        <translation>关闭</translation>
     </message>
     <message>
-        <source>BigFileViewer (Trial) - %1 days remaining</source>
-        <translation type="vanished">BigFileViewer (试用版) - 剩余 %1 天</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="401"/>
+        <source>Choose Color</source>
+        <translation>选择颜色</translation>
     </message>
     <message>
-        <source>Trial Mode: %1 days remaining | Click Help &gt; Register to unlock</source>
-        <translation type="vanished">试用模式：剩余 %1 天 | 点击“帮助”&gt;“注册”解锁</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="408"/>
+        <source>Edit Color for</source>
+        <translation>编辑颜色：</translation>
     </message>
     <message>
-        <source>Trial Ending Soon</source>
-        <translation type="vanished">试用即将结束</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="418"/>
+        <source>Confirm Reset</source>
+        <translation>确认重置</translation>
     </message>
     <message>
-        <source>Your trial will expire in %1 days.
-
-Please consider registering to continue using BigFileViewer.
-Go to Help &gt; Register License to activate.</source>
-        <translation type="vanished">您的试用期将在 %1 天后过期。
-
-请考虑注册以继续使用 BigFileViewer。
-转到“帮助”&gt;“注册许可证”进行激活。</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="432"/>
+        <source>Are you sure you want to reset all keywords to defaults?
+This action cannot be undone.</source>
+        <translation>您确定要将所有关键字重置为默认值吗？
+此操作无法撤销。</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="446"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="463"/>
+        <source>Reset</source>
+        <translation>重置</translation>
+    </message>
+</context>
+<context>
+    <name>Main</name>
+    <message>
+        <location filename="../src/qml/Main.qml" line="81"/>
+        <source>Drop file to open</source>
+        <translation>拖入文件以打开</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="331"/>
+        <source>File</source>
+        <translation>文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="338"/>
+        <source>Open File...</source>
+        <translation>打开文件...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="344"/>
+        <source>Recent Files</source>
+        <translation>最近文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="366"/>
+        <source>Clear Recent Files</source>
+        <translation>清除最近文件记录</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="374"/>
+        <location filename="../src/qml/Main.qml" line="585"/>
+        <source>Reload File</source>
+        <translation>重新加载文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="386"/>
+        <source>Search</source>
+        <translation>搜索</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="397"/>
+        <source>Filter</source>
+        <translation>筛选</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="407"/>
+        <source>Details</source>
+        <translation>详情</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="417"/>
+        <source>Go To</source>
+        <translation>转到</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="422"/>
+        <source>Bookmark</source>
+        <translation>书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="429"/>
+        <source>Add/Remove Bookmark</source>
+        <translation>添加/移除书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="435"/>
+        <location filename="../src/qml/Main.qml" line="1652"/>
+        <source>Next Bookmark</source>
+        <translation>下一个书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="445"/>
+        <location filename="../src/qml/Main.qml" line="1662"/>
+        <source>Previous Bookmark</source>
+        <translation>上一个书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="456"/>
+        <source>Clear All Bookmarks</source>
+        <translation>清除所有书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="466"/>
+        <location filename="../src/qml/Main.qml" line="471"/>
+        <source>View</source>
+        <translation>视图</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="475"/>
+        <source>Text View (Raw)</source>
+        <translation>文本视图 (原始)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="484"/>
+        <source>Grid View (Parsed)</source>
+        <translation>网格视图 (已解析)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="498"/>
+        <source>Columns</source>
+        <translation>列</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="502"/>
+        <source>Line Number</source>
+        <translation>行号</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="508"/>
+        <source>Time</source>
+        <translation>时间</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="514"/>
+        <source>Level</source>
+        <translation>级别</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="520"/>
+        <location filename="../src/qml/Main.qml" line="1334"/>
+        <source>Message</source>
+        <translation>消息</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="529"/>
+        <source>Show All Columns</source>
+        <translation>显示所有列</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="536"/>
+        <source>Hide Optional Columns</source>
+        <translation>隐藏可选列</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="548"/>
+        <source>Navigation Markers</source>
+        <translation>导航标记</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="558"/>
+        <source>Tools</source>
+        <translation>工具</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="565"/>
+        <location filename="../src/qml/Main.qml" line="1718"/>
+        <source>Advanced Filter...</source>
+        <translation>高级过滤...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="569"/>
+        <source>Export Visible Lines...</source>
+        <translation>导出可见行...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="574"/>
+        <source>Follow Mode (Live)</source>
+        <translation>跟随模式 (实时)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="597"/>
+        <source>Settings</source>
+        <translation>设置</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="604"/>
+        <source>Theme</source>
+        <translation>主题</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="626"/>
+        <source>Language</source>
+        <translation>语言</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="709"/>
+        <source>Encoding</source>
+        <translation>编码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="730"/>
+        <source>Keyword Colors...</source>
+        <translation>关键字颜色...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="735"/>
+        <source>Hide Scroll Markers</source>
+        <translation>隐藏滚动标记</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="735"/>
+        <source>Show Scroll Markers</source>
+        <translation>显示滚动标记</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="742"/>
+        <source>Register...</source>
+        <translation>注册...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="746"/>
+        <source>About</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="792"/>
+        <source>High-performance large file viewer</source>
+        <translation>高性能大文件查看器</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="798"/>
+        <source>Supports files over 10GB</source>
+        <translation>支持超过 10GB 的文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="840"/>
+        <source>Open Log File</source>
+        <translation>打开日志文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="863"/>
+        <source>Export Visible Lines</source>
+        <translation>导出可见行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="898"/>
+        <source>Find:</source>
+        <translation>查找:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="907"/>
+        <source>Enter search text (supports regex)...</source>
+        <translation>输入搜索文本 (支持正则)...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="924"/>
+        <location filename="../src/qml/Main.qml" line="1102"/>
+        <source>Regex</source>
+        <translation>正则</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="954"/>
+        <source>Find</source>
+        <translation>查找</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="980"/>
+        <source>Previous</source>
+        <translation>上一个</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1006"/>
+        <source>Next</source>
+        <translation>下一个</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1028"/>
+        <source>matches</source>
+        <translation>个匹配</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1076"/>
+        <source>Filter:</source>
+        <translation>过滤:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1085"/>
+        <source>Enter filter text (supports regex)...</source>
+        <translation>输入过滤文本 (支持正则)...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1132"/>
+        <source>Apply</source>
+        <translation>应用</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1154"/>
+        <source>Clear</source>
+        <translation>清除</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1178"/>
+        <source>Showing</source>
+        <translation>显示</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1224"/>
+        <location filename="../src/qml/Main.qml" line="1478"/>
+        <source>Line</source>
+        <translation>行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1478"/>
+        <source>Line Details</source>
+        <translation>行详情</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1489"/>
+        <source>Raw</source>
+        <translation>原始</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1489"/>
+        <source>JSON</source>
+        <translation>JSON</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1516"/>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1563"/>
+        <source>(Select a line to view details)</source>
+        <translation>(选择一行以查看详情)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1597"/>
+        <source>No file opened</source>
+        <translation>未打开文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1607"/>
+        <source>Size:</source>
+        <translation>大小:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1616"/>
+        <location filename="../src/qml/Main.qml" line="1617"/>
+        <source>Lines:</source>
+        <translation>行数:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1625"/>
+        <source>Registered</source>
+        <translation>已注册</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1625"/>
+        <source>Trial:</source>
+        <translation>试用:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1625"/>
+        <source>days left</source>
+        <translation>天剩余</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1637"/>
+        <source>Copy Line</source>
+        <translation>复制行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1641"/>
+        <source>Copy Line Number</source>
+        <translation>复制行号</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1648"/>
+        <source>Toggle Bookmark</source>
+        <translation>切换书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1675"/>
+        <source>Show Details</source>
+        <translation>显示详情</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1679"/>
+        <source>Format JSON</source>
+        <translation>格式化 JSON</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1690"/>
+        <source>Filter This Level</source>
+        <translation>过滤此级别</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1704"/>
+        <source>Filter This Keyword...</source>
+        <translation>过滤此关键字...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1714"/>
+        <source>Go To Line...</source>
+        <translation>转到行...</translation>
+    </message>
+</context>
+<context>
+    <name>NavigationBar</name>
+    <message>
+        <location filename="../src/qml/NavigationBar.qml" line="79"/>
+        <source>Line</source>
+        <translation>行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/NavigationBar.qml" line="117"/>
+        <source>Bookmark at line</source>
+        <translation>书签位于行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/NavigationBar.qml" line="144"/>
+        <source>Search result at line</source>
+        <translation>搜索结果位于行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/NavigationBar.qml" line="172"/>
+        <source>S</source>
+        <translation>搜</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/NavigationBar.qml" line="177"/>
+        <source>B</source>
+        <translation>书</translation>
     </message>
 </context>
 <context>
     <name>RegistrationDialog</name>
     <message>
-        <source>License Registration</source>
-        <translation type="vanished">许可证注册</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="30"/>
+        <source>Register BigFileViewer</source>
+        <translation>注册 BigFileViewer</translation>
     </message>
     <message>
-        <source>Machine Information</source>
-        <translation type="vanished">机器信息</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="39"/>
+        <source>Machine ID:</source>
+        <translation>机器码:</translation>
     </message>
     <message>
-        <source>Send this Machine ID to the developer to get your license:</source>
-        <translation type="vanished">发送此机器 ID 给开发者以获取您的许可证：</translation>
-    </message>
-    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="64"/>
         <source>Copy</source>
-        <translation type="vanished">复制</translation>
+        <translation>复制</translation>
     </message>
     <message>
-        <source>Copy Machine ID to clipboard</source>
-        <translation type="vanished">复制机器 ID 到剪贴板</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="84"/>
+        <source>License Key:</source>
+        <translation>许可密钥:</translation>
     </message>
     <message>
-        <source>Activation</source>
-        <translation type="vanished">激活</translation>
-    </message>
-    <message>
-        <source>Enter your License Key:</source>
-        <translation type="vanished">输入您的许可证密钥：</translation>
-    </message>
-    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="94"/>
         <source>Paste your license key here...</source>
-        <translation type="vanished">在此粘贴您的许可证密钥...</translation>
+        <translation>在此粘贴您的许可密钥...</translation>
     </message>
     <message>
-        <source>🌐 Get License Key (Web)</source>
-        <translation type="vanished">🌐 获取许可证密钥 (网页)</translation>
-    </message>
-    <message>
-        <source>Open the registration website</source>
-        <translation type="vanished">打开注册网站</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="vanished">取消</translation>
-    </message>
-    <message>
-        <source>✓ Activate</source>
-        <translation type="vanished">✓ 激活</translation>
-    </message>
-    <message>
-        <source>⚠ Please enter a license key.</source>
-        <translation type="vanished">⚠ 请输入许可证密钥。</translation>
-    </message>
-    <message>
-        <source>🔄 Verifying license...</source>
-        <translation type="vanished">🔄 正在验证许可证...</translation>
-    </message>
-    <message>
-        <source>Success</source>
-        <translation type="vanished">成功</translation>
-    </message>
-    <message>
-        <source>🎉 License activated successfully!
-
-Thank you for registering BigFileViewer.
-All features are now unlocked.</source>
-        <translation type="vanished">🎉 许可证激活成功！
-
-感谢您注册 BigFileViewer。
-所有功能现已解锁。</translation>
-    </message>
-    <message>
-        <source>❌ Invalid license key.</source>
-        <translation type="vanished">❌ 无效的许可证密钥。</translation>
-    </message>
-    <message>
-        <source>Activation Failed</source>
-        <translation type="vanished">激活失败</translation>
-    </message>
-    <message>
-        <source>The license key is not valid for this machine.
-
-Please make sure you entered the correct key.
-
-Error: %1</source>
-        <translation type="vanished">许可证密钥对本机无效。
-
-请确保您输入了正确的密钥。
-
-错误：%1</translation>
-    </message>
-    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="119"/>
         <source>Get License</source>
-        <translation type="vanished">获取许可证</translation>
+        <translation>获取许可</translation>
     </message>
     <message>
-        <source>To purchase a license:
-
-1. Copy your Machine ID using the &apos;Copy&apos; button
-2. Visit: your-website.com/register
-3. Complete the purchase
-4. You will receive a license key via email
-
-Machine ID: %1</source>
-        <translation type="vanished">购买许可证：
-
-1. 使用“复制”按钮复制您的机器 ID
-2. 访问：your-website.com/register
-3. 完成购买
-4. 您将通过电子邮件收到许可证密钥
-
-机器 ID：%1</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="138"/>
+        <source>Activate</source>
+        <translation>激活</translation>
     </message>
     <message>
-        <source>Copied!</source>
-        <translation type="vanished">已复制！</translation>
-    </message>
-</context>
-<context>
-    <name>SearchBar</name>
-    <message>
-        <source>Find</source>
-        <translation type="vanished">查找</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="142"/>
+        <source>Activation Successful!</source>
+        <translation>激活成功!</translation>
     </message>
     <message>
-        <source>Use Regular Expression</source>
-        <translation type="vanished">使用正则表达式</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="146"/>
+        <source>Invalid License Key</source>
+        <translation>无效的许可密钥</translation>
     </message>
     <message>
-        <source>Previous (Shift+Enter)</source>
-        <translation type="vanished">上一个 (Shift+Enter)</translation>
-    </message>
-    <message>
-        <source>Next (Enter)</source>
-        <translation type="vanished">下一个 (Enter)</translation>
-    </message>
-    <message>
-        <source>No results</source>
-        <translation type="vanished">无结果</translation>
-    </message>
-    <message>
-        <source>Close (Esc)</source>
-        <translation type="vanished">关闭 (Esc)</translation>
-    </message>
-    <message>
-        <source>0/0</source>
-        <translation type="vanished">0/0</translation>
-    </message>
-    <message>
-        <source>%1/%2</source>
-        <translation type="vanished">%1/%2</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="165"/>
+        <source>Close</source>
+        <translation>关闭</translation>
     </message>
 </context>
 </TS>

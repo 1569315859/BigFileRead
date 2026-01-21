@@ -424,9 +424,17 @@ if(ENABLE_QT)
         set(TS_FILES
             "${TRANSLATIONS_DIR}/BigFileViewer_en_US.ts"
             "${TRANSLATIONS_DIR}/BigFileViewer_zh_CN.ts"
-            # 可以添加更多语言：
-            # "${TRANSLATIONS_DIR}/BigFileViewer_ja_JP.ts"
-            # "${TRANSLATIONS_DIR}/BigFileViewer_ko_KR.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_zh_TW.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_ja_JP.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_ko_KR.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_ru_RU.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_de_DE.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_fr_FR.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_es_ES.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_pt_BR.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_it_IT.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_ar_SA.ts"
+            "${TRANSLATIONS_DIR}/BigFileViewer_hi_IN.ts"
         )
         
         # 收集需要扫描的源文件（用于 lupdate）
@@ -436,10 +444,11 @@ if(ENABLE_QT)
             "${CMAKE_SOURCE_DIR}/src/*.h"
             "${CMAKE_SOURCE_DIR}/src/*.hpp"
             "${CMAKE_SOURCE_DIR}/src/*.ui"
+            "${CMAKE_SOURCE_DIR}/src/*.qml"
         )
         
         message(STATUS "  翻译文件: ${TS_FILES}")
-        message(STATUS "  扫描源文件数量: ${CMAKE_SOURCE_DIR}/src/*.cpp, *.h")
+        message(STATUS "  扫描源文件数量: ${CMAKE_SOURCE_DIR}/src/*.cpp, *.h, *.qml")
     endif()
 endif()
 
