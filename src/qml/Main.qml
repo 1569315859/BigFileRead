@@ -29,6 +29,12 @@ ApplicationWindow {
     property int selectedRow: -1
     property string selectedLineText: ""
     property string formattedJsonText: ""  // JSON 格式化后的文本
+    
+    // ========== 列可见性配置（Grid 模式下使用）==========
+    property bool showLineColumn: true      // 显示行号列（内置，始终显示）
+    property bool showTimeColumn: true      // 显示时间列
+    property bool showLevelColumn: true     // 显示日志级别列
+    property bool showMessageColumn: true   // 显示消息列（始终显示）
 
     // 拖拽文件打开
     DropArea {
@@ -455,14 +461,16 @@ ApplicationWindow {
 
             Rectangle { width: 1; height: 20; color: borderColor }
 
-            // ========== 视图模式 ==========
+            // ========== 视图菜单 ==========
             ToolBtn {
-                text: isTableViewMode ? qsTr("Grid") : qsTr("Text")
-                onClicked: viewModeMenu.open()
+                text: qsTr("View")
+                onClicked: viewMenu.open()
                 
                 Menu {
-                    id: viewModeMenu
+                    id: viewMenu
+                    title: qsTr("View")
                     
+                    // 视图模式切换
                     MenuItem {
                         text: qsTr("Text View (Raw)")
                         checkable: true
@@ -480,6 +488,67 @@ ApplicationWindow {
                             isTableViewMode = true
                             _logModel.setTableModeEnabled(true)
                         }
+                    }
+                    
+                    MenuSeparator {}
+                    
+                    // 列显示配置子菜单
+                    Menu {
+                        id: columnsMenu
+                        title: qsTr("Columns")
+                        enabled: isTableViewMode
+                        
+                        MenuItem {
+                            text: qsTr("Line Number")
+                            checkable: true
+                            checked: showLineColumn
+                            enabled: false  // 行号始终显示
+                        }
+                        MenuItem {
+                            text: qsTr("Time")
+                            checkable: true
+                            checked: showTimeColumn
+                            onTriggered: showTimeColumn = checked
+                        }
+                        MenuItem {
+                            text: qsTr("Level")
+                            checkable: true
+                            checked: showLevelColumn
+                            onTriggered: showLevelColumn = checked
+                        }
+                        MenuItem {
+                            text: qsTr("Message")
+                            checkable: true
+                            checked: showMessageColumn
+                            enabled: false  // 消息始终显示
+                        }
+                        
+                        MenuSeparator {}
+                        
+                        MenuItem {
+                            text: qsTr("Show All Columns")
+                            onTriggered: {
+                                showTimeColumn = true
+                                showLevelColumn = true
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Hide Optional Columns")
+                            onTriggered: {
+                                showTimeColumn = false
+                                showLevelColumn = false
+                            }
+                        }
+                    }
+                    
+                    MenuSeparator {}
+                    
+                    // 导航条可见性
+                    MenuItem {
+                        text: qsTr("Navigation Markers")
+                        checkable: true
+                        checked: isNavBarVisible
+                        onTriggered: isNavBarVisible = checked
                     }
                 }
             }
@@ -1069,12 +1138,119 @@ ApplicationWindow {
             Layout.fillHeight: true
             spacing: 0
             
+            // ========== 固定的行号列 ==========
+            ColumnLayout {
+                Layout.preferredWidth: 60
+                Layout.minimumWidth: 60
+                Layout.maximumWidth: 60
+                Layout.fillHeight: true
+                spacing: 0
+                
+                // 行号列标题
+                Rectangle {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: isTableViewMode ? 28 : 0
+                    visible: isTableViewMode
+                    color: panelColor
+                    
+                    Text {
+                        text: qsTr("Line")
+                        color: textColor
+                        font.bold: true
+                        font.pixelSize: 12
+                        anchors.centerIn: parent
+                    }
+                    
+                    Rectangle {
+                        anchors.bottom: parent.bottom
+                        width: parent.width
+                        height: 1
+                        color: borderColor
+                    }
+                    Rectangle {
+                        anchors.right: parent.right
+                        width: 1
+                        height: parent.height
+                        color: borderColor
+                    }
+                }
+                
+                // 行号列表 - 与 TableView 同步滚动
+                ListView {
+                    id: lineNumberListView
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    clip: true
+                    
+                    model: _logModel
+                    
+                    // 与 tableView 同步滚动
+                    contentY: tableView.contentY
+                    onContentYChanged: {
+                        if (lineNumberListView.moving) {
+                            tableView.contentY = contentY
+                        }
+                    }
+                    
+                    interactive: false  // 禁用独立滚动，由 tableView 控制
+                    
+                    delegate: Rectangle {
+                        width: lineNumberListView.width
+                        height: rowHeight
+                        color: {
+                            if (index === selectedRow) return Qt.tint(Qt.darker(bgColor, 1.1), "#40007ACC")
+                            return Qt.darker(bgColor, 1.1)
+                        }
+                        
+                        // 行号文字
+                        Text {
+                            text: (realRow !== undefined ? realRow + 1 : index + 1)
+                            color: index === selectedRow ? textColor : "#858585"
+                            font.family: "Consolas"
+                            font.pixelSize: 12
+                            anchors.right: parent.right
+                            anchors.rightMargin: 8
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+                        
+                        // 书签指示器
+                        Rectangle {
+                            visible: isBookmarked
+                            width: 8
+                            height: 8
+                            radius: 4
+                            color: "#3794ff"
+                            anchors.left: parent.left
+                            anchors.leftMargin: 4
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+                        
+                        // 右边框
+                        Rectangle {
+                            width: 1
+                            height: parent.height
+                            color: borderColor
+                            anchors.right: parent.right
+                        }
+                        
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                selectedRow = index
+                                selectedLineText = display
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // ========== 主内容区域 ==========
             ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 spacing: 0
             
-                // 列标题（仅表格模式显示）
+                // 列标题（仅表格模式显示）- 不包含 Line 列
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.preferredHeight: isTableViewMode ? 28 : 0
@@ -1083,36 +1259,10 @@ ApplicationWindow {
                 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.leftMargin: 5
+                    anchors.leftMargin: 8
                     spacing: 1
                     
-                    Text {
-                        text: qsTr("Line")
-                        color: textColor
-                        font.bold: true
-                        font.pixelSize: 12
-                        Layout.preferredWidth: 60
-                    }
-                    Rectangle { width: 1; Layout.fillHeight: true; color: borderColor }
-                    
-                    Text {
-                        text: qsTr("Time")
-                        color: textColor
-                        font.bold: true
-                        font.pixelSize: 12
-                        Layout.preferredWidth: 180
-                    }
-                    Rectangle { width: 1; Layout.fillHeight: true; color: borderColor }
-                    
-                    Text {
-                        text: qsTr("Level")
-                        color: textColor
-                        font.bold: true
-                        font.pixelSize: 12
-                        Layout.preferredWidth: 60
-                    }
-                    Rectangle { width: 1; Layout.fillHeight: true; color: borderColor }
-                    
+                    // 消息列标题（始终显示）
                     Text {
                         text: qsTr("Message")
                         color: textColor
@@ -1141,9 +1291,13 @@ ApplicationWindow {
                 columnSpacing: 0
                 rowSpacing: 0
                 
-                // 单列布局（简单模式）
+                // 强制单列布局 - 只显示第一列（原始内容）
+                // 多列解析模式在未来版本中实现
                 columnWidthProvider: function(column) {
-                    return tableView.width
+                    if (column === 0) {
+                        return tableView.width
+                    }
+                    return 0  // 隐藏其他列
                 }
                 
                 delegate: Rectangle {
@@ -1155,6 +1309,7 @@ ApplicationWindow {
                         return row % 2 === 0 ? bgColor : Qt.darker(bgColor, 1.05)
                     }
                     
+                    // ========== 内容区域 ==========
                     Text {
                         text: highlightText(display)
                         textFormat: Text.RichText
@@ -1163,7 +1318,7 @@ ApplicationWindow {
                         font.pixelSize: 13
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
-                        anchors.leftMargin: 5
+                        anchors.leftMargin: 8
                         anchors.right: parent.right
                         anchors.rightMargin: 5
                         elide: Text.ElideRight

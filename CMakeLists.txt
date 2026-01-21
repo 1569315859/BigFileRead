@@ -490,20 +490,8 @@ file(GLOB_RECURSE HEADER_FILES
     "${CMAKE_SOURCE_DIR}/src/*.hpp"
 )
 
-# ============================================================================
-# QML 重构：排除旧的 QWidgets 文件
-# ============================================================================
-# 这些文件属于旧的 QWidgets 架构，QML 版本不需要编译
-list(FILTER SOURCE_FILES EXCLUDE REGEX ".*MainWindow\\.cpp$")
-list(FILTER SOURCE_FILES EXCLUDE REGEX ".*SearchBar\\.cpp$")
-list(FILTER SOURCE_FILES EXCLUDE REGEX ".*AdvancedFilterWidget\\.cpp$")
-list(FILTER SOURCE_FILES EXCLUDE REGEX ".*RegistrationDialog\\.cpp$")
-
-list(FILTER HEADER_FILES EXCLUDE REGEX ".*MainWindow\\.h$")
-list(FILTER HEADER_FILES EXCLUDE REGEX ".*SearchBar\\.h$")
-list(FILTER HEADER_FILES EXCLUDE REGEX ".*AdvancedFilterWidget\\.h$")
-list(FILTER HEADER_FILES EXCLUDE REGEX ".*RegistrationDialog\\.h$")
-list(FILTER HEADER_FILES EXCLUDE REGEX ".*CompactLineDelegate\\.h$")
+# 注意：旧的 QWidgets 文件（MainWindow, SearchBar, AdvancedFilterWidget, 
+# RegistrationDialog, CompactLineDelegate）已被删除，QML 版本不再需要这些文件
 
 message(STATUS "源文件数量: ${SOURCE_FILES}")
 message(STATUS "头文件数量: ${HEADER_FILES}")

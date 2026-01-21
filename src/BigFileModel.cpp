@@ -507,8 +507,13 @@ QVariant BigFileModel::data(const QModelIndex &index, int role) const {
     QString rawLine = getLine(realRow);
     
     if (m_tableModeEnabled && column >= 0) {
-      return LogParser::instance().getFieldWithCache(
+      QString field = LogParser::instance().getFieldWithCache(
           static_cast<qint64>(realRow), rawLine, column);
+      // 如果解析失败（返回空），对于第一列回退显示原始内容
+      if (field.isEmpty() && column == 0) {
+        return rawLine;
+      }
+      return field;
     }
     
     return rawLine;
