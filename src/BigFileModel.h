@@ -11,9 +11,11 @@
 #define BIGFILEMODEL_H
 
 #include <QAbstractTableModel>
+#include <QDateTime>
 #include <QFile>
 #include <QFileSystemWatcher>
 #include <QFutureWatcher>
+#include <QMap>
 #include <QMutex>
 #include <QSet>
 #include <QString>
@@ -21,6 +23,24 @@
 #include <QTimer>
 #include <atomic>
 #include <vector>
+
+/**
+ * @brief 书签信息结构体 - 支持评论和时间戳
+ */
+struct BookmarkInfo {
+  Q_GADGET
+  Q_PROPERTY(qint64 lineIndex MEMBER lineIndex)
+  Q_PROPERTY(QString comment MEMBER comment)
+  Q_PROPERTY(QDateTime createdAt MEMBER createdAt)
+public:
+  qint64 lineIndex = -1;      ///< 真实行索引（0-based）
+  QString comment;            ///< 书签评论/备注
+  QDateTime createdAt;        ///< 创建时间
+  
+  BookmarkInfo() = default;
+  BookmarkInfo(qint64 line, const QString &note = QString())
+      : lineIndex(line), comment(note), createdAt(QDateTime::currentDateTime()) {}
+};
 
 
 class BigFileModel : public QAbstractTableModel {
@@ -260,6 +280,80 @@ public:
   Q_INVOKABLE void clearAllBookmarks();
 
   /**
+   * @brief 设置书签评论
+   * @param viewRow 视图中的行号
+   * @param comment 评论内容
+   */
+  Q_INVOKABLE void setBookmarkComment(int viewRow, const QString &comment);
+
+  /**
+   * @brief 获取书签评论
+   * @param viewRow 视图中的行号
+   * @return 评论内容，如果无书签返回空字符串
+   */
+  Q_INVOKABLE QString getBookmarkComment(int viewRow) const;
+
+  /**
+   * @brief 获取所有书签信息列表（用于书签面板）
+   * @return 包含行号、评论、时间的 QVariantList
+   */
+  Q_INVOKABLE QVariantList getAllBookmarks() const;
+
+  /**
+   * @brief 保存书签到文件
+   * @param path 书签文件路径（.json 格式）
+   * @return 成功返回 true
+   */
+  Q_INVOKABLE bool saveBookmarksToFile(const QString &path);
+
+  /**
+   * @brief 从文件加载书签
+   * @param path 书签文件路径
+   * @return 成功返回 true
+   */
+  Q_INVOKABLE bool loadBookmarksFromFile(const QString &path);
+
+  /**
+   * @brief 自动保存书签到默认位置（与文件同目录）
+   * @return 成功返回 true
+   */
+  Q_INVOKABLE bool autoSaveBookmarks();
+
+  /**
+   * @brief 自动加载默认位置的书签
+   * @return 成功返回 true
+   */
+  Q_INVOKABLE bool autoLoadBookmarks();
+
+  // ============ 导出功能 ============
+
+  /**
+   * @brief 导出当前视图数据到 CSV 文件
+   * @param path 目标文件路径
+   * @param startRow 起始行（视图行号，0-based）
+   * @param endRow 结束行（视图行号，-1 表示全部）
+   * @param includeBookmarksOnly 是否仅导出书签行
+   * @return 成功返回 true
+   */
+  Q_INVOKABLE bool exportToCSV(const QString &path, int startRow = 0, int endRow = -1, bool includeBookmarksOnly = false);
+
+  /**
+   * @brief 导出当前视图数据到 HTML 文件
+   * @param path 目标文件路径
+   * @param startRow 起始行（视图行号，0-based）
+   * @param endRow 结束行（视图行号，-1 表示全部）
+   * @param includeBookmarksOnly 是否仅导出书签行
+   * @return 成功返回 true
+   */
+  Q_INVOKABLE bool exportToHTML(const QString &path, int startRow = 0, int endRow = -1, bool includeBookmarksOnly = false);
+
+  /**
+   * @brief 从剪贴板文本创建临时文件并加载
+   * @return 成功返回 true
+   */
+  Q_INVOKABLE bool loadFromClipboard();
+
+  /**
    * @brief 获取所有书签行号列表（用于 NavigationBar）
    * @return 书签行号的 QVariantList
    */
@@ -486,7 +580,7 @@ private:
   QFutureWatcher<void> m_filterWatcher;           ///< 过滤任务监视器
 
   // ============ 书签功能 ============
-  QSet<qint64> m_bookmarks;  ///< 书签集合（存储原始行索引，过滤时保持有效）
+  QMap<qint64, BookmarkInfo> m_bookmarks;  ///< 书签映射（行索引 -> 书签信息，过滤时保持有效）
 };
 
 #endif // BIGFILEMODEL_H

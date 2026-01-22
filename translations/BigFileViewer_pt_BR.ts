@@ -1,769 +1,1238 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="pt">
-  <context>
+<context>
     <name>AdvancedFilterDialog</name>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="32"/>
-      <source>Advanced Filter</source>
-      <translation>Filtro Avançado</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="32"/>
+        <source>Advanced Filter</source>
+        <translation>Filtro Avançado</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="56"/>
-      <source>Enable Time Range Filter</source>
-      <translation>Ativar Filtro de Intervalo de Tempo</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="56"/>
+        <source>Enable Time Range Filter</source>
+        <translation>Ativar Filtro de Intervalo de Tempo</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="92"/>
-      <source>From:</source>
-      <translation>De:</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="92"/>
+        <source>From:</source>
+        <translation>De:</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="112"/>
-      <source>To:</source>
-      <translation>Até:</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="112"/>
+        <source>To:</source>
+        <translation>Até:</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="140"/>
-      <source>Log Level:</source>
-      <translation>Nível de Log:</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="140"/>
+        <source>Log Level:</source>
+        <translation>Nível de Log:</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="269"/>
-      <source>Keywords (space or comma separated):</source>
-      <translation>Palavras-chave (separadas por espaço ou vírgula):</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="269"/>
+        <source>Keywords (space or comma separated):</source>
+        <translation>Palavras-chave (separadas por espaço ou vírgula):</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="278"/>
-      <source>e.g. error timeout database</source>
-      <translation>ex: erro timeout banco_de_dados</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="278"/>
+        <source>e.g. error timeout database</source>
+        <translation>ex: erro timeout banco_de_dados</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="299"/>
-      <source>Logic:</source>
-      <translation>Lógica:</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="299"/>
+        <source>Logic:</source>
+        <translation>Lógica:</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="347"/>
-      <source>Regex</source>
-      <translation>Regex</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="347"/>
+        <source>Regex</source>
+        <translation>Regex</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="363"/>
-      <source>Case</source>
-      <translation>Diferenciar Maiúsculas</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="363"/>
+        <source>Case</source>
+        <translation>Diferenciar Maiúsculas</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="387"/>
-      <source>Clear All</source>
-      <translation>Limpar Tudo</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="387"/>
+        <source>Clear All</source>
+        <translation>Limpar Tudo</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="417"/>
-      <source>Apply</source>
-      <translation>Aplicar</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="417"/>
+        <source>Apply</source>
+        <translation>Aplicar</translation>
     </message>
     <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="457"/>
-      <source>Cancel</source>
-      <translation>Cancelar</translation>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="457"/>
+        <source>Cancel</source>
+        <translation>Cancelar</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>BigFileModel</name>
     <message>
-      <location filename="../src/BigFileModel.cpp" line="72"/>
-      <source>Cannot open file: %1</source>
-      <translation>Não é possível abrir o arquivo: %1</translation>
+        <location filename="../src/BigFileModel.cpp" line="79"/>
+        <source>Cannot open file: %1</source>
+        <translation>Não é possível abrir o arquivo: %1</translation>
     </message>
     <message>
-      <location filename="../src/BigFileModel.cpp" line="84"/>
-      <source>File is empty</source>
-      <translation>O arquivo está vazio</translation>
+        <location filename="../src/BigFileModel.cpp" line="91"/>
+        <source>File is empty</source>
+        <translation>O arquivo está vazio</translation>
     </message>
     <message>
-      <location filename="../src/BigFileModel.cpp" line="92"/>
-      <source>Memory mapping failed: %1</source>
-      <translation>Falha no mapeamento de memória: %1</translation>
+        <location filename="../src/BigFileModel.cpp" line="99"/>
+        <source>Memory mapping failed: %1</source>
+        <translation>Falha no mapeamento de memória: %1</translation>
     </message>
     <message>
-      <location filename="../src/BigFileModel.cpp" line="255"/>
-      <source>Load complete: %1 lines</source>
-      <translation>Carregamento concluído: %1 linhas</translation>
+        <location filename="../src/BigFileModel.cpp" line="265"/>
+        <source>Load complete: %1 lines</source>
+        <translation>Carregamento concluído: %1 linhas</translation>
     </message>
     <message>
-      <location filename="../src/BigFileModel.cpp" line="336"/>
-      <source>Done: %1 lines, %2 MB, %3 ms</source>
-      <translation>Concluído: %1 linhas, %2 MB, %3 ms</translation>
+        <location filename="../src/BigFileModel.cpp" line="346"/>
+        <source>Done: %1 lines, %2 MB, %3 ms</source>
+        <translation>Concluído: %1 linhas, %2 MB, %3 ms</translation>
     </message>
     <message>
-      <location filename="../src/BigFileModel.cpp" line="483"/>
-      <source>Content</source>
-      <translation>Conteúdo</translation>
+        <location filename="../src/BigFileModel.cpp" line="498"/>
+        <source>Content</source>
+        <translation>Conteúdo</translation>
     </message>
     <message>
-      <location filename="../src/BigFileModel.cpp" line="525"/>
-      <source>Line %1 (Original length: %2 chars, truncated)</source>
-      <translation>Linha %1 (Comprimento original: %2 caracteres, truncado)</translation>
+        <location filename="../src/BigFileModel.cpp" line="540"/>
+        <source>Line %1 (Original length: %2 chars, truncated)</source>
+        <translation>Linha %1 (Comprimento original: %2 caracteres, truncado)</translation>
     </message>
     <message>
-      <location filename="../src/BigFileModel.cpp" line="527"/>
-      <source>Line %1</source>
-      <translation>Linha %1</translation>
+        <location filename="../src/BigFileModel.cpp" line="542"/>
+        <source>Line %1</source>
+        <translation>Linha %1</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
+    <name>BookmarkCommentDialog</name>
+    <message>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="37"/>
+        <source>Edit Bookmark Comment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="66"/>
+        <source>Line %1</source>
+        <translation type="unfinished">Linha %1</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="79"/>
+        <source>Comment:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="89"/>
+        <source>Enter bookmark note...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="110"/>
+        <source>Remove Bookmark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="135"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="153"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancelar</translation>
+    </message>
+</context>
+<context>
+    <name>BookmarkPanel</name>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="43"/>
+        <source>Bookmarks</source>
+        <translation type="unfinished">Marcadores</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="62"/>
+        <source>Export Bookmarks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="84"/>
+        <source>Clear All Bookmarks</source>
+        <translation type="unfinished">Limpar Todos os Marcadores</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="126"/>
+        <source>No bookmarks yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="133"/>
+        <source>Press Ctrl+B to add a bookmark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="202"/>
+        <source>Line %1</source>
+        <translation type="unfinished">Linha %1</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="211"/>
+        <source>(filtered)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="225"/>
+        <source>Edit Comment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="245"/>
+        <source>Remove Bookmark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="321"/>
+        <source>Clear all bookmarks?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="329"/>
+        <source>This action cannot be undone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="340"/>
+        <source>Clear All</source>
+        <translation type="unfinished">Limpar Tudo</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="361"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancelar</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="392"/>
+        <source>Just now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="392"/>
+        <source>%1 minutes ago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="397"/>
+        <source>1 hour ago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="397"/>
+        <source>%1 hours ago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="402"/>
+        <source>Yesterday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BookmarkPanel.qml" line="402"/>
+        <source>%1 days ago</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DirectoryMonitorDialog</name>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="59"/>
+        <source>Directory Monitor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="85"/>
+        <source>Watching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="101"/>
+        <source>Select a directory to monitor...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="113"/>
+        <source>Browse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="138"/>
+        <source>Filter:</source>
+        <translation type="unfinished">Filtro:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="163"/>
+        <source>Interval:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="195"/>
+        <source>Stop Watching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="195"/>
+        <source>Start Watching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="223"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="246"/>
+        <source>Open Latest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="285"/>
+        <source>Files in Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="366"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="405"/>
+        <source>No matching files found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="406"/>
+        <source>Select a directory to start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="421"/>
+        <source>Close</source>
+        <translation type="unfinished">Fechar</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="444"/>
+        <source>Select Directory to Monitor</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EnhancedScrollBar</name>
     <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="112"/>
-      <source>Error at line</source>
-      <translation>Erro na linha</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="112"/>
+        <source>Error at line</source>
+        <translation>Erro na linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="139"/>
-      <source>Warning at line</source>
-      <translation>Aviso na linha</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="139"/>
+        <source>Warning at line</source>
+        <translation>Aviso na linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="166"/>
-      <source>Info at line</source>
-      <translation>Informação na linha</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="166"/>
+        <source>Info at line</source>
+        <translation>Informação na linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="208"/>
-      <source>Bookmark at line</source>
-      <translation>Marcador na linha</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="208"/>
+        <source>Bookmark at line</source>
+        <translation>Marcador na linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="234"/>
-      <source>Search result at line</source>
-      <translation>Resultado da busca na linha</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="234"/>
+        <source>Search result at line</source>
+        <translation>Resultado da busca na linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="319"/>
-      <source>Show Markers</source>
-      <translation>Mostrar Marcadores</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="319"/>
+        <source>Show Markers</source>
+        <translation>Mostrar Marcadores</translation>
     </message>
     <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="328"/>
-      <source>Errors</source>
-      <translation>Erros</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="328"/>
+        <source>Errors</source>
+        <translation>Erros</translation>
     </message>
     <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="336"/>
-      <source>Warnings</source>
-      <translation>Avisos</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="336"/>
+        <source>Warnings</source>
+        <translation>Avisos</translation>
     </message>
     <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="344"/>
-      <source>Info</source>
-      <translation>Info</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="344"/>
+        <source>Info</source>
+        <translation>Info</translation>
     </message>
     <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="352"/>
-      <source>Bookmarks</source>
-      <translation>Marcadores</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="352"/>
+        <source>Bookmarks</source>
+        <translation>Marcadores</translation>
     </message>
     <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="360"/>
-      <source>Search Results</source>
-      <translation>Resultados da Busca</translation>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="360"/>
+        <source>Search Results</source>
+        <translation>Resultados da Busca</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
+    <name>ExportDialog</name>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="41"/>
+        <source>Export Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="54"/>
+        <source>Format:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="98"/>
+        <source>Export Range:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="105"/>
+        <source>All lines (%1 total)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="118"/>
+        <source>Current view (%1 filtered lines)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="131"/>
+        <source>Line range:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="155"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="177"/>
+        <source>End</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="198"/>
+        <source>Export bookmarked lines only (%1 bookmarks)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="218"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="236"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancelar</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="259"/>
+        <source>Export as CSV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ExportDialog.qml" line="259"/>
+        <source>Export as HTML</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FeatureGate</name>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="238"/>
+        <source>Pro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="242"/>
+        <source>Enterprise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="246"/>
+        <source>Free</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="254"/>
+        <source>过滤模板</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="255"/>
+        <source>保存和加载常用的过滤条件，快速应用预设过滤方案。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="258"/>
+        <source>工作区</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="259"/>
+        <source>保存当前会话状态（打开的文件、过滤条件、滚动位置），下次启动时恢复。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="262"/>
+        <source>耗时列</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="263"/>
+        <source>显示每行日志与上一行的时间差，帮助分析性能瓶颈。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="266"/>
+        <source>滚动日志</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="267"/>
+        <source>自动合并 log, log.1, log.2 等切割的日志文件，作为连续日志查看。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="270"/>
+        <source>统计面板</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="271"/>
+        <source>可视化展示日志级别分布、时间趋势、关键词频率等统计图表。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="274"/>
+        <source>远程文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="275"/>
+        <source>通过 SFTP/SSH 直接连接远程服务器，查看和监控远程日志文件。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="278"/>
+        <source>邮件报警</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="279"/>
+        <source>当检测到特定关键词（如 FATAL）时，自动发送邮件通知。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="282"/>
+        <source>Jira 集成</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="283"/>
+        <source>将选中的日志片段直接创建为 Jira Issue，便于 Bug 跟踪。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="286"/>
+        <source>GitHub 集成</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="287"/>
+        <source>将选中的日志片段直接创建为 GitHub Issue。</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GoToLineDialog</name>
     <message>
-      <location filename="../src/qml/GoToLineDialog.qml" line="35"/>
-      <source>Go To Line</source>
-      <translation>Ir para Linha</translation>
+        <location filename="../src/qml/GoToLineDialog.qml" line="35"/>
+        <source>Go To Line</source>
+        <translation>Ir para Linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/GoToLineDialog.qml" line="43"/>
-      <source>Line Number:</source>
-      <translation>Número da Linha:</translation>
+        <location filename="../src/qml/GoToLineDialog.qml" line="43"/>
+        <source>Line Number:</source>
+        <translation>Número da Linha:</translation>
     </message>
     <message>
-      <location filename="../src/qml/GoToLineDialog.qml" line="52"/>
-      <source>Enter line number...</source>
-      <translation>Digite o número da linha...</translation>
+        <location filename="../src/qml/GoToLineDialog.qml" line="52"/>
+        <source>Enter line number...</source>
+        <translation>Digite o número da linha...</translation>
     </message>
     <message>
-      <location filename="../src/qml/GoToLineDialog.qml" line="79"/>
-      <source>OK</source>
-      <translation>OK</translation>
+        <location filename="../src/qml/GoToLineDialog.qml" line="79"/>
+        <source>OK</source>
+        <translation>OK</translation>
     </message>
     <message>
-      <location filename="../src/qml/GoToLineDialog.qml" line="103"/>
-      <source>Cancel</source>
-      <translation>Cancelar</translation>
+        <location filename="../src/qml/GoToLineDialog.qml" line="103"/>
+        <source>Cancel</source>
+        <translation>Cancelar</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>KeywordConfigDialog</name>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="12"/>
-      <source>Keyword Color Configuration</source>
-      <translation>Configuração de Cor de Palavra-chave</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="12"/>
+        <source>Keyword Color Configuration</source>
+        <translation>Configuração de Cor de Palavra-chave</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="90"/>
-      <source>Add New Keyword</source>
-      <translation>Adicionar Nova Palavra-chave</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="90"/>
+        <source>Add New Keyword</source>
+        <translation>Adicionar Nova Palavra-chave</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="104"/>
-      <source>Enter keyword...</source>
-      <translation>Digite a palavra-chave...</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="104"/>
+        <source>Enter keyword...</source>
+        <translation>Digite a palavra-chave...</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="130"/>
-      <source>Click to choose color</source>
-      <translation>Clique para escolher a cor</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="130"/>
+        <source>Click to choose color</source>
+        <translation>Clique para escolher a cor</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="143"/>
-      <source>Add</source>
-      <translation>Adicionar</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="143"/>
+        <source>Add</source>
+        <translation>Adicionar</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="202"/>
-      <source>Keyword</source>
-      <translation>Palavra-chave</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="202"/>
+        <source>Keyword</source>
+        <translation>Palavra-chave</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="210"/>
-      <source>Color</source>
-      <translation>Cor</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="210"/>
+        <source>Color</source>
+        <translation>Cor</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="218"/>
-      <source>Preview</source>
-      <translation>Pré-visualização</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="218"/>
+        <source>Preview</source>
+        <translation>Pré-visualização</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="226"/>
-      <source>Actions</source>
-      <translation>Ações</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="226"/>
+        <source>Actions</source>
+        <translation>Ações</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="312"/>
-      <source>Edit Color</source>
-      <translation>Editar Cor</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="312"/>
+        <source>Edit Color</source>
+        <translation>Editar Cor</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="336"/>
-      <source>Delete</source>
-      <translation>Excluir</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="336"/>
+        <source>Delete</source>
+        <translation>Excluir</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="362"/>
-      <source>Reset to Defaults</source>
-      <translation>Restaurar Padrões</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="362"/>
+        <source>Reset to Defaults</source>
+        <translation>Restaurar Padrões</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="381"/>
-      <source>Close</source>
-      <translation>Fechar</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="381"/>
+        <source>Close</source>
+        <translation>Fechar</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="401"/>
-      <source>Choose Color</source>
-      <translation>Escolher Cor</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="401"/>
+        <source>Choose Color</source>
+        <translation>Escolher Cor</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="408"/>
-      <source>Edit Color for</source>
-      <translation>Editar Cor para</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="408"/>
+        <source>Edit Color for</source>
+        <translation>Editar Cor para</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="418"/>
-      <source>Confirm Reset</source>
-      <translation>Confirmar Restauração</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="418"/>
+        <source>Confirm Reset</source>
+        <translation>Confirmar Restauração</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="432"/>
-      <source>Are you sure you want to reset all keywords to defaults?
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="432"/>
+        <source>Are you sure you want to reset all keywords to defaults?
 This action cannot be undone.</source>
-      <translation>Tem certeza de que deseja restaurar todas as palavras-chave para os padrões?
+        <translation>Tem certeza de que deseja restaurar todas as palavras-chave para os padrões?
 Esta ação não pode ser desfeita.</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="446"/>
-      <source>Cancel</source>
-      <translation>Cancelar</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="446"/>
+        <source>Cancel</source>
+        <translation>Cancelar</translation>
     </message>
     <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="463"/>
-      <source>Reset</source>
-      <translation>Restaurar</translation>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="463"/>
+        <source>Reset</source>
+        <translation>Restaurar</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>Main</name>
     <message>
-      <location filename="../src/qml/Main.qml" line="81"/>
-      <source>Drop file to open</source>
-      <translation>Arraste o arquivo para abrir</translation>
+        <location filename="../src/qml/Main.qml" line="81"/>
+        <source>Drop file to open</source>
+        <translation>Arraste o arquivo para abrir</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="331"/>
-      <source>File</source>
-      <translation>Arquivo</translation>
+        <location filename="../src/qml/Main.qml" line="335"/>
+        <source>File</source>
+        <translation>Arquivo</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="338"/>
-      <source>Open File...</source>
-      <translation>Abrir Arquivo...</translation>
+        <location filename="../src/qml/Main.qml" line="342"/>
+        <source>Open File...</source>
+        <translation>Abrir Arquivo...</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="344"/>
-      <source>Recent Files</source>
-      <translation>Arquivos Recentes</translation>
+        <location filename="../src/qml/Main.qml" line="348"/>
+        <source>Recent Files</source>
+        <translation>Arquivos Recentes</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="366"/>
-      <source>Clear Recent Files</source>
-      <translation>Limpar Arquivos Recentes</translation>
+        <location filename="../src/qml/Main.qml" line="370"/>
+        <source>Clear Recent Files</source>
+        <translation>Limpar Arquivos Recentes</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="374"/>
-      <location filename="../src/qml/Main.qml" line="585"/>
-      <source>Reload File</source>
-      <translation>Recarregar Arquivo</translation>
+        <location filename="../src/qml/Main.qml" line="378"/>
+        <source>Paste from Clipboard</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="386"/>
-      <source>Search</source>
-      <translation>Buscar</translation>
+        <location filename="../src/qml/Main.qml" line="383"/>
+        <location filename="../src/qml/Main.qml" line="625"/>
+        <source>Reload File</source>
+        <translation>Recarregar Arquivo</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="397"/>
-      <source>Filter</source>
-      <translation>Filtrar</translation>
+        <location filename="../src/qml/Main.qml" line="391"/>
+        <source>Export...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="407"/>
-      <source>Details</source>
-      <translation>Detalhes</translation>
+        <location filename="../src/qml/Main.qml" line="397"/>
+        <source>Monitor Directory...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="417"/>
-      <source>Go To</source>
-      <translation>Ir Para</translation>
+        <location filename="../src/qml/Main.qml" line="408"/>
+        <source>Search</source>
+        <translation>Buscar</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="422"/>
-      <source>Bookmark</source>
-      <translation>Marcador</translation>
+        <location filename="../src/qml/Main.qml" line="419"/>
+        <source>Filter</source>
+        <translation>Filtrar</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="429"/>
-      <source>Add/Remove Bookmark</source>
-      <translation>Adicionar/Remover Marcador</translation>
+        <location filename="../src/qml/Main.qml" line="429"/>
+        <source>Details</source>
+        <translation>Detalhes</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="435"/>
-      <location filename="../src/qml/Main.qml" line="1585"/>
-      <source>Next Bookmark</source>
-      <translation>Próximo Marcador</translation>
+        <location filename="../src/qml/Main.qml" line="439"/>
+        <source>Go To</source>
+        <translation>Ir Para</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="445"/>
-      <location filename="../src/qml/Main.qml" line="1595"/>
-      <source>Previous Bookmark</source>
-      <translation>Marcador Anterior</translation>
+        <location filename="../src/qml/Main.qml" line="444"/>
+        <source>Bookmark</source>
+        <translation>Marcador</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="456"/>
-      <source>Clear All Bookmarks</source>
-      <translation>Limpar Todos os Marcadores</translation>
+        <location filename="../src/qml/Main.qml" line="451"/>
+        <source>Add/Remove Bookmark</source>
+        <translation>Adicionar/Remover Marcador</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="466"/>
-      <location filename="../src/qml/Main.qml" line="471"/>
-      <source>View</source>
-      <translation>Visualizar</translation>
+        <location filename="../src/qml/Main.qml" line="456"/>
+        <source>Edit Bookmark Comment...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="475"/>
-      <source>Text View (Raw)</source>
-      <translation>Visualização de Texto (Bruto)</translation>
+        <location filename="../src/qml/Main.qml" line="465"/>
+        <location filename="../src/qml/Main.qml" line="1708"/>
+        <source>Next Bookmark</source>
+        <translation>Próximo Marcador</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="484"/>
-      <source>Grid View (Parsed)</source>
-      <translation>Visualização em Grade (Analisado)</translation>
+        <location filename="../src/qml/Main.qml" line="475"/>
+        <location filename="../src/qml/Main.qml" line="1718"/>
+        <source>Previous Bookmark</source>
+        <translation>Marcador Anterior</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="498"/>
-      <source>Columns</source>
-      <translation>Colunas</translation>
+        <location filename="../src/qml/Main.qml" line="486"/>
+        <source>Save Bookmarks...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="502"/>
-      <source>Line Number</source>
-      <translation>Número da Linha</translation>
+        <location filename="../src/qml/Main.qml" line="491"/>
+        <source>Load Bookmarks...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="508"/>
-      <source>Time</source>
-      <translation>Hora</translation>
+        <location filename="../src/qml/Main.qml" line="496"/>
+        <source>Clear All Bookmarks</source>
+        <translation>Limpar Todos os Marcadores</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="514"/>
-      <source>Level</source>
-      <translation>Nível</translation>
+        <location filename="../src/qml/Main.qml" line="506"/>
+        <location filename="../src/qml/Main.qml" line="511"/>
+        <source>View</source>
+        <translation>Visualizar</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="520"/>
-      <location filename="../src/qml/Main.qml" line="1267"/>
-      <source>Message</source>
-      <translation>Mensagem</translation>
+        <location filename="../src/qml/Main.qml" line="515"/>
+        <source>Text View (Raw)</source>
+        <translation>Visualização de Texto (Bruto)</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="529"/>
-      <source>Show All Columns</source>
-      <translation>Mostrar Todas as Colunas</translation>
+        <location filename="../src/qml/Main.qml" line="524"/>
+        <source>Grid View (Parsed)</source>
+        <translation>Visualização em Grade (Analisado)</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="536"/>
-      <source>Hide Optional Columns</source>
-      <translation>Ocultar Colunas Opcionais</translation>
+        <location filename="../src/qml/Main.qml" line="538"/>
+        <source>Columns</source>
+        <translation>Colunas</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="548"/>
-      <source>Navigation Markers</source>
-      <translation>Marcadores de Navegação</translation>
+        <location filename="../src/qml/Main.qml" line="542"/>
+        <source>Line Number</source>
+        <translation>Número da Linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="558"/>
-      <source>Tools</source>
-      <translation>Ferramentas</translation>
+        <location filename="../src/qml/Main.qml" line="548"/>
+        <source>Time</source>
+        <translation>Hora</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="565"/>
-      <location filename="../src/qml/Main.qml" line="1651"/>
-      <source>Advanced Filter...</source>
-      <translation>Filtro Avançado...</translation>
+        <location filename="../src/qml/Main.qml" line="554"/>
+        <source>Level</source>
+        <translation>Nível</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="569"/>
-      <source>Export Visible Lines...</source>
-      <translation>Exportar Linhas Visíveis...</translation>
+        <location filename="../src/qml/Main.qml" line="560"/>
+        <location filename="../src/qml/Main.qml" line="1390"/>
+        <source>Message</source>
+        <translation>Mensagem</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="574"/>
-      <source>Follow Mode (Live)</source>
-      <translation>Modo de Acompanhamento (Ao Vivo)</translation>
+        <location filename="../src/qml/Main.qml" line="569"/>
+        <source>Show All Columns</source>
+        <translation>Mostrar Todas as Colunas</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="597"/>
-      <source>Settings</source>
-      <translation>Configurações</translation>
+        <location filename="../src/qml/Main.qml" line="576"/>
+        <source>Hide Optional Columns</source>
+        <translation>Ocultar Colunas Opcionais</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="604"/>
-      <source>Theme</source>
-      <translation>Tema</translation>
+        <location filename="../src/qml/Main.qml" line="588"/>
+        <source>Navigation Markers</source>
+        <translation>Marcadores de Navegação</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="626"/>
-      <source>Language</source>
-      <translation>Idioma</translation>
+        <location filename="../src/qml/Main.qml" line="598"/>
+        <source>Tools</source>
+        <translation>Ferramentas</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="642"/>
-      <source>Encoding</source>
-      <translation>Codificação</translation>
+        <location filename="../src/qml/Main.qml" line="605"/>
+        <location filename="../src/qml/Main.qml" line="1774"/>
+        <source>Advanced Filter...</source>
+        <translation>Filtro Avançado...</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="663"/>
-      <source>Keyword Colors...</source>
-      <translation>Cores de Palavras-chave...</translation>
+        <location filename="../src/qml/Main.qml" line="609"/>
+        <source>Export Visible Lines...</source>
+        <translation>Exportar Linhas Visíveis...</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="668"/>
-      <source>Hide Scroll Markers</source>
-      <translation>Ocultar Marcadores de Rolagem</translation>
+        <location filename="../src/qml/Main.qml" line="614"/>
+        <source>Follow Mode (Live)</source>
+        <translation>Modo de Acompanhamento (Ao Vivo)</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="668"/>
-      <source>Show Scroll Markers</source>
-      <translation>Mostrar Marcadores de Rolagem</translation>
+        <location filename="../src/qml/Main.qml" line="637"/>
+        <source>Settings</source>
+        <translation>Configurações</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="675"/>
-      <source>Register...</source>
-      <translation>Registrar...</translation>
+        <location filename="../src/qml/Main.qml" line="644"/>
+        <source>Theme</source>
+        <translation>Tema</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="679"/>
-      <source>About</source>
-      <translation>Sobre</translation>
+        <location filename="../src/qml/Main.qml" line="666"/>
+        <source>Language</source>
+        <translation>Idioma</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="725"/>
-      <source>High-performance large file viewer</source>
-      <translation>Visualizador de arquivos grandes de alto desempenho</translation>
+        <location filename="../src/qml/Main.qml" line="749"/>
+        <source>Encoding</source>
+        <translation>Codificação</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="731"/>
-      <source>Supports files over 10GB</source>
-      <translation>Suporta arquivos com mais de 10GB</translation>
+        <location filename="../src/qml/Main.qml" line="770"/>
+        <source>Keyword Colors...</source>
+        <translation>Cores de Palavras-chave...</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="773"/>
-      <source>Open Log File</source>
-      <translation>Abrir Arquivo de Log</translation>
+        <location filename="../src/qml/Main.qml" line="775"/>
+        <source>Hide Scroll Markers</source>
+        <translation>Ocultar Marcadores de Rolagem</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="796"/>
-      <source>Export Visible Lines</source>
-      <translation>Exportar Linhas Visíveis</translation>
+        <location filename="../src/qml/Main.qml" line="775"/>
+        <source>Show Scroll Markers</source>
+        <translation>Mostrar Marcadores de Rolagem</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="831"/>
-      <source>Find:</source>
-      <translation>Localizar:</translation>
+        <location filename="../src/qml/Main.qml" line="782"/>
+        <source>Register...</source>
+        <translation>Registrar...</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="840"/>
-      <source>Enter search text (supports regex)...</source>
-      <translation>Digite o texto de busca (suporta regex)...</translation>
+        <location filename="../src/qml/Main.qml" line="786"/>
+        <source>About</source>
+        <translation>Sobre</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="857"/>
-      <location filename="../src/qml/Main.qml" line="1035"/>
-      <source>Regex</source>
-      <translation>Regex</translation>
+        <location filename="../src/qml/Main.qml" line="832"/>
+        <source>High-performance large file viewer</source>
+        <translation>Visualizador de arquivos grandes de alto desempenho</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="887"/>
-      <source>Find</source>
-      <translation>Localizar</translation>
+        <location filename="../src/qml/Main.qml" line="838"/>
+        <source>Supports files over 10GB</source>
+        <translation>Suporta arquivos com mais de 10GB</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="913"/>
-      <source>Previous</source>
-      <translation>Anterior</translation>
+        <location filename="../src/qml/Main.qml" line="896"/>
+        <source>Open Log File</source>
+        <translation>Abrir Arquivo de Log</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="939"/>
-      <source>Next</source>
-      <translation>Próximo</translation>
+        <location filename="../src/qml/Main.qml" line="919"/>
+        <source>Export Visible Lines</source>
+        <translation>Exportar Linhas Visíveis</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="961"/>
-      <source>matches</source>
-      <translation>correspondências</translation>
+        <location filename="../src/qml/Main.qml" line="954"/>
+        <source>Find:</source>
+        <translation>Localizar:</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1009"/>
-      <source>Filter:</source>
-      <translation>Filtro:</translation>
+        <location filename="../src/qml/Main.qml" line="963"/>
+        <source>Enter search text (supports regex)...</source>
+        <translation>Digite o texto de busca (suporta regex)...</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1018"/>
-      <source>Enter filter text (supports regex)...</source>
-      <translation>Digite o texto do filtro (suporta regex)...</translation>
+        <location filename="../src/qml/Main.qml" line="980"/>
+        <location filename="../src/qml/Main.qml" line="1158"/>
+        <source>Regex</source>
+        <translation>Regex</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1065"/>
-      <source>Apply</source>
-      <translation>Aplicar</translation>
+        <location filename="../src/qml/Main.qml" line="1010"/>
+        <source>Find</source>
+        <translation>Localizar</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1087"/>
-      <source>Clear</source>
-      <translation>Limpar</translation>
+        <location filename="../src/qml/Main.qml" line="1036"/>
+        <source>Previous</source>
+        <translation>Anterior</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1111"/>
-      <source>Showing</source>
-      <translation>Exibindo</translation>
+        <location filename="../src/qml/Main.qml" line="1062"/>
+        <source>Next</source>
+        <translation>Próximo</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1157"/>
-      <location filename="../src/qml/Main.qml" line="1411"/>
-      <source>Line</source>
-      <translation>Linha</translation>
+        <location filename="../src/qml/Main.qml" line="1084"/>
+        <source>matches</source>
+        <translation>correspondências</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1411"/>
-      <source>Line Details</source>
-      <translation>Detalhes da Linha</translation>
+        <location filename="../src/qml/Main.qml" line="1132"/>
+        <source>Filter:</source>
+        <translation>Filtro:</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1422"/>
-      <source>Raw</source>
-      <translation>Bruto</translation>
+        <location filename="../src/qml/Main.qml" line="1141"/>
+        <source>Enter filter text (supports regex)...</source>
+        <translation>Digite o texto do filtro (suporta regex)...</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1422"/>
-      <source>JSON</source>
-      <translation>JSON</translation>
+        <location filename="../src/qml/Main.qml" line="1188"/>
+        <source>Apply</source>
+        <translation>Aplicar</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1449"/>
-      <source>Copy</source>
-      <translation>Copiar</translation>
+        <location filename="../src/qml/Main.qml" line="1210"/>
+        <source>Clear</source>
+        <translation>Limpar</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1496"/>
-      <source>(Select a line to view details)</source>
-      <translation>(Selecione uma linha para ver detalhes)</translation>
+        <location filename="../src/qml/Main.qml" line="1234"/>
+        <source>Showing</source>
+        <translation>Exibindo</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1530"/>
-      <source>No file opened</source>
-      <translation>Nenhum arquivo aberto</translation>
+        <location filename="../src/qml/Main.qml" line="1280"/>
+        <location filename="../src/qml/Main.qml" line="1534"/>
+        <source>Line</source>
+        <translation>Linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1540"/>
-      <source>Size:</source>
-      <translation>Tamanho:</translation>
+        <location filename="../src/qml/Main.qml" line="1534"/>
+        <source>Line Details</source>
+        <translation>Detalhes da Linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1549"/>
-      <location filename="../src/qml/Main.qml" line="1550"/>
-      <source>Lines:</source>
-      <translation>Linhas:</translation>
+        <location filename="../src/qml/Main.qml" line="1545"/>
+        <source>Raw</source>
+        <translation>Bruto</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1558"/>
-      <source>Registered</source>
-      <translation>Registrado</translation>
+        <location filename="../src/qml/Main.qml" line="1545"/>
+        <source>JSON</source>
+        <translation>JSON</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1558"/>
-      <source>Trial:</source>
-      <translation>Avaliação:</translation>
+        <location filename="../src/qml/Main.qml" line="1572"/>
+        <source>Copy</source>
+        <translation>Copiar</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1558"/>
-      <source>days left</source>
-      <translation>dias restantes</translation>
+        <location filename="../src/qml/Main.qml" line="1619"/>
+        <source>(Select a line to view details)</source>
+        <translation>(Selecione uma linha para ver detalhes)</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1570"/>
-      <source>Copy Line</source>
-      <translation>Copiar Linha</translation>
+        <location filename="../src/qml/Main.qml" line="1653"/>
+        <source>No file opened</source>
+        <translation>Nenhum arquivo aberto</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1574"/>
-      <source>Copy Line Number</source>
-      <translation>Copiar Número da Linha</translation>
+        <location filename="../src/qml/Main.qml" line="1663"/>
+        <source>Size:</source>
+        <translation>Tamanho:</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1581"/>
-      <source>Toggle Bookmark</source>
-      <translation>Alternar Marcador</translation>
+        <location filename="../src/qml/Main.qml" line="1672"/>
+        <location filename="../src/qml/Main.qml" line="1673"/>
+        <source>Lines:</source>
+        <translation>Linhas:</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1608"/>
-      <source>Show Details</source>
-      <translation>Mostrar Detalhes</translation>
+        <location filename="../src/qml/Main.qml" line="1681"/>
+        <source>Registered</source>
+        <translation>Registrado</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1612"/>
-      <source>Format JSON</source>
-      <translation>Formatar JSON</translation>
+        <location filename="../src/qml/Main.qml" line="1681"/>
+        <source>Trial:</source>
+        <translation>Avaliação:</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1623"/>
-      <source>Filter This Level</source>
-      <translation>Filtrar Este Nível</translation>
+        <location filename="../src/qml/Main.qml" line="1681"/>
+        <source>days left</source>
+        <translation>dias restantes</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1637"/>
-      <source>Filter This Keyword...</source>
-      <translation>Filtrar Esta Palavra-chave...</translation>
+        <location filename="../src/qml/Main.qml" line="1693"/>
+        <source>Copy Line</source>
+        <translation>Copiar Linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/Main.qml" line="1647"/>
-      <source>Go To Line...</source>
-      <translation>Ir para a Linha...</translation>
+        <location filename="../src/qml/Main.qml" line="1697"/>
+        <source>Copy Line Number</source>
+        <translation>Copiar Número da Linha</translation>
     </message>
-  </context>
-  <context>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1704"/>
+        <source>Toggle Bookmark</source>
+        <translation>Alternar Marcador</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1731"/>
+        <source>Show Details</source>
+        <translation>Mostrar Detalhes</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1735"/>
+        <source>Format JSON</source>
+        <translation>Formatar JSON</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1746"/>
+        <source>Filter This Level</source>
+        <translation>Filtrar Este Nível</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1760"/>
+        <source>Filter This Keyword...</source>
+        <translation>Filtrar Esta Palavra-chave...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1770"/>
+        <source>Go To Line...</source>
+        <translation>Ir para a Linha...</translation>
+    </message>
+</context>
+<context>
     <name>NavigationBar</name>
     <message>
-      <location filename="../src/qml/NavigationBar.qml" line="79"/>
-      <source>Line</source>
-      <translation>Linha</translation>
+        <location filename="../src/qml/NavigationBar.qml" line="79"/>
+        <source>Line</source>
+        <translation>Linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/NavigationBar.qml" line="117"/>
-      <source>Bookmark at line</source>
-      <translation>Marcador na linha</translation>
+        <location filename="../src/qml/NavigationBar.qml" line="117"/>
+        <source>Bookmark at line</source>
+        <translation>Marcador na linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/NavigationBar.qml" line="144"/>
-      <source>Search result at line</source>
-      <translation>Resultado da busca na linha</translation>
+        <location filename="../src/qml/NavigationBar.qml" line="144"/>
+        <source>Search result at line</source>
+        <translation>Resultado da busca na linha</translation>
     </message>
     <message>
-      <location filename="../src/qml/NavigationBar.qml" line="172"/>
-      <source>S</source>
-      <translation>P</translation>
+        <location filename="../src/qml/NavigationBar.qml" line="172"/>
+        <source>S</source>
+        <translation>P</translation>
     </message>
     <message>
-      <location filename="../src/qml/NavigationBar.qml" line="177"/>
-      <source>B</source>
-      <translation>M</translation>
+        <location filename="../src/qml/NavigationBar.qml" line="177"/>
+        <source>B</source>
+        <translation>M</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>RegistrationDialog</name>
     <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="30"/>
-      <source>Register BigFileViewer</source>
-      <translation>Registrar BigFileViewer</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="30"/>
+        <source>Register BigFileViewer</source>
+        <translation>Registrar BigFileViewer</translation>
     </message>
     <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="39"/>
-      <source>Machine ID:</source>
-      <translation>ID da Máquina:</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="39"/>
+        <source>Machine ID:</source>
+        <translation>ID da Máquina:</translation>
     </message>
     <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="64"/>
-      <source>Copy</source>
-      <translation>Copiar</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="64"/>
+        <source>Copy</source>
+        <translation>Copiar</translation>
     </message>
     <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="84"/>
-      <source>License Key:</source>
-      <translation>Chave de Licença:</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="84"/>
+        <source>License Key:</source>
+        <translation>Chave de Licença:</translation>
     </message>
     <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="94"/>
-      <source>Paste your license key here...</source>
-      <translation>Cole sua chave de licença aqui...</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="94"/>
+        <source>Paste your license key here...</source>
+        <translation>Cole sua chave de licença aqui...</translation>
     </message>
     <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="119"/>
-      <source>Get License</source>
-      <translation>Obter Licença</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="119"/>
+        <source>Get License</source>
+        <translation>Obter Licença</translation>
     </message>
     <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="138"/>
-      <source>Activate</source>
-      <translation>Ativar</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="138"/>
+        <source>Activate</source>
+        <translation>Ativar</translation>
     </message>
     <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="142"/>
-      <source>Activation Successful!</source>
-      <translation>Ativação Bem-sucedida!</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="142"/>
+        <source>Activation Successful!</source>
+        <translation>Ativação Bem-sucedida!</translation>
     </message>
     <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="146"/>
-      <source>Invalid License Key</source>
-      <translation>Chave de Licença Inválida</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="146"/>
+        <source>Invalid License Key</source>
+        <translation>Chave de Licença Inválida</translation>
     </message>
     <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="165"/>
-      <source>Close</source>
-      <translation>Fechar</translation>
+        <location filename="../src/qml/RegistrationDialog.qml" line="165"/>
+        <source>Close</source>
+        <translation>Fechar</translation>
     </message>
-  </context>
+</context>
+<context>
+    <name>UpgradePromptDialog</name>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="37"/>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="86"/>
+        <source>功能需要升级</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="158"/>
+        <source>需要 %1 版本</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="203"/>
+        <source> 版</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="211"/>
+        <source>解锁高级分析功能</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="212"/>
+        <source>解锁全部功能 + 远程支持</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="231"/>
+        <source>升级后可永久使用，包含免费更新和技术支持。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="257"/>
+        <source>稍后再说</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="280"/>
+        <source>立即升级</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

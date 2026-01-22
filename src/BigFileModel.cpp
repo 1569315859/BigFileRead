@@ -9,10 +9,17 @@
 
 #include "BigFileModel.h"
 #include "LogParser.h"
+#include <QClipboard>
 #include <QDebug>
+#include <QDir>
 #include <QElapsedTimer>
 #include <QFileInfo>
+#include <QGuiApplication>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QRegularExpression>
+#include <QStandardPaths>
 #include <QTextStream>
 #include <QtConcurrent>
 #include <algorithm> // for std::search
@@ -133,6 +140,9 @@ bool BigFileModel::loadFile(const QString &filePath) {
 void BigFileModel::cancelIndexing() { m_cancelRequested.store(true); }
 
 void BigFileModel::closeFile() {
+  // 关闭前自动保存书签
+  autoSaveBookmarks();
+  
   cancelIndexing();
   m_futureWatcher.waitForFinished();
   cancelFilter();
@@ -358,6 +368,11 @@ void BigFileModel::onIndexingFinished(bool success, const QString &message) {
   // 发出行数变化信号
   emit lineCountChanged();
   emit totalLineCountChanged();
+
+  // 自动加载书签（如果有）
+  if (success) {
+    autoLoadBookmarks();
+  }
 
   // *** 无论成功失败都发送 fileLoaded 信号 ***
   emit fileLoaded(success, message);
@@ -597,7 +612,6 @@ void BigFileModel::onFileChanged(const QString &path) {
   
   qDebug() << "File changed, new size:" << newSize << "old size:" << m_fileSize;
   
-  int oldRowCount = static_cast<int>(m_lineOffsets.size());
   qint64 oldSize = m_fileSize;
   
   if (m_mapPtr) {
@@ -1194,7 +1208,7 @@ void BigFileModel::toggleBookmark(int viewRow) {
     m_bookmarks.remove(realRowKey);
     qDebug() << "Bookmark removed at line" << (realRow + 1);
   } else {
-    m_bookmarks.insert(realRowKey);
+    m_bookmarks.insert(realRowKey, BookmarkInfo(realRowKey));
     qDebug() << "Bookmark added at line" << (realRow + 1);
   }
 
@@ -1274,15 +1288,447 @@ void BigFileModel::clearAllBookmarks() {
   qDebug() << "All bookmarks cleared";
 }
 
+void BigFileModel::setBookmarkComment(int viewRow, const QString &comment) {
+  int realRow = toRealRow(viewRow);
+  if (realRow < 0) {
+    return;
+  }
+  
+  qint64 realRowKey = static_cast<qint64>(realRow);
+  
+  if (!m_bookmarks.contains(realRowKey)) {
+    // 如果不存在书签，先创建
+    m_bookmarks.insert(realRowKey, BookmarkInfo(realRowKey, comment));
+    QModelIndex idx = index(viewRow, 0);
+    emit dataChanged(idx, idx, {BookmarkRole});
+  } else {
+    m_bookmarks[realRowKey].comment = comment;
+  }
+  
+  emit bookmarksChanged();
+  qDebug() << "Bookmark comment updated at line" << (realRow + 1) << ":" << comment;
+}
+
+QString BigFileModel::getBookmarkComment(int viewRow) const {
+  int realRow = toRealRow(viewRow);
+  if (realRow < 0) {
+    return QString();
+  }
+  
+  qint64 realRowKey = static_cast<qint64>(realRow);
+  if (m_bookmarks.contains(realRowKey)) {
+    return m_bookmarks[realRowKey].comment;
+  }
+  return QString();
+}
+
+QVariantList BigFileModel::getAllBookmarks() const {
+  QVariantList result;
+  for (auto it = m_bookmarks.constBegin(); it != m_bookmarks.constEnd(); ++it) {
+    QVariantMap bookmarkMap;
+    const BookmarkInfo &info = it.value();
+    
+    // 计算视图行号
+    int viewRow = static_cast<int>(info.lineIndex);
+    if (m_filterMode.load() && !m_filteredRows.empty()) {
+      auto filterIt = std::lower_bound(m_filteredRows.begin(), m_filteredRows.end(), viewRow);
+      if (filterIt != m_filteredRows.end() && *filterIt == viewRow) {
+        viewRow = static_cast<int>(std::distance(m_filteredRows.begin(), filterIt));
+      } else {
+        viewRow = -1; // 在过滤模式下不可见
+      }
+    }
+    
+    bookmarkMap["lineIndex"] = info.lineIndex;
+    bookmarkMap["viewRow"] = viewRow;
+    bookmarkMap["displayLine"] = info.lineIndex + 1; // 1-based for display
+    bookmarkMap["comment"] = info.comment;
+    bookmarkMap["createdAt"] = info.createdAt.toString(Qt::ISODate);
+    
+    // 获取行内容预览（前100个字符）
+    if (info.lineIndex >= 0 && info.lineIndex < static_cast<qint64>(m_lineOffsets.size())) {
+      QString lineContent = getLine(static_cast<int>(info.lineIndex));
+      if (lineContent.length() > 100) {
+        lineContent = lineContent.left(100) + "...";
+      }
+      bookmarkMap["preview"] = lineContent.trimmed();
+    }
+    
+    result.append(bookmarkMap);
+  }
+  return result;
+}
+
+bool BigFileModel::saveBookmarksToFile(const QString &path) {
+  if (path.isEmpty()) {
+    qWarning() << "Cannot save bookmarks: empty path";
+    return false;
+  }
+  
+  QJsonArray bookmarksArray;
+  for (auto it = m_bookmarks.constBegin(); it != m_bookmarks.constEnd(); ++it) {
+    const BookmarkInfo &info = it.value();
+    QJsonObject bookmarkObj;
+    bookmarkObj["lineIndex"] = static_cast<qint64>(info.lineIndex);
+    bookmarkObj["comment"] = info.comment;
+    bookmarkObj["createdAt"] = info.createdAt.toString(Qt::ISODate);
+    bookmarksArray.append(bookmarkObj);
+  }
+  
+  QJsonObject rootObj;
+  rootObj["version"] = 1;
+  rootObj["sourceFile"] = m_filePath;
+  rootObj["bookmarks"] = bookmarksArray;
+  
+  QJsonDocument doc(rootObj);
+  
+  QFile file(path);
+  if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    qWarning() << "Cannot open file for writing:" << path;
+    return false;
+  }
+  
+  file.write(doc.toJson(QJsonDocument::Indented));
+  file.close();
+  
+  qDebug() << "Bookmarks saved to:" << path << "count:" << m_bookmarks.size();
+  return true;
+}
+
+bool BigFileModel::loadBookmarksFromFile(const QString &path) {
+  if (path.isEmpty()) {
+    qWarning() << "Cannot load bookmarks: empty path";
+    return false;
+  }
+  
+  QFile file(path);
+  if (!file.exists()) {
+    qDebug() << "Bookmarks file does not exist:" << path;
+    return false;
+  }
+  
+  if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    qWarning() << "Cannot open bookmarks file:" << path;
+    return false;
+  }
+  
+  QByteArray data = file.readAll();
+  file.close();
+  
+  QJsonParseError parseError;
+  QJsonDocument doc = QJsonDocument::fromJson(data, &parseError);
+  
+  if (parseError.error != QJsonParseError::NoError) {
+    qWarning() << "JSON parse error:" << parseError.errorString();
+    return false;
+  }
+  
+  QJsonObject rootObj = doc.object();
+  
+  // 可选：检查源文件匹配
+  if (rootObj.contains("sourceFile")) {
+    QString sourceFile = rootObj["sourceFile"].toString();
+    if (!sourceFile.isEmpty() && sourceFile != m_filePath) {
+      qDebug() << "Warning: Bookmarks were created for different file:" << sourceFile;
+    }
+  }
+  
+  // 清除现有书签
+  m_bookmarks.clear();
+  
+  QJsonArray bookmarksArray = rootObj["bookmarks"].toArray();
+  for (const QJsonValue &val : bookmarksArray) {
+    QJsonObject bookmarkObj = val.toObject();
+    qint64 lineIndex = static_cast<qint64>(bookmarkObj["lineIndex"].toInteger());
+    QString comment = bookmarkObj["comment"].toString();
+    QString createdAtStr = bookmarkObj["createdAt"].toString();
+    
+    BookmarkInfo info(lineIndex, comment);
+    if (!createdAtStr.isEmpty()) {
+      info.createdAt = QDateTime::fromString(createdAtStr, Qt::ISODate);
+    }
+    
+    // 验证行索引是否有效
+    if (lineIndex >= 0 && lineIndex < static_cast<qint64>(m_lineOffsets.size())) {
+      m_bookmarks.insert(lineIndex, info);
+    }
+  }
+  
+  emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1), {BookmarkRole});
+  emit bookmarksChanged();
+  
+  qDebug() << "Bookmarks loaded from:" << path << "count:" << m_bookmarks.size();
+  return true;
+}
+
+bool BigFileModel::autoSaveBookmarks() {
+  if (m_filePath.isEmpty() || m_bookmarks.isEmpty()) {
+    return false;
+  }
+  
+  // 书签文件存储在与源文件相同的目录，文件名为 .{filename}.bookmarks.json
+  QFileInfo fi(m_filePath);
+  QString bookmarkPath = fi.absolutePath() + "/." + fi.fileName() + ".bookmarks.json";
+  
+  return saveBookmarksToFile(bookmarkPath);
+}
+
+bool BigFileModel::autoLoadBookmarks() {
+  if (m_filePath.isEmpty()) {
+    return false;
+  }
+  
+  QFileInfo fi(m_filePath);
+  QString bookmarkPath = fi.absolutePath() + "/." + fi.fileName() + ".bookmarks.json";
+  
+  return loadBookmarksFromFile(bookmarkPath);
+}
+
+bool BigFileModel::exportToCSV(const QString &path, int startRow, int endRow, bool includeBookmarksOnly) {
+  if (path.isEmpty() || m_lineOffsets.empty()) {
+    qWarning() << "Cannot export: empty path or no data";
+    return false;
+  }
+  
+  QFile file(path);
+  if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    qWarning() << "Cannot open file for writing:" << path;
+    return false;
+  }
+  
+  QTextStream out(&file);
+  out.setEncoding(QStringConverter::Utf8);
+  
+  // CSV header
+  out << "\"Line Number\",\"Timestamp\",\"Level\",\"Component\",\"Message\",\"Bookmarked\",\"Bookmark Comment\"\n";
+  
+  int totalRows = rowCount();
+  int end = (endRow < 0 || endRow >= totalRows) ? totalRows : endRow + 1;
+  int exportedCount = 0;
+  
+  for (int viewRow = startRow; viewRow < end; ++viewRow) {
+    int realRow = toRealRow(viewRow);
+    if (realRow < 0) continue;
+    
+    // Check bookmark filter
+    bool isBookmarked = m_bookmarks.contains(static_cast<qint64>(realRow));
+    if (includeBookmarksOnly && !isBookmarked) {
+      continue;
+    }
+    
+    // Get data from model
+    QModelIndex idx = index(viewRow, 0);
+    QString lineNumber = QString::number(realRow + 1);
+    QString timestamp = data(idx, Qt::UserRole + 1).toString();  // TimestampRole
+    QString level = data(idx, Qt::UserRole + 2).toString();       // LevelRole
+    QString component = data(idx, Qt::UserRole + 3).toString();   // ComponentRole
+    QString message = data(idx, Qt::UserRole + 4).toString();     // MessageRole
+    QString bookmarkComment = isBookmarked ? m_bookmarks[static_cast<qint64>(realRow)].comment : QString();
+    
+    // Escape CSV values
+    auto escapeCSV = [](const QString &value) -> QString {
+      QString escaped = value;
+      escaped.replace("\"", "\"\"");
+      return "\"" + escaped + "\"";
+    };
+    
+    out << escapeCSV(lineNumber) << ","
+        << escapeCSV(timestamp) << ","
+        << escapeCSV(level) << ","
+        << escapeCSV(component) << ","
+        << escapeCSV(message) << ","
+        << (isBookmarked ? "Yes" : "No") << ","
+        << escapeCSV(bookmarkComment) << "\n";
+    
+    ++exportedCount;
+  }
+  
+  file.close();
+  qDebug() << "Exported" << exportedCount << "lines to CSV:" << path;
+  return true;
+}
+
+bool BigFileModel::exportToHTML(const QString &path, int startRow, int endRow, bool includeBookmarksOnly) {
+  if (path.isEmpty() || m_lineOffsets.empty()) {
+    qWarning() << "Cannot export: empty path or no data";
+    return false;
+  }
+  
+  QFile file(path);
+  if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    qWarning() << "Cannot open file for writing:" << path;
+    return false;
+  }
+  
+  QTextStream out(&file);
+  out.setEncoding(QStringConverter::Utf8);
+  
+  // HTML header with styling
+  out << R"(<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Log Export - )" << QFileInfo(m_filePath).fileName() << R"(</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 20px; background: #1e1e1e; color: #d4d4d4; }
+    h1 { color: #569cd6; font-size: 18px; }
+    .meta { color: #6a9955; font-size: 12px; margin-bottom: 15px; }
+    table { border-collapse: collapse; width: 100%; font-size: 12px; }
+    th { background: #252526; color: #569cd6; padding: 8px; text-align: left; border-bottom: 2px solid #3c3c3c; }
+    td { padding: 6px 8px; border-bottom: 1px solid #3c3c3c; vertical-align: top; }
+    tr:hover { background: #2a2d2e; }
+    .line-num { color: #858585; font-family: Consolas, monospace; width: 60px; }
+    .timestamp { color: #b5cea8; font-family: Consolas, monospace; width: 180px; }
+    .level { width: 80px; font-weight: bold; }
+    .level-error { color: #f14c4c; }
+    .level-warn { color: #cca700; }
+    .level-info { color: #3794ff; }
+    .level-debug { color: #b5cea8; }
+    .component { color: #9cdcfe; width: 120px; }
+    .message { font-family: Consolas, monospace; white-space: pre-wrap; word-break: break-all; }
+    .bookmarked { background: #3d3d00; }
+    .bookmark-icon { color: #ffd700; }
+    .bookmark-comment { color: #ce9178; font-style: italic; font-size: 11px; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <h1>🔖 Log Export</h1>
+  <div class="meta">
+    Source: )" << m_filePath << R"(<br>
+    Exported: )" << QDateTime::currentDateTime().toString(Qt::ISODate) << R"(<br>
+    )" << (includeBookmarksOnly ? "Bookmarks only" : "All lines") << R"(
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Line</th>
+        <th>Timestamp</th>
+        <th>Level</th>
+        <th>Component</th>
+        <th>Message</th>
+      </tr>
+    </thead>
+    <tbody>
+)";
+  
+  int totalRows = rowCount();
+  int end = (endRow < 0 || endRow >= totalRows) ? totalRows : endRow + 1;
+  int exportedCount = 0;
+  
+  for (int viewRow = startRow; viewRow < end; ++viewRow) {
+    int realRow = toRealRow(viewRow);
+    if (realRow < 0) continue;
+    
+    bool isBookmarked = m_bookmarks.contains(static_cast<qint64>(realRow));
+    if (includeBookmarksOnly && !isBookmarked) {
+      continue;
+    }
+    
+    QModelIndex idx = index(viewRow, 0);
+    QString lineNumber = QString::number(realRow + 1);
+    QString timestamp = data(idx, Qt::UserRole + 1).toString();
+    QString level = data(idx, Qt::UserRole + 2).toString();
+    QString component = data(idx, Qt::UserRole + 3).toString();
+    QString message = data(idx, Qt::UserRole + 4).toString();
+    QString bookmarkComment = isBookmarked ? m_bookmarks[static_cast<qint64>(realRow)].comment : QString();
+    
+    // Escape HTML
+    auto escapeHTML = [](const QString &value) -> QString {
+      QString escaped = value;
+      escaped.replace("&", "&amp;");
+      escaped.replace("<", "&lt;");
+      escaped.replace(">", "&gt;");
+      escaped.replace("\"", "&quot;");
+      return escaped;
+    };
+    
+    // Determine level class
+    QString levelClass = "level-debug";
+    QString levelLower = level.toLower();
+    if (levelLower.contains("error") || levelLower.contains("fatal") || levelLower.contains("critical")) {
+      levelClass = "level-error";
+    } else if (levelLower.contains("warn")) {
+      levelClass = "level-warn";
+    } else if (levelLower.contains("info")) {
+      levelClass = "level-info";
+    }
+    
+    QString rowClass = isBookmarked ? " class=\"bookmarked\"" : "";
+    QString bookmarkIcon = isBookmarked ? " <span class=\"bookmark-icon\">🔖</span>" : "";
+    QString commentHtml = !bookmarkComment.isEmpty() 
+        ? QString("<div class=\"bookmark-comment\">📝 %1</div>").arg(escapeHTML(bookmarkComment)) 
+        : QString();
+    
+    out << "      <tr" << rowClass << ">\n"
+        << "        <td class=\"line-num\">" << lineNumber << bookmarkIcon << "</td>\n"
+        << "        <td class=\"timestamp\">" << escapeHTML(timestamp) << "</td>\n"
+        << "        <td class=\"level " << levelClass << "\">" << escapeHTML(level) << "</td>\n"
+        << "        <td class=\"component\">" << escapeHTML(component) << "</td>\n"
+        << "        <td class=\"message\">" << escapeHTML(message) << commentHtml << "</td>\n"
+        << "      </tr>\n";
+    
+    ++exportedCount;
+  }
+  
+  out << R"(    </tbody>
+  </table>
+  <div class="meta" style="margin-top: 15px;">
+    Total exported: )" << exportedCount << R"( lines
+  </div>
+</body>
+</html>
+)";
+  
+  file.close();
+  qDebug() << "Exported" << exportedCount << "lines to HTML:" << path;
+  return true;
+}
+
+bool BigFileModel::loadFromClipboard() {
+  QClipboard *clipboard = QGuiApplication::clipboard();
+  if (!clipboard) {
+    qWarning() << "Cannot access clipboard";
+    return false;
+  }
+  
+  QString text = clipboard->text();
+  if (text.isEmpty()) {
+    qWarning() << "Clipboard is empty or contains no text";
+    return false;
+  }
+  
+  // 创建临时文件
+  QString tempDir = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
+  QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss");
+  QString tempPath = tempDir + "/clipboard_" + timestamp + ".log";
+  
+  QFile tempFile(tempPath);
+  if (!tempFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    qWarning() << "Cannot create temp file:" << tempPath;
+    return false;
+  }
+  
+  QTextStream out(&tempFile);
+  out.setEncoding(QStringConverter::Utf8);
+  out << text;
+  tempFile.close();
+  
+  qDebug() << "Clipboard content saved to temp file:" << tempPath << "size:" << text.size();
+  
+  // 加载临时文件
+  return loadFile(tempPath);
+}
+
 QVariantList BigFileModel::bookmarkLines() const {
   QVariantList result;
-  for (qint64 bookmark : m_bookmarks) {
+  for (auto it = m_bookmarks.constBegin(); it != m_bookmarks.constEnd(); ++it) {
+    qint64 bookmark = it.key();
     // 转换为视图行号（如果在过滤模式下）
     if (m_filterMode.load() && !m_filteredRows.empty()) {
       // 在过滤索引中查找
-      auto it = std::lower_bound(m_filteredRows.begin(), m_filteredRows.end(), static_cast<int>(bookmark));
-      if (it != m_filteredRows.end() && *it == static_cast<int>(bookmark)) {
-        result.append(static_cast<int>(std::distance(m_filteredRows.begin(), it)));
+      auto filterIt = std::lower_bound(m_filteredRows.begin(), m_filteredRows.end(), static_cast<int>(bookmark));
+      if (filterIt != m_filteredRows.end() && *filterIt == static_cast<int>(bookmark)) {
+        result.append(static_cast<int>(std::distance(m_filteredRows.begin(), filterIt)));
       }
     } else {
       result.append(static_cast<int>(bookmark));

@@ -9,5 +9,10 @@
         <file>qml/KeywordConfigDialog.qml</file>
         <file>qml/NavigationBar.qml</file>
         <file>qml/EnhancedScrollBar.qml</file>
+        <file>qml/UpgradePromptDialog.qml</file>
+        <file>qml/BookmarkCommentDialog.qml</file>
+        <file>qml/BookmarkPanel.qml</file>
+        <file>qml/ExportDialog.qml</file>
+        <file>qml/DirectoryMonitorDialog.qml</file>
     </qresource>
 </RCC>

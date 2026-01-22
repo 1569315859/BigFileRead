@@ -1,0 +1,38 @@
+/**
+ * @file BuildConfig.h.in
+ * @brief CMake 配置模板文件，自动生成 BuildConfig.h
+ * @details 通过 configure_file() 处理，将 CMake 变量替换为实际值
+ */
+
+#ifndef BUILDCONFIG_H
+#define BUILDCONFIG_H
+
+// ============================================================================
+// 版本信息
+// ============================================================================
+#define BFV_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define BFV_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define BFV_VERSION_PATCH @PROJECT_VERSION_PATCH@
+#define BFV_VERSION_STRING "@PROJECT_VERSION@"
+
+// ============================================================================
+// 功能开关（由 CMake 选项控制）
+// ============================================================================
+
+// Pro 版功能（过滤模板、工作区、统计面板等）
+#cmakedefine BFV_PRO_FEATURES
+
+// Enterprise 版远程功能（SFTP/SSH、SMTP、外部集成等）
+#cmakedefine BFV_REMOTE_FEATURES
+
+// 许可证验证系统
+#cmakedefine ENABLE_LICENSE_SYSTEM
+
+// ============================================================================
+// 构建信息
+// ============================================================================
+#define BFV_BUILD_TYPE "@CMAKE_BUILD_TYPE@"
+#define BFV_COMPILER_ID "@CMAKE_CXX_COMPILER_ID@"
+#define BFV_QT_VERSION "@Qt6_VERSION@"
+
+#endif // BUILDCONFIG_H

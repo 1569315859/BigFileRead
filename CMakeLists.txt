@@ -36,6 +36,12 @@ option(ENABLE_FETCHCONTENT "启用FetchContent自动下载依赖" OFF)
 option(ENABLE_VCPKG "启用vcpkg包管理器支持" OFF)
 option(ENABLE_CONAN "启用Conan包管理器支持" OFF)
 
+# ============================================================================
+# BigFileViewer 功能分层选项
+# ============================================================================
+option(ENABLE_PRO_FEATURES "启用 Pro 版功能（过滤模板、工作区、统计等）" OFF)
+option(ENABLE_REMOTE_FEATURES "启用 Enterprise 远程功能（SFTP/SSH、SMTP、集成）需要 libssh2" OFF)
+
 # 代码质量工具选项
 option(ENABLE_CLANG_TIDY "启用Clang-Tidy静态分析" OFF)
 option(ENABLE_CLANG_FORMAT "启用Clang-Format代码格式化检查" OFF)
@@ -484,6 +490,85 @@ else()
  set(COMMON_SPACE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../CommonSpace") # 公共空间目录
 
 # ============================================================================
+# BuildConfig.h 生成（功能开关宏定义）
+# ============================================================================
+# 根据选项设置 C++ 宏
+if(ENABLE_PRO_FEATURES)
+    set(BFV_PRO_FEATURES 1)
+    message(STATUS "Pro 版功能已启用")
+else()
+    unset(BFV_PRO_FEATURES)
+    message(STATUS "Pro 版功能已禁用")
+endif()
+
+if(ENABLE_REMOTE_FEATURES)
+    set(BFV_REMOTE_FEATURES 1)
+    # 远程功能需要 Pro 功能
+    if(NOT ENABLE_PRO_FEATURES)
+        message(WARNING "ENABLE_REMOTE_FEATURES 需要 ENABLE_PRO_FEATURES，自动启用 Pro 功能")
+        set(ENABLE_PRO_FEATURES ON CACHE BOOL "启用 Pro 版功能" FORCE)
+        set(BFV_PRO_FEATURES 1)
+    endif()
+    message(STATUS "Enterprise 远程功能已启用")
+else()
+    unset(BFV_REMOTE_FEATURES)
+    message(STATUS "Enterprise 远程功能已禁用")
+endif()
+
+# 生成 BuildConfig.h
+configure_file(
+    "${CMAKE_SOURCE_DIR}/src/BuildConfig.h.in"
+    "${CMAKE_BINARY_DIR}/BuildConfig.h"
+    @ONLY
+)
+
+# 确保生成的头文件可以被找到
+include_directories(${CMAKE_BINARY_DIR})
+
+# ============================================================================
+# Enterprise 远程功能依赖（mbedTLS + libssh2）
+# ============================================================================
+if(ENABLE_REMOTE_FEATURES)
+    include(FetchContent)
+    
+    message(STATUS "正在配置远程功能依赖（mbedTLS + libssh2）...")
+    
+    # 1. 拉取 mbedTLS（纯 C 库，无外部依赖）
+    FetchContent_Declare(mbedtls
+        GIT_REPOSITORY https://github.com/Mbed-TLS/mbedtls.git
+        GIT_TAG        v3.6.0
+        GIT_SHALLOW    TRUE
+    )
+    # mbedTLS 构建选项
+    set(ENABLE_TESTING OFF CACHE BOOL "" FORCE)
+    set(ENABLE_PROGRAMS OFF CACHE BOOL "" FORCE)
+    set(MBEDTLS_FATAL_WARNINGS OFF CACHE BOOL "" FORCE)
+    
+    # 2. 拉取 libssh2
+    FetchContent_Declare(libssh2
+        GIT_REPOSITORY https://github.com/libssh2/libssh2.git
+        GIT_TAG        libssh2-1.11.1
+        GIT_SHALLOW    TRUE
+    )
+    # libssh2 构建选项
+    set(CRYPTO_BACKEND "mbedTLS" CACHE STRING "" FORCE)
+    set(BUILD_SHARED_LIBS_SAVED ${BUILD_SHARED_LIBS})
+    set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+    set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+    set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
+    set(LIBSSH2_NO_EXAMPLES ON CACHE BOOL "" FORCE)
+    
+    # 先拉取 mbedTLS，再拉取 libssh2
+    FetchContent_MakeAvailable(mbedtls)
+    FetchContent_MakeAvailable(libssh2)
+    
+    # 恢复 BUILD_SHARED_LIBS
+    set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_SAVED} CACHE BOOL "" FORCE)
+    
+    message(STATUS "  mbedTLS 和 libssh2 配置完成")
+endif()
+
+# ============================================================================
 # 源文件收集
 # ============================================================================
 # 收集源文件
@@ -628,6 +713,19 @@ if(ENABLE_QT)
             Qt5::Concurrent
             Qt5::Network
         )
+    endif()
+    
+    # =========================================================================
+    # 远程功能库链接（libssh2 + mbedTLS）
+    # =========================================================================
+    if(ENABLE_REMOTE_FEATURES)
+        target_link_libraries(${TARGET_NAME} PRIVATE 
+            libssh2
+            mbedtls
+            mbedcrypto
+            mbedx509
+        )
+        message(STATUS "已链接 libssh2 和 mbedTLS 库")
     endif()
     
     # =========================================================================

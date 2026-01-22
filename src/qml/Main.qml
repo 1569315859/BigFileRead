@@ -138,6 +138,10 @@ ApplicationWindow {
             }
         }
     }
+    Shortcut {
+        sequence: "Ctrl+Shift+V"
+        onActivated: _logModel.loadFromClipboard()
+    }
 
     // Format file size with appropriate unit (B/KB/MB/GB)
     function formatFileSize(bytes) {
@@ -371,9 +375,27 @@ ApplicationWindow {
                     MenuSeparator {}
                     
                     MenuItem {
+                        text: qsTr("Paste from Clipboard") + " (Ctrl+Shift+V)"
+                        onTriggered: _logModel.loadFromClipboard()
+                    }
+                    
+                    MenuItem {
                         text: qsTr("Reload File")
                         enabled: _logModel.filePath !== ""
                         onTriggered: _logModel.loadFile(_logModel.filePath)
+                    }
+                    
+                    MenuSeparator {}
+                    
+                    MenuItem {
+                        text: qsTr("Export...")
+                        enabled: _logModel.lineCount > 0
+                        onTriggered: exportDialog.open()
+                    }
+                    
+                    MenuItem {
+                        text: qsTr("Monitor Directory...")
+                        onTriggered: directoryMonitorDialog.open()
                     }
                 }
             }
@@ -430,6 +452,14 @@ ApplicationWindow {
                         enabled: selectedRow >= 0
                         onTriggered: _logModel.toggleBookmark(selectedRow)
                     }
+                    MenuItem {
+                        text: qsTr("Edit Bookmark Comment...")
+                        enabled: selectedRow >= 0 && _logModel.isBookmarked(selectedRow)
+                        onTriggered: {
+                            var lineContent = _logModel.data(_logModel.index(selectedRow, 0), Qt.DisplayRole) || ""
+                            bookmarkCommentDialog.openForRow(selectedRow, lineContent)
+                        }
+                    }
                     MenuSeparator {}
                     MenuItem {
                         text: qsTr("Next Bookmark")
@@ -450,6 +480,16 @@ ApplicationWindow {
                                 tableView.contentY = prevRow * rowHeight
                             }
                         }
+                    }
+                    MenuSeparator {}
+                    MenuItem {
+                        text: qsTr("Save Bookmarks...")
+                        enabled: _logModel.bookmarkLines.length > 0
+                        onTriggered: _logModel.autoSaveBookmarks()
+                    }
+                    MenuItem {
+                        text: qsTr("Load Bookmarks...")
+                        onTriggered: _logModel.autoLoadBookmarks()
                     }
                     MenuSeparator {}
                     MenuItem {
@@ -830,6 +870,22 @@ ApplicationWindow {
             if (targetLine > 0) {
                 tableView.contentY = (targetLine - 1) * rowHeight
             }
+        }
+    }
+    BookmarkCommentDialog {
+        id: bookmarkCommentDialog
+    }
+    ExportDialog {
+        id: exportDialog
+        onExportCompleted: function(path) {
+            console.log("Export completed:", path)
+        }
+    }
+    DirectoryMonitorDialog {
+        id: directoryMonitorDialog
+        onFileSelected: function(filePath) {
+            _logModel.loadFile(filePath)
+            _appController.addRecentFile(filePath)
         }
     }
     AdvancedFilterDialog { id: advancedFilterDialog }
@@ -1717,6 +1773,20 @@ ApplicationWindow {
         MenuItem {
             text: qsTr("Advanced Filter...")
             onTriggered: advancedFilterDialog.open()
+        }
+    }
+    
+    // ========== 升级提示对话框 ==========
+    UpgradePromptDialog {
+        id: upgradePromptDialog
+        parent: Overlay.overlay
+    }
+    
+    // ========== FeatureGate 信号连接 ==========
+    Connections {
+        target: _featureGate
+        function onUpgradePromptRequested(featureInfo) {
+            upgradePromptDialog.showForFeature(featureInfo)
         }
     }
 }
