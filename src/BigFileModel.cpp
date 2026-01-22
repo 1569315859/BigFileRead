@@ -9,6 +9,7 @@
 
 #include "BigFileModel.h"
 #include "LogParser.h"
+#include <QCache>
 #include <QClipboard>
 #include <QDebug>
 #include <QDir>
@@ -26,7 +27,8 @@
 #include <cctype>    // for std::tolower
 #include <cstring>   // for memchr
 
-BigFileModel::BigFileModel(QObject *parent) : QAbstractTableModel(parent) {
+BigFileModel::BigFileModel(QObject *parent) : QAbstractTableModel(parent),
+    m_timestampCache(1000) {
   // 创建 Pull Timer（仅在主线程运行，每 50ms 触发）
   m_refreshTimer = new QTimer(this);
   m_refreshTimer->setInterval(UI_UPDATE_INTERVAL_MS);
@@ -41,6 +43,22 @@ BigFileModel::BigFileModel(QObject *parent) : QAbstractTableModel(parent) {
   m_watcher = new QFileSystemWatcher(this);
   connect(m_watcher, &QFileSystemWatcher::fileChanged, this,
           &BigFileModel::onFileChanged);
+
+  // 初始化常见时间戳解析模式
+  m_timestampPatterns = {
+    // ISO 8601: 2024-01-15T10:30:45.123Z 或 2024-01-15 10:30:45.123
+    QRegularExpression(R"((\d{4}-\d{2}-\d{2})[T ](\d{2}:\d{2}:\d{2})(?:\.(\d{3}))?(?:Z|[+-]\d{2}:?\d{2})?)"),
+    // 常见日志格式: [2024-01-15 10:30:45]
+    QRegularExpression(R"(\[(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2})(?:\.(\d{3}))?\])"),
+    // Spring Boot: 2024-01-15 10:30:45.123
+    QRegularExpression(R"((\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2})\.(\d{3}))"),
+    // Syslog: Jan 15 10:30:45
+    QRegularExpression(R"((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})\s+(\d{2}:\d{2}:\d{2}))"),
+    // Unix timestamp (毫秒): 1705315845123
+    QRegularExpression(R"(\b(\d{13})\b)"),
+    // Unix timestamp (秒): 1705315845
+    QRegularExpression(R"(\b(\d{10})\b)")
+  };
 }
 
 BigFileModel::~BigFileModel() {
@@ -555,6 +573,20 @@ QVariant BigFileModel::data(const QModelIndex &index, int role) const {
     QString rawLine = getLine(realRow);
     LogParser::LogLevel level = LogParser::instance().detectLevel(rawLine);
     return static_cast<int>(level);
+  }
+
+  case DeltaTimeRole: {
+    if (!m_deltaTimeEnabled) {
+      return QVariant();
+    }
+    qint64 delta = getDeltaTime(viewRow);
+    return delta >= 0 ? QVariant(delta) : QVariant();
+  }
+
+  case TimestampRole: {
+    QString rawLine = getLine(realRow);
+    QDateTime ts = parseTimestamp(rawLine);
+    return ts.isValid() ? QVariant(ts) : QVariant();
   }
 
   default:
@@ -1768,6 +1800,81 @@ QVariantList BigFileModel::infoLines() const {
   return findLinesWithKeywords(infoKeywords, 2000);
 }
 
+QVariantMap BigFileModel::getLogStatistics() const {
+  QVariantMap result;
+  result["error"] = 0;
+  result["warn"] = 0;
+  result["info"] = 0;
+  result["debug"] = 0;
+  result["trace"] = 0;
+  result["other"] = 0;
+  
+  if (!m_mapPtr) return result;
+  
+  int errorCount = 0, warnCount = 0, infoCount = 0, debugCount = 0, traceCount = 0;
+  
+  int totalRows = m_filterMode.load() ? static_cast<int>(m_filteredRows.size()) 
+                                       : static_cast<int>(m_lineOffsets.size());
+  
+  // 采样扫描，限制性能开销
+  int step = 1;
+  int sampleSize = totalRows;
+  if (totalRows > 100000) {
+    step = totalRows / 100000 + 1;
+    sampleSize = totalRows / step;
+  }
+  
+  for (int viewRow = 0; viewRow < totalRows; viewRow += step) {
+    int realRow = m_filterMode.load() ? m_filteredRows[viewRow] : viewRow;
+    
+    if (realRow < 0 || realRow >= static_cast<int>(m_lineOffsets.size())) continue;
+    
+    qint64 start = m_lineOffsets[realRow];
+    qint64 end = (realRow + 1 < static_cast<int>(m_lineOffsets.size())) 
+                 ? m_lineOffsets[realRow + 1] 
+                 : m_fileSize;
+    qint64 len = std::min(end - start, static_cast<qint64>(150));
+    
+    QByteArray lineData(reinterpret_cast<const char*>(m_mapPtr + start), static_cast<int>(len));
+    QString line = QString::fromUtf8(lineData).toUpper();
+    
+    // 检查日志级别
+    if (line.contains("FATAL") || line.contains("CRITICAL") || line.contains("ERROR") ||
+        line.contains("FAIL") || line.contains("EXCEPTION") || line.contains("PANIC")) {
+      errorCount++;
+    } else if (line.contains("WARN") || line.contains("ALERT") || line.contains("CAUTION")) {
+      warnCount++;
+    } else if (line.contains("INFO") || line.contains("NOTICE")) {
+      infoCount++;
+    } else if (line.contains("DEBUG")) {
+      debugCount++;
+    } else if (line.contains("TRACE") || line.contains("VERBOSE")) {
+      traceCount++;
+    }
+  }
+  
+  // 如果采样了，按比例扩展
+  if (step > 1) {
+    errorCount = errorCount * step;
+    warnCount = warnCount * step;
+    infoCount = infoCount * step;
+    debugCount = debugCount * step;
+    traceCount = traceCount * step;
+  }
+  
+  int classified = errorCount + warnCount + infoCount + debugCount + traceCount;
+  int otherCount = std::max(0, totalRows - classified);
+  
+  result["error"] = errorCount;
+  result["warn"] = warnCount;
+  result["info"] = infoCount;
+  result["debug"] = debugCount;
+  result["trace"] = traceCount;
+  result["other"] = otherCount;
+  
+  return result;
+}
+
 QVariantList BigFileModel::findLinesWithKeywords(const QStringList &keywords, int maxResults) const {
   QVariantList result;
   if (!m_mapPtr || keywords.isEmpty()) return result;
@@ -1829,4 +1936,290 @@ bool BigFileModel::exportToFile(const QString &filePath) const {
   
   qDebug() << "Exported" << totalRows << "lines to" << filePath;
   return true;
+}
+
+// ========== Delta 时间功能实现 ==========
+
+void BigFileModel::setDeltaTimeEnabled(bool enabled) {
+  if (m_deltaTimeEnabled != enabled) {
+    m_deltaTimeEnabled = enabled;
+    m_timestampCache.clear();
+    emit deltaTimeEnabledChanged();
+    // 刷新显示
+    emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1));
+  }
+}
+
+QDateTime BigFileModel::parseTimestamp(const QString &rawLine) const {
+  if (rawLine.isEmpty()) {
+    return QDateTime();
+  }
+  
+  // 尝试各种时间戳格式
+  for (const QRegularExpression &pattern : m_timestampPatterns) {
+    QRegularExpressionMatch match = pattern.match(rawLine);
+    if (match.hasMatch()) {
+      QString captured = match.captured(0);
+      
+      // Unix 时间戳（毫秒）
+      if (captured.length() == 13 && captured.at(0).isDigit()) {
+        bool ok;
+        qint64 ms = captured.toLongLong(&ok);
+        if (ok) {
+          return QDateTime::fromMSecsSinceEpoch(ms);
+        }
+      }
+      
+      // Unix 时间戳（秒）
+      if (captured.length() == 10 && captured.at(0).isDigit()) {
+        bool ok;
+        qint64 sec = captured.toLongLong(&ok);
+        if (ok) {
+          return QDateTime::fromSecsSinceEpoch(sec);
+        }
+      }
+      
+      // ISO 8601 或常见格式
+      QString dateStr = match.captured(1);
+      QString timeStr = match.captured(2);
+      QString msStr = match.capturedLength(3) > 0 ? match.captured(3) : "000";
+      
+      // Syslog 格式特殊处理
+      if (dateStr.length() == 3) { // 月份缩写
+        static const QMap<QString, int> months = {
+          {"Jan", 1}, {"Feb", 2}, {"Mar", 3}, {"Apr", 4},
+          {"May", 5}, {"Jun", 6}, {"Jul", 7}, {"Aug", 8},
+          {"Sep", 9}, {"Oct", 10}, {"Nov", 11}, {"Dec", 12}
+        };
+        int month = months.value(dateStr, 0);
+        int day = match.captured(2).toInt();
+        timeStr = match.captured(3);
+        if (month > 0) {
+          QDate date(QDate::currentDate().year(), month, day);
+          QTime time = QTime::fromString(timeStr, "HH:mm:ss");
+          if (date.isValid() && time.isValid()) {
+            return QDateTime(date, time);
+          }
+        }
+        continue;
+      }
+      
+      // 标准日期时间格式
+      QDate date = QDate::fromString(dateStr, "yyyy-MM-dd");
+      QTime time = QTime::fromString(timeStr, "HH:mm:ss");
+      
+      if (date.isValid() && time.isValid()) {
+        int ms = msStr.leftJustified(3, '0').left(3).toInt();
+        time = time.addMSecs(ms);
+        return QDateTime(date, time);
+      }
+    }
+  }
+  
+  return QDateTime();
+}
+
+qint64 BigFileModel::getDeltaTime(int viewRow) const {
+  if (viewRow <= 0) {
+    return 0; // 第一行没有 delta
+  }
+  
+  int realRow = toRealRow(viewRow);
+  int prevRealRow = toRealRow(viewRow - 1);
+  
+  if (realRow < 0 || prevRealRow < 0) {
+    return -1;
+  }
+  
+  // 尝试从缓存获取
+  QDateTime *cachedCurrent = m_timestampCache.object(realRow);
+  QDateTime *cachedPrev = m_timestampCache.object(prevRealRow);
+  
+  QDateTime currentTs, prevTs;
+  
+  if (cachedCurrent) {
+    currentTs = *cachedCurrent;
+  } else {
+    QString currentLine = getLine(realRow);
+    currentTs = parseTimestamp(currentLine);
+    if (currentTs.isValid()) {
+      m_timestampCache.insert(realRow, new QDateTime(currentTs));
+    }
+  }
+  
+  if (cachedPrev) {
+    prevTs = *cachedPrev;
+  } else {
+    QString prevLine = getLine(prevRealRow);
+    prevTs = parseTimestamp(prevLine);
+    if (prevTs.isValid()) {
+      m_timestampCache.insert(prevRealRow, new QDateTime(prevTs));
+    }
+  }
+  
+  if (currentTs.isValid() && prevTs.isValid()) {
+    return prevTs.msecsTo(currentTs);
+  }
+  
+  return -1;
+}
+
+QString BigFileModel::formatDeltaTime(qint64 deltaMs) {
+  if (deltaMs < 0) {
+    return QString();
+  }
+  
+  if (deltaMs == 0) {
+    return "+0ms";
+  }
+  
+  QString sign = deltaMs >= 0 ? "+" : "-";
+  qint64 absMs = qAbs(deltaMs);
+  
+  if (absMs < 1000) {
+    return QString("%1%2ms").arg(sign).arg(absMs);
+  }
+  
+  if (absMs < 60000) {
+    double sec = absMs / 1000.0;
+    return QString("%1%2s").arg(sign).arg(sec, 0, 'f', 3);
+  }
+  
+  if (absMs < 3600000) {
+    int min = absMs / 60000;
+    int sec = (absMs % 60000) / 1000;
+    return QString("%1%2m %3s").arg(sign).arg(min).arg(sec);
+  }
+  
+  int hour = absMs / 3600000;
+  int min = (absMs % 3600000) / 60000;
+  int sec = (absMs % 60000) / 1000;
+  return QString("%1%2h %3m %4s").arg(sign).arg(hour).arg(min).arg(sec);
+}
+
+// ========== 滚动日志功能实现 ==========
+
+QStringList BigFileModel::detectRollingLogs(const QString &basePath) {
+  QStringList result;
+  QFileInfo baseInfo(basePath);
+  
+  if (!baseInfo.exists()) {
+    return result;
+  }
+  
+  QString dir = baseInfo.absolutePath();
+  QString baseName = baseInfo.completeBaseName();
+  QString suffix = baseInfo.suffix();
+  
+  QDir directory(dir);
+  QStringList filters;
+  
+  // 常见的滚动日志命名模式：
+  // app.log.1, app.log.2, ...
+  // app.1.log, app.2.log, ...
+  // app.log.2024-01-15, app.log.2024-01-14, ...
+  // app-2024-01-15.log, app-2024-01-14.log, ...
+  
+  filters << QString("%1.%2.*").arg(baseName).arg(suffix);  // app.log.1
+  filters << QString("%1.*.%2").arg(baseName).arg(suffix);  // app.1.log
+  filters << QString("%1-*.%2").arg(baseName).arg(suffix);  // app-2024-01-15.log
+  
+  QStringList entries = directory.entryList(filters, QDir::Files, QDir::Name);
+  
+  // 按文件名中的数字排序
+  QMap<int, QString> numberedFiles;
+  QStringList datedFiles;
+  
+  for (const QString &entry : entries) {
+    QString fullPath = directory.absoluteFilePath(entry);
+    
+    // 提取数字后缀
+    QRegularExpression numRe(R"(\.(\d+)(?:\.[^.]+)?$|\.(\d+)$)");
+    QRegularExpressionMatch numMatch = numRe.match(entry);
+    
+    if (numMatch.hasMatch()) {
+      int num = numMatch.captured(1).isEmpty() 
+                ? numMatch.captured(2).toInt() 
+                : numMatch.captured(1).toInt();
+      numberedFiles[num] = fullPath;
+    } else {
+      // 日期格式的文件
+      datedFiles.append(fullPath);
+    }
+  }
+  
+  // 按序号排序添加（从大到小，因为 .1 通常是最新的）
+  QList<int> nums = numberedFiles.keys();
+  std::sort(nums.begin(), nums.end(), std::greater<int>());
+  for (int num : nums) {
+    result.append(numberedFiles[num]);
+  }
+  
+  // 日期文件按名称排序（通常日期越早的文件名越小）
+  std::sort(datedFiles.begin(), datedFiles.end());
+  result.append(datedFiles);
+  
+  // 最后添加基础文件（最新的）
+  result.append(basePath);
+  
+  qDebug() << "Detected rolling logs for" << basePath << ":" << result.size() << "files";
+  return result;
+}
+
+bool BigFileModel::loadRollingLogs(const QStringList &files) {
+  if (files.isEmpty()) {
+    return false;
+  }
+  
+  if (files.size() == 1) {
+    return loadFile(files.first());
+  }
+  
+  // 创建临时合并文件
+  QString tempDir = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
+  QString tempFile = tempDir + "/BigFileViewer_merged_" + 
+                     QString::number(QDateTime::currentMSecsSinceEpoch()) + ".log";
+  
+  QFile output(tempFile);
+  if (!output.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    qWarning() << "Failed to create temp file for merging:" << tempFile;
+    return false;
+  }
+  
+  qint64 totalSize = 0;
+  for (const QString &filePath : files) {
+    QFile input(filePath);
+    if (!input.open(QIODevice::ReadOnly)) {
+      qWarning() << "Failed to open file for merging:" << filePath;
+      continue;
+    }
+    
+    // 添加文件分隔注释
+    QString separator = QString("\n=== %1 ===\n").arg(QFileInfo(filePath).fileName());
+    output.write(separator.toUtf8());
+    
+    // 分块复制（避免大文件内存问题）
+    const qint64 chunkSize = 8 * 1024 * 1024; // 8MB
+    while (!input.atEnd()) {
+      QByteArray chunk = input.read(chunkSize);
+      output.write(chunk);
+      totalSize += chunk.size();
+    }
+    
+    input.close();
+  }
+  
+  output.close();
+  
+  qDebug() << "Merged" << files.size() << "rolling logs into" << tempFile 
+           << "total size:" << totalSize;
+  
+  return loadFile(tempFile);
+}
+
+QStringList BigFileModel::getRelatedRollingLogs() const {
+  if (m_filePath.isEmpty()) {
+    return QStringList();
+  }
+  return detectRollingLogs(m_filePath);
 }

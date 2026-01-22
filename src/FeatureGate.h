@@ -49,6 +49,9 @@ class FeatureGate : public QObject
     
     /** @brief 是否已注册（非试用） */
     Q_PROPERTY(bool isRegistered READ isRegistered NOTIFY tierChanged)
+    
+    /** @brief 是否为 Pro 用户（Pro 或 Enterprise） */
+    Q_PROPERTY(bool isProUser READ isProUser NOTIFY tierChanged)
 
 public:
     /**
@@ -143,6 +146,18 @@ public:
      * @brief 是否已注册（非试用）
      */
     bool isRegistered() const;
+    
+    /**
+     * @brief 是否为 Pro 用户（Pro 或 Enterprise）
+     */
+    bool isProUser() const;
+    
+    /**
+     * @brief 检查功能是否可用，如不可用则显示升级提示
+     * @param featureName 功能名称字符串
+     * @return true 如果功能可用
+     */
+    Q_INVOKABLE bool canUseFeature(const QString &featureName);
     
     // ========================================================================
     // 升级提示

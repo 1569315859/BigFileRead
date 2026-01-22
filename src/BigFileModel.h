@@ -11,12 +11,14 @@
 #define BIGFILEMODEL_H
 
 #include <QAbstractTableModel>
+#include <QCache>
 #include <QDateTime>
 #include <QFile>
 #include <QFileSystemWatcher>
 #include <QFutureWatcher>
 #include <QMap>
 #include <QMutex>
+#include <QRegularExpression>
 #include <QSet>
 #include <QString>
 #include <QStringConverter>
@@ -59,6 +61,7 @@ class BigFileModel : public QAbstractTableModel {
   Q_PROPERTY(QVariantList errorLines READ errorLines NOTIFY lineCountChanged)
   Q_PROPERTY(QVariantList warningLines READ warningLines NOTIFY lineCountChanged)
   Q_PROPERTY(QVariantList infoLines READ infoLines NOTIFY lineCountChanged)
+  Q_PROPERTY(bool deltaTimeEnabled READ deltaTimeEnabled WRITE setDeltaTimeEnabled NOTIFY deltaTimeEnabledChanged)
 
 public:
   /// UI 刷新间隔（毫秒）- 每秒 10 次更新
@@ -78,6 +81,10 @@ public:
   static constexpr int RawLineRole = Qt::UserRole + 7;
   /// 日志级别角色 (返回检测到的日志级别)
   static constexpr int LogLevelRole = Qt::UserRole + 8;
+  /// Delta 时间角色 (返回与上一行的时间差，毫秒)
+  static constexpr int DeltaTimeRole = Qt::UserRole + 9;
+  /// 时间戳角色 (返回解析的时间戳)
+  static constexpr int TimestampRole = Qt::UserRole + 10;
 
   explicit BigFileModel(QObject *parent = nullptr);
   ~BigFileModel() override;
@@ -384,12 +391,73 @@ public:
   Q_INVOKABLE QVariantList infoLines() const;
 
   /**
+   * @brief 获取日志级别统计信息
+   * @return 包含各级别计数的 QVariantMap
+   */
+  Q_INVOKABLE QVariantMap getLogStatistics() const;
+
+  /**
    * @brief 搜索包含指定关键字的行（用于标记）
    * @param keywords 关键字列表
    * @param maxResults 最大结果数量（限制性能开销）
    * @return 匹配行号列表
    */
   Q_INVOKABLE QVariantList findLinesWithKeywords(const QStringList &keywords, int maxResults = 5000) const;
+
+  // ============ Delta 时间功能 (Pro) ============
+
+  /**
+   * @brief 是否启用 Delta 时间显示
+   */
+  Q_INVOKABLE bool deltaTimeEnabled() const { return m_deltaTimeEnabled; }
+
+  /**
+   * @brief 设置是否启用 Delta 时间显示
+   */
+  Q_INVOKABLE void setDeltaTimeEnabled(bool enabled);
+
+  /**
+   * @brief 从日志行解析时间戳
+   * @param rawLine 原始日志行
+   * @return 解析出的 QDateTime，无效则返回 null QDateTime
+   */
+  Q_INVOKABLE QDateTime parseTimestamp(const QString &rawLine) const;
+
+  /**
+   * @brief 计算两行之间的时间差（毫秒）
+   * @param viewRow 当前视图行号
+   * @return 时间差（毫秒），无法计算返回 -1
+   */
+  Q_INVOKABLE qint64 getDeltaTime(int viewRow) const;
+
+  /**
+   * @brief 格式化时间差为可读字符串
+   * @param deltaMs 时间差（毫秒）
+   * @return 格式化的字符串（如 "+1.234s", "+5m 32s"）
+   */
+  Q_INVOKABLE static QString formatDeltaTime(qint64 deltaMs);
+
+  // ============ 滚动日志功能 (Pro) ============
+
+  /**
+   * @brief 检测并返回相关的滚动日志文件
+   * @param basePath 基础日志文件路径（如 app.log）
+   * @return 检测到的滚动日志文件列表，按序号排序
+   */
+  Q_INVOKABLE static QStringList detectRollingLogs(const QString &basePath);
+
+  /**
+   * @brief 合并多个滚动日志文件到临时文件并加载
+   * @param files 要合并的文件列表
+   * @return 成功返回 true
+   */
+  Q_INVOKABLE bool loadRollingLogs(const QStringList &files);
+
+  /**
+   * @brief 获取当前文件的滚动日志列表
+   * @return 相关的滚动日志文件列表
+   */
+  Q_INVOKABLE QStringList getRelatedRollingLogs() const;
 
   // ============ 原始行访问 (用于外部访问) ============
 
@@ -468,6 +536,7 @@ signals:
   void indexingStateChanged();
   void searchResultCountChanged();
   void bookmarksChanged();
+  void deltaTimeEnabledChanged();
 
   // ============ 过滤信号 ============
 
@@ -581,6 +650,11 @@ private:
 
   // ============ 书签功能 ============
   QMap<qint64, BookmarkInfo> m_bookmarks;  ///< 书签映射（行索引 -> 书签信息，过滤时保持有效）
+
+  // ============ Delta 时间功能 ============
+  bool m_deltaTimeEnabled = false;                ///< 是否启用 Delta 时间显示
+  mutable QCache<int, QDateTime> m_timestampCache; ///< 时间戳缓存
+  QList<QRegularExpression> m_timestampPatterns;  ///< 时间戳解析正则表达式列表
 };
 
 #endif // BIGFILEMODEL_H

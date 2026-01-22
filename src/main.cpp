@@ -16,6 +16,9 @@
 #include "KeywordConfigManager.h"
 #include "FeatureGate.h"
 #include "DirectoryWatcher.h"
+#include "FilterTemplateManager.h"
+#include "WorkspaceManager.h"
+#include "SmtpAlertManager.h"
 
 /**
  * @brief 程序入口点
@@ -63,6 +66,9 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("_keywordConfig", &keywordConfig);
     engine.rootContext()->setContextProperty("_featureGate", &FeatureGate::instance());
     engine.rootContext()->setContextProperty("_directoryWatcher", &DirectoryWatcher::instance());
+    engine.rootContext()->setContextProperty("filterTemplateManager", &FilterTemplateManager::instance());
+    engine.rootContext()->setContextProperty("workspaceManager", &WorkspaceManager::instance());
+    engine.rootContext()->setContextProperty("_alertManager", &SmtpAlertManager::instance());
     
     // ★★★ 连接语言切换信号，刷新 QML 界面翻译 ★★★
     QObject::connect(&LanguageManager::instance(), &LanguageManager::languageChanged,

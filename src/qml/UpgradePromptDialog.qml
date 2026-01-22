@@ -34,7 +34,7 @@ Dialog {
     // 对话框配置
     // ========================================================================
     
-    title: qsTr("功能需要升级")
+    title: qsTr("Upgrade Required")
     modal: true
     
     width: Math.min(450, parent ? parent.width * 0.9 : 450)
@@ -83,7 +83,7 @@ Dialog {
             }
             
             Text {
-                text: qsTr("功能需要升级")
+                text: qsTr("Upgrade Required")
                 color: "white"
                 font.pixelSize: 16
                 font.bold: true
@@ -155,7 +155,7 @@ Dialog {
                 }
                 
                 Text {
-                    text: qsTr("需要 %1 版本").arg(requiredTierName)
+                    text: qsTr("Requires %1 Edition").arg(requiredTierName)
                     color: _themeManager.accentColor
                     font.pixelSize: 13
                 }
@@ -200,7 +200,7 @@ Dialog {
                     spacing: 4
                     
                     Text {
-                        text: requiredTierName + qsTr(" 版")
+                        text: requiredTierName + qsTr(" Edition")
                         color: _themeManager.textColor
                         font.pixelSize: 16
                         font.bold: true
@@ -208,8 +208,8 @@ Dialog {
                     
                     Text {
                         text: requiredTierName === "Pro" 
-                              ? qsTr("解锁高级分析功能")
-                              : qsTr("解锁全部功能 + 远程支持")
+                              ? qsTr("Unlock advanced analysis features")
+                              : qsTr("Unlock all features + remote support")
                         color: _themeManager.textColor
                         opacity: 0.7
                         font.pixelSize: 12
@@ -228,7 +228,7 @@ Dialog {
         // 功能对比提示
         Text {
             Layout.fillWidth: true
-            text: qsTr("升级后可永久使用，包含免费更新和技术支持。")
+            text: qsTr("Lifetime license with free updates and technical support.")
             color: _themeManager.textColor
             opacity: 0.6
             font.pixelSize: 12
@@ -254,7 +254,7 @@ Dialog {
         }
         
         Button {
-            text: qsTr("稍后再说")
+            text: qsTr("Maybe Later")
             flat: true
             DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
             
@@ -277,7 +277,7 @@ Dialog {
         }
         
         Button {
-            text: qsTr("立即升级")
+            text: qsTr("Upgrade Now")
             highlighted: true
             DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
             

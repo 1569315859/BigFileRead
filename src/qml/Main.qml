@@ -291,6 +291,57 @@ ApplicationWindow {
         return result.join("\n\n")
     }
 
+    // 获取当前工作区状态
+    function getCurrentWorkspaceState() {
+        return {
+            filePath: _logModel.filePath || "",
+            scrollPosition: tableView.contentY,
+            filterKeyword: filterField.text,
+            caseSensitive: caseSensitiveCheckbox.checked,
+            useRegex: regexCheckbox.checked,
+            logLevel: logLevelCombo.currentIndex > 0 ? logLevelCombo.currentText : "",
+            bookmarks: _logModel.getAllBookmarks(),
+            followMode: isFollowMode,
+            lineNumberWidth: 80,
+            contentWidth: 800
+        }
+    }
+    
+    // 应用工作区状态
+    function applyWorkspaceState(workspace) {
+        if (!workspace) return
+        
+        // 加载文件
+        if (workspace.filePath && workspace.filePath.length > 0) {
+            _logModel.loadFile(workspace.filePath)
+        }
+        
+        // 应用过滤条件
+        filterField.text = workspace.filterKeyword || ""
+        caseSensitiveCheckbox.checked = workspace.caseSensitive || false
+        regexCheckbox.checked = workspace.useRegex || false
+        
+        // 应用日志级别
+        if (workspace.logLevel && workspace.logLevel.length > 0) {
+            var idx = logLevelCombo.find(workspace.logLevel)
+            if (idx >= 0) {
+                logLevelCombo.currentIndex = idx
+            }
+        } else {
+            logLevelCombo.currentIndex = 0
+        }
+        
+        // 应用跟踪模式
+        isFollowMode = workspace.followMode || false
+        
+        // 延迟恢复滚动位置
+        Qt.callLater(function() {
+            if (workspace.scrollPosition > 0) {
+                tableView.contentY = workspace.scrollPosition
+            }
+        })
+    }
+
     // Unified button style component
     component ToolBtn: ToolButton {
         id: toolBtn
@@ -606,6 +657,24 @@ ApplicationWindow {
                         onTriggered: advancedFilterDialog.open()
                     }
                     MenuItem {
+                        text: qsTr("Filter Templates...") + (_featureGate.isProUser ? "" : " [Pro]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("filter_templates")) {
+                                filterTemplateDialog.open()
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Workspaces...") + (_featureGate.isProUser ? "" : " [Pro]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("workspaces")) {
+                                workspaceDialog.currentState = getCurrentWorkspaceState()
+                                workspaceDialog.open()
+                            }
+                        }
+                    }
+                    MenuSeparator {}
+                    MenuItem {
                         text: qsTr("Export Visible Lines...")
                         onTriggered: exportFileDialog.open()
                     }
@@ -621,6 +690,37 @@ ApplicationWindow {
                             }
                         }
                     }
+                    MenuItem {
+                        text: qsTr("Show Delta Time") + (_featureGate.isProUser ? "" : " [Pro]")
+                        checkable: true
+                        checked: _logModel.deltaTimeEnabled
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("delta_time")) {
+                                _logModel.setDeltaTimeEnabled(checked)
+                            } else {
+                                checked = false
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Merge Rolling Logs...") + (_featureGate.isProUser ? "" : " [Pro]")
+                        enabled: _logModel.filePath && _logModel.filePath.length > 0
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("rolling_logs")) {
+                                rollingLogDialog.open()
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Statistics...") + (_featureGate.isProUser ? "" : " [Pro]")
+                        enabled: _logModel.filePath && _logModel.filePath.length > 0
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("statistics")) {
+                                statisticsPanel.open()
+                            }
+                        }
+                    }
+                    MenuSeparator {}
                     MenuItem {
                         text: qsTr("Reload File")
                         onTriggered: {
@@ -772,6 +872,15 @@ ApplicationWindow {
                     }
                     
                     MenuItem {
+                        text: qsTr("Email Alerts...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("smtp_alerts")) {
+                                emailAlertDialog.open()
+                            }
+                        }
+                    }
+                    
+                    MenuItem {
                         text: isNavBarVisible ? qsTr("Hide Scroll Markers") : qsTr("Show Scroll Markers")
                         onTriggered: isNavBarVisible = !isNavBarVisible
                     }
@@ -887,6 +996,46 @@ ApplicationWindow {
             _logModel.loadFile(filePath)
             _appController.addRecentFile(filePath)
         }
+    }
+    FilterTemplateDialog {
+        id: filterTemplateDialog
+        currentKeyword: filterField.text
+        currentCaseSensitive: caseSensitiveCheckbox.checked
+        currentUseRegex: regexCheckbox.checked
+        currentLogLevel: logLevelCombo.currentIndex > 0 ? logLevelCombo.currentText : ""
+        
+        onTemplateApplied: function(template) {
+            if (template) {
+                filterField.text = template.keyword || ""
+                caseSensitiveCheckbox.checked = template.caseSensitive || false
+                regexCheckbox.checked = template.useRegex || false
+                // 应用日志级别
+                if (template.logLevel && template.logLevel.length > 0) {
+                    var idx = logLevelCombo.find(template.logLevel)
+                    if (idx >= 0) {
+                        logLevelCombo.currentIndex = idx
+                    }
+                }
+            }
+        }
+    }
+    WorkspaceDialog {
+        id: workspaceDialog
+        currentState: getCurrentWorkspaceState()
+        
+        onWorkspaceLoaded: function(workspace) {
+            applyWorkspaceState(workspace)
+        }
+    }
+    RollingLogDialog {
+        id: rollingLogDialog
+    }
+    StatisticsPanel {
+        id: statisticsPanel
+    }
+    EmailAlertDialog {
+        id: emailAlertDialog
+        alertManager: _alertManager
     }
     AdvancedFilterDialog { id: advancedFilterDialog }
     KeywordConfigDialog { id: keywordConfigDialog }

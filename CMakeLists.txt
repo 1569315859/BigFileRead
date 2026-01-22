@@ -39,7 +39,7 @@ option(ENABLE_CONAN "启用Conan包管理器支持" OFF)
 # ============================================================================
 # BigFileViewer 功能分层选项
 # ============================================================================
-option(ENABLE_PRO_FEATURES "启用 Pro 版功能（过滤模板、工作区、统计等）" OFF)
+option(ENABLE_PRO_FEATURES "启用 Pro 版功能（过滤模板、工作区、统计等）" ON)  # ★ 测试模式默认开启
 option(ENABLE_REMOTE_FEATURES "启用 Enterprise 远程功能（SFTP/SSH、SMTP、集成）需要 libssh2" OFF)
 
 # 代码质量工具选项

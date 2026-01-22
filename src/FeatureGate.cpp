@@ -4,6 +4,7 @@
  */
 
 #include "FeatureGate.h"
+#include "BuildConfig.h"  // 功能开关宏定义
 #include "LicenseManager.h"
 #include "TrialManager.h"
 #include <QSettings>
@@ -21,10 +22,10 @@ FeatureGate& FeatureGate::instance()
 
 FeatureGate::FeatureGate()
     : QObject(nullptr)
-    , m_currentTier(LicenseTier::Free)
+    , m_currentTier(LicenseTier::Enterprise )  // ★★★ 测试模式：默认 Pro ★★★
 {
     // 初始化时检查许可证状态
-    refreshLicenseStatus();
+    // refreshLicenseStatus();  // 暂时禁用，测试时默认 Pro
 }
 
 // ============================================================================
@@ -98,22 +99,43 @@ bool FeatureGate::isEnabled(Feature feature) const
 {
     LicenseTier required = requiredTier(feature);
     
+    qDebug() << "FeatureGate::isEnabled - feature:" << static_cast<int>(feature)
+             << "required tier:" << static_cast<int>(required)
+             << "current tier:" << static_cast<int>(m_currentTier)
+             << "hasProFeatures:" << hasProFeatures();
+    
+    // ★★★ 测试模式：跳过编译时检查 ★★★
+#if 1  // 改为 0 恢复正常检查
+    // 测试模式下只检查授权等级
+    if (required == LicenseTier::Free) {
+        return true;
+    }
+    bool allowed = static_cast<int>(m_currentTier) >= static_cast<int>(required);
+    qDebug() << "  -> TEST MODE License check:" << (allowed ? "ALLOWED" : "BLOCKED");
+    return allowed;
+#else
     // 1. 检查编译时功能开关
     if (required == LicenseTier::Pro && !hasProFeatures()) {
+        qDebug() << "  -> BLOCKED: Pro features not compiled in";
         return false;  // Pro 功能未编译进二进制
     }
     if (required == LicenseTier::Enterprise && !hasRemoteFeatures()) {
+        qDebug() << "  -> BLOCKED: Enterprise features not compiled in";
         return false;  // Enterprise 功能未编译进二进制
     }
     
     // 2. 检查运行时授权等级
     // Free 功能始终可用
     if (required == LicenseTier::Free) {
+        qDebug() << "  -> ALLOWED: Free feature";
         return true;
     }
     
     // 检查当前授权等级是否足够
-    return static_cast<int>(m_currentTier) >= static_cast<int>(required);
+    bool allowed = static_cast<int>(m_currentTier) >= static_cast<int>(required);
+    qDebug() << "  -> License check:" << (allowed ? "ALLOWED" : "BLOCKED");
+    return allowed;
+#endif
 }
 
 FeatureGate::Feature FeatureGate::parseFeatureName(const QString &name) const
@@ -173,6 +195,21 @@ bool FeatureGate::isRegistered() const
     return m_currentTier != LicenseTier::Free;
 }
 
+bool FeatureGate::isProUser() const
+{
+    return static_cast<int>(m_currentTier) >= static_cast<int>(LicenseTier::Pro);
+}
+
+bool FeatureGate::canUseFeature(const QString &featureName)
+{
+    if (isFeatureEnabled(featureName)) {
+        return true;
+    }
+    // 功能不可用，显示升级提示
+    showUpgradePrompt(featureName);
+    return false;
+}
+
 void FeatureGate::refreshLicenseStatus()
 {
     LicenseTier oldTier = m_currentTier;
@@ -198,7 +235,7 @@ void FeatureGate::refreshLicenseStatus()
 #else
     // 无许可证系统时，检查简单的设置标志
     QSettings settings("BigFileViewer", "BigFileViewer");
-    int tierValue = settings.value("license/tier", 0).toInt();
+    int tierValue = settings.value("license/tier", 2).toInt();
     
     // 调试模式：允许通过设置直接设定等级（仅开发用）
 #ifdef QT_DEBUG
@@ -248,43 +285,43 @@ QVariantMap FeatureGate::getFeatureInfo(const QString &featureName) const
             break;
     }
     
-    // 功能描述
+    // Feature descriptions (English for translation source)
     switch (feature) {
         case Feature::FilterTemplates:
-            info["title"] = tr("过滤模板");
-            info["description"] = tr("保存和加载常用的过滤条件，快速应用预设过滤方案。");
+            info["title"] = tr("Filter Templates");
+            info["description"] = tr("Save and load commonly used filter conditions for quick application of preset filter schemes.");
             break;
         case Feature::Workspaces:
-            info["title"] = tr("工作区");
-            info["description"] = tr("保存当前会话状态（打开的文件、过滤条件、滚动位置），下次启动时恢复。");
+            info["title"] = tr("Workspaces");
+            info["description"] = tr("Save current session state (open files, filter conditions, scroll position) and restore on next startup.");
             break;
         case Feature::DeltaTime:
-            info["title"] = tr("耗时列");
-            info["description"] = tr("显示每行日志与上一行的时间差，帮助分析性能瓶颈。");
+            info["title"] = tr("Delta Time Column");
+            info["description"] = tr("Display time difference between each log line and the previous one to help analyze performance bottlenecks.");
             break;
         case Feature::RollingLogs:
-            info["title"] = tr("滚动日志");
-            info["description"] = tr("自动合并 log, log.1, log.2 等切割的日志文件，作为连续日志查看。");
+            info["title"] = tr("Rolling Logs");
+            info["description"] = tr("Automatically merge segmented log files (log, log.1, log.2, etc.) and view as continuous logs.");
             break;
         case Feature::Statistics:
-            info["title"] = tr("统计面板");
-            info["description"] = tr("可视化展示日志级别分布、时间趋势、关键词频率等统计图表。");
+            info["title"] = tr("Statistics Panel");
+            info["description"] = tr("Visualize log level distribution, time trends, keyword frequency, and other statistical charts.");
             break;
         case Feature::RemoteFiles:
-            info["title"] = tr("远程文件");
-            info["description"] = tr("通过 SFTP/SSH 直接连接远程服务器，查看和监控远程日志文件。");
+            info["title"] = tr("Remote Files");
+            info["description"] = tr("Connect to remote servers via SFTP/SSH to view and monitor remote log files directly.");
             break;
         case Feature::SmtpAlerts:
-            info["title"] = tr("邮件报警");
-            info["description"] = tr("当检测到特定关键词（如 FATAL）时，自动发送邮件通知。");
+            info["title"] = tr("Email Alerts");
+            info["description"] = tr("Automatically send email notifications when specific keywords (e.g., FATAL) are detected.");
             break;
         case Feature::JiraIntegration:
-            info["title"] = tr("Jira 集成");
-            info["description"] = tr("将选中的日志片段直接创建为 Jira Issue，便于 Bug 跟踪。");
+            info["title"] = tr("Jira Integration");
+            info["description"] = tr("Create Jira Issues directly from selected log snippets for bug tracking.");
             break;
         case Feature::GitHubIntegration:
-            info["title"] = tr("GitHub 集成");
-            info["description"] = tr("将选中的日志片段直接创建为 GitHub Issue。");
+            info["title"] = tr("GitHub Integration");
+            info["description"] = tr("Create GitHub Issues directly from selected log snippets.");
             break;
         default:
             info["title"] = featureName;
