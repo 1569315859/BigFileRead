@@ -22,5 +22,10 @@
         <file>qml/JiraIssueDialog.qml</file>
         <file>qml/GitHubIssueDialog.qml</file>
         <file>qml/RemoteFileDialog.qml</file>
+        <file>qml/DashboardPanel.qml</file>
+        <file>qml/TimeSeriesChart.qml</file>
+        <file>qml/AIQueryDialog.qml</file>
+        <file>qml/AISettingsDialog.qml</file>
+        <file>qml/SanitizationConfigDialog.qml</file>
     </qresource>
 </RCC>

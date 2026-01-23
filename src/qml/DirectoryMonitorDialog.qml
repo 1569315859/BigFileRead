@@ -10,7 +10,7 @@ Popup {
     height: 450
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
-    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+    closePolicy: Popup.CloseOnEscape
 
     property color textColor: _themeManager.textColor
     property color panelColor: _themeManager.panelBackground

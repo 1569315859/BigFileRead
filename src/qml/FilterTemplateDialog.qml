@@ -15,6 +15,11 @@ Dialog {
     width: 600
     height: 500
     modal: true
+    closePolicy: Popup.CloseOnEscape
+    
+    // 设置居中显示
+    x: parent ? (parent.width - width) / 2 : 0
+    y: parent ? (parent.height - height) / 2 : 0
     
     // 当前过滤条件（用于保存新模板）
     property string currentKeyword: ""
@@ -312,8 +317,10 @@ Dialog {
         title: qsTr("保存过滤模板")
         width: 400
         modal: true
+        closePolicy: Popup.CloseOnEscape
         parent: Overlay.overlay
-        anchors.centerIn: parent
+        x: parent ? (parent.width - width) / 2 : 0
+        y: parent ? (parent.height - height) / 2 : 0
         
         ColumnLayout {
             anchors.fill: parent
@@ -395,8 +402,10 @@ Dialog {
         title: qsTr("重命名模板")
         width: 350
         modal: true
+        closePolicy: Popup.CloseOnEscape
         parent: Overlay.overlay
-        anchors.centerIn: parent
+        x: parent ? (parent.width - width) / 2 : 0
+        y: parent ? (parent.height - height) / 2 : 0
         
         ColumnLayout {
             anchors.fill: parent
@@ -449,8 +458,10 @@ Dialog {
         title: qsTr("删除模板")
         width: 350
         modal: true
+        closePolicy: Popup.CloseOnEscape
         parent: Overlay.overlay
-        anchors.centerIn: parent
+        x: parent ? (parent.width - width) / 2 : 0
+        y: parent ? (parent.height - height) / 2 : 0
         
         ColumnLayout {
             anchors.fill: parent

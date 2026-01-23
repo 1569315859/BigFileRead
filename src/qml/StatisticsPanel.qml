@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Dialogs
+import Qt.labs.platform as Platform
 
 /**
  * @brief Log Statistics Panel
@@ -12,11 +14,13 @@ Dialog {
     
     title: qsTr("Log Statistics")
     width: 550
-    height: 480
+    height: 520
     modal: true
+    closePolicy: Popup.CloseOnEscape
     
     // Center in parent
-    anchors.centerIn: parent
+    x: parent ? (parent.width - width) / 2 : 0
+    y: parent ? (parent.height - height) / 2 : 0
     
     // Close on reject
     onRejected: close()
@@ -92,6 +96,7 @@ Dialog {
                 
                 // Pie chart container
                 Rectangle {
+                    id: pieChartContainer
                     Layout.preferredWidth: 140
                     Layout.preferredHeight: 140
                     color: "transparent"
@@ -196,6 +201,7 @@ Dialog {
         
         // Bar chart
         GroupBox {
+            id: barChartGroup
             title: qsTr("Level Comparison")
             Layout.fillWidth: true
             Layout.preferredHeight: 90
@@ -245,12 +251,56 @@ Dialog {
             Layout.fillWidth: true
             Layout.topMargin: 8
             
+            Button {
+                text: qsTr("Export Pie Chart")
+                onClicked: pieChartSaveDialog.open()
+            }
+            
+            Button {
+                text: qsTr("Export Bar Chart")
+                onClicked: barChartSaveDialog.open()
+            }
+            
             Item { Layout.fillWidth: true }
             
             Button {
                 text: qsTr("Close")
                 onClicked: root.close()
             }
+        }
+    }
+    
+    // 饼状图保存对话框
+    FileDialog {
+        id: pieChartSaveDialog
+        title: qsTr("Save Pie Chart")
+        fileMode: FileDialog.SaveFile
+        nameFilters: ["PNG Image (*.png)"]
+        currentFolder: Platform.StandardPaths.writableLocation(Platform.StandardPaths.PicturesLocation)
+        
+        onAccepted: {
+            var path = selectedFile.toString().replace("file:///", "")
+            if (!path.toLowerCase().endsWith(".png")) {
+                path += ".png"
+            }
+            exportPieChart(path)
+        }
+    }
+    
+    // 柱状图保存对话框
+    FileDialog {
+        id: barChartSaveDialog
+        title: qsTr("Save Bar Chart")
+        fileMode: FileDialog.SaveFile
+        nameFilters: ["PNG Image (*.png)"]
+        currentFolder: Platform.StandardPaths.writableLocation(Platform.StandardPaths.PicturesLocation)
+        
+        onAccepted: {
+            var path = selectedFile.toString().replace("file:///", "")
+            if (!path.toLowerCase().endsWith(".png")) {
+                path += ".png"
+            }
+            exportBarChart(path)
         }
     }
     
@@ -322,5 +372,29 @@ Dialog {
     
     onOpened: {
         calculateStatistics()
+    }
+    
+    // 导出饼状图为图片
+    function exportPieChart(filePath) {
+        // 创建临时画布来绘制带背景和图例的完整图片
+        var exportWidth = 320
+        var exportHeight = 200
+        
+        pieChart.grabToImage(function(result) {
+            // 使用canvas自带的toDataURL或直接保存
+            result.saveToFile(filePath)
+            console.log("Pie chart exported to:", filePath)
+        }, Qt.size(exportWidth, exportHeight))
+    }
+    
+    // 导出柱状图为图片
+    function exportBarChart(filePath) {
+        var exportWidth = 400
+        var exportHeight = 150
+        
+        barChart.grabToImage(function(result) {
+            result.saveToFile(filePath)
+            console.log("Bar chart exported to:", filePath)
+        }, Qt.size(exportWidth, exportHeight))
     }
 }

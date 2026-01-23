@@ -58,9 +58,9 @@ class BigFileModel : public QAbstractTableModel {
   Q_PROPERTY(int searchResultCount READ searchResultCount NOTIFY searchResultCountChanged)
   Q_PROPERTY(QVariantList bookmarkLines READ bookmarkLines NOTIFY bookmarksChanged)
   Q_PROPERTY(QVariantList searchResultLines READ searchResultLines NOTIFY searchResultCountChanged)
-  Q_PROPERTY(QVariantList errorLines READ errorLines NOTIFY lineCountChanged)
-  Q_PROPERTY(QVariantList warningLines READ warningLines NOTIFY lineCountChanged)
-  Q_PROPERTY(QVariantList infoLines READ infoLines NOTIFY lineCountChanged)
+  Q_PROPERTY(QVariantList errorLines READ errorLines NOTIFY logLevelLinesChanged)
+  Q_PROPERTY(QVariantList warningLines READ warningLines NOTIFY logLevelLinesChanged)
+  Q_PROPERTY(QVariantList infoLines READ infoLines NOTIFY logLevelLinesChanged)
   Q_PROPERTY(bool deltaTimeEnabled READ deltaTimeEnabled WRITE setDeltaTimeEnabled NOTIFY deltaTimeEnabledChanged)
 
 public:
@@ -340,9 +340,10 @@ public:
    * @param startRow 起始行（视图行号，0-based）
    * @param endRow 结束行（视图行号，-1 表示全部）
    * @param includeBookmarksOnly 是否仅导出书签行
+   * @param sanitizationLevel 脱敏级别: -1=禁用, 0=Minimal, 1=Standard, 2=Strict
    * @return 成功返回 true
    */
-  Q_INVOKABLE bool exportToCSV(const QString &path, int startRow = 0, int endRow = -1, bool includeBookmarksOnly = false);
+  Q_INVOKABLE bool exportToCSV(const QString &path, int startRow = 0, int endRow = -1, bool includeBookmarksOnly = false, int sanitizationLevel = -1);
 
   /**
    * @brief 导出当前视图数据到 HTML 文件
@@ -350,9 +351,23 @@ public:
    * @param startRow 起始行（视图行号，0-based）
    * @param endRow 结束行（视图行号，-1 表示全部）
    * @param includeBookmarksOnly 是否仅导出书签行
+   * @param sanitizationLevel 脱敏级别: -1=禁用, 0=Minimal, 1=Standard, 2=Strict
    * @return 成功返回 true
    */
-  Q_INVOKABLE bool exportToHTML(const QString &path, int startRow = 0, int endRow = -1, bool includeBookmarksOnly = false);
+  Q_INVOKABLE bool exportToHTML(const QString &path, int startRow = 0, int endRow = -1, bool includeBookmarksOnly = false, int sanitizationLevel = -1);
+
+  /**
+   * @brief 导出数据并进行脱敏处理
+   * @param path 目标文件路径
+   * @param format 导出格式: "csv", "html", "txt"
+   * @param sanitizeOptions 脱敏选项 (键: 规则名称, 值: 是否启用)
+   * @param startRow 起始行（视图行号，0-based）
+   * @param endRow 结束行（视图行号，-1 表示全部）
+   * @return 成功返回 true
+   */
+  Q_INVOKABLE bool exportWithSanitization(const QString &path, const QString &format, 
+                                           const QVariantMap &sanitizeOptions,
+                                           int startRow = 0, int endRow = -1);
 
   /**
    * @brief 从剪贴板文本创建临时文件并加载
@@ -395,6 +410,20 @@ public:
    * @return 包含各级别计数的 QVariantMap
    */
   Q_INVOKABLE QVariantMap getLogStatistics() const;
+
+  /**
+   * @brief 获取按时间段分组的日志统计信息（用于仪表盘图表）
+   * @param interval 时间间隔: "minute", "hour", "day"
+   * @param maxBuckets 最大时间桶数量（限制返回数据量，默认100）
+   * @return QVariantList，每个元素包含 {timestamp, error, warn, info, debug, trace, total}
+   */
+  Q_INVOKABLE QVariantList getTimeBasedStatistics(const QString &interval, int maxBuckets = 100) const;
+
+  /**
+   * @brief 获取日志时间范围
+   * @return QVariantMap 包含 {startTime, endTime} 的 QDateTime
+   */
+  Q_INVOKABLE QVariantMap getLogTimeRange() const;
 
   /**
    * @brief 搜索包含指定关键字的行（用于标记）
@@ -471,9 +500,10 @@ public:
   /**
    * @brief 导出可见行到文件
    * @param filePath 导出文件路径
+   * @param sanitizationLevel 脱敏级别 (0=不脱敏, 1=标准, 2=严格)
    * @return 成功返回 true
    */
-  Q_INVOKABLE bool exportToFile(const QString &filePath) const;
+  Q_INVOKABLE bool exportToFile(const QString &filePath, int sanitizationLevel = 0) const;
 
   // QAbstractTableModel 接口实现
   int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -537,6 +567,7 @@ signals:
   void searchResultCountChanged();
   void bookmarksChanged();
   void deltaTimeEnabledChanged();
+  void logLevelLinesChanged();  ///< 日志级别行列表变化信号（仅在加载完成后触发）
 
   // ============ 过滤信号 ============
 

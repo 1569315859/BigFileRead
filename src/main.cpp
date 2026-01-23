@@ -22,6 +22,8 @@
 #include "JiraIntegration.h"
 #include "GitHubIntegration.h"
 #include "RemoteFileManager.h"
+#include "DataSanitizer.h"
+#include "AIAnalysisManager.h"
 
 /**
  * @brief 程序入口点
@@ -75,6 +77,8 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("_jiraIntegration", &JiraIntegration::instance());
     engine.rootContext()->setContextProperty("_githubIntegration", &GitHubIntegration::instance());
     engine.rootContext()->setContextProperty("_remoteManager", &RemoteFileManager::instance());
+    engine.rootContext()->setContextProperty("_dataSanitizer", &DataSanitizer::instance());
+    engine.rootContext()->setContextProperty("_aiManager", &AIAnalysisManager::instance());
     
     // ★★★ 连接语言切换信号，刷新 QML 界面翻译 ★★★
     QObject::connect(&LanguageManager::instance(), &LanguageManager::languageChanged,

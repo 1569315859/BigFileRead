@@ -16,8 +16,11 @@ Dialog {
     width: 650
     height: 550
     modal: true
-    anchors.centerIn: parent
     closePolicy: Popup.CloseOnEscape  // Don't close on outside click
+    
+    // 设置居中显示
+    x: parent ? (parent.width - width) / 2 : 0
+    y: parent ? (parent.height - height) / 2 : 0
     
     // Remote file manager reference
     property var remoteManager: null
@@ -366,7 +369,10 @@ Dialog {
         width: 300
         height: 150
         modal: true
-        anchors.centerIn: parent
+        closePolicy: Popup.CloseOnEscape
+        parent: Overlay.overlay
+        x: parent ? (parent.width - width) / 2 : 0
+        y: parent ? (parent.height - height) / 2 : 0
         
         contentItem: ColumnLayout {
             spacing: 12

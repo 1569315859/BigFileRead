@@ -15,6 +15,11 @@ Dialog {
     width: 650
     height: 550
     modal: true
+    closePolicy: Popup.CloseOnEscape
+    
+    // 设置居中显示
+    x: parent ? (parent.width - width) / 2 : 0
+    y: parent ? (parent.height - height) / 2 : 0
     
     // 当前状态（用于保存）
     property var currentState: ({})
@@ -320,8 +325,10 @@ Dialog {
         title: qsTr("保存工作区")
         width: 400
         modal: true
+        closePolicy: Popup.CloseOnEscape
         parent: Overlay.overlay
-        anchors.centerIn: parent
+        x: parent ? (parent.width - width) / 2 : 0
+        y: parent ? (parent.height - height) / 2 : 0
         
         ColumnLayout {
             anchors.fill: parent
@@ -393,8 +400,10 @@ Dialog {
         title: qsTr("重命名工作区")
         width: 350
         modal: true
+        closePolicy: Popup.CloseOnEscape
         parent: Overlay.overlay
-        anchors.centerIn: parent
+        x: parent ? (parent.width - width) / 2 : 0
+        y: parent ? (parent.height - height) / 2 : 0
         
         ColumnLayout {
             anchors.fill: parent
@@ -446,8 +455,10 @@ Dialog {
         title: qsTr("删除工作区")
         width: 350
         modal: true
+        closePolicy: Popup.CloseOnEscape
         parent: Overlay.overlay
-        anchors.centerIn: parent
+        x: parent ? (parent.width - width) / 2 : 0
+        y: parent ? (parent.height - height) / 2 : 0
         
         ColumnLayout {
             anchors.fill: parent

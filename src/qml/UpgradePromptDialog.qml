@@ -36,6 +36,7 @@ Dialog {
     
     title: qsTr("Upgrade Required")
     modal: true
+    closePolicy: Popup.CloseOnEscape
     
     width: Math.min(450, parent ? parent.width * 0.9 : 450)
     height: contentColumn.implicitHeight + 120

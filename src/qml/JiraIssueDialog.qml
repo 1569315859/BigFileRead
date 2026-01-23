@@ -14,7 +14,11 @@ Dialog {
     width: 550
     height: 520
     modal: true
-    anchors.centerIn: parent
+    closePolicy: Popup.CloseOnEscape
+    
+    // 设置居中显示
+    x: parent ? (parent.width - width) / 2 : 0
+    y: parent ? (parent.height - height) / 2 : 0
     
     // Input properties
     property var selectedLines: []
@@ -66,74 +70,87 @@ Dialog {
             Layout.fillHeight: true
             enabled: root.jiraIntegration && root.jiraIntegration.isConfigured
             
-            GridLayout {
+            ColumnLayout {
                 anchors.fill: parent
-                columns: 2
-                columnSpacing: 12
-                rowSpacing: 8
+                anchors.topMargin: 8
+                spacing: 8
                 
-                Label { text: qsTr("Project:") + " *" }
-                ComboBox {
-                    id: projectCombo
+                GridLayout {
                     Layout.fillWidth: true
-                    textRole: "display"
+                    columns: 2
+                    columnSpacing: 12
+                    rowSpacing: 8
                     
-                    model: ListModel { id: projectModel }
-                    
-                    onCurrentIndexChanged: {
-                        if (currentIndex >= 0 && root.jiraIntegration) {
-                            var proj = projectModel.get(currentIndex)
-                            if (proj) {
-                                root.jiraIntegration.fetchIssueTypes(proj.key)
+                    Label { text: qsTr("Project:") + " *"; color: _themeManager.textColor }
+                    ComboBox {
+                        id: projectCombo
+                        Layout.fillWidth: true
+                        textRole: "display"
+                        
+                        model: ListModel { id: projectModel }
+                        
+                        onCurrentIndexChanged: {
+                            if (currentIndex >= 0 && root.jiraIntegration) {
+                                var proj = projectModel.get(currentIndex)
+                                if (proj) {
+                                    root.jiraIntegration.fetchIssueTypes(proj.key)
+                                }
                             }
                         }
                     }
-                }
-                
-                Label { text: qsTr("Issue Type:") + " *" }
-                ComboBox {
-                    id: issueTypeCombo
-                    Layout.fillWidth: true
-                    textRole: "display"
                     
-                    model: ListModel { id: issueTypeModel }
+                    Label { text: qsTr("Issue Type:") + " *"; color: _themeManager.textColor }
+                    ComboBox {
+                        id: issueTypeCombo
+                        Layout.fillWidth: true
+                        textRole: "display"
+                        
+                        model: ListModel { id: issueTypeModel }
+                    }
+                    
+                    Label { text: qsTr("Summary:") + " *"; color: _themeManager.textColor }
+                    TextField {
+                        id: summaryField
+                        Layout.fillWidth: true
+                        placeholderText: qsTr("Brief description of the issue")
+                        color: _themeManager.textColor
+                    }
+                    
+                    Label { text: qsTr("Labels:"); color: _themeManager.textColor }
+                    TextField {
+                        id: labelsField
+                        Layout.fillWidth: true
+                        placeholderText: qsTr("bug, critical, production (comma separated)")
+                        color: _themeManager.textColor
+                    }
+                    
+                    Label { text: qsTr("Priority:"); color: _themeManager.textColor }
+                    ComboBox {
+                        id: priorityCombo
+                        Layout.fillWidth: true
+                        model: ["", "Highest", "High", "Medium", "Low", "Lowest"]
+                        currentIndex: 0
+                    }
                 }
                 
-                Label { text: qsTr("Summary:") + " *" }
-                TextField {
-                    id: summaryField
-                    Layout.fillWidth: true
-                    placeholderText: qsTr("Brief description of the issue")
-                }
-                
+                // Description 单独一行
                 Label { 
                     text: qsTr("Description:")
-                    Layout.alignment: Qt.AlignTop
+                    color: _themeManager.textColor
                 }
+                
                 ScrollView {
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 150
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: 80
+                    clip: true
                     
                     TextArea {
                         id: descriptionField
                         placeholderText: qsTr("Detailed description (log content will be appended)")
                         wrapMode: TextArea.Wrap
+                        color: _themeManager.textColor
                     }
-                }
-                
-                Label { text: qsTr("Labels:") }
-                TextField {
-                    id: labelsField
-                    Layout.fillWidth: true
-                    placeholderText: qsTr("bug, critical, production (comma separated)")
-                }
-                
-                Label { text: qsTr("Priority:") }
-                ComboBox {
-                    id: priorityCombo
-                    Layout.fillWidth: true
-                    model: ["", "Highest", "High", "Medium", "Low", "Lowest"]
-                    currentIndex: 0
                 }
             }
         }
@@ -142,20 +159,27 @@ Dialog {
         GroupBox {
             title: qsTr("Log Content Preview")
             Layout.fillWidth: true
-            Layout.preferredHeight: 80
+            Layout.preferredHeight: 100
             
-            ScrollView {
+            ColumnLayout {
                 anchors.fill: parent
+                anchors.topMargin: 8
                 
-                TextArea {
-                    id: logPreview
-                    readOnly: true
-                    font.family: "Consolas, Monaco, monospace"
-                    font.pixelSize: 11
-                    wrapMode: TextArea.NoWrap
-                    text: root.selectedLines.join("\n")
-                    color: _themeManager.textColor
-                    opacity: 0.8
+                ScrollView {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    clip: true
+                    
+                    TextArea {
+                        id: logPreview
+                        readOnly: true
+                        font.family: "Consolas, Monaco, monospace"
+                        font.pixelSize: 11
+                        wrapMode: TextArea.NoWrap
+                        text: root.selectedLines.join("\n")
+                        color: _themeManager.textColor
+                        opacity: 0.8
+                    }
                 }
             }
         }
@@ -205,7 +229,12 @@ Dialog {
         width: 450
         height: 350
         modal: true
-        anchors.centerIn: parent
+        closePolicy: Popup.CloseOnEscape
+        
+        // 设置居中显示
+        parent: Overlay.overlay
+        x: parent ? (parent.width - width) / 2 : 0
+        y: parent ? (parent.height - height) / 2 : 0
         
         contentItem: ColumnLayout {
             spacing: 12

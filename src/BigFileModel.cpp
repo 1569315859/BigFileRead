@@ -9,6 +9,7 @@
 
 #include "BigFileModel.h"
 #include "LogParser.h"
+#include "DataSanitizer.h"
 #include <QCache>
 #include <QClipboard>
 #include <QDebug>
@@ -394,6 +395,11 @@ void BigFileModel::onIndexingFinished(bool success, const QString &message) {
 
   // *** 无论成功失败都发送 fileLoaded 信号 ***
   emit fileLoaded(success, message);
+  
+  // *** 只在加载完成后触发日志级别行列表变化信号（优化性能）***
+  if (success) {
+    emit logLevelLinesChanged();
+  }
   
   qDebug() << "[BigFileModel] Indexing finished:" << success << message;
 }
@@ -995,6 +1001,7 @@ void BigFileModel::clearFilter() {
 
   emit filterModeChanged();
   emit lineCountChanged();
+  emit logLevelLinesChanged();  // 清除过滤后更新日志级别行列表
 
   qDebug() << "Filter cleared, showing all" << m_lineOffsets.size() << "lines";
   emit filterFinished(static_cast<int>(m_lineOffsets.size()));
@@ -1108,6 +1115,7 @@ void BigFileModel::executeFilterAsync(const QString &keyword, bool useRegex) {
     m_isFiltering.store(false);
     emit filterModeChanged();
     emit lineCountChanged();
+    emit logLevelLinesChanged();  // 过滤后更新日志级别行列表
     emit filterProgress(100);
     emit filterFinished(static_cast<int>(m_filteredRows.size()));
   }, Qt::QueuedConnection);
@@ -1221,6 +1229,7 @@ void BigFileModel::executeAdvancedFilterAsync(const QString &level,
     m_isFiltering.store(false);
     emit filterModeChanged();
     emit lineCountChanged();
+    emit logLevelLinesChanged();  // 过滤后更新日志级别行列表
     emit filterProgress(100);
     emit filterFinished(static_cast<int>(m_filteredRows.size()));
   }, Qt::QueuedConnection);
@@ -1516,7 +1525,7 @@ bool BigFileModel::autoLoadBookmarks() {
   return loadBookmarksFromFile(bookmarkPath);
 }
 
-bool BigFileModel::exportToCSV(const QString &path, int startRow, int endRow, bool includeBookmarksOnly) {
+bool BigFileModel::exportToCSV(const QString &path, int startRow, int endRow, bool includeBookmarksOnly, int sanitizationLevel) {
   if (path.isEmpty() || m_lineOffsets.empty()) {
     qWarning() << "Cannot export: empty path or no data";
     return false;
@@ -1538,6 +1547,12 @@ bool BigFileModel::exportToCSV(const QString &path, int startRow, int endRow, bo
   int end = (endRow < 0 || endRow >= totalRows) ? totalRows : endRow + 1;
   int exportedCount = 0;
   
+  // Sanitization helper - use DataSanitizer singleton
+  auto sanitizeText = [sanitizationLevel](const QString &text) -> QString {
+    if (sanitizationLevel < 0) return text;
+    return DataSanitizer::instance().sanitize(text, sanitizationLevel);
+  };
+  
   for (int viewRow = startRow; viewRow < end; ++viewRow) {
     int realRow = toRealRow(viewRow);
     if (realRow < 0) continue;
@@ -1554,7 +1569,7 @@ bool BigFileModel::exportToCSV(const QString &path, int startRow, int endRow, bo
     QString timestamp = data(idx, Qt::UserRole + 1).toString();  // TimestampRole
     QString level = data(idx, Qt::UserRole + 2).toString();       // LevelRole
     QString component = data(idx, Qt::UserRole + 3).toString();   // ComponentRole
-    QString message = data(idx, Qt::UserRole + 4).toString();     // MessageRole
+    QString message = sanitizeText(data(idx, Qt::UserRole + 4).toString());     // MessageRole
     QString bookmarkComment = isBookmarked ? m_bookmarks[static_cast<qint64>(realRow)].comment : QString();
     
     // Escape CSV values
@@ -1567,7 +1582,7 @@ bool BigFileModel::exportToCSV(const QString &path, int startRow, int endRow, bo
     out << escapeCSV(lineNumber) << ","
         << escapeCSV(timestamp) << ","
         << escapeCSV(level) << ","
-        << escapeCSV(component) << ","
+        << escapeCSV(sanitizeText(component)) << ","
         << escapeCSV(message) << ","
         << (isBookmarked ? "Yes" : "No") << ","
         << escapeCSV(bookmarkComment) << "\n";
@@ -1576,11 +1591,12 @@ bool BigFileModel::exportToCSV(const QString &path, int startRow, int endRow, bo
   }
   
   file.close();
-  qDebug() << "Exported" << exportedCount << "lines to CSV:" << path;
+  qDebug() << "Exported" << exportedCount << "lines to CSV:" << path 
+           << (sanitizationLevel >= 0 ? QString("(sanitization level: %1)").arg(sanitizationLevel) : "");
   return true;
 }
 
-bool BigFileModel::exportToHTML(const QString &path, int startRow, int endRow, bool includeBookmarksOnly) {
+bool BigFileModel::exportToHTML(const QString &path, int startRow, int endRow, bool includeBookmarksOnly, int sanitizationLevel) {
   if (path.isEmpty() || m_lineOffsets.empty()) {
     qWarning() << "Cannot export: empty path or no data";
     return false;
@@ -1594,6 +1610,12 @@ bool BigFileModel::exportToHTML(const QString &path, int startRow, int endRow, b
   
   QTextStream out(&file);
   out.setEncoding(QStringConverter::Utf8);
+  
+  // Sanitization helper - use DataSanitizer singleton
+  auto sanitizeText = [sanitizationLevel](const QString &text) -> QString {
+    if (sanitizationLevel < 0) return text;
+    return DataSanitizer::instance().sanitize(text, sanitizationLevel);
+  };
   
   // HTML header with styling
   out << R"(<!DOCTYPE html>
@@ -1621,6 +1643,7 @@ bool BigFileModel::exportToHTML(const QString &path, int startRow, int endRow, b
     .bookmarked { background: #3d3d00; }
     .bookmark-icon { color: #ffd700; }
     .bookmark-comment { color: #ce9178; font-style: italic; font-size: 11px; margin-top: 4px; }
+    .sanitized { color: #ce9178; font-style: italic; }
   </style>
 </head>
 <body>
@@ -1628,7 +1651,15 @@ bool BigFileModel::exportToHTML(const QString &path, int startRow, int endRow, b
   <div class="meta">
     Source: )" << m_filePath << R"(<br>
     Exported: )" << QDateTime::currentDateTime().toString(Qt::ISODate) << R"(<br>
-    )" << (includeBookmarksOnly ? "Bookmarks only" : "All lines") << R"(
+    )" << (includeBookmarksOnly ? "Bookmarks only" : "All lines");
+  
+  if (sanitizationLevel >= 0) {
+    QString levelName = sanitizationLevel == 0 ? "Minimal" : (sanitizationLevel == 1 ? "Standard" : "Strict");
+    out << R"(<br>
+    <span class="sanitized">Data sanitization: )" << levelName << R"(</span>)";
+  }
+  
+  out << R"(
   </div>
   <table>
     <thead>
@@ -1660,8 +1691,8 @@ bool BigFileModel::exportToHTML(const QString &path, int startRow, int endRow, b
     QString lineNumber = QString::number(realRow + 1);
     QString timestamp = data(idx, Qt::UserRole + 1).toString();
     QString level = data(idx, Qt::UserRole + 2).toString();
-    QString component = data(idx, Qt::UserRole + 3).toString();
-    QString message = data(idx, Qt::UserRole + 4).toString();
+    QString component = sanitizeText(data(idx, Qt::UserRole + 3).toString());
+    QString message = sanitizeText(data(idx, Qt::UserRole + 4).toString());
     QString bookmarkComment = isBookmarked ? m_bookmarks[static_cast<qint64>(realRow)].comment : QString();
     
     // Escape HTML
@@ -1712,7 +1743,8 @@ bool BigFileModel::exportToHTML(const QString &path, int startRow, int endRow, b
 )";
   
   file.close();
-  qDebug() << "Exported" << exportedCount << "lines to HTML:" << path;
+  qDebug() << "Exported" << exportedCount << "lines to HTML:" << path
+           << (sanitizationLevel >= 0 ? QString("(sanitization level: %1)").arg(sanitizationLevel) : "");
   return true;
 }
 
@@ -1916,7 +1948,7 @@ QVariantList BigFileModel::findLinesWithKeywords(const QStringList &keywords, in
   return result;
 }
 
-bool BigFileModel::exportToFile(const QString &filePath) const {
+bool BigFileModel::exportToFile(const QString &filePath, int sanitizationLevel) const {
   QFile file(filePath);
   if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
     qWarning() << "Failed to open file for export:" << file.errorString();
@@ -1926,15 +1958,27 @@ bool BigFileModel::exportToFile(const QString &filePath) const {
   QTextStream stream(&file);
   stream.setEncoding(QStringConverter::Utf8);
 
+  // 获取脱敏器实例
+  DataSanitizer* sanitizer = nullptr;
+  if (sanitizationLevel > 0) {
+    sanitizer = &DataSanitizer::instance();
+  }
+
   int totalRows = rowCount();
   for (int row = 0; row < totalRows; ++row) {
     QString lineText = data(index(row, 0), Qt::DisplayRole).toString();
+    
+    // 应用脱敏
+    if (sanitizer) {
+      lineText = sanitizer->sanitize(lineText, sanitizationLevel);
+    }
+    
     stream << lineText << "\n";
   }
 
   file.close();
   
-  qDebug() << "Exported" << totalRows << "lines to" << filePath;
+  qDebug() << "Exported" << totalRows << "lines to" << filePath << "(sanitization level:" << sanitizationLevel << ")";
   return true;
 }
 
@@ -2222,4 +2266,256 @@ QStringList BigFileModel::getRelatedRollingLogs() const {
     return QStringList();
   }
   return detectRollingLogs(m_filePath);
+}
+
+// ============================================================================
+// 时间统计功能实现（用于仪表盘）
+// ============================================================================
+
+QVariantList BigFileModel::getTimeBasedStatistics(const QString &interval, int maxBuckets) const {
+  QVariantList result;
+  
+  if (!m_mapPtr || m_lineOffsets.empty()) return result;
+  
+  // 确定时间间隔（毫秒）
+  qint64 intervalMs;
+  if (interval == "minute") {
+    intervalMs = 60 * 1000;
+  } else if (interval == "hour") {
+    intervalMs = 60 * 60 * 1000;
+  } else if (interval == "day") {
+    intervalMs = 24 * 60 * 60 * 1000;
+  } else {
+    intervalMs = 60 * 60 * 1000; // 默认按小时
+  }
+  
+  // 数据结构: 时间桶 -> 统计数据
+  struct BucketStats {
+    int error = 0;
+    int warn = 0;
+    int info = 0;
+    int debug = 0;
+    int trace = 0;
+    int other = 0;
+  };
+  QMap<qint64, BucketStats> buckets;
+  
+  int totalRows = m_filterMode.load() ? static_cast<int>(m_filteredRows.size()) 
+                                       : static_cast<int>(m_lineOffsets.size());
+  
+  // 采样扫描（大文件限制）
+  int step = 1;
+  if (totalRows > 50000) {
+    step = totalRows / 50000 + 1;
+  }
+  
+  qint64 minTime = LLONG_MAX, maxTime = 0;
+  
+  for (int viewRow = 0; viewRow < totalRows; viewRow += step) {
+    int realRow = m_filterMode.load() ? m_filteredRows[viewRow] : viewRow;
+    if (realRow < 0 || realRow >= static_cast<int>(m_lineOffsets.size())) continue;
+    
+    // 获取行内容
+    QString rawLine = getRawLine(realRow);
+    if (rawLine.isEmpty()) continue;
+    
+    // 解析时间戳
+    QDateTime timestamp = parseTimestamp(rawLine);
+    if (!timestamp.isValid()) continue;
+    
+    qint64 msecs = timestamp.toMSecsSinceEpoch();
+    qint64 bucketKey = (msecs / intervalMs) * intervalMs;
+    
+    minTime = qMin(minTime, bucketKey);
+    maxTime = qMax(maxTime, bucketKey);
+    
+    // 检测日志级别
+    QString upperLine = rawLine.left(200).toUpper();
+    BucketStats &stats = buckets[bucketKey];
+    
+    if (upperLine.contains("FATAL") || upperLine.contains("CRITICAL") || 
+        upperLine.contains("ERROR") || upperLine.contains("FAIL") || 
+        upperLine.contains("EXCEPTION") || upperLine.contains("PANIC")) {
+      stats.error += step;
+    } else if (upperLine.contains("WARN") || upperLine.contains("ALERT") || 
+               upperLine.contains("CAUTION")) {
+      stats.warn += step;
+    } else if (upperLine.contains("INFO") || upperLine.contains("NOTICE")) {
+      stats.info += step;
+    } else if (upperLine.contains("DEBUG")) {
+      stats.debug += step;
+    } else if (upperLine.contains("TRACE") || upperLine.contains("VERBOSE")) {
+      stats.trace += step;
+    } else {
+      stats.other += step;
+    }
+  }
+  
+  // 限制桶数量
+  QList<qint64> sortedKeys = buckets.keys();
+  if (sortedKeys.size() > maxBuckets) {
+    // 合并相邻桶
+    qint64 newIntervalMs = ((maxTime - minTime) / maxBuckets) / intervalMs * intervalMs;
+    if (newIntervalMs < intervalMs) newIntervalMs = intervalMs;
+    
+    QMap<qint64, BucketStats> mergedBuckets;
+    for (auto it = buckets.begin(); it != buckets.end(); ++it) {
+      qint64 newKey = (it.key() / newIntervalMs) * newIntervalMs;
+      BucketStats &merged = mergedBuckets[newKey];
+      merged.error += it->error;
+      merged.warn += it->warn;
+      merged.info += it->info;
+      merged.debug += it->debug;
+      merged.trace += it->trace;
+      merged.other += it->other;
+    }
+    buckets = mergedBuckets;
+  }
+  
+  // 转换为 QVariantList
+  for (auto it = buckets.begin(); it != buckets.end(); ++it) {
+    QVariantMap entry;
+    QDateTime dt = QDateTime::fromMSecsSinceEpoch(it.key());
+    
+    // 格式化时间标签
+    QString timeLabel;
+    if (interval == "minute") {
+      timeLabel = dt.toString("HH:mm");
+    } else if (interval == "hour") {
+      timeLabel = dt.toString("MM-dd HH:00");
+    } else {
+      timeLabel = dt.toString("yyyy-MM-dd");
+    }
+    
+    entry["timestamp"] = it.key();
+    entry["timeLabel"] = timeLabel;
+    entry["datetime"] = dt.toString(Qt::ISODate);
+    entry["error"] = it->error;
+    entry["warn"] = it->warn;
+    entry["info"] = it->info;
+    entry["debug"] = it->debug;
+    entry["trace"] = it->trace;
+    entry["other"] = it->other;
+    entry["total"] = it->error + it->warn + it->info + it->debug + it->trace + it->other;
+    
+    result.append(entry);
+  }
+  
+  return result;
+}
+
+QVariantMap BigFileModel::getLogTimeRange() const {
+  QVariantMap result;
+  result["startTime"] = QDateTime();
+  result["endTime"] = QDateTime();
+  
+  if (!m_mapPtr || m_lineOffsets.empty()) return result;
+  
+  int totalRows = static_cast<int>(m_lineOffsets.size());
+  
+  // 扫描前 100 行找起始时间
+  QDateTime startTime;
+  for (int i = 0; i < qMin(100, totalRows); ++i) {
+    QString line = getRawLine(i);
+    startTime = parseTimestamp(line);
+    if (startTime.isValid()) break;
+  }
+  
+  // 扫描后 100 行找结束时间
+  QDateTime endTime;
+  for (int i = totalRows - 1; i >= qMax(0, totalRows - 100); --i) {
+    QString line = getRawLine(i);
+    endTime = parseTimestamp(line);
+    if (endTime.isValid()) break;
+  }
+  
+  result["startTime"] = startTime;
+  result["endTime"] = endTime;
+  
+  return result;
+}
+
+// ============================================================================
+// 脱敏导出功能实现
+// ============================================================================
+
+#include "DataSanitizer.h"
+
+bool BigFileModel::exportWithSanitization(const QString &path, const QString &format, 
+                                           const QVariantMap &sanitizeOptions,
+                                           int startRow, int endRow) {
+  if (!m_mapPtr) return false;
+  
+  int totalRows = m_filterMode.load() ? static_cast<int>(m_filteredRows.size()) 
+                                       : static_cast<int>(m_lineOffsets.size());
+  if (totalRows == 0) return false;
+  
+  if (endRow < 0 || endRow >= totalRows) endRow = totalRows - 1;
+  if (startRow < 0) startRow = 0;
+  if (startRow > endRow) return false;
+  
+  QFile file(path);
+  if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    qWarning() << "Cannot open file for writing:" << path;
+    return false;
+  }
+  
+  QTextStream stream(&file);
+  stream.setEncoding(QStringConverter::Utf8);
+  
+  DataSanitizer &sanitizer = DataSanitizer::instance();
+  
+  // HTML 格式头部
+  if (format == "html") {
+    stream << "<!DOCTYPE html>\n<html><head><meta charset=\"utf-8\">\n";
+    stream << "<title>Log Export (Sanitized)</title>\n";
+    stream << "<style>body{font-family:Consolas,monospace;font-size:12px;background:#1e1e1e;color:#d4d4d4;padding:20px;}\n";
+    stream << ".error{color:#f44336;}.warn{color:#ff9800;}.info{color:#2196f3;}.debug{color:#9c27b0;}\n";
+    stream << "pre{margin:2px 0;white-space:pre-wrap;word-wrap:break-word;}</style></head><body>\n";
+  }
+  
+  // CSV 格式头部
+  if (format == "csv") {
+    stream << "\"Line\",\"Level\",\"Content\"\n";
+  }
+  
+  // 导出行
+  for (int viewRow = startRow; viewRow <= endRow; ++viewRow) {
+    int realRow = m_filterMode.load() ? m_filteredRows[viewRow] : viewRow;
+    if (realRow < 0 || realRow >= static_cast<int>(m_lineOffsets.size())) continue;
+    
+    QString rawLine = getRawLine(realRow);
+    
+    // 应用脱敏
+    QString sanitizedLine = sanitizer.sanitizeWithOptions(rawLine, sanitizeOptions);
+    
+    // 检测日志级别
+    QString level = "other";
+    QString upperLine = rawLine.left(100).toUpper();
+    if (upperLine.contains("ERROR") || upperLine.contains("FATAL")) level = "error";
+    else if (upperLine.contains("WARN")) level = "warn";
+    else if (upperLine.contains("INFO")) level = "info";
+    else if (upperLine.contains("DEBUG")) level = "debug";
+    
+    if (format == "html") {
+      QString escapedLine = sanitizedLine.toHtmlEscaped();
+      stream << "<pre class=\"" << level << "\">" << escapedLine << "</pre>\n";
+    } else if (format == "csv") {
+      // 转义双引号
+      QString escaped = sanitizedLine.replace("\"", "\"\"");
+      stream << "\"" << (realRow + 1) << "\",\"" << level << "\",\"" << escaped << "\"\n";
+    } else {
+      // 纯文本
+      stream << sanitizedLine << "\n";
+    }
+  }
+  
+  // HTML 格式尾部
+  if (format == "html") {
+    stream << "</body></html>\n";
+  }
+  
+  file.close();
+  qDebug() << "Exported" << (endRow - startRow + 1) << "lines with sanitization to" << path;
+  return true;
 }

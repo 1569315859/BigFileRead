@@ -729,6 +729,15 @@ ApplicationWindow {
                             }
                         }
                     }
+                    MenuItem {
+                        text: qsTr("Dashboard...")
+                        enabled: _logModel.filePath && _logModel.filePath.length > 0
+                        onTriggered: dashboardPanel.open()
+                    }
+                    MenuItem {
+                        text: qsTr("AI Settings...")
+                        onTriggered: aiSettingsDialog.open()
+                    }
                     MenuSeparator {}
                     MenuItem {
                         text: qsTr("Reload File")
@@ -876,6 +885,11 @@ ApplicationWindow {
                     MenuSeparator {}
                     
                     MenuItem {
+                        text: qsTr("Data Sanitization...")
+                        onTriggered: sanitizationConfigDialog.open()
+                    }
+                    
+                    MenuItem {
                         text: qsTr("Keyword Colors...")
                         onTriggered: keywordConfigDialog.open()
                     }
@@ -946,7 +960,7 @@ ApplicationWindow {
         height: 200
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
-        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+        closePolicy: Popup.CloseOnEscape
         
         background: Rectangle {
             color: panelColor
@@ -1016,6 +1030,10 @@ ApplicationWindow {
         onExportCompleted: function(path) {
             console.log("Export completed:", path)
         }
+        onConfigureRequested: sanitizationConfigDialog.open()
+    }
+    SanitizationConfigDialog {
+        id: sanitizationConfigDialog
     }
     DirectoryMonitorDialog {
         id: directoryMonitorDialog
@@ -1059,6 +1077,17 @@ ApplicationWindow {
     }
     StatisticsPanel {
         id: statisticsPanel
+    }
+    DashboardPanel {
+        id: dashboardPanel
+    }
+    AIQueryDialog {
+        id: aiQueryDialog
+        logModel: _logModel
+        selectedLines: []
+    }
+    AISettingsDialog {
+        id: aiSettingsDialog
     }
     EmailAlertDialog {
         id: emailAlertDialog
@@ -1124,7 +1153,9 @@ ApplicationWindow {
         nameFilters: ["Text files (*.txt)", "Log files (*.log)", "All files (*)"]
         onAccepted: {
             var path = _appController.urlToLocalPath(file)
-            _logModel.exportToFile(path)
+            // 使用标准脱敏级别(1)导出，如果用户在设置中启用了脱敏规则
+            var sanitizationLevel = _dataSanitizer && _dataSanitizer.hasEnabledRules() ? 1 : 0
+            _logModel.exportToFile(path, sanitizationLevel)
         }
     }
 
@@ -1999,6 +2030,17 @@ ApplicationWindow {
                     githubIssueDialog.filePath = _logModel.currentFilePath || ""
                     githubIssueDialog.open()
                 }
+            }
+        }
+        
+        MenuSeparator {}
+        
+        MenuItem {
+            text: qsTr("Ask AI about this line...")
+            enabled: selectedRow >= 0 && selectedLineText.length > 0
+            onTriggered: {
+                aiQueryDialog.selectedLines = [selectedRow]
+                aiQueryDialog.open()
             }
         }
     }

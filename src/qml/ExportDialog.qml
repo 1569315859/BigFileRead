@@ -6,11 +6,11 @@ import Qt.labs.platform as Platform
 Popup {
     id: root
     modal: true
-    width: 450
-    height: 320
+    width: 500
+    height: 420
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
-    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+    closePolicy: Popup.CloseOnEscape
 
     property color textColor: _themeManager.textColor
     property color panelColor: _themeManager.panelBackground
@@ -24,8 +24,10 @@ Popup {
     property int startLine: 1
     property int endLine: _logModel.totalLineCount()
     property bool exportAll: true
+    property bool enableSanitization: false  // 脱敏开关
     
     signal exportCompleted(string path)
+    signal configureRequested()  // 请求打开脱敏配置对话框
 
     background: Rectangle {
         color: panelColor
@@ -207,6 +209,119 @@ Popup {
             }
         }
         
+        // Separator
+        Rectangle {
+            Layout.fillWidth: true
+            height: 1
+            color: borderColor
+        }
+        
+        // Data Sanitization Section
+        ColumnLayout {
+            Layout.fillWidth: true
+            spacing: 8
+            
+            CheckBox {
+                id: sanitizationCheck
+                text: qsTr("Enable data sanitization before export")
+                checked: enableSanitization
+                onCheckedChanged: enableSanitization = checked
+                contentItem: Text {
+                    text: parent.text
+                    color: textColor
+                    font.pixelSize: 12
+                    leftPadding: parent.indicator.width + parent.spacing
+                }
+            }
+            
+            RowLayout {
+                Layout.leftMargin: 30
+                spacing: 10
+                enabled: sanitizationCheck.checked
+                opacity: enabled ? 1.0 : 0.5
+                
+                Label {
+                    text: qsTr("Sanitization Level:")
+                    color: textColor
+                    font.pixelSize: 12
+                }
+                
+                ComboBox {
+                    id: sanitizationLevelCombo
+                    implicitWidth: 150
+                    implicitHeight: 28
+                    model: [qsTr("Minimal"), qsTr("Standard"), qsTr("Strict")]
+                    currentIndex: 1  // Default: Standard
+                    
+                    background: Rectangle {
+                        color: bgColor
+                        border.color: borderColor
+                        radius: 4
+                    }
+                    contentItem: Text {
+                        text: sanitizationLevelCombo.displayText
+                        color: textColor
+                        font.pixelSize: 12
+                        verticalAlignment: Text.AlignVCenter
+                        leftPadding: 8
+                    }
+                    popup: Popup {
+                        y: sanitizationLevelCombo.height
+                        width: sanitizationLevelCombo.width
+                        implicitHeight: contentItem.implicitHeight
+                        padding: 1
+                        
+                        contentItem: ListView {
+                            clip: true
+                            implicitHeight: contentHeight
+                            model: sanitizationLevelCombo.popup.visible ? sanitizationLevelCombo.delegateModel : null
+                            currentIndex: sanitizationLevelCombo.highlightedIndex
+                        }
+                        
+                        background: Rectangle {
+                            color: panelColor
+                            border.color: borderColor
+                            radius: 4
+                        }
+                    }
+                    delegate: ItemDelegate {
+                        width: sanitizationLevelCombo.width
+                        contentItem: Text {
+                            text: modelData
+                            color: textColor
+                            font.pixelSize: 12
+                            verticalAlignment: Text.AlignVCenter
+                        }
+                        highlighted: sanitizationLevelCombo.highlightedIndex === index
+                        background: Rectangle {
+                            color: highlighted ? accentColor : "transparent"
+                        }
+                    }
+                }
+                
+                Button {
+                    text: qsTr("Configure...")
+                    implicitHeight: 28
+                    implicitWidth: 90
+                    onClicked: {
+                        root.configureRequested()
+                    }
+                    background: Rectangle {
+                        color: parent.down ? Qt.darker(panelColor, 1.3) : (parent.hovered ? Qt.darker(panelColor, 1.1) : panelColor)
+                        border.color: borderColor
+                        radius: 4
+                    }
+                    contentItem: Text {
+                        text: parent.text
+                        color: textColor
+                        font.pixelSize: 11
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                }
+            }
+        }
+        
         Item { Layout.fillHeight: true }
 
         // Buttons
@@ -267,11 +382,14 @@ Popup {
             var start = rangeRadio.checked ? parseInt(startLineInput.text) - 1 : 0
             var end = rangeRadio.checked ? parseInt(endLineInput.text) - 1 : -1
             
+            // Apply sanitization if enabled
+            var sanitizationLevel = enableSanitization ? sanitizationLevelCombo.currentIndex : -1
+            
             var success = false
             if (exportFormat === 0) {
-                success = _logModel.exportToCSV(path, start, end, bookmarksOnly)
+                success = _logModel.exportToCSV(path, start, end, bookmarksOnly, sanitizationLevel)
             } else {
-                success = _logModel.exportToHTML(path, start, end, bookmarksOnly)
+                success = _logModel.exportToHTML(path, start, end, bookmarksOnly, sanitizationLevel)
             }
             
             if (success) {
@@ -295,6 +413,8 @@ Popup {
         csvRadio.checked = true
         allLinesRadio.checked = true
         bookmarksOnlyCheck.checked = false
+        sanitizationCheck.checked = false
+        sanitizationLevelCombo.currentIndex = 1  // Standard
         startLineInput.text = "1"
         endLineInput.text = _logModel.totalLineCount().toString()
     }

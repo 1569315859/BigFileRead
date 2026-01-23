@@ -9,7 +9,7 @@ Popup {
     height: 480
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
-    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+    closePolicy: Popup.CloseOnEscape
     padding: 20
 
     property color textColor: _themeManager.textColor
