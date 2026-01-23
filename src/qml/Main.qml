@@ -1712,7 +1712,7 @@ ApplicationWindow {
             EnhancedScrollBar {
                 id: enhancedScrollBar
                 Layout.fillHeight: true
-                Layout.preferredWidth: 16
+                Layout.preferredWidth: 24
                 
                 flickable: tableView
                 totalLines: _logModel.lineCount

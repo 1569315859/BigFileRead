@@ -56,7 +56,7 @@ Item {
     signal lineClicked(int lineNumber)
     signal settingsRequested()  // 请求打开设置
     
-    width: 16
+    width: 24  // 默认宽度增加
     
     // 背景
     Rectangle {
@@ -86,7 +86,7 @@ Item {
         
         // 计算缩放比例
         readonly property real lineToPixelRatio: totalLines > 0 ? height / totalLines : 1
-        readonly property real markerHeight: Math.max(3, Math.min(lineToPixelRatio * 1.5, 6))
+        readonly property real markerHeight: Math.max(3, Math.min(lineToPixelRatio * 1.5, 8))
         
         // 错误标记（红色，最左侧，最优先显示）
         Repeater {
@@ -95,7 +95,7 @@ Item {
             Rectangle {
                 x: 0
                 y: Math.max(0, Math.min(modelData * markerTrack.lineToPixelRatio, markerTrack.height - markerTrack.markerHeight))
-                width: 5
+                width: 8
                 height: markerTrack.markerHeight
                 radius: 1
                 color: errorColor
@@ -119,9 +119,9 @@ Item {
             model: (showMarkers && showWarnings) ? warningLines : []
             
             Rectangle {
-                x: 3
+                x: 6
                 y: Math.max(0, Math.min(modelData * markerTrack.lineToPixelRatio, markerTrack.height - markerTrack.markerHeight))
-                width: 5
+                width: 8
                 height: markerTrack.markerHeight
                 radius: 1
                 color: warningColor
@@ -146,9 +146,9 @@ Item {
             model: (showMarkers && showInfo) ? infoLines : []
             
             Rectangle {
-                x: 5
+                x: 10
                 y: Math.max(0, Math.min(modelData * markerTrack.lineToPixelRatio, markerTrack.height - markerTrack.markerHeight))
-                width: 4
+                width: 6
                 height: markerTrack.markerHeight
                 radius: 1
                 color: infoColor
@@ -173,10 +173,10 @@ Item {
             model: (showMarkers && showBookmarks) ? bookmarks : []
             
             Canvas {
-                x: parent.width - 7
+                x: parent.width - 9
                 y: Math.max(0, Math.min(modelData * markerTrack.lineToPixelRatio - 2, markerTrack.height - 6))
-                width: 7
-                height: 6
+                width: 9
+                height: 7
                 
                 onPaint: {
                     var ctx = getContext("2d")
@@ -215,9 +215,9 @@ Item {
             model: (showMarkers && showSearchResults) ? searchResults : []
             
             Rectangle {
-                x: parent.width - 5
+                x: parent.width - 7
                 y: Math.max(0, Math.min(modelData * markerTrack.lineToPixelRatio, markerTrack.height - markerTrack.markerHeight))
-                width: 5
+                width: 7
                 height: markerTrack.markerHeight
                 radius: 1
                 color: searchColor

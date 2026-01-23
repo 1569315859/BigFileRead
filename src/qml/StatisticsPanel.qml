@@ -36,6 +36,9 @@ Dialog {
         other: 0
     })
     
+    // 加载状态
+    property bool isLoading: false
+    
     contentItem: ColumnLayout {
         spacing: 12
         
@@ -366,12 +369,23 @@ Dialog {
             other: otherCount
         }
         
+        isLoading = false
         pieChart.requestPaint()
         barChart.requestPaint()
     }
     
+    // 延迟加载定时器
+    Timer {
+        id: loadTimer
+        interval: 150  // 延迟150ms让弹出动画完成
+        running: false
+        repeat: false
+        onTriggered: calculateStatistics()
+    }
+    
     onOpened: {
-        calculateStatistics()
+        isLoading = true
+        loadTimer.start()
     }
     
     // 导出饼状图为图片

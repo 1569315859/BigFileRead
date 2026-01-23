@@ -235,196 +235,196 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="58"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="62"/>
         <source>API Keys</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="61"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="79"/>
         <source>Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="64"/>
-        <location filename="../src/qml/AISettingsDialog.qml" line="415"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="96"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="493"/>
         <source>Custom Services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="82"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="128"/>
         <source>Configure API keys for each AI service. Keys are stored encrypted locally.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="123"/>
-        <location filename="../src/qml/AISettingsDialog.qml" line="168"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="169"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="222"/>
         <source>Enter API Key...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="123"/>
-        <location filename="../src/qml/AISettingsDialog.qml" line="147"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="169"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="201"/>
         <source>Key: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="135"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="181"/>
         <source>Show</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="140"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="194"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="152"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="206"/>
         <source>Test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="162"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="216"/>
         <source>Clear</source>
         <translation type="unfinished">Effacer</translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="187"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="241"/>
         <source>Configure network proxy for AI API requests.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="208"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="262"/>
         <source>Proxy Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="216"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="270"/>
         <source>No Proxy (Direct Connection)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="223"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="285"/>
         <source>Use System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="230"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="300"/>
         <source>Custom Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="255"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="333"/>
         <source>Custom Proxy Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="270"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="348"/>
         <source>Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="284"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="362"/>
         <source>Host:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="329"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="407"/>
         <source>Port:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="307"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="385"/>
         <source>Username:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="317"/>
-        <location filename="../src/qml/AISettingsDialog.qml" line="364"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="395"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="442"/>
         <source>Optional</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="353"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="431"/>
         <source>Password:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="377"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="455"/>
         <source>Save Proxy Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="405"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="483"/>
         <source>Add custom AI services compatible with OpenAI API format.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="458"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="536"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="473"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="551"/>
         <source>No custom services configured</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="494"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="572"/>
         <source>Add New Service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="504"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="582"/>
         <source>Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="510"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="588"/>
         <source>My AI Service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="524"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="602"/>
         <source>Endpoint:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="544"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="622"/>
         <source>Model:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="564"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="642"/>
         <source>API Key Header:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="585"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="663"/>
         <source>API Key Prefix:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="607"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="685"/>
         <source>Add Service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="641"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="719"/>
         <source>Close</source>
         <translation type="unfinished">Fermer</translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="668"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="746"/>
         <source>Connection Test Result</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="698"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="776"/>
         <source>Connection successful!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AISettingsDialog.qml" line="698"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="776"/>
         <source>Connection failed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -679,92 +679,97 @@
 <context>
     <name>DashboardPanel</name>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="75"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="90"/>
         <source>Log Analytics Dashboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="90"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="105"/>
         <source>Time Range: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="131"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="146"/>
         <source>Time Interval:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="139"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="154"/>
         <source>Per Minute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="140"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="155"/>
         <source>Per Hour</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="141"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="156"/>
         <source>Per Day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="175"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="190"/>
         <source>Chart Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="185"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="200"/>
         <source>Stacked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="208"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="223"/>
         <source>Grouped</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="231"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="246"/>
         <source>Area</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="258"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="273"/>
         <source>Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="279"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="294"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="325"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="340"/>
         <source>Log Volume Over Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="348"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="362"/>
+        <source>Loading data...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DashboardPanel.qml" line="385"/>
         <source>Level Distribution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="436"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="473"/>
         <source>Total Lines:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="458"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="495"/>
         <source>Filtered:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="476"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="513"/>
         <source>Data Points: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="489"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="526"/>
         <source>Export Dashboard Chart</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1798,22 +1803,22 @@ Click &apos;Add Rule&apos; to create one.</source>
         <translation>Aller à la ligne</translation>
     </message>
     <message>
-        <location filename="../src/qml/GoToLineDialog.qml" line="43"/>
+        <location filename="../src/qml/GoToLineDialog.qml" line="47"/>
         <source>Line Number:</source>
         <translation>Numéro de ligne :</translation>
     </message>
     <message>
-        <location filename="../src/qml/GoToLineDialog.qml" line="52"/>
+        <location filename="../src/qml/GoToLineDialog.qml" line="63"/>
         <source>Enter line number...</source>
         <translation>Entrez le numéro de ligne...</translation>
     </message>
     <message>
-        <location filename="../src/qml/GoToLineDialog.qml" line="79"/>
+        <location filename="../src/qml/GoToLineDialog.qml" line="90"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../src/qml/GoToLineDialog.qml" line="103"/>
+        <location filename="../src/qml/GoToLineDialog.qml" line="114"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
@@ -3113,87 +3118,87 @@ Cette action est irréversible.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="47"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="50"/>
         <source>File: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="54"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="57"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="61"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="64"/>
         <source>Overview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="70"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="73"/>
         <source>Total Lines:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="73"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="76"/>
         <source>File Size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="76"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="79"/>
         <source>Current View:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="77"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="80"/>
         <source> lines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="79"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="82"/>
         <source>Filter Mode:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="81"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="84"/>
         <source>Yes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="81"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="84"/>
         <source>No</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="89"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="92"/>
         <source>Log Level Distribution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="205"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="208"/>
         <source>Level Comparison</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="255"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="258"/>
         <source>Export Pie Chart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="260"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="263"/>
         <source>Export Bar Chart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="267"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="270"/>
         <source>Close</source>
         <translation type="unfinished">Fermer</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="276"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="279"/>
         <source>Save Pie Chart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="293"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="296"/>
         <source>Save Bar Chart</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3201,37 +3206,37 @@ Cette action est irréversible.</translation>
 <context>
     <name>TimeSeriesChart</name>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="121"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="127"/>
         <source>No data available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="319"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="343"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="320"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="344"/>
         <source>Warn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="321"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="345"/>
         <source>Info</source>
         <translation type="unfinished">Info</translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="322"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="346"/>
         <source>Debug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="323"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="347"/>
         <source>Trace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="324"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="348"/>
         <source>Other</source>
         <translation type="unfinished"></translation>
     </message>

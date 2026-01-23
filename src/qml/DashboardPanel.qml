@@ -49,6 +49,8 @@ Popup {
     function loadData() {
         if (!_logModel || !_logModel.filePath) return
         
+        isLoading = false
+        
         // 获取时间统计
         timeData = _logModel.getTimeBasedStatistics(currentInterval, 50)
         
@@ -59,8 +61,21 @@ Popup {
         timeRange = _logModel.getLogTimeRange()
     }
     
+    // 加载状态
+    property bool isLoading: false
+    
+    // 延迟加载定时器
+    Timer {
+        id: loadTimer
+        interval: 150  // 延迟150ms让弹出动画完全完成
+        running: false
+        repeat: false
+        onTriggered: loadData()
+    }
+    
     onOpened: {
-        loadData()
+        isLoading = true
+        loadTimer.start()
     }
     
     contentItem: ColumnLayout {
@@ -323,9 +338,31 @@ Popup {
                     data: timeData
                     chartType: currentChartType
                     title: qsTr("Log Volume Over Time")
+                    visible: !isLoading
                     
                     onBarClicked: (index, dataItem) => {
                         console.log("Clicked:", dataItem.timeLabel, "Total:", dataItem.total)
+                    }
+                }
+                
+                // 加载中提示
+                ColumnLayout {
+                    anchors.centerIn: parent
+                    spacing: 12
+                    visible: isLoading
+                    
+                    BusyIndicator {
+                        running: isLoading
+                        Layout.alignment: Qt.AlignHCenter
+                        implicitWidth: 48
+                        implicitHeight: 48
+                    }
+                    
+                    Text {
+                        text: qsTr("Loading data...")
+                        color: Qt.darker(textColor, 1.3)
+                        font.pixelSize: 13
+                        Layout.alignment: Qt.AlignHCenter
                     }
                 }
             }

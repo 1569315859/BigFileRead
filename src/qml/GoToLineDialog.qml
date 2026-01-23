@@ -39,10 +39,21 @@ Popup {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label {
-            text: qsTr("Line Number:") + " (1 - " + _logModel.totalLineCount().toLocaleString() + ")"
-            color: textColor
-            font.pixelSize: 13
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: 6
+            
+            Label {
+                text: qsTr("Line Number:")
+                color: textColor
+                font.pixelSize: 13
+            }
+            
+            Label {
+                text: "(1 - " + (_logModel ? _logModel.totalLineCount.toLocaleString() : "0") + ")"
+                color: Qt.darker(textColor, 1.3)
+                font.pixelSize: 12
+            }
         }
 
         TextField {
@@ -57,7 +68,7 @@ Popup {
                 border.color: _themeManager.borderColor
                 radius: 4 
             }
-            validator: IntValidator { bottom: 1; top: _logModel.totalLineCount() }
+            validator: IntValidator { bottom: 1; top: _logModel ? _logModel.totalLineCount : 1 }
             focus: true
             onAccepted: {
                 var line = parseInt(lineInput.text)

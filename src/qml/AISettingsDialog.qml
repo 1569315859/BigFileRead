@@ -54,14 +54,60 @@ Popup {
             id: tabBar
             Layout.fillWidth: true
             
+            background: Rectangle {
+                color: "transparent"
+            }
+            
             TabButton {
                 text: qsTr("API Keys")
+                contentItem: Text {
+                    text: parent.text
+                    color: _themeManager.textColor
+                    font.pixelSize: 13
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    opacity: parent.checked ? 1.0 : 0.6
+                }
+                background: Rectangle {
+                    color: parent.checked ? Qt.darker(_themeManager.accentColor, 1.3) : "transparent"
+                    border.color: parent.checked ? _themeManager.accentColor : _themeManager.borderColor
+                    border.width: parent.checked ? 0 : 1
+                    radius: 4
+                }
             }
             TabButton {
                 text: qsTr("Proxy")
+                contentItem: Text {
+                    text: parent.text
+                    color: _themeManager.textColor
+                    font.pixelSize: 13
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    opacity: parent.checked ? 1.0 : 0.6
+                }
+                background: Rectangle {
+                    color: parent.checked ? Qt.darker(_themeManager.accentColor, 1.3) : "transparent"
+                    border.color: parent.checked ? _themeManager.accentColor : _themeManager.borderColor
+                    border.width: parent.checked ? 0 : 1
+                    radius: 4
+                }
             }
             TabButton {
                 text: qsTr("Custom Services")
+                contentItem: Text {
+                    text: parent.text
+                    color: _themeManager.textColor
+                    font.pixelSize: 13
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    opacity: parent.checked ? 1.0 : 0.6
+                }
+                background: Rectangle {
+                    color: parent.checked ? Qt.darker(_themeManager.accentColor, 1.3) : "transparent"
+                    border.color: parent.checked ? _themeManager.accentColor : _themeManager.borderColor
+                    border.width: parent.checked ? 0 : 1
+                    radius: 4
+                }
             }
         }
         
@@ -134,6 +180,14 @@ Popup {
                                         id: showKeyCheck
                                         text: qsTr("Show")
                                         font.pixelSize: 11
+                                        
+                                        contentItem: Text {
+                                            text: showKeyCheck.text
+                                            color: _themeManager.textColor
+                                            font.pixelSize: 11
+                                            leftPadding: showKeyCheck.indicator.width + 4
+                                            verticalAlignment: Text.AlignVCenter
+                                        }
                                     }
                                     
                                     Button {
@@ -216,6 +270,14 @@ Popup {
                                 text: qsTr("No Proxy (Direct Connection)")
                                 checked: _aiManager && _aiManager.proxyType === "none"
                                 onClicked: if (_aiManager) _aiManager.setProxyType("none")
+                                
+                                contentItem: Text {
+                                    text: noProxyRadio.text
+                                    color: _themeManager.textColor
+                                    font.pixelSize: 12
+                                    leftPadding: noProxyRadio.indicator.width + 6
+                                    verticalAlignment: Text.AlignVCenter
+                                }
                             }
                             
                             RadioButton {
@@ -223,6 +285,14 @@ Popup {
                                 text: qsTr("Use System Proxy")
                                 checked: _aiManager && _aiManager.proxyType === "system"
                                 onClicked: if (_aiManager) _aiManager.setProxyType("system")
+                                
+                                contentItem: Text {
+                                    text: systemProxyRadio.text
+                                    color: _themeManager.textColor
+                                    font.pixelSize: 12
+                                    leftPadding: systemProxyRadio.indicator.width + 6
+                                    verticalAlignment: Text.AlignVCenter
+                                }
                             }
                             
                             RadioButton {
@@ -230,6 +300,14 @@ Popup {
                                 text: qsTr("Custom Proxy")
                                 checked: _aiManager && _aiManager.proxyType === "custom"
                                 onClicked: if (_aiManager) _aiManager.setProxyType("custom")
+                                
+                                contentItem: Text {
+                                    text: customProxyRadio.text
+                                    color: _themeManager.textColor
+                                    font.pixelSize: 12
+                                    leftPadding: customProxyRadio.indicator.width + 6
+                                    verticalAlignment: Text.AlignVCenter
+                                }
                             }
                         }
                     }

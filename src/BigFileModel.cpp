@@ -1815,21 +1815,21 @@ QVariantList BigFileModel::errorLines() const {
   static const QStringList errorKeywords = {
     "FATAL", "CRITICAL", "ERROR", "FAIL", "FAILED", "EXCEPTION", "PANIC", "ABORT"
   };
-  return findLinesWithKeywords(errorKeywords, 3000);
+  return findLinesWithKeywords(errorKeywords, 10000);  // 增加到 10000
 }
 
 QVariantList BigFileModel::warningLines() const {
   static const QStringList warningKeywords = {
     "WARN", "WARNING", "ALERT", "CAUTION"
   };
-  return findLinesWithKeywords(warningKeywords, 3000);
+  return findLinesWithKeywords(warningKeywords, 10000);  // 增加到 10000
 }
 
 QVariantList BigFileModel::infoLines() const {
   static const QStringList infoKeywords = {
     "INFO", "NOTICE"
   };
-  return findLinesWithKeywords(infoKeywords, 2000);
+  return findLinesWithKeywords(infoKeywords, 5000);  // 增加到 5000
 }
 
 QVariantMap BigFileModel::getLogStatistics() const {
@@ -1914,10 +1914,12 @@ QVariantList BigFileModel::findLinesWithKeywords(const QStringList &keywords, in
   int totalRows = m_filterMode.load() ? static_cast<int>(m_filteredRows.size()) 
                                        : static_cast<int>(m_lineOffsets.size());
   
-  // 为了性能，采样扫描（大文件时跳过部分行）
+  // 为了性能，大文件时采用均匀采样，确保覆盖整个文件
+  // 计算采样步长：每种级别最多保留 maxResults 个标记
   int step = 1;
-  if (totalRows > 50000) {
-    step = totalRows / 50000 + 1;  // 最多扫描 50000 行
+  if (totalRows > maxResults * 10) {
+    // 大文件时采样，但确保均匀分布在整个文件
+    step = totalRows / (maxResults * 10) + 1;
   }
   
   for (int viewRow = 0; viewRow < totalRows && result.size() < maxResults; viewRow += step) {

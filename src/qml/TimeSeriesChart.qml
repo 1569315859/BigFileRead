@@ -65,6 +65,9 @@ Item {
                 return
             }
             
+            // Debug: log data info
+            console.log("TimeSeriesChart: data.length =", data.length, "first item:", JSON.stringify(data[0]))
+            
             // 绘制标题
             if (title) {
                 ctx.font = "bold 14px sans-serif"
@@ -83,10 +86,13 @@ Item {
             var maxValue = 0
             for (var i = 0; i < data.length; i++) {
                 var item = data[i]
-                var total = item.error + item.warn + item.info + item.debug + item.trace + item.other
+                // 使用方括号访问以兼容 QVariantMap
+                var total = (item["error"] || 0) + (item["warn"] || 0) + (item["info"] || 0) + 
+                           (item["debug"] || 0) + (item["trace"] || 0) + (item["other"] || 0)
                 maxValue = Math.max(maxValue, total)
             }
             if (maxValue === 0) maxValue = 1
+            console.log("TimeSeriesChart: maxValue =", maxValue)
             
             // 绘制网格
             if (showGrid) {
@@ -157,21 +163,34 @@ Item {
         }
         
         function drawStackedChart(ctx, x, y, w, h, maxValue) {
-            var barWidth = (w / data.length) * 0.7
-            var barSpacing = (w / data.length) * 0.3
+            // 计算柱宽 - 对于少量数据点，限制最大宽度
+            var maxBarWidth = 60
+            var barWidth = Math.min((w / data.length) * 0.7, maxBarWidth)
+            var barSpacing = (w - barWidth * data.length) / (data.length + 1)
+            if (data.length === 1) {
+                // 单数据点时居中显示
+                barWidth = Math.min(w * 0.3, maxBarWidth)
+                barSpacing = (w - barWidth) / 2
+            }
             
             for (var i = 0; i < data.length; i++) {
                 var item = data[i]
-                var barX = x + i * (barWidth + barSpacing) + barSpacing / 2
+                // 计算柱子位置
+                var barX
+                if (data.length === 1) {
+                    barX = x + barSpacing  // 居中
+                } else {
+                    barX = x + barSpacing + i * (barWidth + barSpacing)
+                }
                 var currentY = y + h
                 
                 var levels = [
-                    { value: item.other, color: otherColor },
-                    { value: item.trace, color: traceColor },
-                    { value: item.debug, color: debugColor },
-                    { value: item.info, color: infoColor },
-                    { value: item.warn, color: warnColor },
-                    { value: item.error, color: errorColor }
+                    { value: item["other"] || 0, color: otherColor },
+                    { value: item["trace"] || 0, color: traceColor },
+                    { value: item["debug"] || 0, color: debugColor },
+                    { value: item["info"] || 0, color: infoColor },
+                    { value: item["warn"] || 0, color: warnColor },
+                    { value: item["error"] || 0, color: errorColor }
                 ]
                 
                 var total = 0
@@ -214,7 +233,7 @@ Item {
                     ctx.rotate(-Math.PI / 4)
                     ctx.textAlign = "right"
                 }
-                ctx.fillText(item.timeLabel || "", 0, 0)
+                ctx.fillText(item["timeLabel"] || "", 0, 0)
                 ctx.restore()
             }
         }
@@ -230,12 +249,12 @@ Item {
                 var groupX = x + i * groupWidth + groupSpacing / 2
                 
                 var levels = [
-                    { value: item.error, color: errorColor },
-                    { value: item.warn, color: warnColor },
-                    { value: item.info, color: infoColor },
-                    { value: item.debug, color: debugColor },
-                    { value: item.trace, color: traceColor },
-                    { value: item.other, color: otherColor }
+                    { value: item["error"] || 0, color: errorColor },
+                    { value: item["warn"] || 0, color: warnColor },
+                    { value: item["info"] || 0, color: infoColor },
+                    { value: item["debug"] || 0, color: debugColor },
+                    { value: item["trace"] || 0, color: traceColor },
+                    { value: item["other"] || 0, color: otherColor }
                 ]
                 
                 for (var j = 0; j < levels.length; j++) {
@@ -252,12 +271,17 @@ Item {
                 ctx.font = "10px sans-serif"
                 ctx.fillStyle = Qt.darker(textColor, 1.2)
                 ctx.textAlign = "center"
-                ctx.fillText(item.timeLabel || "", groupX + groupWidth * 0.4, y + h + 15)
+                ctx.fillText(item["timeLabel"] || "", groupX + groupWidth * 0.4, y + h + 15)
             }
         }
         
         function drawAreaChart(ctx, x, y, w, h, maxValue) {
-            if (data.length < 2) return
+            // 如果只有一个数据点，改为绘制柱状图
+            if (data.length === 1) {
+                drawStackedChart(ctx, x, y, w, h, maxValue)
+                return
+            }
+            if (data.length < 1) return
             
             var stepX = w / (data.length - 1)
             
@@ -310,7 +334,7 @@ Item {
             ctx.textAlign = "center"
             
             for (i = 0; i < data.length; i += labelStep) {
-                ctx.fillText(data[i].timeLabel || "", x + i * stepX, y + h + 15)
+                ctx.fillText(data[i]["timeLabel"] || "", x + i * stepX, y + h + 15)
             }
         }
         
@@ -374,14 +398,14 @@ Item {
             ctx.fillStyle = textColor
             ctx.textAlign = "left"
             ctx.textBaseline = "top"
-            ctx.fillText(item.timeLabel || "", tooltipX + 10, tooltipY + 8)
+            ctx.fillText(item["timeLabel"] || "", tooltipX + 10, tooltipY + 8)
             
             var lines = [
-                { label: "Error:", value: item.error, color: errorColor },
-                { label: "Warn:", value: item.warn, color: warnColor },
-                { label: "Info:", value: item.info, color: infoColor },
-                { label: "Debug:", value: item.debug, color: debugColor },
-                { label: "Trace:", value: item.trace, color: traceColor }
+                { label: "Error:", value: item["error"] || 0, color: errorColor },
+                { label: "Warn:", value: item["warn"] || 0, color: warnColor },
+                { label: "Info:", value: item["info"] || 0, color: infoColor },
+                { label: "Debug:", value: item["debug"] || 0, color: debugColor },
+                { label: "Trace:", value: item["trace"] || 0, color: traceColor }
             ]
             
             ctx.font = "11px sans-serif"
