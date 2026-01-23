@@ -394,6 +394,15 @@ ApplicationWindow {
                         onTriggered: fileDialog.open()
                     }
                     
+                    MenuItem {
+                        text: qsTr("Open Remote File...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("remote_files")) {
+                                remoteFileDialog.open()
+                            }
+                        }
+                    }
+                    
                     Menu {
                         id: recentFilesMenu
                         title: qsTr("Recent Files")
@@ -881,6 +890,24 @@ ApplicationWindow {
                     }
                     
                     MenuItem {
+                        text: qsTr("Jira Integration...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("jira_integration")) {
+                                jiraConfigDialog.open()
+                            }
+                        }
+                    }
+                    
+                    MenuItem {
+                        text: qsTr("GitHub Integration...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("github_integration")) {
+                                githubConfigDialog.open()
+                            }
+                        }
+                    }
+                    
+                    MenuItem {
                         text: isNavBarVisible ? qsTr("Hide Scroll Markers") : qsTr("Show Scroll Markers")
                         onTriggered: isNavBarVisible = !isNavBarVisible
                     }
@@ -1036,6 +1063,32 @@ ApplicationWindow {
     EmailAlertDialog {
         id: emailAlertDialog
         alertManager: _alertManager
+    }
+    JiraIssueDialog {
+        id: jiraIssueDialog
+        jiraIntegration: _jiraIntegration
+    }
+    JiraIssueDialog {
+        id: jiraConfigDialog
+        jiraIntegration: _jiraIntegration
+    }
+    GitHubIssueDialog {
+        id: githubIssueDialog
+        githubIntegration: _githubIntegration
+    }
+    GitHubIssueDialog {
+        id: githubConfigDialog
+        githubIntegration: _githubIntegration
+    }
+    RemoteFileDialog {
+        id: remoteFileDialog
+        remoteManager: _remoteManager
+        
+        onFileSelected: function(localPath, remotePath) {
+            _logModel.loadFile(localPath)
+            // Update window title to show remote path
+            root.title = "BigFileViewer - " + remotePath + " (Remote)"
+        }
     }
     AdvancedFilterDialog { id: advancedFilterDialog }
     KeywordConfigDialog { id: keywordConfigDialog }
@@ -1922,6 +1975,31 @@ ApplicationWindow {
         MenuItem {
             text: qsTr("Advanced Filter...")
             onTriggered: advancedFilterDialog.open()
+        }
+        
+        MenuSeparator {}
+        
+        MenuItem {
+            text: qsTr("Create Jira Issue...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+            onTriggered: {
+                if (_featureGate.canUseFeature("jira_integration")) {
+                    jiraIssueDialog.selectedLines = [selectedLineText]
+                    jiraIssueDialog.lineNumbers = [selectedRow + 1]
+                    jiraIssueDialog.filePath = _logModel.currentFilePath || ""
+                    jiraIssueDialog.open()
+                }
+            }
+        }
+        MenuItem {
+            text: qsTr("Create GitHub Issue...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+            onTriggered: {
+                if (_featureGate.canUseFeature("github_integration")) {
+                    githubIssueDialog.selectedLines = [selectedLineText]
+                    githubIssueDialog.lineNumbers = [selectedRow + 1]
+                    githubIssueDialog.filePath = _logModel.currentFilePath || ""
+                    githubIssueDialog.open()
+                }
+            }
         }
     }
     

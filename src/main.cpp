@@ -19,6 +19,9 @@
 #include "FilterTemplateManager.h"
 #include "WorkspaceManager.h"
 #include "SmtpAlertManager.h"
+#include "JiraIntegration.h"
+#include "GitHubIntegration.h"
+#include "RemoteFileManager.h"
 
 /**
  * @brief 程序入口点
@@ -69,6 +72,9 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("filterTemplateManager", &FilterTemplateManager::instance());
     engine.rootContext()->setContextProperty("workspaceManager", &WorkspaceManager::instance());
     engine.rootContext()->setContextProperty("_alertManager", &SmtpAlertManager::instance());
+    engine.rootContext()->setContextProperty("_jiraIntegration", &JiraIntegration::instance());
+    engine.rootContext()->setContextProperty("_githubIntegration", &GitHubIntegration::instance());
+    engine.rootContext()->setContextProperty("_remoteManager", &RemoteFileManager::instance());
     
     // ★★★ 连接语言切换信号，刷新 QML 界面翻译 ★★★
     QObject::connect(&LanguageManager::instance(), &LanguageManager::languageChanged,

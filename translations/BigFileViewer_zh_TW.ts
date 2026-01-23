@@ -980,6 +980,178 @@ Click &apos;Add Rule&apos; to create one.</source>
     </message>
 </context>
 <context>
+    <name>GitHubIntegration</name>
+    <message>
+        <location filename="../src/GitHubIntegration.cpp" line="149"/>
+        <location filename="../src/GitHubIntegration.cpp" line="150"/>
+        <source>Access token not configured</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/GitHubIntegration.cpp" line="169"/>
+        <location filename="../src/GitHubIntegration.cpp" line="194"/>
+        <location filename="../src/GitHubIntegration.cpp" line="215"/>
+        <location filename="../src/GitHubIntegration.cpp" line="241"/>
+        <location filename="../src/GitHubIntegration.cpp" line="242"/>
+        <source>GitHub not configured</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/GitHubIntegration.cpp" line="337"/>
+        <source>Connected as: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GitHubIssueDialog</name>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="13"/>
+        <source>Create GitHub Issue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="46"/>
+        <source>Connected to GitHub</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="47"/>
+        <source>GitHub not configured</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="55"/>
+        <source>Settings</source>
+        <translation type="unfinished">設定</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="64"/>
+        <source>Issue Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="75"/>
+        <source>Repository:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="93"/>
+        <source>Title:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="97"/>
+        <source>Brief description of the issue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="101"/>
+        <source>Body:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="110"/>
+        <source>Detailed description (log content will be appended)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="115"/>
+        <source>Labels:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="154"/>
+        <source>Select a repository to see labels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="160"/>
+        <source>Assignee:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="176"/>
+        <source>Log Content Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="215"/>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="335"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="220"/>
+        <source>Create Issue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="236"/>
+        <source>GitHub Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="251"/>
+        <source>GitHub URL:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="261"/>
+        <source>For GitHub Enterprise: https://github.yourcompany.com</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="266"/>
+        <source>Personal Access Token:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="274"/>
+        <source>ghp_xxxxx or github_pat_xxxxx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="290"/>
+        <source>Get token from: GitHub → Settings → Developer settings → Personal access tokens</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="299"/>
+        <source>Required scopes: repo (Full control of private repositories)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="318"/>
+        <source>Test Connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="323"/>
+        <source>Testing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="340"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="407"/>
+        <source>Creating issue...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="461"/>
+        <source>Created: #%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="472"/>
+        <source>Failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GoToLineDialog</name>
     <message>
         <location filename="../src/qml/GoToLineDialog.qml" line="35"/>
@@ -1005,6 +1177,186 @@ Click &apos;Add Rule&apos; to create one.</source>
         <location filename="../src/qml/GoToLineDialog.qml" line="103"/>
         <source>Cancel</source>
         <translation>取消</translation>
+    </message>
+</context>
+<context>
+    <name>JiraIntegration</name>
+    <message>
+        <location filename="../src/JiraIntegration.cpp" line="166"/>
+        <location filename="../src/JiraIntegration.cpp" line="187"/>
+        <location filename="../src/JiraIntegration.cpp" line="239"/>
+        <source>Jira is not configured</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/JiraIntegration.cpp" line="244"/>
+        <source>Project, issue type, and summary are required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/JiraIntegration.cpp" line="459"/>
+        <source>Connected as %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/JiraIntegration.cpp" line="461"/>
+        <location filename="../src/JiraIntegration.cpp" line="515"/>
+        <source>Invalid response from server</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>JiraIssueDialog</name>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="13"/>
+        <source>Create Jira Issue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="46"/>
+        <source>Connected to Jira</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="47"/>
+        <source>Jira not configured</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="55"/>
+        <source>Settings</source>
+        <translation type="unfinished">設定</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="64"/>
+        <source>Issue Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="75"/>
+        <source>Project:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="93"/>
+        <source>Issue Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="102"/>
+        <source>Summary:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="106"/>
+        <source>Brief description of the issue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="110"/>
+        <source>Description:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="119"/>
+        <source>Detailed description (log content will be appended)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="124"/>
+        <source>Labels:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="128"/>
+        <source>bug, critical, production (comma separated)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="131"/>
+        <source>Priority:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="143"/>
+        <source>Log Content Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="182"/>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="306"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="187"/>
+        <source>Create Issue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="204"/>
+        <source>Jira Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="219"/>
+        <source>Jira URL:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="229"/>
+        <source>For Jira Cloud: https://yoursite.atlassian.net</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="234"/>
+        <source>Email/Username:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="242"/>
+        <source>API Token:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="250"/>
+        <source>Jira API token or PAT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="266"/>
+        <source>Get token from: Jira → Account Settings → Security → API Tokens</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="287"/>
+        <source>Test Connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="294"/>
+        <source>Testing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="311"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="370"/>
+        <source>Creating issue...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="413"/>
+        <source>Created: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="424"/>
+        <source>Failed: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1125,433 +1477,458 @@ This action cannot be undone.</source>
         <translation>開啟檔案...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="399"/>
+        <location filename="../src/qml/Main.qml" line="398"/>
+        <source>Open Remote File...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="408"/>
         <source>Recent Files</source>
         <translation>最近使用的檔案</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="421"/>
+        <location filename="../src/qml/Main.qml" line="430"/>
         <source>Clear Recent Files</source>
         <translation>清除最近使用的檔案</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="429"/>
+        <location filename="../src/qml/Main.qml" line="438"/>
         <source>Paste from Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="434"/>
-        <location filename="../src/qml/Main.qml" line="725"/>
+        <location filename="../src/qml/Main.qml" line="443"/>
+        <location filename="../src/qml/Main.qml" line="734"/>
         <source>Reload File</source>
         <translation>重新載入檔案</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="442"/>
+        <location filename="../src/qml/Main.qml" line="451"/>
         <source>Export...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="448"/>
+        <location filename="../src/qml/Main.qml" line="457"/>
         <source>Monitor Directory...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="459"/>
+        <location filename="../src/qml/Main.qml" line="468"/>
         <source>Search</source>
         <translation>搜尋</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="470"/>
+        <location filename="../src/qml/Main.qml" line="479"/>
         <source>Filter</source>
         <translation>篩選</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="480"/>
+        <location filename="../src/qml/Main.qml" line="489"/>
         <source>Details</source>
         <translation>詳細資料</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="490"/>
+        <location filename="../src/qml/Main.qml" line="499"/>
         <source>Go To</source>
         <translation>跳轉</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="495"/>
+        <location filename="../src/qml/Main.qml" line="504"/>
         <source>Bookmark</source>
         <translation>書籤</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="502"/>
+        <location filename="../src/qml/Main.qml" line="511"/>
         <source>Add/Remove Bookmark</source>
         <translation>新增/移除書籤</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="507"/>
+        <location filename="../src/qml/Main.qml" line="516"/>
         <source>Edit Bookmark Comment...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="516"/>
-        <location filename="../src/qml/Main.qml" line="1857"/>
+        <location filename="../src/qml/Main.qml" line="525"/>
+        <location filename="../src/qml/Main.qml" line="1910"/>
         <source>Next Bookmark</source>
         <translation>下一個書籤</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="526"/>
-        <location filename="../src/qml/Main.qml" line="1867"/>
+        <location filename="../src/qml/Main.qml" line="535"/>
+        <location filename="../src/qml/Main.qml" line="1920"/>
         <source>Previous Bookmark</source>
         <translation>上一個書籤</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="537"/>
+        <location filename="../src/qml/Main.qml" line="546"/>
         <source>Save Bookmarks...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="542"/>
+        <location filename="../src/qml/Main.qml" line="551"/>
         <source>Load Bookmarks...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="547"/>
+        <location filename="../src/qml/Main.qml" line="556"/>
         <source>Clear All Bookmarks</source>
         <translation>清除所有書籤</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="557"/>
-        <location filename="../src/qml/Main.qml" line="562"/>
+        <location filename="../src/qml/Main.qml" line="566"/>
+        <location filename="../src/qml/Main.qml" line="571"/>
         <source>View</source>
         <translation>檢視</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="566"/>
+        <location filename="../src/qml/Main.qml" line="575"/>
         <source>Text View (Raw)</source>
         <translation>文字檢視 (原始)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="575"/>
+        <location filename="../src/qml/Main.qml" line="584"/>
         <source>Grid View (Parsed)</source>
         <translation>格線檢視 (已解析)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="589"/>
+        <location filename="../src/qml/Main.qml" line="598"/>
         <source>Columns</source>
         <translation>欄位</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="593"/>
+        <location filename="../src/qml/Main.qml" line="602"/>
         <source>Line Number</source>
         <translation>行號</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="599"/>
+        <location filename="../src/qml/Main.qml" line="608"/>
         <source>Time</source>
         <translation>時間</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="605"/>
+        <location filename="../src/qml/Main.qml" line="614"/>
         <source>Level</source>
         <translation>級別</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="611"/>
-        <location filename="../src/qml/Main.qml" line="1539"/>
+        <location filename="../src/qml/Main.qml" line="620"/>
+        <location filename="../src/qml/Main.qml" line="1592"/>
         <source>Message</source>
         <translation>訊息</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="620"/>
+        <location filename="../src/qml/Main.qml" line="629"/>
         <source>Show All Columns</source>
         <translation>顯示所有欄位</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="627"/>
+        <location filename="../src/qml/Main.qml" line="636"/>
         <source>Hide Optional Columns</source>
         <translation>隱藏可選欄位</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="639"/>
+        <location filename="../src/qml/Main.qml" line="648"/>
         <source>Navigation Markers</source>
         <translation>導覽標記</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="649"/>
+        <location filename="../src/qml/Main.qml" line="658"/>
         <source>Tools</source>
         <translation>工具</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="656"/>
-        <location filename="../src/qml/Main.qml" line="1923"/>
+        <location filename="../src/qml/Main.qml" line="665"/>
+        <location filename="../src/qml/Main.qml" line="1976"/>
         <source>Advanced Filter...</source>
         <translation>進階篩選...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="660"/>
+        <location filename="../src/qml/Main.qml" line="669"/>
         <source>Filter Templates...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="668"/>
+        <location filename="../src/qml/Main.qml" line="677"/>
         <source>Workspaces...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="678"/>
+        <location filename="../src/qml/Main.qml" line="687"/>
         <source>Export Visible Lines...</source>
         <translation>匯出可見行...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="683"/>
+        <location filename="../src/qml/Main.qml" line="692"/>
         <source>Follow Mode (Live)</source>
         <translation>跟隨模式 (即時)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="694"/>
+        <location filename="../src/qml/Main.qml" line="703"/>
         <source>Show Delta Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="706"/>
+        <location filename="../src/qml/Main.qml" line="715"/>
         <source>Merge Rolling Logs...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="715"/>
+        <location filename="../src/qml/Main.qml" line="724"/>
         <source>Statistics...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="737"/>
+        <location filename="../src/qml/Main.qml" line="746"/>
         <source>Settings</source>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="744"/>
+        <location filename="../src/qml/Main.qml" line="753"/>
         <source>Theme</source>
         <translation>主題</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="766"/>
+        <location filename="../src/qml/Main.qml" line="775"/>
         <source>Language</source>
         <translation>語言</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="849"/>
+        <location filename="../src/qml/Main.qml" line="858"/>
         <source>Encoding</source>
         <translation>編碼</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="870"/>
+        <location filename="../src/qml/Main.qml" line="879"/>
         <source>Keyword Colors...</source>
         <translation>關鍵字顏色...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="875"/>
+        <location filename="../src/qml/Main.qml" line="884"/>
         <source>Email Alerts...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="884"/>
+        <location filename="../src/qml/Main.qml" line="893"/>
+        <source>Jira Integration...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="902"/>
+        <source>GitHub Integration...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="911"/>
         <source>Hide Scroll Markers</source>
         <translation>隱藏捲軸標記</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="884"/>
+        <location filename="../src/qml/Main.qml" line="911"/>
         <source>Show Scroll Markers</source>
         <translation>顯示捲軸標記</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="891"/>
+        <location filename="../src/qml/Main.qml" line="918"/>
         <source>Register...</source>
         <translation>註冊...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="895"/>
+        <location filename="../src/qml/Main.qml" line="922"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="941"/>
+        <location filename="../src/qml/Main.qml" line="968"/>
         <source>High-performance large file viewer</source>
         <translation>高效能大型檔案檢視器</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="947"/>
+        <location filename="../src/qml/Main.qml" line="974"/>
         <source>Supports files over 10GB</source>
         <translation>支援超過 10GB 的檔案</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1045"/>
+        <location filename="../src/qml/Main.qml" line="1098"/>
         <source>Open Log File</source>
         <translation>開啟日誌檔案</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1068"/>
+        <location filename="../src/qml/Main.qml" line="1121"/>
         <source>Export Visible Lines</source>
         <translation>匯出可見行</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1103"/>
+        <location filename="../src/qml/Main.qml" line="1156"/>
         <source>Find:</source>
         <translation>尋找：</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1112"/>
+        <location filename="../src/qml/Main.qml" line="1165"/>
         <source>Enter search text (supports regex)...</source>
         <translation>輸入搜尋文字（支援正規表示式）...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1129"/>
-        <location filename="../src/qml/Main.qml" line="1307"/>
+        <location filename="../src/qml/Main.qml" line="1182"/>
+        <location filename="../src/qml/Main.qml" line="1360"/>
         <source>Regex</source>
         <translation>正規表示式</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1159"/>
+        <location filename="../src/qml/Main.qml" line="1212"/>
         <source>Find</source>
         <translation>尋找</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1185"/>
+        <location filename="../src/qml/Main.qml" line="1238"/>
         <source>Previous</source>
         <translation>上一個</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1211"/>
+        <location filename="../src/qml/Main.qml" line="1264"/>
         <source>Next</source>
         <translation>下一個</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1233"/>
+        <location filename="../src/qml/Main.qml" line="1286"/>
         <source>matches</source>
         <translation>個相符</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1281"/>
+        <location filename="../src/qml/Main.qml" line="1334"/>
         <source>Filter:</source>
         <translation>篩選：</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1290"/>
+        <location filename="../src/qml/Main.qml" line="1343"/>
         <source>Enter filter text (supports regex)...</source>
         <translation>輸入篩選文字（支援正規表示式）...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1337"/>
+        <location filename="../src/qml/Main.qml" line="1390"/>
         <source>Apply</source>
         <translation>套用</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1359"/>
+        <location filename="../src/qml/Main.qml" line="1412"/>
         <source>Clear</source>
         <translation>清除</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1383"/>
+        <location filename="../src/qml/Main.qml" line="1436"/>
         <source>Showing</source>
         <translation>顯示中</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1429"/>
-        <location filename="../src/qml/Main.qml" line="1683"/>
+        <location filename="../src/qml/Main.qml" line="1482"/>
+        <location filename="../src/qml/Main.qml" line="1736"/>
         <source>Line</source>
         <translation>行</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1683"/>
+        <location filename="../src/qml/Main.qml" line="1736"/>
         <source>Line Details</source>
         <translation>行詳情</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1694"/>
+        <location filename="../src/qml/Main.qml" line="1747"/>
         <source>Raw</source>
         <translation>原始</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1694"/>
+        <location filename="../src/qml/Main.qml" line="1747"/>
         <source>JSON</source>
         <translation>JSON</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1721"/>
+        <location filename="../src/qml/Main.qml" line="1774"/>
         <source>Copy</source>
         <translation>複製</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1768"/>
+        <location filename="../src/qml/Main.qml" line="1821"/>
         <source>(Select a line to view details)</source>
         <translation>（選取一行以檢視詳情）</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1802"/>
+        <location filename="../src/qml/Main.qml" line="1855"/>
         <source>No file opened</source>
         <translation>未開啟檔案</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1812"/>
+        <location filename="../src/qml/Main.qml" line="1865"/>
         <source>Size:</source>
         <translation>大小：</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1821"/>
-        <location filename="../src/qml/Main.qml" line="1822"/>
+        <location filename="../src/qml/Main.qml" line="1874"/>
+        <location filename="../src/qml/Main.qml" line="1875"/>
         <source>Lines:</source>
         <translation>行數：</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1830"/>
+        <location filename="../src/qml/Main.qml" line="1883"/>
         <source>Registered</source>
         <translation>已註冊</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1830"/>
+        <location filename="../src/qml/Main.qml" line="1883"/>
         <source>Trial:</source>
         <translation>試用：</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1830"/>
+        <location filename="../src/qml/Main.qml" line="1883"/>
         <source>days left</source>
         <translation>天剩餘</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1842"/>
+        <location filename="../src/qml/Main.qml" line="1895"/>
         <source>Copy Line</source>
         <translation>複製整行</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1846"/>
+        <location filename="../src/qml/Main.qml" line="1899"/>
         <source>Copy Line Number</source>
         <translation>複製行號</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1853"/>
+        <location filename="../src/qml/Main.qml" line="1906"/>
         <source>Toggle Bookmark</source>
         <translation>切換書籤</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1880"/>
+        <location filename="../src/qml/Main.qml" line="1933"/>
         <source>Show Details</source>
         <translation>顯示詳情</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1884"/>
+        <location filename="../src/qml/Main.qml" line="1937"/>
         <source>Format JSON</source>
         <translation>格式化 JSON</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1895"/>
+        <location filename="../src/qml/Main.qml" line="1948"/>
         <source>Filter This Level</source>
         <translation>篩選此級別</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1909"/>
+        <location filename="../src/qml/Main.qml" line="1962"/>
         <source>Filter This Keyword...</source>
         <translation>篩選此關鍵字...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1919"/>
+        <location filename="../src/qml/Main.qml" line="1972"/>
         <source>Go To Line...</source>
         <translation>跳轉至行...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1983"/>
+        <source>Create Jira Issue...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1994"/>
+        <source>Create GitHub Issue...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1633,6 +2010,242 @@ This action cannot be undone.</source>
         <location filename="../src/qml/RegistrationDialog.qml" line="165"/>
         <source>Close</source>
         <translation>關閉</translation>
+    </message>
+</context>
+<context>
+    <name>RemoteFileDialog</name>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="15"/>
+        <source>Remote File Browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="68"/>
+        <source>hostname or IP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="82"/>
+        <source>user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="88"/>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="88"/>
+        <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="106"/>
+        <source>Auth:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="111"/>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="134"/>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="118"/>
+        <source>Path to private key (~/.ssh/id_rsa)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="111"/>
+        <source>SSH Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="138"/>
+        <source>Save Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="154"/>
+        <source>Parent Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="163"/>
+        <source>Home Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="185"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="269"/>
+        <source>Directory is empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="270"/>
+        <source>Connect to a server to browse files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="290"/>
+        <source>Auto-refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="300"/>
+        <source>every</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="319"/>
+        <source>seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="346"/>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="386"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="351"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="365"/>
+        <source>Save Connection Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="377"/>
+        <source>Profile name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="391"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="414"/>
+        <source>Select Private Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="426"/>
+        <source>Connecting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="451"/>
+        <source>Downloading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="479"/>
+        <source>Connected to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="482"/>
+        <source>Disconnected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="500"/>
+        <source>Downloaded: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RemoteFileManager</name>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="154"/>
+        <location filename="../src/RemoteFileManager.cpp" line="517"/>
+        <location filename="../src/RemoteFileManager.cpp" line="630"/>
+        <source>Remote features not enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="173"/>
+        <source>Failed to resolve host: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="206"/>
+        <source>Failed to connect to %1:%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="227"/>
+        <source>Password authentication failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="246"/>
+        <source>Private key file not found: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="269"/>
+        <source>Public key authentication failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="288"/>
+        <source>Failed to initialize SFTP: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="332"/>
+        <source>Failed to create SSH session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="347"/>
+        <source>SSH handshake failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="382"/>
+        <source>Connected as: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="390"/>
+        <source>Remote features not enabled in this build</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="450"/>
+        <source>Failed to open directory: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="582"/>
+        <source>Failed to open remote file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="591"/>
+        <source>Failed to create local file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="611"/>
+        <source>Error reading remote file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RemoteFileManager.cpp" line="431"/>
+        <location filename="../src/RemoteFileManager.cpp" line="560"/>
+        <source>Not connected to server</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -40,7 +40,7 @@ option(ENABLE_CONAN "启用Conan包管理器支持" OFF)
 # BigFileViewer 功能分层选项
 # ============================================================================
 option(ENABLE_PRO_FEATURES "启用 Pro 版功能（过滤模板、工作区、统计等）" ON)  # ★ 测试模式默认开启
-option(ENABLE_REMOTE_FEATURES "启用 Enterprise 远程功能（SFTP/SSH、SMTP、集成）需要 libssh2" OFF)
+option(ENABLE_REMOTE_FEATURES "启用 Enterprise 远程功能（SFTP/SSH、SMTP、集成）需要 libssh2" ON)  # ★ 测试模式默认开启
 
 # 代码质量工具选项
 option(ENABLE_CLANG_TIDY "启用Clang-Tidy静态分析" OFF)
@@ -533,22 +533,50 @@ if(ENABLE_REMOTE_FEATURES)
     
     message(STATUS "正在配置远程功能依赖（mbedTLS + libssh2）...")
     
+    # 保存全局输出目录设置（避免影响第三方库）
+    set(_SAVED_CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
+    set(_SAVED_CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG})
+    set(_SAVED_CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE})
+    set(_SAVED_CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO})
+    set(_SAVED_CMAKE_ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL})
+    
+    # 取消全局输出目录设置（让第三方库使用默认目录）
+    unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
+    unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG)
+    unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE)
+    unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO)
+    unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL)
+    
     # 1. 拉取 mbedTLS（纯 C 库，无外部依赖）
     FetchContent_Declare(mbedtls
         GIT_REPOSITORY https://github.com/Mbed-TLS/mbedtls.git
         GIT_TAG        v3.6.0
         GIT_SHALLOW    TRUE
+        EXCLUDE_FROM_ALL
     )
     # mbedTLS 构建选项
     set(ENABLE_TESTING OFF CACHE BOOL "" FORCE)
     set(ENABLE_PROGRAMS OFF CACHE BOOL "" FORCE)
     set(MBEDTLS_FATAL_WARNINGS OFF CACHE BOOL "" FORCE)
     
+    # 先拉取并构建 mbedTLS
+    FetchContent_MakeAvailable(mbedtls)
+    
+    # 获取 mbedTLS 路径
+    FetchContent_GetProperties(mbedtls SOURCE_DIR MBEDTLS_SOURCE_DIR BINARY_DIR MBEDTLS_BINARY_DIR)
+    
+    # 设置 libssh2 查找 MbedTLS 所需的变量
+    set(MBEDTLS_INCLUDE_DIR "${MBEDTLS_SOURCE_DIR}/include" CACHE PATH "" FORCE)
+    set(MBEDTLS_LIBRARY mbedtls CACHE STRING "" FORCE)
+    set(MBEDCRYPTO_LIBRARY mbedcrypto CACHE STRING "" FORCE)
+    set(MBEDX509_LIBRARY mbedx509 CACHE STRING "" FORCE)
+    
     # 2. 拉取 libssh2
     FetchContent_Declare(libssh2
         GIT_REPOSITORY https://github.com/libssh2/libssh2.git
         GIT_TAG        libssh2-1.11.1
         GIT_SHALLOW    TRUE
+        EXCLUDE_FROM_ALL
     )
     # libssh2 构建选项
     set(CRYPTO_BACKEND "mbedTLS" CACHE STRING "" FORCE)
@@ -558,14 +586,55 @@ if(ENABLE_REMOTE_FEATURES)
     set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
     set(LIBSSH2_NO_EXAMPLES ON CACHE BOOL "" FORCE)
     
-    # 先拉取 mbedTLS，再拉取 libssh2
-    FetchContent_MakeAvailable(mbedtls)
-    FetchContent_MakeAvailable(libssh2)
+    # 手动 populate 并添加 subdirectory
+    FetchContent_GetProperties(libssh2)
+    if(NOT libssh2_POPULATED)
+        FetchContent_Populate(libssh2)
+        
+        # 读取 libssh2/src/CMakeLists.txt 并禁用 export/install 导出
+        set(_libssh2_src_cmake "${libssh2_SOURCE_DIR}/src/CMakeLists.txt")
+        file(READ "${_libssh2_src_cmake}" _content)
+        
+        # 替换 export(TARGETS ... 行（将整个 export 调用注释掉）
+        string(REPLACE 
+            "export(TARGETS \${_libssh2_export} NAMESPACE \"\${PROJECT_NAME}::\" FILE \"\${PROJECT_NAME}-targets.cmake\")"
+            "# export(TARGETS \${_libssh2_export} NAMESPACE \"\${PROJECT_NAME}::\" FILE \"\${PROJECT_NAME}-targets.cmake\")  # Disabled by BigFileViewer"
+            _content "${_content}")
+        
+        # 替换 export(PACKAGE ...) 行
+        string(REPLACE 
+            "export(PACKAGE \${PROJECT_NAME})"
+            "# export(PACKAGE \${PROJECT_NAME})  # Disabled by BigFileViewer"
+            _content "${_content}")
+        
+        # 替换 install(EXPORT ...) - 这是三行的命令
+        string(REPLACE 
+            "install(EXPORT \"\${PROJECT_NAME}-targets\"\n  NAMESPACE \"\${PROJECT_NAME}::\"\n  DESTINATION \"\${CMAKE_INSTALL_LIBDIR}/cmake/\${PROJECT_NAME}\")"
+            "# install(EXPORT \"\${PROJECT_NAME}-targets\"\n#   NAMESPACE \"\${PROJECT_NAME}::\"\n#   DESTINATION \"\${CMAKE_INSTALL_LIBDIR}/cmake/\${PROJECT_NAME}\")  # Disabled by BigFileViewer"
+            _content "${_content}")
+        
+        # 写回文件
+        file(WRITE "${_libssh2_src_cmake}" "${_content}")
+        
+        add_subdirectory(${libssh2_SOURCE_DIR} ${libssh2_BINARY_DIR} EXCLUDE_FROM_ALL)
+    endif()
     
     # 恢复 BUILD_SHARED_LIBS
     set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_SAVED} CACHE BOOL "" FORCE)
     
+    # 设置 libssh2 包含目录
+    set(LIBSSH2_SOURCE_DIR ${libssh2_SOURCE_DIR})
+    
+    message(STATUS "  mbedTLS 源目录: ${MBEDTLS_SOURCE_DIR}")
+    message(STATUS "  libssh2 源目录: ${LIBSSH2_SOURCE_DIR}")
     message(STATUS "  mbedTLS 和 libssh2 配置完成")
+    
+    # 恢复全局输出目录设置（用于主项目目标）
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${_SAVED_CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${_SAVED_CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG})
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${_SAVED_CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE})
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO ${_SAVED_CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO})
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL ${_SAVED_CMAKE_ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL})
 endif()
 
 # ============================================================================
@@ -719,12 +788,31 @@ if(ENABLE_QT)
     # 远程功能库链接（libssh2 + mbedTLS）
     # =========================================================================
     if(ENABLE_REMOTE_FEATURES)
-        target_link_libraries(${TARGET_NAME} PRIVATE 
-            libssh2
-            mbedtls
-            mbedcrypto
-            mbedx509
+        # 添加 libssh2 包含目录
+        target_include_directories(${TARGET_NAME} PRIVATE 
+            ${LIBSSH2_SOURCE_DIR}/include
+            ${CMAKE_BINARY_DIR}/_deps/libssh2-build/src  # 生成的 libssh2_config.h
         )
+        
+        # 直接链接生成的库文件（避免 CMake 目标传播依赖问题）
+        set(_MBEDTLS_LIB_DIR "${CMAKE_BINARY_DIR}/_deps/mbedtls-build/library")
+        set(_LIBSSH2_LIB_DIR "${CMAKE_BINARY_DIR}/_deps/libssh2-build/src")
+        
+        target_link_libraries(${TARGET_NAME} PRIVATE 
+            "${_LIBSSH2_LIB_DIR}/libssh2.lib"
+            "${_MBEDTLS_LIB_DIR}/mbedtls.lib"
+            "${_MBEDTLS_LIB_DIR}/mbedcrypto.lib"
+            "${_MBEDTLS_LIB_DIR}/mbedx509.lib"
+        )
+        
+        # 添加依赖关系确保先构建这些库
+        add_dependencies(${TARGET_NAME} libssh2_static mbedtls mbedcrypto mbedx509)
+        
+        # Windows 需要 Winsock 和 bcrypt 库（mbedTLS/libssh2 需要）
+        if(WIN32)
+            target_link_libraries(${TARGET_NAME} PRIVATE ws2_32 bcrypt)
+        endif()
+        
         message(STATUS "已链接 libssh2 和 mbedTLS 库")
     endif()
     

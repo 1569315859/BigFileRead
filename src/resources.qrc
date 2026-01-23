@@ -19,5 +19,8 @@
         <file>qml/RollingLogDialog.qml</file>
         <file>qml/StatisticsPanel.qml</file>
         <file>qml/EmailAlertDialog.qml</file>
+        <file>qml/JiraIssueDialog.qml</file>
+        <file>qml/GitHubIssueDialog.qml</file>
+        <file>qml/RemoteFileDialog.qml</file>
     </qresource>
 </RCC>
