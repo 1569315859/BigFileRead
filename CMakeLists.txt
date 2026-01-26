@@ -110,7 +110,8 @@ if(ENABLE_QT)
     
     # 选择Qt版本
     if(USE_QT6)
-        find_package(Qt6 COMPONENTS Core Widgets Gui Concurrent Network LinguistTools Quick Qml QuickControls2 QUIET)
+        find_package(Qt6 COMPONENTS Core Widgets Gui Concurrent Network LinguistTools Quick Qml QuickControls2 Sql QUIET)
+        find_package(Qt6 COMPONENTS Multimedia QUIET)
         if(Qt6_FOUND)
             set(QT_VERSION_MAJOR 6)
             message(STATUS "找到Qt6: ${Qt6_VERSION}")
@@ -118,7 +119,7 @@ if(ENABLE_QT)
             message(FATAL_ERROR "未找到Qt6！请检查QT_DIR设置或安装Qt6")
         endif()
     else()
-        find_package(Qt5 COMPONENTS Core Widgets Gui Concurrent Network LinguistTools QUIET)
+        find_package(Qt5 COMPONENTS Core Widgets Gui Concurrent Network LinguistTools Sql QUIET)
         if(Qt5_FOUND)
             set(QT_VERSION_MAJOR 5)
             message(STATUS "找到Qt5: ${Qt5_VERSION}")
@@ -773,7 +774,16 @@ if(ENABLE_QT)
             Qt6::Quick
             Qt6::Qml
             Qt6::QuickControls2
+            Qt6::Sql
         )
+        # Optional: Qt Multimedia for sound notifications
+        if(TARGET Qt6::Multimedia)
+            target_link_libraries(${TARGET_NAME} PRIVATE Qt6::Multimedia)
+            target_compile_definitions(${TARGET_NAME} PRIVATE HAVE_QT_MULTIMEDIA)
+            message(STATUS "Qt6::Multimedia 已启用")
+        else()
+            message(STATUS "Qt6::Multimedia 未找到 - 声音通知功能将禁用")
+        endif()
     else()
         target_link_libraries(${TARGET_NAME} PRIVATE 
             Qt5::Core 
@@ -781,6 +791,7 @@ if(ENABLE_QT)
             Qt5::Gui
             Qt5::Concurrent
             Qt5::Network
+            Qt5::Sql
         )
     endif()
     
@@ -810,7 +821,7 @@ if(ENABLE_QT)
         
         # Windows 需要 Winsock 和 bcrypt 库（mbedTLS/libssh2 需要）
         if(WIN32)
-            target_link_libraries(${TARGET_NAME} PRIVATE ws2_32 bcrypt)
+            target_link_libraries(${TARGET_NAME} PRIVATE ws2_32 bcrypt tdh advapi32)
         endif()
         
         message(STATUS "已链接 libssh2 和 mbedTLS 库")

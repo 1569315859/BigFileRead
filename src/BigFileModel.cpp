@@ -2521,3 +2521,250 @@ bool BigFileModel::exportWithSanitization(const QString &path, const QString &fo
   qDebug() << "Exported" << (endRow - startRow + 1) << "lines with sanitization to" << path;
   return true;
 }
+
+// ============ 日志分组功能实现 ============
+
+void BigFileModel::groupBy(const QString &field, const QString &interval)
+{
+  if (m_lineOffsets.empty()) {
+    return;
+  }
+  
+  // 清除现有分组
+  m_groups.clear();
+  m_rowToGroupMap.clear();
+  m_rowToGroupMap.resize(lineCount(), -1);
+  
+  m_groupField = field;
+  m_groupInterval = interval;
+  
+  int totalRows = lineCount();
+  
+  if (field == "level") {
+    // 按日志级别分组
+    QMap<QString, QList<int>> levelGroups;
+    
+    for (int i = 0; i < totalRows; ++i) {
+      QString line = getLine(i).toUpper();
+      QString level = "OTHER";
+      
+      if (line.contains("ERROR") || line.contains("FATAL") || line.contains("CRITICAL")) {
+        level = "ERROR";
+      } else if (line.contains("WARN")) {
+        level = "WARN";
+      } else if (line.contains("INFO")) {
+        level = "INFO";
+      } else if (line.contains("DEBUG")) {
+        level = "DEBUG";
+      } else if (line.contains("TRACE") || line.contains("VERBOSE")) {
+        level = "TRACE";
+      }
+      
+      levelGroups[level].append(i);
+    }
+    
+    // 按优先级排序: ERROR > WARN > INFO > DEBUG > TRACE > OTHER
+    QStringList levelOrder = {"ERROR", "WARN", "INFO", "DEBUG", "TRACE", "OTHER"};
+    int groupId = 0;
+    
+    for (const QString &lvl : levelOrder) {
+      if (levelGroups.contains(lvl) && !levelGroups[lvl].isEmpty()) {
+        const QList<int> &rows = levelGroups[lvl];
+        GroupInfo group(groupId, "level", lvl, rows.first(), rows.last(), rows.size());
+        m_groups.append(group);
+        
+        for (int row : rows) {
+          m_rowToGroupMap[row] = groupId;
+        }
+        ++groupId;
+      }
+    }
+  }
+  else if (field == "timestamp") {
+    // 按时间段分组
+    QMap<QString, QList<int>> timeGroups;
+    
+    for (int i = 0; i < totalRows; ++i) {
+      QString line = getLine(i);
+      QDateTime dt = parseTimestamp(line);
+      QString bucket;
+      
+      if (dt.isValid()) {
+        if (interval == "minute") {
+          bucket = dt.toString("yyyy-MM-dd HH:mm");
+        } else if (interval == "hour") {
+          bucket = dt.toString("yyyy-MM-dd HH:00");
+        } else if (interval == "day") {
+          bucket = dt.toString("yyyy-MM-dd");
+        } else {
+          bucket = dt.toString("yyyy-MM-dd HH:00"); // 默认按小时
+        }
+      } else {
+        bucket = "Unknown";
+      }
+      
+      timeGroups[bucket].append(i);
+    }
+    
+    // 按时间顺序排序
+    QStringList sortedKeys = timeGroups.keys();
+    sortedKeys.sort();
+    
+    int groupId = 0;
+    for (const QString &key : sortedKeys) {
+      const QList<int> &rows = timeGroups[key];
+      GroupInfo group(groupId, "timestamp", key, rows.first(), rows.last(), rows.size());
+      m_groups.append(group);
+      
+      for (int row : rows) {
+        m_rowToGroupMap[row] = groupId;
+      }
+      ++groupId;
+    }
+  }
+  else if (field == "thread") {
+    // 按线程ID分组
+    QMap<QString, QList<int>> threadGroups;
+    QRegularExpression threadPattern(R"(\[([^\]]+)\]|\bThread[- ]?(\d+)\b|\btid[=:]?\s*(\d+)\b)", 
+                                      QRegularExpression::CaseInsensitiveOption);
+    
+    for (int i = 0; i < totalRows; ++i) {
+      QString line = getLine(i);
+      QString threadId = "Main";
+      
+      QRegularExpressionMatch match = threadPattern.match(line);
+      if (match.hasMatch()) {
+        for (int j = 1; j <= match.lastCapturedIndex(); ++j) {
+          if (!match.captured(j).isEmpty()) {
+            threadId = match.captured(j);
+            break;
+          }
+        }
+      }
+      
+      threadGroups[threadId].append(i);
+    }
+    
+    int groupId = 0;
+    for (auto it = threadGroups.constBegin(); it != threadGroups.constEnd(); ++it) {
+      const QList<int> &rows = it.value();
+      GroupInfo group(groupId, "thread", it.key(), rows.first(), rows.last(), rows.size());
+      m_groups.append(group);
+      
+      for (int row : rows) {
+        m_rowToGroupMap[row] = groupId;
+      }
+      ++groupId;
+    }
+  }
+  else if (field.startsWith("custom:")) {
+    // 自定义正则分组
+    QString pattern = field.mid(7);
+    QRegularExpression regex(pattern);
+    
+    if (!regex.isValid()) {
+      qWarning() << "Invalid custom grouping pattern:" << pattern;
+      return;
+    }
+    
+    QMap<QString, QList<int>> customGroups;
+    
+    for (int i = 0; i < totalRows; ++i) {
+      QString line = getLine(i);
+      QRegularExpressionMatch match = regex.match(line);
+      QString groupKey = match.hasMatch() ? match.captured(0) : "Other";
+      customGroups[groupKey].append(i);
+    }
+    
+    int groupId = 0;
+    for (auto it = customGroups.constBegin(); it != customGroups.constEnd(); ++it) {
+      const QList<int> &rows = it.value();
+      GroupInfo group(groupId, "custom", it.key(), rows.first(), rows.last(), rows.size());
+      m_groups.append(group);
+      
+      for (int row : rows) {
+        m_rowToGroupMap[row] = groupId;
+      }
+      ++groupId;
+    }
+  }
+  
+  m_isGroupMode = true;
+  emit groupModeChanged();
+  emit groupsChanged();
+  
+  qDebug() << "Grouped" << totalRows << "rows into" << m_groups.size() << "groups by" << field;
+}
+
+void BigFileModel::clearGrouping()
+{
+  if (!m_isGroupMode) {
+    return;
+  }
+  
+  m_groups.clear();
+  m_rowToGroupMap.clear();
+  m_groupField.clear();
+  m_groupInterval.clear();
+  m_isGroupMode = false;
+  
+  emit groupModeChanged();
+  emit groupsChanged();
+}
+
+QVariantList BigFileModel::getGroups() const
+{
+  QVariantList result;
+  for (const GroupInfo &group : m_groups) {
+    QVariantMap map;
+    map["id"] = group.id;
+    map["field"] = group.field;
+    map["value"] = group.value;
+    map["startRow"] = group.startRow;
+    map["endRow"] = group.endRow;
+    map["count"] = group.count;
+    map["isExpanded"] = group.isExpanded;
+    result.append(map);
+  }
+  return result;
+}
+
+void BigFileModel::toggleGroupExpanded(int groupId)
+{
+  if (groupId < 0 || groupId >= m_groups.size()) {
+    return;
+  }
+  
+  m_groups[groupId].isExpanded = !m_groups[groupId].isExpanded;
+  emit groupsChanged();
+}
+
+void BigFileModel::expandAllGroups()
+{
+  for (GroupInfo &group : m_groups) {
+    group.isExpanded = true;
+  }
+  emit groupsChanged();
+}
+
+void BigFileModel::collapseAllGroups()
+{
+  for (GroupInfo &group : m_groups) {
+    group.isExpanded = false;
+  }
+  emit groupsChanged();
+}
+
+int BigFileModel::getGroupIdForRow(int viewRow) const
+{
+  if (!m_isGroupMode) {
+    return -1;
+  }
+  
+  int realRow = toRealRow(viewRow);
+  if (realRow < 0 || realRow >= static_cast<int>(m_rowToGroupMap.size())) {
+    return -1;
+  }
+  
+  return m_rowToGroupMap[realRow];
+}

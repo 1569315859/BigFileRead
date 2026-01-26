@@ -24,6 +24,21 @@
 #include "RemoteFileManager.h"
 #include "DataSanitizer.h"
 #include "AIAnalysisManager.h"
+#include "TabManager.h"
+#include "DatabaseConnector.h"
+#include "CloudStorageManager.h"
+#include "WindowsEventLogReader.h"
+#include "SystemTraceReader.h"
+#include "SqlScratchpad.h"
+#include "CorrelationAnalyzer.h"
+#include "TextTransformer.h"
+#include "RuleEngine.h"
+#include "NotificationManager.h"
+#include "ReportScheduler.h"
+#include "DistinctValueAnalyzer.h"
+#include "UpdateChecker.h"
+#include "PluginManager.h"
+#include "SessionRecovery.h"
 
 /**
  * @brief 程序入口点
@@ -79,6 +94,21 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("_remoteManager", &RemoteFileManager::instance());
     engine.rootContext()->setContextProperty("_dataSanitizer", &DataSanitizer::instance());
     engine.rootContext()->setContextProperty("_aiManager", &AIAnalysisManager::instance());
+    engine.rootContext()->setContextProperty("_tabManager", &TabManager::instance());
+    engine.rootContext()->setContextProperty("_databaseConnector", &DatabaseConnector::instance());
+    engine.rootContext()->setContextProperty("_cloudManager", &CloudStorageManager::instance());
+    engine.rootContext()->setContextProperty("_eventLogReader", &WindowsEventLogReader::instance());
+    engine.rootContext()->setContextProperty("_traceReader", &SystemTraceReader::instance());
+    engine.rootContext()->setContextProperty("_sqlScratchpad", &SqlScratchpad::instance());
+    engine.rootContext()->setContextProperty("_correlationAnalyzer", &CorrelationAnalyzer::instance());
+    engine.rootContext()->setContextProperty("_textTransformer", &TextTransformer::instance());
+    engine.rootContext()->setContextProperty("_ruleEngine", &RuleEngine::instance());
+    engine.rootContext()->setContextProperty("_notificationManager", &NotificationManager::instance());
+    engine.rootContext()->setContextProperty("_reportScheduler", &ReportScheduler::instance());
+    engine.rootContext()->setContextProperty("_distinctAnalyzer", &DistinctValueAnalyzer::instance());
+    engine.rootContext()->setContextProperty("_updateChecker", &UpdateChecker::instance());
+    engine.rootContext()->setContextProperty("_pluginManager", &PluginManager::instance());
+    engine.rootContext()->setContextProperty("_sessionRecovery", &SessionRecovery::instance());
     
     // ★★★ 连接语言切换信号，刷新 QML 界面翻译 ★★★
     QObject::connect(&LanguageManager::instance(), &LanguageManager::languageChanged,

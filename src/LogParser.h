@@ -86,6 +86,102 @@ public:
      */
     void setJsonParsingEnabled(bool enabled) { m_jsonParsingEnabled = enabled; }
     bool isJsonParsingEnabled() const { return m_jsonParsingEnabled; }
+    
+    // ===================== XML Configuration =====================
+    
+    /**
+     * @brief Set XML element paths to extract
+     * @param paths List of element paths (e.g., "message", "data/value")
+     */
+    void setXmlElementPaths(const QStringList &paths);
+    QStringList xmlElementPaths() const { return m_xmlElementPaths; }
+    
+    /**
+     * @brief Set XML attribute paths to extract
+     * @param paths List of attribute paths (e.g., "event@timestamp", "log@level")
+     */
+    void setXmlAttributePaths(const QStringList &paths);
+    QStringList xmlAttributePaths() const { return m_xmlAttributePaths; }
+    
+    /**
+     * @brief Enable/disable XML parsing mode
+     */
+    void setXmlParsingEnabled(bool enabled) { m_xmlParsingEnabled = enabled; }
+    bool isXmlParsingEnabled() const { return m_xmlParsingEnabled; }
+    
+    /**
+     * @brief Enable Log4j XML specific parsing
+     */
+    void setLog4jXmlMode(bool enabled) { m_log4jXmlMode = enabled; }
+    bool isLog4jXmlMode() const { return m_log4jXmlMode; }
+    
+    // ===================== DSV Configuration =====================
+    
+    /**
+     * @brief DSV (Delimiter-Separated Values) configuration
+     */
+    struct DsvConfig {
+        QChar delimiter = QLatin1Char(',');     // Field delimiter
+        QChar quoteChar = QLatin1Char('"');     // Quote character
+        QChar escapeChar = QLatin1Char('\\');   // Escape character
+        bool hasHeader = true;                   // First line is header
+        int columnCount = 0;                     // Auto-detect if 0
+        bool trimFields = true;                  // Trim whitespace from fields
+    };
+    
+    /**
+     * @brief Set DSV parsing configuration
+     */
+    void setDsvConfig(const DsvConfig &config);
+    DsvConfig dsvConfig() const { return m_dsvConfig; }
+    
+    /**
+     * @brief Enable/disable DSV parsing mode
+     */
+    void setDsvParsingEnabled(bool enabled) { m_dsvParsingEnabled = enabled; }
+    bool isDsvParsingEnabled() const { return m_dsvParsingEnabled; }
+    
+    // ===================== Multiline Configuration =====================
+    
+    /**
+     * @brief Multiline merge mode
+     */
+    enum class MultilineMode {
+        None,       // No multiline merging
+        Indent,     // Lines starting with whitespace are continuations
+        Regex,      // Lines NOT matching start pattern are continuations
+        Both        // Either condition marks a new entry
+    };
+    
+    /**
+     * @brief Multiline configuration
+     */
+    struct MultilineConfig {
+        MultilineMode mode = MultilineMode::None;
+        QString startPattern;           // Regex for line start (Regex/Both mode)
+        int minIndent = 1;              // Minimum indent for continuation (Indent mode)
+        int maxLinesToMerge = 100;      // Safety limit
+        QString lineSeparator = "\\n";  // Separator when displaying merged lines
+    };
+    
+    /**
+     * @brief Set multiline configuration
+     */
+    void setMultilineConfig(const MultilineConfig &config);
+    MultilineConfig multilineConfig() const { return m_multilineConfig; }
+    
+    /**
+     * @brief Enable/disable multiline merging
+     */
+    void setMultilineEnabled(bool enabled);
+    bool isMultilineEnabled() const { return m_multilineEnabled; }
+    
+    /**
+     * @brief Check if a line is a continuation of the previous line
+     * @param line The line to check
+     * @return true if this line should be merged with the previous
+     */
+    bool isContinuationLine(const QString &line) const;
 
     // ===================== Parsing =====================
 
@@ -184,8 +280,47 @@ public:
         Log4j,          // Log4j format
         Syslog,         // Syslog RFC 5424
         ApacheAccess,   // Apache access log
+        XmlGeneric,     // Generic XML log format
+        Log4jXml,       // Log4j XML layout
+        Dsv,            // Delimiter-separated values
         Custom          // User-defined
     };
+    
+    // ===================== Auto Format Detection =====================
+    
+    /**
+     * @brief Detection confidence level
+     */
+    struct FormatDetectionResult {
+        Preset preset = Preset::Generic;
+        int confidence = 0;         // 0-100
+        QString formatName;
+        QString description;
+        QChar dsvDelimiter = QLatin1Char(',');  // For DSV detection
+        bool hasHeader = true;                   // For DSV detection
+    };
+    
+    /**
+     * @brief Detect log format from sample content
+     * @param sampleContent First N bytes/lines of the file
+     * @return Detection result with preset and confidence
+     * 
+     * Detection priority:
+     * 1. JSON (starts with { or [)
+     * 2. XML (starts with <?xml or <log4j: or <event)
+     * 3. Syslog (<\d+> PRI header)
+     * 4. DSV (delimiter frequency + column consistency)
+     * 5. Known regex patterns (SpringBoot/Logback/Log4j/Apache)
+     * 6. Generic text
+     */
+    static FormatDetectionResult detectFormat(const QString &sampleContent);
+    
+    /**
+     * @brief Auto-configure parser based on sample content
+     * @param sampleContent First N bytes/lines of the file
+     * @return true if a format was detected and applied
+     */
+    bool autoDetectAndConfigure(const QString &sampleContent);
 
     /**
      * @brief Apply a preset log format
@@ -208,6 +343,28 @@ private:
      * @return Parsed fields, or empty list if not valid JSON
      */
     QStringList parseJsonLine(const QString &rawLine) const;
+    
+    /**
+     * @brief Parse XML log line or event
+     * @param rawLine The raw XML log line/event
+     * @return Parsed fields from XML elements/attributes
+     */
+    QStringList parseXmlLine(const QString &rawLine) const;
+    
+    /**
+     * @brief Parse Log4j XML format specifically
+     * @param rawLine The raw Log4j XML event
+     * @return Parsed fields
+     */
+    QStringList parseLog4jXmlLine(const QString &rawLine) const;
+    
+    /**
+     * @brief Parse DSV (Delimiter-Separated Values) line
+     * @param rawLine The raw DSV line
+     * @return Parsed fields
+     * @note First 1000 lines use full RFC4180 parsing, rest use fast split
+     */
+    QStringList parseDsvLine(const QString &rawLine) const;
 
     /**
      * @brief Parse regex log line
@@ -224,6 +381,22 @@ private:
     bool m_jsonParsingEnabled = true;
     int m_levelColumn = -1;  // Auto-detect
     QString m_presetName = "Custom";
+    
+    // XML Configuration
+    QStringList m_xmlElementPaths;      // Element paths to extract (e.g., "event/message")
+    QStringList m_xmlAttributePaths;    // Attribute paths (e.g., "event@timestamp")
+    bool m_xmlParsingEnabled = false;
+    bool m_log4jXmlMode = false;
+    
+    // DSV Configuration
+    DsvConfig m_dsvConfig;
+    bool m_dsvParsingEnabled = false;
+    mutable int m_dsvLinesParsed = 0;   // Track lines parsed for fast split optimization
+    
+    // Multiline Configuration
+    MultilineConfig m_multilineConfig;
+    bool m_multilineEnabled = false;
+    QRegularExpression m_multilineStartRegex;
 
     // Cache (LRU cache for parsed lines)
     mutable QCache<qint64, QStringList> m_cache;

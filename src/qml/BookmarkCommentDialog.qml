@@ -6,10 +6,11 @@ Popup {
     id: root
     modal: true
     width: 400
-    height: 200
+    height: 280
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     closePolicy: Popup.CloseOnEscape
+    padding: 16
 
     property color textColor: _themeManager.textColor
     property color panelColor: _themeManager.panelBackground
@@ -98,12 +99,11 @@ Popup {
             focus: true
             onAccepted: saveAndClose()
         }
-        
-        Item { Layout.fillHeight: true }
 
         // Buttons
         RowLayout {
             Layout.alignment: Qt.AlignRight
+            Layout.topMargin: 8
             spacing: 10
             
             Button {

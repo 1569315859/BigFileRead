@@ -18,6 +18,21 @@ ApplicationWindow {
     property color textColor: _themeManager.textColor
     property color accentColor: _themeManager.accentColor
     property color borderColor: _themeManager.borderColor
+    
+    // ★★★ 当前活动模型 - 标签页切换时自动更新 ★★★
+    property var currentLogModel: _tabManager && _tabManager.currentModel ? _tabManager.currentModel : _logModel
+    
+    // ★★★ 监听 TabManager 的 currentModelChanged 信号，手动刷新绑定 ★★★
+    Connections {
+        target: _tabManager
+        function onCurrentModelChanged() {
+            console.log("[Main.qml] onCurrentModelChanged triggered, new model:", _tabManager.currentModel)
+            window.currentLogModel = _tabManager.currentModel || _logModel
+        }
+        function onCurrentTabChanged(index) {
+            console.log("[Main.qml] onCurrentTabChanged triggered, index:", index)
+        }
+    }
 
     // UI State
     property bool isSearchVisible: false
@@ -47,7 +62,7 @@ ApplicationWindow {
                 if (filePath.startsWith("file:///")) {
                     filePath = filePath.substring(8)
                 }
-                _logModel.loadFile(filePath)
+                _tabManager.openTab(filePath)
                 _appController.addRecentFile(filePath)
             }
         }
@@ -91,10 +106,10 @@ ApplicationWindow {
 
     // 监听日志追加，自动滚动到底部
     Connections {
-        target: _logModel
+        target: currentLogModel
         function onLogAppended() {
             if (isFollowMode) {
-                tableView.positionViewAtRow(_logModel.lineCount - 1, TableView.AlignBottom)
+                tableView.positionViewAtRow(currentLogModel.lineCount - 1, TableView.AlignBottom)
             }
         }
     }
@@ -140,7 +155,7 @@ ApplicationWindow {
     }
     Shortcut {
         sequence: "Ctrl+Shift+V"
-        onActivated: _logModel.loadFromClipboard()
+        onActivated: currentLogModel.loadFromClipboard()
     }
 
     // Format file size with appropriate unit (B/KB/MB/GB)
@@ -294,13 +309,13 @@ ApplicationWindow {
     // 获取当前工作区状态
     function getCurrentWorkspaceState() {
         return {
-            filePath: _logModel.filePath || "",
+            filePath: currentLogModel.filePath || "",
             scrollPosition: tableView.contentY,
             filterKeyword: filterField.text,
             caseSensitive: caseSensitiveCheckbox.checked,
             useRegex: regexCheckbox.checked,
             logLevel: logLevelCombo.currentIndex > 0 ? logLevelCombo.currentText : "",
-            bookmarks: _logModel.getAllBookmarks(),
+            bookmarks: currentLogModel.getAllBookmarks(),
             followMode: isFollowMode,
             lineNumberWidth: 80,
             contentWidth: 800
@@ -313,7 +328,7 @@ ApplicationWindow {
         
         // 加载文件
         if (workspace.filePath && workspace.filePath.length > 0) {
-            _logModel.loadFile(workspace.filePath)
+            _tabManager.openTab(workspace.filePath)
         }
         
         // 应用过滤条件
@@ -416,7 +431,7 @@ ApplicationWindow {
                                 ToolTip.text: modelData
                                 ToolTip.delay: 500
                                 onTriggered: {
-                                    _logModel.loadFile(modelData)
+                                    _tabManager.openTab(modelData)
                                     _appController.addRecentFile(modelData)
                                 }
                             }
@@ -436,20 +451,20 @@ ApplicationWindow {
                     
                     MenuItem {
                         text: qsTr("Paste from Clipboard") + " (Ctrl+Shift+V)"
-                        onTriggered: _logModel.loadFromClipboard()
+                        onTriggered: currentLogModel.loadFromClipboard()
                     }
                     
                     MenuItem {
                         text: qsTr("Reload File")
-                        enabled: _logModel.filePath !== ""
-                        onTriggered: _logModel.loadFile(_logModel.filePath)
+                        enabled: currentLogModel.filePath !== ""
+                        onTriggered: currentLogModel.loadFile(currentLogModel.filePath)
                     }
                     
                     MenuSeparator {}
                     
                     MenuItem {
                         text: qsTr("Export...")
-                        enabled: _logModel.lineCount > 0
+                        enabled: currentLogModel.lineCount > 0
                         onTriggered: exportDialog.open()
                     }
                     
@@ -510,13 +525,13 @@ ApplicationWindow {
                     MenuItem {
                         text: qsTr("Add/Remove Bookmark")
                         enabled: selectedRow >= 0
-                        onTriggered: _logModel.toggleBookmark(selectedRow)
+                        onTriggered: currentLogModel.toggleBookmark(selectedRow)
                     }
                     MenuItem {
                         text: qsTr("Edit Bookmark Comment...")
-                        enabled: selectedRow >= 0 && _logModel.isBookmarked(selectedRow)
+                        enabled: selectedRow >= 0 && currentLogModel.isBookmarked(selectedRow)
                         onTriggered: {
-                            var lineContent = _logModel.data(_logModel.index(selectedRow, 0), Qt.DisplayRole) || ""
+                            var lineContent = currentLogModel.data(currentLogModel.index(selectedRow, 0), Qt.DisplayRole) || ""
                             bookmarkCommentDialog.openForRow(selectedRow, lineContent)
                         }
                     }
@@ -525,7 +540,7 @@ ApplicationWindow {
                         text: qsTr("Next Bookmark")
                         onTriggered: {
                             var currentRow = Math.floor(tableView.contentY / rowHeight)
-                            var nextRow = _logModel.getNextBookmark(currentRow)
+                            var nextRow = currentLogModel.getNextBookmark(currentRow)
                             if (nextRow >= 0) {
                                 tableView.contentY = nextRow * rowHeight
                             }
@@ -535,7 +550,7 @@ ApplicationWindow {
                         text: qsTr("Previous Bookmark")
                         onTriggered: {
                             var currentRow = Math.floor(tableView.contentY / rowHeight)
-                            var prevRow = _logModel.getPrevBookmark(currentRow)
+                            var prevRow = currentLogModel.getPrevBookmark(currentRow)
                             if (prevRow >= 0) {
                                 tableView.contentY = prevRow * rowHeight
                             }
@@ -544,17 +559,17 @@ ApplicationWindow {
                     MenuSeparator {}
                     MenuItem {
                         text: qsTr("Save Bookmarks...")
-                        enabled: _logModel.bookmarkLines.length > 0
-                        onTriggered: _logModel.autoSaveBookmarks()
+                        enabled: currentLogModel.bookmarkLines.length > 0
+                        onTriggered: currentLogModel.autoSaveBookmarks()
                     }
                     MenuItem {
                         text: qsTr("Load Bookmarks...")
-                        onTriggered: _logModel.autoLoadBookmarks()
+                        onTriggered: currentLogModel.autoLoadBookmarks()
                     }
                     MenuSeparator {}
                     MenuItem {
                         text: qsTr("Clear All Bookmarks")
-                        onTriggered: _logModel.clearAllBookmarks()
+                        onTriggered: currentLogModel.clearAllBookmarks()
                     }
                 }
             }
@@ -577,7 +592,7 @@ ApplicationWindow {
                         checked: !isTableViewMode
                         onTriggered: {
                             isTableViewMode = false
-                            _logModel.setTableModeEnabled(false)
+                            currentLogModel.setTableModeEnabled(false)
                         }
                     }
                     MenuItem {
@@ -586,7 +601,7 @@ ApplicationWindow {
                         checked: isTableViewMode
                         onTriggered: {
                             isTableViewMode = true
-                            _logModel.setTableModeEnabled(true)
+                            currentLogModel.setTableModeEnabled(true)
                         }
                     }
                     
@@ -694,18 +709,18 @@ ApplicationWindow {
                         checked: isFollowMode
                         onTriggered: {
                             isFollowMode = checked
-                            if (isFollowMode && _logModel.lineCount > 0) {
-                                tableView.positionViewAtRow(_logModel.lineCount - 1, TableView.AlignBottom)
+                            if (isFollowMode && currentLogModel.lineCount > 0) {
+                                tableView.positionViewAtRow(currentLogModel.lineCount - 1, TableView.AlignBottom)
                             }
                         }
                     }
                     MenuItem {
                         text: qsTr("Show Delta Time") + (_featureGate.isProUser ? "" : " [Pro]")
                         checkable: true
-                        checked: _logModel.deltaTimeEnabled
+                        checked: currentLogModel.deltaTimeEnabled
                         onTriggered: {
                             if (_featureGate.canUseFeature("delta_time")) {
-                                _logModel.setDeltaTimeEnabled(checked)
+                                currentLogModel.setDeltaTimeEnabled(checked)
                             } else {
                                 checked = false
                             }
@@ -713,7 +728,7 @@ ApplicationWindow {
                     }
                     MenuItem {
                         text: qsTr("Merge Rolling Logs...") + (_featureGate.isProUser ? "" : " [Pro]")
-                        enabled: _logModel.filePath && _logModel.filePath.length > 0
+                        enabled: currentLogModel.filePath && currentLogModel.filePath.length > 0
                         onTriggered: {
                             if (_featureGate.canUseFeature("rolling_logs")) {
                                 rollingLogDialog.open()
@@ -722,7 +737,7 @@ ApplicationWindow {
                     }
                     MenuItem {
                         text: qsTr("Statistics...") + (_featureGate.isProUser ? "" : " [Pro]")
-                        enabled: _logModel.filePath && _logModel.filePath.length > 0
+                        enabled: currentLogModel.filePath && currentLogModel.filePath.length > 0
                         onTriggered: {
                             if (_featureGate.canUseFeature("statistics")) {
                                 statisticsPanel.open()
@@ -731,7 +746,7 @@ ApplicationWindow {
                     }
                     MenuItem {
                         text: qsTr("Dashboard...")
-                        enabled: _logModel.filePath && _logModel.filePath.length > 0
+                        enabled: currentLogModel.filePath && currentLogModel.filePath.length > 0
                         onTriggered: dashboardPanel.open()
                     }
                     MenuItem {
@@ -742,8 +757,8 @@ ApplicationWindow {
                     MenuItem {
                         text: qsTr("Reload File")
                         onTriggered: {
-                            if (_logModel.filePath) {
-                                _logModel.loadFile(_logModel.filePath)
+                            if (currentLogModel.filePath) {
+                                currentLogModel.loadFile(currentLogModel.filePath)
                             }
                         }
                     }
@@ -868,17 +883,17 @@ ApplicationWindow {
                         MenuItem { 
                             text: "UTF-8"
                             checkable: true
-                            onTriggered: _logModel.setEncoding(0) 
+                            onTriggered: currentLogModel.setEncoding(0) 
                         }
                         MenuItem { 
                             text: "System"
                             checkable: true
-                            onTriggered: _logModel.setEncoding(1) 
+                            onTriggered: currentLogModel.setEncoding(1) 
                         }
                         MenuItem { 
                             text: "GBK/GB2312"
                             checkable: true
-                            onTriggered: _logModel.setEncoding(2) 
+                            onTriggered: currentLogModel.setEncoding(2) 
                         }
                     }
                     
@@ -938,6 +953,147 @@ ApplicationWindow {
                     }
                 }
             }
+
+            Rectangle { width: 1; height: 20; color: borderColor }
+
+            // ========== 数据源 ==========
+            ToolBtn {
+                text: qsTr("Data Source")
+                onClicked: dataSourceMenu.open()
+                
+                Menu {
+                    id: dataSourceMenu
+                    
+                    MenuItem {
+                        text: qsTr("Connect Database...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("database_connector")) {
+                                databaseConnectionDialog.open()
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Cloud Storage...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("cloud_storage")) {
+                                cloudStorageDialog.open()
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Windows Event Log...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+                        visible: Qt.platform.os === "windows"
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("event_log")) {
+                                eventLogDialog.open()
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("System Trace...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("system_trace")) {
+                                traceViewerDialog.open()
+                            }
+                        }
+                    }
+                }
+            }
+
+            // ========== 分析工具 ==========
+            ToolBtn {
+                text: qsTr("Analyze")
+                onClicked: analyzeMenu.open()
+                
+                Menu {
+                    id: analyzeMenu
+                    
+                    MenuItem {
+                        text: qsTr("SQL Query...") + (_featureGate.isProUser ? "" : " [Pro]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("sql_query")) {
+                                sqlScratchpadPanel.open()
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Correlation Analysis...") + (_featureGate.isProUser ? "" : " [Pro]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("correlation")) {
+                                correlationPanel.open()
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Distinct Values...") + (_featureGate.isProUser ? "" : " [Pro]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("distinct_values")) {
+                                distinctValuePanel.open()
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Text Transform...") + (_featureGate.isProUser ? "" : " [Pro]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("text_transform")) {
+                                textTransformPanel.open()
+                            }
+                        }
+                    }
+                    MenuSeparator {}
+                    MenuItem {
+                        text: qsTr("Parser Test...")
+                        onTriggered: parserTestPanel.open()
+                    }
+                }
+            }
+
+            // ========== 高级工具 ==========
+            ToolBtn {
+                text: qsTr("Advanced")
+                onClicked: advancedToolsMenu.open()
+                
+                Menu {
+                    id: advancedToolsMenu
+                    
+                    MenuItem {
+                        text: qsTr("Rule Wizard...") + (_featureGate.isProUser ? "" : " [Pro]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("rule_wizard")) {
+                                ruleWizard.open()
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Notifications...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("notifications")) {
+                                notificationSettingsPanel.open()
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Report Scheduler...") + (_featureGate.isProUser ? "" : " [Enterprise]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("report_scheduler")) {
+                                reportSchedulerPanel.open()
+                            }
+                        }
+                    }
+                    MenuSeparator {}
+                    MenuItem {
+                        text: qsTr("Plugin Manager...")
+                        onTriggered: pluginManagerDialog.open()
+                    }
+                    MenuItem {
+                        text: qsTr("Check for Updates...")
+                        onTriggered: {
+                            _updateChecker.checkNow()
+                            updateDialog.open()
+                        }
+                    }
+                }
+            }
             
             Item { Layout.fillWidth: true }
             
@@ -949,6 +1105,28 @@ ApplicationWindow {
                 font.bold: true
                 visible: isFollowMode
             }
+        }
+    }
+    
+    // ========== 文件标签栏 ==========
+    FileTabBar {
+        id: fileTabBar
+        anchors.top: parent.header ? parent.header.bottom : parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: _tabManager && _tabManager.tabCount > 0 ? 34 : 0
+        visible: _tabManager && _tabManager.tabCount > 0
+        tabManager: _tabManager
+        bgColor: panelColor
+        textColor: textColor
+        accentColor: accentColor
+        borderColor: borderColor
+        
+        onOpenFileRequested: fileDialog.open()
+        onTabChanged: function(index) {
+            // 标签切换时重置选中状态
+            selectedRow = -1
+            selectedLineText = ""
         }
     }
     
@@ -1038,7 +1216,7 @@ ApplicationWindow {
     DirectoryMonitorDialog {
         id: directoryMonitorDialog
         onFileSelected: function(filePath) {
-            _logModel.loadFile(filePath)
+            currentLogModel.loadFile(filePath)
             _appController.addRecentFile(filePath)
         }
     }
@@ -1083,7 +1261,7 @@ ApplicationWindow {
     }
     AIQueryDialog {
         id: aiQueryDialog
-        logModel: _logModel
+        logModel: currentLogModel
         selectedLines: []
     }
     AISettingsDialog {
@@ -1114,13 +1292,29 @@ ApplicationWindow {
         remoteManager: _remoteManager
         
         onFileSelected: function(localPath, remotePath) {
-            _logModel.loadFile(localPath)
+            _tabManager.openTab(localPath)
             // Update window title to show remote path
             root.title = "BigFileViewer - " + remotePath + " (Remote)"
         }
     }
     AdvancedFilterDialog { id: advancedFilterDialog }
     KeywordConfigDialog { id: keywordConfigDialog }
+
+    // ========== 新功能对话框 ==========
+    DatabaseConnectionDialog { id: databaseConnectionDialog }
+    CloudStorageDialog { id: cloudStorageDialog }
+    EventLogDialog { id: eventLogDialog }
+    TraceViewerDialog { id: traceViewerDialog }
+    SqlScratchpadPanel { id: sqlScratchpadPanel }
+    CorrelationPanel { id: correlationPanel }
+    DistinctValuePanel { id: distinctValuePanel }
+    TextTransformPanel { id: textTransformPanel }
+    ParserTestPanel { id: parserTestPanel }
+    RuleWizard { id: ruleWizard }
+    NotificationSettingsPanel { id: notificationSettingsPanel }
+    ReportSchedulerPanel { id: reportSchedulerPanel }
+    PluginManagerDialog { id: pluginManagerDialog }
+    UpdateDialog { id: updateDialog }
 
     Platform.FileDialog {
         id: fileDialog
@@ -1136,7 +1330,7 @@ ApplicationWindow {
             // 使用 C++ 端的 urlToLocalPath 方法进行更可靠的路径转换
             var path = _appController.urlToLocalPath(file)
             console.log("Processed path:", path)
-            _logModel.loadFile(path)
+            _tabManager.openTab(path)
             _appController.addRecentFile(path)
         }
         
@@ -1155,12 +1349,15 @@ ApplicationWindow {
             var path = _appController.urlToLocalPath(file)
             // 使用标准脱敏级别(1)导出，如果用户在设置中启用了脱敏规则
             var sanitizationLevel = _dataSanitizer && _dataSanitizer.hasEnabledRules() ? 1 : 0
-            _logModel.exportToFile(path, sanitizationLevel)
+            currentLogModel.exportToFile(path, sanitizationLevel)
         }
     }
 
     ColumnLayout {
-        anchors.fill: parent
+        anchors.top: fileTabBar.visible ? fileTabBar.bottom : parent.top
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
         spacing: 0
 
         // Search Bar - Optimized layout
@@ -1204,7 +1401,7 @@ ApplicationWindow {
                     }
                     onAccepted: {
                         currentSearchTerm = text
-                        _logModel.search(text, regexCheck.checked)
+                        currentLogModel.search(text, regexCheck.checked)
                     }
                 }
                 
@@ -1246,7 +1443,7 @@ ApplicationWindow {
                     font.pixelSize: 12
                     onClicked: {
                         currentSearchTerm = searchInput.text
-                        _logModel.search(searchInput.text, regexCheck.checked)
+                        currentLogModel.search(searchInput.text, regexCheck.checked)
                     }
                     background: Rectangle {
                         color: parent.down ? Qt.darker(accentColor, 1.2) : accentColor
@@ -1269,7 +1466,7 @@ ApplicationWindow {
                     ToolTip.text: qsTr("Previous")
                     onClicked: {
                         var currentRow = Math.floor(tableView.contentY / rowHeight)
-                        var prevRow = _logModel.prevSearchResult(currentRow)
+                        var prevRow = currentLogModel.prevSearchResult(currentRow)
                         if (prevRow >= 0) {
                             tableView.contentY = prevRow * rowHeight
                         }
@@ -1295,7 +1492,7 @@ ApplicationWindow {
                     ToolTip.text: qsTr("Next")
                     onClicked: {
                         var currentRow = Math.floor(tableView.contentY / rowHeight)
-                        var nextRow = _logModel.nextSearchResult(currentRow)
+                        var nextRow = currentLogModel.nextSearchResult(currentRow)
                         if (nextRow >= 0) {
                             tableView.contentY = nextRow * rowHeight
                         }
@@ -1314,7 +1511,7 @@ ApplicationWindow {
                 }
                 
                 Text {
-                    text: _logModel.searchResultCount > 0 ? (_logModel.searchResultCount + " " + qsTr("matches")) : ""
+                    text: currentLogModel.searchResultCount > 0 ? (currentLogModel.searchResultCount + " " + qsTr("matches")) : ""
                     color: Qt.darker(textColor, 1.3)
                     font.pixelSize: 11
                 }
@@ -1382,7 +1579,7 @@ ApplicationWindow {
                     }
                     onAccepted: {
                         currentFilterTerm = text
-                        _logModel.applyFilter(text, filterRegexCheck.checked)
+                        currentLogModel.applyFilter(text, filterRegexCheck.checked)
                     }
                 }
                 
@@ -1424,7 +1621,7 @@ ApplicationWindow {
                     font.pixelSize: 12
                     onClicked: {
                         currentFilterTerm = filterInput.text
-                        _logModel.applyFilter(filterInput.text, filterRegexCheck.checked)
+                        currentLogModel.applyFilter(filterInput.text, filterRegexCheck.checked)
                     }
                     background: Rectangle {
                         color: parent.down ? Qt.darker(accentColor, 1.2) : accentColor
@@ -1447,7 +1644,7 @@ ApplicationWindow {
                     onClicked: {
                         filterInput.text = ""
                         currentFilterTerm = ""
-                        _logModel.clearFilter()
+                        currentLogModel.clearFilter()
                     }
                     background: Rectangle {
                         color: parent.down ? Qt.darker(panelColor, 1.3) : (parent.hovered ? Qt.darker(panelColor, 1.1) : panelColor)
@@ -1464,7 +1661,7 @@ ApplicationWindow {
                 }
                 
                 Text {
-                    text: _logModel.isFilterMode ? (qsTr("Showing") + " " + _logModel.lineCount + " / " + _logModel.totalLineCount) : ""
+                    text: currentLogModel.isFilterMode ? (qsTr("Showing") + " " + currentLogModel.lineCount + " / " + currentLogModel.totalLineCount) : ""
                     color: Qt.darker(textColor, 1.3)
                     font.pixelSize: 11
                 }
@@ -1538,7 +1735,7 @@ ApplicationWindow {
                     Layout.fillHeight: true
                     clip: true
                     
-                    model: _logModel
+                    model: currentLogModel
                     
                     // 与 tableView 同步滚动
                     contentY: tableView.contentY
@@ -1642,7 +1839,7 @@ ApplicationWindow {
                 Layout.fillHeight: true
                 clip: true
                 
-                model: _logModel
+                model: currentLogModel
                 
                 columnSpacing: 0
                 rowSpacing: 0
@@ -1715,16 +1912,16 @@ ApplicationWindow {
                 Layout.preferredWidth: 24
                 
                 flickable: tableView
-                totalLines: _logModel.lineCount
+                totalLines: currentLogModel.lineCount
                 rowHeight: window.rowHeight
                 showMarkers: isNavBarVisible
                 
                 // 各类标记数据
-                bookmarks: _logModel.bookmarkLines || []
-                searchResults: _logModel.searchResultLines || []
-                errorLines: _logModel.errorLines || []
-                warningLines: _logModel.warningLines || []
-                infoLines: _logModel.infoLines || []
+                bookmarks: currentLogModel.bookmarkLines || []
+                searchResults: currentLogModel.searchResultLines || []
+                errorLines: currentLogModel.errorLines || []
+                warningLines: currentLogModel.warningLines || []
+                infoLines: currentLogModel.infoLines || []
                 
                 onLineClicked: function(lineNumber) {
                     tableView.contentY = lineNumber * rowHeight
@@ -1883,8 +2080,8 @@ ApplicationWindow {
             spacing: 20
             
             Text {
-                text: _logModel.filePath ? _logModel.filePath : qsTr("No file opened")
-                color: _logModel.filePath ? textColor : Qt.darker(textColor, 1.5)
+                text: currentLogModel.filePath ? currentLogModel.filePath : qsTr("No file opened")
+                color: currentLogModel.filePath ? textColor : Qt.darker(textColor, 1.5)
                 font.pixelSize: 12
                 elide: Text.ElideMiddle
                 Layout.fillWidth: true
@@ -1893,7 +2090,7 @@ ApplicationWindow {
             Rectangle { width: 1; height: 16; color: borderColor }
             
             Text {
-                text: qsTr("Size:") + " " + formatFileSize(_logModel.fileSize)
+                text: qsTr("Size:") + " " + formatFileSize(currentLogModel.fileSize)
                 color: textColor
                 font.pixelSize: 12
             }
@@ -1901,9 +2098,9 @@ ApplicationWindow {
             Rectangle { width: 1; height: 16; color: borderColor }
             
             Text {
-                text: _logModel.isFilterMode 
-                    ? (qsTr("Lines:") + " " + _logModel.lineCount.toLocaleString() + " / " + _logModel.totalLineCount.toLocaleString())
-                    : (qsTr("Lines:") + " " + _logModel.lineCount.toLocaleString())
+                text: currentLogModel.isFilterMode 
+                    ? (qsTr("Lines:") + " " + currentLogModel.lineCount.toLocaleString() + " / " + currentLogModel.totalLineCount.toLocaleString())
+                    : (qsTr("Lines:") + " " + currentLogModel.lineCount.toLocaleString())
                 color: textColor
                 font.pixelSize: 12
             }
@@ -1935,12 +2132,12 @@ ApplicationWindow {
         
         MenuItem {
             text: qsTr("Toggle Bookmark")
-            onTriggered: _logModel.toggleBookmark(selectedRow)
+            onTriggered: currentLogModel.toggleBookmark(selectedRow)
         }
         MenuItem {
             text: qsTr("Next Bookmark")
             onTriggered: {
-                var nextRow = _logModel.getNextBookmark(selectedRow)
+                var nextRow = currentLogModel.getNextBookmark(selectedRow)
                 if (nextRow >= 0) {
                     tableView.contentY = nextRow * rowHeight
                     selectedRow = nextRow
@@ -1950,7 +2147,7 @@ ApplicationWindow {
         MenuItem {
             text: qsTr("Previous Bookmark")
             onTriggered: {
-                var prevRow = _logModel.getPrevBookmark(selectedRow)
+                var prevRow = currentLogModel.getPrevBookmark(selectedRow)
                 if (prevRow >= 0) {
                     tableView.contentY = prevRow * rowHeight
                     selectedRow = prevRow
@@ -1985,7 +2182,7 @@ ApplicationWindow {
             onTriggered: {
                 var levelMatch = selectedLineText.match(/\b(INFO|DEBUG|WARN|WARNING|ERROR|FATAL|TRACE)\b/i)
                 if (levelMatch) {
-                    _logModel.applyAdvancedFilter(levelMatch[1].toUpperCase(), [], true, false)
+                    currentLogModel.applyAdvancedFilter(levelMatch[1].toUpperCase(), [], true, false)
                 }
             }
         }
@@ -2016,7 +2213,7 @@ ApplicationWindow {
                 if (_featureGate.canUseFeature("jira_integration")) {
                     jiraIssueDialog.selectedLines = [selectedLineText]
                     jiraIssueDialog.lineNumbers = [selectedRow + 1]
-                    jiraIssueDialog.filePath = _logModel.currentFilePath || ""
+                    jiraIssueDialog.filePath = currentLogModel.currentFilePath || ""
                     jiraIssueDialog.open()
                 }
             }
@@ -2027,7 +2224,7 @@ ApplicationWindow {
                 if (_featureGate.canUseFeature("github_integration")) {
                     githubIssueDialog.selectedLines = [selectedLineText]
                     githubIssueDialog.lineNumbers = [selectedRow + 1]
-                    githubIssueDialog.filePath = _logModel.currentFilePath || ""
+                    githubIssueDialog.filePath = currentLogModel.currentFilePath || ""
                     githubIssueDialog.open()
                 }
             }

@@ -27,5 +27,20 @@
         <file>qml/AIQueryDialog.qml</file>
         <file>qml/AISettingsDialog.qml</file>
         <file>qml/SanitizationConfigDialog.qml</file>
+        <file>qml/FileTabBar.qml</file>
+        <file>qml/DatabaseConnectionDialog.qml</file>
+        <file>qml/CloudStorageDialog.qml</file>
+        <file>qml/EventLogDialog.qml</file>
+        <file>qml/TraceViewerDialog.qml</file>
+        <file>qml/SqlScratchpadPanel.qml</file>
+        <file>qml/CorrelationPanel.qml</file>
+        <file>qml/TextTransformPanel.qml</file>
+        <file>qml/ParserTestPanel.qml</file>
+        <file>qml/RuleWizard.qml</file>
+        <file>qml/NotificationSettingsPanel.qml</file>
+        <file>qml/ReportSchedulerPanel.qml</file>
+        <file>qml/DistinctValuePanel.qml</file>
+        <file>qml/UpdateDialog.qml</file>
+        <file>qml/PluginManagerDialog.qml</file>
     </qresource>
 </RCC>

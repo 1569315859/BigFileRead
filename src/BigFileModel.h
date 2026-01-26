@@ -44,6 +44,32 @@ public:
       : lineIndex(line), comment(note), createdAt(QDateTime::currentDateTime()) {}
 };
 
+/**
+ * @brief 日志分组信息结构体 - 用于日志条目分组显示
+ */
+struct GroupInfo {
+  Q_GADGET
+  Q_PROPERTY(int id MEMBER id)
+  Q_PROPERTY(QString field MEMBER field)
+  Q_PROPERTY(QString value MEMBER value)
+  Q_PROPERTY(int startRow MEMBER startRow)
+  Q_PROPERTY(int endRow MEMBER endRow)
+  Q_PROPERTY(int count MEMBER count)
+  Q_PROPERTY(bool isExpanded MEMBER isExpanded)
+public:
+  int id = -1;              ///< 分组ID
+  QString field;            ///< 分组字段名
+  QString value;            ///< 分组值
+  int startRow = 0;         ///< 起始行号
+  int endRow = 0;           ///< 结束行号
+  int count = 0;            ///< 该分组内条目数
+  bool isExpanded = true;   ///< 是否展开
+  
+  GroupInfo() = default;
+  GroupInfo(int gid, const QString &f, const QString &v, int start, int end, int cnt)
+      : id(gid), field(f), value(v), startRow(start), endRow(end), count(cnt), isExpanded(true) {}
+};
+
 
 class BigFileModel : public QAbstractTableModel {
   Q_OBJECT
@@ -62,6 +88,11 @@ class BigFileModel : public QAbstractTableModel {
   Q_PROPERTY(QVariantList warningLines READ warningLines NOTIFY logLevelLinesChanged)
   Q_PROPERTY(QVariantList infoLines READ infoLines NOTIFY logLevelLinesChanged)
   Q_PROPERTY(bool deltaTimeEnabled READ deltaTimeEnabled WRITE setDeltaTimeEnabled NOTIFY deltaTimeEnabledChanged)
+  
+  // ============ 分组功能属性 ============
+  Q_PROPERTY(bool isGroupMode READ isGroupMode NOTIFY groupModeChanged)
+  Q_PROPERTY(QVariantList groups READ getGroups NOTIFY groupsChanged)
+  Q_PROPERTY(QString groupField READ groupField NOTIFY groupsChanged)
 
 public:
   /// UI 刷新间隔（毫秒）- 每秒 10 次更新
@@ -433,6 +464,60 @@ public:
    */
   Q_INVOKABLE QVariantList findLinesWithKeywords(const QStringList &keywords, int maxResults = 5000) const;
 
+  // ============ 日志分组功能 ============
+
+  /**
+   * @brief 是否处于分组模式
+   */
+  Q_INVOKABLE bool isGroupMode() const { return m_isGroupMode; }
+
+  /**
+   * @brief 获取当前分组字段
+   */
+  Q_INVOKABLE QString groupField() const { return m_groupField; }
+
+  /**
+   * @brief 按指定字段对日志进行分组
+   * @param field 分组字段: "timestamp" (按时间段), "level" (按日志级别), 
+   *              "thread" (按线程ID), "custom:<pattern>" (自定义正则)
+   * @param interval 时间分组间隔（仅 timestamp 时有效）: "minute", "hour", "day"
+   */
+  Q_INVOKABLE void groupBy(const QString &field, const QString &interval = "hour");
+
+  /**
+   * @brief 清除分组，恢复正常显示
+   */
+  Q_INVOKABLE void clearGrouping();
+
+  /**
+   * @brief 获取所有分组信息
+   * @return QVariantList，每个元素包含 GroupInfo 的属性
+   */
+  Q_INVOKABLE QVariantList getGroups() const;
+
+  /**
+   * @brief 切换分组的展开/折叠状态
+   * @param groupId 分组ID
+   */
+  Q_INVOKABLE void toggleGroupExpanded(int groupId);
+
+  /**
+   * @brief 展开所有分组
+   */
+  Q_INVOKABLE void expandAllGroups();
+
+  /**
+   * @brief 折叠所有分组
+   */
+  Q_INVOKABLE void collapseAllGroups();
+
+  /**
+   * @brief 获取指定行所属的分组ID
+   * @param viewRow 视图行号
+   * @return 分组ID，如果不在分组模式返回 -1
+   */
+  Q_INVOKABLE int getGroupIdForRow(int viewRow) const;
+
   // ============ Delta 时间功能 (Pro) ============
 
   /**
@@ -568,6 +653,10 @@ signals:
   void bookmarksChanged();
   void deltaTimeEnabledChanged();
   void logLevelLinesChanged();  ///< 日志级别行列表变化信号（仅在加载完成后触发）
+  
+  // ============ 分组信号 ============
+  void groupModeChanged();      ///< 分组模式变化
+  void groupsChanged();         ///< 分组列表变化
 
   // ============ 过滤信号 ============
 
@@ -686,6 +775,13 @@ private:
   bool m_deltaTimeEnabled = false;                ///< 是否启用 Delta 时间显示
   mutable QCache<int, QDateTime> m_timestampCache; ///< 时间戳缓存
   QList<QRegularExpression> m_timestampPatterns;  ///< 时间戳解析正则表达式列表
+
+  // ============ 日志分组功能 ============
+  bool m_isGroupMode = false;                     ///< 是否处于分组模式
+  QString m_groupField;                           ///< 当前分组字段
+  QString m_groupInterval;                        ///< 时间分组间隔
+  QList<GroupInfo> m_groups;                      ///< 分组列表
+  std::vector<int> m_rowToGroupMap;               ///< 行号到分组ID的映射
 };
 
 #endif // BIGFILEMODEL_H
