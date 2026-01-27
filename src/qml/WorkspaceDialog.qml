@@ -11,7 +11,7 @@ import QtQuick.Dialogs
 Dialog {
     id: root
     
-    title: qsTr("工作区管理")
+    title: qsTr("Workspace Manager")
     width: 650
     height: 550
     modal: true
@@ -41,13 +41,13 @@ Dialog {
             spacing: 8
             
             Button {
-                text: qsTr("保存当前状态")
+                text: qsTr("Save Current State")
                 icon.name: "document-save"
                 onClicked: saveDialog.open()
             }
-            
+
             Button {
-                text: qsTr("快速保存")
+                text: qsTr("Quick Save")
                 icon.name: "document-save-as"
                 enabled: workspaceManager && workspaceManager.currentWorkspace.length > 0
                 onClicked: {
@@ -56,8 +56,8 @@ Dialog {
                         workspaceManager.quickSave()
                     }
                 }
-                
-                ToolTip.text: qsTr("更新当前工作区: %1").arg(
+
+                ToolTip.text: qsTr("Update current workspace: %1").arg(
                     workspaceManager ? workspaceManager.currentWorkspace : ""
                 )
                 ToolTip.visible: hovered
@@ -66,13 +66,13 @@ Dialog {
             Item { Layout.fillWidth: true }
             
             Button {
-                text: qsTr("导入")
+                text: qsTr("Import")
                 icon.name: "document-import"
                 onClicked: importFileDialog.open()
             }
-            
+
             Button {
-                text: qsTr("导出")
+                text: qsTr("Export")
                 icon.name: "document-export"
                 enabled: root.selectedWorkspace !== null
                 onClicked: exportFileDialog.open()
@@ -85,7 +85,7 @@ Dialog {
             visible: workspaceManager && workspaceManager.currentWorkspace.length > 0
             
             Label {
-                text: qsTr("当前工作区:")
+                text: qsTr("Current Workspace:")
                 font.bold: true
             }
             Label {
@@ -96,7 +96,7 @@ Dialog {
         
         // 工作区列表
         GroupBox {
-            title: qsTr("已保存的工作区 (%1)").arg(
+            title: qsTr("Saved Workspaces (%1)").arg(
                 workspaceManager ? workspaceManager.workspaceCount : 0
             )
             Layout.fillWidth: true
@@ -172,7 +172,7 @@ Dialog {
                                     Label {
                                         visible: workspaceManager && 
                                                  workspaceManager.currentWorkspace === modelData.name
-                                        text: qsTr("当前")
+                                        text: qsTr("Current")
                                         font.pixelSize: 10
                                         padding: 4
                                         color: "white"
@@ -184,7 +184,7 @@ Dialog {
                                 }
                                 
                                 Label {
-                                    text: modelData.description || modelData.filePath || qsTr("无描述")
+                                    text: modelData.description || modelData.filePath || qsTr("No description")
                                     font.pixelSize: 12
                                     opacity: 0.7
                                     elide: Text.ElideRight
@@ -195,13 +195,13 @@ Dialog {
                                     spacing: 16
                                     
                                     Label {
-                                        text: qsTr("创建: %1").arg(formatDate(modelData.createdAt))
+                                        text: qsTr("Created: %1").arg(formatDate(modelData.createdAt))
                                         font.pixelSize: 10
                                         opacity: 0.5
                                     }
-                                    
+
                                     Label {
-                                        text: qsTr("最后使用: %1").arg(formatDate(modelData.lastUsed))
+                                        text: qsTr("Last used: %1").arg(formatDate(modelData.lastUsed))
                                         font.pixelSize: 10
                                         opacity: 0.5
                                     }
@@ -214,17 +214,17 @@ Dialog {
                                 
                                 ToolButton {
                                     icon.name: "edit-rename"
-                                    ToolTip.text: qsTr("重命名")
+                                    ToolTip.text: qsTr("Rename")
                                     ToolTip.visible: hovered
                                     onClicked: {
                                         root.selectedWorkspace = modelData
                                         renameDialog.open()
                                     }
                                 }
-                                
+
                                 ToolButton {
                                     icon.name: "edit-delete"
-                                    ToolTip.text: qsTr("删除")
+                                    ToolTip.text: qsTr("Delete")
                                     ToolTip.visible: hovered
                                     onClicked: {
                                         root.selectedWorkspace = modelData
@@ -239,7 +239,7 @@ Dialog {
                     Label {
                         anchors.centerIn: parent
                         visible: workspaceList.count === 0
-                        text: qsTr("没有保存的工作区\n使用「保存当前状态」创建工作区")
+                        text: qsTr("No saved workspaces\nUse 'Save Current State' to create one")
                         horizontalAlignment: Text.AlignHCenter
                         opacity: 0.5
                     }
@@ -249,35 +249,35 @@ Dialog {
         
         // 工作区详情
         GroupBox {
-            title: qsTr("工作区详情")
+            title: qsTr("Workspace Details")
             Layout.fillWidth: true
             visible: root.selectedWorkspace !== null
-            
+
             GridLayout {
                 anchors.fill: parent
                 columns: 4
                 columnSpacing: 16
                 rowSpacing: 8
-                
-                Label { text: qsTr("文件:"); font.bold: true }
+
+                Label { text: qsTr("File:"); font.bold: true }
                 Label { 
-                    text: root.selectedWorkspace ? root.selectedWorkspace.filePath || qsTr("无") : ""
+                    text: root.selectedWorkspace ? root.selectedWorkspace.filePath || qsTr("None") : ""
                     Layout.columnSpan: 3
                     elide: Text.ElideMiddle
                     Layout.fillWidth: true
                 }
-                
-                Label { text: qsTr("过滤:"); font.bold: true }
+
+                Label { text: qsTr("Filter:"); font.bold: true }
                 Label { 
                     text: root.selectedWorkspace && root.selectedWorkspace.filterKeyword 
-                          ? root.selectedWorkspace.filterKeyword : qsTr("无")
+                          ? root.selectedWorkspace.filterKeyword : qsTr("None")
                 }
-                
-                Label { text: qsTr("书签:"); font.bold: true }
+
+                Label { text: qsTr("Bookmarks:"); font.bold: true }
                 Label { 
                     text: root.selectedWorkspace && root.selectedWorkspace.bookmarks 
-                          ? root.selectedWorkspace.bookmarks.length + qsTr(" 个")
-                          : "0" + qsTr(" 个")
+                          ? root.selectedWorkspace.bookmarks.length + qsTr(" items")
+                          : "0" + qsTr(" items")
                 }
             }
         }
@@ -285,22 +285,22 @@ Dialog {
         // 底部按钮
         DialogButtonBox {
             Layout.fillWidth: true
-            
+
             Button {
-                text: qsTr("加载")
+                text: qsTr("Load")
                 DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
                 enabled: root.selectedWorkspace !== null
             }
-            
+
             Button {
-                text: qsTr("关闭")
+                text: qsTr("Close")
                 DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
             }
         }
     }
-    
+
     function formatDate(isoString) {
-        if (!isoString) return qsTr("未知")
+        if (!isoString) return qsTr("Unknown")
         var date = new Date(isoString)
         return date.toLocaleDateString()
     }
@@ -322,54 +322,54 @@ Dialog {
     // 保存工作区对话框
     Dialog {
         id: saveDialog
-        title: qsTr("保存工作区")
+        title: qsTr("Save Workspace")
         width: 400
         modal: true
         closePolicy: Popup.CloseOnEscape
         parent: Overlay.overlay
         x: parent ? (parent.width - width) / 2 : 0
         y: parent ? (parent.height - height) / 2 : 0
-        
+
         ColumnLayout {
             anchors.fill: parent
             spacing: 12
-            
-            Label { text: qsTr("工作区名称:") }
-            
+
+            Label { text: qsTr("Workspace Name:") }
+
             TextField {
                 id: newWorkspaceName
                 Layout.fillWidth: true
-                placeholderText: qsTr("输入工作区名称")
+                placeholderText: qsTr("Enter workspace name")
             }
-            
-            Label { text: qsTr("描述 (可选):") }
-            
+
+            Label { text: qsTr("Description (optional):") }
+
             TextArea {
                 id: newWorkspaceDesc
                 Layout.fillWidth: true
                 Layout.preferredHeight: 60
-                placeholderText: qsTr("输入工作区描述")
+                placeholderText: qsTr("Enter description")
             }
-            
+
             Label {
-                text: qsTr("将保存当前打开的文件、过滤条件、书签和视图设置。")
+                text: qsTr("Current file, filter, bookmarks and view settings will be saved.")
                 font.pixelSize: 11
                 opacity: 0.7
                 wrapMode: Text.Wrap
                 Layout.fillWidth: true
             }
-            
+
             DialogButtonBox {
                 Layout.fillWidth: true
-                
+
                 Button {
-                    text: qsTr("保存")
+                    text: qsTr("Save")
                     DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
                     enabled: newWorkspaceName.text.length > 0
                 }
-                
+
                 Button {
-                    text: qsTr("取消")
+                    text: qsTr("Cancel")
                     DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
                 }
             }
@@ -397,37 +397,37 @@ Dialog {
     // 重命名对话框
     Dialog {
         id: renameDialog
-        title: qsTr("重命名工作区")
+        title: qsTr("Rename Workspace")
         width: 350
         modal: true
         closePolicy: Popup.CloseOnEscape
         parent: Overlay.overlay
         x: parent ? (parent.width - width) / 2 : 0
         y: parent ? (parent.height - height) / 2 : 0
-        
+
         ColumnLayout {
             anchors.fill: parent
             spacing: 12
-            
-            Label { text: qsTr("新名称:") }
-            
+
+            Label { text: qsTr("New Name:") }
+
             TextField {
                 id: renameField
                 Layout.fillWidth: true
                 text: root.selectedWorkspace ? root.selectedWorkspace.name : ""
             }
-            
+
             DialogButtonBox {
                 Layout.fillWidth: true
-                
+
                 Button {
-                    text: qsTr("重命名")
+                    text: qsTr("Rename")
                     DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
                     enabled: renameField.text.length > 0
                 }
-                
+
                 Button {
-                    text: qsTr("取消")
+                    text: qsTr("Cancel")
                     DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
                 }
             }
@@ -452,36 +452,36 @@ Dialog {
     // 删除确认对话框
     Dialog {
         id: deleteConfirmDialog
-        title: qsTr("删除工作区")
+        title: qsTr("Delete Workspace")
         width: 350
         modal: true
         closePolicy: Popup.CloseOnEscape
         parent: Overlay.overlay
         x: parent ? (parent.width - width) / 2 : 0
         y: parent ? (parent.height - height) / 2 : 0
-        
+
         ColumnLayout {
             anchors.fill: parent
             spacing: 12
-            
+
             Label {
-                text: qsTr("确定要删除工作区「%1」吗？").arg(
+                text: qsTr("Are you sure you want to delete workspace '%1'?").arg(
                     root.selectedWorkspace ? root.selectedWorkspace.name : ""
                 )
                 wrapMode: Text.Wrap
                 Layout.fillWidth: true
             }
-            
+
             DialogButtonBox {
                 Layout.fillWidth: true
-                
+
                 Button {
-                    text: qsTr("删除")
+                    text: qsTr("Delete")
                     DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
                 }
-                
+
                 Button {
-                    text: qsTr("取消")
+                    text: qsTr("Cancel")
                     DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
                 }
             }
@@ -498,10 +498,10 @@ Dialog {
     // 导入文件对话框
     FileDialog {
         id: importFileDialog
-        title: qsTr("导入工作区")
-        nameFilters: [qsTr("JSON 文件 (*.json)")]
+        title: qsTr("Import Workspace")
+        nameFilters: [qsTr("JSON Files (*.json)")]
         fileMode: FileDialog.OpenFile
-        
+
         onAccepted: {
             if (workspaceManager) {
                 var path = selectedFile.toString().replace("file:///", "")
@@ -509,12 +509,12 @@ Dialog {
             }
         }
     }
-    
+
     // 导出文件对话框
     FileDialog {
         id: exportFileDialog
-        title: qsTr("导出工作区")
-        nameFilters: [qsTr("JSON 文件 (*.json)")]
+        title: qsTr("Export Workspace")
+        nameFilters: [qsTr("JSON Files (*.json)")]
         fileMode: FileDialog.SaveFile
         defaultSuffix: "json"
         

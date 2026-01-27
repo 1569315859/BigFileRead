@@ -27,7 +27,14 @@ ApplicationWindow {
         target: _tabManager
         function onCurrentModelChanged() {
             console.log("[Main.qml] onCurrentModelChanged triggered, new model:", _tabManager.currentModel)
-            window.currentLogModel = _tabManager.currentModel || _logModel
+            var newModel = _tabManager.currentModel || _logModel
+            window.currentLogModel = newModel
+            // ★★★ 强制刷新 TableView 和 ListView 的 model ★★★
+            tableView.model = null
+            tableView.model = newModel
+            lineNumberListView.model = null
+            lineNumberListView.model = newModel
+            console.log("[Main.qml] TableView model refreshed to:", newModel)
         }
         function onCurrentTabChanged(index) {
             console.log("[Main.qml] onCurrentTabChanged triggered, index:", index)
@@ -311,7 +318,7 @@ ApplicationWindow {
         return {
             filePath: currentLogModel.filePath || "",
             scrollPosition: tableView.contentY,
-            filterKeyword: filterField.text,
+            filterKeyword: filterInput.text,
             caseSensitive: caseSensitiveCheckbox.checked,
             useRegex: regexCheckbox.checked,
             logLevel: logLevelCombo.currentIndex > 0 ? logLevelCombo.currentText : "",
@@ -332,7 +339,7 @@ ApplicationWindow {
         }
         
         // 应用过滤条件
-        filterField.text = workspace.filterKeyword || ""
+        filterInput.text = workspace.filterKeyword || ""
         caseSensitiveCheckbox.checked = workspace.caseSensitive || false
         regexCheckbox.checked = workspace.useRegex || false
         
@@ -1222,14 +1229,14 @@ ApplicationWindow {
     }
     FilterTemplateDialog {
         id: filterTemplateDialog
-        currentKeyword: filterField.text
+        currentKeyword: filterInput.text
         currentCaseSensitive: caseSensitiveCheckbox.checked
         currentUseRegex: regexCheckbox.checked
         currentLogLevel: logLevelCombo.currentIndex > 0 ? logLevelCombo.currentText : ""
         
         onTemplateApplied: function(template) {
             if (template) {
-                filterField.text = template.keyword || ""
+                filterInput.text = template.keyword || ""
                 caseSensitiveCheckbox.checked = template.caseSensitive || false
                 regexCheckbox.checked = template.useRegex || false
                 // 应用日志级别

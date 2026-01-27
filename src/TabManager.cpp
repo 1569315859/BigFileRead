@@ -242,10 +242,15 @@ bool TabManager::closeTab(int index)
         // 简化处理，实际应等待用户确认
     }
     
-    // 保存书签
+    // 保存书签 (异步执行避免UI阻塞)
     if (tab.model && tab.info.isLoaded) {
-        tab.model->autoSaveBookmarks();
+        // 在后台保存，不阻塞UI
+        QMetaObject::invokeMethod(tab.model.get(), "autoSaveBookmarks", Qt::QueuedConnection);
     }
+    
+    // 记录关闭的是否是当前标签
+    bool wasCurrentTab = (index == m_currentTabIndex);
+    int oldCurrentIndex = m_currentTabIndex;
     
     // 移除标签页
     m_tabs.removeAt(index);
@@ -259,12 +264,22 @@ bool TabManager::closeTab(int index)
         m_currentTabIndex = -1;
         emit currentTabChanged();
         emit currentModelChanged();
-    } else if (index <= m_currentTabIndex) {
-        int newIndex = qMax(0, m_currentTabIndex - 1);
-        if (newIndex >= m_tabs.size()) {
-            newIndex = m_tabs.size() - 1;
+    } else {
+        // 计算新的当前索引
+        int newIndex;
+        if (wasCurrentTab) {
+            // 关闭的是当前标签，切换到相同位置或前一个
+            newIndex = qMin(index, m_tabs.size() - 1);
+        } else if (index < oldCurrentIndex) {
+            // 关闭的是当前标签之前的，索引需要减1
+            newIndex = oldCurrentIndex - 1;
+        } else {
+            // 关闭的是当前标签之后的，索引不变
+            newIndex = oldCurrentIndex;
         }
-        m_currentTabIndex = -1;  // 强制触发切换
+        
+        // 强制触发切换（即使索引相同也要刷新）
+        m_currentTabIndex = -1;
         setCurrentTabIndex(newIndex);
     }
     

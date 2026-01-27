@@ -11,7 +11,7 @@ import QtQuick.Dialogs
 Dialog {
     id: root
     
-    title: qsTr("过滤模板")
+    title: qsTr("Filter Templates")
     width: 600
     height: 500
     modal: true
@@ -46,7 +46,7 @@ Dialog {
             spacing: 8
             
             Button {
-                text: qsTr("保存当前过滤")
+                text: qsTr("Save Current Filter")
                 icon.name: "document-save"
                 enabled: root.currentKeyword.length > 0
                 onClicked: saveDialog.open()
@@ -55,13 +55,13 @@ Dialog {
             Item { Layout.fillWidth: true }
             
             Button {
-                text: qsTr("导入")
+                text: qsTr("Import")
                 icon.name: "document-import"
                 onClicked: importFileDialog.open()
             }
             
             Button {
-                text: qsTr("导出")
+                text: qsTr("Export")
                 icon.name: "document-export"
                 enabled: templateList.count > 0
                 onClicked: exportFileDialog.open()
@@ -70,7 +70,7 @@ Dialog {
         
         // 模板列表
         GroupBox {
-            title: qsTr("已保存的模板")
+            title: qsTr("Saved Templates")
             Layout.fillWidth: true
             Layout.fillHeight: true
             
@@ -82,7 +82,7 @@ Dialog {
                 TextField {
                     id: searchField
                     Layout.fillWidth: true
-                    placeholderText: qsTr("搜索模板...")
+                    placeholderText: qsTr("Search templates...")
                     
                     onTextChanged: filterTemplates()
                 }
@@ -143,7 +143,7 @@ Dialog {
                                     
                                     Label {
                                         visible: modelData.caseSensitive
-                                        text: qsTr("区分大小写")
+                                        text: qsTr("Case Sensitive")
                                         font.pixelSize: 10
                                         padding: 2
                                         background: Rectangle {
@@ -154,7 +154,7 @@ Dialog {
                                     
                                     Label {
                                         visible: modelData.useRegex
-                                        text: qsTr("正则")
+                                        text: qsTr("Regex")
                                         font.pixelSize: 10
                                         padding: 2
                                         background: Rectangle {
@@ -175,7 +175,7 @@ Dialog {
                                     }
                                     
                                     Label {
-                                        text: qsTr("使用 %1 次").arg(modelData.useCount || 0)
+                                        text: qsTr("Used %1 times").arg(modelData.useCount || 0)
                                         font.pixelSize: 10
                                         opacity: 0.5
                                     }
@@ -188,7 +188,7 @@ Dialog {
                                 
                                 ToolButton {
                                     icon.name: "edit-rename"
-                                    ToolTip.text: qsTr("重命名")
+                                    ToolTip.text: qsTr("Rename")
                                     ToolTip.visible: hovered
                                     onClicked: {
                                         root.selectedTemplate = modelData
@@ -198,7 +198,7 @@ Dialog {
                                 
                                 ToolButton {
                                     icon.name: "edit-delete"
-                                    ToolTip.text: qsTr("删除")
+                                    ToolTip.text: qsTr("Delete")
                                     ToolTip.visible: hovered
                                     onClicked: {
                                         root.selectedTemplate = modelData
@@ -213,7 +213,7 @@ Dialog {
                     Label {
                         anchors.centerIn: parent
                         visible: templateList.count === 0
-                        text: qsTr("没有保存的模板\n使用「保存当前过滤」创建模板")
+                        text: qsTr("No saved templates\nUse 'Save Current Filter' to create one")
                         horizontalAlignment: Text.AlignHCenter
                         opacity: 0.5
                     }
@@ -223,7 +223,7 @@ Dialog {
         
         // 模板详情
         GroupBox {
-            title: qsTr("模板详情")
+            title: qsTr("Template Details")
             Layout.fillWidth: true
             visible: root.selectedTemplate !== null
             
@@ -233,19 +233,19 @@ Dialog {
                 columnSpacing: 16
                 rowSpacing: 8
                 
-                Label { text: qsTr("名称:"); font.bold: true }
+                Label { text: qsTr("Name:"); font.bold: true }
                 Label { 
                     text: root.selectedTemplate ? root.selectedTemplate.name : ""
                     Layout.fillWidth: true
                 }
                 
-                Label { text: qsTr("创建时间:"); font.bold: true }
+                Label { text: qsTr("Created:"); font.bold: true }
                 Label { 
                     text: root.selectedTemplate && root.selectedTemplate.createdAt 
                           ? formatDateTime(root.selectedTemplate.createdAt) : ""
                 }
                 
-                Label { text: qsTr("关键词:"); font.bold: true }
+                Label { text: qsTr("Keyword:"); font.bold: true }
                 Label { 
                     text: root.selectedTemplate ? root.selectedTemplate.keyword : ""
                     Layout.columnSpan: 3
@@ -260,13 +260,13 @@ Dialog {
             Layout.fillWidth: true
             
             Button {
-                text: qsTr("应用")
+                text: qsTr("Apply")
                 DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
                 enabled: root.selectedTemplate !== null
             }
             
             Button {
-                text: qsTr("关闭")
+                text: qsTr("Close")
                 DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
             }
         }
@@ -314,7 +314,7 @@ Dialog {
     // 保存模板对话框
     Dialog {
         id: saveDialog
-        title: qsTr("保存过滤模板")
+        title: qsTr("Save Filter Template")
         width: 400
         modal: true
         closePolicy: Popup.CloseOnEscape
@@ -326,46 +326,46 @@ Dialog {
             anchors.fill: parent
             spacing: 12
             
-            Label { text: qsTr("模板名称:") }
+            Label { text: qsTr("Template Name:") }
             
             TextField {
                 id: newTemplateName
                 Layout.fillWidth: true
-                placeholderText: qsTr("输入模板名称")
+                placeholderText: qsTr("Enter template name")
             }
             
             Label {
-                text: qsTr("当前过滤条件:")
+                text: qsTr("Current Filter Settings:")
                 font.bold: true
             }
             
             Label {
-                text: qsTr("关键词: %1").arg(root.currentKeyword)
+                text: qsTr("Keyword: %1").arg(root.currentKeyword)
                 wrapMode: Text.Wrap
                 Layout.fillWidth: true
             }
             
             RowLayout {
-                Label { text: root.currentCaseSensitive ? qsTr("✓ 区分大小写") : qsTr("✗ 不区分大小写") }
-                Label { text: root.currentUseRegex ? qsTr("✓ 正则表达式") : qsTr("✗ 普通文本") }
+                Label { text: root.currentCaseSensitive ? qsTr("✓ Case Sensitive") : qsTr("✗ Case Insensitive") }
+                Label { text: root.currentUseRegex ? qsTr("✓ Regular Expression") : qsTr("✗ Plain Text") }
             }
             
             Label {
                 visible: root.currentLogLevel.length > 0
-                text: qsTr("日志级别: %1").arg(root.currentLogLevel)
+                text: qsTr("Log Level: %1").arg(root.currentLogLevel)
             }
             
             DialogButtonBox {
                 Layout.fillWidth: true
                 
                 Button {
-                    text: qsTr("保存")
+                    text: qsTr("Save")
                     DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
                     enabled: newTemplateName.text.length > 0
                 }
                 
                 Button {
-                    text: qsTr("取消")
+                    text: qsTr("Cancel")
                     DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
                 }
             }
@@ -399,7 +399,7 @@ Dialog {
     // 重命名对话框
     Dialog {
         id: renameDialog
-        title: qsTr("重命名模板")
+        title: qsTr("Rename Template")
         width: 350
         modal: true
         closePolicy: Popup.CloseOnEscape
@@ -411,7 +411,7 @@ Dialog {
             anchors.fill: parent
             spacing: 12
             
-            Label { text: qsTr("新名称:") }
+            Label { text: qsTr("New Name:") }
             
             TextField {
                 id: renameField
@@ -423,13 +423,13 @@ Dialog {
                 Layout.fillWidth: true
                 
                 Button {
-                    text: qsTr("重命名")
+                    text: qsTr("Rename")
                     DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
                     enabled: renameField.text.length > 0
                 }
                 
                 Button {
-                    text: qsTr("取消")
+                    text: qsTr("Cancel")
                     DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
                 }
             }
@@ -455,7 +455,7 @@ Dialog {
     // 删除确认对话框
     Dialog {
         id: deleteConfirmDialog
-        title: qsTr("删除模板")
+        title: qsTr("Delete Template")
         width: 350
         modal: true
         closePolicy: Popup.CloseOnEscape
@@ -468,7 +468,7 @@ Dialog {
             spacing: 12
             
             Label {
-                text: qsTr("确定要删除模板「%1」吗？").arg(
+                text: qsTr("Are you sure you want to delete template '%1'?").arg(
                     root.selectedTemplate ? root.selectedTemplate.name : ""
                 )
                 wrapMode: Text.Wrap
@@ -479,12 +479,12 @@ Dialog {
                 Layout.fillWidth: true
                 
                 Button {
-                    text: qsTr("删除")
+                    text: qsTr("Delete")
                     DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
                 }
                 
                 Button {
-                    text: qsTr("取消")
+                    text: qsTr("Cancel")
                     DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
                 }
             }
@@ -502,8 +502,8 @@ Dialog {
     // 导入文件对话框
     FileDialog {
         id: importFileDialog
-        title: qsTr("导入模板")
-        nameFilters: [qsTr("JSON 文件 (*.json)")]
+        title: qsTr("Import Templates")
+        nameFilters: [qsTr("JSON Files (*.json)")]
         fileMode: FileDialog.OpenFile
         
         onAccepted: {
@@ -518,8 +518,8 @@ Dialog {
     // 导出文件对话框
     FileDialog {
         id: exportFileDialog
-        title: qsTr("导出模板")
-        nameFilters: [qsTr("JSON 文件 (*.json)")]
+        title: qsTr("Export Templates")
+        nameFilters: [qsTr("JSON Files (*.json)")]
         fileMode: FileDialog.SaveFile
         defaultSuffix: "json"
         

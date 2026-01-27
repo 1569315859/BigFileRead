@@ -167,7 +167,9 @@ Rectangle {
                         
                         onClicked: (mouse) => {
                             if (mouse.button === Qt.LeftButton) {
+                                console.log("[FileTabBar] Tab clicked, index:", index, "current:", tabManager ? tabManager.currentTabIndex : -1)
                                 if (tabManager) {
+                                    console.log("[FileTabBar] Calling setCurrentTabIndex(", index, ")")
                                     tabManager.setCurrentTabIndex(index)
                                 }
                             } else if (mouse.button === Qt.MiddleButton) {
@@ -352,12 +354,22 @@ Rectangle {
         target: tabManager
         
         function onCurrentTabChanged() {
+            console.log("[FileTabBar] onCurrentTabChanged, new index:", tabManager ? tabManager.currentTabIndex : -1)
             root.tabChanged(tabManager.currentTabIndex)
+            // 强制刷新 Repeater 以更新 isActive 状态
+            var oldModel = tabRepeater.model
+            tabRepeater.model = null
+            tabRepeater.model = oldModel
         }
         
         function onTabsChanged() {
+            console.log("[FileTabBar] onTabsChanged, tab count:", tabManager ? tabManager.tabCount : 0)
             // 标签列表变化，重新布局
-            tabRepeater.model = tabManager.tabs
+            tabRepeater.model = tabManager ? tabManager.tabs : []
+        }
+        
+        function onTabClosed(index) {
+            console.log("[FileTabBar] onTabClosed, index:", index)
         }
     }
 }

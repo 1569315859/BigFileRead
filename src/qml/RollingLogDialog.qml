@@ -10,7 +10,7 @@ import QtQuick.Layouts
 Dialog {
     id: root
     
-    title: qsTr("合并滚动日志")
+    title: qsTr("Merge Rolling Logs")
     width: 550
     height: 450
     modal: true
@@ -33,7 +33,7 @@ Dialog {
         spacing: 12
         
         Label {
-            text: qsTr("检测到以下相关的滚动日志文件：")
+            text: qsTr("Detected related rolling log files:")
             font.bold: true
         }
         
@@ -92,7 +92,7 @@ Dialog {
                     
                     Label {
                         visible: index === root.detectedFiles.length - 1
-                        text: qsTr("当前")
+                        text: qsTr("Current")
                         font.pixelSize: 10
                         padding: 4
                         color: "white"
@@ -108,7 +108,7 @@ Dialog {
             Label {
                 anchors.centerIn: parent
                 visible: fileList.count === 0
-                text: qsTr("未检测到滚动日志文件")
+                text: qsTr("No rolling log files detected")
                 opacity: 0.5
             }
         }
@@ -119,7 +119,7 @@ Dialog {
             spacing: 12
             
             Button {
-                text: qsTr("全选")
+                text: qsTr("Select All")
                 onClicked: {
                     root.selectedFiles = root.detectedFiles.slice()
                     root.selectedFilesChanged()
@@ -127,7 +127,7 @@ Dialog {
             }
             
             Button {
-                text: qsTr("取消全选")
+                text: qsTr("Deselect All")
                 onClicked: {
                     root.selectedFiles = []
                     root.selectedFilesChanged()
@@ -137,21 +137,21 @@ Dialog {
             Item { Layout.fillWidth: true }
             
             Label {
-                text: qsTr("已选择 %1 个文件").arg(root.selectedFiles.length)
+                text: qsTr("%1 files selected").arg(root.selectedFiles.length)
                 opacity: 0.7
             }
         }
         
         // 合并说明
         GroupBox {
-            title: qsTr("合并说明")
+            title: qsTr("Merge Instructions")
             Layout.fillWidth: true
             
             Label {
                 anchors.fill: parent
-                text: qsTr("滚动日志文件将按时间顺序合并为一个临时文件。\n" +
-                          "较旧的日志（编号较大）会放在前面，\n" +
-                          "最新的日志会放在最后。")
+                text: qsTr("Rolling log files will be merged into a temporary file in chronological order.\n" +
+                          "Older logs (higher numbers) will be placed first,\n" +
+                          "newest logs will be at the end.")
                 wrapMode: Text.Wrap
                 font.pixelSize: 11
                 opacity: 0.8
@@ -163,13 +163,13 @@ Dialog {
             Layout.fillWidth: true
             
             Button {
-                text: qsTr("合并并加载")
+                text: qsTr("Merge and Load")
                 DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
                 enabled: root.selectedFiles.length > 0
             }
             
             Button {
-                text: qsTr("取消")
+                text: qsTr("Cancel")
                 DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
             }
         }

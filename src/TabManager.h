@@ -89,7 +89,7 @@ public:
     qint64 maxMemoryUsage() const { return m_maxMemoryUsage; }
     BigFileModel* currentModel() const;
     
-    void setCurrentTabIndex(int index);
+    Q_INVOKABLE void setCurrentTabIndex(int index);
     void setMaxLoadedTabs(int max);
     void setMaxMemoryUsage(qint64 bytes);
     
