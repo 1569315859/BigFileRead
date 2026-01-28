@@ -34,6 +34,9 @@ Popup {
     property var levelStats: ({})
     property var timeRange: ({})
     
+    // 支持动态绑定不同的模型，默认为全局 _logModel
+    property var targetLogModel: _logModel
+
     // 当前设置
     property string currentInterval: "hour"  // "minute", "hour", "day"
     property string currentChartType: "stacked"  // "stacked", "grouped", "area"
@@ -47,18 +50,18 @@ Popup {
     
     // 加载数据
     function loadData() {
-        if (!_logModel || !_logModel.filePath) return
+        if (!targetLogModel || !targetLogModel.filePath) return
         
         isLoading = false
         
         // 获取时间统计
-        timeData = _logModel.getTimeBasedStatistics(currentInterval, 50)
+        timeData = targetLogModel.getTimeBasedStatistics(currentInterval, 50)
         
         // 获取级别统计
-        levelStats = _logModel.getLogStatistics()
+        levelStats = targetLogModel.getLogStatistics()
         
         // 获取时间范围
-        timeRange = _logModel.getLogTimeRange()
+        timeRange = targetLogModel.getLogTimeRange()
     }
     
     // 加载状态
@@ -335,7 +338,7 @@ Popup {
                     id: mainChart
                     anchors.fill: parent
                     anchors.margins: 10
-                    data: timeData
+                    chartData: timeData
                     chartType: currentChartType
                     title: qsTr("Log Volume Over Time")
                     visible: !isLoading
@@ -479,7 +482,7 @@ Popup {
                         Item { Layout.fillWidth: true }
                         
                         Text {
-                            text: _logModel ? _logModel.totalLineCount.toLocaleString() : "0"
+                            text: targetLogModel ? targetLogModel.totalLineCount.toLocaleString() : "0"
                             font.bold: true
                             color: accentColor
                             font.pixelSize: 14
@@ -489,7 +492,7 @@ Popup {
                     // 当前过滤
                     RowLayout {
                         Layout.fillWidth: true
-                        visible: _logModel && _logModel.isFilterMode
+                        visible: targetLogModel && targetLogModel.isFilterMode
                         
                         Text {
                             text: qsTr("Filtered:")
@@ -500,7 +503,7 @@ Popup {
                         Item { Layout.fillWidth: true }
                         
                         Text {
-                            text: _logModel ? _logModel.lineCount.toLocaleString() : "0"
+                            text: targetLogModel ? targetLogModel.lineCount.toLocaleString() : "0"
                             color: "#FF9800"
                             font.pixelSize: 13
                         }

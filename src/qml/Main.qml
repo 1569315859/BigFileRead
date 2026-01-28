@@ -34,13 +34,12 @@ ApplicationWindow {
             tableView.model = newModel
             lineNumberListView.model = null
             lineNumberListView.model = newModel
-            // ★★★ 强制刷新 EnhancedScrollBar 的标记数据 ★★★
-            enhancedScrollBar.totalLines = newModel ? newModel.lineCount : 0
-            enhancedScrollBar.bookmarks = newModel ? (newModel.bookmarkLines || []) : []
-            enhancedScrollBar.searchResults = newModel ? (newModel.searchResultLines || []) : []
-            enhancedScrollBar.errorLines = newModel ? (newModel.errorLines || []) : []
-            enhancedScrollBar.warningLines = newModel ? (newModel.warningLines || []) : []
-            enhancedScrollBar.infoLines = newModel ? (newModel.infoLines || []) : []
+            // ★★★ 强制刷新 TableView 和 ListView 的 model ★★★
+            tableView.model = null
+            tableView.model = newModel
+            lineNumberListView.model = null
+            lineNumberListView.model = newModel
+            
             console.log("[Main.qml] All views refreshed with new model")
         }
         function onCurrentTabChanged(index) {
@@ -417,6 +416,7 @@ ApplicationWindow {
                 
                 Menu {
                     id: fileMenu
+                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("Open File...")
@@ -535,6 +535,7 @@ ApplicationWindow {
                 
                 Menu {
                     id: bookmarkMenu
+                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("Add/Remove Bookmark")
@@ -597,6 +598,7 @@ ApplicationWindow {
                 
                 Menu {
                     id: viewMenu
+                    y: parent.height
                     title: qsTr("View")
                     
                     // 视图模式切换
@@ -689,6 +691,7 @@ ApplicationWindow {
                 
                 Menu {
                     id: toolsMenu
+                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("Advanced Filter...")
@@ -786,6 +789,7 @@ ApplicationWindow {
                 
                 Menu {
                     id: settingsMenu
+                    y: parent.height
                     
                     Menu {
                         title: qsTr("Theme")
@@ -1000,6 +1004,7 @@ ApplicationWindow {
                 
                 Menu {
                     id: dataSourceMenu
+                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("Connect Database...") + (_featureGate.isProUser ? "" : " [Enterprise]")
@@ -1044,6 +1049,7 @@ ApplicationWindow {
                 
                 Menu {
                     id: analyzeMenu
+                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("SQL Query...") + (_featureGate.isProUser ? "" : " [Pro]")
@@ -1092,6 +1098,7 @@ ApplicationWindow {
                 
                 Menu {
                     id: advancedToolsMenu
+                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("Rule Wizard...") + (_featureGate.isProUser ? "" : " [Pro]")
@@ -1231,6 +1238,7 @@ ApplicationWindow {
     RegistrationDialog { id: registrationDialog }
     GoToLineDialog { 
         id: goToLineDialog 
+        logModel: currentLogModel
         onAccepted: {
             if (targetLine > 0) {
                 tableView.contentY = (targetLine - 1) * rowHeight
@@ -1239,9 +1247,11 @@ ApplicationWindow {
     }
     BookmarkCommentDialog {
         id: bookmarkCommentDialog
+        logModel: currentLogModel
     }
     ExportDialog {
         id: exportDialog
+        logModel: currentLogModel
         onExportCompleted: function(path) {
             console.log("Export completed:", path)
         }
@@ -1292,9 +1302,11 @@ ApplicationWindow {
     }
     StatisticsPanel {
         id: statisticsPanel
+        targetLogModel: currentLogModel
     }
     DashboardPanel {
         id: dashboardPanel
+        targetLogModel: currentLogModel
     }
     AIQueryDialog {
         id: aiQueryDialog
@@ -1334,7 +1346,10 @@ ApplicationWindow {
             root.title = "BigFileViewer - " + remotePath + " (Remote)"
         }
     }
-    AdvancedFilterDialog { id: advancedFilterDialog }
+    AdvancedFilterDialog { 
+        id: advancedFilterDialog 
+        targetLogModel: currentLogModel
+    }
     KeywordConfigDialog { id: keywordConfigDialog }
 
     // ========== 新功能对话框 ==========

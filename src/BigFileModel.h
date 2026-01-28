@@ -35,13 +35,14 @@ struct BookmarkInfo {
   Q_PROPERTY(QString comment MEMBER comment)
   Q_PROPERTY(QDateTime createdAt MEMBER createdAt)
 public:
-  qint64 lineIndex = -1;      ///< 真实行索引（0-based）
-  QString comment;            ///< 书签评论/备注
-  QDateTime createdAt;        ///< 创建时间
-  
+  qint64 lineIndex = -1; ///< 真实行索引（0-based）
+  QString comment;       ///< 书签评论/备注
+  QDateTime createdAt;   ///< 创建时间
+
   BookmarkInfo() = default;
   BookmarkInfo(qint64 line, const QString &note = QString())
-      : lineIndex(line), comment(note), createdAt(QDateTime::currentDateTime()) {}
+      : lineIndex(line), comment(note),
+        createdAt(QDateTime::currentDateTime()) {}
 };
 
 /**
@@ -57,38 +58,46 @@ struct GroupInfo {
   Q_PROPERTY(int count MEMBER count)
   Q_PROPERTY(bool isExpanded MEMBER isExpanded)
 public:
-  int id = -1;              ///< 分组ID
-  QString field;            ///< 分组字段名
-  QString value;            ///< 分组值
-  int startRow = 0;         ///< 起始行号
-  int endRow = 0;           ///< 结束行号
-  int count = 0;            ///< 该分组内条目数
-  bool isExpanded = true;   ///< 是否展开
-  
-  GroupInfo() = default;
-  GroupInfo(int gid, const QString &f, const QString &v, int start, int end, int cnt)
-      : id(gid), field(f), value(v), startRow(start), endRow(end), count(cnt), isExpanded(true) {}
-};
+  int id = -1;            ///< 分组ID
+  QString field;          ///< 分组字段名
+  QString value;          ///< 分组值
+  int startRow = 0;       ///< 起始行号
+  int endRow = 0;         ///< 结束行号
+  int count = 0;          ///< 该分组内条目数
+  bool isExpanded = true; ///< 是否展开
 
+  GroupInfo() = default;
+  GroupInfo(int gid, const QString &f, const QString &v, int start, int end,
+            int cnt)
+      : id(gid), field(f), value(v), startRow(start), endRow(end), count(cnt),
+        isExpanded(true) {}
+};
 
 class BigFileModel : public QAbstractTableModel {
   Q_OBJECT
-  
+
   // ============ Q_PROPERTY 用于 QML 绑定 ============
   Q_PROPERTY(QString filePath READ filePath NOTIFY filePathChanged)
   Q_PROPERTY(qint64 fileSize READ fileSize NOTIFY fileSizeChanged)
   Q_PROPERTY(int lineCount READ lineCount NOTIFY lineCountChanged)
-  Q_PROPERTY(int totalLineCount READ totalLineCount NOTIFY totalLineCountChanged)
+  Q_PROPERTY(
+      int totalLineCount READ totalLineCount NOTIFY totalLineCountChanged)
   Q_PROPERTY(bool isFilterMode READ isFilterMode NOTIFY filterModeChanged)
   Q_PROPERTY(bool isIndexing READ isIndexing NOTIFY indexingStateChanged)
-  Q_PROPERTY(int searchResultCount READ searchResultCount NOTIFY searchResultCountChanged)
-  Q_PROPERTY(QVariantList bookmarkLines READ bookmarkLines NOTIFY bookmarksChanged)
-  Q_PROPERTY(QVariantList searchResultLines READ searchResultLines NOTIFY searchResultCountChanged)
-  Q_PROPERTY(QVariantList errorLines READ errorLines NOTIFY logLevelLinesChanged)
-  Q_PROPERTY(QVariantList warningLines READ warningLines NOTIFY logLevelLinesChanged)
+  Q_PROPERTY(int searchResultCount READ searchResultCount NOTIFY
+                 searchResultCountChanged)
+  Q_PROPERTY(
+      QVariantList bookmarkLines READ bookmarkLines NOTIFY bookmarksChanged)
+  Q_PROPERTY(QVariantList searchResultLines READ searchResultLines NOTIFY
+                 searchResultCountChanged)
+  Q_PROPERTY(
+      QVariantList errorLines READ errorLines NOTIFY logLevelLinesChanged)
+  Q_PROPERTY(
+      QVariantList warningLines READ warningLines NOTIFY logLevelLinesChanged)
   Q_PROPERTY(QVariantList infoLines READ infoLines NOTIFY logLevelLinesChanged)
-  Q_PROPERTY(bool deltaTimeEnabled READ deltaTimeEnabled WRITE setDeltaTimeEnabled NOTIFY deltaTimeEnabledChanged)
-  
+  Q_PROPERTY(bool deltaTimeEnabled READ deltaTimeEnabled WRITE
+                 setDeltaTimeEnabled NOTIFY deltaTimeEnabledChanged)
+
   // ============ 分组功能属性 ============
   Q_PROPERTY(bool isGroupMode READ isGroupMode NOTIFY groupModeChanged)
   Q_PROPERTY(QVariantList groups READ getGroups NOTIFY groupsChanged)
@@ -103,7 +112,7 @@ public:
   static constexpr int MAX_DISPLAY_LENGTH = 2000;
   /// 搜索结果最大数量限制（1百万结果 ≈ 4MB RAM）
   static constexpr int MAX_SEARCH_RESULTS = 1000000;
-  
+
   /// 书签数据角色 (用于 data() 返回书签状态)
   static constexpr int BookmarkRole = Qt::UserRole + 5;
   /// 原始行号角色 (返回未过滤的真实行号)
@@ -160,7 +169,9 @@ public:
   /**
    * @brief 获取总行数（不受过滤影响）
    */
-  Q_INVOKABLE int totalLineCount() const { return static_cast<int>(m_lineOffsets.size()); }
+  Q_INVOKABLE int totalLineCount() const {
+    return static_cast<int>(m_lineOffsets.size());
+  }
 
   /**
    * @brief 异步搜索文本
@@ -202,7 +213,9 @@ public:
   /**
    * @brief 获取搜索结果数量
    */
-  Q_INVOKABLE int searchResultCount() const { return static_cast<int>(m_searchResults.size()); }
+  Q_INVOKABLE int searchResultCount() const {
+    return static_cast<int>(m_searchResults.size());
+  }
 
   /**
    * @brief 设置文本编码
@@ -240,15 +253,15 @@ public:
 
   /**
    * @brief 应用高级过滤器（支持日志级别和多关键词）
-   * @param level 日志级别过滤（空字符串表示不过滤）
+   * @param levels 日志级别列表（空列表表示不过滤）
    * @param keywords 关键词列表
    * @param andLogic true = 所有关键词都必须匹配, false = 任意关键词匹配即可
    * @param useRegex 是否使用正则表达式
    */
-  Q_INVOKABLE void applyAdvancedFilter(const QString &level, 
-                           const QStringList &keywords,
-                           bool andLogic = true,
-                           bool useRegex = false);
+  Q_INVOKABLE void applyAdvancedFilter(const QStringList &levels,
+                                       const QStringList &keywords,
+                                       bool andLogic = true,
+                                       bool useRegex = false);
 
   /**
    * @brief 清除过滤器，显示所有行
@@ -374,7 +387,10 @@ public:
    * @param sanitizationLevel 脱敏级别: -1=禁用, 0=Minimal, 1=Standard, 2=Strict
    * @return 成功返回 true
    */
-  Q_INVOKABLE bool exportToCSV(const QString &path, int startRow = 0, int endRow = -1, bool includeBookmarksOnly = false, int sanitizationLevel = -1);
+  Q_INVOKABLE bool exportToCSV(const QString &path, int startRow = 0,
+                               int endRow = -1,
+                               bool includeBookmarksOnly = false,
+                               int sanitizationLevel = -1);
 
   /**
    * @brief 导出当前视图数据到 HTML 文件
@@ -385,7 +401,10 @@ public:
    * @param sanitizationLevel 脱敏级别: -1=禁用, 0=Minimal, 1=Standard, 2=Strict
    * @return 成功返回 true
    */
-  Q_INVOKABLE bool exportToHTML(const QString &path, int startRow = 0, int endRow = -1, bool includeBookmarksOnly = false, int sanitizationLevel = -1);
+  Q_INVOKABLE bool exportToHTML(const QString &path, int startRow = 0,
+                                int endRow = -1,
+                                bool includeBookmarksOnly = false,
+                                int sanitizationLevel = -1);
 
   /**
    * @brief 导出数据并进行脱敏处理
@@ -396,9 +415,10 @@ public:
    * @param endRow 结束行（视图行号，-1 表示全部）
    * @return 成功返回 true
    */
-  Q_INVOKABLE bool exportWithSanitization(const QString &path, const QString &format, 
-                                           const QVariantMap &sanitizeOptions,
-                                           int startRow = 0, int endRow = -1);
+  Q_INVOKABLE bool exportWithSanitization(const QString &path,
+                                          const QString &format,
+                                          const QVariantMap &sanitizeOptions,
+                                          int startRow = 0, int endRow = -1);
 
   /**
    * @brief 从剪贴板文本创建临时文件并加载
@@ -446,9 +466,11 @@ public:
    * @brief 获取按时间段分组的日志统计信息（用于仪表盘图表）
    * @param interval 时间间隔: "minute", "hour", "day"
    * @param maxBuckets 最大时间桶数量（限制返回数据量，默认100）
-   * @return QVariantList，每个元素包含 {timestamp, error, warn, info, debug, trace, total}
+   * @return QVariantList，每个元素包含 {timestamp, error, warn, info, debug,
+   * trace, total}
    */
-  Q_INVOKABLE QVariantList getTimeBasedStatistics(const QString &interval, int maxBuckets = 100) const;
+  Q_INVOKABLE QVariantList getTimeBasedStatistics(const QString &interval,
+                                                  int maxBuckets = 100) const;
 
   /**
    * @brief 获取日志时间范围
@@ -462,7 +484,8 @@ public:
    * @param maxResults 最大结果数量（限制性能开销）
    * @return 匹配行号列表
    */
-  Q_INVOKABLE QVariantList findLinesWithKeywords(const QStringList &keywords, int maxResults = 5000) const;
+  Q_INVOKABLE QVariantList findLinesWithKeywords(const QStringList &keywords,
+                                                 int maxResults = 5000) const;
 
   // ============ 日志分组功能 ============
 
@@ -478,11 +501,13 @@ public:
 
   /**
    * @brief 按指定字段对日志进行分组
-   * @param field 分组字段: "timestamp" (按时间段), "level" (按日志级别), 
+   * @param field 分组字段: "timestamp" (按时间段), "level" (按日志级别),
    *              "thread" (按线程ID), "custom:<pattern>" (自定义正则)
-   * @param interval 时间分组间隔（仅 timestamp 时有效）: "minute", "hour", "day"
+   * @param interval 时间分组间隔（仅 timestamp 时有效）: "minute", "hour",
+   * "day"
    */
-  Q_INVOKABLE void groupBy(const QString &field, const QString &interval = "hour");
+  Q_INVOKABLE void groupBy(const QString &field,
+                           const QString &interval = "hour");
 
   /**
    * @brief 清除分组，恢复正常显示
@@ -588,7 +613,8 @@ public:
    * @param sanitizationLevel 脱敏级别 (0=不脱敏, 1=标准, 2=严格)
    * @return 成功返回 true
    */
-  Q_INVOKABLE bool exportToFile(const QString &filePath, int sanitizationLevel = 0) const;
+  Q_INVOKABLE bool exportToFile(const QString &filePath,
+                                int sanitizationLevel = 0) const;
 
   // QAbstractTableModel 接口实现
   int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -652,11 +678,11 @@ signals:
   void searchResultCountChanged();
   void bookmarksChanged();
   void deltaTimeEnabledChanged();
-  void logLevelLinesChanged();  ///< 日志级别行列表变化信号（仅在加载完成后触发）
-  
+  void logLevelLinesChanged(); ///< 日志级别行列表变化信号（仅在加载完成后触发）
+
   // ============ 分组信号 ============
-  void groupModeChanged();      ///< 分组模式变化
-  void groupsChanged();         ///< 分组列表变化
+  void groupModeChanged(); ///< 分组模式变化
+  void groupsChanged();    ///< 分组列表变化
 
   // ============ 过滤信号 ============
 
@@ -723,10 +749,9 @@ private:
   /**
    * @brief 异步执行高级过滤（在后台线程执行）
    */
-  void executeAdvancedFilterAsync(const QString &level,
-                                   const QStringList &keywords,
-                                   bool andLogic,
-                                   bool useRegex);
+  void executeAdvancedFilterAsync(const QStringList &levels,
+                                  const QStringList &keywords, bool andLogic,
+                                  bool useRegex);
 
 private:
   QFile m_file;              ///< 文件对象
@@ -752,36 +777,38 @@ private:
   QFutureWatcher<void> m_searchWatcher;             ///< 搜索任务监视器
 
   // 文本编码
-  mutable QStringDecoder m_decoder{QStringConverter::Utf8};  ///< 字符解码器（默认 UTF-8）
+  mutable QStringDecoder m_decoder{
+      QStringConverter::Utf8}; ///< 字符解码器（默认 UTF-8）
 
   // 文件监控（实时日志）
-  QFileSystemWatcher *m_watcher = nullptr;  ///< 文件变化监视器
+  QFileSystemWatcher *m_watcher = nullptr; ///< 文件变化监视器
 
   // ============ 表格模式 ============
-  bool m_tableModeEnabled = false;  ///< 是否启用表格解析模式
+  bool m_tableModeEnabled = false; ///< 是否启用表格解析模式
 
   // ============ 日志过滤 (Virtual Mapping Vector) ============
-  std::vector<int> m_filteredRows;                ///< 虚拟映射向量：存储匹配行的原始索引
-  QString m_filterKeyword;                        ///< 当前过滤关键词
-  std::atomic<bool> m_isFiltering{false};         ///< 是否正在执行过滤
+  std::vector<int> m_filteredRows; ///< 虚拟映射向量：存储匹配行的原始索引
+  QString m_filterKeyword;         ///< 当前过滤关键词
+  std::atomic<bool> m_isFiltering{false};           ///< 是否正在执行过滤
   std::atomic<bool> m_filterCancelRequested{false}; ///< 是否请求取消过滤
-  std::atomic<bool> m_filterMode{false};          ///< 是否处于过滤模式
-  QFutureWatcher<void> m_filterWatcher;           ///< 过滤任务监视器
+  std::atomic<bool> m_filterMode{false};            ///< 是否处于过滤模式
+  QFutureWatcher<void> m_filterWatcher;             ///< 过滤任务监视器
 
   // ============ 书签功能 ============
-  QMap<qint64, BookmarkInfo> m_bookmarks;  ///< 书签映射（行索引 -> 书签信息，过滤时保持有效）
+  QMap<qint64, BookmarkInfo>
+      m_bookmarks; ///< 书签映射（行索引 -> 书签信息，过滤时保持有效）
 
   // ============ Delta 时间功能 ============
-  bool m_deltaTimeEnabled = false;                ///< 是否启用 Delta 时间显示
+  bool m_deltaTimeEnabled = false;                 ///< 是否启用 Delta 时间显示
   mutable QCache<int, QDateTime> m_timestampCache; ///< 时间戳缓存
-  QList<QRegularExpression> m_timestampPatterns;  ///< 时间戳解析正则表达式列表
+  QList<QRegularExpression> m_timestampPatterns;   ///< 时间戳解析正则表达式列表
 
   // ============ 日志分组功能 ============
-  bool m_isGroupMode = false;                     ///< 是否处于分组模式
-  QString m_groupField;                           ///< 当前分组字段
-  QString m_groupInterval;                        ///< 时间分组间隔
-  QList<GroupInfo> m_groups;                      ///< 分组列表
-  std::vector<int> m_rowToGroupMap;               ///< 行号到分组ID的映射
+  bool m_isGroupMode = false;       ///< 是否处于分组模式
+  QString m_groupField;             ///< 当前分组字段
+  QString m_groupInterval;          ///< 时间分组间隔
+  QList<GroupInfo> m_groups;        ///< 分组列表
+  std::vector<int> m_rowToGroupMap; ///< 行号到分组ID的映射
 };
 
 #endif // BIGFILEMODEL_H

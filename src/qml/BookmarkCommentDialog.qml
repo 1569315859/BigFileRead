@@ -21,6 +21,7 @@ Popup {
     property int viewRow: -1
     property string initialComment: ""
     property string linePreview: ""
+    property var logModel: null  // Allow passing active model
     
     signal commentSaved(int row, string comment)
 
@@ -110,9 +111,9 @@ Popup {
                 text: qsTr("Remove Bookmark")
                 implicitHeight: 30
                 implicitWidth: 120
-                visible: _logModel.isBookmarked(root.viewRow)
+                visible: logModel ? logModel.isBookmarked(root.viewRow) : false
                 onClicked: {
-                    _logModel.toggleBookmark(root.viewRow)
+                    if (logModel) logModel.toggleBookmark(root.viewRow)
                     root.close()
                 }
                 background: Rectangle {
@@ -171,7 +172,7 @@ Popup {
     }
     
     function saveAndClose() {
-        _logModel.setBookmarkComment(root.viewRow, commentInput.text)
+        if (logModel) logModel.setBookmarkComment(root.viewRow, commentInput.text)
         root.commentSaved(root.viewRow, commentInput.text)
         root.close()
     }
@@ -179,7 +180,8 @@ Popup {
     function openForRow(row, preview) {
         root.viewRow = row
         root.linePreview = preview || ""
-        root.initialComment = _logModel.getBookmarkComment(row)
+        root.initialComment = logModel ? logModel.getBookmarkComment(row) : ""
+
         commentInput.text = root.initialComment
         root.open()
         commentInput.forceActiveFocus()

@@ -14,7 +14,7 @@ Item {
     id: root
     
     // ============ 属性 ============
-    property var data: []  // [{timeLabel, error, warn, info, debug, trace, other, total}, ...]
+    property var chartData: []  // [{timeLabel, error, warn, info, debug, trace, other, total}, ...]
     property string chartType: "stacked"  // "stacked", "grouped", "area"
     property string title: ""
     
@@ -54,19 +54,23 @@ Item {
         
         onPaint: {
             var ctx = getContext("2d")
-            ctx.reset()
+            // ctx.reset() // Avoid using reset() as it might cause issues on some platforms
+            ctx.save()
+            ctx.restore()
+            ctx.resetTransform()
+            ctx.globalAlpha = 1.0
             
             // 清空背景
             ctx.fillStyle = bgColor
             ctx.fillRect(0, 0, width, height)
             
-            if (!data || data.length === 0) {
+            if (!chartData || chartData.length === 0) {
                 drawNoData(ctx)
                 return
             }
             
             // Debug: log data info
-            console.log("TimeSeriesChart: data.length =", data.length, "first item:", JSON.stringify(data[0]))
+            // console.log("TimeSeriesChart: Painting. Size:", width, height, "Data len:", data.length)
             
             // 绘制标题
             if (title) {
@@ -84,11 +88,17 @@ Item {
             
             // 计算最大值
             var maxValue = 0
-            for (var i = 0; i < data.length; i++) {
-                var item = data[i]
-                // 使用方括号访问以兼容 QVariantMap
-                var total = (item["error"] || 0) + (item["warn"] || 0) + (item["info"] || 0) + 
-                           (item["debug"] || 0) + (item["trace"] || 0) + (item["other"] || 0)
+            for (var i = 0; i < chartData.length; i++) {
+                var item = chartData[i]
+                // 尝试兼容点号访问和方括号访问
+                var err = (item.error !== undefined) ? item.error : (item["error"] || 0)
+                var warn = (item.warn !== undefined) ? item.warn : (item["warn"] || 0)
+                var info = (item.info !== undefined) ? item.info : (item["info"] || 0)
+                var debug = (item.debug !== undefined) ? item.debug : (item["debug"] || 0)
+                var trace = (item.trace !== undefined) ? item.trace : (item["trace"] || 0)
+                var other = (item.other !== undefined) ? item.other : (item["other"] || 0)
+                
+                var total = err + warn + info + debug + trace + other
                 maxValue = Math.max(maxValue, total)
             }
             if (maxValue === 0) maxValue = 1
@@ -165,19 +175,19 @@ Item {
         function drawStackedChart(ctx, x, y, w, h, maxValue) {
             // 计算柱宽 - 对于少量数据点，限制最大宽度
             var maxBarWidth = 60
-            var barWidth = Math.min((w / data.length) * 0.7, maxBarWidth)
-            var barSpacing = (w - barWidth * data.length) / (data.length + 1)
-            if (data.length === 1) {
+            var barWidth = Math.min((w / chartData.length) * 0.7, maxBarWidth)
+            var barSpacing = (w - barWidth * chartData.length) / (chartData.length + 1)
+            if (chartData.length === 1) {
                 // 单数据点时居中显示
                 barWidth = Math.min(w * 0.3, maxBarWidth)
                 barSpacing = (w - barWidth) / 2
             }
             
-            for (var i = 0; i < data.length; i++) {
-                var item = data[i]
+            for (var i = 0; i < chartData.length; i++) {
+                var item = chartData[i]
                 // 计算柱子位置
                 var barX
-                if (data.length === 1) {
+                if (chartData.length === 1) {
                     barX = x + barSpacing  // 居中
                 } else {
                     barX = x + barSpacing + i * (barWidth + barSpacing)
@@ -185,12 +195,12 @@ Item {
                 var currentY = y + h
                 
                 var levels = [
-                    { value: item["other"] || 0, color: otherColor },
-                    { value: item["trace"] || 0, color: traceColor },
-                    { value: item["debug"] || 0, color: debugColor },
-                    { value: item["info"] || 0, color: infoColor },
-                    { value: item["warn"] || 0, color: warnColor },
-                    { value: item["error"] || 0, color: errorColor }
+                    { value: (item.other !== undefined ? item.other : (item["other"] || 0)), color: otherColor },
+                    { value: (item.trace !== undefined ? item.trace : (item["trace"] || 0)), color: traceColor },
+                    { value: (item.debug !== undefined ? item.debug : (item["debug"] || 0)), color: debugColor },
+                    { value: (item.info !== undefined ? item.info : (item["info"] || 0)), color: infoColor },
+                    { value: (item.warn !== undefined ? item.warn : (item["warn"] || 0)), color: warnColor },
+                    { value: (item.error !== undefined ? item.error : (item["error"] || 0)), color: errorColor }
                 ]
                 
                 var total = 0
@@ -229,32 +239,32 @@ Item {
                 // 旋转文字避免重叠
                 ctx.save()
                 ctx.translate(barX + barWidth / 2, y + h + 5)
-                if (data.length > 12) {
+                if (chartData.length > 12) {
                     ctx.rotate(-Math.PI / 4)
                     ctx.textAlign = "right"
                 }
-                ctx.fillText(item["timeLabel"] || "", 0, 0)
+                ctx.fillText((item.timeLabel !== undefined ? item.timeLabel : (item["timeLabel"] || "")), 0, 0)
                 ctx.restore()
             }
         }
         
         function drawGroupedChart(ctx, x, y, w, h, maxValue) {
-            var groupWidth = w / data.length
+            var groupWidth = w / chartData.length
             var barCount = 6
             var barWidth = (groupWidth * 0.8) / barCount
             var groupSpacing = groupWidth * 0.2
             
-            for (var i = 0; i < data.length; i++) {
-                var item = data[i]
+            for (var i = 0; i < chartData.length; i++) {
+                var item = chartData[i]
                 var groupX = x + i * groupWidth + groupSpacing / 2
                 
                 var levels = [
-                    { value: item["error"] || 0, color: errorColor },
-                    { value: item["warn"] || 0, color: warnColor },
-                    { value: item["info"] || 0, color: infoColor },
-                    { value: item["debug"] || 0, color: debugColor },
-                    { value: item["trace"] || 0, color: traceColor },
-                    { value: item["other"] || 0, color: otherColor }
+                    { value: (item.error !== undefined ? item.error : (item["error"] || 0)), color: errorColor },
+                    { value: (item.warn !== undefined ? item.warn : (item["warn"] || 0)), color: warnColor },
+                    { value: (item.info !== undefined ? item.info : (item["info"] || 0)), color: infoColor },
+                    { value: (item.debug !== undefined ? item.debug : (item["debug"] || 0)), color: debugColor },
+                    { value: (item.trace !== undefined ? item.trace : (item["trace"] || 0)), color: traceColor },
+                    { value: (item.other !== undefined ? item.other : (item["other"] || 0)), color: otherColor }
                 ]
                 
                 for (var j = 0; j < levels.length; j++) {
@@ -271,19 +281,19 @@ Item {
                 ctx.font = "10px sans-serif"
                 ctx.fillStyle = Qt.darker(textColor, 1.2)
                 ctx.textAlign = "center"
-                ctx.fillText(item["timeLabel"] || "", groupX + groupWidth * 0.4, y + h + 15)
+                ctx.fillText((item.timeLabel !== undefined ? item.timeLabel : (item["timeLabel"] || "")), groupX + groupWidth * 0.4, y + h + 15)
             }
         }
         
         function drawAreaChart(ctx, x, y, w, h, maxValue) {
             // 如果只有一个数据点，改为绘制柱状图
-            if (data.length === 1) {
+            if (chartData.length === 1) {
                 drawStackedChart(ctx, x, y, w, h, maxValue)
                 return
             }
-            if (data.length < 1) return
+            if (chartData.length < 1) return
             
-            var stepX = w / (data.length - 1)
+            var stepX = w / (chartData.length - 1)
             
             var levels = [
                 { key: "other", color: otherColor },
@@ -296,11 +306,25 @@ Item {
             
             // 计算累积值
             var accumulated = []
-            for (var i = 0; i < data.length; i++) {
+            for (var i = 0; i < chartData.length; i++) {
                 accumulated.push({ values: [0, 0, 0, 0, 0, 0] })
                 var cumulative = 0
                 for (var j = 0; j < levels.length; j++) {
-                    cumulative += data[i][levels[j].key] || 0
+                    var val = chartData[i][levels[j].key]
+                    if (val === undefined && chartData[i].hasOwnProperty && chartData[i].hasOwnProperty(levels[j].key)) {
+                         val = chartData[i][levels[j].key]
+                    }
+                    if (val === undefined) {
+                         // Fallback try property access
+                         var key = levels[j].key
+                         if (key === "error") val = chartData[i].error
+                         else if (key === "warn") val = chartData[i].warn
+                         else if (key === "info") val = chartData[i].info
+                         else if (key === "debug") val = chartData[i].debug
+                         else if (key === "trace") val = chartData[i].trace
+                         else if (key === "other") val = chartData[i].other
+                    }
+                    cumulative += (val || 0)
                     accumulated[i].values[j] = cumulative
                 }
             }
@@ -310,7 +334,7 @@ Item {
                 ctx.beginPath()
                 ctx.moveTo(x, y + h)
                 
-                for (i = 0; i < data.length; i++) {
+                for (i = 0; i < chartData.length; i++) {
                     var px = x + i * stepX
                     var py = y + h - (accumulated[i].values[j] / maxValue) * h
                     if (i === 0) {
@@ -328,13 +352,14 @@ Item {
             }
             
             // 绘制X轴标签（仅绘制部分避免重叠）
-            var labelStep = Math.ceil(data.length / 10)
+            var labelStep = Math.ceil(chartData.length / 10)
             ctx.font = "10px sans-serif"
             ctx.fillStyle = Qt.darker(textColor, 1.2)
             ctx.textAlign = "center"
             
-            for (i = 0; i < data.length; i += labelStep) {
-                ctx.fillText(data[i]["timeLabel"] || "", x + i * stepX, y + h + 15)
+            for (i = 0; i < chartData.length; i += labelStep) {
+                var tLabel = chartData[i].timeLabel !== undefined ? chartData[i].timeLabel : (chartData[i]["timeLabel"] || "")
+                ctx.fillText(tLabel, x + i * stepX, y + h + 15)
             }
         }
         
@@ -367,7 +392,7 @@ Item {
         }
         
         function drawTooltip(ctx, index) {
-            var item = data[index]
+            var item = chartData[index]
             if (!item) return
             
             var tooltipWidth = 150
@@ -375,7 +400,7 @@ Item {
             var padding = 10
             
             // 计算位置
-            var barWidth = (width - marginLeft - marginRight) / data.length
+            var barWidth = (width - marginLeft - marginRight) / chartData.length
             var tooltipX = marginLeft + index * barWidth + barWidth / 2
             var tooltipY = marginTop + 20
             
@@ -445,15 +470,15 @@ Item {
         hoverEnabled: true
         
         onPositionChanged: (mouse) => {
-            if (!data || data.length === 0) return
+            if (!chartData || chartData.length === 0) return
             
             var chartX = marginLeft
             var chartWidth = width - marginLeft - marginRight
             
             if (mouse.x >= chartX && mouse.x <= chartX + chartWidth) {
-                var barWidth = chartWidth / data.length
+                var barWidth = chartWidth / chartData.length
                 var index = Math.floor((mouse.x - chartX) / barWidth)
-                if (index >= 0 && index < data.length && index !== hoveredIndex) {
+                if (index >= 0 && index < chartData.length && index !== hoveredIndex) {
                     hoveredIndex = index
                     chartCanvas.requestPaint()
                 }
@@ -471,14 +496,14 @@ Item {
         }
         
         onClicked: (mouse) => {
-            if (hoveredIndex >= 0 && hoveredIndex < data.length) {
-                barClicked(hoveredIndex, data[hoveredIndex])
+            if (hoveredIndex >= 0 && hoveredIndex < chartData.length) {
+                barClicked(hoveredIndex, chartData[hoveredIndex])
             }
         }
     }
     
     // ============ 数据变化时重绘 ============
-    onDataChanged: chartCanvas.requestPaint()
+    onChartDataChanged: chartCanvas.requestPaint()
     onChartTypeChanged: chartCanvas.requestPaint()
     onHoveredIndexChanged: chartCanvas.requestPaint()
     

@@ -17,6 +17,9 @@ Popup {
     property color bgColor: _themeManager.backgroundColor
     property color accentColor: _themeManager.accentColor
     property color borderColor: _themeManager.borderColor
+    
+    // 支持动态绑定不同的模型，默认为全局 _logModel
+    property var targetLogModel: _logModel
 
     background: Rectangle {
         color: panelColor
@@ -418,16 +421,14 @@ Popup {
                 implicitHeight: 32
                 implicitWidth: 90
                 onClicked: {
-                    // 收集选中的日志级别
-                    var level = ""
+                    // 收集选中的日志级别 (Collect selected log levels)
+                    var levels = []
                     if (!levelAll.checked) {
-                        var levels = []
                         if (levelInfo.checked) levels.push("INFO")
                         if (levelDebug.checked) levels.push("DEBUG")
                         if (levelWarn.checked) levels.push("WARN")
                         if (levelError.checked) levels.push("ERROR")
                         if (levelFatal.checked) levels.push("FATAL")
-                        if (levels.length === 1) level = levels[0]
                     }
                     
                     // 解析关键词（支持空格和逗号分隔）
@@ -437,7 +438,11 @@ Popup {
                         keywords = keywordText.split(/[\s,]+/).filter(function(s) { return s !== "" })
                     }
                     
-                    _logModel.applyAdvancedFilter(level, keywords, andRadio.checked, regexCheck.checked)
+                    if (targetLogModel) {
+                        targetLogModel.applyAdvancedFilter(levels, keywords, andRadio.checked, regexCheck.checked)
+                    } else {
+                        console.error("AdvancedFilterDialog: targetLogModel is null!")
+                    }
                     root.close()
                 }
                 background: Rectangle {

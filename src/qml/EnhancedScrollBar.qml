@@ -86,154 +86,182 @@ Item {
         
         // 计算缩放比例
         readonly property real lineToPixelRatio: totalLines > 0 ? height / totalLines : 1
-        readonly property real markerHeight: Math.max(3, Math.min(lineToPixelRatio * 1.5, 8))
+        readonly property real markerHeight: Math.max(1.5, Math.min(lineToPixelRatio * 1.5, 4)) // Reduced marker height for dense logs
         
-        // 错误标记（红色，最左侧，最优先显示）
-        Repeater {
-            model: (showMarkers && showErrors) ? errorLines : []
+        Canvas {
+            id: markerCanvas
+            anchors.fill: parent
             
-            Rectangle {
-                x: 0
-                y: Math.max(0, Math.min(modelData * markerTrack.lineToPixelRatio, markerTrack.height - markerTrack.markerHeight))
-                width: 8
-                height: markerTrack.markerHeight
-                radius: 1
-                color: errorColor
+            // 依赖数据变化自动重绘
+            property var errorData: (enhancedScrollBar.showMarkers && enhancedScrollBar.showErrors) ? enhancedScrollBar.errorLines : []
+            property var warningData: (enhancedScrollBar.showMarkers && enhancedScrollBar.showWarnings) ? enhancedScrollBar.warningLines : []
+            property var infoData: (enhancedScrollBar.showMarkers && enhancedScrollBar.showInfo) ? enhancedScrollBar.infoLines : []
+            property var bookmarkData: (enhancedScrollBar.showMarkers && enhancedScrollBar.showBookmarks) ? enhancedScrollBar.bookmarks : []
+            property var searchData: (enhancedScrollBar.showMarkers && enhancedScrollBar.showSearchResults) ? enhancedScrollBar.searchResults : []
+            
+            // 监听所有依赖数据的变化
+            onErrorDataChanged: requestPaint()
+            onWarningDataChanged: requestPaint()
+            onInfoDataChanged: requestPaint()
+            onBookmarkDataChanged: requestPaint()
+            onSearchDataChanged: requestPaint()
+            
+            onPaint: {
+                var ctx = getContext("2d")
+                ctx.clearRect(0, 0, width, height)
                 
-                MouseArea {
-                    anchors.fill: parent
-                    anchors.margins: -3
-                    cursorShape: Qt.PointingHandCursor
-                    hoverEnabled: true
-                    onClicked: enhancedScrollBar.lineClicked(modelData)
+                var ratio = markerTrack.lineToPixelRatio
+                var mh = markerTrack.markerHeight
+                // 最小绘制高度为1像素，避免过细看不见
+                var drawH = Math.max(1, mh)
+                
+                // 辅助绘制函数：优化大量数据的绘制，避免重复绘制同一像素
+                // x: x坐标, w: 宽度, color: 颜色, data: 行号数组
+                function drawStrip(x, w, color, data) {
+                    if (!data || data.length === 0) return
                     
-                    ToolTip.visible: containsMouse
-                    ToolTip.delay: 200
-                    ToolTip.text: qsTr("Error at line") + " " + (modelData + 1)
+                    ctx.fillStyle = color
+                    var lastY = -100
+                    var count = data.length
+                    
+                    for (var i = 0; i < count; i++) {
+                        // 计算像素Y坐标
+                        var y = Math.floor(data[i] * ratio)
+                        
+                        // 简单去重：如果当前行映射的像素位置与上一次相同（或者非常接近），跳过
+                        // 对于非常密集的错误，这能显著提高性能
+                        if (y > lastY) {
+                            ctx.fillRect(x, y, w, drawH)
+                            lastY = y
+                        }
+                    }
+                }
+                
+                // 1. 错误标记（红色，最左侧）
+                drawStrip(0, 8, enhancedScrollBar.errorColor, errorData)
+                
+                // 2. 警告标记（橙色，左侧偏中）
+                drawStrip(6, 8, enhancedScrollBar.warningColor, warningData)
+                
+                // 3. 信息标记（绿色，中间）
+                drawStrip(10, 6, enhancedScrollBar.infoColor, infoData)
+                
+                // 4. 搜索结果标记（黄色，右侧）
+                drawStrip(width - 7, 7, enhancedScrollBar.searchColor, searchData)
+                
+                // 5. 书签标记（蓝色三角形，右侧，需要特殊绘制）
+                if (bookmarkData && bookmarkData.length > 0) {
+                    ctx.fillStyle = enhancedScrollBar.bookmarkColor
+                    var bData = bookmarkData
+                    var lastBY = -100
+                    
+                    for (var j = 0; j < bData.length; j++) {
+                        var by = Math.floor(bData[j] * ratio) - 2
+                        if (by > lastBY + 4) { // 书签稍微稀疏一点绘制，避免重叠太难看
+                            ctx.beginPath()
+                            ctx.moveTo(width - 9, by)
+                            ctx.lineTo(width, by + 3.5)
+                            ctx.lineTo(width - 9, by + 7)
+                            ctx.fill()
+                            lastBY = by
+                        }
+                    }
                 }
             }
         }
         
-        // 警告标记（橙色，左侧偏中）
-        Repeater {
-            model: (showMarkers && showWarnings) ? warningLines : []
+        // 点击处理 - 需要根据点击位置在 Canvas 上查找对应的行
+        MouseArea {
+            anchors.fill: parent
             
-            Rectangle {
-                x: 6
-                y: Math.max(0, Math.min(modelData * markerTrack.lineToPixelRatio, markerTrack.height - markerTrack.markerHeight))
-                width: 8
-                height: markerTrack.markerHeight
-                radius: 1
-                color: warningColor
-                opacity: 0.9
+            // 二分查找或近似查找点击位置附近的行
+            function findOriginalLine(yPos) {
+                var total = enhancedScrollBar.totalLines
+                var ratio = markerTrack.lineToPixelRatio
+                if (ratio <= 0) return -1
                 
-                MouseArea {
-                    anchors.fill: parent
-                    anchors.margins: -3
-                    cursorShape: Qt.PointingHandCursor
-                    hoverEnabled: true
-                    onClicked: enhancedScrollBar.lineClicked(modelData)
+                var clickedLine = Math.floor(yPos / ratio)
+                var searchRange = Math.floor(5 / ratio) // 搜索点击位置上下5像素范围内的标记
+                
+                // 搜索优先顺序：书签 > 错误 > 搜索 > 警告 > 信息
+                var allTypes = [
+                    { data: enhancedScrollBar.bookmarks, name: qsTr("Bookmark"), enabled: enhancedScrollBar.showBookmarks },
+                    { data: enhancedScrollBar.errorLines, name: qsTr("Error"), enabled: enhancedScrollBar.showErrors },
+                    { data: enhancedScrollBar.searchResults, name: qsTr("Search result"), enabled: enhancedScrollBar.showSearchResults },
+                    { data: enhancedScrollBar.warningLines, name: qsTr("Warning"), enabled: enhancedScrollBar.showWarnings },
+                    { data: enhancedScrollBar.infoLines, name: qsTr("Info"), enabled: enhancedScrollBar.showInfo }
+                ]
+                
+                var bestLine = -1
+                var minDist = Number.MAX_VALUE
+                var bestType = ""
+                
+                for (var t = 0; t < allTypes.length; t++) {
+                    var type = allTypes[t]
+                    if (!type.enabled || !type.data || type.data.length === 0) continue
                     
-                    ToolTip.visible: containsMouse
-                    ToolTip.delay: 200
-                    ToolTip.text: qsTr("Warning at line") + " " + (modelData + 1)
+                    var arr = type.data
+                    // 简单的线性搜索优化（实际可以用二分，但这里只有点击时触发，性能要求不高）
+                    // 既然数组是有序的，我们可以二分查找到 clickedLine 附近
+                    
+                    // 简单遍历：由于我们不知道数组大小，但通常我们只需要找附近的
+                    // 我们可以直接根据 clickLine 在数组中 lower_bound
+                    
+                    // 二分查找 lower_bound
+                    var low = 0, high = arr.length - 1
+                    var idx = -1
+                    while (low <= high) {
+                        var mid = Math.floor((low + high) / 2)
+                        if (arr[mid] >= clickedLine - searchRange) {
+                            idx = mid
+                            high = mid - 1
+                        } else {
+                            low = mid + 1
+                        }
+                    }
+                    
+                    if (idx !== -1) {
+                        // Check forward from idx
+                        for (var k = idx; k < arr.length; k++) {
+                            var line = arr[k]
+                            if (line > clickedLine + searchRange) break
+                            
+                            var dist = Math.abs(line - clickedLine)
+                            if (dist < minDist) {
+                                minDist = dist
+                                bestLine = line
+                                bestType = type.name
+                            }
+                        }
+                    }
+                }
+                
+                return { line: bestLine, type: bestType }
+            }
+            
+            onClicked: (mouse) => {
+                var result = findOriginalLine(mouse.y)
+                if (result.line >= 0) {
+                     enhancedScrollBar.lineClicked(result.line)
                 }
             }
-        }
-        
-        // 信息标记（绿色，中间）
-        Repeater {
-            model: (showMarkers && showInfo) ? infoLines : []
             
-            Rectangle {
-                x: 10
-                y: Math.max(0, Math.min(modelData * markerTrack.lineToPixelRatio, markerTrack.height - markerTrack.markerHeight))
-                width: 6
-                height: markerTrack.markerHeight
-                radius: 1
-                color: infoColor
-                opacity: 0.8
-                
-                MouseArea {
-                    anchors.fill: parent
-                    anchors.margins: -3
-                    cursorShape: Qt.PointingHandCursor
-                    hoverEnabled: true
-                    onClicked: enhancedScrollBar.lineClicked(modelData)
-                    
-                    ToolTip.visible: containsMouse
-                    ToolTip.delay: 200
-                    ToolTip.text: qsTr("Info at line") + " " + (modelData + 1)
+            // 用于 Tooltip
+            hoverEnabled: true
+            property string tooltipText: ""
+            
+            onPositionChanged: (mouse) => {
+                var result = findOriginalLine(mouse.y)
+                if (result.line >= 0) {
+                    tooltipText = result.type + " " + qsTr("at line") + " " + (result.line + 1)
+                } else {
+                    tooltipText = ""
                 }
             }
-        }
-        
-        // 书签标记（蓝色三角形，右侧）
-        Repeater {
-            model: (showMarkers && showBookmarks) ? bookmarks : []
             
-            Canvas {
-                x: parent.width - 9
-                y: Math.max(0, Math.min(modelData * markerTrack.lineToPixelRatio - 2, markerTrack.height - 6))
-                width: 9
-                height: 7
-                
-                onPaint: {
-                    var ctx = getContext("2d")
-                    ctx.clearRect(0, 0, width, height)
-                    ctx.fillStyle = bookmarkColor
-                    ctx.beginPath()
-                    ctx.moveTo(0, 0)
-                    ctx.lineTo(width, height / 2)
-                    ctx.lineTo(0, height)
-                    ctx.closePath()
-                    ctx.fill()
-                }
-                
-                // 主题变化时重绘
-                Connections {
-                    target: enhancedScrollBar
-                    function onBookmarkColorChanged() { parent.requestPaint() }
-                }
-                
-                MouseArea {
-                    anchors.fill: parent
-                    anchors.margins: -3
-                    cursorShape: Qt.PointingHandCursor
-                    hoverEnabled: true
-                    onClicked: enhancedScrollBar.lineClicked(modelData)
-                    
-                    ToolTip.visible: containsMouse
-                    ToolTip.delay: 200
-                    ToolTip.text: qsTr("Bookmark at line") + " " + (modelData + 1)
-                }
-            }
-        }
-        
-        // 搜索结果标记（黄色/橙色，右侧）
-        Repeater {
-            model: (showMarkers && showSearchResults) ? searchResults : []
-            
-            Rectangle {
-                x: parent.width - 7
-                y: Math.max(0, Math.min(modelData * markerTrack.lineToPixelRatio, markerTrack.height - markerTrack.markerHeight))
-                width: 7
-                height: markerTrack.markerHeight
-                radius: 1
-                color: searchColor
-                
-                MouseArea {
-                    anchors.fill: parent
-                    anchors.margins: -3
-                    cursorShape: Qt.PointingHandCursor
-                    hoverEnabled: true
-                    onClicked: enhancedScrollBar.lineClicked(modelData)
-                    
-                    ToolTip.visible: containsMouse
-                    ToolTip.delay: 200
-                    ToolTip.text: qsTr("Search result at line") + " " + (modelData + 1)
-                }
-            }
+            ToolTip.visible: tooltipText !== "" && containsMouse
+            ToolTip.delay: 200
+            ToolTip.text: tooltipText
         }
     }
     

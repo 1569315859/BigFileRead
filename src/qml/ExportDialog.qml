@@ -22,9 +22,12 @@ Popup {
     property int exportFormat: 0  // 0 = CSV, 1 = HTML
     property bool bookmarksOnly: false
     property int startLine: 1
-    property int endLine: _logModel.totalLineCount()
+    property int endLine: logModel ? logModel.totalLineCount() : 0
     property bool exportAll: true
     property bool enableSanitization: false  // 脱敏开关
+    
+    // Add logModel property
+    property var logModel: null
     
     signal exportCompleted(string path)
     signal configureRequested()  // 请求打开脱敏配置对话框
@@ -104,7 +107,7 @@ Popup {
             
             RadioButton {
                 id: allLinesRadio
-                text: qsTr("All lines (%1 total)").arg(_logModel.totalLineCount().toLocaleString())
+                text: qsTr("All lines (%1 total)").arg(logModel ? logModel.totalLineCount().toLocaleString() : "0")
                 checked: true
                 onCheckedChanged: if (checked) exportAll = true
                 contentItem: Text {
@@ -117,8 +120,8 @@ Popup {
             
             RadioButton {
                 id: currentViewRadio
-                text: qsTr("Current view (%1 filtered lines)").arg(_logModel.lineCount.toLocaleString())
-                visible: _logModel.isFilterMode
+                text: qsTr("Current view (%1 filtered lines)").arg(logModel ? logModel.lineCount.toLocaleString() : "0")
+                visible: logModel ? logModel.isFilterMode : false
                 onCheckedChanged: if (checked) exportAll = false
                 contentItem: Text {
                     text: parent.text
@@ -155,7 +158,7 @@ Popup {
                     font.pixelSize: 12
                     color: textColor
                     placeholderText: qsTr("Start")
-                    validator: IntValidator { bottom: 1; top: _logModel.totalLineCount() }
+                    validator: IntValidator { bottom: 1; top: logModel ? logModel.totalLineCount() : 1 }
                     background: Rectangle {
                         color: bgColor
                         border.color: borderColor
@@ -173,11 +176,11 @@ Popup {
                     id: endLineInput
                     implicitWidth: 100
                     implicitHeight: 28
-                    text: _logModel.totalLineCount().toString()
+                    text: logModel ? logModel.totalLineCount().toString() : "0"
                     font.pixelSize: 12
                     color: textColor
                     placeholderText: qsTr("End")
-                    validator: IntValidator { bottom: 1; top: _logModel.totalLineCount() }
+                    validator: IntValidator { bottom: 1; top: logModel ? logModel.totalLineCount() : 1 }
                     background: Rectangle {
                         color: bgColor
                         border.color: borderColor
@@ -197,8 +200,8 @@ Popup {
         // Bookmarks only option
         CheckBox {
             id: bookmarksOnlyCheck
-            text: qsTr("Export bookmarked lines only (%1 bookmarks)").arg(_logModel.bookmarkLines.length)
-            enabled: _logModel.bookmarkLines.length > 0
+            text: qsTr("Export bookmarked lines only (%1 bookmarks)").arg(logModel && logModel.bookmarkLines ? logModel.bookmarkLines.length : 0)
+            enabled: logModel && logModel.bookmarkLines ? logModel.bookmarkLines.length > 0 : false
             onCheckedChanged: bookmarksOnly = checked
             contentItem: Text {
                 text: parent.text
@@ -386,10 +389,12 @@ Popup {
             var sanitizationLevel = enableSanitization ? sanitizationLevelCombo.currentIndex : -1
             
             var success = false
+            if (logModel) {
             if (exportFormat === 0) {
-                success = _logModel.exportToCSV(path, start, end, bookmarksOnly, sanitizationLevel)
+                success = logModel.exportToCSV(path, start, end, bookmarksOnly, sanitizationLevel)
             } else {
-                success = _logModel.exportToHTML(path, start, end, bookmarksOnly, sanitizationLevel)
+                success = logModel.exportToHTML(path, start, end, bookmarksOnly, sanitizationLevel)
+            }
             }
             
             if (success) {
@@ -400,8 +405,9 @@ Popup {
     }
     
     function doExport() {
+        if (!logModel) return
         // Default filename based on source file
-        var baseName = _logModel.filePath.split('/').pop().split('\\').pop()
+        var baseName = logModel.filePath.split('/').pop().split('\\').pop()
         var extension = exportFormat === 0 ? ".csv" : ".html"
         var suffix = bookmarksOnly ? "_bookmarks" : ""
         saveDialog.currentFile = baseName + suffix + extension
@@ -416,6 +422,6 @@ Popup {
         sanitizationCheck.checked = false
         sanitizationLevelCombo.currentIndex = 1  // Standard
         startLineInput.text = "1"
-        endLineInput.text = _logModel.totalLineCount().toString()
+        endLineInput.text = logModel ? logModel.totalLineCount().toString() : "0"
     }
 }

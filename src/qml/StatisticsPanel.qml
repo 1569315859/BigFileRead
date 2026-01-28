@@ -35,7 +35,10 @@ Dialog {
         trace: 0,
         other: 0
     })
-    
+
+    // 支持动态绑定不同的模型，默认为全局 _logModel
+    property var targetLogModel: _logModel
+
     // 加载状态
     property bool isLoading: false
     
@@ -47,7 +50,7 @@ Dialog {
             Layout.fillWidth: true
             
             Label {
-                text: qsTr("File: %1").arg(_logModel ? _logModel.filePath : "")
+                text: qsTr("File: %1").arg(targetLogModel ? targetLogModel.filePath : "")
                 elide: Text.ElideMiddle
                 Layout.fillWidth: true
                 font.pixelSize: 12
@@ -72,18 +75,17 @@ Dialog {
                 
                 Label { text: qsTr("Total Lines:"); font.bold: true }
                 Label { text: root.statistics.total.toLocaleString() }
-                
-                Label { text: qsTr("File Size:"); font.bold: true }
-                Label { text: _logModel ? formatFileSize(_logModel.fileSize) : "0" }
+                Label { text: targetLogModel ? formatFileSize(targetLogModel.fileSize) : "0" }
                 
                 Label { text: qsTr("Current View:"); font.bold: true }
-                Label { text: _logModel ? _logModel.lineCount.toLocaleString() + qsTr(" lines") : "0" }
+                Label { text: targetLogModel ? targetLogModel.lineCount.toLocaleString() + qsTr(" lines") : "0" }
                 
                 Label { text: qsTr("Filter Mode:"); font.bold: true }
                 Label { 
-                    text: _logModel && _logModel.isFilterMode ? qsTr("Yes") : qsTr("No")
-                    color: _logModel && _logModel.isFilterMode ? "#2196F3" : _themeManager.textColor
+                    text: targetLogModel && targetLogModel.isFilterMode ? qsTr("Yes") : qsTr("No")
+                    color: targetLogModel && targetLogModel.isFilterMode ? "#2196F3" : _themeManager.textColor
                 }
+
             }
         }
         
@@ -272,59 +274,9 @@ Dialog {
             }
         }
     }
-    
-    // 饼状图保存对话框
-    FileDialog {
-        id: pieChartSaveDialog
-        title: qsTr("Save Pie Chart")
-        fileMode: FileDialog.SaveFile
-        nameFilters: ["PNG Image (*.png)"]
-        currentFolder: Platform.StandardPaths.writableLocation(Platform.StandardPaths.PicturesLocation)
-        
-        onAccepted: {
-            var path = selectedFile.toString().replace("file:///", "")
-            if (!path.toLowerCase().endsWith(".png")) {
-                path += ".png"
-            }
-            exportPieChart(path)
-        }
-    }
-    
-    // 柱状图保存对话框
-    FileDialog {
-        id: barChartSaveDialog
-        title: qsTr("Save Bar Chart")
-        fileMode: FileDialog.SaveFile
-        nameFilters: ["PNG Image (*.png)"]
-        currentFolder: Platform.StandardPaths.writableLocation(Platform.StandardPaths.PicturesLocation)
-        
-        onAccepted: {
-            var path = selectedFile.toString().replace("file:///", "")
-            if (!path.toLowerCase().endsWith(".png")) {
-                path += ".png"
-            }
-            exportBarChart(path)
-        }
-    }
-    
-    function formatFileSize(bytes) {
-        if (!bytes) return "0 B"
-        if (bytes < 1024) return bytes + " B"
-        if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB"
-        if (bytes < 1024 * 1024 * 1024) return (bytes / (1024 * 1024)).toFixed(1) + " MB"
-        return (bytes / (1024 * 1024 * 1024)).toFixed(2) + " GB"
-    }
-    
-    function getPercentage(value) {
-        var total = root.statistics.error + root.statistics.warn + 
-                    root.statistics.info + root.statistics.debug + 
-                    root.statistics.trace + root.statistics.other
-        if (total === 0) return "0.0"
-        return ((value / total) * 100).toFixed(1)
-    }
-    
+
     function calculateStatistics() {
-        if (!_logModel) return
+        if (!targetLogModel) return
         
         var errorCount = 0
         var warnCount = 0
@@ -333,8 +285,8 @@ Dialog {
         var traceCount = 0
         
         // Use getLogStatistics if available, otherwise fall back to line methods
-        if (typeof _logModel.getLogStatistics === "function") {
-            var stats = _logModel.getLogStatistics()
+        if (typeof targetLogModel.getLogStatistics === "function") {
+            var stats = targetLogModel.getLogStatistics()
             errorCount = stats.error || 0
             warnCount = stats.warn || 0
             infoCount = stats.info || 0
@@ -342,21 +294,21 @@ Dialog {
             traceCount = stats.trace || 0
         } else {
             // Try errorLines, warningLines, infoLines methods
-            if (typeof _logModel.errorLines === "function") {
-                var errorLines = _logModel.errorLines()
+            if (typeof targetLogModel.errorLines === "function") {
+                var errorLines = targetLogModel.errorLines()
                 errorCount = Array.isArray(errorLines) ? errorLines.length : 0
             }
-            if (typeof _logModel.warningLines === "function") {
-                var warnLines = _logModel.warningLines()
+            if (typeof targetLogModel.warningLines === "function") {
+                var warnLines = targetLogModel.warningLines()
                 warnCount = Array.isArray(warnLines) ? warnLines.length : 0
             }
-            if (typeof _logModel.infoLines === "function") {
-                var infoLines = _logModel.infoLines()
+            if (typeof targetLogModel.infoLines === "function") {
+                var infoLines = targetLogModel.infoLines()
                 infoCount = Array.isArray(infoLines) ? infoLines.length : 0
             }
         }
         
-        var total = _logModel.totalLineCount || _logModel.lineCount || 0
+        var total = targetLogModel.totalLineCount || targetLogModel.lineCount || 0
         var otherCount = Math.max(0, total - errorCount - warnCount - infoCount - debugCount - traceCount)
         
         root.statistics = {

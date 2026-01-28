@@ -18,6 +18,7 @@ Popup {
     
     // Output property
     property int targetLine: -1
+    property var logModel: null  // Allow passing the active model
     
     signal accepted()
 
@@ -50,9 +51,24 @@ Popup {
             }
             
             Label {
-                text: "(1 - " + (_logModel ? _logModel.totalLineCount.toLocaleString() : "0") + ")"
+                id: rangeLabel
+                text: {
+                    // 始终使用 totalLineCount 作为范围（即使在过滤模式）
+                    var maxLine = logModel ? logModel.totalLineCount : 1
+                    maxLine = Math.max(maxLine, 1)
+                    return "(1 - " + maxLine.toLocaleString() + ")"
+                }
                 color: Qt.darker(textColor, 1.3)
                 font.pixelSize: 12
+                
+                Connections {
+                    target: logModel
+                    function onTotalLineCountChanged() {
+                        var maxLine = logModel ? logModel.totalLineCount : 1
+                        maxLine = Math.max(maxLine, 1)
+                        rangeLabel.text = "(1 - " + maxLine.toLocaleString() + ")"
+                    }
+                }
             }
         }
 
@@ -68,7 +84,11 @@ Popup {
                 border.color: _themeManager.borderColor
                 radius: 4 
             }
-            validator: IntValidator { bottom: 1; top: _logModel ? _logModel.totalLineCount : 1 }
+            validator: IntValidator { 
+                id: lineValidator
+                bottom: 1
+                top: 1
+            }
             focus: true
             onAccepted: {
                 var line = parseInt(lineInput.text)
@@ -131,8 +151,22 @@ Popup {
         }
     }
     
+    // 连接到 logModel 的行数变化信号
+    Connections {
+        target: logModel
+        function onTotalLineCountChanged() {
+            var maxLine = logModel ? logModel.totalLineCount : 1
+            maxLine = Math.max(maxLine, 1)
+            lineValidator.top = maxLine
+        }
+    }
+    
     onOpened: {
         lineInput.text = ""
         lineInput.forceActiveFocus()
+        // 在对话框打开时更新范围
+        var maxLine = logModel ? logModel.totalLineCount : 1
+        maxLine = Math.max(maxLine, 1)
+        lineValidator.top = maxLine
     }
 }

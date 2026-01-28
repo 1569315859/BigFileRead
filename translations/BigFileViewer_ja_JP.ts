@@ -432,67 +432,67 @@
 <context>
     <name>AdvancedFilterDialog</name>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="32"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="35"/>
         <source>Advanced Filter</source>
         <translation>詳細フィルター</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="56"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="59"/>
         <source>Enable Time Range Filter</source>
         <translation>時間範囲フィルターを有効化</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="92"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="95"/>
         <source>From:</source>
         <translation>開始:</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="112"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="115"/>
         <source>To:</source>
         <translation>終了:</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="140"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="143"/>
         <source>Log Level:</source>
         <translation>ログレベル:</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="269"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="272"/>
         <source>Keywords (space or comma separated):</source>
         <translation>キーワード (スペースまたはカンマ区切り):</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="278"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="281"/>
         <source>e.g. error timeout database</source>
         <translation>例: error timeout database</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="299"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="302"/>
         <source>Logic:</source>
         <translation>ロジック:</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="347"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="350"/>
         <source>Regex</source>
         <translation>正規表現</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="363"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="366"/>
         <source>Case</source>
         <translation>大文字/小文字を区別</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="387"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="390"/>
         <source>Clear All</source>
         <translation>すべてクリア</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="417"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="420"/>
         <source>Apply</source>
         <translation>適用</translation>
     </message>
     <message>
-        <location filename="../src/qml/AdvancedFilterDialog.qml" line="457"/>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="462"/>
         <source>Cancel</source>
         <translation>キャンセル</translation>
     </message>
@@ -500,42 +500,42 @@
 <context>
     <name>BigFileModel</name>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="98"/>
+        <location filename="../src/BigFileModel.cpp" line="101"/>
         <source>Cannot open file: %1</source>
         <translation>ファイルを開けません: %1</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="110"/>
+        <location filename="../src/BigFileModel.cpp" line="113"/>
         <source>File is empty</source>
         <translation>ファイルは空です</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="118"/>
+        <location filename="../src/BigFileModel.cpp" line="122"/>
         <source>Memory mapping failed: %1</source>
         <translation>メモリマッピングに失敗しました: %1</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="284"/>
+        <location filename="../src/BigFileModel.cpp" line="289"/>
         <source>Load complete: %1 lines</source>
         <translation>読み込み完了: %1 行</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="365"/>
+        <location filename="../src/BigFileModel.cpp" line="371"/>
         <source>Done: %1 lines, %2 MB, %3 ms</source>
         <translation>完了: %1 行, %2 MB, %3 ms</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="522"/>
+        <location filename="../src/BigFileModel.cpp" line="529"/>
         <source>Content</source>
         <translation>内容</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="564"/>
+        <location filename="../src/BigFileModel.cpp" line="571"/>
         <source>Line %1 (Original length: %2 chars, truncated)</source>
         <translation>%1 行目 (元の長さ: %2 文字、切り捨て済み)</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="566"/>
+        <location filename="../src/BigFileModel.cpp" line="575"/>
         <source>Line %1</source>
         <translation>%1 行目</translation>
     </message>
@@ -543,37 +543,37 @@
 <context>
     <name>BookmarkCommentDialog</name>
     <message>
-        <location filename="../src/qml/BookmarkCommentDialog.qml" line="38"/>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="39"/>
         <source>Edit Bookmark Comment</source>
         <translation>ブックマークのコメントを編集</translation>
     </message>
     <message>
-        <location filename="../src/qml/BookmarkCommentDialog.qml" line="67"/>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="68"/>
         <source>Line %1</source>
         <translation>L%1 行目</translation>
     </message>
     <message>
-        <location filename="../src/qml/BookmarkCommentDialog.qml" line="80"/>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="81"/>
         <source>Comment:</source>
         <translation>コメント:</translation>
     </message>
     <message>
-        <location filename="../src/qml/BookmarkCommentDialog.qml" line="90"/>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="91"/>
         <source>Enter bookmark note...</source>
         <translation>ブックマークのメモを入力...</translation>
     </message>
     <message>
-        <location filename="../src/qml/BookmarkCommentDialog.qml" line="110"/>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="111"/>
         <source>Remove Bookmark</source>
         <translation>ブックマークを削除</translation>
     </message>
     <message>
-        <location filename="../src/qml/BookmarkCommentDialog.qml" line="135"/>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="136"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../src/qml/BookmarkCommentDialog.qml" line="153"/>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="154"/>
         <source>Cancel</source>
         <translation>キャンセル</translation>
     </message>
@@ -1223,97 +1223,97 @@ Run analysis to find related log entries.</source>
 <context>
     <name>DashboardPanel</name>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="90"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="93"/>
         <source>Log Analytics Dashboard</source>
         <translation>ログ解析ダッシュボード</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="105"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="108"/>
         <source>Time Range: </source>
         <translation>時間範囲: </translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="146"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="149"/>
         <source>Time Interval:</source>
         <translation>時間間隔:</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="154"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="157"/>
         <source>Per Minute</source>
         <translation>分単位</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="155"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="158"/>
         <source>Per Hour</source>
         <translation>時間単位</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="156"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="159"/>
         <source>Per Day</source>
         <translation>日単位</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="190"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="193"/>
         <source>Chart Type:</source>
         <translation>グラフの種類:</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="200"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="203"/>
         <source>Stacked</source>
         <translation>積み上げ</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="223"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="226"/>
         <source>Grouped</source>
         <translation>グループ化</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="246"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="249"/>
         <source>Area</source>
         <translation>エリア</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="273"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="276"/>
         <source>Export</source>
         <translation>エクスポート</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="294"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="297"/>
         <source>Refresh</source>
         <translation>更新</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="340"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="343"/>
         <source>Log Volume Over Time</source>
         <translation>ログボリュームの推移</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="362"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="365"/>
         <source>Loading data...</source>
         <translation>データを読み込み中...</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="385"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="388"/>
         <source>Level Distribution</source>
         <translation>レベル分布</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="473"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="476"/>
         <source>Total Lines:</source>
         <translation>総行数:</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="495"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="498"/>
         <source>Filtered:</source>
         <translation>フィルター済み:</translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="513"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="516"/>
         <source>Data Points: </source>
         <translation>データポイント: </translation>
     </message>
     <message>
-        <location filename="../src/qml/DashboardPanel.qml" line="526"/>
+        <location filename="../src/qml/DashboardPanel.qml" line="529"/>
         <source>Export Dashboard Chart</source>
         <translation>ダッシュボードチャートのエクスポート</translation>
     </message>
@@ -2189,57 +2189,78 @@ Click &apos;Add Rule&apos; to create one.</source>
 <context>
     <name>EnhancedScrollBar</name>
     <message>
-        <location filename="../src/qml/EnhancedScrollBar.qml" line="112"/>
         <source>Error at line</source>
-        <translation>エラー (行)</translation>
+        <translation type="vanished">エラー (行)</translation>
     </message>
     <message>
-        <location filename="../src/qml/EnhancedScrollBar.qml" line="139"/>
         <source>Warning at line</source>
-        <translation>警告 (行)</translation>
+        <translation type="vanished">警告 (行)</translation>
     </message>
     <message>
-        <location filename="../src/qml/EnhancedScrollBar.qml" line="166"/>
         <source>Info at line</source>
-        <translation>情報 (行)</translation>
+        <translation type="vanished">情報 (行)</translation>
     </message>
     <message>
-        <location filename="../src/qml/EnhancedScrollBar.qml" line="208"/>
         <source>Bookmark at line</source>
-        <translation>ブックマーク (行)</translation>
+        <translation type="vanished">ブックマーク (行)</translation>
     </message>
     <message>
-        <location filename="../src/qml/EnhancedScrollBar.qml" line="234"/>
         <source>Search result at line</source>
-        <translation>検索結果 (行)</translation>
+        <translation type="vanished">検索結果 (行)</translation>
     </message>
     <message>
-        <location filename="../src/qml/EnhancedScrollBar.qml" line="319"/>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="347"/>
         <source>Show Markers</source>
         <translation>マーカーを表示</translation>
     </message>
     <message>
-        <location filename="../src/qml/EnhancedScrollBar.qml" line="328"/>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="356"/>
         <source>Errors</source>
         <translation>エラー</translation>
     </message>
     <message>
-        <location filename="../src/qml/EnhancedScrollBar.qml" line="336"/>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="364"/>
         <source>Warnings</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../src/qml/EnhancedScrollBar.qml" line="344"/>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="192"/>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="372"/>
         <source>Info</source>
         <translation>情報</translation>
     </message>
     <message>
-        <location filename="../src/qml/EnhancedScrollBar.qml" line="352"/>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="188"/>
+        <source>Bookmark</source>
+        <translation type="unfinished">ブックマーク</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="189"/>
+        <source>Error</source>
+        <translation type="unfinished">エラー</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="190"/>
+        <source>Search result</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="191"/>
+        <source>Warning</source>
+        <translation type="unfinished">警告</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="256"/>
+        <source>at line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="380"/>
         <source>Bookmarks</source>
         <translation>ブックマーク</translation>
     </message>
     <message>
-        <location filename="../src/qml/EnhancedScrollBar.qml" line="360"/>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="388"/>
         <source>Search Results</source>
         <translation>検索結果</translation>
     </message>
@@ -2471,97 +2492,97 @@ Click &apos;Add Rule&apos; to create one.</source>
 <context>
     <name>ExportDialog</name>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="43"/>
+        <location filename="../src/qml/ExportDialog.qml" line="46"/>
         <source>Export Data</source>
         <translation>データをエクスポート</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="56"/>
+        <location filename="../src/qml/ExportDialog.qml" line="59"/>
         <source>Format:</source>
         <translation>フォーマット:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="100"/>
+        <location filename="../src/qml/ExportDialog.qml" line="103"/>
         <source>Export Range:</source>
         <translation>エクスポート範囲:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="107"/>
+        <location filename="../src/qml/ExportDialog.qml" line="110"/>
         <source>All lines (%1 total)</source>
         <translation>全ての行 (合計 %1)</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="120"/>
+        <location filename="../src/qml/ExportDialog.qml" line="123"/>
         <source>Current view (%1 filtered lines)</source>
         <translation>現在の表示 (%1 個のフィルタされた行)</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="133"/>
+        <location filename="../src/qml/ExportDialog.qml" line="136"/>
         <source>Line range:</source>
         <translation>行の範囲:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="157"/>
+        <location filename="../src/qml/ExportDialog.qml" line="160"/>
         <source>Start</source>
         <translation>開始</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="179"/>
+        <location filename="../src/qml/ExportDialog.qml" line="182"/>
         <source>End</source>
         <translation>終了</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="200"/>
+        <location filename="../src/qml/ExportDialog.qml" line="203"/>
         <source>Export bookmarked lines only (%1 bookmarks)</source>
         <translation>ブックマークされた行のみをエクスポート (%1 個のブックマーク)</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="226"/>
+        <location filename="../src/qml/ExportDialog.qml" line="229"/>
         <source>Enable data sanitization before export</source>
         <translation>エクスポート前にデータサニタイズを有効にする</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="244"/>
+        <location filename="../src/qml/ExportDialog.qml" line="247"/>
         <source>Sanitization Level:</source>
         <translation>サニタイズレベル:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="253"/>
+        <location filename="../src/qml/ExportDialog.qml" line="256"/>
         <source>Minimal</source>
         <translation>最小限</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="253"/>
+        <location filename="../src/qml/ExportDialog.qml" line="256"/>
         <source>Standard</source>
         <translation>標準</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="253"/>
+        <location filename="../src/qml/ExportDialog.qml" line="256"/>
         <source>Strict</source>
         <translation>厳格</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="303"/>
+        <location filename="../src/qml/ExportDialog.qml" line="306"/>
         <source>Configure...</source>
         <translation>設定...</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="333"/>
+        <location filename="../src/qml/ExportDialog.qml" line="336"/>
         <source>Export</source>
         <translation>エクスポート</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="351"/>
+        <location filename="../src/qml/ExportDialog.qml" line="354"/>
         <source>Cancel</source>
         <translation>キャンセル</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="374"/>
+        <location filename="../src/qml/ExportDialog.qml" line="377"/>
         <source>Export as CSV</source>
         <translation>CSVとしてエクスポート</translation>
     </message>
     <message>
-        <location filename="../src/qml/ExportDialog.qml" line="374"/>
+        <location filename="../src/qml/ExportDialog.qml" line="377"/>
         <source>Export as HTML</source>
         <translation>HTMLとしてエクスポート</translation>
     </message>
@@ -3092,27 +3113,27 @@ Use &apos;Save Current Filter&apos; to create one</source>
 <context>
     <name>GoToLineDialog</name>
     <message>
-        <location filename="../src/qml/GoToLineDialog.qml" line="35"/>
+        <location filename="../src/qml/GoToLineDialog.qml" line="36"/>
         <source>Go To Line</source>
         <translation>指定行へ移動</translation>
     </message>
     <message>
-        <location filename="../src/qml/GoToLineDialog.qml" line="47"/>
+        <location filename="../src/qml/GoToLineDialog.qml" line="48"/>
         <source>Line Number:</source>
         <translation>行番号:</translation>
     </message>
     <message>
-        <location filename="../src/qml/GoToLineDialog.qml" line="63"/>
+        <location filename="../src/qml/GoToLineDialog.qml" line="79"/>
         <source>Enter line number...</source>
         <translation>行番号を入力...</translation>
     </message>
     <message>
-        <location filename="../src/qml/GoToLineDialog.qml" line="90"/>
+        <location filename="../src/qml/GoToLineDialog.qml" line="110"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../src/qml/GoToLineDialog.qml" line="114"/>
+        <location filename="../src/qml/GoToLineDialog.qml" line="134"/>
         <source>Cancel</source>
         <translation>キャンセル</translation>
     </message>
@@ -3400,12 +3421,12 @@ This action cannot be undone.</source>
 <context>
     <name>Main</name>
     <message>
-        <location filename="../src/qml/Main.qml" line="110"/>
+        <location filename="../src/qml/Main.qml" line="109"/>
         <source>Drop file to open</source>
         <translation>ドロップしてファイルを開く</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="415"/>
+        <location filename="../src/qml/Main.qml" line="414"/>
         <source>File</source>
         <translation>ファイル</translation>
     </message>
@@ -3426,7 +3447,7 @@ This action cannot be undone.</source>
     </message>
     <message>
         <location filename="../src/qml/Main.qml" line="472"/>
-        <location filename="../src/qml/Main.qml" line="772"/>
+        <location filename="../src/qml/Main.qml" line="775"/>
         <source>Reload File</source>
         <translation>ファイルを再読み込み</translation>
     </message>
@@ -3456,330 +3477,330 @@ This action cannot be undone.</source>
         <translation>ブックマーク</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="540"/>
+        <location filename="../src/qml/Main.qml" line="541"/>
         <source>Add/Remove Bookmark</source>
         <translation>ブックマークの追加/削除</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="554"/>
-        <location filename="../src/qml/Main.qml" line="2175"/>
+        <location filename="../src/qml/Main.qml" line="555"/>
+        <location filename="../src/qml/Main.qml" line="2190"/>
         <source>Next Bookmark</source>
         <translation>次のブックマーク</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="564"/>
-        <location filename="../src/qml/Main.qml" line="2185"/>
+        <location filename="../src/qml/Main.qml" line="565"/>
+        <location filename="../src/qml/Main.qml" line="2200"/>
         <source>Previous Bookmark</source>
         <translation>前のブックマーク</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="585"/>
+        <location filename="../src/qml/Main.qml" line="586"/>
         <source>Clear All Bookmarks</source>
         <translation>すべてのブックマークをクリア</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="595"/>
-        <location filename="../src/qml/Main.qml" line="600"/>
+        <location filename="../src/qml/Main.qml" line="596"/>
+        <location filename="../src/qml/Main.qml" line="602"/>
         <source>View</source>
         <translation>表示</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="604"/>
+        <location filename="../src/qml/Main.qml" line="606"/>
         <source>Text View (Raw)</source>
         <translation>テキスト表示 (Raw)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="613"/>
+        <location filename="../src/qml/Main.qml" line="615"/>
         <source>Grid View (Parsed)</source>
         <translation>グリッド表示 (解析済み)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="627"/>
+        <location filename="../src/qml/Main.qml" line="629"/>
         <source>Columns</source>
         <translation>列</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="631"/>
+        <location filename="../src/qml/Main.qml" line="633"/>
         <source>Line Number</source>
         <translation>行番号</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="637"/>
+        <location filename="../src/qml/Main.qml" line="639"/>
         <source>Time</source>
         <translation>時刻</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="643"/>
+        <location filename="../src/qml/Main.qml" line="645"/>
         <source>Level</source>
         <translation>レベル</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="649"/>
-        <location filename="../src/qml/Main.qml" line="1857"/>
+        <location filename="../src/qml/Main.qml" line="651"/>
+        <location filename="../src/qml/Main.qml" line="1872"/>
         <source>Message</source>
         <translation>メッセージ</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="658"/>
+        <location filename="../src/qml/Main.qml" line="660"/>
         <source>Show All Columns</source>
         <translation>すべての列を表示</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="665"/>
+        <location filename="../src/qml/Main.qml" line="667"/>
         <source>Hide Optional Columns</source>
         <translation>オプションの列を非表示</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="677"/>
+        <location filename="../src/qml/Main.qml" line="679"/>
         <source>Navigation Markers</source>
         <translation>ナビゲーションマーカー</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="687"/>
+        <location filename="../src/qml/Main.qml" line="689"/>
         <source>Tools</source>
         <translation>ツール</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="694"/>
-        <location filename="../src/qml/Main.qml" line="2241"/>
+        <location filename="../src/qml/Main.qml" line="697"/>
+        <location filename="../src/qml/Main.qml" line="2256"/>
         <source>Advanced Filter...</source>
         <translation>高度なフィルター...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="716"/>
+        <location filename="../src/qml/Main.qml" line="719"/>
         <source>Export Visible Lines...</source>
         <translation>表示中の行をエクスポート...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="721"/>
+        <location filename="../src/qml/Main.qml" line="724"/>
         <source>Follow Mode (Live)</source>
         <translation>追尾モード (ライブ)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="784"/>
+        <location filename="../src/qml/Main.qml" line="787"/>
         <source>Settings</source>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="791"/>
+        <location filename="../src/qml/Main.qml" line="795"/>
         <source>Theme</source>
         <translation>テーマ</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="820"/>
+        <location filename="../src/qml/Main.qml" line="824"/>
         <source>Language</source>
         <translation>言語</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="919"/>
+        <location filename="../src/qml/Main.qml" line="923"/>
         <source>Encoding</source>
         <translation>エンコーディング</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="945"/>
+        <location filename="../src/qml/Main.qml" line="949"/>
         <source>Keyword Colors...</source>
         <translation>キーワードの色...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="977"/>
+        <location filename="../src/qml/Main.qml" line="981"/>
         <source>Hide Scroll Markers</source>
         <translation>スクロールマーカーを非表示</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="977"/>
+        <location filename="../src/qml/Main.qml" line="981"/>
         <source>Show Scroll Markers</source>
         <translation>スクロールマーカーを表示</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="984"/>
+        <location filename="../src/qml/Main.qml" line="988"/>
         <source>Register...</source>
         <translation>登録...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="988"/>
+        <location filename="../src/qml/Main.qml" line="992"/>
         <source>About</source>
         <translation>バージョン情報</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1197"/>
+        <location filename="../src/qml/Main.qml" line="1204"/>
         <source>High-performance large file viewer</source>
         <translation>高性能な大容量ファイルビューアー</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1203"/>
+        <location filename="../src/qml/Main.qml" line="1210"/>
         <source>Supports files over 10GB</source>
         <translation>10GB以上のファイルをサポート</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1358"/>
+        <location filename="../src/qml/Main.qml" line="1373"/>
         <source>Open Log File</source>
         <translation>ログファイルを開く</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1381"/>
+        <location filename="../src/qml/Main.qml" line="1396"/>
         <source>Export Visible Lines</source>
         <translation>表示中の行をエクスポート</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1421"/>
+        <location filename="../src/qml/Main.qml" line="1436"/>
         <source>Find:</source>
         <translation>検索:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1430"/>
+        <location filename="../src/qml/Main.qml" line="1445"/>
         <source>Enter search text (supports regex)...</source>
         <translation>検索テキストを入力 (正規表現対応)...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1447"/>
-        <location filename="../src/qml/Main.qml" line="1625"/>
+        <location filename="../src/qml/Main.qml" line="1462"/>
+        <location filename="../src/qml/Main.qml" line="1640"/>
         <source>Regex</source>
         <translation>正規表現</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1477"/>
+        <location filename="../src/qml/Main.qml" line="1492"/>
         <source>Find</source>
         <translation>検索</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1503"/>
+        <location filename="../src/qml/Main.qml" line="1518"/>
         <source>Previous</source>
         <translation>前へ</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1529"/>
+        <location filename="../src/qml/Main.qml" line="1544"/>
         <source>Next</source>
         <translation>次へ</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1551"/>
+        <location filename="../src/qml/Main.qml" line="1566"/>
         <source>matches</source>
         <translation>件の一致</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1599"/>
+        <location filename="../src/qml/Main.qml" line="1614"/>
         <source>Filter:</source>
         <translation>フィルター:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1608"/>
+        <location filename="../src/qml/Main.qml" line="1623"/>
         <source>Enter filter text (supports regex)...</source>
         <translation>フィルターテキストを入力 (正規表現対応)...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1655"/>
+        <location filename="../src/qml/Main.qml" line="1670"/>
         <source>Apply</source>
         <translation>適用</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1677"/>
+        <location filename="../src/qml/Main.qml" line="1692"/>
         <source>Clear</source>
         <translation>クリア</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1701"/>
+        <location filename="../src/qml/Main.qml" line="1716"/>
         <source>Showing</source>
         <translation>表示中</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1747"/>
-        <location filename="../src/qml/Main.qml" line="2001"/>
+        <location filename="../src/qml/Main.qml" line="1762"/>
+        <location filename="../src/qml/Main.qml" line="2016"/>
         <source>Line</source>
         <translation>行</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2001"/>
+        <location filename="../src/qml/Main.qml" line="2016"/>
         <source>Line Details</source>
         <translation>行の詳細</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2012"/>
+        <location filename="../src/qml/Main.qml" line="2027"/>
         <source>Raw</source>
         <translation>Raw</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2012"/>
+        <location filename="../src/qml/Main.qml" line="2027"/>
         <source>JSON</source>
         <translation>JSON</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2039"/>
+        <location filename="../src/qml/Main.qml" line="2054"/>
         <source>Copy</source>
         <translation>コピー</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2086"/>
+        <location filename="../src/qml/Main.qml" line="2101"/>
         <source>(Select a line to view details)</source>
         <translation>(詳細を表示するには行を選択してください)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2120"/>
+        <location filename="../src/qml/Main.qml" line="2135"/>
         <source>No file opened</source>
         <translation>ファイルが開かれていません</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2130"/>
+        <location filename="../src/qml/Main.qml" line="2145"/>
         <source>Size:</source>
         <translation>サイズ:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2139"/>
-        <location filename="../src/qml/Main.qml" line="2140"/>
+        <location filename="../src/qml/Main.qml" line="2154"/>
+        <location filename="../src/qml/Main.qml" line="2155"/>
         <source>Lines:</source>
         <translation>行数:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2148"/>
+        <location filename="../src/qml/Main.qml" line="2163"/>
         <source>Registered</source>
         <translation>登録済み</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2148"/>
+        <location filename="../src/qml/Main.qml" line="2163"/>
         <source>Trial:</source>
         <translation>試用:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2148"/>
+        <location filename="../src/qml/Main.qml" line="2163"/>
         <source>days left</source>
         <translation>日残っています</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2160"/>
+        <location filename="../src/qml/Main.qml" line="2175"/>
         <source>Copy Line</source>
         <translation>行をコピー</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2164"/>
+        <location filename="../src/qml/Main.qml" line="2179"/>
         <source>Copy Line Number</source>
         <translation>行番号をコピー</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2171"/>
+        <location filename="../src/qml/Main.qml" line="2186"/>
         <source>Toggle Bookmark</source>
         <translation>ブックマークの切り替え</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2198"/>
+        <location filename="../src/qml/Main.qml" line="2213"/>
         <source>Show Details</source>
         <translation>詳細を表示</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2202"/>
+        <location filename="../src/qml/Main.qml" line="2217"/>
         <source>Format JSON</source>
         <translation>JSONを整形</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2213"/>
+        <location filename="../src/qml/Main.qml" line="2228"/>
         <source>Filter This Level</source>
         <translation>このレベルでフィルター</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2227"/>
+        <location filename="../src/qml/Main.qml" line="2242"/>
         <source>Filter This Keyword...</source>
         <translation>このキーワードでフィルター...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2237"/>
+        <location filename="../src/qml/Main.qml" line="2252"/>
         <source>Go To Line...</source>
         <translation>指定行へ移動...</translation>
     </message>
@@ -3804,172 +3825,172 @@ This action cannot be undone.</source>
         <translation>ディレクトリを監視...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="545"/>
+        <location filename="../src/qml/Main.qml" line="546"/>
         <source>Edit Bookmark Comment...</source>
         <translation>ブックマークのコメントを編集...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="575"/>
+        <location filename="../src/qml/Main.qml" line="576"/>
         <source>Save Bookmarks...</source>
         <translation>ブックマークを保存...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="580"/>
+        <location filename="../src/qml/Main.qml" line="581"/>
         <source>Load Bookmarks...</source>
         <translation>ブックマークを読み込み...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="698"/>
+        <location filename="../src/qml/Main.qml" line="701"/>
         <source>Filter Templates...</source>
         <translation>フィルターテンプレート...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="706"/>
+        <location filename="../src/qml/Main.qml" line="709"/>
         <source>Workspaces...</source>
         <translation>ワークスペース...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="732"/>
+        <location filename="../src/qml/Main.qml" line="735"/>
         <source>Show Delta Time</source>
         <translation>デルタ時間を表示</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="744"/>
+        <location filename="../src/qml/Main.qml" line="747"/>
         <source>Merge Rolling Logs...</source>
         <translation>ローリングログをマージ...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="753"/>
+        <location filename="../src/qml/Main.qml" line="756"/>
         <source>Statistics...</source>
         <translation>統計...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="762"/>
+        <location filename="../src/qml/Main.qml" line="765"/>
         <source>Dashboard...</source>
         <translation>ダッシュボード...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="767"/>
+        <location filename="../src/qml/Main.qml" line="770"/>
         <source>AI Settings...</source>
         <translation>AI 設定...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="940"/>
+        <location filename="../src/qml/Main.qml" line="944"/>
         <source>Data Sanitization...</source>
         <translation>データサニタイズ...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="950"/>
+        <location filename="../src/qml/Main.qml" line="954"/>
         <source>Email Alerts...</source>
         <translation>メールアラート...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="959"/>
+        <location filename="../src/qml/Main.qml" line="963"/>
         <source>Jira Integration...</source>
         <translation>Jira 連携...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="968"/>
+        <location filename="../src/qml/Main.qml" line="972"/>
         <source>GitHub Integration...</source>
         <translation>GitHub 連携...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="998"/>
+        <location filename="../src/qml/Main.qml" line="1002"/>
         <source>Data Source</source>
         <translation>データソース</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1005"/>
+        <location filename="../src/qml/Main.qml" line="1010"/>
         <source>Connect Database...</source>
         <translation>データベースに接続...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1013"/>
+        <location filename="../src/qml/Main.qml" line="1018"/>
         <source>Cloud Storage...</source>
         <translation>クラウドストレージ...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1021"/>
+        <location filename="../src/qml/Main.qml" line="1026"/>
         <source>Windows Event Log...</source>
         <translation>Windows イベントログ...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1030"/>
+        <location filename="../src/qml/Main.qml" line="1035"/>
         <source>System Trace...</source>
         <translation>システムトレース...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1042"/>
+        <location filename="../src/qml/Main.qml" line="1047"/>
         <source>Analyze</source>
         <translation>分析</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1049"/>
+        <location filename="../src/qml/Main.qml" line="1055"/>
         <source>SQL Query...</source>
         <translation>SQL クエリ...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1057"/>
+        <location filename="../src/qml/Main.qml" line="1063"/>
         <source>Correlation Analysis...</source>
         <translation>相関分析...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1065"/>
+        <location filename="../src/qml/Main.qml" line="1071"/>
         <source>Distinct Values...</source>
         <translation>個別の値...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1073"/>
+        <location filename="../src/qml/Main.qml" line="1079"/>
         <source>Text Transform...</source>
         <translation>テキスト変換...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1082"/>
+        <location filename="../src/qml/Main.qml" line="1088"/>
         <source>Parser Test...</source>
         <translation>パーサーテスト...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1090"/>
+        <location filename="../src/qml/Main.qml" line="1096"/>
         <source>Advanced</source>
         <translation>高度な設定</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1097"/>
+        <location filename="../src/qml/Main.qml" line="1104"/>
         <source>Rule Wizard...</source>
         <translation>ルールウィザード...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1105"/>
+        <location filename="../src/qml/Main.qml" line="1112"/>
         <source>Notifications...</source>
         <translation>通知...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1113"/>
+        <location filename="../src/qml/Main.qml" line="1120"/>
         <source>Report Scheduler...</source>
         <translation>レポートスケジューラ...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1122"/>
+        <location filename="../src/qml/Main.qml" line="1129"/>
         <source>Plugin Manager...</source>
         <translation>プラグインマネージャー...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1126"/>
+        <location filename="../src/qml/Main.qml" line="1133"/>
         <source>Check for Updates...</source>
         <translation>アップデートを確認...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2248"/>
+        <location filename="../src/qml/Main.qml" line="2263"/>
         <source>Create Jira Issue...</source>
         <translation>Jira 課題を作成...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2259"/>
+        <location filename="../src/qml/Main.qml" line="2274"/>
         <source>Create GitHub Issue...</source>
         <translation>GitHub 課題を作成...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2273"/>
+        <location filename="../src/qml/Main.qml" line="2288"/>
         <source>Ask AI about this line...</source>
         <translation>この行について AI に尋ねる...</translation>
     </message>
@@ -6539,89 +6560,86 @@ Example: SELECT * FROM logs WHERE level = &apos;ERROR&apos; LIMIT 100</source>
         <translation>ログ統計</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="50"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="53"/>
         <source>File: %1</source>
         <translation>ファイル: %1</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="57"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="60"/>
         <source>Refresh</source>
         <translation>更新</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="64"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="67"/>
         <source>Overview</source>
         <translation>概要</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="73"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="76"/>
         <source>Total Lines:</source>
         <translation>総行数:</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="76"/>
         <source>File Size:</source>
-        <translation>ファイルサイズ:</translation>
+        <translation type="vanished">ファイルサイズ:</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="79"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="80"/>
         <source>Current View:</source>
         <translation>現在の表示:</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="80"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="81"/>
         <source> lines</source>
         <translation> 行</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="82"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="83"/>
         <source>Filter Mode:</source>
         <translation>フィルターモード:</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="84"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="85"/>
         <source>Yes</source>
         <translation>はい</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="84"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="85"/>
         <source>No</source>
         <translation>いいえ</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="92"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="94"/>
         <source>Log Level Distribution</source>
         <translation>ログレベル分布</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="208"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="210"/>
         <source>Level Comparison</source>
         <translation>レベル比較</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="258"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="260"/>
         <source>Export Pie Chart</source>
         <translation>円グラフをエクスポート</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="263"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="265"/>
         <source>Export Bar Chart</source>
         <translation>棒グラフをエクスポート</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="270"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="272"/>
         <source>Close</source>
         <translation>閉じる</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="279"/>
         <source>Save Pie Chart</source>
-        <translation>円グラフを保存</translation>
+        <translation type="vanished">円グラフを保存</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="296"/>
         <source>Save Bar Chart</source>
-        <translation>棒グラフを保存</translation>
+        <translation type="vanished">棒グラフを保存</translation>
     </message>
 </context>
 <context>
@@ -6963,37 +6981,37 @@ Example: SELECT * FROM logs WHERE level = &apos;ERROR&apos; LIMIT 100</source>
 <context>
     <name>TimeSeriesChart</name>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="127"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="137"/>
         <source>No data available</source>
         <translation>利用可能なデータがありません</translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="343"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="368"/>
         <source>Error</source>
         <translation>エラー</translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="344"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="369"/>
         <source>Warn</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="345"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="370"/>
         <source>Info</source>
         <translation>情報</translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="346"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="371"/>
         <source>Debug</source>
         <translation>デバッグ</translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="347"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="372"/>
         <source>Trace</source>
         <translation>トレース</translation>
     </message>
     <message>
-        <location filename="../src/qml/TimeSeriesChart.qml" line="348"/>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="373"/>
         <source>Other</source>
         <translation>その他</translation>
     </message>
