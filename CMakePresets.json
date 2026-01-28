@@ -60,7 +60,8 @@
             },
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "clang",
-                "CMAKE_CXX_COMPILER": "clang++"
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_PREFIX_PATH": "/Users/buzhiliang/Qt/6.10.1/macos"
             }
         },
         {

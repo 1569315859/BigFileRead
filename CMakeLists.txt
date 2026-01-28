@@ -40,7 +40,7 @@ option(ENABLE_CONAN "启用Conan包管理器支持" OFF)
 # BigFileViewer 功能分层选项
 # ============================================================================
 option(ENABLE_PRO_FEATURES "启用 Pro 版功能（过滤模板、工作区、统计等）" ON)  # ★ 测试模式默认开启
-option(ENABLE_REMOTE_FEATURES "启用 Enterprise 远程功能（SFTP/SSH、SMTP、集成）需要 libssh2" ON)  # ★ 测试模式默认开启
+option(ENABLE_REMOTE_FEATURES "启用 Enterprise 远程功能（SFTP/SSH、SMTP、集成）需要 libssh2" OFF)  # ★ 测试模式改为关闭（避免 libssh2 编译问题）
 
 # 代码质量工具选项
 option(ENABLE_CLANG_TIDY "启用Clang-Tidy静态分析" OFF)
@@ -93,7 +93,11 @@ if(ENABLE_QT)
     # 允许用户指定Qt安装路径
     
     if(USE_QT6)
-        set(QT_DIR "E:/QT/6.10.1/msvc2022_64" CACHE PATH "Qt安装路径（例如：C:/Qt/6.5.0/msvc2019_64）")
+        if(APPLE)
+            set(QT_DIR "/Users/buzhiliang/Qt/6.10.1/macos" CACHE PATH "Qt安装路径")
+        else()
+            set(QT_DIR "E:/QT/6.10.1/msvc2022_64" CACHE PATH "Qt安装路径（例如：C:/Qt/6.5.0/msvc2019_64）")
+        endif()
     else()
         set(QT_DIR "D:/env/msvc2019_64" CACHE PATH "Qt安装路径（例如：C:/Qt/6.5.0/msvc2019_64）")
     endif()
@@ -111,10 +115,19 @@ if(ENABLE_QT)
     # 选择Qt版本
     if(USE_QT6)
         find_package(Qt6 COMPONENTS Core Widgets Gui Concurrent Network LinguistTools Quick Qml QuickControls2 Sql QUIET)
-        find_package(Qt6 COMPONENTS Multimedia QUIET)
         if(Qt6_FOUND)
             set(QT_VERSION_MAJOR 6)
             message(STATUS "找到Qt6: ${Qt6_VERSION}")
+            # 可选：尝试查找 Multimedia 模块（如果不存在则跳过）
+            # 保存 Qt6_FOUND 的值，防止可选模块的查找改变它
+            set(Qt6_FOUND_BACKUP ${Qt6_FOUND})
+            find_package(Qt6 COMPONENTS Multimedia QUIET)
+            set(Qt6_FOUND ${Qt6_FOUND_BACKUP})
+            if(Qt6Multimedia_FOUND)
+                message(STATUS "找到Qt6Multimedia模块")
+            else()
+                message(STATUS "未找到Qt6Multimedia模块，继续构建（某些多媒体功能可能不可用）")
+            endif()
         else()
             message(FATAL_ERROR "未找到Qt6！请检查QT_DIR设置或安装Qt6")
         endif()
@@ -863,6 +876,24 @@ if(ENABLE_QT)
                 COMMENT "复制翻译文件: ${QM_FILENAME}"
             )
         endforeach()
+        
+        # macOS: 在应用构建完成后，将翻译文件复制到 .app/Contents/Resources
+        if(APPLE AND BUILD_EXECUTABLE)
+            add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E make_directory 
+                    "$<TARGET_BUNDLE_CONTENT_DIR:${TARGET_NAME}>/Resources/translations"
+                COMMENT "创建 macOS app Resources/translations 目录"
+            )
+            foreach(QM_FILE ${QM_FILES})
+                get_filename_component(QM_FILENAME ${QM_FILE} NAME)
+                add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
+                    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                        "${QM_FILE}"
+                        "$<TARGET_BUNDLE_CONTENT_DIR:${TARGET_NAME}>/Resources/translations/${QM_FILENAME}"
+                    COMMENT "复制翻译文件到 macOS app: ${QM_FILENAME}"
+                )
+            endforeach()
+        endif()
         
         install(FILES ${QM_FILES} DESTINATION translations OPTIONAL)
         
