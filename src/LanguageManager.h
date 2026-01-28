@@ -12,6 +12,7 @@
 
 class QTranslator;
 class QApplication;
+class QQmlEngine;
 
 /**
  * @class LanguageManager
@@ -57,6 +58,12 @@ public:
      * @return 语言代码和显示名称的键值对
      */
     Q_INVOKABLE QVariantList availableLanguages() const;
+    
+    /**
+     * @brief 设置 QML 引擎引用，用于语言切换时刷新 UI
+     * @param engine QML 引擎指针
+     */
+    void setEngine(QQmlEngine* engine) { m_engine = engine; }
 
 signals:
     /**
@@ -89,6 +96,7 @@ private:
     QTranslator* m_translator = nullptr;     ///< 当前翻译器
     QTranslator* m_qtTranslator = nullptr;   ///< Qt 内置翻译器（按钮、对话框等）
     QString m_currentLanguage = "en_US";      ///< 当前语言代码
+    QQmlEngine* m_engine = nullptr;           ///< QML 引擎引用，用于触发 retranslate
 };
 
 #endif // LANGUAGEMANAGER_H

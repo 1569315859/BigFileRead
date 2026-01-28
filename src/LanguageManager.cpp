@@ -13,6 +13,8 @@
 #include <QDebug>
 #include <QVariantList>
 #include <QVariantMap>
+#include <QDir>
+#include <QQmlEngine>
 
 LanguageManager& LanguageManager::instance() {
     static LanguageManager instance;
@@ -50,14 +52,18 @@ void LanguageManager::init() {
 }
 
 bool LanguageManager::loadLanguage(const QString& languageCode) {
-    // 如果是相同语言，跳过
+    qDebug() << "[LanguageManager] loadLanguage called with:" << languageCode 
+             << "current:" << m_currentLanguage;
+    
+    // 如果是相同语言且已有翻译器，跳过
     if (languageCode == m_currentLanguage && m_translator) {
+        qDebug() << "[LanguageManager] Same language, skipping";
         return true;
     }
 
     QGuiApplication* app = qobject_cast<QGuiApplication*>(QCoreApplication::instance());
     if (!app) {
-        qWarning() << "LanguageManager: No QGuiApplication instance!";
+        qWarning() << "[LanguageManager] No QGuiApplication instance!";
         return false;
     }
 
@@ -74,10 +80,20 @@ bool LanguageManager::loadLanguage(const QString& languageCode) {
         m_qtTranslator = nullptr;
     }
 
+    QString oldLanguage = m_currentLanguage;
+
     // 如果是英语，不需要加载翻译文件（英语是源语言）
     if (languageCode == "en_US" || languageCode.isEmpty()) {
         m_currentLanguage = "en_US";
         saveLanguagePreference();
+        qDebug() << "[LanguageManager] Switched to English (source language)";
+        
+        // 通知 QML 引擎重新翻译所有文本
+        if (m_engine) {
+            m_engine->retranslate();
+            qDebug() << "[LanguageManager] QML engine retranslate() called";
+        }
+        
         emit languageChanged(m_currentLanguage);
         return true;
     }
@@ -85,26 +101,50 @@ bool LanguageManager::loadLanguage(const QString& languageCode) {
     // 加载应用程序翻译文件
     m_translator = new QTranslator(this);
     
-    // 翻译文件路径：优先从文件系统加载（bin/translations/目录）
-    QString fsPath = QCoreApplication::applicationDirPath() + 
-                     QString("/translations/BigFileViewer_%1.qm").arg(languageCode);
+    // 获取应用程序目录
+    QString appDir = QCoreApplication::applicationDirPath();
+    QString qmFileName = QString("BigFileViewer_%1.qm").arg(languageCode);
     
-    if (m_translator->load(fsPath)) {
-        app->installTranslator(m_translator);
-        qDebug() << "LanguageManager: Loaded translation from filesystem:" << fsPath;
-    } else {
-        // 尝试从资源系统加载（如果嵌入到exe中）
-        QString qmFile = QString(":/i18n/BigFileViewer_%1.qm").arg(languageCode);
-        if (m_translator->load(qmFile)) {
-            app->installTranslator(m_translator);
-            qDebug() << "LanguageManager: Loaded translation from resources:" << qmFile;
-        } else {
-            qWarning() << "LanguageManager: Translation file not found:" << fsPath;
-            qWarning() << "LanguageManager: Also tried:" << qmFile;
-            delete m_translator;
-            m_translator = nullptr;
-            return false;
+    // 构建多个可能的翻译文件搜索路径
+    QStringList searchPaths;
+    
+#ifdef Q_OS_MACOS
+    // macOS: 翻译文件可能在 .app/Contents/Resources 或与可执行文件同级
+    searchPaths << appDir + "/../Resources/translations/" + qmFileName;
+    searchPaths << appDir + "/../Resources/" + qmFileName;
+    searchPaths << appDir + "/translations/" + qmFileName;
+    searchPaths << appDir + "/" + qmFileName;
+#else
+    // Windows/Linux: 翻译文件在可执行文件旁边的 translations 目录
+    searchPaths << appDir + "/translations/" + qmFileName;
+    searchPaths << appDir + "/" + qmFileName;
+#endif
+    
+    // 添加资源文件路径
+    searchPaths << QString(":/i18n/BigFileViewer_%1.qm").arg(languageCode);
+    searchPaths << QString(":/translations/BigFileViewer_%1.qm").arg(languageCode);
+    
+    bool loaded = false;
+    QString loadedPath;
+    
+    for (const QString& path : searchPaths) {
+        qDebug() << "[LanguageManager] Trying path:" << path;
+        if (m_translator->load(path)) {
+            loaded = true;
+            loadedPath = path;
+            break;
         }
+    }
+    
+    if (loaded) {
+        app->installTranslator(m_translator);
+        qDebug() << "[LanguageManager] Loaded translation from:" << loadedPath;
+    } else {
+        qWarning() << "[LanguageManager] Translation file not found in any path!";
+        qWarning() << "[LanguageManager] Searched paths:" << searchPaths;
+        delete m_translator;
+        m_translator = nullptr;
+        // 注意：即使找不到翻译文件，也允许切换（可能用户只是想切换 locale）
     }
 
     // 加载 Qt 内置翻译（对话框按钮等）
@@ -115,21 +155,38 @@ bool LanguageManager::loadLanguage(const QString& languageCode) {
     QString qtTranslationsPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
 #endif
     
-    if (m_qtTranslator->load("qt_" + languageCode, qtTranslationsPath)) {
+    // Qt 翻译文件名格式：qt_zh_CN.qm
+    QString qtLang = languageCode.left(2); // 只取语言部分，如 "zh"
+    if (m_qtTranslator->load("qt_" + qtLang, qtTranslationsPath)) {
         app->installTranslator(m_qtTranslator);
-        qDebug() << "LanguageManager: Loaded Qt translation for" << languageCode;
+        qDebug() << "[LanguageManager] Loaded Qt translation for" << qtLang;
+    } else if (m_qtTranslator->load("qt_" + languageCode, qtTranslationsPath)) {
+        app->installTranslator(m_qtTranslator);
+        qDebug() << "[LanguageManager] Loaded Qt translation for" << languageCode;
     } else {
-        // Qt 翻译加载失败不是致命错误
-        qDebug() << "LanguageManager: Qt translation not available for" << languageCode;
+        qDebug() << "[LanguageManager] Qt translation not available for" << languageCode;
+        delete m_qtTranslator;
+        m_qtTranslator = nullptr;
     }
 
     m_currentLanguage = languageCode;
     saveLanguagePreference();
     
+    qDebug() << "[LanguageManager] Language changed from" << oldLanguage << "to" << m_currentLanguage;
+    
+    // 通知 QML 引擎重新翻译所有文本（Qt 5.10+）
+    // 这是解决 macOS/Linux 上语言切换不生效的关键！
+    if (m_engine) {
+        m_engine->retranslate();
+        qDebug() << "[LanguageManager] QML engine retranslate() called";
+    } else {
+        qWarning() << "[LanguageManager] No QML engine set, UI may not update!";
+    }
+    
     // 发出语言变更信号，触发 UI 更新
     emit languageChanged(m_currentLanguage);
     
-    return true;
+    return loaded || (languageCode == "en_US");
 }
 
 void LanguageManager::saveLanguagePreference() {

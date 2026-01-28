@@ -1,7534 +1,7534 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="zh-CN">
-  <context>
-    <name>AdvancedFilterDialog</name>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="32"/>
-      <source>Advanced Filter</source>
-      <translation>高级筛选</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="56"/>
-      <source>Enable Time Range Filter</source>
-      <translation>启用时间范围筛选</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="92"/>
-      <source>From:</source>
-      <translation>从：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="112"/>
-      <source>To:</source>
-      <translation>至：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="140"/>
-      <source>Log Level:</source>
-      <translation>日志级别：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="269"/>
-      <source>Keywords (space or comma separated):</source>
-      <translation>关键字（以空格或逗号分隔）：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="278"/>
-      <source>e.g. error timeout database</source>
-      <translation>例如：error timeout database</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="299"/>
-      <source>Logic:</source>
-      <translation>逻辑：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="347"/>
-      <source>Regex</source>
-      <translation>正则</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="363"/>
-      <source>Case</source>
-      <translation>区分大小写</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="387"/>
-      <source>Clear All</source>
-      <translation>全部清除</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="417"/>
-      <source>Apply</source>
-      <translation>应用</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/AdvancedFilterDialog.qml" line="457"/>
-      <source>Cancel</source>
-      <translation>取消</translation>
-    </message>
-  </context>
-  <context>
-    <name>BigFileModel</name>
-    <message>
-      <location filename="../src/BigFileModel.cpp" line="98"/>
-      <source>Cannot open file: %1</source>
-      <translation>无法打开文件：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/BigFileModel.cpp" line="110"/>
-      <source>File is empty</source>
-      <translation>文件为空</translation>
-    </message>
-    <message>
-      <location filename="../src/BigFileModel.cpp" line="118"/>
-      <source>Memory mapping failed: %1</source>
-      <translation>内存映射失败：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/BigFileModel.cpp" line="284"/>
-      <source>Load complete: %1 lines</source>
-      <translation>加载完成：共 %1 行</translation>
-    </message>
-    <message>
-      <location filename="../src/BigFileModel.cpp" line="365"/>
-      <source>Done: %1 lines, %2 MB, %3 ms</source>
-      <translation>完成：%1 行，%2 MB，%3 毫秒</translation>
-    </message>
-    <message>
-      <location filename="../src/BigFileModel.cpp" line="522"/>
-      <source>Content</source>
-      <translation>内容</translation>
-    </message>
-    <message>
-      <location filename="../src/BigFileModel.cpp" line="564"/>
-      <source>Line %1 (Original length: %2 chars, truncated)</source>
-      <translation>第 %1 行（原始长度：%2 字符，已截断）</translation>
-    </message>
-    <message>
-      <location filename="../src/BigFileModel.cpp" line="566"/>
-      <source>Line %1</source>
-      <translation>第 %1 行</translation>
-    </message>
-  </context>
-  <context>
-    <name>EnhancedScrollBar</name>
-    <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="112"/>
-      <source>Error at line</source>
-      <translation>错误位于行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="139"/>
-      <source>Warning at line</source>
-      <translation>警告位于行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="166"/>
-      <source>Info at line</source>
-      <translation>信息位于行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="208"/>
-      <source>Bookmark at line</source>
-      <translation>书签位于行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="234"/>
-      <source>Search result at line</source>
-      <translation>搜索结果位于行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="319"/>
-      <source>Show Markers</source>
-      <translation>显示标记</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="328"/>
-      <source>Errors</source>
-      <translation>错误</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="336"/>
-      <source>Warnings</source>
-      <translation>警告</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="344"/>
-      <source>Info</source>
-      <translation>信息</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="352"/>
-      <source>Bookmarks</source>
-      <translation>书签</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/EnhancedScrollBar.qml" line="360"/>
-      <source>Search Results</source>
-      <translation>搜索结果</translation>
-    </message>
-  </context>
-  <context>
-    <name>GoToLineDialog</name>
-    <message>
-      <location filename="../src/qml/GoToLineDialog.qml" line="35"/>
-      <source>Go To Line</source>
-      <translation>转到行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/GoToLineDialog.qml" line="47"/>
-      <source>Line Number:</source>
-      <translation>行号：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/GoToLineDialog.qml" line="63"/>
-      <source>Enter line number...</source>
-      <translation>输入行号...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/GoToLineDialog.qml" line="90"/>
-      <source>OK</source>
-      <translation>确定</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/GoToLineDialog.qml" line="114"/>
-      <source>Cancel</source>
-      <translation>取消</translation>
-    </message>
-  </context>
-  <context>
-    <name>KeywordConfigDialog</name>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="12"/>
-      <source>Keyword Color Configuration</source>
-      <translation>关键字颜色配置</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="90"/>
-      <source>Add New Keyword</source>
-      <translation>添加新关键字</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="104"/>
-      <source>Enter keyword...</source>
-      <translation>输入关键字...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="130"/>
-      <source>Click to choose color</source>
-      <translation>点击选择颜色</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="143"/>
-      <source>Add</source>
-      <translation>添加</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="202"/>
-      <source>Keyword</source>
-      <translation>关键字</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="210"/>
-      <source>Color</source>
-      <translation>颜色</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="218"/>
-      <source>Preview</source>
-      <translation>预览</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="226"/>
-      <source>Actions</source>
-      <translation>操作</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="312"/>
-      <source>Edit Color</source>
-      <translation>编辑颜色</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="336"/>
-      <source>Delete</source>
-      <translation>删除</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="362"/>
-      <source>Reset to Defaults</source>
-      <translation>恢复默认设置</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="381"/>
-      <source>Close</source>
-      <translation>关闭</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="401"/>
-      <source>Choose Color</source>
-      <translation>选择颜色</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="408"/>
-      <source>Edit Color for</source>
-      <translation>编辑颜色：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="418"/>
-      <source>Confirm Reset</source>
-      <translation>确认重置</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="432"/>
-      <source>Are you sure you want to reset all keywords to defaults?
-This action cannot be undone.</source>
-      <translation>您确定要将所有关键字重置为默认值吗？
-此操作无法撤销。</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="446"/>
-      <source>Cancel</source>
-      <translation>取消</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/KeywordConfigDialog.qml" line="463"/>
-      <source>Reset</source>
-      <translation>重置</translation>
-    </message>
-  </context>
-  <context>
-    <name>Main</name>
-    <message>
-      <location filename="../src/qml/Main.qml" line="103"/>
-      <source>Drop file to open</source>
-      <translation>拖入文件以打开</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="408"/>
-      <source>File</source>
-      <translation>文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="415"/>
-      <source>Open File...</source>
-      <translation>打开文件...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="430"/>
-      <source>Recent Files</source>
-      <translation>最近文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="452"/>
-      <source>Clear Recent Files</source>
-      <translation>清除最近文件记录</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="465"/>
-      <location filename="../src/qml/Main.qml" line="765"/>
-      <source>Reload File</source>
-      <translation>重新加载文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="490"/>
-      <source>Search</source>
-      <translation>搜索</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="501"/>
-      <source>Filter</source>
-      <translation>筛选</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="511"/>
-      <source>Details</source>
-      <translation>详情</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="521"/>
-      <source>Go To</source>
-      <translation>转到</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="526"/>
-      <source>Bookmark</source>
-      <translation>书签</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="533"/>
-      <source>Add/Remove Bookmark</source>
-      <translation>添加/移除书签</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="547"/>
-      <location filename="../src/qml/Main.qml" line="2145"/>
-      <source>Next Bookmark</source>
-      <translation>下一个书签</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="557"/>
-      <location filename="../src/qml/Main.qml" line="2155"/>
-      <source>Previous Bookmark</source>
-      <translation>上一个书签</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="578"/>
-      <source>Clear All Bookmarks</source>
-      <translation>清除所有书签</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="588"/>
-      <location filename="../src/qml/Main.qml" line="593"/>
-      <source>View</source>
-      <translation>视图</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="597"/>
-      <source>Text View (Raw)</source>
-      <translation>文本视图 (原始)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="606"/>
-      <source>Grid View (Parsed)</source>
-      <translation>网格视图 (已解析)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="620"/>
-      <source>Columns</source>
-      <translation>列</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="624"/>
-      <source>Line Number</source>
-      <translation>行号</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="630"/>
-      <source>Time</source>
-      <translation>时间</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="636"/>
-      <source>Level</source>
-      <translation>级别</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="642"/>
-      <location filename="../src/qml/Main.qml" line="1827"/>
-      <source>Message</source>
-      <translation>消息</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="651"/>
-      <source>Show All Columns</source>
-      <translation>显示所有列</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="658"/>
-      <source>Hide Optional Columns</source>
-      <translation>隐藏可选列</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="670"/>
-      <source>Navigation Markers</source>
-      <translation>导航标记</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="680"/>
-      <source>Tools</source>
-      <translation>工具</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="687"/>
-      <location filename="../src/qml/Main.qml" line="2211"/>
-      <source>Advanced Filter...</source>
-      <translation>高级过滤...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="709"/>
-      <source>Export Visible Lines...</source>
-      <translation>导出可见行...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="714"/>
-      <source>Follow Mode (Live)</source>
-      <translation>跟随模式 (实时)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="777"/>
-      <source>Settings</source>
-      <translation>设置</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="784"/>
-      <source>Theme</source>
-      <translation>主题</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="806"/>
-      <source>Language</source>
-      <translation>语言</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="889"/>
-      <source>Encoding</source>
-      <translation>编码</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="915"/>
-      <source>Keyword Colors...</source>
-      <translation>关键字颜色...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="947"/>
-      <source>Hide Scroll Markers</source>
-      <translation>隐藏滚动标记</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="947"/>
-      <source>Show Scroll Markers</source>
-      <translation>显示滚动标记</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="954"/>
-      <source>Register...</source>
-      <translation>注册...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="958"/>
-      <source>About</source>
-      <translation>关于</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1167"/>
-      <source>High-performance large file viewer</source>
-      <translation>高性能大文件查看器</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1173"/>
-      <source>Supports files over 10GB</source>
-      <translation>支持超过 10GB 的文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1328"/>
-      <source>Open Log File</source>
-      <translation>打开日志文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1351"/>
-      <source>Export Visible Lines</source>
-      <translation>导出可见行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1391"/>
-      <source>Find:</source>
-      <translation>查找:</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1400"/>
-      <source>Enter search text (supports regex)...</source>
-      <translation>输入搜索文本 (支持正则)...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1417"/>
-      <location filename="../src/qml/Main.qml" line="1595"/>
-      <source>Regex</source>
-      <translation>正则</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1447"/>
-      <source>Find</source>
-      <translation>查找</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1473"/>
-      <source>Previous</source>
-      <translation>上一个</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1499"/>
-      <source>Next</source>
-      <translation>下一个</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1521"/>
-      <source>matches</source>
-      <translation>个匹配</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1569"/>
-      <source>Filter:</source>
-      <translation>过滤:</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1578"/>
-      <source>Enter filter text (supports regex)...</source>
-      <translation>输入过滤文本 (支持正则)...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1625"/>
-      <source>Apply</source>
-      <translation>应用</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1647"/>
-      <source>Clear</source>
-      <translation>清除</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1671"/>
-      <source>Showing</source>
-      <translation>显示</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1717"/>
-      <location filename="../src/qml/Main.qml" line="1971"/>
-      <source>Line</source>
-      <translation>行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1971"/>
-      <source>Line Details</source>
-      <translation>行详情</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1982"/>
-      <source>Raw</source>
-      <translation>原始</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1982"/>
-      <source>JSON</source>
-      <translation>JSON</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2009"/>
-      <source>Copy</source>
-      <translation>复制</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2056"/>
-      <source>(Select a line to view details)</source>
-      <translation>(选择一行以查看详情)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2090"/>
-      <source>No file opened</source>
-      <translation>未打开文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2100"/>
-      <source>Size:</source>
-      <translation>大小:</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2109"/>
-      <location filename="../src/qml/Main.qml" line="2110"/>
-      <source>Lines:</source>
-      <translation>行数:</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2118"/>
-      <source>Registered</source>
-      <translation>已注册</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2118"/>
-      <source>Trial:</source>
-      <translation>试用:</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2118"/>
-      <source>days left</source>
-      <translation>天剩余</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2130"/>
-      <source>Copy Line</source>
-      <translation>复制行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2134"/>
-      <source>Copy Line Number</source>
-      <translation>复制行号</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2141"/>
-      <source>Toggle Bookmark</source>
-      <translation>切换书签</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2168"/>
-      <source>Show Details</source>
-      <translation>显示详情</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2172"/>
-      <source>Format JSON</source>
-      <translation>格式化 JSON</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2183"/>
-      <source>Filter This Level</source>
-      <translation>过滤此级别</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2197"/>
-      <source>Filter This Keyword...</source>
-      <translation>过滤此关键字...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2207"/>
-      <source>Go To Line...</source>
-      <translation>转到行...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="420"/>
-      <source>Open Remote File...</source>
-      <translation>打开远程文件...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="460"/>
-      <source>Paste from Clipboard</source>
-      <translation>从剪贴板粘贴</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="473"/>
-      <source>Export...</source>
-      <translation>导出...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="479"/>
-      <source>Monitor Directory...</source>
-      <translation>监视目录...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="538"/>
-      <source>Edit Bookmark Comment...</source>
-      <translation>编辑书签注释...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="568"/>
-      <source>Save Bookmarks...</source>
-      <translation>保存书签...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="573"/>
-      <source>Load Bookmarks...</source>
-      <translation>加载书签...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="691"/>
-      <source>Filter Templates...</source>
-      <translation>过滤模板...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="699"/>
-      <source>Workspaces...</source>
-      <translation>工作区...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="725"/>
-      <source>Show Delta Time</source>
-      <translation>显示时间增量</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="737"/>
-      <source>Merge Rolling Logs...</source>
-      <translation>合并轮转日志...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="746"/>
-      <source>Statistics...</source>
-      <translation>统计...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="755"/>
-      <source>Dashboard...</source>
-      <translation>仪表板...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="760"/>
-      <source>AI Settings...</source>
-      <translation>AI 设置...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="910"/>
-      <source>Data Sanitization...</source>
-      <translation>数据脱敏...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="920"/>
-      <source>Email Alerts...</source>
-      <translation>邮件警报...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="929"/>
-      <source>Jira Integration...</source>
-      <translation>Jira 集成...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="938"/>
-      <source>GitHub Integration...</source>
-      <translation>GitHub 集成...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="968"/>
-      <source>Data Source</source>
-      <translation>数据源</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="975"/>
-      <source>Connect Database...</source>
-      <translation>连接数据库...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="983"/>
-      <source>Cloud Storage...</source>
-      <translation>云存储...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="991"/>
-      <source>Windows Event Log...</source>
-      <translation>Windows 事件日志...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1000"/>
-      <source>System Trace...</source>
-      <translation>系统追踪...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1012"/>
-      <source>Analyze</source>
-      <translation>分析</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1019"/>
-      <source>SQL Query...</source>
-      <translation>SQL 查询...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1027"/>
-      <source>Correlation Analysis...</source>
-      <translation>相关性分析...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1035"/>
-      <source>Distinct Values...</source>
-      <translation>唯一值...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1043"/>
-      <source>Text Transform...</source>
-      <translation>文本转换...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1052"/>
-      <source>Parser Test...</source>
-      <translation>解析器测试...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1060"/>
-      <source>Advanced</source>
-      <translation>高级</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1067"/>
-      <source>Rule Wizard...</source>
-      <translation>规则向导...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1075"/>
-      <source>Notifications...</source>
-      <translation>通知...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1083"/>
-      <source>Report Scheduler...</source>
-      <translation>报告调度程序...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1092"/>
-      <source>Plugin Manager...</source>
-      <translation>插件管理器...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="1096"/>
-      <source>Check for Updates...</source>
-      <translation>检查更新...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2218"/>
-      <source>Create Jira Issue...</source>
-      <translation>创建 Jira 问题...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2229"/>
-      <source>Create GitHub Issue...</source>
-      <translation>创建 GitHub 问题...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/Main.qml" line="2243"/>
-      <source>Ask AI about this line...</source>
-      <translation>就此行询问 AI...</translation>
-    </message>
-  </context>
-  <context>
-    <name>NavigationBar</name>
-    <message>
-      <location filename="../src/qml/NavigationBar.qml" line="79"/>
-      <source>Line</source>
-      <translation>行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/NavigationBar.qml" line="117"/>
-      <source>Bookmark at line</source>
-      <translation>书签位于行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/NavigationBar.qml" line="144"/>
-      <source>Search result at line</source>
-      <translation>搜索结果位于行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/NavigationBar.qml" line="172"/>
-      <source>S</source>
-      <translation>搜</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/NavigationBar.qml" line="177"/>
-      <source>B</source>
-      <translation>书</translation>
-    </message>
-  </context>
-  <context>
-    <name>RegistrationDialog</name>
-    <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="30"/>
-      <source>Register BigFileViewer</source>
-      <translation>注册 BigFileViewer</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="39"/>
-      <source>Machine ID:</source>
-      <translation>机器码:</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="64"/>
-      <source>Copy</source>
-      <translation>复制</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="84"/>
-      <source>License Key:</source>
-      <translation>许可密钥:</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="94"/>
-      <source>Paste your license key here...</source>
-      <translation>在此粘贴您的许可密钥...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="119"/>
-      <source>Get License</source>
-      <translation>获取许可</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="138"/>
-      <source>Activate</source>
-      <translation>激活</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="142"/>
-      <source>Activation Successful!</source>
-      <translation>激活成功!</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="146"/>
-      <source>Invalid License Key</source>
-      <translation>无效的许可密钥</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RegistrationDialog.qml" line="165"/>
-      <source>Close</source>
-      <translation>关闭</translation>
-    </message>
-  </context>
-  <context>
+<context>
     <name>AIAnalysisManager</name>
     <message>
-      <location filename="../src/AIAnalysisManager.cpp" line="95"/>
-      <source>Qwen (Tongyi Qianwen)</source>
-      <translation>通义千问 (Qwen)</translation>
+        <location filename="../src/AIAnalysisManager.cpp" line="95"/>
+        <source>Qwen (Tongyi Qianwen)</source>
+        <translation>通义千问 (Qwen)</translation>
     </message>
     <message>
-      <location filename="../src/AIAnalysisManager.cpp" line="109"/>
-      <source>Ernie (Wenxin Yiyan)</source>
-      <translation>文心一言 (ERNIE)</translation>
+        <location filename="../src/AIAnalysisManager.cpp" line="109"/>
+        <source>Ernie (Wenxin Yiyan)</source>
+        <translation>文心一言 (ERNIE)</translation>
     </message>
     <message>
-      <location filename="../src/AIAnalysisManager.cpp" line="123"/>
-      <source>Spark (iFlytek)</source>
-      <translation>讯飞星火 (Spark)</translation>
+        <location filename="../src/AIAnalysisManager.cpp" line="123"/>
+        <source>Spark (iFlytek)</source>
+        <translation>讯飞星火 (Spark)</translation>
     </message>
     <message>
-      <location filename="../src/AIAnalysisManager.cpp" line="347"/>
-      <source>Analysis already in progress</source>
-      <translation>分析已在进行中</translation>
+        <location filename="../src/AIAnalysisManager.cpp" line="347"/>
+        <source>Analysis already in progress</source>
+        <translation>分析已在进行中</translation>
     </message>
     <message>
-      <location filename="../src/AIAnalysisManager.cpp" line="352"/>
-      <source>Invalid service selected</source>
-      <translation>选择了无效的服务</translation>
+        <location filename="../src/AIAnalysisManager.cpp" line="352"/>
+        <source>Invalid service selected</source>
+        <translation>选择了无效的服务</translation>
     </message>
     <message>
-      <location filename="../src/AIAnalysisManager.cpp" line="358"/>
-      <source>API Key not configured for service: %1</source>
-      <translation>未为服务配置 API 密钥：%1</translation>
+        <location filename="../src/AIAnalysisManager.cpp" line="358"/>
+        <source>API Key not configured for service: %1</source>
+        <translation>未为服务配置 API 密钥：%1</translation>
     </message>
     <message>
-      <location filename="../src/AIAnalysisManager.cpp" line="407"/>
-      <source>Unknown service</source>
-      <translation>未知服务</translation>
+        <location filename="../src/AIAnalysisManager.cpp" line="407"/>
+        <source>Unknown service</source>
+        <translation>未知服务</translation>
     </message>
     <message>
-      <location filename="../src/AIAnalysisManager.cpp" line="413"/>
-      <source>API Key not configured</source>
-      <translation>未配置 API 密钥</translation>
+        <location filename="../src/AIAnalysisManager.cpp" line="413"/>
+        <source>API Key not configured</source>
+        <translation>未配置 API 密钥</translation>
     </message>
     <message>
-      <location filename="../src/AIAnalysisManager.cpp" line="504"/>
-      <source>API Error: %1</source>
-      <translation>API 错误：%1</translation>
+        <location filename="../src/AIAnalysisManager.cpp" line="504"/>
+        <source>API Error: %1</source>
+        <translation>API 错误：%1</translation>
     </message>
     <message>
-      <location filename="../src/AIAnalysisManager.cpp" line="543"/>
-      <source>Connection successful</source>
-      <translation>连接成功</translation>
+        <location filename="../src/AIAnalysisManager.cpp" line="543"/>
+        <source>Connection successful</source>
+        <translation>连接成功</translation>
     </message>
     <message>
-      <location filename="../src/AIAnalysisManager.cpp" line="582"/>
-      <source>Failed to parse response</source>
-      <translation>无法解析响应</translation>
+        <location filename="../src/AIAnalysisManager.cpp" line="582"/>
+        <source>Failed to parse response</source>
+        <translation>无法解析响应</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>AIQueryDialog</name>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="45"/>
-      <source>AI Log Analysis</source>
-      <translation>AI 日志分析</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="45"/>
+        <source>AI Log Analysis</source>
+        <translation>AI 日志分析</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="55"/>
-      <source>Service:</source>
-      <translation>服务：</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="55"/>
+        <source>Service:</source>
+        <translation>服务：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="90"/>
-      <source>Model:</source>
-      <translation>模型：</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="90"/>
+        <source>Model:</source>
+        <translation>模型：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="110"/>
-      <source>Settings</source>
-      <translation>设置</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="110"/>
+        <source>Settings</source>
+        <translation>设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="155"/>
-      <source>Original Log Content (%1 lines)</source>
-      <translation>原始日志内容（%1 行）</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="155"/>
+        <source>Original Log Content (%1 lines)</source>
+        <translation>原始日志内容（%1 行）</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="215"/>
-      <source>Sanitized Content (sent to AI)</source>
-      <translation>脱敏内容（发送至 AI）</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="215"/>
+        <source>Sanitized Content (sent to AI)</source>
+        <translation>脱敏内容（发送至 AI）</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="225"/>
-      <source>Level:</source>
-      <translation>级别：</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="225"/>
+        <source>Level:</source>
+        <translation>级别：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="236"/>
-      <source>Standard</source>
-      <translation>标准</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="236"/>
+        <source>Standard</source>
+        <translation>标准</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="237"/>
-      <source>Strict</source>
-      <translation>严格</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="237"/>
+        <source>Strict</source>
+        <translation>严格</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="238"/>
-      <source>Minimal</source>
-      <translation>最小化</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="238"/>
+        <source>Minimal</source>
+        <translation>最小化</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="285"/>
-      <source>Your Question</source>
-      <translation>你的问题</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="285"/>
+        <source>Your Question</source>
+        <translation>你的问题</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="299"/>
-      <source>Enter your question about this log...</source>
-      <translation>请输入关于此日志的问题...</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="299"/>
+        <source>Enter your question about this log...</source>
+        <translation>请输入关于此日志的问题...</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="314"/>
-      <source>Presets</source>
-      <translation>预设</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="314"/>
+        <source>Presets</source>
+        <translation>预设</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="323"/>
-      <source>What does this error mean?</source>
-      <translation>这个错误是什么意思？</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="323"/>
+        <source>What does this error mean?</source>
+        <translation>这个错误是什么意思？</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="327"/>
-      <source>What is the root cause?</source>
-      <translation>根本原因是什么？</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="327"/>
+        <source>What is the root cause?</source>
+        <translation>根本原因是什么？</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="331"/>
-      <source>How to fix this issue?</source>
-      <translation>如何修复此问题？</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="331"/>
+        <source>How to fix this issue?</source>
+        <translation>如何修复此问题？</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="335"/>
-      <source>Summarize this log</source>
-      <translation>总结此日志</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="335"/>
+        <source>Summarize this log</source>
+        <translation>总结此日志</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="339"/>
-      <source>Find anomalies or patterns</source>
-      <translation>查找异常或模式</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="339"/>
+        <source>Find anomalies or patterns</source>
+        <translation>查找异常或模式</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="347"/>
-      <source>Cancel</source>
-      <translation>取消</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="347"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="347"/>
-      <source>Ask AI</source>
-      <translation>咨询 AI</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="347"/>
+        <source>Ask AI</source>
+        <translation>咨询 AI</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="383"/>
-      <source>AI Response</source>
-      <translation>AI 响应</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="383"/>
+        <source>AI Response</source>
+        <translation>AI 响应</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="398"/>
-      <source>Analyzing...</source>
-      <translation>正在分析...</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="398"/>
+        <source>Analyzing...</source>
+        <translation>正在分析...</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="441"/>
-      <source>Copy Response</source>
-      <translation>复制响应</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="441"/>
+        <source>Copy Response</source>
+        <translation>复制响应</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="449"/>
-      <source>Copied to clipboard</source>
-      <translation>已复制到剪贴板</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="449"/>
+        <source>Copied to clipboard</source>
+        <translation>已复制到剪贴板</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="454"/>
-      <source>Clear</source>
-      <translation>清除</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="454"/>
+        <source>Clear</source>
+        <translation>清除</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="481"/>
-      <source>Analysis completed</source>
-      <translation>分析完成</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="481"/>
+        <source>Analysis completed</source>
+        <translation>分析完成</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="485"/>
-      <source>Error: %1</source>
-      <translation>错误：%1</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="485"/>
+        <source>Error: %1</source>
+        <translation>错误：%1</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="486"/>
-      <source>Analysis failed</source>
-      <translation>分析失败</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="486"/>
+        <source>Analysis failed</source>
+        <translation>分析失败</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="523"/>
-      <source>No lines selected</source>
-      <translation>未选择行</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="523"/>
+        <source>No lines selected</source>
+        <translation>未选择行</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="553"/>
-      <source>AI Manager not available</source>
-      <translation>AI 管理器不可用</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="553"/>
+        <source>AI Manager not available</source>
+        <translation>AI 管理器不可用</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="562"/>
-      <source>No content to analyze</source>
-      <translation>没有可分析的内容</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="562"/>
+        <source>No content to analyze</source>
+        <translation>没有可分析的内容</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="569"/>
-      <source>Please configure API Key in Settings first</source>
-      <translation>请先在设置中配置 API 密钥</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="569"/>
+        <source>Please configure API Key in Settings first</source>
+        <translation>请先在设置中配置 API 密钥</translation>
     </message>
     <message>
-      <location filename="../src/qml/AIQueryDialog.qml" line="574"/>
-      <source>Sending request...</source>
-      <translation>正在发送请求...</translation>
+        <location filename="../src/qml/AIQueryDialog.qml" line="574"/>
+        <source>Sending request...</source>
+        <translation>正在发送请求...</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>AISettingsDialog</name>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="36"/>
-      <source>AI Service Settings</source>
-      <translation>AI 服务设置</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="36"/>
+        <source>AI Service Settings</source>
+        <translation>AI 服务设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="62"/>
-      <source>API Keys</source>
-      <translation>API 密钥</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="62"/>
+        <source>API Keys</source>
+        <translation>API 密钥</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="79"/>
-      <source>Proxy</source>
-      <translation>代理</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="79"/>
+        <source>Proxy</source>
+        <translation>代理</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="96"/>
-      <location filename="../src/qml/AISettingsDialog.qml" line="493"/>
-      <source>Custom Services</source>
-      <translation>自定义服务</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="96"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="493"/>
+        <source>Custom Services</source>
+        <translation>自定义服务</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="128"/>
-      <source>Configure API keys for each AI service. Keys are stored encrypted locally.</source>
-      <translation>为每个 AI 服务配置 API 密钥。密钥以加密方式存储在本地。</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="128"/>
+        <source>Configure API keys for each AI service. Keys are stored encrypted locally.</source>
+        <translation>为每个 AI 服务配置 API 密钥。密钥以加密方式存储在本地。</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="169"/>
-      <location filename="../src/qml/AISettingsDialog.qml" line="222"/>
-      <source>Enter API Key...</source>
-      <translation>输入 API 密钥...</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="169"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="222"/>
+        <source>Enter API Key...</source>
+        <translation>输入 API 密钥...</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="169"/>
-      <location filename="../src/qml/AISettingsDialog.qml" line="201"/>
-      <source>Key: %1</source>
-      <translation>密钥：%1</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="169"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="201"/>
+        <source>Key: %1</source>
+        <translation>密钥：%1</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="181"/>
-      <source>Show</source>
-      <translation>显示</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="181"/>
+        <source>Show</source>
+        <translation>显示</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="194"/>
-      <source>Save</source>
-      <translation>保存</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="194"/>
+        <source>Save</source>
+        <translation>保存</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="206"/>
-      <source>Test</source>
-      <translation>测试</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="206"/>
+        <source>Test</source>
+        <translation>测试</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="216"/>
-      <source>Clear</source>
-      <translation>清除</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="216"/>
+        <source>Clear</source>
+        <translation>清除</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="241"/>
-      <source>Configure network proxy for AI API requests.</source>
-      <translation>配置 AI API 请求的网络代理。</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="241"/>
+        <source>Configure network proxy for AI API requests.</source>
+        <translation>配置 AI API 请求的网络代理。</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="262"/>
-      <source>Proxy Type</source>
-      <translation>代理类型</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="262"/>
+        <source>Proxy Type</source>
+        <translation>代理类型</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="270"/>
-      <source>No Proxy (Direct Connection)</source>
-      <translation>无代理（直连）</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="270"/>
+        <source>No Proxy (Direct Connection)</source>
+        <translation>无代理（直连）</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="285"/>
-      <source>Use System Proxy</source>
-      <translation>使用系统代理</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="285"/>
+        <source>Use System Proxy</source>
+        <translation>使用系统代理</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="300"/>
-      <source>Custom Proxy</source>
-      <translation>自定义代理</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="300"/>
+        <source>Custom Proxy</source>
+        <translation>自定义代理</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="333"/>
-      <source>Custom Proxy Settings</source>
-      <translation>自定义代理设置</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="333"/>
+        <source>Custom Proxy Settings</source>
+        <translation>自定义代理设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="348"/>
-      <source>Type:</source>
-      <translation>类型：</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="348"/>
+        <source>Type:</source>
+        <translation>类型：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="362"/>
-      <source>Host:</source>
-      <translation>主机：</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="362"/>
+        <source>Host:</source>
+        <translation>主机：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="407"/>
-      <source>Port:</source>
-      <translation>端口：</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="407"/>
+        <source>Port:</source>
+        <translation>端口：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="385"/>
-      <source>Username:</source>
-      <translation>用户名：</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="385"/>
+        <source>Username:</source>
+        <translation>用户名：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="395"/>
-      <location filename="../src/qml/AISettingsDialog.qml" line="442"/>
-      <source>Optional</source>
-      <translation>可选</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="395"/>
+        <location filename="../src/qml/AISettingsDialog.qml" line="442"/>
+        <source>Optional</source>
+        <translation>可选</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="431"/>
-      <source>Password:</source>
-      <translation>密码：</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="431"/>
+        <source>Password:</source>
+        <translation>密码：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="455"/>
-      <source>Save Proxy Settings</source>
-      <translation>保存代理设置</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="455"/>
+        <source>Save Proxy Settings</source>
+        <translation>保存代理设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="483"/>
-      <source>Add custom AI services compatible with OpenAI API format.</source>
-      <translation>添加兼容 OpenAI API 格式的自定义 AI 服务。</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="483"/>
+        <source>Add custom AI services compatible with OpenAI API format.</source>
+        <translation>添加兼容 OpenAI API 格式的自定义 AI 服务。</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="536"/>
-      <source>Remove</source>
-      <translation>移除</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="536"/>
+        <source>Remove</source>
+        <translation>移除</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="551"/>
-      <source>No custom services configured</source>
-      <translation>未配置自定义服务</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="551"/>
+        <source>No custom services configured</source>
+        <translation>未配置自定义服务</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="572"/>
-      <source>Add New Service</source>
-      <translation>添加新服务</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="572"/>
+        <source>Add New Service</source>
+        <translation>添加新服务</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="582"/>
-      <source>Name:</source>
-      <translation>名称：</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="582"/>
+        <source>Name:</source>
+        <translation>名称：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="588"/>
-      <source>My AI Service</source>
-      <translation>我的 AI 服务</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="588"/>
+        <source>My AI Service</source>
+        <translation>我的 AI 服务</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="602"/>
-      <source>Endpoint:</source>
-      <translation>接口地址 (Endpoint):</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="602"/>
+        <source>Endpoint:</source>
+        <translation>接口地址 (Endpoint):</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="622"/>
-      <source>Model:</source>
-      <translation>模型：</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="622"/>
+        <source>Model:</source>
+        <translation>模型：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="642"/>
-      <source>API Key Header:</source>
-      <translation>API 密钥头：</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="642"/>
+        <source>API Key Header:</source>
+        <translation>API 密钥头：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="663"/>
-      <source>API Key Prefix:</source>
-      <translation>API 密钥前缀：</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="663"/>
+        <source>API Key Prefix:</source>
+        <translation>API 密钥前缀：</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="685"/>
-      <source>Add Service</source>
-      <translation>添加服务</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="685"/>
+        <source>Add Service</source>
+        <translation>添加服务</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="719"/>
-      <source>Close</source>
-      <translation type="unfinished">关闭</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="719"/>
+        <source>Close</source>
+        <translation type="unfinished">关闭</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="746"/>
-      <source>Connection Test Result</source>
-      <translation>连接测试结果</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="746"/>
+        <source>Connection Test Result</source>
+        <translation>连接测试结果</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="776"/>
-      <source>Connection successful!</source>
-      <translation>连接成功！</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="776"/>
+        <source>Connection successful!</source>
+        <translation>连接成功！</translation>
     </message>
     <message>
-      <location filename="../src/qml/AISettingsDialog.qml" line="776"/>
-      <source>Connection failed</source>
-      <translation>连接失败</translation>
+        <location filename="../src/qml/AISettingsDialog.qml" line="776"/>
+        <source>Connection failed</source>
+        <translation>连接失败</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
+    <name>AdvancedFilterDialog</name>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="32"/>
+        <source>Advanced Filter</source>
+        <translation>高级筛选</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="56"/>
+        <source>Enable Time Range Filter</source>
+        <translation>启用时间范围筛选</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="92"/>
+        <source>From:</source>
+        <translation>从：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="112"/>
+        <source>To:</source>
+        <translation>至：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="140"/>
+        <source>Log Level:</source>
+        <translation>日志级别：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="269"/>
+        <source>Keywords (space or comma separated):</source>
+        <translation>关键字（以空格或逗号分隔）：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="278"/>
+        <source>e.g. error timeout database</source>
+        <translation>例如：error timeout database</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="299"/>
+        <source>Logic:</source>
+        <translation>逻辑：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="347"/>
+        <source>Regex</source>
+        <translation>正则</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="363"/>
+        <source>Case</source>
+        <translation>区分大小写</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="387"/>
+        <source>Clear All</source>
+        <translation>全部清除</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="417"/>
+        <source>Apply</source>
+        <translation>应用</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AdvancedFilterDialog.qml" line="457"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+</context>
+<context>
+    <name>BigFileModel</name>
+    <message>
+        <location filename="../src/BigFileModel.cpp" line="98"/>
+        <source>Cannot open file: %1</source>
+        <translation>无法打开文件：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/BigFileModel.cpp" line="110"/>
+        <source>File is empty</source>
+        <translation>文件为空</translation>
+    </message>
+    <message>
+        <location filename="../src/BigFileModel.cpp" line="118"/>
+        <source>Memory mapping failed: %1</source>
+        <translation>内存映射失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/BigFileModel.cpp" line="284"/>
+        <source>Load complete: %1 lines</source>
+        <translation>加载完成：共 %1 行</translation>
+    </message>
+    <message>
+        <location filename="../src/BigFileModel.cpp" line="365"/>
+        <source>Done: %1 lines, %2 MB, %3 ms</source>
+        <translation>完成：%1 行，%2 MB，%3 毫秒</translation>
+    </message>
+    <message>
+        <location filename="../src/BigFileModel.cpp" line="522"/>
+        <source>Content</source>
+        <translation>内容</translation>
+    </message>
+    <message>
+        <location filename="../src/BigFileModel.cpp" line="564"/>
+        <source>Line %1 (Original length: %2 chars, truncated)</source>
+        <translation>第 %1 行（原始长度：%2 字符，已截断）</translation>
+    </message>
+    <message>
+        <location filename="../src/BigFileModel.cpp" line="566"/>
+        <source>Line %1</source>
+        <translation>第 %1 行</translation>
+    </message>
+</context>
+<context>
     <name>BookmarkCommentDialog</name>
     <message>
-      <location filename="../src/qml/BookmarkCommentDialog.qml" line="38"/>
-      <source>Edit Bookmark Comment</source>
-      <translation>编辑书签备注</translation>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="38"/>
+        <source>Edit Bookmark Comment</source>
+        <translation>编辑书签备注</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkCommentDialog.qml" line="67"/>
-      <source>Line %1</source>
-      <translation type="unfinished">第 %1 行</translation>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="67"/>
+        <source>Line %1</source>
+        <translation type="unfinished">第 %1 行</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkCommentDialog.qml" line="80"/>
-      <source>Comment:</source>
-      <translation>备注：</translation>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="80"/>
+        <source>Comment:</source>
+        <translation>备注：</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkCommentDialog.qml" line="90"/>
-      <source>Enter bookmark note...</source>
-      <translation>输入书签备注...</translation>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="90"/>
+        <source>Enter bookmark note...</source>
+        <translation>输入书签备注...</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkCommentDialog.qml" line="110"/>
-      <source>Remove Bookmark</source>
-      <translation>移除书签</translation>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="110"/>
+        <source>Remove Bookmark</source>
+        <translation>移除书签</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkCommentDialog.qml" line="135"/>
-      <source>Save</source>
-      <translation>保存</translation>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="135"/>
+        <source>Save</source>
+        <translation>保存</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkCommentDialog.qml" line="153"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
+        <location filename="../src/qml/BookmarkCommentDialog.qml" line="153"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>BookmarkPanel</name>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="43"/>
-      <source>Bookmarks</source>
-      <translation type="unfinished">书签</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="43"/>
+        <source>Bookmarks</source>
+        <translation type="unfinished">书签</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="62"/>
-      <source>Export Bookmarks</source>
-      <translation>导出书签</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="62"/>
+        <source>Export Bookmarks</source>
+        <translation>导出书签</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="84"/>
-      <source>Clear All Bookmarks</source>
-      <translation type="unfinished">清除所有书签</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="84"/>
+        <source>Clear All Bookmarks</source>
+        <translation type="unfinished">清除所有书签</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="126"/>
-      <source>No bookmarks yet</source>
-      <translation>暂无书签</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="126"/>
+        <source>No bookmarks yet</source>
+        <translation>暂无书签</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="133"/>
-      <source>Press Ctrl+B to add a bookmark</source>
-      <translation>按 Ctrl+B 添加书签</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="133"/>
+        <source>Press Ctrl+B to add a bookmark</source>
+        <translation>按 Ctrl+B 添加书签</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="202"/>
-      <source>Line %1</source>
-      <translation type="unfinished">第 %1 行</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="202"/>
+        <source>Line %1</source>
+        <translation type="unfinished">第 %1 行</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="211"/>
-      <source>(filtered)</source>
-      <translation>(已过滤)</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="211"/>
+        <source>(filtered)</source>
+        <translation>(已过滤)</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="225"/>
-      <source>Edit Comment</source>
-      <translation>编辑备注</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="225"/>
+        <source>Edit Comment</source>
+        <translation>编辑备注</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="245"/>
-      <source>Remove Bookmark</source>
-      <translation>移除书签</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="245"/>
+        <source>Remove Bookmark</source>
+        <translation>移除书签</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="321"/>
-      <source>Clear all bookmarks?</source>
-      <translation>清除所有书签？</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="321"/>
+        <source>Clear all bookmarks?</source>
+        <translation>清除所有书签？</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="329"/>
-      <source>This action cannot be undone.</source>
-      <translation>此操作无法撤销。</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="329"/>
+        <source>This action cannot be undone.</source>
+        <translation>此操作无法撤销。</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="340"/>
-      <source>Clear All</source>
-      <translation type="unfinished">全部清除</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="340"/>
+        <source>Clear All</source>
+        <translation type="unfinished">全部清除</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="361"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="361"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="392"/>
-      <source>Just now</source>
-      <translation>刚刚</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="392"/>
+        <source>Just now</source>
+        <translation>刚刚</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="392"/>
-      <source>%1 minutes ago</source>
-      <translation>%1 分钟前</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="392"/>
+        <source>%1 minutes ago</source>
+        <translation>%1 分钟前</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="397"/>
-      <source>1 hour ago</source>
-      <translation>1 小时前</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="397"/>
+        <source>1 hour ago</source>
+        <translation>1 小时前</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="397"/>
-      <source>%1 hours ago</source>
-      <translation>%1 小时前</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="397"/>
+        <source>%1 hours ago</source>
+        <translation>%1 小时前</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="402"/>
-      <source>Yesterday</source>
-      <translation>昨天</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="402"/>
+        <source>Yesterday</source>
+        <translation>昨天</translation>
     </message>
     <message>
-      <location filename="../src/qml/BookmarkPanel.qml" line="402"/>
-      <source>%1 days ago</source>
-      <translation>%1 天前</translation>
+        <location filename="../src/qml/BookmarkPanel.qml" line="402"/>
+        <source>%1 days ago</source>
+        <translation>%1 天前</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>CloudStorageDialog</name>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="22"/>
-      <source>Cloud Storage</source>
-      <translation>云存储</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="22"/>
+        <source>Cloud Storage</source>
+        <translation>云存储</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="177"/>
-      <source>Select Cloud Provider</source>
-      <translation>选择云提供商</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="177"/>
+        <source>Select Cloud Provider</source>
+        <translation>选择云提供商</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="214"/>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="264"/>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="314"/>
-      <source>Ready</source>
-      <translation>就绪</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="214"/>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="264"/>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="314"/>
+        <source>Ready</source>
+        <translation>就绪</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="214"/>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="264"/>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="314"/>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="810"/>
-      <source>SDK Required</source>
-      <translation>需要 SDK</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="214"/>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="264"/>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="314"/>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="810"/>
+        <source>SDK Required</source>
+        <translation>需要 SDK</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="341"/>
-      <source>Saved Connections</source>
-      <translation>已保存的连接</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="341"/>
+        <source>Saved Connections</source>
+        <translation>已保存的连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="382"/>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="608"/>
-      <source>Connect</source>
-      <translation>连接</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="382"/>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="608"/>
+        <source>Connect</source>
+        <translation>连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="402"/>
-      <source>No saved connections</source>
-      <translation>没有保存的连接</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="402"/>
+        <source>No saved connections</source>
+        <translation>没有保存的连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="420"/>
-      <source>Back</source>
-      <translation>返回</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="420"/>
+        <source>Back</source>
+        <translation>返回</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="428"/>
-      <source>Amazon S3 Credentials</source>
-      <translation>Amazon S3 凭据</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="428"/>
+        <source>Amazon S3 Credentials</source>
+        <translation>Amazon S3 凭据</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="429"/>
-      <source>Azure Blob Credentials</source>
-      <translation>Azure Blob 凭据</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="429"/>
+        <source>Azure Blob Credentials</source>
+        <translation>Azure Blob 凭据</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="430"/>
-      <source>Google Cloud Credentials</source>
-      <translation>Google Cloud 凭据</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="430"/>
+        <source>Google Cloud Credentials</source>
+        <translation>Google Cloud 凭据</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="431"/>
-      <source>Credentials</source>
-      <translation>凭据</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="431"/>
+        <source>Credentials</source>
+        <translation>凭据</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="448"/>
-      <source>Access Key ID:</source>
-      <translation>访问密钥 ID：</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="448"/>
+        <source>Access Key ID:</source>
+        <translation>访问密钥 ID：</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="455"/>
-      <source>Secret Access Key:</source>
-      <translation>私有访问密钥：</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="455"/>
+        <source>Secret Access Key:</source>
+        <translation>私有访问密钥：</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="462"/>
-      <source>Region:</source>
-      <translation>区域：</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="462"/>
+        <source>Region:</source>
+        <translation>区域：</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="470"/>
-      <source>Session Token (optional):</source>
-      <translation>会话令牌 (可选)：</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="470"/>
+        <source>Session Token (optional):</source>
+        <translation>会话令牌 (可选)：</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="486"/>
-      <source>Account Name:</source>
-      <translation>账户名称：</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="486"/>
+        <source>Account Name:</source>
+        <translation>账户名称：</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="492"/>
-      <source>Connection String:</source>
-      <translation>连接字符串：</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="492"/>
+        <source>Connection String:</source>
+        <translation>连接字符串：</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="501"/>
-      <source>— OR —</source>
-      <translation>— 或 —</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="501"/>
+        <source>— OR —</source>
+        <translation>— 或 —</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="507"/>
-      <source>Tenant ID:</source>
-      <translation>租户 ID：</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="507"/>
+        <source>Tenant ID:</source>
+        <translation>租户 ID：</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="513"/>
-      <source>Client ID:</source>
-      <translation>客户端 ID：</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="513"/>
+        <source>Client ID:</source>
+        <translation>客户端 ID：</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="519"/>
-      <source>Client Secret:</source>
-      <translation>客户端密钥：</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="519"/>
+        <source>Client Secret:</source>
+        <translation>客户端密钥：</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="535"/>
-      <source>Project ID:</source>
-      <translation>项目 ID：</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="535"/>
+        <source>Project ID:</source>
+        <translation>项目 ID：</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="541"/>
-      <source>Service Account Key File:</source>
-      <translation>服务帐户密钥文件：</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="541"/>
+        <source>Service Account Key File:</source>
+        <translation>服务帐户密钥文件：</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="548"/>
-      <source>Path to JSON key file</source>
-      <translation>JSON 密钥文件路径</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="548"/>
+        <source>Path to JSON key file</source>
+        <translation>JSON 密钥文件路径</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="552"/>
-      <source>Browse...</source>
-      <translation>浏览...</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="552"/>
+        <source>Browse...</source>
+        <translation>浏览...</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="564"/>
-      <source>Save credentials</source>
-      <translation>保存凭据</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="564"/>
+        <source>Save credentials</source>
+        <translation>保存凭据</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="569"/>
-      <source>Connection name</source>
-      <translation>连接名称</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="569"/>
+        <source>Connection name</source>
+        <translation>连接名称</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="598"/>
-      <source>Test Connection</source>
-      <translation>测试连接</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="598"/>
+        <source>Test Connection</source>
+        <translation>测试连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="634"/>
-      <source>Disconnect</source>
-      <translation>断开连接</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="634"/>
+        <source>Disconnect</source>
+        <translation>断开连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="676"/>
-      <source>Up</source>
-      <translation>向上</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="676"/>
+        <source>Up</source>
+        <translation>向上</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="682"/>
-      <source>Refresh</source>
-      <translation>刷新</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="682"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="800"/>
-      <source>%1 buckets</source>
-      <translation>%1 个存储桶</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="800"/>
+        <source>%1 buckets</source>
+        <translation>%1 个存储桶</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="801"/>
-      <source>%1 items</source>
-      <translation>%1 个项目</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="801"/>
+        <source>%1 items</source>
+        <translation>%1 个项目</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="822"/>
-      <source>The %1 is required to access this cloud storage.
+        <location filename="../src/qml/CloudStorageDialog.qml" line="822"/>
+        <source>The %1 is required to access this cloud storage.
 
 Would you like to download it now?</source>
-      <translation>访问此云存储需要 %1。
+        <translation>访问此云存储需要 %1。
 
 您现在要下载吗？</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="837"/>
-      <source>Downloading... %1%</source>
-      <translation>正在下载... %1%</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="837"/>
+        <source>Downloading... %1%</source>
+        <translation>正在下载... %1%</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="844"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="844"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="844"/>
-      <source>Download</source>
-      <translation>下载</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="844"/>
+        <source>Download</source>
+        <translation>下载</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="856"/>
-      <source>Later</source>
-      <translation>以后</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="856"/>
+        <source>Later</source>
+        <translation>以后</translation>
     </message>
     <message>
-      <location filename="../src/qml/CloudStorageDialog.qml" line="866"/>
-      <source>Information</source>
-      <translation>信息</translation>
+        <location filename="../src/qml/CloudStorageDialog.qml" line="866"/>
+        <source>Information</source>
+        <translation>信息</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>CloudStorageManager</name>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="179"/>
-      <source>SDK download already in progress</source>
-      <translation>SDK 下载已在进行中</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="179"/>
+        <source>SDK download already in progress</source>
+        <translation>SDK 下载已在进行中</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="188"/>
-      <location filename="../src/CloudStorageManager.cpp" line="368"/>
-      <source>Unknown provider: %1</source>
-      <translation>未知提供程序: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="188"/>
+        <location filename="../src/CloudStorageManager.cpp" line="368"/>
+        <source>Unknown provider: %1</source>
+        <translation>未知提供程序: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="194"/>
-      <source>SDK download URL not available for this platform</source>
-      <translation>此平台无法使用 SDK 下载 URL</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="194"/>
+        <source>SDK download URL not available for this platform</source>
+        <translation>此平台无法使用 SDK 下载 URL</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="221"/>
-      <source>Download failed: %1</source>
-      <translation>下载失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="221"/>
+        <source>Download failed: %1</source>
+        <translation>下载失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="267"/>
-      <location filename="../src/CloudStorageManager.cpp" line="268"/>
-      <source>Failed to save downloaded file</source>
-      <translation>无法保存下载的文件</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="267"/>
+        <location filename="../src/CloudStorageManager.cpp" line="268"/>
+        <source>Failed to save downloaded file</source>
+        <translation>无法保存下载的文件</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="301"/>
-      <source>SDK installer downloaded to: %1
+        <location filename="../src/CloudStorageManager.cpp" line="301"/>
+        <source>SDK installer downloaded to: %1
 
 Please run the installer manually, then restart the application.</source>
-      <translation>SDK 安装程序已下载至: %1
+        <translation>SDK 安装程序已下载至: %1
 
 请手动运行安装程序，然后重新启动应用程序。</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="331"/>
-      <source>SDK installed successfully</source>
-      <translation>SDK 安装成功</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="331"/>
+        <source>SDK installed successfully</source>
+        <translation>SDK 安装成功</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="333"/>
-      <source>Failed to extract SDK: %1</source>
-      <translation>提取 SDK 失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="333"/>
+        <source>Failed to extract SDK: %1</source>
+        <translation>提取 SDK 失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="334"/>
-      <source>Extraction failed</source>
-      <translation>提取失败</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="334"/>
+        <source>Extraction failed</source>
+        <translation>提取失败</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="350"/>
-      <source>SDK not available for %1. Please download it first.</source>
-      <translation>%1 的 SDK 不可用。请先下载。</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="350"/>
+        <source>SDK not available for %1. Please download it first.</source>
+        <translation>%1 的 SDK 不可用。请先下载。</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="387"/>
-      <source>SDK not available. Please download it first.</source>
-      <translation>SDK 不可用。请先下载。</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="387"/>
+        <source>SDK not available. Please download it first.</source>
+        <translation>SDK 不可用。请先下载。</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="427"/>
-      <source>Connection successful</source>
-      <translation>连接成功</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="427"/>
+        <source>Connection successful</source>
+        <translation>连接成功</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="430"/>
-      <source>Connection failed: %1</source>
-      <translation>连接失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="430"/>
+        <source>Connection failed: %1</source>
+        <translation>连接失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="483"/>
-      <source>S3 connection failed: %1</source>
-      <translation>S3 连接失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="483"/>
+        <source>S3 connection failed: %1</source>
+        <translation>S3 连接失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="517"/>
-      <source>Failed to list buckets: %1</source>
-      <translation>列出存储桶失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="517"/>
+        <source>Failed to list buckets: %1</source>
+        <translation>列出存储桶失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="582"/>
-      <source>Failed to list objects: %1</source>
-      <translation>列出对象失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="582"/>
+        <source>Failed to list objects: %1</source>
+        <translation>列出对象失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="609"/>
-      <source>Failed to download file: %1</source>
-      <translation>下载文件失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="609"/>
+        <source>Failed to download file: %1</source>
+        <translation>下载文件失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="652"/>
-      <source>Azure login failed: %1</source>
-      <translation>Azure 登录失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="652"/>
+        <source>Azure login failed: %1</source>
+        <translation>Azure 登录失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="695"/>
-      <source>Failed to list containers: %1</source>
-      <translation>列出容器失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="695"/>
+        <source>Failed to list containers: %1</source>
+        <translation>列出容器失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="746"/>
-      <source>Failed to list blobs: %1</source>
-      <translation>列出 blob 失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="746"/>
+        <source>Failed to list blobs: %1</source>
+        <translation>列出 blob 失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="781"/>
-      <source>Failed to download blob: %1</source>
-      <translation>下载 blob 失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="781"/>
+        <source>Failed to download blob: %1</source>
+        <translation>下载 blob 失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="823"/>
-      <source>Failed to set GCS project</source>
-      <translation>设置 GCS 项目失败</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="823"/>
+        <source>Failed to set GCS project</source>
+        <translation>设置 GCS 项目失败</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="836"/>
-      <source>GCS authentication failed: %1</source>
-      <translation>GCS 身份验证失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="836"/>
+        <source>GCS authentication failed: %1</source>
+        <translation>GCS 身份验证失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="878"/>
-      <source>Failed to list GCS buckets: %1</source>
-      <translation>列出 GCS 存储桶失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="878"/>
+        <source>Failed to list GCS buckets: %1</source>
+        <translation>列出 GCS 存储桶失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="936"/>
-      <source>Failed to list GCS objects: %1</source>
-      <translation>列出 GCS 对象失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="936"/>
+        <source>Failed to list GCS objects: %1</source>
+        <translation>列出 GCS 对象失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="961"/>
-      <source>Failed to download GCS object: %1</source>
-      <translation>下载 GCS 对象失败: %1</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="961"/>
+        <source>Failed to download GCS object: %1</source>
+        <translation>下载 GCS 对象失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/CloudStorageManager.cpp" line="983"/>
-      <location filename="../src/CloudStorageManager.cpp" line="1000"/>
-      <location filename="../src/CloudStorageManager.cpp" line="1017"/>
-      <source>Not connected to any cloud provider</source>
-      <translation>未连接到任何云提供商</translation>
+        <location filename="../src/CloudStorageManager.cpp" line="983"/>
+        <location filename="../src/CloudStorageManager.cpp" line="1000"/>
+        <location filename="../src/CloudStorageManager.cpp" line="1017"/>
+        <source>Not connected to any cloud provider</source>
+        <translation>未连接到任何云提供商</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>CorrelationAnalyzer</name>
     <message>
-      <location filename="../src/CorrelationAnalyzer.cpp" line="48"/>
-      <source>Invalid model</source>
-      <translation>无效模型</translation>
+        <location filename="../src/CorrelationAnalyzer.cpp" line="48"/>
+        <source>Invalid model</source>
+        <translation>无效模型</translation>
     </message>
     <message>
-      <location filename="../src/CorrelationAnalyzer.cpp" line="150"/>
-      <location filename="../src/CorrelationAnalyzer.cpp" line="283"/>
-      <location filename="../src/CorrelationAnalyzer.cpp" line="385"/>
-      <source>No sources added for analysis</source>
-      <translation>未添加用于分析的源</translation>
+        <location filename="../src/CorrelationAnalyzer.cpp" line="150"/>
+        <location filename="../src/CorrelationAnalyzer.cpp" line="283"/>
+        <location filename="../src/CorrelationAnalyzer.cpp" line="385"/>
+        <source>No sources added for analysis</source>
+        <translation>未添加用于分析的源</translation>
     </message>
     <message>
-      <location filename="../src/CorrelationAnalyzer.cpp" line="289"/>
-      <source>Invalid regex pattern: %1</source>
-      <translation>无效的正则表达式模式: %1</translation>
+        <location filename="../src/CorrelationAnalyzer.cpp" line="289"/>
+        <source>Invalid regex pattern: %1</source>
+        <translation>无效的正则表达式模式: %1</translation>
     </message>
     <message>
-      <location filename="../src/CorrelationAnalyzer.cpp" line="557"/>
-      <source>Cannot open file for writing: %1</source>
-      <translation>无法打开文件进行写入: %1</translation>
+        <location filename="../src/CorrelationAnalyzer.cpp" line="557"/>
+        <source>Cannot open file for writing: %1</source>
+        <translation>无法打开文件进行写入: %1</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>CorrelationPanel</name>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="50"/>
-      <source>Log Correlation Analysis</source>
-      <translation>日志关联分析</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="50"/>
+        <source>Log Correlation Analysis</source>
+        <translation>日志关联分析</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="59"/>
-      <source>Add Source</source>
-      <translation>添加源</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="59"/>
+        <source>Add Source</source>
+        <translation>添加源</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="70"/>
-      <source>Clear Sources</source>
-      <translation>清除源</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="70"/>
+        <source>Clear Sources</source>
+        <translation>清除源</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="84"/>
-      <source>Sources (%1)</source>
-      <translation>源 (%1)</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="84"/>
+        <source>Sources (%1)</source>
+        <translation>源 (%1)</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="107"/>
-      <source>No sources added. Click 'Add Source' to add current file.</source>
-      <translation>未添加源。点击“添加源”以添加当前文件。</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="107"/>
+        <source>No sources added. Click &apos;Add Source&apos; to add current file.</source>
+        <translation>未添加源。点击“添加源”以添加当前文件。</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="118"/>
-      <source>Analysis Options</source>
-      <translation>分析选项</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="118"/>
+        <source>Analysis Options</source>
+        <translation>分析选项</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="125"/>
-      <source>Analysis Type:</source>
-      <translation>分析类型:</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="125"/>
+        <source>Analysis Type:</source>
+        <translation>分析类型:</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="130"/>
-      <source>Auto-detect IDs (UUID, Request ID, etc.)</source>
-      <translation>自动检测 ID (UUID, 请求 ID 等)</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="130"/>
+        <source>Auto-detect IDs (UUID, Request ID, etc.)</source>
+        <translation>自动检测 ID (UUID, 请求 ID 等)</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="131"/>
-      <source>Time Window Correlation</source>
-      <translation>时间窗口关联</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="131"/>
+        <source>Time Window Correlation</source>
+        <translation>时间窗口关联</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="132"/>
-      <source>Custom ID Pattern</source>
-      <translation>自定义 ID 模式</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="132"/>
+        <source>Custom ID Pattern</source>
+        <translation>自定义 ID 模式</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="140"/>
-      <source>Time Window (seconds):</source>
-      <translation>时间窗口 (秒):</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="140"/>
+        <source>Time Window (seconds):</source>
+        <translation>时间窗口 (秒):</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="152"/>
-      <source>ID Pattern (regex):</source>
-      <translation>ID 模式 (正则):</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="152"/>
+        <source>ID Pattern (regex):</source>
+        <translation>ID 模式 (正则):</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="156"/>
-      <source>e.g., request-id[=:]([w-]+)</source>
-      <translation>例如: request-id[=:]([\w-]+)</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="156"/>
+        <source>e.g., request-id[=:]([w-]+)</source>
+        <translation>例如: request-id[=:]([\w-]+)</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="162"/>
-      <source>ID Name:</source>
-      <translation>ID 名称:</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="162"/>
+        <source>ID Name:</source>
+        <translation>ID 名称:</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="172"/>
-      <source>Cancel</source>
-      <translation>取消</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="172"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="172"/>
-      <source>Analyze</source>
-      <translation>分析</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="172"/>
+        <source>Analyze</source>
+        <translation>分析</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="196"/>
-      <source>Analyzing...</source>
-      <translation>正在分析...</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="196"/>
+        <source>Analyzing...</source>
+        <translation>正在分析...</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="202"/>
-      <source>Export...</source>
-      <translation>导出...</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="202"/>
+        <source>Export...</source>
+        <translation>导出...</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="209"/>
-      <source>Export as JSON...</source>
-      <translation>导出为 JSON...</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="209"/>
+        <source>Export as JSON...</source>
+        <translation>导出为 JSON...</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="213"/>
-      <source>Export as CSV...</source>
-      <translation>导出为 CSV...</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="213"/>
+        <source>Export as CSV...</source>
+        <translation>导出为 CSV...</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="217"/>
-      <source>Export as HTML...</source>
-      <translation>导出为 HTML...</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="217"/>
+        <source>Export as HTML...</source>
+        <translation>导出为 HTML...</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="230"/>
-      <source>Correlation Groups (%1)</source>
-      <translation>关联组 (%1)</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="230"/>
+        <source>Correlation Groups (%1)</source>
+        <translation>关联组 (%1)</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="241"/>
-      <source>Total Events: %1 | Avg Duration: %2 ms</source>
-      <translation>总事件: %1 | 平均时长: %2 毫秒</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="241"/>
+        <source>Total Events: %1 | Avg Duration: %2 ms</source>
+        <translation>总事件: %1 | 平均时长: %2 毫秒</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="278"/>
-      <source>%1 events | %2 | %3 ms</source>
-      <translation>%1 个事件 | %2 | %3 毫秒</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="278"/>
+        <source>%1 events | %2 | %3 ms</source>
+        <translation>%1 个事件 | %2 | %3 毫秒</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="297"/>
-      <source>No correlation groups found.
+        <location filename="../src/qml/CorrelationPanel.qml" line="297"/>
+        <source>No correlation groups found.
 Run analysis to find related log entries.</source>
-      <translation>未找到关联组。
+        <translation>未找到关联组。
 运行分析以查找相关的日志条目。</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="378"/>
-      <source>Select a correlation group to view events</source>
-      <translation>选择关联组以查看事件</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="378"/>
+        <source>Select a correlation group to view events</source>
+        <translation>选择关联组以查看事件</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="411"/>
-      <source>Analysis completed: %1 groups found</source>
-      <translation>分析完成: 找到 %1 个组</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="411"/>
+        <source>Analysis completed: %1 groups found</source>
+        <translation>分析完成: 找到 %1 个组</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="422"/>
-      <source>Analyzing: %1 / %2</source>
-      <translation>正在分析: %1 / %2</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="422"/>
+        <source>Analyzing: %1 / %2</source>
+        <translation>正在分析: %1 / %2</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="426"/>
-      <source>Error: %1</source>
-      <translation>错误: %1</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="426"/>
+        <source>Error: %1</source>
+        <translation>错误: %1</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="441"/>
-      <source>Export Correlation Results</source>
-      <translation>导出关联结果</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="441"/>
+        <source>Export Correlation Results</source>
+        <translation>导出关联结果</translation>
     </message>
     <message>
-      <location filename="../src/qml/CorrelationPanel.qml" line="451"/>
-      <source>File Path:</source>
-      <translation>文件路径:</translation>
+        <location filename="../src/qml/CorrelationPanel.qml" line="451"/>
+        <source>File Path:</source>
+        <translation>文件路径:</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>DashboardPanel</name>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="90"/>
-      <source>Log Analytics Dashboard</source>
-      <translation>日志分析仪表板</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="90"/>
+        <source>Log Analytics Dashboard</source>
+        <translation>日志分析仪表板</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="105"/>
-      <source>Time Range: </source>
-      <translation>时间范围: </translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="105"/>
+        <source>Time Range: </source>
+        <translation>时间范围: </translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="146"/>
-      <source>Time Interval:</source>
-      <translation>时间间隔:</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="146"/>
+        <source>Time Interval:</source>
+        <translation>时间间隔:</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="154"/>
-      <source>Per Minute</source>
-      <translation>每分钟</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="154"/>
+        <source>Per Minute</source>
+        <translation>每分钟</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="155"/>
-      <source>Per Hour</source>
-      <translation>每小时</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="155"/>
+        <source>Per Hour</source>
+        <translation>每小时</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="156"/>
-      <source>Per Day</source>
-      <translation>每天</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="156"/>
+        <source>Per Day</source>
+        <translation>每天</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="190"/>
-      <source>Chart Type:</source>
-      <translation>图表类型:</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="190"/>
+        <source>Chart Type:</source>
+        <translation>图表类型:</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="200"/>
-      <source>Stacked</source>
-      <translation>堆叠</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="200"/>
+        <source>Stacked</source>
+        <translation>堆叠</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="223"/>
-      <source>Grouped</source>
-      <translation>分组</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="223"/>
+        <source>Grouped</source>
+        <translation>分组</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="246"/>
-      <source>Area</source>
-      <translation>面积</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="246"/>
+        <source>Area</source>
+        <translation>面积</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="273"/>
-      <source>Export</source>
-      <translation>导出</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="273"/>
+        <source>Export</source>
+        <translation>导出</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="294"/>
-      <source>Refresh</source>
-      <translation>刷新</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="294"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="340"/>
-      <source>Log Volume Over Time</source>
-      <translation>日志量随时间变化</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="340"/>
+        <source>Log Volume Over Time</source>
+        <translation>日志量随时间变化</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="362"/>
-      <source>Loading data...</source>
-      <translation>正在加载数据...</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="362"/>
+        <source>Loading data...</source>
+        <translation>正在加载数据...</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="385"/>
-      <source>Level Distribution</source>
-      <translation>级别分布</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="385"/>
+        <source>Level Distribution</source>
+        <translation>级别分布</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="473"/>
-      <source>Total Lines:</source>
-      <translation>总行数：</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="473"/>
+        <source>Total Lines:</source>
+        <translation>总行数：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="495"/>
-      <source>Filtered:</source>
-      <translation>已过滤：</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="495"/>
+        <source>Filtered:</source>
+        <translation>已过滤：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="513"/>
-      <source>Data Points: </source>
-      <translation>数据点：</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="513"/>
+        <source>Data Points: </source>
+        <translation>数据点：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DashboardPanel.qml" line="526"/>
-      <source>Export Dashboard Chart</source>
-      <translation>导出仪表盘图表</translation>
+        <location filename="../src/qml/DashboardPanel.qml" line="526"/>
+        <source>Export Dashboard Chart</source>
+        <translation>导出仪表盘图表</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>DataSanitizer</name>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="51"/>
-      <source>IP Address (IPv4)</source>
-      <translation>IP 地址 (IPv4)</translation>
+        <location filename="../src/DataSanitizer.cpp" line="51"/>
+        <source>IP Address (IPv4)</source>
+        <translation>IP 地址 (IPv4)</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="59"/>
-      <source>IP Address (IPv6)</source>
-      <translation>IP 地址 (IPv6)</translation>
+        <location filename="../src/DataSanitizer.cpp" line="59"/>
+        <source>IP Address (IPv6)</source>
+        <translation>IP 地址 (IPv6)</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="67"/>
-      <source>Email Address</source>
-      <translation>电子邮件地址</translation>
+        <location filename="../src/DataSanitizer.cpp" line="67"/>
+        <source>Email Address</source>
+        <translation>电子邮件地址</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="75"/>
-      <source>Phone Number (China)</source>
-      <translation>电话号码 (中国)</translation>
+        <location filename="../src/DataSanitizer.cpp" line="75"/>
+        <source>Phone Number (China)</source>
+        <translation>电话号码 (中国)</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="83"/>
-      <source>Phone Number (International)</source>
-      <translation>电话号码 (国际)</translation>
+        <location filename="../src/DataSanitizer.cpp" line="83"/>
+        <source>Phone Number (International)</source>
+        <translation>电话号码 (国际)</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="91"/>
-      <source>ID Card (China)</source>
-      <translation>身份证 (中国)</translation>
+        <location filename="../src/DataSanitizer.cpp" line="91"/>
+        <source>ID Card (China)</source>
+        <translation>身份证 (中国)</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="99"/>
-      <source>Domain Name</source>
-      <translation>域名</translation>
+        <location filename="../src/DataSanitizer.cpp" line="99"/>
+        <source>Domain Name</source>
+        <translation>域名</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="107"/>
-      <source>Port Number</source>
-      <translation>端口号</translation>
+        <location filename="../src/DataSanitizer.cpp" line="107"/>
+        <source>Port Number</source>
+        <translation>端口号</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="115"/>
-      <source>API Key</source>
-      <translation>API 密钥</translation>
+        <location filename="../src/DataSanitizer.cpp" line="115"/>
+        <source>API Key</source>
+        <translation>API 密钥</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="123"/>
-      <source>Token/Bearer</source>
-      <translation>令牌/Bearer</translation>
+        <location filename="../src/DataSanitizer.cpp" line="123"/>
+        <source>Token/Bearer</source>
+        <translation>令牌/Bearer</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="131"/>
-      <source>Password Field</source>
-      <translation>密码字段</translation>
+        <location filename="../src/DataSanitizer.cpp" line="131"/>
+        <source>Password Field</source>
+        <translation>密码字段</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="139"/>
-      <source>Username Field</source>
-      <translation>用户名率字段</translation>
+        <location filename="../src/DataSanitizer.cpp" line="139"/>
+        <source>Username Field</source>
+        <translation>用户名率字段</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="147"/>
-      <source>File Path (Windows)</source>
-      <translation>文件路径 (Windows)</translation>
+        <location filename="../src/DataSanitizer.cpp" line="147"/>
+        <source>File Path (Windows)</source>
+        <translation>文件路径 (Windows)</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="155"/>
-      <source>File Path (Unix)</source>
-      <translation>文件路径 (Unix)</translation>
+        <location filename="../src/DataSanitizer.cpp" line="155"/>
+        <source>File Path (Unix)</source>
+        <translation>文件路径 (Unix)</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="163"/>
-      <source>MAC Address</source>
-      <translation>MAC 地址</translation>
+        <location filename="../src/DataSanitizer.cpp" line="163"/>
+        <source>MAC Address</source>
+        <translation>MAC 地址</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="171"/>
-      <source>Credit Card Number</source>
-      <translation>信用卡号</translation>
+        <location filename="../src/DataSanitizer.cpp" line="171"/>
+        <source>Credit Card Number</source>
+        <translation>信用卡号</translation>
     </message>
     <message>
-      <location filename="../src/DataSanitizer.cpp" line="179"/>
-      <source>Social Security Number</source>
-      <translation>社会保障号码</translation>
+        <location filename="../src/DataSanitizer.cpp" line="179"/>
+        <source>Social Security Number</source>
+        <translation>社会保障号码</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>DatabaseConnectionDialog</name>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="11"/>
-      <source>Database Connection</source>
-      <translation>数据库连接</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="11"/>
+        <source>Database Connection</source>
+        <translation>数据库连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="57"/>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="380"/>
-      <source>Disconnect</source>
-      <translation>断开连接</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="57"/>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="380"/>
+        <source>Disconnect</source>
+        <translation>断开连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="57"/>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="380"/>
-      <source>Connect</source>
-      <translation>连接</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="57"/>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="380"/>
+        <source>Connect</source>
+        <translation>连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="59"/>
-      <source>Connected to: %1</source>
-      <translation>已连接到：%1</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="59"/>
+        <source>Connected to: %1</source>
+        <translation>已连接到：%1</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="60"/>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="373"/>
-      <source>Not connected</source>
-      <translation>未连接</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="60"/>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="373"/>
+        <source>Not connected</source>
+        <translation>未连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="73"/>
-      <source>%1 rows, %2 ms</source>
-      <translation>%1 行，%2 毫秒</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="73"/>
+        <source>%1 rows, %2 ms</source>
+        <translation>%1 行，%2 毫秒</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="75"/>
-      <source>Error: %1</source>
-      <translation>错误：%1</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="75"/>
+        <source>Error: %1</source>
+        <translation>错误：%1</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="96"/>
-      <source>-- New Connection --</source>
-      <translation>-- 新建连接 --</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="96"/>
+        <source>-- New Connection --</source>
+        <translation>-- 新建连接 --</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="141"/>
-      <source>Connection</source>
-      <translation>连接</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="141"/>
+        <source>Connection</source>
+        <translation>连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="142"/>
-      <source>Query</source>
-      <translation>查询</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="142"/>
+        <source>Query</source>
+        <translation>查询</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="143"/>
-      <source>Export</source>
-      <translation>导出</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="143"/>
+        <source>Export</source>
+        <translation>导出</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="163"/>
-      <source>Profile:</source>
-      <translation>配置：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="163"/>
+        <source>Profile:</source>
+        <translation>配置：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="188"/>
-      <source>Delete</source>
-      <translation type="unfinished">删除</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="188"/>
+        <source>Delete</source>
+        <translation type="unfinished">删除</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="203"/>
-      <source>Profile Name:</source>
-      <translation>配置名称：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="203"/>
+        <source>Profile Name:</source>
+        <translation>配置名称：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="207"/>
-      <source>My Database</source>
-      <translation>我的数据库</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="207"/>
+        <source>My Database</source>
+        <translation>我的数据库</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="210"/>
-      <source>Driver:</source>
-      <translation>驱动：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="210"/>
+        <source>Driver:</source>
+        <translation>驱动：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="246"/>
-      <source>Host:</source>
-      <translation>主机：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="246"/>
+        <source>Host:</source>
+        <translation>主机：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="261"/>
-      <source>Port:</source>
-      <translation>端口：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="261"/>
+        <source>Port:</source>
+        <translation>端口：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="276"/>
-      <source>Database:</source>
-      <translation>数据库：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="276"/>
+        <source>Database:</source>
+        <translation>数据库：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="283"/>
-      <source>Path to .db file</source>
-      <translation>.db 文件路径</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="283"/>
+        <source>Path to .db file</source>
+        <translation>.db 文件路径</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="283"/>
-      <source>Database name</source>
-      <translation>数据库名称</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="283"/>
+        <source>Database name</source>
+        <translation>数据库名称</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="296"/>
-      <source>Username:</source>
-      <translation>用户名：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="296"/>
+        <source>Username:</source>
+        <translation>用户名：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="302"/>
-      <source>Username</source>
-      <translation>用户名</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="302"/>
+        <source>Username</source>
+        <translation>用户名</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="306"/>
-      <source>Password:</source>
-      <translation>密码：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="306"/>
+        <source>Password:</source>
+        <translation>密码：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="313"/>
-      <source>Password</source>
-      <translation>密码</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="313"/>
+        <source>Password</source>
+        <translation>密码</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="316"/>
-      <source>Options:</source>
-      <translation>选项：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="316"/>
+        <source>Options:</source>
+        <translation>选项：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="320"/>
-      <source>Connection options (optional)</source>
-      <translation>连接选项 (可选)</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="320"/>
+        <source>Connection options (optional)</source>
+        <translation>连接选项 (可选)</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="323"/>
-      <source>Default Query:</source>
-      <translation>默认查询：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="323"/>
+        <source>Default Query:</source>
+        <translation>默认查询：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="327"/>
-      <source>Query to run on connect (optional)</source>
-      <translation>连接时运行的查询 (可选)</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="327"/>
+        <source>Query to run on connect (optional)</source>
+        <translation>连接时运行的查询 (可选)</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="333"/>
-      <source>Auto-connect on startup</source>
-      <translation>启动时自动连接</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="333"/>
+        <source>Auto-connect on startup</source>
+        <translation>启动时自动连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="352"/>
-      <source>Test Connection</source>
-      <translation>测试连接</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="352"/>
+        <source>Test Connection</source>
+        <translation>测试连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="354"/>
-      <source>Testing...</source>
-      <translation>正在测试...</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="354"/>
+        <source>Testing...</source>
+        <translation>正在测试...</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="362"/>
-      <source>Save Profile</source>
-      <translation>保存配置</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="362"/>
+        <source>Save Profile</source>
+        <translation>保存配置</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="402"/>
-      <source>Tables:</source>
-      <translation>表：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="402"/>
+        <source>Tables:</source>
+        <translation>表：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="411"/>
-      <source>Preview</source>
-      <translation type="unfinished">预览</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="411"/>
+        <source>Preview</source>
+        <translation type="unfinished">预览</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="418"/>
-      <source>Refresh</source>
-      <translation>刷新</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="418"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="425"/>
-      <source>SQL Query:</source>
-      <translation>SQL 查询：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="425"/>
+        <source>SQL Query:</source>
+        <translation>SQL 查询：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="430"/>
-      <source>SELECT * FROM logs WHERE timestamp &gt; '2024-01-01' LIMIT 1000</source>
-      <translation>SELECT * FROM logs WHERE timestamp &gt; '2024-01-01' LIMIT 1000</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="430"/>
+        <source>SELECT * FROM logs WHERE timestamp &gt; &apos;2024-01-01&apos; LIMIT 1000</source>
+        <translation>SELECT * FROM logs WHERE timestamp &gt; &apos;2024-01-01&apos; LIMIT 1000</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="439"/>
-      <source>Execute</source>
-      <translation>执行</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="439"/>
+        <source>Execute</source>
+        <translation>执行</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="448"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="448"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="479"/>
-      <source>%1 rows loaded</source>
-      <translation>已加载 %1 行</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="479"/>
+        <source>%1 rows loaded</source>
+        <translation>已加载 %1 行</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="480"/>
-      <source>Execute a query to see results</source>
-      <translation>执行查询以查看结果</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="480"/>
+        <source>Execute a query to see results</source>
+        <translation>执行查询以查看结果</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="491"/>
-      <source>Convert query results to log format for viewing in BigFileViewer</source>
-      <translation>将查询结果转换为日志格式以便在 BigFileViewer 中查看</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="491"/>
+        <source>Convert query results to log format for viewing in BigFileViewer</source>
+        <translation>将查询结果转换为日志格式以便在 BigFileViewer 中查看</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="502"/>
-      <source>Timestamp Column:</source>
-      <translation>时间戳列：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="502"/>
+        <source>Timestamp Column:</source>
+        <translation>时间戳列：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="506"/>
-      <source>e.g., created_at, timestamp, log_time</source>
-      <translation>例如：created_at, timestamp, log_time</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="506"/>
+        <source>e.g., created_at, timestamp, log_time</source>
+        <translation>例如：created_at, timestamp, log_time</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="509"/>
-      <source>Message Column:</source>
-      <translation>消息列：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="509"/>
+        <source>Message Column:</source>
+        <translation>消息列：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="513"/>
-      <source>e.g., message, log_message, content</source>
-      <translation>例如：message, log_message, content</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="513"/>
+        <source>e.g., message, log_message, content</source>
+        <translation>例如：message, log_message, content</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="516"/>
-      <source>Level Column (optional):</source>
-      <translation>级别列 (可选)：</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="516"/>
+        <source>Level Column (optional):</source>
+        <translation>级别列 (可选)：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="520"/>
-      <source>e.g., level, severity, log_level</source>
-      <translation>例如：level, severity, log_level</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="520"/>
+        <source>e.g., level, severity, log_level</source>
+        <translation>例如：level, severity, log_level</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="528"/>
-      <source>Export &amp; Open in Viewer</source>
-      <translation>导出并在查看器中打开</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="528"/>
+        <source>Export &amp; Open in Viewer</source>
+        <translation>导出并在查看器中打开</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="548"/>
-      <source>%1 rows ready to export</source>
-      <translation>%1 行准备导出</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="548"/>
+        <source>%1 rows ready to export</source>
+        <translation>%1 行准备导出</translation>
     </message>
     <message>
-      <location filename="../src/qml/DatabaseConnectionDialog.qml" line="549"/>
-      <source>Run a query first</source>
-      <translation>请先运行查询</translation>
+        <location filename="../src/qml/DatabaseConnectionDialog.qml" line="549"/>
+        <source>Run a query first</source>
+        <translation>请先运行查询</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>DatabaseConnector</name>
     <message>
-      <location filename="../src/DatabaseConnector.cpp" line="130"/>
-      <source>Connection successful! Server version: %1</source>
-      <translation>连接成功！服务器版本：%1</translation>
+        <location filename="../src/DatabaseConnector.cpp" line="130"/>
+        <source>Connection successful! Server version: %1</source>
+        <translation>连接成功！服务器版本：%1</translation>
     </message>
     <message>
-      <location filename="../src/DatabaseConnector.cpp" line="134"/>
-      <source>Connection failed: %1</source>
-      <translation>连接失败：%1</translation>
+        <location filename="../src/DatabaseConnector.cpp" line="134"/>
+        <source>Connection failed: %1</source>
+        <translation>连接失败：%1</translation>
     </message>
     <message>
-      <location filename="../src/DatabaseConnector.cpp" line="145"/>
-      <source>Profile not found: %1</source>
-      <translation>未找到配置：%1</translation>
+        <location filename="../src/DatabaseConnector.cpp" line="145"/>
+        <source>Profile not found: %1</source>
+        <translation>未找到配置：%1</translation>
     </message>
     <message>
-      <location filename="../src/DatabaseConnector.cpp" line="161"/>
-      <source>Database driver not available: %1</source>
-      <translation>数据库驱动不可用：%1</translation>
+        <location filename="../src/DatabaseConnector.cpp" line="161"/>
+        <source>Database driver not available: %1</source>
+        <translation>数据库驱动不可用：%1</translation>
     </message>
     <message>
-      <location filename="../src/DatabaseConnector.cpp" line="193"/>
-      <source>Failed to connect: %1</source>
-      <translation>无法连接：%1</translation>
+        <location filename="../src/DatabaseConnector.cpp" line="193"/>
+        <source>Failed to connect: %1</source>
+        <translation>无法连接：%1</translation>
     </message>
     <message>
-      <location filename="../src/DatabaseConnector.cpp" line="198"/>
-      <source>Unnamed</source>
-      <translation>未命名</translation>
+        <location filename="../src/DatabaseConnector.cpp" line="198"/>
+        <source>Unnamed</source>
+        <translation>未命名</translation>
     </message>
     <message>
-      <location filename="../src/DatabaseConnector.cpp" line="236"/>
-      <location filename="../src/DatabaseConnector.cpp" line="365"/>
-      <source>Not connected to database</source>
-      <translation>未连接到数据库</translation>
+        <location filename="../src/DatabaseConnector.cpp" line="236"/>
+        <location filename="../src/DatabaseConnector.cpp" line="365"/>
+        <source>Not connected to database</source>
+        <translation>未连接到数据库</translation>
     </message>
     <message>
-      <location filename="../src/DatabaseConnector.cpp" line="241"/>
-      <source>A query is already running</source>
-      <translation>查询正在运行中</translation>
+        <location filename="../src/DatabaseConnector.cpp" line="241"/>
+        <source>A query is already running</source>
+        <translation>查询正在运行中</translation>
     </message>
     <message>
-      <location filename="../src/DatabaseConnector.cpp" line="417"/>
-      <source>No data to export</source>
-      <translation>没有要导出的数据</translation>
+        <location filename="../src/DatabaseConnector.cpp" line="417"/>
+        <source>No data to export</source>
+        <translation>没有要导出的数据</translation>
     </message>
     <message>
-      <location filename="../src/DatabaseConnector.cpp" line="429"/>
-      <source>Failed to create temp file: %1</source>
-      <translation>无法创建临时文件：%1</translation>
+        <location filename="../src/DatabaseConnector.cpp" line="429"/>
+        <source>Failed to create temp file: %1</source>
+        <translation>无法创建临时文件：%1</translation>
     </message>
     <message>
-      <location filename="../src/DatabaseConnector.cpp" line="453"/>
-      <source>Profile name cannot be empty</source>
-      <translation>配置名称不能为空</translation>
+        <location filename="../src/DatabaseConnector.cpp" line="453"/>
+        <source>Profile name cannot be empty</source>
+        <translation>配置名称不能为空</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>DirectoryMonitorDialog</name>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="59"/>
-      <source>Directory Monitor</source>
-      <translation>目录监视器</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="59"/>
+        <source>Directory Monitor</source>
+        <translation>目录监视器</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="85"/>
-      <source>Watching</source>
-      <translation>正在监视</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="85"/>
+        <source>Watching</source>
+        <translation>正在监视</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="101"/>
-      <source>Select a directory to monitor...</source>
-      <translation>选择监控目录...</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="101"/>
+        <source>Select a directory to monitor...</source>
+        <translation>选择监控目录...</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="113"/>
-      <source>Browse</source>
-      <translation>浏览</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="113"/>
+        <source>Browse</source>
+        <translation>浏览</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="138"/>
-      <source>Filter:</source>
-      <translation type="unfinished">过滤:</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="138"/>
+        <source>Filter:</source>
+        <translation type="unfinished">过滤:</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="163"/>
-      <source>Interval:</source>
-      <translation>间隔：</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="163"/>
+        <source>Interval:</source>
+        <translation>间隔：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="195"/>
-      <source>Stop Watching</source>
-      <translation>停止监控</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="195"/>
+        <source>Stop Watching</source>
+        <translation>停止监控</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="195"/>
-      <source>Start Watching</source>
-      <translation>开始监控</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="195"/>
+        <source>Start Watching</source>
+        <translation>开始监控</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="223"/>
-      <source>Refresh</source>
-      <translation>刷新</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="223"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="246"/>
-      <source>Open Latest</source>
-      <translation>打开最新</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="246"/>
+        <source>Open Latest</source>
+        <translation>打开最新</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="285"/>
-      <source>Files in Directory</source>
-      <translation>目录中的文件</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="285"/>
+        <source>Files in Directory</source>
+        <translation>目录中的文件</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="366"/>
-      <source>Open</source>
-      <translation>打开</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="366"/>
+        <source>Open</source>
+        <translation>打开</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="405"/>
-      <source>No matching files found</source>
-      <translation>未找到匹配文件</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="405"/>
+        <source>No matching files found</source>
+        <translation>未找到匹配文件</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="406"/>
-      <source>Select a directory to start</source>
-      <translation>请选择一个目录开始</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="406"/>
+        <source>Select a directory to start</source>
+        <translation>请选择一个目录开始</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="421"/>
-      <source>Close</source>
-      <translation type="unfinished">关闭</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="421"/>
+        <source>Close</source>
+        <translation type="unfinished">关闭</translation>
     </message>
     <message>
-      <location filename="../src/qml/DirectoryMonitorDialog.qml" line="444"/>
-      <source>Select Directory to Monitor</source>
-      <translation>选择要监控的目录</translation>
+        <location filename="../src/qml/DirectoryMonitorDialog.qml" line="444"/>
+        <source>Select Directory to Monitor</source>
+        <translation>选择要监控的目录</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>DistinctValueAnalyzer</name>
     <message>
-      <location filename="../src/DistinctValueAnalyzer.cpp" line="172"/>
-      <source>No lines or columns to analyze</source>
-      <translation>没有可分析的行或列</translation>
+        <location filename="../src/DistinctValueAnalyzer.cpp" line="172"/>
+        <source>No lines or columns to analyze</source>
+        <translation>没有可分析的行或列</translation>
     </message>
     <message>
-      <location filename="../src/DistinctValueAnalyzer.cpp" line="227"/>
-      <source>Line range analysis requires integration with BigFileModel</source>
-      <translation>行范围分析需要集成 BigFileModel</translation>
+        <location filename="../src/DistinctValueAnalyzer.cpp" line="227"/>
+        <source>Line range analysis requires integration with BigFileModel</source>
+        <translation>行范围分析需要集成 BigFileModel</translation>
     </message>
     <message>
-      <location filename="../src/DistinctValueAnalyzer.cpp" line="234"/>
-      <source>Filtered analysis requires integration with BigFileModel</source>
-      <translation>过滤分析需要集成 BigFileModel</translation>
+        <location filename="../src/DistinctValueAnalyzer.cpp" line="234"/>
+        <source>Filtered analysis requires integration with BigFileModel</source>
+        <translation>过滤分析需要集成 BigFileModel</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>DistinctValuePanel</name>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="42"/>
-      <source>Distinct Value Analysis</source>
-      <translation>唯一值分析</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="42"/>
+        <source>Distinct Value Analysis</source>
+        <translation>唯一值分析</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="51"/>
-      <source>Auto-Detect Columns</source>
-      <translation>自动检测列</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="51"/>
+        <source>Auto-Detect Columns</source>
+        <translation>自动检测列</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="89"/>
-      <source>Columns</source>
-      <translation type="unfinished">列</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="89"/>
+        <source>Columns</source>
+        <translation type="unfinished">列</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="97"/>
-      <source>Add Column</source>
-      <translation>添加列</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="97"/>
+        <source>Add Column</source>
+        <translation>添加列</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="106"/>
-      <source>Column name</source>
-      <translation>列名</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="106"/>
+        <source>Column name</source>
+        <translation>列名</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="112"/>
-      <source>Regex pattern (with capture group)</source>
-      <translation>正则表达式模式（带捕获组）</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="112"/>
+        <source>Regex pattern (with capture group)</source>
+        <translation>正则表达式模式（带捕获组）</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="116"/>
-      <source>Add</source>
-      <translation type="unfinished">添加</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="116"/>
+        <source>Add</source>
+        <translation type="unfinished">添加</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="176"/>
-      <source>Analyze</source>
-      <translation>分析</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="176"/>
+        <source>Analyze</source>
+        <translation>分析</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="188"/>
-      <source>Clear</source>
-      <translation type="unfinished">清除</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="188"/>
+        <source>Clear</source>
+        <translation type="unfinished">清除</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="219"/>
-      <source>Results for: %1</source>
-      <translation>%1 的结果</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="219"/>
+        <source>Results for: %1</source>
+        <translation>%1 的结果</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="219"/>
-      <source>Results</source>
-      <translation>结果</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="219"/>
+        <source>Results</source>
+        <translation>结果</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="227"/>
-      <source>Export CSV</source>
-      <translation>导出 CSV</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="227"/>
+        <source>Export CSV</source>
+        <translation>导出 CSV</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="237"/>
-      <source>Export JSON</source>
-      <translation>导出 JSON</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="237"/>
+        <source>Export JSON</source>
+        <translation>导出 JSON</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="254"/>
-      <source>Total:</source>
-      <translation>总计：</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="254"/>
+        <source>Total:</source>
+        <translation>总计：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="256"/>
-      <source>Distinct:</source>
-      <translation>唯一值：</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="256"/>
+        <source>Distinct:</source>
+        <translation>唯一值：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="259"/>
-      <source>Uniqueness:</source>
-      <translation>唯一性：</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="259"/>
+        <source>Uniqueness:</source>
+        <translation>唯一性：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="261"/>
-      <source>Empty:</source>
-      <translation>空值：</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="261"/>
+        <source>Empty:</source>
+        <translation>空值：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="264"/>
-      <source>Most Common:</source>
-      <translation>最常见：</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="264"/>
+        <source>Most Common:</source>
+        <translation>最常见：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="271"/>
-      <source>Numeric Statistics</source>
-      <translation>数值统计</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="271"/>
+        <source>Numeric Statistics</source>
+        <translation>数值统计</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="280"/>
-      <source>Min:</source>
-      <translation>最小值：</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="280"/>
+        <source>Min:</source>
+        <translation>最小值：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="282"/>
-      <source>Max:</source>
-      <translation>最大值：</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="282"/>
+        <source>Max:</source>
+        <translation>最大值：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="284"/>
-      <source>Avg:</source>
-      <translation>平均值：</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="284"/>
+        <source>Avg:</source>
+        <translation>平均值：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="287"/>
-      <source>Median:</source>
-      <translation>中位数：</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="287"/>
+        <source>Median:</source>
+        <translation>中位数：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="289"/>
-      <source>StdDev:</source>
-      <translation>标准差：</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="289"/>
+        <source>StdDev:</source>
+        <translation>标准差：</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="296"/>
-      <source>Top Values</source>
-      <translation>前几位数值</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="296"/>
+        <source>Top Values</source>
+        <translation>前几位数值</translation>
     </message>
     <message>
-      <location filename="../src/qml/DistinctValuePanel.qml" line="349"/>
-      <source>Value Patterns</source>
-      <translation>数值模式</translation>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="349"/>
+        <source>Value Patterns</source>
+        <translation>数值模式</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>EmailAlertDialog</name>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="13"/>
-      <source>Email Alert Settings</source>
-      <translation>邮件报警设置</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="13"/>
+        <source>Email Alert Settings</source>
+        <translation>邮件报警设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="28"/>
-      <source>SMTP Settings</source>
-      <translation>SMTP 设置</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="28"/>
+        <source>SMTP Settings</source>
+        <translation>SMTP 设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="29"/>
-      <source>Alert Rules</source>
-      <translation>报警规则</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="29"/>
+        <source>Alert Rules</source>
+        <translation>报警规则</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="50"/>
-      <source>Enable Email Alerts</source>
-      <translation>启用邮件报警</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="50"/>
+        <source>Enable Email Alerts</source>
+        <translation>启用邮件报警</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="66"/>
-      <source>SMTP Server</source>
-      <translation>SMTP 服务器</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="66"/>
+        <source>SMTP Server</source>
+        <translation>SMTP 服务器</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="75"/>
-      <source>Server:</source>
-      <translation>服务器：</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="75"/>
+        <source>Server:</source>
+        <translation>服务器：</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="83"/>
-      <source>Port:</source>
-      <translation>端口：</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="83"/>
+        <source>Port:</source>
+        <translation>端口：</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="106"/>
-      <source>Encryption:</source>
-      <translation>加密方式：</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="106"/>
+        <source>Encryption:</source>
+        <translation>加密方式：</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="109"/>
-      <source>Use TLS/SSL</source>
-      <translation>使用 TLS/SSL</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="109"/>
+        <source>Use TLS/SSL</source>
+        <translation>使用 TLS/SSL</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="116"/>
-      <source>Authentication</source>
-      <translation>身份验证</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="116"/>
+        <source>Authentication</source>
+        <translation>身份验证</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="125"/>
-      <source>Username:</source>
-      <translation>用户名：</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="125"/>
+        <source>Username:</source>
+        <translation>用户名：</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="129"/>
-      <source>your-email@gmail.com</source>
-      <translation>your-email@gmail.com</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="129"/>
+        <source>your-email@gmail.com</source>
+        <translation>your-email@gmail.com</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="133"/>
-      <source>Password:</source>
-      <translation>密码：</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="133"/>
+        <source>Password:</source>
+        <translation>密码：</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="141"/>
-      <source>App password or SMTP password</source>
-      <translation>应用专用密码或 SMTP 密码</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="141"/>
+        <source>App password or SMTP password</source>
+        <translation>应用专用密码或 SMTP 密码</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="158"/>
-      <source>Email Addresses</source>
-      <translation>电子邮件地址</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="158"/>
+        <source>Email Addresses</source>
+        <translation>电子邮件地址</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="167"/>
-      <source>From:</source>
-      <translation type="unfinished">从：</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="167"/>
+        <source>From:</source>
+        <translation type="unfinished">从：</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="175"/>
-      <source>To:</source>
-      <translation type="unfinished">至：</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="175"/>
+        <source>To:</source>
+        <translation type="unfinished">至：</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="179"/>
-      <source>admin@company.com, dev@company.com</source>
-      <translation>admin@company.com, dev@company.com</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="179"/>
+        <source>admin@company.com, dev@company.com</source>
+        <translation>admin@company.com, dev@company.com</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="185"/>
-      <source>Separate multiple addresses with commas</source>
-      <translation>多个地址请用逗号分隔</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="185"/>
+        <source>Separate multiple addresses with commas</source>
+        <translation>多个地址请用逗号分隔</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="200"/>
-      <source>Send Test Email</source>
-      <translation>发送测试邮件</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="200"/>
+        <source>Send Test Email</source>
+        <translation>发送测试邮件</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="207"/>
-      <source>Sending test email...</source>
-      <translation>正在发送测试邮件...</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="207"/>
+        <source>Sending test email...</source>
+        <translation>正在发送测试邮件...</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="276"/>
-      <source> min cooldown</source>
-      <translation> 分钟冷却时间</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="276"/>
+        <source> min cooldown</source>
+        <translation> 分钟冷却时间</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="305"/>
-      <source>No alert rules defined.
-Click 'Add Rule' to create one.</source>
-      <translation>未定义报警规则。
+        <location filename="../src/qml/EmailAlertDialog.qml" line="305"/>
+        <source>No alert rules defined.
+Click &apos;Add Rule&apos; to create one.</source>
+        <translation>未定义报警规则。
 点击“添加规则”创建一个。</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="314"/>
-      <source>+ Add Rule</source>
-      <translation>+ 添加规则</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="314"/>
+        <source>+ Add Rule</source>
+        <translation>+ 添加规则</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="329"/>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="428"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="329"/>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="428"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="334"/>
-      <source>Save</source>
-      <translation>保存</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="334"/>
+        <source>Save</source>
+        <translation>保存</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="347"/>
-      <source>Edit Rule</source>
-      <translation>编辑规则</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="347"/>
+        <source>Edit Rule</source>
+        <translation>编辑规则</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="347"/>
-      <source>Add Alert Rule</source>
-      <translation>添加报警规则</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="347"/>
+        <source>Add Alert Rule</source>
+        <translation>添加报警规则</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="364"/>
-      <source>Rule Name:</source>
-      <translation>规则名称：</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="364"/>
+        <source>Rule Name:</source>
+        <translation>规则名称：</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="368"/>
-      <source>e.g., Critical Errors</source>
-      <translation>例如：严重错误</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="368"/>
+        <source>e.g., Critical Errors</source>
+        <translation>例如：严重错误</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="371"/>
-      <source>Keywords:</source>
-      <translation>关键词：</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="371"/>
+        <source>Keywords:</source>
+        <translation>关键词：</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="375"/>
-      <source>FATAL, CRITICAL, ERROR</source>
-      <translation>FATAL, CRITICAL, ERROR</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="375"/>
+        <source>FATAL, CRITICAL, ERROR</source>
+        <translation>FATAL, CRITICAL, ERROR</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="380"/>
-      <source>Comma-separated keywords to trigger alert</source>
-      <translation>触发报警的关键词（逗号分隔）</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="380"/>
+        <source>Comma-separated keywords to trigger alert</source>
+        <translation>触发报警的关键词（逗号分隔）</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="385"/>
-      <source>Options:</source>
-      <translation>选项：</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="385"/>
+        <source>Options:</source>
+        <translation>选项：</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="391"/>
-      <source>Case sensitive</source>
-      <translation>区分大小写</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="391"/>
+        <source>Case sensitive</source>
+        <translation>区分大小写</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="396"/>
-      <source>Use regular expressions</source>
-      <translation>使用正则表达式</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="396"/>
+        <source>Use regular expressions</source>
+        <translation>使用正则表达式</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="400"/>
-      <source>Cooldown:</source>
-      <translation>冷却时间：</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="400"/>
+        <source>Cooldown:</source>
+        <translation>冷却时间：</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="409"/>
-      <source>minutes</source>
-      <translation>分钟</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="409"/>
+        <source>minutes</source>
+        <translation>分钟</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="414"/>
-      <source>Minimum time between alerts for this rule</source>
-      <translation>此规则报警的最小间隔时间</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="414"/>
+        <source>Minimum time between alerts for this rule</source>
+        <translation>此规则报警的最小间隔时间</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="433"/>
-      <source>Update</source>
-      <translation>更新</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="433"/>
+        <source>Update</source>
+        <translation>更新</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="433"/>
-      <source>Add</source>
-      <translation type="unfinished">添加</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="433"/>
+        <source>Add</source>
+        <translation type="unfinished">添加</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="508"/>
-      <source>Email sent successfully!</source>
-      <translation>邮件发送成功！</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="508"/>
+        <source>Email sent successfully!</source>
+        <translation>邮件发送成功！</translation>
     </message>
     <message>
-      <location filename="../src/qml/EmailAlertDialog.qml" line="512"/>
-      <source>Send failed: %1</source>
-      <translation>发送失败: %1</translation>
+        <location filename="../src/qml/EmailAlertDialog.qml" line="512"/>
+        <source>Send failed: %1</source>
+        <translation>发送失败: %1</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
+    <name>EnhancedScrollBar</name>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="112"/>
+        <source>Error at line</source>
+        <translation>错误位于行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="139"/>
+        <source>Warning at line</source>
+        <translation>警告位于行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="166"/>
+        <source>Info at line</source>
+        <translation>信息位于行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="208"/>
+        <source>Bookmark at line</source>
+        <translation>书签位于行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="234"/>
+        <source>Search result at line</source>
+        <translation>搜索结果位于行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="319"/>
+        <source>Show Markers</source>
+        <translation>显示标记</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="328"/>
+        <source>Errors</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="336"/>
+        <source>Warnings</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="344"/>
+        <source>Info</source>
+        <translation>信息</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="352"/>
+        <source>Bookmarks</source>
+        <translation>书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/EnhancedScrollBar.qml" line="360"/>
+        <source>Search Results</source>
+        <translation>搜索结果</translation>
+    </message>
+</context>
+<context>
     <name>EventLogDialog</name>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="12"/>
-      <source>Windows Event Log</source>
-      <translation>Windows 事件日志</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="12"/>
+        <source>Windows Event Log</source>
+        <translation>Windows 事件日志</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="68"/>
-      <source>Loaded %1 events</source>
-      <translation>已加载 %1 个事件</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="68"/>
+        <source>Loaded %1 events</source>
+        <translation>已加载 %1 个事件</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="101"/>
-      <source>Windows Event Log is not available on this platform</source>
-      <translation>此平台不支持 Windows 事件日志</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="101"/>
+        <source>Windows Event Log is not available on this platform</source>
+        <translation>此平台不支持 Windows 事件日志</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="109"/>
-      <source>Event Source</source>
-      <translation>事件源</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="109"/>
+        <source>Event Source</source>
+        <translation>事件源</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="119"/>
-      <source>Channel:</source>
-      <translation>通道:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="119"/>
+        <source>Channel:</source>
+        <translation>通道:</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="132"/>
-      <location filename="../src/qml/EventLogDialog.qml" line="450"/>
-      <source>Level:</source>
-      <translation>级别:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="132"/>
+        <location filename="../src/qml/EventLogDialog.qml" line="450"/>
+        <source>Level:</source>
+        <translation>级别:</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="137"/>
-      <source>All</source>
-      <translation>全部</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="137"/>
+        <source>All</source>
+        <translation>全部</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="138"/>
-      <source>Critical</source>
-      <translation>严重</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="138"/>
+        <source>Critical</source>
+        <translation>严重</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="139"/>
-      <source>Error</source>
-      <translation>错误</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="139"/>
+        <source>Error</source>
+        <translation>错误</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="140"/>
-      <source>Warning</source>
-      <translation>警告</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="140"/>
+        <source>Warning</source>
+        <translation>警告</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="141"/>
-      <source>Information</source>
-      <translation>信息</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="141"/>
+        <source>Information</source>
+        <translation>信息</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="142"/>
-      <source>Error &amp; Warning</source>
-      <translation>错误和警告</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="142"/>
+        <source>Error &amp; Warning</source>
+        <translation>错误和警告</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="143"/>
-      <source>Error &amp; Above</source>
-      <translation>错误及以上</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="143"/>
+        <source>Error &amp; Above</source>
+        <translation>错误及以上</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="149"/>
-      <source>Time Range:</source>
-      <translation>时间范围:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="149"/>
+        <source>Time Range:</source>
+        <translation>时间范围:</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="156"/>
-      <source>All Time</source>
-      <translation>所有时间</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="156"/>
+        <source>All Time</source>
+        <translation>所有时间</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="157"/>
-      <source>Last Hour</source>
-      <translation>最近 1 小时</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="157"/>
+        <source>Last Hour</source>
+        <translation>最近 1 小时</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="158"/>
-      <source>Last 6 Hours</source>
-      <translation>最近 6 小时</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="158"/>
+        <source>Last 6 Hours</source>
+        <translation>最近 6 小时</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="159"/>
-      <source>Last 24 Hours</source>
-      <translation>最近 24 小时</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="159"/>
+        <source>Last 24 Hours</source>
+        <translation>最近 24 小时</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="160"/>
-      <source>Last 7 Days</source>
-      <translation>最近 7 天</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="160"/>
+        <source>Last 7 Days</source>
+        <translation>最近 7 天</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="161"/>
-      <source>Last 30 Days</source>
-      <translation>最近 30 天</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="161"/>
+        <source>Last 30 Days</source>
+        <translation>最近 30 天</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="162"/>
-      <source>Custom...</source>
-      <translation>自定义...</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="162"/>
+        <source>Custom...</source>
+        <translation>自定义...</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="189"/>
-      <source>Max Events:</source>
-      <translation>最大事件数:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="189"/>
+        <source>Max Events:</source>
+        <translation>最大事件数:</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="203"/>
-      <source>Load Events</source>
-      <translation>加载事件</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="203"/>
+        <source>Load Events</source>
+        <translation>加载事件</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="210"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="210"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="216"/>
-      <source>Stop Monitor</source>
-      <translation>停止监控</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="216"/>
+        <source>Stop Monitor</source>
+        <translation>停止监控</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="216"/>
-      <source>Monitor Live</source>
-      <translation>实时监控</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="216"/>
+        <source>Monitor Live</source>
+        <translation>实时监控</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="272"/>
-      <source>Level</source>
-      <translation type="unfinished">级别</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="272"/>
+        <source>Level</source>
+        <translation type="unfinished">级别</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="278"/>
-      <source>Time</source>
-      <translation type="unfinished">时间</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="278"/>
+        <source>Time</source>
+        <translation type="unfinished">时间</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="284"/>
-      <source>Source</source>
-      <translation>源</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="284"/>
+        <source>Source</source>
+        <translation>源</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="290"/>
-      <source>Event ID</source>
-      <translation>事件 ID</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="290"/>
+        <source>Event ID</source>
+        <translation>事件 ID</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="296"/>
-      <source>Message</source>
-      <translation type="unfinished">消息</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="296"/>
+        <source>Message</source>
+        <translation type="unfinished">消息</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="404"/>
-      <source>Monitoring: %1</source>
-      <translation>正在监控: %1</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="404"/>
+        <source>Monitoring: %1</source>
+        <translation>正在监控: %1</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="405"/>
-      <source>%1 events</source>
-      <translation>%1 个事件</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="405"/>
+        <source>%1 events</source>
+        <translation>%1 个事件</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="412"/>
-      <source>Export to File</source>
-      <translation>导出到文件</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="412"/>
+        <source>Export to File</source>
+        <translation>导出到文件</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="424"/>
-      <source>Clear</source>
-      <translation type="unfinished">清除</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="424"/>
+        <source>Clear</source>
+        <translation type="unfinished">清除</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="433"/>
-      <source>Event Details</source>
-      <translation>事件详情</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="433"/>
+        <source>Event Details</source>
+        <translation>事件详情</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="453"/>
-      <source>Time:</source>
-      <translation>时间:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="453"/>
+        <source>Time:</source>
+        <translation>时间:</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="456"/>
-      <source>Source:</source>
-      <translation>源:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="456"/>
+        <source>Source:</source>
+        <translation>源:</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="459"/>
-      <source>Event ID:</source>
-      <translation>事件 ID:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="459"/>
+        <source>Event ID:</source>
+        <translation>事件 ID:</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="462"/>
-      <source>Computer:</source>
-      <translation>计算机:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="462"/>
+        <source>Computer:</source>
+        <translation>计算机:</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="465"/>
-      <source>Process ID:</source>
-      <translation>进程 ID:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="465"/>
+        <source>Process ID:</source>
+        <translation>进程 ID:</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="468"/>
-      <source>Thread ID:</source>
-      <translation>线程 ID:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="468"/>
+        <source>Thread ID:</source>
+        <translation>线程 ID:</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="471"/>
-      <source>Record ID:</source>
-      <translation>记录 ID:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="471"/>
+        <source>Record ID:</source>
+        <translation>记录 ID:</translation>
     </message>
     <message>
-      <location filename="../src/qml/EventLogDialog.qml" line="476"/>
-      <source>Message:</source>
-      <translation>消息:</translation>
+        <location filename="../src/qml/EventLogDialog.qml" line="476"/>
+        <source>Message:</source>
+        <translation>消息:</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>ExportDialog</name>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="43"/>
-      <source>Export Data</source>
-      <translation>导出数据</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="43"/>
+        <source>Export Data</source>
+        <translation>导出数据</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="56"/>
-      <source>Format:</source>
-      <translation>格式:</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="56"/>
+        <source>Format:</source>
+        <translation>格式:</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="100"/>
-      <source>Export Range:</source>
-      <translation>导出范围:</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="100"/>
+        <source>Export Range:</source>
+        <translation>导出范围:</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="107"/>
-      <source>All lines (%1 total)</source>
-      <translation>所有行 (共 %1 行)</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="107"/>
+        <source>All lines (%1 total)</source>
+        <translation>所有行 (共 %1 行)</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="120"/>
-      <source>Current view (%1 filtered lines)</source>
-      <translation>当前视图 (%1 条过滤后的行)</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="120"/>
+        <source>Current view (%1 filtered lines)</source>
+        <translation>当前视图 (%1 条过滤后的行)</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="133"/>
-      <source>Line range:</source>
-      <translation>行范围:</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="133"/>
+        <source>Line range:</source>
+        <translation>行范围:</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="157"/>
-      <source>Start</source>
-      <translation>开始</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="157"/>
+        <source>Start</source>
+        <translation>开始</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="179"/>
-      <source>End</source>
-      <translation>结束</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="179"/>
+        <source>End</source>
+        <translation>结束</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="200"/>
-      <source>Export bookmarked lines only (%1 bookmarks)</source>
-      <translation>仅导出书签行 (%1 个书签)</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="200"/>
+        <source>Export bookmarked lines only (%1 bookmarks)</source>
+        <translation>仅导出书签行 (%1 个书签)</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="226"/>
-      <source>Enable data sanitization before export</source>
-      <translation>导出前启用数据脱敏</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="226"/>
+        <source>Enable data sanitization before export</source>
+        <translation>导出前启用数据脱敏</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="244"/>
-      <source>Sanitization Level:</source>
-      <translation>脱敏级别:</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="244"/>
+        <source>Sanitization Level:</source>
+        <translation>脱敏级别:</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="253"/>
-      <source>Minimal</source>
-      <translation>最小</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="253"/>
+        <source>Minimal</source>
+        <translation>最小</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="253"/>
-      <source>Standard</source>
-      <translation>标准</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="253"/>
+        <source>Standard</source>
+        <translation>标准</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="253"/>
-      <source>Strict</source>
-      <translation>严格</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="253"/>
+        <source>Strict</source>
+        <translation>严格</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="303"/>
-      <source>Configure...</source>
-      <translation>配置...</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="303"/>
+        <source>Configure...</source>
+        <translation>配置...</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="333"/>
-      <source>Export</source>
-      <translation>导出</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="333"/>
+        <source>Export</source>
+        <translation>导出</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="351"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="351"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="374"/>
-      <source>Export as CSV</source>
-      <translation>导出为 CSV</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="374"/>
+        <source>Export as CSV</source>
+        <translation>导出为 CSV</translation>
     </message>
     <message>
-      <location filename="../src/qml/ExportDialog.qml" line="374"/>
-      <source>Export as HTML</source>
-      <translation>导出为 HTML</translation>
+        <location filename="../src/qml/ExportDialog.qml" line="374"/>
+        <source>Export as HTML</source>
+        <translation>导出为 HTML</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>FeatureGate</name>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="275"/>
-      <source>Pro</source>
-      <translation>专业版</translation>
+        <location filename="../src/FeatureGate.cpp" line="275"/>
+        <source>Pro</source>
+        <translation>专业版</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="279"/>
-      <source>Enterprise</source>
-      <translation>企业版</translation>
+        <location filename="../src/FeatureGate.cpp" line="279"/>
+        <source>Enterprise</source>
+        <translation>企业版</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="283"/>
-      <source>Free</source>
-      <translation>免费版</translation>
+        <location filename="../src/FeatureGate.cpp" line="283"/>
+        <source>Free</source>
+        <translation>免费版</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="291"/>
-      <source>Filter Templates</source>
-      <translation>过滤器模板</translation>
+        <location filename="../src/FeatureGate.cpp" line="291"/>
+        <source>Filter Templates</source>
+        <translation>过滤器模板</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="292"/>
-      <source>Save and load commonly used filter conditions for quick application of preset filter schemes.</source>
-      <translation>保存和加载常用过滤条件，以便快速应用预设过滤方案。</translation>
+        <location filename="../src/FeatureGate.cpp" line="292"/>
+        <source>Save and load commonly used filter conditions for quick application of preset filter schemes.</source>
+        <translation>保存和加载常用过滤条件，以便快速应用预设过滤方案。</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="295"/>
-      <source>Workspaces</source>
-      <translation>工作空间</translation>
+        <location filename="../src/FeatureGate.cpp" line="295"/>
+        <source>Workspaces</source>
+        <translation>工作空间</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="296"/>
-      <source>Save current session state (open files, filter conditions, scroll position) and restore on next startup.</source>
-      <translation>保存当前会话状态（打开的文件、过滤条件、滚动位置），并在下次启动时恢复。</translation>
+        <location filename="../src/FeatureGate.cpp" line="296"/>
+        <source>Save current session state (open files, filter conditions, scroll position) and restore on next startup.</source>
+        <translation>保存当前会话状态（打开的文件、过滤条件、滚动位置），并在下次启动时恢复。</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="299"/>
-      <source>Delta Time Column</source>
-      <translation>时间差列</translation>
+        <location filename="../src/FeatureGate.cpp" line="299"/>
+        <source>Delta Time Column</source>
+        <translation>时间差列</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="300"/>
-      <source>Display time difference between each log line and the previous one to help analyze performance bottlenecks.</source>
-      <translation>显示每行日志与上一行之间的时间差，帮助分析性能瓶颈。</translation>
+        <location filename="../src/FeatureGate.cpp" line="300"/>
+        <source>Display time difference between each log line and the previous one to help analyze performance bottlenecks.</source>
+        <translation>显示每行日志与上一行之间的时间差，帮助分析性能瓶颈。</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="303"/>
-      <source>Rolling Logs</source>
-      <translation>轮转日志</translation>
+        <location filename="../src/FeatureGate.cpp" line="303"/>
+        <source>Rolling Logs</source>
+        <translation>轮转日志</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="304"/>
-      <source>Automatically merge segmented log files (log, log.1, log.2, etc.) and view as continuous logs.</source>
-      <translation>自动合并分段日志文件（log, log.1, log.2 等），并作为连续日志查看。</translation>
+        <location filename="../src/FeatureGate.cpp" line="304"/>
+        <source>Automatically merge segmented log files (log, log.1, log.2, etc.) and view as continuous logs.</source>
+        <translation>自动合并分段日志文件（log, log.1, log.2 等），并作为连续日志查看。</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="307"/>
-      <source>Statistics Panel</source>
-      <translation>统计面板</translation>
+        <location filename="../src/FeatureGate.cpp" line="307"/>
+        <source>Statistics Panel</source>
+        <translation>统计面板</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="308"/>
-      <source>Visualize log level distribution, time trends, keyword frequency, and other statistical charts.</source>
-      <translation>可视化日志级别分布、时间趋势、关键字频率和其他统计图表。</translation>
+        <location filename="../src/FeatureGate.cpp" line="308"/>
+        <source>Visualize log level distribution, time trends, keyword frequency, and other statistical charts.</source>
+        <translation>可视化日志级别分布、时间趋势、关键字频率和其他统计图表。</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="311"/>
-      <source>Remote Files</source>
-      <translation>远程文件</translation>
+        <location filename="../src/FeatureGate.cpp" line="311"/>
+        <source>Remote Files</source>
+        <translation>远程文件</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="312"/>
-      <source>Connect to remote servers via SFTP/SSH to view and monitor remote log files directly.</source>
-      <translation>通过 SFTP/SSH 连接到远程服务器，直接查看和监控远程日志文件。</translation>
+        <location filename="../src/FeatureGate.cpp" line="312"/>
+        <source>Connect to remote servers via SFTP/SSH to view and monitor remote log files directly.</source>
+        <translation>通过 SFTP/SSH 连接到远程服务器，直接查看和监控远程日志文件。</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="315"/>
-      <source>Email Alerts</source>
-      <translation>邮件警报</translation>
+        <location filename="../src/FeatureGate.cpp" line="315"/>
+        <source>Email Alerts</source>
+        <translation>邮件警报</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="316"/>
-      <source>Automatically send email notifications when specific keywords (e.g., FATAL) are detected.</source>
-      <translation>当检测到特定关键词（如 FATAL）时，自动发送电子邮件通知。</translation>
+        <location filename="../src/FeatureGate.cpp" line="316"/>
+        <source>Automatically send email notifications when specific keywords (e.g., FATAL) are detected.</source>
+        <translation>当检测到特定关键词（如 FATAL）时，自动发送电子邮件通知。</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="319"/>
-      <source>Jira Integration</source>
-      <translation>Jira 集成</translation>
+        <location filename="../src/FeatureGate.cpp" line="319"/>
+        <source>Jira Integration</source>
+        <translation>Jira 集成</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="320"/>
-      <source>Create Jira Issues directly from selected log snippets for bug tracking.</source>
-      <translation>直接从选定的日志片段创建 Jira 问题，用于缺陷跟踪。</translation>
+        <location filename="../src/FeatureGate.cpp" line="320"/>
+        <source>Create Jira Issues directly from selected log snippets for bug tracking.</source>
+        <translation>直接从选定的日志片段创建 Jira 问题，用于缺陷跟踪。</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="323"/>
-      <source>GitHub Integration</source>
-      <translation>GitHub 集成</translation>
+        <location filename="../src/FeatureGate.cpp" line="323"/>
+        <source>GitHub Integration</source>
+        <translation>GitHub 集成</translation>
     </message>
     <message>
-      <location filename="../src/FeatureGate.cpp" line="324"/>
-      <source>Create GitHub Issues directly from selected log snippets.</source>
-      <translation>直接从选定的日志片段创建 GitHub Issue。</translation>
+        <location filename="../src/FeatureGate.cpp" line="324"/>
+        <source>Create GitHub Issues directly from selected log snippets.</source>
+        <translation>直接从选定的日志片段创建 GitHub Issue。</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>FileTabBar</name>
     <message>
-      <location filename="../src/qml/FileTabBar.qml" line="115"/>
-      <source>Untitled</source>
-      <translation>未命名</translation>
+        <location filename="../src/qml/FileTabBar.qml" line="115"/>
+        <source>Untitled</source>
+        <translation>未命名</translation>
     </message>
     <message>
-      <location filename="../src/qml/FileTabBar.qml" line="252"/>
-      <source>Open New File</source>
-      <translation>打开新文件</translation>
+        <location filename="../src/qml/FileTabBar.qml" line="258"/>
+        <source>Open New File</source>
+        <translation>打开新文件</translation>
     </message>
     <message>
-      <location filename="../src/qml/FileTabBar.qml" line="271"/>
-      <source>Close</source>
-      <translation type="unfinished">关闭</translation>
+        <location filename="../src/qml/FileTabBar.qml" line="277"/>
+        <source>Close</source>
+        <translation type="unfinished">关闭</translation>
     </message>
     <message>
-      <location filename="../src/qml/FileTabBar.qml" line="280"/>
-      <source>Close Others</source>
-      <translation>关闭其他</translation>
+        <location filename="../src/qml/FileTabBar.qml" line="286"/>
+        <source>Close Others</source>
+        <translation>关闭其他</translation>
     </message>
     <message>
-      <location filename="../src/qml/FileTabBar.qml" line="290"/>
-      <source>Close All</source>
-      <translation>全部关闭</translation>
+        <location filename="../src/qml/FileTabBar.qml" line="296"/>
+        <source>Close All</source>
+        <translation>全部关闭</translation>
     </message>
     <message>
-      <location filename="../src/qml/FileTabBar.qml" line="299"/>
-      <source>Close to the Right</source>
-      <translation>关闭右侧标签页</translation>
+        <location filename="../src/qml/FileTabBar.qml" line="305"/>
+        <source>Close to the Right</source>
+        <translation>关闭右侧标签页</translation>
     </message>
     <message>
-      <location filename="../src/qml/FileTabBar.qml" line="311"/>
-      <source>Duplicate Tab</source>
-      <translation>复制标签页</translation>
+        <location filename="../src/qml/FileTabBar.qml" line="317"/>
+        <source>Duplicate Tab</source>
+        <translation>复制标签页</translation>
     </message>
     <message>
-      <location filename="../src/qml/FileTabBar.qml" line="322"/>
-      <source>Copy Path</source>
-      <translation>复制路径</translation>
+        <location filename="../src/qml/FileTabBar.qml" line="328"/>
+        <source>Copy Path</source>
+        <translation>复制路径</translation>
     </message>
     <message>
-      <location filename="../src/qml/FileTabBar.qml" line="334"/>
-      <source>Open Containing Folder</source>
-      <translation>打开所在文件夹</translation>
+        <location filename="../src/qml/FileTabBar.qml" line="340"/>
+        <source>Open Containing Folder</source>
+        <translation>打开所在文件夹</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
+    <name>FilterTemplateDialog</name>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="14"/>
+        <source>Filter Templates</source>
+        <translation>过滤器模板</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="49"/>
+        <source>Save Current Filter</source>
+        <translation>保存当前过滤器</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="58"/>
+        <source>Import</source>
+        <translation>导入</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="64"/>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="73"/>
+        <source>Saved Templates</source>
+        <translation>已保存的模板</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="85"/>
+        <source>Search templates...</source>
+        <translation>搜索模板...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="146"/>
+        <source>Case Sensitive</source>
+        <translation>区分大小写</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="157"/>
+        <source>Regex</source>
+        <translation>正则表达式</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="178"/>
+        <source>Used %1 times</source>
+        <translation>已使用 %1 次</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="191"/>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="426"/>
+        <source>Rename</source>
+        <translation>重命名</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="201"/>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="482"/>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="216"/>
+        <source>No saved templates
+Use &apos;Save Current Filter&apos; to create one</source>
+        <translation>无保存的模板
+使用“保存当前过滤器”来创建一个</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="226"/>
+        <source>Template Details</source>
+        <translation>模板详情</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="236"/>
+        <source>Name:</source>
+        <translation>名称：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="242"/>
+        <source>Created:</source>
+        <translation>创建时间：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="248"/>
+        <source>Keyword:</source>
+        <translation>关键词：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="263"/>
+        <source>Apply</source>
+        <translation>应用</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="269"/>
+        <source>Close</source>
+        <translation>关闭</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="317"/>
+        <source>Save Filter Template</source>
+        <translation>保存过滤器模板</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="329"/>
+        <source>Template Name:</source>
+        <translation>模板名称：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="334"/>
+        <source>Enter template name</source>
+        <translation>输入模板名称</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="338"/>
+        <source>Current Filter Settings:</source>
+        <translation>当前过滤器设置：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="343"/>
+        <source>Keyword: %1</source>
+        <translation>关键词：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="349"/>
+        <source>✓ Case Sensitive</source>
+        <translation>✓ 区分大小写</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="349"/>
+        <source>✗ Case Insensitive</source>
+        <translation>✗ 不区分大小写</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="350"/>
+        <source>✓ Regular Expression</source>
+        <translation>✓ 正则表达式</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="350"/>
+        <source>✗ Plain Text</source>
+        <translation>✗ 纯文本</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="355"/>
+        <source>Log Level: %1</source>
+        <translation>日志级别：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="362"/>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="368"/>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="432"/>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="487"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="402"/>
+        <source>Rename Template</source>
+        <translation>重命名模板</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="414"/>
+        <source>New Name:</source>
+        <translation>新名称：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="458"/>
+        <source>Delete Template</source>
+        <translation>删除模板</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="471"/>
+        <source>Are you sure you want to delete template &apos;%1&apos;?</source>
+        <translation>确定要删除模板 &apos;%1&apos; 吗？</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="505"/>
+        <source>Import Templates</source>
+        <translation>导入模板</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="506"/>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="522"/>
+        <source>JSON Files (*.json)</source>
+        <translation>JSON 文件 (*.json)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/FilterTemplateDialog.qml" line="521"/>
+        <source>Export Templates</source>
+        <translation>导出模板</translation>
+    </message>
+</context>
+<context>
     <name>GitHubIntegration</name>
     <message>
-      <location filename="../src/GitHubIntegration.cpp" line="149"/>
-      <location filename="../src/GitHubIntegration.cpp" line="150"/>
-      <source>Access token not configured</source>
-      <translation>未配置访问令牌</translation>
+        <location filename="../src/GitHubIntegration.cpp" line="149"/>
+        <location filename="../src/GitHubIntegration.cpp" line="150"/>
+        <source>Access token not configured</source>
+        <translation>未配置访问令牌</translation>
     </message>
     <message>
-      <location filename="../src/GitHubIntegration.cpp" line="169"/>
-      <location filename="../src/GitHubIntegration.cpp" line="194"/>
-      <location filename="../src/GitHubIntegration.cpp" line="215"/>
-      <location filename="../src/GitHubIntegration.cpp" line="241"/>
-      <location filename="../src/GitHubIntegration.cpp" line="242"/>
-      <source>GitHub not configured</source>
-      <translation>未配置 GitHub</translation>
+        <location filename="../src/GitHubIntegration.cpp" line="169"/>
+        <location filename="../src/GitHubIntegration.cpp" line="194"/>
+        <location filename="../src/GitHubIntegration.cpp" line="215"/>
+        <location filename="../src/GitHubIntegration.cpp" line="241"/>
+        <location filename="../src/GitHubIntegration.cpp" line="242"/>
+        <source>GitHub not configured</source>
+        <translation>未配置 GitHub</translation>
     </message>
     <message>
-      <location filename="../src/GitHubIntegration.cpp" line="337"/>
-      <source>Connected as: %1</source>
-      <translation>已连接为：%1</translation>
+        <location filename="../src/GitHubIntegration.cpp" line="337"/>
+        <source>Connected as: %1</source>
+        <translation>已连接为：%1</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>GitHubIssueDialog</name>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="13"/>
-      <source>Create GitHub Issue</source>
-      <translation>创建 GitHub Issue</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="13"/>
+        <source>Create GitHub Issue</source>
+        <translation>创建 GitHub Issue</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="46"/>
-      <source>Connected to GitHub</source>
-      <translation>已连接到 GitHub</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="46"/>
+        <source>Connected to GitHub</source>
+        <translation>已连接到 GitHub</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="47"/>
-      <source>GitHub not configured</source>
-      <translation>未配置 GitHub</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="47"/>
+        <source>GitHub not configured</source>
+        <translation>未配置 GitHub</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="55"/>
-      <source>Settings</source>
-      <translation type="unfinished">设置</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="55"/>
+        <source>Settings</source>
+        <translation type="unfinished">设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="64"/>
-      <source>Issue Details</source>
-      <translation>问题详情</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="64"/>
+        <source>Issue Details</source>
+        <translation>问题详情</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="75"/>
-      <source>Repository:</source>
-      <translation>仓库：</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="75"/>
+        <source>Repository:</source>
+        <translation>仓库：</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="93"/>
-      <source>Title:</source>
-      <translation>标题：</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="93"/>
+        <source>Title:</source>
+        <translation>标题：</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="97"/>
-      <source>Brief description of the issue</source>
-      <translation>问题的简短描述</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="97"/>
+        <source>Brief description of the issue</source>
+        <translation>问题的简短描述</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="101"/>
-      <source>Body:</source>
-      <translation>正文：</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="101"/>
+        <source>Body:</source>
+        <translation>正文：</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="110"/>
-      <source>Detailed description (log content will be appended)</source>
-      <translation>详细描述（将追加日志内容）</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="110"/>
+        <source>Detailed description (log content will be appended)</source>
+        <translation>详细描述（将追加日志内容）</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="115"/>
-      <source>Labels:</source>
-      <translation>标签：</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="115"/>
+        <source>Labels:</source>
+        <translation>标签：</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="154"/>
-      <source>Select a repository to see labels</source>
-      <translation>选择仓库以查看标签</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="154"/>
+        <source>Select a repository to see labels</source>
+        <translation>选择仓库以查看标签</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="160"/>
-      <source>Assignee:</source>
-      <translation>负责人：</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="160"/>
+        <source>Assignee:</source>
+        <translation>负责人：</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="176"/>
-      <source>Log Content Preview</source>
-      <translation>日志内容预览</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="176"/>
+        <source>Log Content Preview</source>
+        <translation>日志内容预览</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="215"/>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="335"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="215"/>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="335"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="220"/>
-      <source>Create Issue</source>
-      <translation>创建 Issue</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="220"/>
+        <source>Create Issue</source>
+        <translation>创建 Issue</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="236"/>
-      <source>GitHub Settings</source>
-      <translation>GitHub 设置</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="236"/>
+        <source>GitHub Settings</source>
+        <translation>GitHub 设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="251"/>
-      <source>GitHub URL:</source>
-      <translation>GitHub URL：</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="251"/>
+        <source>GitHub URL:</source>
+        <translation>GitHub URL：</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="261"/>
-      <source>For GitHub Enterprise: https://github.yourcompany.com</source>
-      <translation>对于 GitHub 企业版：https://github.yourcompany.com</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="261"/>
+        <source>For GitHub Enterprise: https://github.yourcompany.com</source>
+        <translation>对于 GitHub 企业版：https://github.yourcompany.com</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="266"/>
-      <source>Personal Access Token:</source>
-      <translation>个人访问令牌：</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="266"/>
+        <source>Personal Access Token:</source>
+        <translation>个人访问令牌：</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="274"/>
-      <source>ghp_xxxxx or github_pat_xxxxx</source>
-      <translation>ghp_xxxxx 或 github_pat_xxxxx</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="274"/>
+        <source>ghp_xxxxx or github_pat_xxxxx</source>
+        <translation>ghp_xxxxx 或 github_pat_xxxxx</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="290"/>
-      <source>Get token from: GitHub → Settings → Developer settings → Personal access tokens</source>
-      <translation>从以下位置获取令牌：GitHub → Settings → Developer settings → Personal access tokens</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="290"/>
+        <source>Get token from: GitHub → Settings → Developer settings → Personal access tokens</source>
+        <translation>从以下位置获取令牌：GitHub → Settings → Developer settings → Personal access tokens</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="299"/>
-      <source>Required scopes: repo (Full control of private repositories)</source>
-      <translation>所需权限：repo (对私有仓库的完全控制)</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="299"/>
+        <source>Required scopes: repo (Full control of private repositories)</source>
+        <translation>所需权限：repo (对私有仓库的完全控制)</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="318"/>
-      <source>Test Connection</source>
-      <translation>测试连接</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="318"/>
+        <source>Test Connection</source>
+        <translation>测试连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="323"/>
-      <source>Testing...</source>
-      <translation>正在测试...</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="323"/>
+        <source>Testing...</source>
+        <translation>正在测试...</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="340"/>
-      <source>Save</source>
-      <translation>保存</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="340"/>
+        <source>Save</source>
+        <translation>保存</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="407"/>
-      <source>Creating issue...</source>
-      <translation>正在创建问题...</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="407"/>
+        <source>Creating issue...</source>
+        <translation>正在创建问题...</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="461"/>
-      <source>Created: #%1</source>
-      <translation>已创建：#%1</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="461"/>
+        <source>Created: #%1</source>
+        <translation>已创建：#%1</translation>
     </message>
     <message>
-      <location filename="../src/qml/GitHubIssueDialog.qml" line="472"/>
-      <source>Failed: %1</source>
-      <translation>失败：%1</translation>
+        <location filename="../src/qml/GitHubIssueDialog.qml" line="472"/>
+        <source>Failed: %1</source>
+        <translation>失败：%1</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
+    <name>GoToLineDialog</name>
+    <message>
+        <location filename="../src/qml/GoToLineDialog.qml" line="35"/>
+        <source>Go To Line</source>
+        <translation>转到行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GoToLineDialog.qml" line="47"/>
+        <source>Line Number:</source>
+        <translation>行号：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GoToLineDialog.qml" line="63"/>
+        <source>Enter line number...</source>
+        <translation>输入行号...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GoToLineDialog.qml" line="90"/>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/GoToLineDialog.qml" line="114"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+</context>
+<context>
     <name>JiraIntegration</name>
     <message>
-      <location filename="../src/JiraIntegration.cpp" line="166"/>
-      <location filename="../src/JiraIntegration.cpp" line="187"/>
-      <location filename="../src/JiraIntegration.cpp" line="239"/>
-      <source>Jira is not configured</source>
-      <translation>未配置 Jira</translation>
+        <location filename="../src/JiraIntegration.cpp" line="166"/>
+        <location filename="../src/JiraIntegration.cpp" line="187"/>
+        <location filename="../src/JiraIntegration.cpp" line="239"/>
+        <source>Jira is not configured</source>
+        <translation>未配置 Jira</translation>
     </message>
     <message>
-      <location filename="../src/JiraIntegration.cpp" line="244"/>
-      <source>Project, issue type, and summary are required</source>
-      <translation>项目、问题类型和摘要为必填项</translation>
+        <location filename="../src/JiraIntegration.cpp" line="244"/>
+        <source>Project, issue type, and summary are required</source>
+        <translation>项目、问题类型和摘要为必填项</translation>
     </message>
     <message>
-      <location filename="../src/JiraIntegration.cpp" line="459"/>
-      <source>Connected as %1</source>
-      <translation>已作为 %1 连接</translation>
+        <location filename="../src/JiraIntegration.cpp" line="459"/>
+        <source>Connected as %1</source>
+        <translation>已作为 %1 连接</translation>
     </message>
     <message>
-      <location filename="../src/JiraIntegration.cpp" line="461"/>
-      <location filename="../src/JiraIntegration.cpp" line="515"/>
-      <source>Invalid response from server</source>
-      <translation>来自服务器的响应无效</translation>
+        <location filename="../src/JiraIntegration.cpp" line="461"/>
+        <location filename="../src/JiraIntegration.cpp" line="515"/>
+        <source>Invalid response from server</source>
+        <translation>来自服务器的响应无效</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>JiraIssueDialog</name>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="13"/>
-      <source>Create Jira Issue</source>
-      <translation>创建 Jira 问题</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="13"/>
+        <source>Create Jira Issue</source>
+        <translation>创建 Jira 问题</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="50"/>
-      <source>Connected to Jira</source>
-      <translation>已连接到 Jira</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="50"/>
+        <source>Connected to Jira</source>
+        <translation>已连接到 Jira</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="51"/>
-      <source>Jira not configured</source>
-      <translation>未配置 Jira</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="51"/>
+        <source>Jira not configured</source>
+        <translation>未配置 Jira</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="59"/>
-      <source>Settings</source>
-      <translation type="unfinished">设置</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="59"/>
+        <source>Settings</source>
+        <translation type="unfinished">设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="68"/>
-      <source>Issue Details</source>
-      <translation>问题详情</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="68"/>
+        <source>Issue Details</source>
+        <translation>问题详情</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="84"/>
-      <source>Project:</source>
-      <translation>项目：</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="84"/>
+        <source>Project:</source>
+        <translation>项目：</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="102"/>
-      <source>Issue Type:</source>
-      <translation>问题类型：</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="102"/>
+        <source>Issue Type:</source>
+        <translation>问题类型：</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="111"/>
-      <source>Summary:</source>
-      <translation>摘要：</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="111"/>
+        <source>Summary:</source>
+        <translation>摘要：</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="115"/>
-      <source>Brief description of the issue</source>
-      <translation>问题的简短描述</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="115"/>
+        <source>Brief description of the issue</source>
+        <translation>问题的简短描述</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="138"/>
-      <source>Description:</source>
-      <translation>描述：</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="138"/>
+        <source>Description:</source>
+        <translation>描述：</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="150"/>
-      <source>Detailed description (log content will be appended)</source>
-      <translation>详细描述（将追加日志内容）</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="150"/>
+        <source>Detailed description (log content will be appended)</source>
+        <translation>详细描述（将追加日志内容）</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="119"/>
-      <source>Labels:</source>
-      <translation>标签：</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="119"/>
+        <source>Labels:</source>
+        <translation>标签：</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="123"/>
-      <source>bug, critical, production (comma separated)</source>
-      <translation>bug, critical, production (以逗号分隔)</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="123"/>
+        <source>bug, critical, production (comma separated)</source>
+        <translation>bug, critical, production (以逗号分隔)</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="127"/>
-      <source>Priority:</source>
-      <translation>优先级：</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="127"/>
+        <source>Priority:</source>
+        <translation>优先级：</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="160"/>
-      <source>Log Content Preview</source>
-      <translation>日志内容预览</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="160"/>
+        <source>Log Content Preview</source>
+        <translation>日志内容预览</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="206"/>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="335"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="206"/>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="335"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="211"/>
-      <source>Create Issue</source>
-      <translation>创建问题</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="211"/>
+        <source>Create Issue</source>
+        <translation>创建问题</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="228"/>
-      <source>Jira Settings</source>
-      <translation>Jira 设置</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="228"/>
+        <source>Jira Settings</source>
+        <translation>Jira 设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="248"/>
-      <source>Jira URL:</source>
-      <translation>Jira URL：</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="248"/>
+        <source>Jira URL:</source>
+        <translation>Jira URL：</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="258"/>
-      <source>For Jira Cloud: https://yoursite.atlassian.net</source>
-      <translation>对于 Jira Cloud：https://yoursite.atlassian.net</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="258"/>
+        <source>For Jira Cloud: https://yoursite.atlassian.net</source>
+        <translation>对于 Jira Cloud：https://yoursite.atlassian.net</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="263"/>
-      <source>Email/Username:</source>
-      <translation>电子邮件/用户名：</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="263"/>
+        <source>Email/Username:</source>
+        <translation>电子邮件/用户名：</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="271"/>
-      <source>API Token:</source>
-      <translation>API 令牌：</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="271"/>
+        <source>API Token:</source>
+        <translation>API 令牌：</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="279"/>
-      <source>Jira API token or PAT</source>
-      <translation>Jira API 令牌或 PAT</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="279"/>
+        <source>Jira API token or PAT</source>
+        <translation>Jira API 令牌或 PAT</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="295"/>
-      <source>Get token from: Jira → Account Settings → Security → API Tokens</source>
-      <translation>从以下位置获取令牌：Jira → Account Settings → Security → API Tokens</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="295"/>
+        <source>Get token from: Jira → Account Settings → Security → API Tokens</source>
+        <translation>从以下位置获取令牌：Jira → Account Settings → Security → API Tokens</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="316"/>
-      <source>Test Connection</source>
-      <translation>测试连接</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="316"/>
+        <source>Test Connection</source>
+        <translation>测试连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="323"/>
-      <source>Testing...</source>
-      <translation>正在测试...</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="323"/>
+        <source>Testing...</source>
+        <translation>正在测试...</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="340"/>
-      <source>Save</source>
-      <translation>保存</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="340"/>
+        <source>Save</source>
+        <translation>保存</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="399"/>
-      <source>Creating issue...</source>
-      <translation>正在创建问题...</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="399"/>
+        <source>Creating issue...</source>
+        <translation>正在创建问题...</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="442"/>
-      <source>Created: %1</source>
-      <translation>已创建：%1</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="442"/>
+        <source>Created: %1</source>
+        <translation>已创建：%1</translation>
     </message>
     <message>
-      <location filename="../src/qml/JiraIssueDialog.qml" line="453"/>
-      <source>Failed: %1</source>
-      <translation>失败：%1</translation>
+        <location filename="../src/qml/JiraIssueDialog.qml" line="453"/>
+        <source>Failed: %1</source>
+        <translation>失败：%1</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
+    <name>KeywordConfigDialog</name>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="12"/>
+        <source>Keyword Color Configuration</source>
+        <translation>关键字颜色配置</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="90"/>
+        <source>Add New Keyword</source>
+        <translation>添加新关键字</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="104"/>
+        <source>Enter keyword...</source>
+        <translation>输入关键字...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="130"/>
+        <source>Click to choose color</source>
+        <translation>点击选择颜色</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="143"/>
+        <source>Add</source>
+        <translation>添加</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="202"/>
+        <source>Keyword</source>
+        <translation>关键字</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="210"/>
+        <source>Color</source>
+        <translation>颜色</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="218"/>
+        <source>Preview</source>
+        <translation>预览</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="226"/>
+        <source>Actions</source>
+        <translation>操作</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="312"/>
+        <source>Edit Color</source>
+        <translation>编辑颜色</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="336"/>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="362"/>
+        <source>Reset to Defaults</source>
+        <translation>恢复默认设置</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="381"/>
+        <source>Close</source>
+        <translation>关闭</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="401"/>
+        <source>Choose Color</source>
+        <translation>选择颜色</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="408"/>
+        <source>Edit Color for</source>
+        <translation>编辑颜色：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="418"/>
+        <source>Confirm Reset</source>
+        <translation>确认重置</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="432"/>
+        <source>Are you sure you want to reset all keywords to defaults?
+This action cannot be undone.</source>
+        <translation>您确定要将所有关键字重置为默认值吗？
+此操作无法撤销。</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="446"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/KeywordConfigDialog.qml" line="463"/>
+        <source>Reset</source>
+        <translation>重置</translation>
+    </message>
+</context>
+<context>
+    <name>Main</name>
+    <message>
+        <location filename="../src/qml/Main.qml" line="110"/>
+        <source>Drop file to open</source>
+        <translation>拖入文件以打开</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="415"/>
+        <source>File</source>
+        <translation>文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="422"/>
+        <source>Open File...</source>
+        <translation>打开文件...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="437"/>
+        <source>Recent Files</source>
+        <translation>最近文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="459"/>
+        <source>Clear Recent Files</source>
+        <translation>清除最近文件记录</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="472"/>
+        <location filename="../src/qml/Main.qml" line="772"/>
+        <source>Reload File</source>
+        <translation>重新加载文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="497"/>
+        <source>Search</source>
+        <translation>搜索</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="508"/>
+        <source>Filter</source>
+        <translation>筛选</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="518"/>
+        <source>Details</source>
+        <translation>详情</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="528"/>
+        <source>Go To</source>
+        <translation>转到</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="533"/>
+        <source>Bookmark</source>
+        <translation>书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="540"/>
+        <source>Add/Remove Bookmark</source>
+        <translation>添加/移除书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="554"/>
+        <location filename="../src/qml/Main.qml" line="2175"/>
+        <source>Next Bookmark</source>
+        <translation>下一个书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="564"/>
+        <location filename="../src/qml/Main.qml" line="2185"/>
+        <source>Previous Bookmark</source>
+        <translation>上一个书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="585"/>
+        <source>Clear All Bookmarks</source>
+        <translation>清除所有书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="595"/>
+        <location filename="../src/qml/Main.qml" line="600"/>
+        <source>View</source>
+        <translation>视图</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="604"/>
+        <source>Text View (Raw)</source>
+        <translation>文本视图 (原始)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="613"/>
+        <source>Grid View (Parsed)</source>
+        <translation>网格视图 (已解析)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="627"/>
+        <source>Columns</source>
+        <translation>列</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="631"/>
+        <source>Line Number</source>
+        <translation>行号</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="637"/>
+        <source>Time</source>
+        <translation>时间</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="643"/>
+        <source>Level</source>
+        <translation>级别</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="649"/>
+        <location filename="../src/qml/Main.qml" line="1857"/>
+        <source>Message</source>
+        <translation>消息</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="658"/>
+        <source>Show All Columns</source>
+        <translation>显示所有列</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="665"/>
+        <source>Hide Optional Columns</source>
+        <translation>隐藏可选列</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="677"/>
+        <source>Navigation Markers</source>
+        <translation>导航标记</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="687"/>
+        <source>Tools</source>
+        <translation>工具</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="694"/>
+        <location filename="../src/qml/Main.qml" line="2241"/>
+        <source>Advanced Filter...</source>
+        <translation>高级过滤...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="716"/>
+        <source>Export Visible Lines...</source>
+        <translation>导出可见行...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="721"/>
+        <source>Follow Mode (Live)</source>
+        <translation>跟随模式 (实时)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="784"/>
+        <source>Settings</source>
+        <translation>设置</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="791"/>
+        <source>Theme</source>
+        <translation>主题</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="820"/>
+        <source>Language</source>
+        <translation>语言</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="919"/>
+        <source>Encoding</source>
+        <translation>编码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="945"/>
+        <source>Keyword Colors...</source>
+        <translation>关键字颜色...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="977"/>
+        <source>Hide Scroll Markers</source>
+        <translation>隐藏滚动标记</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="977"/>
+        <source>Show Scroll Markers</source>
+        <translation>显示滚动标记</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="984"/>
+        <source>Register...</source>
+        <translation>注册...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="988"/>
+        <source>About</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1197"/>
+        <source>High-performance large file viewer</source>
+        <translation>高性能大文件查看器</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1203"/>
+        <source>Supports files over 10GB</source>
+        <translation>支持超过 10GB 的文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1358"/>
+        <source>Open Log File</source>
+        <translation>打开日志文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1381"/>
+        <source>Export Visible Lines</source>
+        <translation>导出可见行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1421"/>
+        <source>Find:</source>
+        <translation>查找:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1430"/>
+        <source>Enter search text (supports regex)...</source>
+        <translation>输入搜索文本 (支持正则)...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1447"/>
+        <location filename="../src/qml/Main.qml" line="1625"/>
+        <source>Regex</source>
+        <translation>正则</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1477"/>
+        <source>Find</source>
+        <translation>查找</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1503"/>
+        <source>Previous</source>
+        <translation>上一个</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1529"/>
+        <source>Next</source>
+        <translation>下一个</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1551"/>
+        <source>matches</source>
+        <translation>个匹配</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1599"/>
+        <source>Filter:</source>
+        <translation>过滤:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1608"/>
+        <source>Enter filter text (supports regex)...</source>
+        <translation>输入过滤文本 (支持正则)...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1655"/>
+        <source>Apply</source>
+        <translation>应用</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1677"/>
+        <source>Clear</source>
+        <translation>清除</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1701"/>
+        <source>Showing</source>
+        <translation>显示</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1747"/>
+        <location filename="../src/qml/Main.qml" line="2001"/>
+        <source>Line</source>
+        <translation>行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2001"/>
+        <source>Line Details</source>
+        <translation>行详情</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2012"/>
+        <source>Raw</source>
+        <translation>原始</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2012"/>
+        <source>JSON</source>
+        <translation>JSON</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2039"/>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2086"/>
+        <source>(Select a line to view details)</source>
+        <translation>(选择一行以查看详情)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2120"/>
+        <source>No file opened</source>
+        <translation>未打开文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2130"/>
+        <source>Size:</source>
+        <translation>大小:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2139"/>
+        <location filename="../src/qml/Main.qml" line="2140"/>
+        <source>Lines:</source>
+        <translation>行数:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2148"/>
+        <source>Registered</source>
+        <translation>已注册</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2148"/>
+        <source>Trial:</source>
+        <translation>试用:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2148"/>
+        <source>days left</source>
+        <translation>天剩余</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2160"/>
+        <source>Copy Line</source>
+        <translation>复制行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2164"/>
+        <source>Copy Line Number</source>
+        <translation>复制行号</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2171"/>
+        <source>Toggle Bookmark</source>
+        <translation>切换书签</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2198"/>
+        <source>Show Details</source>
+        <translation>显示详情</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2202"/>
+        <source>Format JSON</source>
+        <translation>格式化 JSON</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2213"/>
+        <source>Filter This Level</source>
+        <translation>过滤此级别</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2227"/>
+        <source>Filter This Keyword...</source>
+        <translation>过滤此关键字...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2237"/>
+        <source>Go To Line...</source>
+        <translation>转到行...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="427"/>
+        <source>Open Remote File...</source>
+        <translation>打开远程文件...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="467"/>
+        <source>Paste from Clipboard</source>
+        <translation>从剪贴板粘贴</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="480"/>
+        <source>Export...</source>
+        <translation>导出...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="486"/>
+        <source>Monitor Directory...</source>
+        <translation>监视目录...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="545"/>
+        <source>Edit Bookmark Comment...</source>
+        <translation>编辑书签注释...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="575"/>
+        <source>Save Bookmarks...</source>
+        <translation>保存书签...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="580"/>
+        <source>Load Bookmarks...</source>
+        <translation>加载书签...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="698"/>
+        <source>Filter Templates...</source>
+        <translation>过滤模板...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="706"/>
+        <source>Workspaces...</source>
+        <translation>工作区...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="732"/>
+        <source>Show Delta Time</source>
+        <translation>显示时间增量</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="744"/>
+        <source>Merge Rolling Logs...</source>
+        <translation>合并轮转日志...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="753"/>
+        <source>Statistics...</source>
+        <translation>统计...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="762"/>
+        <source>Dashboard...</source>
+        <translation>仪表板...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="767"/>
+        <source>AI Settings...</source>
+        <translation>AI 设置...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="940"/>
+        <source>Data Sanitization...</source>
+        <translation>数据脱敏...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="950"/>
+        <source>Email Alerts...</source>
+        <translation>邮件警报...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="959"/>
+        <source>Jira Integration...</source>
+        <translation>Jira 集成...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="968"/>
+        <source>GitHub Integration...</source>
+        <translation>GitHub 集成...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="998"/>
+        <source>Data Source</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1005"/>
+        <source>Connect Database...</source>
+        <translation>连接数据库...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1013"/>
+        <source>Cloud Storage...</source>
+        <translation>云存储...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1021"/>
+        <source>Windows Event Log...</source>
+        <translation>Windows 事件日志...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1030"/>
+        <source>System Trace...</source>
+        <translation>系统追踪...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1042"/>
+        <source>Analyze</source>
+        <translation>分析</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1049"/>
+        <source>SQL Query...</source>
+        <translation>SQL 查询...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1057"/>
+        <source>Correlation Analysis...</source>
+        <translation>相关性分析...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1065"/>
+        <source>Distinct Values...</source>
+        <translation>唯一值...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1073"/>
+        <source>Text Transform...</source>
+        <translation>文本转换...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1082"/>
+        <source>Parser Test...</source>
+        <translation>解析器测试...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1090"/>
+        <source>Advanced</source>
+        <translation>高级</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1097"/>
+        <source>Rule Wizard...</source>
+        <translation>规则向导...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1105"/>
+        <source>Notifications...</source>
+        <translation>通知...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1113"/>
+        <source>Report Scheduler...</source>
+        <translation>报告调度程序...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1122"/>
+        <source>Plugin Manager...</source>
+        <translation>插件管理器...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1126"/>
+        <source>Check for Updates...</source>
+        <translation>检查更新...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2248"/>
+        <source>Create Jira Issue...</source>
+        <translation>创建 Jira 问题...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2259"/>
+        <source>Create GitHub Issue...</source>
+        <translation>创建 GitHub 问题...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2273"/>
+        <source>Ask AI about this line...</source>
+        <translation>就此行询问 AI...</translation>
+    </message>
+</context>
+<context>
+    <name>NavigationBar</name>
+    <message>
+        <location filename="../src/qml/NavigationBar.qml" line="79"/>
+        <source>Line</source>
+        <translation>行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/NavigationBar.qml" line="117"/>
+        <source>Bookmark at line</source>
+        <translation>书签位于行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/NavigationBar.qml" line="144"/>
+        <source>Search result at line</source>
+        <translation>搜索结果位于行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/NavigationBar.qml" line="172"/>
+        <source>S</source>
+        <translation>搜</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/NavigationBar.qml" line="177"/>
+        <source>B</source>
+        <translation>书</translation>
+    </message>
+</context>
+<context>
     <name>NotificationManager</name>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="46"/>
-      <source>BigFileViewer</source>
-      <translation>大文件查看器</translation>
+        <location filename="../src/NotificationManager.cpp" line="46"/>
+        <source>BigFileViewer</source>
+        <translation>大文件查看器</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="111"/>
-      <source>Rate limit exceeded</source>
-      <translation>超出速率限制</translation>
+        <location filename="../src/NotificationManager.cpp" line="111"/>
+        <source>Rate limit exceeded</source>
+        <translation>超出速率限制</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="137"/>
-      <source>Alert: %1</source>
-      <translation>警报：%1</translation>
+        <location filename="../src/NotificationManager.cpp" line="137"/>
+        <source>Alert: %1</source>
+        <translation>警报：%1</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="139"/>
-      <source>Line %1: %2</source>
-      <translation>第 %1 行：%2</translation>
+        <location filename="../src/NotificationManager.cpp" line="139"/>
+        <source>Line %1: %2</source>
+        <translation>第 %1 行：%2</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="180"/>
-      <source>Logged to %1</source>
-      <translation>已记录到 %1</translation>
+        <location filename="../src/NotificationManager.cpp" line="180"/>
+        <source>Logged to %1</source>
+        <translation>已记录到 %1</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="246"/>
-      <source>Webhook to %1 - Status %2</source>
-      <translation>到 %1 的 Webhook - 状态 %2</translation>
+        <location filename="../src/NotificationManager.cpp" line="246"/>
+        <source>Webhook to %1 - Status %2</source>
+        <translation>到 %1 的 Webhook - 状态 %2</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="251"/>
-      <source>Webhook failed: %1 - %2</source>
-      <translation>Webhook 失败：%1 - %2</translation>
+        <location filename="../src/NotificationManager.cpp" line="251"/>
+        <source>Webhook failed: %1 - %2</source>
+        <translation>Webhook 失败：%1 - %2</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="254"/>
-      <source>Webhook sent to %1</source>
-      <translation>Webhook 已发送到 %1</translation>
+        <location filename="../src/NotificationManager.cpp" line="254"/>
+        <source>Webhook sent to %1</source>
+        <translation>Webhook 已发送到 %1</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="266"/>
-      <source>Popup: %1</source>
-      <translation>弹窗：%1</translation>
+        <location filename="../src/NotificationManager.cpp" line="266"/>
+        <source>Popup: %1</source>
+        <translation>弹窗：%1</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="283"/>
-      <source>Tray message: %1</source>
-      <translation>托盘消息：%1</translation>
+        <location filename="../src/NotificationManager.cpp" line="283"/>
+        <source>Tray message: %1</source>
+        <translation>托盘消息：%1</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="314"/>
-      <source>Command: %1</source>
-      <translation>命令：%1</translation>
+        <location filename="../src/NotificationManager.cpp" line="314"/>
+        <source>Command: %1</source>
+        <translation>命令：%1</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="334"/>
-      <source>Sound: %1</source>
-      <translation>声音：%1</translation>
+        <location filename="../src/NotificationManager.cpp" line="334"/>
+        <source>Sound: %1</source>
+        <translation>声音：%1</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="339"/>
-      <source>Beep (Multimedia not available)</source>
-      <translation>蜂鸣（多媒体不可用）</translation>
+        <location filename="../src/NotificationManager.cpp" line="339"/>
+        <source>Beep (Multimedia not available)</source>
+        <translation>蜂鸣（多媒体不可用）</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="358"/>
-      <source>Default alert</source>
-      <translation>默认警报</translation>
+        <location filename="../src/NotificationManager.cpp" line="358"/>
+        <source>Default alert</source>
+        <translation>默认警报</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="481"/>
-      <source>The name of the triggered rule</source>
-      <translation>触发规则的名称</translation>
+        <location filename="../src/NotificationManager.cpp" line="481"/>
+        <source>The name of the triggered rule</source>
+        <translation>触发规则的名称</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="482"/>
-      <source>The line number that triggered the rule</source>
-      <translation>触发规则的行号</translation>
+        <location filename="../src/NotificationManager.cpp" line="482"/>
+        <source>The line number that triggered the rule</source>
+        <translation>触发规则的行号</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="483"/>
-      <source>The content of the line</source>
-      <translation>行内容</translation>
+        <location filename="../src/NotificationManager.cpp" line="483"/>
+        <source>The content of the line</source>
+        <translation>行内容</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="484"/>
-      <source>The current timestamp (ISO format)</source>
-      <translation>当前时间戳 (ISO 格式)</translation>
+        <location filename="../src/NotificationManager.cpp" line="484"/>
+        <source>The current timestamp (ISO format)</source>
+        <translation>当前时间戳 (ISO 格式)</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="485"/>
-      <source>The hostname of the machine</source>
-      <translation>机器的主机名</translation>
+        <location filename="../src/NotificationManager.cpp" line="485"/>
+        <source>The hostname of the machine</source>
+        <translation>机器的主机名</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="486"/>
-      <source>The log level (if parsed)</source>
-      <translation>日志级别（如果已解析）</translation>
+        <location filename="../src/NotificationManager.cpp" line="486"/>
+        <source>The log level (if parsed)</source>
+        <translation>日志级别（如果已解析）</translation>
     </message>
     <message>
-      <location filename="../src/NotificationManager.cpp" line="487"/>
-      <source>The log message (if parsed)</source>
-      <translation>日志消息（如果已解析）</translation>
+        <location filename="../src/NotificationManager.cpp" line="487"/>
+        <source>The log message (if parsed)</source>
+        <translation>日志消息（如果已解析）</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>NotificationSettingsPanel</name>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="68"/>
-      <source>Webhook</source>
-      <translation>Webhook</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="68"/>
+        <source>Webhook</source>
+        <translation>Webhook</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="114"/>
-      <source>URL:</source>
-      <translation>URL:</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="114"/>
+        <source>URL:</source>
+        <translation>URL:</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="132"/>
-      <source>Headers:</source>
-      <translation>请求头:</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="132"/>
+        <source>Headers:</source>
+        <translation>请求头:</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="49"/>
-      <source>Notification Settings</source>
-      <translation>通知设置</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="49"/>
+        <source>Notification Settings</source>
+        <translation>通知设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="69"/>
-      <source>Popup/Tray</source>
-      <translation>弹窗/托盘</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="69"/>
+        <source>Popup/Tray</source>
+        <translation>弹窗/托盘</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="70"/>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="562"/>
-      <source>Command</source>
-      <translation>命令</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="70"/>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="562"/>
+        <source>Command</source>
+        <translation>命令</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="71"/>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="562"/>
-      <source>Sound</source>
-      <translation>声音</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="71"/>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="562"/>
+        <source>Sound</source>
+        <translation>声音</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="72"/>
-      <source>History</source>
-      <translation>历史记录</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="72"/>
+        <source>History</source>
+        <translation>历史记录</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="90"/>
-      <source>Enable Webhook Notifications</source>
-      <translation>启用 Webhook 通知</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="90"/>
+        <source>Enable Webhook Notifications</source>
+        <translation>启用 Webhook 通知</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="96"/>
-      <source>New Webhook Configuration</source>
-      <translation>新建 Webhook 配置</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="96"/>
+        <source>New Webhook Configuration</source>
+        <translation>新建 Webhook 配置</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="105"/>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="333"/>
-      <source>Name:</source>
-      <translation>名称：</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="105"/>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="333"/>
+        <source>Name:</source>
+        <translation>名称：</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="109"/>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="337"/>
-      <source>Configuration Name</source>
-      <translation>配置名称</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="109"/>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="337"/>
+        <source>Configuration Name</source>
+        <translation>配置名称</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="123"/>
-      <source>Method:</source>
-      <translation>方法：</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="123"/>
+        <source>Method:</source>
+        <translation>方法：</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="143"/>
-      <source>Body Template:</source>
-      <translation>主体模板：</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="143"/>
+        <source>Body Template:</source>
+        <translation>主体模板：</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="155"/>
-      <source>Available variables: {{ruleName}}, {{lineNumber}}, {{lineContent}}, {{timestamp}}, {{hostname}}</source>
-      <translation>可用变量：{{ruleName}}, {{lineNumber}}, {{lineContent}}, {{timestamp}}, {{hostname}}</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="155"/>
+        <source>Available variables: {{ruleName}}, {{lineNumber}}, {{lineContent}}, {{timestamp}}, {{hostname}}</source>
+        <translation>可用变量：{{ruleName}}, {{lineNumber}}, {{lineContent}}, {{timestamp}}, {{hostname}}</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="162"/>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="360"/>
-      <source>Save Configuration</source>
-      <translation>保存配置</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="162"/>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="360"/>
+        <source>Save Configuration</source>
+        <translation>保存配置</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="186"/>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="373"/>
-      <source>Test</source>
-      <translation>测试</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="186"/>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="373"/>
+        <source>Test</source>
+        <translation>测试</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="210"/>
-      <source>Saved Webhook Configurations</source>
-      <translation>已保存的 Webhook 配置</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="210"/>
+        <source>Saved Webhook Configurations</source>
+        <translation>已保存的 Webhook 配置</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="241"/>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="440"/>
-      <source>Delete</source>
-      <translation>删除</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="241"/>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="440"/>
+        <source>Delete</source>
+        <translation>删除</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="261"/>
-      <source>Enable Desktop Popup Notifications</source>
-      <translation>启用桌面弹窗通知</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="261"/>
+        <source>Enable Desktop Popup Notifications</source>
+        <translation>启用桌面弹窗通知</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="267"/>
-      <source>Popup Settings</source>
-      <translation>弹窗设置</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="267"/>
+        <source>Popup Settings</source>
+        <translation>弹窗设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="276"/>
-      <source>Display Duration:</source>
-      <translation>显示时长：</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="276"/>
+        <source>Display Duration:</source>
+        <translation>显示时长：</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="289"/>
-      <source>Test Popup</source>
-      <translation>测试弹窗</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="289"/>
+        <source>Test Popup</source>
+        <translation>测试弹窗</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="292"/>
-      <source>Test Notification</source>
-      <translation>测试通知</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="292"/>
+        <source>Test Notification</source>
+        <translation>测试通知</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="293"/>
-      <source>This is a test popup message</source>
-      <translation>这是一条测试弹窗消息</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="293"/>
+        <source>This is a test popup message</source>
+        <translation>这是一条测试弹窗消息</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="312"/>
-      <source>Enable Command Line Notifications</source>
-      <translation>启用命令行通知</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="312"/>
+        <source>Enable Command Line Notifications</source>
+        <translation>启用命令行通知</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="318"/>
-      <source>Warning: Command line notifications may execute arbitrary commands, use with caution</source>
-      <translation>警告：命令行通知可能会执行任意命令，请谨慎使用</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="318"/>
+        <source>Warning: Command line notifications may execute arbitrary commands, use with caution</source>
+        <translation>警告：命令行通知可能会执行任意命令，请谨慎使用</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="324"/>
-      <source>New Command Configuration</source>
-      <translation>新建命令配置</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="324"/>
+        <source>New Command Configuration</source>
+        <translation>新建命令配置</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="342"/>
-      <source>Command:</source>
-      <translation>命令：</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="342"/>
+        <source>Command:</source>
+        <translation>命令：</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="353"/>
-      <source>Environment Variables: ALERT_RULE, ALERT_LINE_NUMBER, ALERT_LINE_CONTENT, ALERT_TIMESTAMP</source>
-      <translation>环境变量：ALERT_RULE, ALERT_LINE_NUMBER, ALERT_LINE_CONTENT, ALERT_TIMESTAMP</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="353"/>
+        <source>Environment Variables: ALERT_RULE, ALERT_LINE_NUMBER, ALERT_LINE_CONTENT, ALERT_TIMESTAMP</source>
+        <translation>环境变量：ALERT_RULE, ALERT_LINE_NUMBER, ALERT_LINE_CONTENT, ALERT_TIMESTAMP</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="386"/>
-      <source>Command Output</source>
-      <translation>命令输出</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="386"/>
+        <source>Command Output</source>
+        <translation>命令输出</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="395"/>
-      <source>Command execution output will be displayed here</source>
-      <translation>命令执行输出将显示在此处</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="395"/>
+        <source>Command execution output will be displayed here</source>
+        <translation>命令执行输出将显示在此处</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="409"/>
-      <source>Saved Command Configurations</source>
-      <translation>已保存的命令配置</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="409"/>
+        <source>Saved Command Configurations</source>
+        <translation>已保存的命令配置</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="460"/>
-      <source>Enable Sound Alerts</source>
-      <translation>启用声音警报</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="460"/>
+        <source>Enable Sound Alerts</source>
+        <translation>启用声音警报</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="466"/>
-      <source>Sound Settings</source>
-      <translation>声音设置</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="466"/>
+        <source>Sound Settings</source>
+        <translation>声音设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="475"/>
-      <source>Sound File:</source>
-      <translation>声音文件：</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="475"/>
+        <source>Sound File:</source>
+        <translation>声音文件：</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="492"/>
-      <source>Test Sound</source>
-      <translation>测试声音</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="492"/>
+        <source>Test Sound</source>
+        <translation>测试声音</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="503"/>
-      <source>Browse...</source>
-      <translation>浏览...</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="503"/>
+        <source>Browse...</source>
+        <translation>浏览...</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="518"/>
-      <source>Notification History</source>
-      <translation>通知历史</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="518"/>
+        <source>Notification History</source>
+        <translation>通知历史</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="521"/>
-      <source>Clear History</source>
-      <translation>清除历史</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="521"/>
+        <source>Clear History</source>
+        <translation>清除历史</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="529"/>
-      <source>Refresh</source>
-      <translation>刷新</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="529"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="562"/>
-      <source>Popup</source>
-      <translation>弹窗</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="562"/>
+        <source>Popup</source>
+        <translation>弹窗</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="562"/>
-      <source>Log</source>
-      <translation>日志</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="562"/>
+        <source>Log</source>
+        <translation>日志</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="590"/>
-      <source>Rate Limit:</source>
-      <translation>频率限制：</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="590"/>
+        <source>Rate Limit:</source>
+        <translation>频率限制：</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="603"/>
-      <source>times/minute</source>
-      <translation>次/分钟</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="603"/>
+        <source>times/minute</source>
+        <translation>次/分钟</translation>
     </message>
     <message>
-      <location filename="../src/qml/NotificationSettingsPanel.qml" line="608"/>
-      <source>Close</source>
-      <translation>关闭</translation>
+        <location filename="../src/qml/NotificationSettingsPanel.qml" line="608"/>
+        <source>Close</source>
+        <translation>关闭</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>ParserTestPanel</name>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="60"/>
-      <source>Parser Test Tool</source>
-      <translation>解析器测试工具</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="60"/>
+        <source>Parser Test Tool</source>
+        <translation>解析器测试工具</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="77"/>
-      <source>Sample Log Input</source>
-      <translation>示例日志输入</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="77"/>
+        <source>Sample Log Input</source>
+        <translation>示例日志输入</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="89"/>
-      <source>Load from File</source>
-      <translation>从文件加载</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="89"/>
+        <source>Load from File</source>
+        <translation>从文件加载</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="95"/>
-      <source>Paste from Clipboard</source>
-      <translation>从剪贴板粘贴</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="95"/>
+        <source>Paste from Clipboard</source>
+        <translation>从剪贴板粘贴</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="103"/>
-      <source>Clear</source>
-      <translation type="unfinished">清除</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="103"/>
+        <source>Clear</source>
+        <translation type="unfinished">清除</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="115"/>
-      <source>Lines: %1</source>
-      <translation>行数：%1</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="115"/>
+        <source>Lines: %1</source>
+        <translation>行数：%1</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="126"/>
-      <source>Paste or load sample log lines here...</source>
-      <translation>在此处粘贴或加载示例日志行...</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="126"/>
+        <source>Paste or load sample log lines here...</source>
+        <translation>在此处粘贴或加载示例日志行...</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="143"/>
-      <source>Format Detection</source>
-      <translation>格式检测</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="143"/>
+        <source>Format Detection</source>
+        <translation>格式检测</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="151"/>
-      <source>Auto-Detect Format</source>
-      <translation>自动检测格式</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="151"/>
+        <source>Auto-Detect Format</source>
+        <translation>自动检测格式</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="175"/>
-      <source>Detected:</source>
-      <translation>已检测到：</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="175"/>
+        <source>Detected:</source>
+        <translation>已检测到：</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="180"/>
-      <source>None</source>
-      <translation>无</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="180"/>
+        <source>None</source>
+        <translation>无</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="185"/>
-      <source>Confidence: %1%</source>
-      <translation>置信度：%1%</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="185"/>
+        <source>Confidence: %1%</source>
+        <translation>置信度：%1%</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="197"/>
-      <source>Apply</source>
-      <translation type="unfinished">应用</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="197"/>
+        <source>Apply</source>
+        <translation type="unfinished">应用</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="214"/>
-      <source>Parsing Results</source>
-      <translation>解析结果</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="214"/>
+        <source>Parsing Results</source>
+        <translation>解析结果</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="227"/>
-      <source>Line</source>
-      <translation type="unfinished">行</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="227"/>
+        <source>Line</source>
+        <translation type="unfinished">行</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="307"/>
-      <source>Parse error</source>
-      <translation>解析错误</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="307"/>
+        <source>Parse error</source>
+        <translation>解析错误</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="331"/>
-      <source>Total: %1 lines</source>
-      <translation>总计: %1 行</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="331"/>
+        <source>Total: %1 lines</source>
+        <translation>总计: %1 行</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="342"/>
-      <source>Errors: %1</source>
-      <translation>错误: %1</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="342"/>
+        <source>Errors: %1</source>
+        <translation>错误: %1</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="349"/>
-      <source>Re-parse</source>
-      <translation>重新解析</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="349"/>
+        <source>Re-parse</source>
+        <translation>重新解析</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="355"/>
-      <source>Export Results</source>
-      <translation>导出结果</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="355"/>
+        <source>Export Results</source>
+        <translation>导出结果</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="376"/>
-      <source>Load Sample Log File</source>
-      <translation>加载示例日志文件</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="376"/>
+        <source>Load Sample Log File</source>
+        <translation>加载示例日志文件</translation>
     </message>
     <message>
-      <location filename="../src/qml/ParserTestPanel.qml" line="440"/>
-      <source>No fields extracted - pattern may not match</source>
-      <translation>未提取到字段 - 模式可能不匹配</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="440"/>
+        <source>No fields extracted - pattern may not match</source>
+        <translation>未提取到字段 - 模式可能不匹配</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>PluginManager</name>
     <message>
-      <location filename="../src/PluginManager.cpp" line="357"/>
-      <source>Available</source>
-      <translation>可用</translation>
+        <location filename="../src/PluginManager.cpp" line="357"/>
+        <source>Available</source>
+        <translation>可用</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="519"/>
-      <location filename="../src/PluginManager.cpp" line="560"/>
-      <source>Stopped</source>
-      <translation>已停止</translation>
+        <location filename="../src/PluginManager.cpp" line="519"/>
+        <location filename="../src/PluginManager.cpp" line="560"/>
+        <source>Stopped</source>
+        <translation>已停止</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="542"/>
-      <source>Running</source>
-      <translation>运行中</translation>
+        <location filename="../src/PluginManager.cpp" line="542"/>
+        <source>Running</source>
+        <translation>运行中</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="600"/>
-      <source>Plugin installation not yet implemented</source>
-      <translation>插件安装功能尚未实现</translation>
+        <location filename="../src/PluginManager.cpp" line="600"/>
+        <source>Plugin installation not yet implemented</source>
+        <translation>插件安装功能尚未实现</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="632"/>
-      <source>Plugin update not yet implemented</source>
-      <translation>插件更新功能尚未实现</translation>
+        <location filename="../src/PluginManager.cpp" line="632"/>
+        <source>Plugin update not yet implemented</source>
+        <translation>插件更新功能尚未实现</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="645"/>
-      <source>Plugin download not yet implemented</source>
-      <translation>插件下载功能尚未实现</translation>
+        <location filename="../src/PluginManager.cpp" line="645"/>
+        <source>Plugin download not yet implemented</source>
+        <translation>插件下载功能尚未实现</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="652"/>
-      <source>Failed to start plugin</source>
-      <translation>启动插件失败</translation>
+        <location filename="../src/PluginManager.cpp" line="652"/>
+        <source>Failed to start plugin</source>
+        <translation>启动插件失败</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>PluginManagerDialog</name>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="7"/>
-      <source>Plugin Manager</source>
-      <translation>插件管理器</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="7"/>
+        <source>Plugin Manager</source>
+        <translation>插件管理器</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="43"/>
-      <source>Installed Plugins</source>
-      <translation>已安装插件</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="43"/>
+        <source>Installed Plugins</source>
+        <translation>已安装插件</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="46"/>
-      <source>Available</source>
-      <translation>可用</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="46"/>
+        <source>Available</source>
+        <translation>可用</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="49"/>
-      <source>Settings</source>
-      <translation type="unfinished">设置</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="49"/>
+        <source>Settings</source>
+        <translation type="unfinished">设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="70"/>
-      <source>Search plugins...</source>
-      <translation>搜索插件...</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="70"/>
+        <source>Search plugins...</source>
+        <translation>搜索插件...</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="74"/>
-      <source>Refresh</source>
-      <translation>刷新</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="74"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="80"/>
-      <source>Install from file...</source>
-      <translation>从文件安装...</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="80"/>
+        <source>Install from file...</source>
+        <translation>从文件安装...</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="184"/>
-      <source>No description</source>
-      <translation>无描述</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="184"/>
+        <source>No description</source>
+        <translation>无描述</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="194"/>
-      <source>by %1</source>
-      <translation>由 %1 提供</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="194"/>
+        <source>by %1</source>
+        <translation>由 %1 提供</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="222"/>
-      <source>Disable plugin</source>
-      <translation>禁用插件</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="222"/>
+        <source>Disable plugin</source>
+        <translation>禁用插件</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="222"/>
-      <source>Enable plugin</source>
-      <translation>启用插件</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="222"/>
+        <source>Enable plugin</source>
+        <translation>启用插件</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="230"/>
-      <source>Stop</source>
-      <translation>停止</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="230"/>
+        <source>Stop</source>
+        <translation>停止</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="230"/>
-      <source>Start</source>
-      <translation>启动</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="230"/>
+        <source>Start</source>
+        <translation>启动</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="248"/>
-      <source>Configure</source>
-      <translation>配置</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="248"/>
+        <source>Configure</source>
+        <translation>配置</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="261"/>
-      <source>Uninstall</source>
-      <translation>卸载</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="261"/>
+        <source>Uninstall</source>
+        <translation>卸载</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="272"/>
-      <source>No plugins installed.
-Install plugins from the 'Available' tab or install from file.</source>
-      <translation>未安装插件。
+        <location filename="../src/qml/PluginManagerDialog.qml" line="272"/>
+        <source>No plugins installed.
+Install plugins from the &apos;Available&apos; tab or install from file.</source>
+        <translation>未安装插件。
 请从“可用”选项卡安装插件或从文件安装。</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="290"/>
-      <source>Search online plugins...</source>
-      <translation>在线搜索插件...</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="290"/>
+        <source>Search online plugins...</source>
+        <translation>在线搜索插件...</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="295"/>
-      <source>Search</source>
-      <translation type="unfinished">搜索</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="295"/>
+        <source>Search</source>
+        <translation type="unfinished">搜索</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="303"/>
-      <source>Online plugin marketplace coming soon.
+        <location filename="../src/qml/PluginManagerDialog.qml" line="303"/>
+        <source>Online plugin marketplace coming soon.
 
-For now, install plugins manually using 'Install from file...'</source>
-      <translation>在线插件市场即将推出。
+For now, install plugins manually using &apos;Install from file...&apos;</source>
+        <translation>在线插件市场即将推出。
 
 目前，请使用“从文件安装...”手动安装插件。</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="321"/>
-      <source>Plugin Directories</source>
-      <translation>插件目录</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="321"/>
+        <source>Plugin Directories</source>
+        <translation>插件目录</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="358"/>
-      <source>Add plugin directory...</source>
-      <translation>添加插件目录...</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="358"/>
+        <source>Add plugin directory...</source>
+        <translation>添加插件目录...</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="362"/>
-      <source>Browse...</source>
-      <translation>浏览...</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="362"/>
+        <source>Browse...</source>
+        <translation>浏览...</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="367"/>
-      <source>Add</source>
-      <translation type="unfinished">添加</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="367"/>
+        <source>Add</source>
+        <translation type="unfinished">添加</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="380"/>
-      <source>Security</source>
-      <translation>安全</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="380"/>
+        <source>Security</source>
+        <translation>安全</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="387"/>
-      <source>Warn before enabling plugins with dangerous permissions</source>
-      <translation>启用具有危险权限的插件前发出警告</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="387"/>
+        <source>Warn before enabling plugins with dangerous permissions</source>
+        <translation>启用具有危险权限的插件前发出警告</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="392"/>
-      <source>Run plugins in sandboxed subprocess (recommended)</source>
-      <translation>在沙盒化的子进程中运行插件 (推荐)</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="392"/>
+        <source>Run plugins in sandboxed subprocess (recommended)</source>
+        <translation>在沙盒化的子进程中运行插件 (推荐)</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="397"/>
-      <source>Allow plugins to access network</source>
-      <translation>允许插件访问网络</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="397"/>
+        <source>Allow plugins to access network</source>
+        <translation>允许插件访问网络</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="402"/>
-      <source>Allow plugins to execute external commands</source>
-      <translation>允许插件执行外部命令</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="402"/>
+        <source>Allow plugins to execute external commands</source>
+        <translation>允许插件执行外部命令</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="410"/>
-      <source>Auto-start</source>
-      <translation>自动启动</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="410"/>
+        <source>Auto-start</source>
+        <translation>自动启动</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="417"/>
-      <source>Automatically start enabled plugins on application launch</source>
-      <translation>应用程序启动时自动启动已启用的插件</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="417"/>
+        <source>Automatically start enabled plugins on application launch</source>
+        <translation>应用程序启动时自动启动已启用的插件</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="422"/>
-      <source>Restart plugins that crash</source>
-      <translation>重新启动崩溃的插件</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="422"/>
+        <source>Restart plugins that crash</source>
+        <translation>重新启动崩溃的插件</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="435"/>
-      <source>Uninstall Plugin</source>
-      <translation>卸载插件</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="435"/>
+        <source>Uninstall Plugin</source>
+        <translation>卸载插件</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="444"/>
-      <source>Are you sure you want to uninstall '%1'?
+        <location filename="../src/qml/PluginManagerDialog.qml" line="444"/>
+        <source>Are you sure you want to uninstall &apos;%1&apos;?
 This action cannot be undone.</source>
-      <translation>确定要卸载“%1”吗？
+        <translation>确定要卸载“%1”吗？
 此操作无法撤销。</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="453"/>
-      <source>Plugin Configuration</source>
-      <translation>插件配置</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="453"/>
+        <source>Plugin Configuration</source>
+        <translation>插件配置</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="474"/>
-      <source>Configuration for: %1</source>
-      <translation>%1 的配置</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="474"/>
+        <source>Configuration for: %1</source>
+        <translation>%1 的配置</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="479"/>
-      <source>Plugin configuration UI will be loaded from the plugin manifest.</source>
-      <translation>插件配置 UI 将从插件清单加载。</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="479"/>
+        <source>Plugin configuration UI will be loaded from the plugin manifest.</source>
+        <translation>插件配置 UI 将从插件清单加载。</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="500"/>
-      <source>Plugin error (%1): %2</source>
-      <translation>插件错误 (%1): %2</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="500"/>
+        <source>Plugin error (%1): %2</source>
+        <translation>插件错误 (%1): %2</translation>
     </message>
     <message>
-      <location filename="../src/qml/PluginManagerDialog.qml" line="527"/>
-      <source>OK</source>
-      <translation type="unfinished">确定</translation>
+        <location filename="../src/qml/PluginManagerDialog.qml" line="527"/>
+        <source>OK</source>
+        <translation type="unfinished">确定</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>PluginProcess</name>
     <message>
-      <location filename="../src/PluginManager.cpp" line="48"/>
-      <source>Entry point not found: %1</source>
-      <translation>找不到入口点: %1</translation>
+        <location filename="../src/PluginManager.cpp" line="48"/>
+        <source>Entry point not found: %1</source>
+        <translation>找不到入口点: %1</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="66"/>
-      <source>Unsupported plugin type: %1</source>
-      <translation>不支持的插件类型: %1</translation>
+        <location filename="../src/PluginManager.cpp" line="66"/>
+        <source>Unsupported plugin type: %1</source>
+        <translation>不支持的插件类型: %1</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="80"/>
-      <source>Failed to start plugin process</source>
-      <translation>启动插件进程失败</translation>
+        <location filename="../src/PluginManager.cpp" line="80"/>
+        <source>Failed to start plugin process</source>
+        <translation>启动插件进程失败</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="154"/>
-      <source>Failed to start</source>
-      <translation>启动失败</translation>
+        <location filename="../src/PluginManager.cpp" line="154"/>
+        <source>Failed to start</source>
+        <translation>启动失败</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="155"/>
-      <source>Process crashed</source>
-      <translation>进程崩溃</translation>
+        <location filename="../src/PluginManager.cpp" line="155"/>
+        <source>Process crashed</source>
+        <translation>进程崩溃</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="156"/>
-      <source>Process timed out</source>
-      <translation>进程超时</translation>
+        <location filename="../src/PluginManager.cpp" line="156"/>
+        <source>Process timed out</source>
+        <translation>进程超时</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="157"/>
-      <source>Write error</source>
-      <translation>写入错误</translation>
+        <location filename="../src/PluginManager.cpp" line="157"/>
+        <source>Write error</source>
+        <translation>写入错误</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="158"/>
-      <source>Read error</source>
-      <translation>读取错误</translation>
+        <location filename="../src/PluginManager.cpp" line="158"/>
+        <source>Read error</source>
+        <translation>读取错误</translation>
     </message>
     <message>
-      <location filename="../src/PluginManager.cpp" line="159"/>
-      <source>Unknown error</source>
-      <translation>未知错误</translation>
+        <location filename="../src/PluginManager.cpp" line="159"/>
+        <source>Unknown error</source>
+        <translation>未知错误</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
+    <name>RegistrationDialog</name>
+    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="30"/>
+        <source>Register BigFileViewer</source>
+        <translation>注册 BigFileViewer</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="39"/>
+        <source>Machine ID:</source>
+        <translation>机器码:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="64"/>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="84"/>
+        <source>License Key:</source>
+        <translation>许可密钥:</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="94"/>
+        <source>Paste your license key here...</source>
+        <translation>在此粘贴您的许可密钥...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="119"/>
+        <source>Get License</source>
+        <translation>获取许可</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="138"/>
+        <source>Activate</source>
+        <translation>激活</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="142"/>
+        <source>Activation Successful!</source>
+        <translation>激活成功!</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="146"/>
+        <source>Invalid License Key</source>
+        <translation>无效的许可密钥</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RegistrationDialog.qml" line="165"/>
+        <source>Close</source>
+        <translation>关闭</translation>
+    </message>
+</context>
+<context>
     <name>RemoteFileDialog</name>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="15"/>
-      <source>Remote File Browser</source>
-      <translation>远程文件浏览器</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="15"/>
+        <source>Remote File Browser</source>
+        <translation>远程文件浏览器</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="71"/>
-      <source>hostname or IP</source>
-      <translation>主机名或 IP</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="71"/>
+        <source>hostname or IP</source>
+        <translation>主机名或 IP</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="85"/>
-      <source>user</source>
-      <translation>用户</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="85"/>
+        <source>user</source>
+        <translation>用户</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="91"/>
-      <source>Disconnect</source>
-      <translation>断开连接</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="91"/>
+        <source>Disconnect</source>
+        <translation>断开连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="91"/>
-      <source>Connect</source>
-      <translation>连接</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="91"/>
+        <source>Connect</source>
+        <translation>连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="109"/>
-      <source>Auth:</source>
-      <translation>认证:</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="109"/>
+        <source>Auth:</source>
+        <translation>认证:</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="114"/>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="137"/>
-      <source>Password</source>
-      <translation>密码</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="114"/>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="137"/>
+        <source>Password</source>
+        <translation>密码</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="121"/>
-      <source>Path to private key (~/.ssh/id_rsa)</source>
-      <translation>私钥路径 (~/.ssh/id_rsa)</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="121"/>
+        <source>Path to private key (~/.ssh/id_rsa)</source>
+        <translation>私钥路径 (~/.ssh/id_rsa)</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="114"/>
-      <source>SSH Key</source>
-      <translation>SSH 密钥</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="114"/>
+        <source>SSH Key</source>
+        <translation>SSH 密钥</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="141"/>
-      <source>Save Profile</source>
-      <translation>保存配置文件</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="141"/>
+        <source>Save Profile</source>
+        <translation>保存配置文件</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="157"/>
-      <source>Parent Directory</source>
-      <translation>上级目录</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="157"/>
+        <source>Parent Directory</source>
+        <translation>上级目录</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="166"/>
-      <source>Home Directory</source>
-      <translation>主目录</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="166"/>
+        <source>Home Directory</source>
+        <translation>主目录</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="188"/>
-      <source>Refresh</source>
-      <translation>刷新</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="188"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="272"/>
-      <source>Directory is empty</source>
-      <translation>目录为空</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="272"/>
+        <source>Directory is empty</source>
+        <translation>目录为空</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="273"/>
-      <source>Connect to a server to browse files</source>
-      <translation>连接服务器以浏览文件</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="273"/>
+        <source>Connect to a server to browse files</source>
+        <translation>连接服务器以浏览文件</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="293"/>
-      <source>Auto-refresh</source>
-      <translation>自动刷新</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="293"/>
+        <source>Auto-refresh</source>
+        <translation>自动刷新</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="303"/>
-      <source>every</source>
-      <translation>每隔</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="303"/>
+        <source>every</source>
+        <translation>每隔</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="322"/>
-      <source>seconds</source>
-      <translation>秒</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="322"/>
+        <source>seconds</source>
+        <translation>秒</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="349"/>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="392"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="349"/>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="392"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="354"/>
-      <source>Open</source>
-      <translation>打开</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="354"/>
+        <source>Open</source>
+        <translation>打开</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="368"/>
-      <source>Save Connection Profile</source>
-      <translation>保存连接配置</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="368"/>
+        <source>Save Connection Profile</source>
+        <translation>保存连接配置</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="383"/>
-      <source>Profile name</source>
-      <translation>配置文件名称</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="383"/>
+        <source>Profile name</source>
+        <translation>配置文件名称</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="397"/>
-      <source>Save</source>
-      <translation>保存</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="397"/>
+        <source>Save</source>
+        <translation>保存</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="420"/>
-      <source>Select Private Key</source>
-      <translation>选择私钥</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="420"/>
+        <source>Select Private Key</source>
+        <translation>选择私钥</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="432"/>
-      <source>Connecting...</source>
-      <translation>正在连接...</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="432"/>
+        <source>Connecting...</source>
+        <translation>正在连接...</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="457"/>
-      <source>Downloading...</source>
-      <translation>正在下载...</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="457"/>
+        <source>Downloading...</source>
+        <translation>正在下载...</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="485"/>
-      <source>Connected to %1</source>
-      <translation>已连接到 %1</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="485"/>
+        <source>Connected to %1</source>
+        <translation>已连接到 %1</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="488"/>
-      <source>Disconnected</source>
-      <translation>已断开连接</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="488"/>
+        <source>Disconnected</source>
+        <translation>已断开连接</translation>
     </message>
     <message>
-      <location filename="../src/qml/RemoteFileDialog.qml" line="506"/>
-      <source>Downloaded: %1</source>
-      <translation>已下载: %1</translation>
+        <location filename="../src/qml/RemoteFileDialog.qml" line="506"/>
+        <source>Downloaded: %1</source>
+        <translation>已下载: %1</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>RemoteFileManager</name>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="154"/>
-      <location filename="../src/RemoteFileManager.cpp" line="517"/>
-      <location filename="../src/RemoteFileManager.cpp" line="630"/>
-      <source>Remote features not enabled</source>
-      <translation>远程功能未启用</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="154"/>
+        <location filename="../src/RemoteFileManager.cpp" line="517"/>
+        <location filename="../src/RemoteFileManager.cpp" line="630"/>
+        <source>Remote features not enabled</source>
+        <translation>远程功能未启用</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="173"/>
-      <source>Failed to resolve host: %1</source>
-      <translation>解析主机失败: %1</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="173"/>
+        <source>Failed to resolve host: %1</source>
+        <translation>解析主机失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="206"/>
-      <source>Failed to connect to %1:%2</source>
-      <translation>连接到 %1:%2 失败</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="206"/>
+        <source>Failed to connect to %1:%2</source>
+        <translation>连接到 %1:%2 失败</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="227"/>
-      <source>Password authentication failed: %1</source>
-      <translation>密码身份验证失败: %1</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="227"/>
+        <source>Password authentication failed: %1</source>
+        <translation>密码身份验证失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="246"/>
-      <source>Private key file not found: %1</source>
-      <translation>未找到私钥文件: %1</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="246"/>
+        <source>Private key file not found: %1</source>
+        <translation>未找到私钥文件: %1</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="269"/>
-      <source>Public key authentication failed: %1</source>
-      <translation>公钥身份验证失败: %1</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="269"/>
+        <source>Public key authentication failed: %1</source>
+        <translation>公钥身份验证失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="288"/>
-      <source>Failed to initialize SFTP: %1</source>
-      <translation>初始化 SFTP 失败: %1</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="288"/>
+        <source>Failed to initialize SFTP: %1</source>
+        <translation>初始化 SFTP 失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="332"/>
-      <source>Failed to create SSH session</source>
-      <translation>创建 SSH 会话失败</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="332"/>
+        <source>Failed to create SSH session</source>
+        <translation>创建 SSH 会话失败</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="347"/>
-      <source>SSH handshake failed: %1</source>
-      <translation>SSH 握手失败: %1</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="347"/>
+        <source>SSH handshake failed: %1</source>
+        <translation>SSH 握手失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="382"/>
-      <source>Connected as: %1</source>
-      <translation>连接身份: %1</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="382"/>
+        <source>Connected as: %1</source>
+        <translation>连接身份: %1</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="390"/>
-      <source>Remote features not enabled in this build</source>
-      <translation>此版本中未启用远程功能</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="390"/>
+        <source>Remote features not enabled in this build</source>
+        <translation>此版本中未启用远程功能</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="450"/>
-      <source>Failed to open directory: %1</source>
-      <translation>打开目录失败: %1</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="450"/>
+        <source>Failed to open directory: %1</source>
+        <translation>打开目录失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="582"/>
-      <source>Failed to open remote file: %1</source>
-      <translation>打开远程文件失败: %1</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="582"/>
+        <source>Failed to open remote file: %1</source>
+        <translation>打开远程文件失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="591"/>
-      <source>Failed to create local file: %1</source>
-      <translation>创建本地文件失败: %1</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="591"/>
+        <source>Failed to create local file: %1</source>
+        <translation>创建本地文件失败: %1</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="611"/>
-      <source>Error reading remote file: %1</source>
-      <translation>读取远程文件时出错: %1</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="611"/>
+        <source>Error reading remote file: %1</source>
+        <translation>读取远程文件时出错: %1</translation>
     </message>
     <message>
-      <location filename="../src/RemoteFileManager.cpp" line="431"/>
-      <location filename="../src/RemoteFileManager.cpp" line="560"/>
-      <source>Not connected to server</source>
-      <translation>未连接到服务器</translation>
+        <location filename="../src/RemoteFileManager.cpp" line="431"/>
+        <location filename="../src/RemoteFileManager.cpp" line="560"/>
+        <source>Not connected to server</source>
+        <translation>未连接到服务器</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>ReportScheduler</name>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="264"/>
-      <source>Default Report</source>
-      <translation>默认报告</translation>
+        <location filename="../src/ReportScheduler.cpp" line="264"/>
+        <source>Default Report</source>
+        <translation>默认报告</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="265"/>
-      <source>Standard log analysis report with all sections</source>
-      <translation>包含所有部分的标准日志分析报告</translation>
+        <location filename="../src/ReportScheduler.cpp" line="265"/>
+        <source>Standard log analysis report with all sections</source>
+        <translation>包含所有部分的标准日志分析报告</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="281"/>
-      <source>Executive Summary</source>
-      <translation>执行摘要</translation>
+        <location filename="../src/ReportScheduler.cpp" line="281"/>
+        <source>Executive Summary</source>
+        <translation>执行摘要</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="282"/>
-      <source>High-level summary for management</source>
-      <translation>面向管理层的高层摘要</translation>
+        <location filename="../src/ReportScheduler.cpp" line="282"/>
+        <source>High-level summary for management</source>
+        <translation>面向管理层的高层摘要</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="298"/>
-      <source>Technical Detail</source>
-      <translation>技术详情</translation>
+        <location filename="../src/ReportScheduler.cpp" line="298"/>
+        <source>Technical Detail</source>
+        <translation>技术详情</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="299"/>
-      <source>Detailed technical report for developers</source>
-      <translation>面向开发人员的详细技术报告</translation>
+        <location filename="../src/ReportScheduler.cpp" line="299"/>
+        <source>Detailed technical report for developers</source>
+        <translation>面向开发人员的详细技术报告</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="316"/>
-      <source>Error Analysis</source>
-      <translation>错误分析</translation>
+        <location filename="../src/ReportScheduler.cpp" line="316"/>
+        <source>Error Analysis</source>
+        <translation>错误分析</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="317"/>
-      <source>Focused report on errors and warnings</source>
-      <translation>专注于错误和警告的报告</translation>
+        <location filename="../src/ReportScheduler.cpp" line="317"/>
+        <source>Focused report on errors and warnings</source>
+        <translation>专注于错误和警告的报告</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="376"/>
-      <source>New Schedule</source>
-      <translation>新建计划</translation>
+        <location filename="../src/ReportScheduler.cpp" line="376"/>
+        <source>New Schedule</source>
+        <translation>新建计划</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="533"/>
-      <source>New Template</source>
-      <translation>新建模板</translation>
+        <location filename="../src/ReportScheduler.cpp" line="533"/>
+        <source>New Template</source>
+        <translation>新建模板</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="643"/>
-      <source>Schedule not found</source>
-      <translation>未找到计划</translation>
+        <location filename="../src/ReportScheduler.cpp" line="643"/>
+        <source>Schedule not found</source>
+        <translation>未找到计划</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="848"/>
-      <location filename="../src/ReportScheduler.cpp" line="981"/>
-      <source>Log Analysis Report</source>
-      <translation>日志分析报告</translation>
+        <location filename="../src/ReportScheduler.cpp" line="848"/>
+        <location filename="../src/ReportScheduler.cpp" line="981"/>
+        <source>Log Analysis Report</source>
+        <translation>日志分析报告</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="852"/>
-      <location filename="../src/ReportScheduler.cpp" line="987"/>
-      <source>Generated</source>
-      <translation>已生成</translation>
+        <location filename="../src/ReportScheduler.cpp" line="852"/>
+        <location filename="../src/ReportScheduler.cpp" line="987"/>
+        <source>Generated</source>
+        <translation>已生成</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="868"/>
-      <location filename="../src/ReportScheduler.cpp" line="990"/>
-      <source>Summary</source>
-      <translation>摘要</translation>
+        <location filename="../src/ReportScheduler.cpp" line="868"/>
+        <location filename="../src/ReportScheduler.cpp" line="990"/>
+        <source>Summary</source>
+        <translation>摘要</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="869"/>
-      <location filename="../src/ReportScheduler.cpp" line="993"/>
-      <source>Total Lines</source>
-      <translation>总行数</translation>
+        <location filename="../src/ReportScheduler.cpp" line="869"/>
+        <location filename="../src/ReportScheduler.cpp" line="993"/>
+        <source>Total Lines</source>
+        <translation>总行数</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="870"/>
-      <location filename="../src/ReportScheduler.cpp" line="994"/>
-      <source>Errors</source>
-      <translation type="unfinished">错误</translation>
+        <location filename="../src/ReportScheduler.cpp" line="870"/>
+        <location filename="../src/ReportScheduler.cpp" line="994"/>
+        <source>Errors</source>
+        <translation type="unfinished">错误</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="871"/>
-      <location filename="../src/ReportScheduler.cpp" line="995"/>
-      <source>Warnings</source>
-      <translation type="unfinished">警告</translation>
+        <location filename="../src/ReportScheduler.cpp" line="871"/>
+        <location filename="../src/ReportScheduler.cpp" line="995"/>
+        <source>Warnings</source>
+        <translation type="unfinished">警告</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="872"/>
-      <source>Time Range</source>
-      <translation>时间范围</translation>
+        <location filename="../src/ReportScheduler.cpp" line="872"/>
+        <source>Time Range</source>
+        <translation>时间范围</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="882"/>
-      <location filename="../src/ReportScheduler.cpp" line="999"/>
-      <source>Error Distribution</source>
-      <translation>错误分布</translation>
+        <location filename="../src/ReportScheduler.cpp" line="882"/>
+        <location filename="../src/ReportScheduler.cpp" line="999"/>
+        <source>Error Distribution</source>
+        <translation>错误分布</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="883"/>
-      <source>No data available - connect to BigFileModel for actual statistics</source>
-      <translation>无可用数据 - 请连接到 BigFileModel 以获取实际统计信息</translation>
+        <location filename="../src/ReportScheduler.cpp" line="883"/>
+        <source>No data available - connect to BigFileModel for actual statistics</source>
+        <translation>无可用数据 - 请连接到 BigFileModel 以获取实际统计信息</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="893"/>
-      <source>Activity Timeline</source>
-      <translation>活动时间线</translation>
+        <location filename="../src/ReportScheduler.cpp" line="893"/>
+        <source>Activity Timeline</source>
+        <translation>活动时间线</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="894"/>
-      <source>Timeline visualization would be generated here</source>
-      <translation>此处将生成时间线可视化</translation>
+        <location filename="../src/ReportScheduler.cpp" line="894"/>
+        <source>Timeline visualization would be generated here</source>
+        <translation>此处将生成时间线可视化</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="907"/>
-      <source>Top Messages</source>
-      <translation>热门消息</translation>
+        <location filename="../src/ReportScheduler.cpp" line="907"/>
+        <source>Top Messages</source>
+        <translation>热门消息</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="908"/>
-      <source>Count</source>
-      <translation>计数</translation>
+        <location filename="../src/ReportScheduler.cpp" line="908"/>
+        <source>Count</source>
+        <translation>计数</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="909"/>
-      <source>Level</source>
-      <translation type="unfinished">级别</translation>
+        <location filename="../src/ReportScheduler.cpp" line="909"/>
+        <source>Level</source>
+        <translation type="unfinished">级别</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="910"/>
-      <source>Message</source>
-      <translation type="unfinished">消息</translation>
+        <location filename="../src/ReportScheduler.cpp" line="910"/>
+        <source>Message</source>
+        <translation type="unfinished">消息</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="911"/>
-      <location filename="../src/ReportScheduler.cpp" line="1000"/>
-      <source>No data available</source>
-      <translation>无可用数据</translation>
+        <location filename="../src/ReportScheduler.cpp" line="911"/>
+        <location filename="../src/ReportScheduler.cpp" line="1000"/>
+        <source>No data available</source>
+        <translation>无可用数据</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="921"/>
-      <source>Bookmarks</source>
-      <translation type="unfinished">书签</translation>
+        <location filename="../src/ReportScheduler.cpp" line="921"/>
+        <source>Bookmarks</source>
+        <translation type="unfinished">书签</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="922"/>
-      <source>Bookmarked lines would be listed here</source>
-      <translation>此处将列出书签行</translation>
+        <location filename="../src/ReportScheduler.cpp" line="922"/>
+        <source>Bookmarked lines would be listed here</source>
+        <translation>此处将列出书签行</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="930"/>
-      <location filename="../src/ReportScheduler.cpp" line="1003"/>
-      <source>Generated by</source>
-      <translation>生成于</translation>
+        <location filename="../src/ReportScheduler.cpp" line="930"/>
+        <location filename="../src/ReportScheduler.cpp" line="1003"/>
+        <source>Generated by</source>
+        <translation>生成于</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="991"/>
-      <source>Metric</source>
-      <translation>指标</translation>
+        <location filename="../src/ReportScheduler.cpp" line="991"/>
+        <source>Metric</source>
+        <translation>指标</translation>
     </message>
     <message>
-      <location filename="../src/ReportScheduler.cpp" line="991"/>
-      <source>Value</source>
-      <translation>值</translation>
+        <location filename="../src/ReportScheduler.cpp" line="991"/>
+        <source>Value</source>
+        <translation>值</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>ReportSchedulerPanel</name>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="12"/>
-      <source>Report Scheduler</source>
-      <translation>报告调度程序</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="12"/>
+        <source>Report Scheduler</source>
+        <translation>报告调度程序</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="46"/>
-      <source>Schedules</source>
-      <translation>计划</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="46"/>
+        <source>Schedules</source>
+        <translation>计划</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="50"/>
-      <source>Templates</source>
-      <translation>模板</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="50"/>
+        <source>Templates</source>
+        <translation>模板</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="54"/>
-      <source>History</source>
-      <translation>历史记录</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="54"/>
+        <source>History</source>
+        <translation>历史记录</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="77"/>
-      <source>Scheduled Reports</source>
-      <translation>计划报告</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="77"/>
+        <source>Scheduled Reports</source>
+        <translation>计划报告</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="140"/>
-      <source>Add</source>
-      <translation type="unfinished">添加</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="140"/>
+        <source>Add</source>
+        <translation type="unfinished">添加</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="146"/>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="703"/>
-      <source>Delete</source>
-      <translation type="unfinished">删除</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="146"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="703"/>
+        <source>Delete</source>
+        <translation type="unfinished">删除</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="166"/>
-      <source>Basic Settings</source>
-      <translation>基本设置</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="166"/>
+        <source>Basic Settings</source>
+        <translation>基本设置</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="174"/>
-      <source>Name:</source>
-      <translation>名称:</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="174"/>
+        <source>Name:</source>
+        <translation>名称:</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="184"/>
-      <source>Template:</source>
-      <translation>模板:</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="184"/>
+        <source>Template:</source>
+        <translation>模板:</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="203"/>
-      <source>Format:</source>
-      <translation>格式:</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="203"/>
+        <source>Format:</source>
+        <translation>格式:</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="216"/>
-      <source>Schedule</source>
-      <translation>计划</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="216"/>
+        <source>Schedule</source>
+        <translation>计划</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="224"/>
-      <source>Frequency:</source>
-      <translation>频率:</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="224"/>
+        <source>Frequency:</source>
+        <translation>频率:</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="228"/>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="723"/>
-      <source>Once</source>
-      <translation>一次</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="228"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="723"/>
+        <source>Once</source>
+        <translation>一次</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="228"/>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="723"/>
-      <source>Hourly</source>
-      <translation>每小时</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="228"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="723"/>
+        <source>Hourly</source>
+        <translation>每小时</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="228"/>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="723"/>
-      <source>Daily</source>
-      <translation>每日</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="228"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="723"/>
+        <source>Daily</source>
+        <translation>每日</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="229"/>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="724"/>
-      <source>Weekly</source>
-      <translation>每周</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="229"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="724"/>
+        <source>Weekly</source>
+        <translation>每周</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="229"/>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="724"/>
-      <source>Monthly</source>
-      <translation>每月</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="229"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="724"/>
+        <source>Monthly</source>
+        <translation>每月</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="229"/>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="724"/>
-      <source>Custom</source>
-      <translation>自定义</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="229"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="724"/>
+        <source>Custom</source>
+        <translation>自定义</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="237"/>
-      <source>Time:</source>
-      <translation>时间:</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="237"/>
+        <source>Time:</source>
+        <translation>时间:</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="257"/>
-      <source>Day:</source>
-      <translation>日期:</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="257"/>
+        <source>Day:</source>
+        <translation>日期:</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="260"/>
-      <source>Monday</source>
-      <translation>星期一</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="260"/>
+        <source>Monday</source>
+        <translation>星期一</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="260"/>
-      <source>Tuesday</source>
-      <translation>星期二</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="260"/>
+        <source>Tuesday</source>
+        <translation>星期二</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="260"/>
-      <source>Wednesday</source>
-      <translation>星期三</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="260"/>
+        <source>Wednesday</source>
+        <translation>星期三</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
-      <source>Thursday</source>
-      <translation>星期四</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
+        <source>Thursday</source>
+        <translation>星期四</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
-      <source>Friday</source>
-      <translation>星期五</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
+        <source>Friday</source>
+        <translation>星期五</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
-      <source>Saturday</source>
-      <translation>星期六</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
+        <source>Saturday</source>
+        <translation>星期六</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
-      <source>Sunday</source>
-      <translation>星期日</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
+        <source>Sunday</source>
+        <translation>星期日</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="269"/>
-      <source>Day of Month:</source>
-      <translation>每月日期：</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="269"/>
+        <source>Day of Month:</source>
+        <translation>每月日期：</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="279"/>
-      <source>Next run: %1</source>
-      <translation>下次运行：%1</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="279"/>
+        <source>Next run: %1</source>
+        <translation>下次运行：%1</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="289"/>
-      <source>Time Range</source>
-      <translation>时间范围</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="289"/>
+        <source>Time Range</source>
+        <translation>时间范围</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="298"/>
-      <source>Use relative time range</source>
-      <translation>使用相对时间范围</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="298"/>
+        <source>Use relative time range</source>
+        <translation>使用相对时间范围</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="305"/>
-      <source>Last</source>
-      <translation>最近</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="305"/>
+        <source>Last</source>
+        <translation>最近</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="311"/>
-      <source>hours</source>
-      <translation>小时</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="311"/>
+        <source>hours</source>
+        <translation>小时</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="317"/>
-      <source>Output</source>
-      <translation>输出</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="317"/>
+        <source>Output</source>
+        <translation>输出</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="325"/>
-      <source>Save to:</source>
-      <translation>保存到：</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="325"/>
+        <source>Save to:</source>
+        <translation>保存到：</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="338"/>
-      <source>Filename:</source>
-      <translation>文件名：</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="338"/>
+        <source>Filename:</source>
+        <translation>文件名：</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="348"/>
-      <source>Available: {name}, {date}, {time}, {datetime}</source>
-      <translation>可用：{name}, {date}, {time}, {datetime}</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="348"/>
+        <source>Available: {name}, {date}, {time}, {datetime}</source>
+        <translation>可用：{name}, {date}, {time}, {datetime}</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="356"/>
-      <source>Distribution</source>
-      <translation>分发</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="356"/>
+        <source>Distribution</source>
+        <translation>分发</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="365"/>
-      <source>Send via Email</source>
-      <translation>通过电子邮件发送</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="365"/>
+        <source>Send via Email</source>
+        <translation>通过电子邮件发送</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="372"/>
-      <source>Recipients:</source>
-      <translation>收件人：</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="372"/>
+        <source>Recipients:</source>
+        <translation>收件人：</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="384"/>
-      <source>Send to Webhook</source>
-      <translation>发送到 Webhook</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="384"/>
+        <source>Send to Webhook</source>
+        <translation>发送到 Webhook</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="391"/>
-      <source>URL:</source>
-      <translation>URL：</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="391"/>
+        <source>URL:</source>
+        <translation>URL：</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="407"/>
-      <source>Save Changes</source>
-      <translation>保存更改</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="407"/>
+        <source>Save Changes</source>
+        <translation>保存更改</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="413"/>
-      <source>Run Now</source>
-      <translation>立即运行</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="413"/>
+        <source>Run Now</source>
+        <translation>立即运行</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="418"/>
-      <source>Preview</source>
-      <translation type="unfinished">预览</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="418"/>
+        <source>Preview</source>
+        <translation type="unfinished">预览</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="426"/>
-      <source>Generating: %1 (%2%)</source>
-      <translation>正在生成：%1 (%2%)</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="426"/>
+        <source>Generating: %1 (%2%)</source>
+        <translation>正在生成：%1 (%2%)</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="438"/>
-      <source>Select a schedule to edit or create a new one</source>
-      <translation>选择一个计划进行编辑或创建一个新计划</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="438"/>
+        <source>Select a schedule to edit or create a new one</source>
+        <translation>选择一个计划进行编辑或创建一个新计划</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="529"/>
-      <source>Template Sections</source>
-      <translation>模板章节</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="529"/>
+        <source>Template Sections</source>
+        <translation>模板章节</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="541"/>
-      <source>Summary</source>
-      <translation>摘要</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="541"/>
+        <source>Summary</source>
+        <translation>摘要</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="542"/>
-      <source>Timeline</source>
-      <translation>时间轴</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="542"/>
+        <source>Timeline</source>
+        <translation>时间轴</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="543"/>
-      <source>Error Distribution</source>
-      <translation>错误分布</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="543"/>
+        <source>Error Distribution</source>
+        <translation>错误分布</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="544"/>
-      <source>Top Messages</source>
-      <translation>主要消息</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="544"/>
+        <source>Top Messages</source>
+        <translation>主要消息</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="545"/>
-      <source>Source Breakdown</source>
-      <translation>来源明细</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="545"/>
+        <source>Source Breakdown</source>
+        <translation>来源明细</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="546"/>
-      <source>Keyword Hits</source>
-      <translation>关键词命中</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="546"/>
+        <source>Keyword Hits</source>
+        <translation>关键词命中</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="547"/>
-      <source>Bookmarks</source>
-      <translation type="unfinished">书签</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="547"/>
+        <source>Bookmarks</source>
+        <translation type="unfinished">书签</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="548"/>
-      <source>Trends</source>
-      <translation>趋势</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="548"/>
+        <source>Trends</source>
+        <translation>趋势</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="552"/>
-      <source>Styling</source>
-      <translation>样式</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="552"/>
+        <source>Styling</source>
+        <translation>样式</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="575"/>
-      <source>Theme:</source>
-      <translation>主题：</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="575"/>
+        <source>Theme:</source>
+        <translation>主题：</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="583"/>
-      <source>Company:</source>
-      <translation>公司：</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="583"/>
+        <source>Company:</source>
+        <translation>公司：</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="586"/>
-      <source>Company name for report header</source>
-      <translation>报告页眉的公司名称</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="586"/>
+        <source>Company name for report header</source>
+        <translation>报告页眉的公司名称</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="591"/>
-      <source>Logo:</source>
-      <translation>Logo：</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="591"/>
+        <source>Logo:</source>
+        <translation>Logo：</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="594"/>
-      <source>Path to logo image</source>
-      <translation>Logo 图片路径</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="594"/>
+        <source>Path to logo image</source>
+        <translation>Logo 图片路径</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="603"/>
-      <source>Create Template</source>
-      <translation>创建模板</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="603"/>
+        <source>Create Template</source>
+        <translation>创建模板</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="607"/>
-      <source>Duplicate</source>
-      <translation>复制</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="607"/>
+        <source>Duplicate</source>
+        <translation>复制</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="610"/>
-      <source>Export</source>
-      <translation>导出</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="610"/>
+        <source>Export</source>
+        <translation>导出</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="631"/>
-      <source>Report History</source>
-      <translation>报告历史</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="631"/>
+        <source>Report History</source>
+        <translation>报告历史</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="639"/>
-      <source>Clear History</source>
-      <translation>清除历史</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="639"/>
+        <source>Clear History</source>
+        <translation>清除历史</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="697"/>
-      <source>Open</source>
-      <translation>打开</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="697"/>
+        <source>Open</source>
+        <translation>打开</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="730"/>
-      <source>New Schedule</source>
-      <translation>新建计划</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="730"/>
+        <source>New Schedule</source>
+        <translation>新建计划</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="770"/>
-      <source>New Template</source>
-      <translation>新建模板</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="770"/>
+        <source>New Template</source>
+        <translation>新建模板</translation>
     </message>
     <message>
-      <location filename="../src/qml/ReportSchedulerPanel.qml" line="778"/>
-      <source>Report Preview</source>
-      <translation>报告预览</translation>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="778"/>
+        <source>Report Preview</source>
+        <translation>报告预览</translation>
     </message>
-  </context>
-  <context>
-    <name>RuleEngine</name>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="321"/>
-      <source>Email</source>
-      <translation>电子邮件</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="322"/>
-      <source>Send email notification</source>
-      <translation>发送电子邮件通知</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="328"/>
-      <source>Webhook</source>
-      <translation>Webhook</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="329"/>
-      <source>Send HTTP POST to URL</source>
-      <translation>向 URL 发送 HTTP POST</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="335"/>
-      <source>Popup</source>
-      <translation>弹窗</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="336"/>
-      <source>Show desktop notification</source>
-      <translation>显示桌面通知</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="342"/>
-      <source>Sound</source>
-      <translation>声音</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="343"/>
-      <source>Play alert sound</source>
-      <translation>播放警报声</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="349"/>
-      <source>Command</source>
-      <translation>命令</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="350"/>
-      <source>Run command/script</source>
-      <translation>运行命令/脚本</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="356"/>
-      <source>Highlight</source>
-      <translation>高亮</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="357"/>
-      <source>Highlight matching lines</source>
-      <translation>高亮匹配行</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="363"/>
-      <source>Log</source>
-      <translation>日志</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="364"/>
-      <source>Write to log file</source>
-      <translation>写入日志文件</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="383"/>
-      <source>Contains</source>
-      <translation>包含</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="383"/>
-      <source>Text contains value</source>
-      <translation>文本包含该值</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="384"/>
-      <source>Does not contain</source>
-      <translation>不包含</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="384"/>
-      <source>Text does not contain value</source>
-      <translation>文本不包含该值</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="385"/>
-      <source>Equals</source>
-      <translation>等于</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="385"/>
-      <source>Text equals value</source>
-      <translation>文本等于该值</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="386"/>
-      <source>Does not equal</source>
-      <translation>不等于</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="386"/>
-      <source>Text does not equal value</source>
-      <translation>文本不等于该值</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="387"/>
-      <source>Starts with</source>
-      <translation>以...开始</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="387"/>
-      <source>Text starts with value</source>
-      <translation>文本以该值开始</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="388"/>
-      <source>Ends with</source>
-      <translation>以...结束</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="388"/>
-      <source>Text ends with value</source>
-      <translation>文本以该值结束</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="389"/>
-      <source>Matches regex</source>
-      <translation>匹配正则表达式</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="389"/>
-      <source>Text matches regular expression</source>
-      <translation>文本匹配正则表达式</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="390"/>
-      <source>Greater than</source>
-      <translation>大于</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="390"/>
-      <source>Value is greater than</source>
-      <translation>值大于</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="391"/>
-      <source>Less than</source>
-      <translation>小于</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="391"/>
-      <source>Value is less than</source>
-      <translation>值小于</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="392"/>
-      <source>Between</source>
-      <translation>介于</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="392"/>
-      <source>Value is between two values</source>
-      <translation>值在两个数值之间</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="409"/>
-      <source>Raw Line</source>
-      <translation>原始行</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="409"/>
-      <source>The entire log line</source>
-      <translation>完整日志行</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="410"/>
-      <source>Log Level</source>
-      <translation>日志级别</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="410"/>
-      <source>ERROR, WARN, INFO, DEBUG, etc.</source>
-      <translation>ERROR, WARN, INFO, DEBUG 等</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="411"/>
-      <source>Timestamp</source>
-      <translation>时间戳</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="411"/>
-      <source>The log entry timestamp</source>
-      <translation>日志条目时间戳</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="412"/>
-      <source>Message</source>
-      <translation type="unfinished">消息</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="412"/>
-      <source>The log message content</source>
-      <translation>日志消息内容</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="413"/>
-      <source>Source</source>
-      <translation>源</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="413"/>
-      <source>The log source/logger name</source>
-      <translation>日志源/记录器名称</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="414"/>
-      <source>Thread</source>
-      <translation>线程</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="414"/>
-      <source>The thread name/ID</source>
-      <translation>线程名称/ID</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="415"/>
-      <source>Custom Field</source>
-      <translation>自定义字段</translation>
-    </message>
-    <message>
-      <location filename="../src/RuleEngine.cpp" line="415"/>
-      <source>A custom parsed field</source>
-      <translation>自定义解析字段</translation>
-    </message>
-  </context>
-  <context>
-    <name>RuleWizard</name>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="18"/>
-      <source>Rule Wizard</source>
-      <translation>规则向导</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="73"/>
-      <source>Basic Info</source>
-      <translation>基本信息</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="73"/>
-      <source>Conditions</source>
-      <translation>条件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="73"/>
-      <source>Actions</source>
-      <translation type="unfinished">操作</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="73"/>
-      <source>Schedule</source>
-      <translation>计划</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="73"/>
-      <source>Test &amp; Save</source>
-      <translation>测试并保存</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="127"/>
-      <source>Step 1: Basic Information</source>
-      <translation>第 1 步：基本信息</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="133"/>
-      <source>Enter a name and description for your rule.</source>
-      <translation>为您的规则输入名称和描述。</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="143"/>
-      <source>Rule Name:</source>
-      <translation>规则名称：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="148"/>
-      <source>e.g., Error Alert, Critical Warning</source>
-      <translation>例如：错误警报、关键警告</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="152"/>
-      <source>Description:</source>
-      <translation>描述：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="158"/>
-      <source>Describe what this rule does...</source>
-      <translation>描述此规则的作用...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="162"/>
-      <source>Enabled:</source>
-      <translation>已启用：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="177"/>
-      <source>Step 2: Define Conditions</source>
-      <translation>第 2 步：定义条件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="183"/>
-      <source>Match:</source>
-      <translation>匹配：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="186"/>
-      <source>All conditions (AND)</source>
-      <translation>所有条件 (与)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="186"/>
-      <source>Any condition (OR)</source>
-      <translation>任何条件 (或)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="192"/>
-      <source>+ Add Condition</source>
-      <translation>+ 添加条件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="247"/>
-      <source>Value...</source>
-      <translation>值...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="256"/>
-      <source>Case</source>
-      <translation type="unfinished">区分大小写</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="277"/>
-      <source>No conditions defined. Add at least one condition.</source>
-      <translation>未定义条件。请至少添加一个条件。</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="287"/>
-      <source>Step 3: Select Actions</source>
-      <translation>第 3 步：选择操作</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="293"/>
-      <source>Choose what happens when this rule is triggered.</source>
-      <translation>选择触发此规则时发生的操作。</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="361"/>
-      <source>Action Configuration</source>
-      <translation>操作配置</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="368"/>
-      <source>Cooldown (seconds between triggers):</source>
-      <translation>冷却时间（触发之间的秒数）：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="386"/>
-      <source>Step 4: Schedule (Optional)</source>
-      <translation>第 4 步：计划（可选）</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="393"/>
-      <source>Enable time-based scheduling</source>
-      <translation>启用基于时间的计划</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="400"/>
-      <source>Active Time Range</source>
-      <translation>活动时间范围</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="404"/>
-      <source>From:</source>
-      <translation type="unfinished">从：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="411"/>
-      <source>To:</source>
-      <translation type="unfinished">至：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="423"/>
-      <source>Active Days</source>
-      <translation>活动日期</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="428"/>
-      <source>Sun</source>
-      <translation>周日</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="428"/>
-      <source>Mon</source>
-      <translation>周一</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="428"/>
-      <source>Tue</source>
-      <translation>周二</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="428"/>
-      <source>Wed</source>
-      <translation>周三</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="428"/>
-      <source>Thu</source>
-      <translation>周四</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="428"/>
-      <source>Fri</source>
-      <translation>周五</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="428"/>
-      <source>Sat</source>
-      <translation>周六</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="456"/>
-      <source>Step 5: Test &amp; Save</source>
-      <translation>第 5 步：测试并保存</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="462"/>
-      <source>Test Your Rule</source>
-      <translation>测试您的规则</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="471"/>
-      <source>Enter sample log lines to test:</source>
-      <translation>输入示例日志行进行测试：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="478"/>
-      <source>Paste sample log lines here...</source>
-      <translation>在此处粘贴示例日志行...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="483"/>
-      <source>Test Rule</source>
-      <translation>测试规则</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="511"/>
-      <source>Line %1</source>
-      <translation type="unfinished">第 %1 行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="528"/>
-      <source>Rule Summary</source>
-      <translation>规则摘要</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="535"/>
-      <source>Name:</source>
-      <translation>名称：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="536"/>
-      <source>(not set)</source>
-      <translation>(未设置)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="538"/>
-      <source>Conditions:</source>
-      <translation>条件：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="539"/>
-      <source>condition(s)</source>
-      <translation>个条件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="541"/>
-      <source>Actions:</source>
-      <translation>操作：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="542"/>
-      <source>action(s)</source>
-      <translation>个操作</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="544"/>
-      <source>Schedule:</source>
-      <translation>计划：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="545"/>
-      <source>Enabled</source>
-      <translation>已启用</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="545"/>
-      <source>Always active</source>
-      <translation>始终活动</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="553"/>
-      <source>Back</source>
-      <translation>返回</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="560"/>
-      <source>Next</source>
-      <translation type="unfinished">下一个</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="560"/>
-      <source>Save Rule</source>
-      <translation>保存规则</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/RuleWizard.qml" line="573"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
-    </message>
-  </context>
-  <context>
-    <name>SanitizationConfigDialog</name>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="38"/>
-      <source>Data Sanitization Settings</source>
-      <translation>数据脱敏设置</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="45"/>
-      <source>Configure which sensitive data patterns to detect and mask when exporting or using AI analysis.</source>
-      <translation>配置在导出或使用 AI 分析时要检测和掩盖的敏感数据模式。</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="71"/>
-      <source>Built-in Rules</source>
-      <translation>内置规则</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="80"/>
-      <source>IP Addresses (IPv4 &amp; IPv6)</source>
-      <translation>IP 地址 (IPv4 &amp; IPv6)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="94"/>
-      <source>Email Addresses</source>
-      <translation>电子邮件地址</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="108"/>
-      <source>Phone Numbers (CN &amp; International)</source>
-      <translation>电话号码 (中国及国际)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="122"/>
-      <source>ID Card Numbers (China)</source>
-      <translation>身份证号码 (中国)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="136"/>
-      <source>Domain Names</source>
-      <translation>域名</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="150"/>
-      <source>Port Numbers</source>
-      <translation>端口号</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="164"/>
-      <source>API Keys &amp; Tokens</source>
-      <translation>API 密钥与令牌</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="178"/>
-      <source>Usernames (user=xxx patterns)</source>
-      <translation>用户名 (user=xxx 模式)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="192"/>
-      <source>File Paths (Windows &amp; Unix)</source>
-      <translation>文件路径 (Windows &amp; Unix)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="214"/>
-      <source>Sanitization Levels Explanation</source>
-      <translation>脱敏级别说明</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="221"/>
-      <source>• Minimal: Passwords, Tokens, API Keys only
-• Standard: + IP, Email, Phone, Username
-• Strict: All enabled rules above</source>
-      <translation>• 最低：仅密码、令牌、API 密钥
-• 标准：+ IP、电子邮件、电话、用户名
-• 严格：上述所有启用的规则</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="244"/>
-      <source>Reset to Defaults</source>
-      <translation type="unfinished">恢复默认设置</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="275"/>
-      <source>Save</source>
-      <translation>保存</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SanitizationConfigDialog.qml" line="296"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
-    </message>
-  </context>
-  <context>
-    <name>SessionRecovery</name>
-    <message>
-      <location filename="../src/SessionRecovery.cpp" line="254"/>
-      <source>Session from %1
-%2 file(s) were open</source>
-      <translation>来自 %1 的会话
-已打开 %2 个文件</translation>
-    </message>
-    <message>
-      <location filename="../src/SessionRecovery.cpp" line="259"/>
-      <source>
-(May have unsaved changes)</source>
-      <translation>
-(可能有未保存的更改)</translation>
-    </message>
-    <message>
-      <location filename="../src/SessionRecovery.cpp" line="546"/>
-      <source>Session not found</source>
-      <translation>未找到会话</translation>
-    </message>
-  </context>
-  <context>
-    <name>SmtpAlertManager</name>
-    <message>
-      <location filename="../src/SmtpAlertManager.cpp" line="429"/>
-      <source>Email sent with %1 alert(s)</source>
-      <translation>已发送包含 %1 个告警的电子邮件</translation>
-    </message>
-    <message>
-      <location filename="../src/SmtpAlertManager.cpp" line="464"/>
-      <source>SMTP settings incomplete</source>
-      <translation>SMTP 设置不完整</translation>
-    </message>
-    <message>
-      <location filename="../src/SmtpAlertManager.cpp" line="479"/>
-      <source>Failed to connect to SMTP server: %1</source>
-      <translation>连接 SMTP 服务器失败：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/SmtpAlertManager.cpp" line="496"/>
-      <source>Unexpected server response: %1</source>
-      <translation>服务器响应异常：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/SmtpAlertManager.cpp" line="511"/>
-      <source>TLS encryption failed</source>
-      <translation>TLS 加密失败</translation>
-    </message>
-    <message>
-      <location filename="../src/SmtpAlertManager.cpp" line="531"/>
-      <source>Authentication failed: %1</source>
-      <translation>身份验证失败：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/SmtpAlertManager.cpp" line="542"/>
-      <source>MAIL FROM rejected: %1</source>
-      <translation>MAIL FROM 被拒绝：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/SmtpAlertManager.cpp" line="560"/>
-      <source>DATA command rejected: %1</source>
-      <translation>DATA 命令被拒绝：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/SmtpAlertManager.cpp" line="581"/>
-      <source>Email not accepted: %1</source>
-      <translation>电子邮件未被接收：%1</translation>
-    </message>
-  </context>
-  <context>
-    <name>SqlScratchpad</name>
-    <message>
-      <location filename="../src/SqlScratchpad.cpp" line="58"/>
-      <source>Failed to create in-memory database: %1</source>
-      <translation>创建内存数据库失败：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/SqlScratchpad.cpp" line="111"/>
-      <location filename="../src/SqlScratchpad.cpp" line="204"/>
-      <source>Invalid model or database not ready</source>
-      <translation>模型无效或数据库未就绪</translation>
-    </message>
-    <message>
-      <location filename="../src/SqlScratchpad.cpp" line="276"/>
-      <source>Database not ready</source>
-      <translation>数据库未就绪</translation>
-    </message>
-    <message>
-      <location filename="../src/SqlScratchpad.cpp" line="383"/>
-      <source>No results to export</source>
-      <translation>没有可导出的结果</translation>
-    </message>
-    <message>
-      <location filename="../src/SqlScratchpad.cpp" line="397"/>
-      <source>Cannot open file for writing: %1</source>
-      <translation>无法打开文件进行写入：%1</translation>
-    </message>
-  </context>
-  <context>
-    <name>SqlScratchpadPanel</name>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="48"/>
-      <source>SQL Scratchpad</source>
-      <translation>SQL 草稿板</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="57"/>
-      <source>Import Data</source>
-      <translation>导入数据</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="65"/>
-      <source>Import All Lines</source>
-      <translation>导入所有行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="73"/>
-      <source>Import First 10,000 Lines</source>
-      <translation>导入前 10,000 行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="81"/>
-      <source>Import First 100,000 Lines</source>
-      <translation>导入前 100,000 行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="90"/>
-      <source>Import Filtered Results</source>
-      <translation>导入过滤后的结果</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="101"/>
-      <source>Saved Queries</source>
-      <translation>已保存的查询</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="125"/>
-      <source>Save Current Query...</source>
-      <translation>保存当前查询...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="132"/>
-      <source>History</source>
-      <translation>历史记录</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="154"/>
-      <source>Clear History</source>
-      <translation>清除历史记录</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="171"/>
-      <source>SQL Query</source>
-      <translation>SQL 查询</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="183"/>
-      <source>Enter SQL query here...
-Example: SELECT * FROM logs WHERE level = 'ERROR' LIMIT 100</source>
-      <translation>在此处输入 SQL 查询...
-示例：SELECT * FROM logs WHERE level = 'ERROR' LIMIT 100</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="202"/>
-      <source>Execute (Ctrl+Enter)</source>
-      <translation>执行 (Ctrl+Enter)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="211"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="219"/>
-      <source>Table: logs (%1 rows)</source>
-      <translation>表：logs (%1 行)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="226"/>
-      <source>-- Templates --</source>
-      <translation>-- 模板 --</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="250"/>
-      <source>Results</source>
-      <translation>结果</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="336"/>
-      <source>Executing...</source>
-      <translation>正在执行...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="342"/>
-      <source>Export...</source>
-      <translation>导出...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="350"/>
-      <source>Export as CSV...</source>
-      <translation>导出为 CSV...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="354"/>
-      <source>Export as JSON...</source>
-      <translation>导出为 JSON...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="358"/>
-      <source>Export as HTML...</source>
-      <translation>导出为 HTML...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="378"/>
-      <source>Query completed: %1 rows in %2 ms</source>
-      <translation>查询完成：在 %2 毫秒内查询到 %1 行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="389"/>
-      <source>Error: %1</source>
-      <translation>错误：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="393"/>
-      <source>Importing: %1 / %2</source>
-      <translation>正在导入：%1 / %2</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="397"/>
-      <source>Exported to: %1</source>
-      <translation>已导出至：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="404"/>
-      <source>Save Query</source>
-      <translation>保存查询</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="412"/>
-      <source>Query Name:</source>
-      <translation>查询名称：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="418"/>
-      <source>Enter a name for this query</source>
-      <translation>为此查询输入一个名称</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="433"/>
-      <source>Export Results</source>
-      <translation>导出结果</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/SqlScratchpadPanel.qml" line="443"/>
-      <source>File Path:</source>
-      <translation>文件路径：</translation>
-    </message>
-  </context>
-  <context>
-    <name>StatisticsPanel</name>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="15"/>
-      <source>Log Statistics</source>
-      <translation>日志统计</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="50"/>
-      <source>File: %1</source>
-      <translation>文件：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="57"/>
-      <source>Refresh</source>
-      <translation>刷新</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="64"/>
-      <source>Overview</source>
-      <translation>概览</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="73"/>
-      <source>Total Lines:</source>
-      <translation>总行数：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="76"/>
-      <source>File Size:</source>
-      <translation>文件大小：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="79"/>
-      <source>Current View:</source>
-      <translation>当前视图：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="80"/>
-      <source> lines</source>
-      <translation> 行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="82"/>
-      <source>Filter Mode:</source>
-      <translation>过滤模式：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="84"/>
-      <source>Yes</source>
-      <translation>是</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="84"/>
-      <source>No</source>
-      <translation>否</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="92"/>
-      <source>Log Level Distribution</source>
-      <translation>日志级别分布</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="208"/>
-      <source>Level Comparison</source>
-      <translation>级别对比</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="258"/>
-      <source>Export Pie Chart</source>
-      <translation>导出饼图</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="263"/>
-      <source>Export Bar Chart</source>
-      <translation>导出柱状图</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="270"/>
-      <source>Close</source>
-      <translation type="unfinished">关闭</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="279"/>
-      <source>Save Pie Chart</source>
-      <translation>保存饼图</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/StatisticsPanel.qml" line="296"/>
-      <source>Save Bar Chart</source>
-      <translation>保存柱状图</translation>
-    </message>
-  </context>
-  <context>
-    <name>TextTransformPanel</name>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="46"/>
-      <source>Text Transformer</source>
-      <translation>文本转换器</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="66"/>
-      <source>Case</source>
-      <translation type="unfinished">区分大小写</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="67"/>
-      <source>Encode</source>
-      <translation>编码</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="68"/>
-      <source>Format</source>
-      <translation>格式化</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="69"/>
-      <source>Lines</source>
-      <translation>行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="70"/>
-      <source>Escape</source>
-      <translation>转义</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="71"/>
-      <source>Regex</source>
-      <translation type="unfinished">正则</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="72"/>
-      <source>Time</source>
-      <translation type="unfinished">时间</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="84"/>
-      <source>Input</source>
-      <translation>输入</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="95"/>
-      <source>Enter or paste text to transform...</source>
-      <translation>输入或粘贴要转换的文本...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="103"/>
-      <source>Clear</source>
-      <translation type="unfinished">清除</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="107"/>
-      <source>Paste</source>
-      <translation>粘贴</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="112"/>
-      <location filename="../src/qml/TextTransformPanel.qml" line="452"/>
-      <source>%1 chars</source>
-      <translation>%1 字符</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="132"/>
-      <source>UPPERCASE</source>
-      <translation>大写</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="137"/>
-      <source>lowercase</source>
-      <translation>小写</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="142"/>
-      <source>Title Case</source>
-      <translation>首字母大写</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="147"/>
-      <source>camelCase</source>
-      <translation>小驼峰 (camelCase)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="152"/>
-      <source>snake_case</source>
-      <translation>蛇形 (snake_case)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="157"/>
-      <source>kebab-case</source>
-      <translation>短横线 (kebab-case)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="170"/>
-      <source>Base64 Encode</source>
-      <translation>Base64 编码</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="175"/>
-      <source>Base64 Decode</source>
-      <translation>Base64 解码</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="180"/>
-      <source>URL Encode</source>
-      <translation>URL 编码</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="185"/>
-      <source>URL Decode</source>
-      <translation>URL 解码</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="190"/>
-      <source>HTML Encode</source>
-      <translation>HTML 编码</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="195"/>
-      <source>HTML Decode</source>
-      <translation>HTML 解码</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="200"/>
-      <source>Hex Encode</source>
-      <translation>十六进制编码</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="205"/>
-      <source>Hex Decode</source>
-      <translation>十六进制解码</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="218"/>
-      <source>Format JSON</source>
-      <translation type="unfinished">格式化 JSON</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="223"/>
-      <source>Minify JSON</source>
-      <translation>压缩 JSON</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="228"/>
-      <source>Format XML</source>
-      <translation>格式化 XML</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="233"/>
-      <source>Minify XML</source>
-      <translation>压缩 XML</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="246"/>
-      <source>Sort Lines A-Z</source>
-      <translation>按 A-Z 排序行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="251"/>
-      <source>Sort Lines Z-A</source>
-      <translation>按 Z-A 排序行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="256"/>
-      <source>Unique Lines</source>
-      <translation>去重行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="261"/>
-      <source>Reverse Lines</source>
-      <translation>反转行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="266"/>
-      <source>Shuffle Lines</source>
-      <translation>随机打乱行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="271"/>
-      <source>Number Lines</source>
-      <translation>行编号</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="276"/>
-      <source>Trim Lines</source>
-      <translation>修整行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="281"/>
-      <source>Remove Empty</source>
-      <translation>移除空行</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="286"/>
-      <source>Statistics</source>
-      <translation>统计信息</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="307"/>
-      <source>Escape JSON</source>
-      <translation>转义 JSON</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="312"/>
-      <source>Unescape JSON</source>
-      <translation>反转义 JSON</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="317"/>
-      <source>Escape Regex</source>
-      <translation>转义正则表达式</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="322"/>
-      <source>Escape SQL</source>
-      <translation>转义 SQL</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="333"/>
-      <source>Pattern:</source>
-      <translation>模式：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="337"/>
-      <source>Regular expression pattern</source>
-      <translation>正则表达式模式</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="341"/>
-      <source>Replace:</source>
-      <translation>替换为：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="345"/>
-      <source>Replacement text (use $1, $2 for groups)</source>
-      <translation>替换文本 (使用 $1, $2 代表分组)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="350"/>
-      <source>Replace</source>
-      <translation>替换</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="355"/>
-      <source>Extract Matches</source>
-      <translation>提取匹配项</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="362"/>
-      <source>Split</source>
-      <translation>拆分</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="376"/>
-      <source>Timestamp:</source>
-      <translation>时间戳：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="380"/>
-      <source>Unix timestamp (ms)</source>
-      <translation>Unix 时间戳 (ms)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="383"/>
-      <source>To DateTime</source>
-      <translation>转换为日期时间</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="391"/>
-      <source>From Format:</source>
-      <translation>源格式：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="397"/>
-      <source>To Format:</source>
-      <translation>目标格式：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="404"/>
-      <source>Convert</source>
-      <translation>转换</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="410"/>
-      <source>Format tokens: yyyy, MM, dd, HH, mm, ss, zzz</source>
-      <translation>格式标记：yyyy, MM, dd, HH, mm, ss, zzz</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="420"/>
-      <source>Output</source>
-      <translation>输出</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="439"/>
-      <source>Copy</source>
-      <translation type="unfinished">复制</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="447"/>
-      <source>Use as Input</source>
-      <translation>用作输入</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TextTransformPanel.qml" line="466"/>
-      <source>Error: %1</source>
-      <translation>错误：%1</translation>
-    </message>
-  </context>
-  <context>
-    <name>TextTransformer</name>
-    <message>
-      <location filename="../src/TextTransformer.cpp" line="186"/>
-      <location filename="../src/TextTransformer.cpp" line="199"/>
-      <source>Invalid JSON: %1</source>
-      <translation>无效的 JSON：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/TextTransformer.cpp" line="218"/>
-      <location filename="../src/TextTransformer.cpp" line="254"/>
-      <source>Invalid XML: %1</source>
-      <translation>无效的 XML：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/TextTransformer.cpp" line="283"/>
-      <location filename="../src/TextTransformer.cpp" line="298"/>
-      <location filename="../src/TextTransformer.cpp" line="317"/>
-      <source>Invalid regex: %1</source>
-      <translation>无效的正则表达式：%1</translation>
-    </message>
-  </context>
-  <context>
-    <name>TimeSeriesChart</name>
-    <message>
-      <location filename="../src/qml/TimeSeriesChart.qml" line="127"/>
-      <source>No data available</source>
-      <translation>无可用数据</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TimeSeriesChart.qml" line="343"/>
-      <source>Error</source>
-      <translation>错误</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TimeSeriesChart.qml" line="344"/>
-      <source>Warn</source>
-      <translation>警告</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TimeSeriesChart.qml" line="345"/>
-      <source>Info</source>
-      <translation type="unfinished">信息</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TimeSeriesChart.qml" line="346"/>
-      <source>Debug</source>
-      <translation>调试</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TimeSeriesChart.qml" line="347"/>
-      <source>Trace</source>
-      <translation>追踪</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TimeSeriesChart.qml" line="348"/>
-      <source>Other</source>
-      <translation>其他</translation>
-    </message>
-  </context>
-  <context>
-    <name>TraceViewerDialog</name>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="14"/>
-      <source>System Trace Viewer</source>
-      <translation>系统追踪查看器</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="49"/>
-      <source>Trace reading not available on this platform</source>
-      <translation>此平台不支持追踪读取</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="54"/>
-      <source>Windows ETW (Event Tracing for Windows) - Supports .etl files</source>
-      <translation>Windows ETW (Event Tracing for Windows) - 支持 .etl 文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="56"/>
-      <source>Linux perf - Supports perf.data files</source>
-      <translation>Linux perf - 支持 perf.data 文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="58"/>
-      <source>macOS DTrace - Supports .dtrace output files</source>
-      <translation>macOS DTrace - 支持 .dtrace 输出文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="60"/>
-      <source>Unknown platform</source>
-      <translation>未知平台</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="85"/>
-      <source>Select trace file...</source>
-      <translation>选择追踪文件...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="90"/>
-      <source>Browse...</source>
-      <translation>浏览...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="96"/>
-      <source>Open</source>
-      <translation>打开</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="109"/>
-      <source>Max Events:</source>
-      <translation>最大事件数：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="119"/>
-      <source>Unlimited</source>
-      <translation>无限制</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="126"/>
-      <source>Events: %1</source>
-      <translation>事件：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="137"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="149"/>
-      <source>Filter by Provider:</source>
-      <translation>按提供者过滤：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="167"/>
-      <source>Export to File</source>
-      <translation>导出到文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="173"/>
-      <source>Open in Viewer</source>
-      <translation>在查看器中打开</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="217"/>
-      <source>Timestamp</source>
-      <translation>时间戳</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="222"/>
-      <source>Provider</source>
-      <translation>提供程序</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="227"/>
-      <source>Event</source>
-      <translation>事件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="232"/>
-      <source>PID:TID</source>
-      <translation>PID:TID</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="237"/>
-      <source>Message</source>
-      <translation>消息</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="304"/>
-      <source>Reading trace file...</source>
-      <translation>正在读取追踪文件...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="305"/>
-      <source>No events loaded.
-Select a trace file to begin.</source>
-      <translation>未加载事件。
-选择追踪文件以开始。</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="326"/>
-      <source>Select Trace File</source>
-      <translation>选择追踪文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="330"/>
-      <source>Trace Files</source>
-      <translation>追踪文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="330"/>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="332"/>
-      <source>All Files</source>
-      <translation>所有文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="342"/>
-      <source>Export Trace Events</source>
-      <translation>导出追踪事件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="344"/>
-      <source>Log Files</source>
-      <translation>日志文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="344"/>
-      <source>Text Files</source>
-      <translation>文本文件</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/TraceViewerDialog.qml" line="354"/>
-      <source>Event Details</source>
-      <translation>事件详情</translation>
-    </message>
-  </context>
-  <context>
-    <name>UpdateChecker</name>
-    <message>
-      <location filename="../src/UpdateChecker.cpp" line="124"/>
-      <source>Failed to parse release information: %1</source>
-      <translation>解析发布信息失败：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/UpdateChecker.cpp" line="130"/>
-      <source>No releases found</source>
-      <translation>未找到发布版本</translation>
-    </message>
-    <message>
-      <location filename="../src/UpdateChecker.cpp" line="221"/>
-      <source>No download URL available</source>
-      <translation>无可用下载链接</translation>
-    </message>
-    <message>
-      <location filename="../src/UpdateChecker.cpp" line="282"/>
-      <source>Failed to save file: %1</source>
-      <translation>保存文件失败：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/UpdateChecker.cpp" line="296"/>
-      <source>Checksum verification failed</source>
-      <translation>校验和验证失败</translation>
-    </message>
-    <message>
-      <location filename="../src/UpdateChecker.cpp" line="310"/>
-      <source>Update file not found</source>
-      <translation>未找到更新文件</translation>
-    </message>
-  </context>
-  <context>
-    <name>UpdateDialog</name>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="42"/>
-      <source>Update Available</source>
-      <translation>有可用更新</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="42"/>
-      <source>Check for Updates</source>
-      <translation>检查更新</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="64"/>
-      <source>Current Version:</source>
-      <translation>当前版本：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="67"/>
-      <source>Latest Version:</source>
-      <translation>最新版本：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="85"/>
-      <source>Release Notes:</source>
-      <translation>发布说明：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="120"/>
-      <source>Checking for updates...</source>
-      <translation>正在检查更新...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="137"/>
-      <source>You are using the latest version.</source>
-      <translation>您正在使用最新版本。</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="157"/>
-      <source>Downloading: %1%</source>
-      <translation>正在下载：%1%</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="165"/>
-      <source>Settings</source>
-      <translation type="unfinished">设置</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="173"/>
-      <source>Check for updates automatically</source>
-      <translation>自动检查更新</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="181"/>
-      <source>Check every</source>
-      <translation>检查间隔</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="188"/>
-      <source>days</source>
-      <translation>天</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="192"/>
-      <source>Include pre-release versions</source>
-      <translation>包含预发布版本</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="205"/>
-      <source>Check Now</source>
-      <translation>立即检查</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="214"/>
-      <source>Skip This Version</source>
-      <translation>跳过此版本</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="223"/>
-      <source>Download</source>
-      <translation>下载</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="230"/>
-      <source>Install</source>
-      <translation>安装</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpdateDialog.qml" line="237"/>
-      <source>Cancel</source>
-      <translation type="unfinished">取消</translation>
-    </message>
-  </context>
-  <context>
-    <name>UpgradePromptDialog</name>
-    <message>
-      <location filename="../src/qml/UpgradePromptDialog.qml" line="37"/>
-      <location filename="../src/qml/UpgradePromptDialog.qml" line="87"/>
-      <source>Upgrade Required</source>
-      <translation>需要升级</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpgradePromptDialog.qml" line="159"/>
-      <source>Requires %1 Edition</source>
-      <translation>需要 %1 版本</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpgradePromptDialog.qml" line="204"/>
-      <source> Edition</source>
-      <translation> 版本</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpgradePromptDialog.qml" line="212"/>
-      <source>Unlock advanced analysis features</source>
-      <translation>解锁高级分析功能</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpgradePromptDialog.qml" line="213"/>
-      <source>Unlock all features + remote support</source>
-      <translation>解锁所有功能 + 远程支持</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpgradePromptDialog.qml" line="232"/>
-      <source>Lifetime license with free updates and technical support.</source>
-      <translation>终身授权，包含免费更新和技术支持。</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpgradePromptDialog.qml" line="258"/>
-      <source>Maybe Later</source>
-      <translation>以后再说</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/UpgradePromptDialog.qml" line="281"/>
-      <source>Upgrade Now</source>
-      <translation>立即升级</translation>
-    </message>
-  </context>
-  <context>
-    <name>FilterTemplateDialog</name>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="14"/>
-      <source>Filter Templates</source>
-      <translation>过滤器模板</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="49"/>
-      <source>Save Current Filter</source>
-      <translation>保存当前过滤器</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="58"/>
-      <source>Import</source>
-      <translation>导入</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="64"/>
-      <source>Export</source>
-      <translation>导出</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="73"/>
-      <source>Saved Templates</source>
-      <translation>已保存的模板</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="85"/>
-      <source>Search templates...</source>
-      <translation>搜索模板...</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="146"/>
-      <source>Case Sensitive</source>
-      <translation>区分大小写</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="157"/>
-      <source>Regex</source>
-      <translation>正则表达式</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="178"/>
-      <source>Used %1 times</source>
-      <translation>已使用 %1 次</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="191"/>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="426"/>
-      <source>Rename</source>
-      <translation>重命名</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="201"/>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="482"/>
-      <source>Delete</source>
-      <translation>删除</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="216"/>
-      <source>No saved templates
-Use 'Save Current Filter' to create one</source>
-      <translation>无保存的模板
-使用“保存当前过滤器”来创建一个</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="226"/>
-      <source>Template Details</source>
-      <translation>模板详情</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="236"/>
-      <source>Name:</source>
-      <translation>名称：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="242"/>
-      <source>Created:</source>
-      <translation>创建时间：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="248"/>
-      <source>Keyword:</source>
-      <translation>关键词：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="263"/>
-      <source>Apply</source>
-      <translation>应用</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="269"/>
-      <source>Close</source>
-      <translation>关闭</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="317"/>
-      <source>Save Filter Template</source>
-      <translation>保存过滤器模板</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="329"/>
-      <source>Template Name:</source>
-      <translation>模板名称：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="334"/>
-      <source>Enter template name</source>
-      <translation>输入模板名称</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="338"/>
-      <source>Current Filter Settings:</source>
-      <translation>当前过滤器设置：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="343"/>
-      <source>Keyword: %1</source>
-      <translation>关键词：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="349"/>
-      <source>✓ Case Sensitive</source>
-      <translation>✓ 区分大小写</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="349"/>
-      <source>✗ Case Insensitive</source>
-      <translation>✗ 不区分大小写</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="350"/>
-      <source>✓ Regular Expression</source>
-      <translation>✓ 正则表达式</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="350"/>
-      <source>✗ Plain Text</source>
-      <translation>✗ 纯文本</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="355"/>
-      <source>Log Level: %1</source>
-      <translation>日志级别：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="362"/>
-      <source>Save</source>
-      <translation>保存</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="368"/>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="432"/>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="487"/>
-      <source>Cancel</source>
-      <translation>取消</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="402"/>
-      <source>Rename Template</source>
-      <translation>重命名模板</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="414"/>
-      <source>New Name:</source>
-      <translation>新名称：</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="458"/>
-      <source>Delete Template</source>
-      <translation>删除模板</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="471"/>
-      <source>Are you sure you want to delete template '%1'?</source>
-      <translation>确定要删除模板 '%1' 吗？</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="505"/>
-      <source>Import Templates</source>
-      <translation>导入模板</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="506"/>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="522"/>
-      <source>JSON Files (*.json)</source>
-      <translation>JSON 文件 (*.json)</translation>
-    </message>
-    <message>
-      <location filename="../src/qml/FilterTemplateDialog.qml" line="521"/>
-      <source>Export Templates</source>
-      <translation>导出模板</translation>
-    </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>RollingLogDialog</name>
     <message>
-      <location filename="../src/qml/RollingLogDialog.qml" line="13"/>
-      <source>Merge Rolling Logs</source>
-      <translation>合并滚动日志</translation>
+        <location filename="../src/qml/RollingLogDialog.qml" line="13"/>
+        <source>Merge Rolling Logs</source>
+        <translation>合并滚动日志</translation>
     </message>
     <message>
-      <location filename="../src/qml/RollingLogDialog.qml" line="36"/>
-      <source>Detected related rolling log files:</source>
-      <translation>检测到相关的滚动日志文件：</translation>
+        <location filename="../src/qml/RollingLogDialog.qml" line="36"/>
+        <source>Detected related rolling log files:</source>
+        <translation>检测到相关的滚动日志文件：</translation>
     </message>
     <message>
-      <location filename="../src/qml/RollingLogDialog.qml" line="95"/>
-      <source>Current</source>
-      <translation>当前</translation>
+        <location filename="../src/qml/RollingLogDialog.qml" line="95"/>
+        <source>Current</source>
+        <translation>当前</translation>
     </message>
     <message>
-      <location filename="../src/qml/RollingLogDialog.qml" line="111"/>
-      <source>No rolling log files detected</source>
-      <translation>未检测到滚动日志文件</translation>
+        <location filename="../src/qml/RollingLogDialog.qml" line="111"/>
+        <source>No rolling log files detected</source>
+        <translation>未检测到滚动日志文件</translation>
     </message>
     <message>
-      <location filename="../src/qml/RollingLogDialog.qml" line="122"/>
-      <source>Select All</source>
-      <translation>全选</translation>
+        <location filename="../src/qml/RollingLogDialog.qml" line="122"/>
+        <source>Select All</source>
+        <translation>全选</translation>
     </message>
     <message>
-      <location filename="../src/qml/RollingLogDialog.qml" line="130"/>
-      <source>Deselect All</source>
-      <translation>取消全选</translation>
+        <location filename="../src/qml/RollingLogDialog.qml" line="130"/>
+        <source>Deselect All</source>
+        <translation>取消全选</translation>
     </message>
     <message>
-      <location filename="../src/qml/RollingLogDialog.qml" line="140"/>
-      <source>%1 files selected</source>
-      <translation>已选择 %1 个文件</translation>
+        <location filename="../src/qml/RollingLogDialog.qml" line="140"/>
+        <source>%1 files selected</source>
+        <translation>已选择 %1 个文件</translation>
     </message>
     <message>
-      <location filename="../src/qml/RollingLogDialog.qml" line="147"/>
-      <source>Merge Instructions</source>
-      <translation>合并说明</translation>
+        <location filename="../src/qml/RollingLogDialog.qml" line="147"/>
+        <source>Merge Instructions</source>
+        <translation>合并说明</translation>
     </message>
     <message>
-      <location filename="../src/qml/RollingLogDialog.qml" line="152"/>
-      <source>Rolling log files will be merged into a temporary file in chronological order.
+        <location filename="../src/qml/RollingLogDialog.qml" line="152"/>
+        <source>Rolling log files will be merged into a temporary file in chronological order.
 Older logs (higher numbers) will be placed first,
 newest logs will be at the end.</source>
-      <translation>滚动日志文件将按时间顺序合并到一个临时文件中。
+        <translation>滚动日志文件将按时间顺序合并到一个临时文件中。
 较旧的日志（编号较大）将排在前面，
 最新的日志将排在最后。</translation>
     </message>
     <message>
-      <location filename="../src/qml/RollingLogDialog.qml" line="166"/>
-      <source>Merge and Load</source>
-      <translation>合并并加载</translation>
+        <location filename="../src/qml/RollingLogDialog.qml" line="166"/>
+        <source>Merge and Load</source>
+        <translation>合并并加载</translation>
     </message>
     <message>
-      <location filename="../src/qml/RollingLogDialog.qml" line="172"/>
-      <source>Cancel</source>
-      <translation>取消</translation>
+        <location filename="../src/qml/RollingLogDialog.qml" line="172"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
+    <name>RuleEngine</name>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="321"/>
+        <source>Email</source>
+        <translation>电子邮件</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="322"/>
+        <source>Send email notification</source>
+        <translation>发送电子邮件通知</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="328"/>
+        <source>Webhook</source>
+        <translation>Webhook</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="329"/>
+        <source>Send HTTP POST to URL</source>
+        <translation>向 URL 发送 HTTP POST</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="335"/>
+        <source>Popup</source>
+        <translation>弹窗</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="336"/>
+        <source>Show desktop notification</source>
+        <translation>显示桌面通知</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="342"/>
+        <source>Sound</source>
+        <translation>声音</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="343"/>
+        <source>Play alert sound</source>
+        <translation>播放警报声</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="349"/>
+        <source>Command</source>
+        <translation>命令</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="350"/>
+        <source>Run command/script</source>
+        <translation>运行命令/脚本</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="356"/>
+        <source>Highlight</source>
+        <translation>高亮</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="357"/>
+        <source>Highlight matching lines</source>
+        <translation>高亮匹配行</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="363"/>
+        <source>Log</source>
+        <translation>日志</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="364"/>
+        <source>Write to log file</source>
+        <translation>写入日志文件</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="383"/>
+        <source>Contains</source>
+        <translation>包含</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="383"/>
+        <source>Text contains value</source>
+        <translation>文本包含该值</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="384"/>
+        <source>Does not contain</source>
+        <translation>不包含</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="384"/>
+        <source>Text does not contain value</source>
+        <translation>文本不包含该值</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="385"/>
+        <source>Equals</source>
+        <translation>等于</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="385"/>
+        <source>Text equals value</source>
+        <translation>文本等于该值</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="386"/>
+        <source>Does not equal</source>
+        <translation>不等于</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="386"/>
+        <source>Text does not equal value</source>
+        <translation>文本不等于该值</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="387"/>
+        <source>Starts with</source>
+        <translation>以...开始</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="387"/>
+        <source>Text starts with value</source>
+        <translation>文本以该值开始</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="388"/>
+        <source>Ends with</source>
+        <translation>以...结束</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="388"/>
+        <source>Text ends with value</source>
+        <translation>文本以该值结束</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="389"/>
+        <source>Matches regex</source>
+        <translation>匹配正则表达式</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="389"/>
+        <source>Text matches regular expression</source>
+        <translation>文本匹配正则表达式</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="390"/>
+        <source>Greater than</source>
+        <translation>大于</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="390"/>
+        <source>Value is greater than</source>
+        <translation>值大于</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="391"/>
+        <source>Less than</source>
+        <translation>小于</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="391"/>
+        <source>Value is less than</source>
+        <translation>值小于</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="392"/>
+        <source>Between</source>
+        <translation>介于</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="392"/>
+        <source>Value is between two values</source>
+        <translation>值在两个数值之间</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="409"/>
+        <source>Raw Line</source>
+        <translation>原始行</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="409"/>
+        <source>The entire log line</source>
+        <translation>完整日志行</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="410"/>
+        <source>Log Level</source>
+        <translation>日志级别</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="410"/>
+        <source>ERROR, WARN, INFO, DEBUG, etc.</source>
+        <translation>ERROR, WARN, INFO, DEBUG 等</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="411"/>
+        <source>Timestamp</source>
+        <translation>时间戳</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="411"/>
+        <source>The log entry timestamp</source>
+        <translation>日志条目时间戳</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="412"/>
+        <source>Message</source>
+        <translation type="unfinished">消息</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="412"/>
+        <source>The log message content</source>
+        <translation>日志消息内容</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="413"/>
+        <source>Source</source>
+        <translation>源</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="413"/>
+        <source>The log source/logger name</source>
+        <translation>日志源/记录器名称</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="414"/>
+        <source>Thread</source>
+        <translation>线程</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="414"/>
+        <source>The thread name/ID</source>
+        <translation>线程名称/ID</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="415"/>
+        <source>Custom Field</source>
+        <translation>自定义字段</translation>
+    </message>
+    <message>
+        <location filename="../src/RuleEngine.cpp" line="415"/>
+        <source>A custom parsed field</source>
+        <translation>自定义解析字段</translation>
+    </message>
+</context>
+<context>
+    <name>RuleWizard</name>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="18"/>
+        <source>Rule Wizard</source>
+        <translation>规则向导</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="73"/>
+        <source>Basic Info</source>
+        <translation>基本信息</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="73"/>
+        <source>Conditions</source>
+        <translation>条件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="73"/>
+        <source>Actions</source>
+        <translation type="unfinished">操作</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="73"/>
+        <source>Schedule</source>
+        <translation>计划</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="73"/>
+        <source>Test &amp; Save</source>
+        <translation>测试并保存</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="127"/>
+        <source>Step 1: Basic Information</source>
+        <translation>第 1 步：基本信息</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="133"/>
+        <source>Enter a name and description for your rule.</source>
+        <translation>为您的规则输入名称和描述。</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="143"/>
+        <source>Rule Name:</source>
+        <translation>规则名称：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="148"/>
+        <source>e.g., Error Alert, Critical Warning</source>
+        <translation>例如：错误警报、关键警告</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="152"/>
+        <source>Description:</source>
+        <translation>描述：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="158"/>
+        <source>Describe what this rule does...</source>
+        <translation>描述此规则的作用...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="162"/>
+        <source>Enabled:</source>
+        <translation>已启用：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="177"/>
+        <source>Step 2: Define Conditions</source>
+        <translation>第 2 步：定义条件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="183"/>
+        <source>Match:</source>
+        <translation>匹配：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="186"/>
+        <source>All conditions (AND)</source>
+        <translation>所有条件 (与)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="186"/>
+        <source>Any condition (OR)</source>
+        <translation>任何条件 (或)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="192"/>
+        <source>+ Add Condition</source>
+        <translation>+ 添加条件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="247"/>
+        <source>Value...</source>
+        <translation>值...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="256"/>
+        <source>Case</source>
+        <translation type="unfinished">区分大小写</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="277"/>
+        <source>No conditions defined. Add at least one condition.</source>
+        <translation>未定义条件。请至少添加一个条件。</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="287"/>
+        <source>Step 3: Select Actions</source>
+        <translation>第 3 步：选择操作</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="293"/>
+        <source>Choose what happens when this rule is triggered.</source>
+        <translation>选择触发此规则时发生的操作。</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="361"/>
+        <source>Action Configuration</source>
+        <translation>操作配置</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="368"/>
+        <source>Cooldown (seconds between triggers):</source>
+        <translation>冷却时间（触发之间的秒数）：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="386"/>
+        <source>Step 4: Schedule (Optional)</source>
+        <translation>第 4 步：计划（可选）</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="393"/>
+        <source>Enable time-based scheduling</source>
+        <translation>启用基于时间的计划</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="400"/>
+        <source>Active Time Range</source>
+        <translation>活动时间范围</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="404"/>
+        <source>From:</source>
+        <translation type="unfinished">从：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="411"/>
+        <source>To:</source>
+        <translation type="unfinished">至：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="423"/>
+        <source>Active Days</source>
+        <translation>活动日期</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="428"/>
+        <source>Sun</source>
+        <translation>周日</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="428"/>
+        <source>Mon</source>
+        <translation>周一</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="428"/>
+        <source>Tue</source>
+        <translation>周二</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="428"/>
+        <source>Wed</source>
+        <translation>周三</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="428"/>
+        <source>Thu</source>
+        <translation>周四</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="428"/>
+        <source>Fri</source>
+        <translation>周五</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="428"/>
+        <source>Sat</source>
+        <translation>周六</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="456"/>
+        <source>Step 5: Test &amp; Save</source>
+        <translation>第 5 步：测试并保存</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="462"/>
+        <source>Test Your Rule</source>
+        <translation>测试您的规则</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="471"/>
+        <source>Enter sample log lines to test:</source>
+        <translation>输入示例日志行进行测试：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="478"/>
+        <source>Paste sample log lines here...</source>
+        <translation>在此处粘贴示例日志行...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="483"/>
+        <source>Test Rule</source>
+        <translation>测试规则</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="511"/>
+        <source>Line %1</source>
+        <translation type="unfinished">第 %1 行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="528"/>
+        <source>Rule Summary</source>
+        <translation>规则摘要</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="535"/>
+        <source>Name:</source>
+        <translation>名称：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="536"/>
+        <source>(not set)</source>
+        <translation>(未设置)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="538"/>
+        <source>Conditions:</source>
+        <translation>条件：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="539"/>
+        <source>condition(s)</source>
+        <translation>个条件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="541"/>
+        <source>Actions:</source>
+        <translation>操作：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="542"/>
+        <source>action(s)</source>
+        <translation>个操作</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="544"/>
+        <source>Schedule:</source>
+        <translation>计划：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="545"/>
+        <source>Enabled</source>
+        <translation>已启用</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="545"/>
+        <source>Always active</source>
+        <translation>始终活动</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="553"/>
+        <source>Back</source>
+        <translation>返回</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="560"/>
+        <source>Next</source>
+        <translation type="unfinished">下一个</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="560"/>
+        <source>Save Rule</source>
+        <translation>保存规则</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/RuleWizard.qml" line="573"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+</context>
+<context>
+    <name>SanitizationConfigDialog</name>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="38"/>
+        <source>Data Sanitization Settings</source>
+        <translation>数据脱敏设置</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="45"/>
+        <source>Configure which sensitive data patterns to detect and mask when exporting or using AI analysis.</source>
+        <translation>配置在导出或使用 AI 分析时要检测和掩盖的敏感数据模式。</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="71"/>
+        <source>Built-in Rules</source>
+        <translation>内置规则</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="80"/>
+        <source>IP Addresses (IPv4 &amp; IPv6)</source>
+        <translation>IP 地址 (IPv4 &amp; IPv6)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="94"/>
+        <source>Email Addresses</source>
+        <translation>电子邮件地址</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="108"/>
+        <source>Phone Numbers (CN &amp; International)</source>
+        <translation>电话号码 (中国及国际)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="122"/>
+        <source>ID Card Numbers (China)</source>
+        <translation>身份证号码 (中国)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="136"/>
+        <source>Domain Names</source>
+        <translation>域名</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="150"/>
+        <source>Port Numbers</source>
+        <translation>端口号</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="164"/>
+        <source>API Keys &amp; Tokens</source>
+        <translation>API 密钥与令牌</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="178"/>
+        <source>Usernames (user=xxx patterns)</source>
+        <translation>用户名 (user=xxx 模式)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="192"/>
+        <source>File Paths (Windows &amp; Unix)</source>
+        <translation>文件路径 (Windows &amp; Unix)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="214"/>
+        <source>Sanitization Levels Explanation</source>
+        <translation>脱敏级别说明</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="221"/>
+        <source>• Minimal: Passwords, Tokens, API Keys only
+• Standard: + IP, Email, Phone, Username
+• Strict: All enabled rules above</source>
+        <translation>• 最低：仅密码、令牌、API 密钥
+• 标准：+ IP、电子邮件、电话、用户名
+• 严格：上述所有启用的规则</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="244"/>
+        <source>Reset to Defaults</source>
+        <translation type="unfinished">恢复默认设置</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="275"/>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SanitizationConfigDialog.qml" line="296"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+</context>
+<context>
+    <name>SessionRecovery</name>
+    <message>
+        <location filename="../src/SessionRecovery.cpp" line="254"/>
+        <source>Session from %1
+%2 file(s) were open</source>
+        <translation>来自 %1 的会话
+已打开 %2 个文件</translation>
+    </message>
+    <message>
+        <location filename="../src/SessionRecovery.cpp" line="259"/>
+        <source>
+(May have unsaved changes)</source>
+        <translation>
+(可能有未保存的更改)</translation>
+    </message>
+    <message>
+        <location filename="../src/SessionRecovery.cpp" line="546"/>
+        <source>Session not found</source>
+        <translation>未找到会话</translation>
+    </message>
+</context>
+<context>
+    <name>SmtpAlertManager</name>
+    <message>
+        <location filename="../src/SmtpAlertManager.cpp" line="429"/>
+        <source>Email sent with %1 alert(s)</source>
+        <translation>已发送包含 %1 个告警的电子邮件</translation>
+    </message>
+    <message>
+        <location filename="../src/SmtpAlertManager.cpp" line="464"/>
+        <source>SMTP settings incomplete</source>
+        <translation>SMTP 设置不完整</translation>
+    </message>
+    <message>
+        <location filename="../src/SmtpAlertManager.cpp" line="479"/>
+        <source>Failed to connect to SMTP server: %1</source>
+        <translation>连接 SMTP 服务器失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/SmtpAlertManager.cpp" line="496"/>
+        <source>Unexpected server response: %1</source>
+        <translation>服务器响应异常：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/SmtpAlertManager.cpp" line="511"/>
+        <source>TLS encryption failed</source>
+        <translation>TLS 加密失败</translation>
+    </message>
+    <message>
+        <location filename="../src/SmtpAlertManager.cpp" line="531"/>
+        <source>Authentication failed: %1</source>
+        <translation>身份验证失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/SmtpAlertManager.cpp" line="542"/>
+        <source>MAIL FROM rejected: %1</source>
+        <translation>MAIL FROM 被拒绝：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/SmtpAlertManager.cpp" line="560"/>
+        <source>DATA command rejected: %1</source>
+        <translation>DATA 命令被拒绝：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/SmtpAlertManager.cpp" line="581"/>
+        <source>Email not accepted: %1</source>
+        <translation>电子邮件未被接收：%1</translation>
+    </message>
+</context>
+<context>
+    <name>SqlScratchpad</name>
+    <message>
+        <location filename="../src/SqlScratchpad.cpp" line="58"/>
+        <source>Failed to create in-memory database: %1</source>
+        <translation>创建内存数据库失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/SqlScratchpad.cpp" line="111"/>
+        <location filename="../src/SqlScratchpad.cpp" line="204"/>
+        <source>Invalid model or database not ready</source>
+        <translation>模型无效或数据库未就绪</translation>
+    </message>
+    <message>
+        <location filename="../src/SqlScratchpad.cpp" line="276"/>
+        <source>Database not ready</source>
+        <translation>数据库未就绪</translation>
+    </message>
+    <message>
+        <location filename="../src/SqlScratchpad.cpp" line="383"/>
+        <source>No results to export</source>
+        <translation>没有可导出的结果</translation>
+    </message>
+    <message>
+        <location filename="../src/SqlScratchpad.cpp" line="397"/>
+        <source>Cannot open file for writing: %1</source>
+        <translation>无法打开文件进行写入：%1</translation>
+    </message>
+</context>
+<context>
+    <name>SqlScratchpadPanel</name>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="48"/>
+        <source>SQL Scratchpad</source>
+        <translation>SQL 草稿板</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="57"/>
+        <source>Import Data</source>
+        <translation>导入数据</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="65"/>
+        <source>Import All Lines</source>
+        <translation>导入所有行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="73"/>
+        <source>Import First 10,000 Lines</source>
+        <translation>导入前 10,000 行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="81"/>
+        <source>Import First 100,000 Lines</source>
+        <translation>导入前 100,000 行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="90"/>
+        <source>Import Filtered Results</source>
+        <translation>导入过滤后的结果</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="101"/>
+        <source>Saved Queries</source>
+        <translation>已保存的查询</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="125"/>
+        <source>Save Current Query...</source>
+        <translation>保存当前查询...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="132"/>
+        <source>History</source>
+        <translation>历史记录</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="154"/>
+        <source>Clear History</source>
+        <translation>清除历史记录</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="171"/>
+        <source>SQL Query</source>
+        <translation>SQL 查询</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="183"/>
+        <source>Enter SQL query here...
+Example: SELECT * FROM logs WHERE level = &apos;ERROR&apos; LIMIT 100</source>
+        <translation>在此处输入 SQL 查询...
+示例：SELECT * FROM logs WHERE level = &apos;ERROR&apos; LIMIT 100</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="202"/>
+        <source>Execute (Ctrl+Enter)</source>
+        <translation>执行 (Ctrl+Enter)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="211"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="219"/>
+        <source>Table: logs (%1 rows)</source>
+        <translation>表：logs (%1 行)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="226"/>
+        <source>-- Templates --</source>
+        <translation>-- 模板 --</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="250"/>
+        <source>Results</source>
+        <translation>结果</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="336"/>
+        <source>Executing...</source>
+        <translation>正在执行...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="342"/>
+        <source>Export...</source>
+        <translation>导出...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="350"/>
+        <source>Export as CSV...</source>
+        <translation>导出为 CSV...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="354"/>
+        <source>Export as JSON...</source>
+        <translation>导出为 JSON...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="358"/>
+        <source>Export as HTML...</source>
+        <translation>导出为 HTML...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="378"/>
+        <source>Query completed: %1 rows in %2 ms</source>
+        <translation>查询完成：在 %2 毫秒内查询到 %1 行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="389"/>
+        <source>Error: %1</source>
+        <translation>错误：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="393"/>
+        <source>Importing: %1 / %2</source>
+        <translation>正在导入：%1 / %2</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="397"/>
+        <source>Exported to: %1</source>
+        <translation>已导出至：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="404"/>
+        <source>Save Query</source>
+        <translation>保存查询</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="412"/>
+        <source>Query Name:</source>
+        <translation>查询名称：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="418"/>
+        <source>Enter a name for this query</source>
+        <translation>为此查询输入一个名称</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="433"/>
+        <source>Export Results</source>
+        <translation>导出结果</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SqlScratchpadPanel.qml" line="443"/>
+        <source>File Path:</source>
+        <translation>文件路径：</translation>
+    </message>
+</context>
+<context>
+    <name>StatisticsPanel</name>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="15"/>
+        <source>Log Statistics</source>
+        <translation>日志统计</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="50"/>
+        <source>File: %1</source>
+        <translation>文件：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="57"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="64"/>
+        <source>Overview</source>
+        <translation>概览</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="73"/>
+        <source>Total Lines:</source>
+        <translation>总行数：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="76"/>
+        <source>File Size:</source>
+        <translation>文件大小：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="79"/>
+        <source>Current View:</source>
+        <translation>当前视图：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="80"/>
+        <source> lines</source>
+        <translation> 行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="82"/>
+        <source>Filter Mode:</source>
+        <translation>过滤模式：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="84"/>
+        <source>Yes</source>
+        <translation>是</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="84"/>
+        <source>No</source>
+        <translation>否</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="92"/>
+        <source>Log Level Distribution</source>
+        <translation>日志级别分布</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="208"/>
+        <source>Level Comparison</source>
+        <translation>级别对比</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="258"/>
+        <source>Export Pie Chart</source>
+        <translation>导出饼图</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="263"/>
+        <source>Export Bar Chart</source>
+        <translation>导出柱状图</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="270"/>
+        <source>Close</source>
+        <translation type="unfinished">关闭</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="279"/>
+        <source>Save Pie Chart</source>
+        <translation>保存饼图</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/StatisticsPanel.qml" line="296"/>
+        <source>Save Bar Chart</source>
+        <translation>保存柱状图</translation>
+    </message>
+</context>
+<context>
+    <name>TextTransformPanel</name>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="46"/>
+        <source>Text Transformer</source>
+        <translation>文本转换器</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="66"/>
+        <source>Case</source>
+        <translation type="unfinished">区分大小写</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="67"/>
+        <source>Encode</source>
+        <translation>编码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="68"/>
+        <source>Format</source>
+        <translation>格式化</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="69"/>
+        <source>Lines</source>
+        <translation>行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="70"/>
+        <source>Escape</source>
+        <translation>转义</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="71"/>
+        <source>Regex</source>
+        <translation type="unfinished">正则</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="72"/>
+        <source>Time</source>
+        <translation type="unfinished">时间</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="84"/>
+        <source>Input</source>
+        <translation>输入</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="95"/>
+        <source>Enter or paste text to transform...</source>
+        <translation>输入或粘贴要转换的文本...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="103"/>
+        <source>Clear</source>
+        <translation type="unfinished">清除</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="107"/>
+        <source>Paste</source>
+        <translation>粘贴</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="112"/>
+        <location filename="../src/qml/TextTransformPanel.qml" line="452"/>
+        <source>%1 chars</source>
+        <translation>%1 字符</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="132"/>
+        <source>UPPERCASE</source>
+        <translation>大写</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="137"/>
+        <source>lowercase</source>
+        <translation>小写</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="142"/>
+        <source>Title Case</source>
+        <translation>首字母大写</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="147"/>
+        <source>camelCase</source>
+        <translation>小驼峰 (camelCase)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="152"/>
+        <source>snake_case</source>
+        <translation>蛇形 (snake_case)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="157"/>
+        <source>kebab-case</source>
+        <translation>短横线 (kebab-case)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="170"/>
+        <source>Base64 Encode</source>
+        <translation>Base64 编码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="175"/>
+        <source>Base64 Decode</source>
+        <translation>Base64 解码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="180"/>
+        <source>URL Encode</source>
+        <translation>URL 编码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="185"/>
+        <source>URL Decode</source>
+        <translation>URL 解码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="190"/>
+        <source>HTML Encode</source>
+        <translation>HTML 编码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="195"/>
+        <source>HTML Decode</source>
+        <translation>HTML 解码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="200"/>
+        <source>Hex Encode</source>
+        <translation>十六进制编码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="205"/>
+        <source>Hex Decode</source>
+        <translation>十六进制解码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="218"/>
+        <source>Format JSON</source>
+        <translation type="unfinished">格式化 JSON</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="223"/>
+        <source>Minify JSON</source>
+        <translation>压缩 JSON</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="228"/>
+        <source>Format XML</source>
+        <translation>格式化 XML</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="233"/>
+        <source>Minify XML</source>
+        <translation>压缩 XML</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="246"/>
+        <source>Sort Lines A-Z</source>
+        <translation>按 A-Z 排序行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="251"/>
+        <source>Sort Lines Z-A</source>
+        <translation>按 Z-A 排序行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="256"/>
+        <source>Unique Lines</source>
+        <translation>去重行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="261"/>
+        <source>Reverse Lines</source>
+        <translation>反转行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="266"/>
+        <source>Shuffle Lines</source>
+        <translation>随机打乱行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="271"/>
+        <source>Number Lines</source>
+        <translation>行编号</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="276"/>
+        <source>Trim Lines</source>
+        <translation>修整行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="281"/>
+        <source>Remove Empty</source>
+        <translation>移除空行</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="286"/>
+        <source>Statistics</source>
+        <translation>统计信息</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="307"/>
+        <source>Escape JSON</source>
+        <translation>转义 JSON</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="312"/>
+        <source>Unescape JSON</source>
+        <translation>反转义 JSON</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="317"/>
+        <source>Escape Regex</source>
+        <translation>转义正则表达式</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="322"/>
+        <source>Escape SQL</source>
+        <translation>转义 SQL</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="333"/>
+        <source>Pattern:</source>
+        <translation>模式：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="337"/>
+        <source>Regular expression pattern</source>
+        <translation>正则表达式模式</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="341"/>
+        <source>Replace:</source>
+        <translation>替换为：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="345"/>
+        <source>Replacement text (use $1, $2 for groups)</source>
+        <translation>替换文本 (使用 $1, $2 代表分组)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="350"/>
+        <source>Replace</source>
+        <translation>替换</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="355"/>
+        <source>Extract Matches</source>
+        <translation>提取匹配项</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="362"/>
+        <source>Split</source>
+        <translation>拆分</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="376"/>
+        <source>Timestamp:</source>
+        <translation>时间戳：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="380"/>
+        <source>Unix timestamp (ms)</source>
+        <translation>Unix 时间戳 (ms)</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="383"/>
+        <source>To DateTime</source>
+        <translation>转换为日期时间</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="391"/>
+        <source>From Format:</source>
+        <translation>源格式：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="397"/>
+        <source>To Format:</source>
+        <translation>目标格式：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="404"/>
+        <source>Convert</source>
+        <translation>转换</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="410"/>
+        <source>Format tokens: yyyy, MM, dd, HH, mm, ss, zzz</source>
+        <translation>格式标记：yyyy, MM, dd, HH, mm, ss, zzz</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="420"/>
+        <source>Output</source>
+        <translation>输出</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="439"/>
+        <source>Copy</source>
+        <translation type="unfinished">复制</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="447"/>
+        <source>Use as Input</source>
+        <translation>用作输入</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TextTransformPanel.qml" line="466"/>
+        <source>Error: %1</source>
+        <translation>错误：%1</translation>
+    </message>
+</context>
+<context>
+    <name>TextTransformer</name>
+    <message>
+        <location filename="../src/TextTransformer.cpp" line="186"/>
+        <location filename="../src/TextTransformer.cpp" line="199"/>
+        <source>Invalid JSON: %1</source>
+        <translation>无效的 JSON：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/TextTransformer.cpp" line="218"/>
+        <location filename="../src/TextTransformer.cpp" line="254"/>
+        <source>Invalid XML: %1</source>
+        <translation>无效的 XML：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/TextTransformer.cpp" line="283"/>
+        <location filename="../src/TextTransformer.cpp" line="298"/>
+        <location filename="../src/TextTransformer.cpp" line="317"/>
+        <source>Invalid regex: %1</source>
+        <translation>无效的正则表达式：%1</translation>
+    </message>
+</context>
+<context>
+    <name>TimeSeriesChart</name>
+    <message>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="127"/>
+        <source>No data available</source>
+        <translation>无可用数据</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="343"/>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="344"/>
+        <source>Warn</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="345"/>
+        <source>Info</source>
+        <translation type="unfinished">信息</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="346"/>
+        <source>Debug</source>
+        <translation>调试</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="347"/>
+        <source>Trace</source>
+        <translation>追踪</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TimeSeriesChart.qml" line="348"/>
+        <source>Other</source>
+        <translation>其他</translation>
+    </message>
+</context>
+<context>
+    <name>TraceViewerDialog</name>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="14"/>
+        <source>System Trace Viewer</source>
+        <translation>系统追踪查看器</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="49"/>
+        <source>Trace reading not available on this platform</source>
+        <translation>此平台不支持追踪读取</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="54"/>
+        <source>Windows ETW (Event Tracing for Windows) - Supports .etl files</source>
+        <translation>Windows ETW (Event Tracing for Windows) - 支持 .etl 文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="56"/>
+        <source>Linux perf - Supports perf.data files</source>
+        <translation>Linux perf - 支持 perf.data 文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="58"/>
+        <source>macOS DTrace - Supports .dtrace output files</source>
+        <translation>macOS DTrace - 支持 .dtrace 输出文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="60"/>
+        <source>Unknown platform</source>
+        <translation>未知平台</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="85"/>
+        <source>Select trace file...</source>
+        <translation>选择追踪文件...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="90"/>
+        <source>Browse...</source>
+        <translation>浏览...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="96"/>
+        <source>Open</source>
+        <translation>打开</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="109"/>
+        <source>Max Events:</source>
+        <translation>最大事件数：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="119"/>
+        <source>Unlimited</source>
+        <translation>无限制</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="126"/>
+        <source>Events: %1</source>
+        <translation>事件：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="137"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="149"/>
+        <source>Filter by Provider:</source>
+        <translation>按提供者过滤：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="167"/>
+        <source>Export to File</source>
+        <translation>导出到文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="173"/>
+        <source>Open in Viewer</source>
+        <translation>在查看器中打开</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="217"/>
+        <source>Timestamp</source>
+        <translation>时间戳</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="222"/>
+        <source>Provider</source>
+        <translation>提供程序</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="227"/>
+        <source>Event</source>
+        <translation>事件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="232"/>
+        <source>PID:TID</source>
+        <translation>PID:TID</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="237"/>
+        <source>Message</source>
+        <translation>消息</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="304"/>
+        <source>Reading trace file...</source>
+        <translation>正在读取追踪文件...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="305"/>
+        <source>No events loaded.
+Select a trace file to begin.</source>
+        <translation>未加载事件。
+选择追踪文件以开始。</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="326"/>
+        <source>Select Trace File</source>
+        <translation>选择追踪文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="330"/>
+        <source>Trace Files</source>
+        <translation>追踪文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="330"/>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="332"/>
+        <source>All Files</source>
+        <translation>所有文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="342"/>
+        <source>Export Trace Events</source>
+        <translation>导出追踪事件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="344"/>
+        <source>Log Files</source>
+        <translation>日志文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="344"/>
+        <source>Text Files</source>
+        <translation>文本文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/TraceViewerDialog.qml" line="354"/>
+        <source>Event Details</source>
+        <translation>事件详情</translation>
+    </message>
+</context>
+<context>
+    <name>UpdateChecker</name>
+    <message>
+        <location filename="../src/UpdateChecker.cpp" line="124"/>
+        <source>Failed to parse release information: %1</source>
+        <translation>解析发布信息失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/UpdateChecker.cpp" line="130"/>
+        <source>No releases found</source>
+        <translation>未找到发布版本</translation>
+    </message>
+    <message>
+        <location filename="../src/UpdateChecker.cpp" line="221"/>
+        <source>No download URL available</source>
+        <translation>无可用下载链接</translation>
+    </message>
+    <message>
+        <location filename="../src/UpdateChecker.cpp" line="282"/>
+        <source>Failed to save file: %1</source>
+        <translation>保存文件失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../src/UpdateChecker.cpp" line="296"/>
+        <source>Checksum verification failed</source>
+        <translation>校验和验证失败</translation>
+    </message>
+    <message>
+        <location filename="../src/UpdateChecker.cpp" line="310"/>
+        <source>Update file not found</source>
+        <translation>未找到更新文件</translation>
+    </message>
+</context>
+<context>
+    <name>UpdateDialog</name>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="42"/>
+        <source>Update Available</source>
+        <translation>有可用更新</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="42"/>
+        <source>Check for Updates</source>
+        <translation>检查更新</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="64"/>
+        <source>Current Version:</source>
+        <translation>当前版本：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="67"/>
+        <source>Latest Version:</source>
+        <translation>最新版本：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="85"/>
+        <source>Release Notes:</source>
+        <translation>发布说明：</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="120"/>
+        <source>Checking for updates...</source>
+        <translation>正在检查更新...</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="137"/>
+        <source>You are using the latest version.</source>
+        <translation>您正在使用最新版本。</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="157"/>
+        <source>Downloading: %1%</source>
+        <translation>正在下载：%1%</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="165"/>
+        <source>Settings</source>
+        <translation type="unfinished">设置</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="173"/>
+        <source>Check for updates automatically</source>
+        <translation>自动检查更新</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="181"/>
+        <source>Check every</source>
+        <translation>检查间隔</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="188"/>
+        <source>days</source>
+        <translation>天</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="192"/>
+        <source>Include pre-release versions</source>
+        <translation>包含预发布版本</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="205"/>
+        <source>Check Now</source>
+        <translation>立即检查</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="214"/>
+        <source>Skip This Version</source>
+        <translation>跳过此版本</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="223"/>
+        <source>Download</source>
+        <translation>下载</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="230"/>
+        <source>Install</source>
+        <translation>安装</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpdateDialog.qml" line="237"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+</context>
+<context>
+    <name>UpgradePromptDialog</name>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="37"/>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="87"/>
+        <source>Upgrade Required</source>
+        <translation>需要升级</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="159"/>
+        <source>Requires %1 Edition</source>
+        <translation>需要 %1 版本</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="204"/>
+        <source> Edition</source>
+        <translation> 版本</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="212"/>
+        <source>Unlock advanced analysis features</source>
+        <translation>解锁高级分析功能</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="213"/>
+        <source>Unlock all features + remote support</source>
+        <translation>解锁所有功能 + 远程支持</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="232"/>
+        <source>Lifetime license with free updates and technical support.</source>
+        <translation>终身授权，包含免费更新和技术支持。</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="258"/>
+        <source>Maybe Later</source>
+        <translation>以后再说</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UpgradePromptDialog.qml" line="281"/>
+        <source>Upgrade Now</source>
+        <translation>立即升级</translation>
+    </message>
+</context>
+<context>
     <name>WorkspaceDialog</name>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="14"/>
-      <source>Workspace Manager</source>
-      <translation>工作空间管理器</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="14"/>
+        <source>Workspace Manager</source>
+        <translation>工作空间管理器</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="44"/>
-      <source>Save Current State</source>
-      <translation>保存当前状态</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="44"/>
+        <source>Save Current State</source>
+        <translation>保存当前状态</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="50"/>
-      <source>Quick Save</source>
-      <translation>快速保存</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="50"/>
+        <source>Quick Save</source>
+        <translation>快速保存</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="60"/>
-      <source>Update current workspace: %1</source>
-      <translation>更新当前工作空间：%1</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="60"/>
+        <source>Update current workspace: %1</source>
+        <translation>更新当前工作空间：%1</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="69"/>
-      <source>Import</source>
-      <translation>导入</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="69"/>
+        <source>Import</source>
+        <translation>导入</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="75"/>
-      <source>Export</source>
-      <translation>导出</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="75"/>
+        <source>Export</source>
+        <translation>导出</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="88"/>
-      <source>Current Workspace:</source>
-      <translation>当前工作空间：</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="88"/>
+        <source>Current Workspace:</source>
+        <translation>当前工作空间：</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="99"/>
-      <source>Saved Workspaces (%1)</source>
-      <translation>已保存的工作空间 (%1)</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="99"/>
+        <source>Saved Workspaces (%1)</source>
+        <translation>已保存的工作空间 (%1)</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="175"/>
-      <source>Current</source>
-      <translation>当前</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="175"/>
+        <source>Current</source>
+        <translation>当前</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="187"/>
-      <source>No description</source>
-      <translation>无描述</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="187"/>
+        <source>No description</source>
+        <translation>无描述</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="198"/>
-      <source>Created: %1</source>
-      <translation>创建于：%1</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="198"/>
+        <source>Created: %1</source>
+        <translation>创建于：%1</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="204"/>
-      <source>Last used: %1</source>
-      <translation>最后使用：%1</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="204"/>
+        <source>Last used: %1</source>
+        <translation>最后使用：%1</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="217"/>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="424"/>
-      <source>Rename</source>
-      <translation>重命名</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="217"/>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="424"/>
+        <source>Rename</source>
+        <translation>重命名</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="227"/>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="479"/>
-      <source>Delete</source>
-      <translation>删除</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="227"/>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="479"/>
+        <source>Delete</source>
+        <translation>删除</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="242"/>
-      <source>No saved workspaces
-Use 'Save Current State' to create one</source>
-      <translation>没有保存的工作空间
+        <location filename="../src/qml/WorkspaceDialog.qml" line="242"/>
+        <source>No saved workspaces
+Use &apos;Save Current State&apos; to create one</source>
+        <translation>没有保存的工作空间
 使用“保存当前状态”创建一个</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="252"/>
-      <source>Workspace Details</source>
-      <translation>工作区详情</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="252"/>
+        <source>Workspace Details</source>
+        <translation>工作区详情</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="262"/>
-      <source>File:</source>
-      <translation>文件:</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="262"/>
+        <source>File:</source>
+        <translation>文件:</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="264"/>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="273"/>
-      <source>None</source>
-      <translation>无</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="264"/>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="273"/>
+        <source>None</source>
+        <translation>无</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="270"/>
-      <source>Filter:</source>
-      <translation>过滤器:</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="270"/>
+        <source>Filter:</source>
+        <translation>过滤器:</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="276"/>
-      <source>Bookmarks:</source>
-      <translation>书签:</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="276"/>
+        <source>Bookmarks:</source>
+        <translation>书签:</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="279"/>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="280"/>
-      <source> items</source>
-      <translation> 个项目</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="279"/>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="280"/>
+        <source> items</source>
+        <translation> 个项目</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="290"/>
-      <source>Load</source>
-      <translation>加载</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="290"/>
+        <source>Load</source>
+        <translation>加载</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="296"/>
-      <source>Close</source>
-      <translation>关闭</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="296"/>
+        <source>Close</source>
+        <translation>关闭</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="303"/>
-      <source>Unknown</source>
-      <translation>未知</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="303"/>
+        <source>Unknown</source>
+        <translation>未知</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="325"/>
-      <source>Save Workspace</source>
-      <translation>保存工作区</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="325"/>
+        <source>Save Workspace</source>
+        <translation>保存工作区</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="337"/>
-      <source>Workspace Name:</source>
-      <translation>工作区名称:</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="337"/>
+        <source>Workspace Name:</source>
+        <translation>工作区名称:</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="342"/>
-      <source>Enter workspace name</source>
-      <translation>输入工作区名称</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="342"/>
+        <source>Enter workspace name</source>
+        <translation>输入工作区名称</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="345"/>
-      <source>Description (optional):</source>
-      <translation>描述 (可选):</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="345"/>
+        <source>Description (optional):</source>
+        <translation>描述 (可选):</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="351"/>
-      <source>Enter description</source>
-      <translation>输入描述</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="351"/>
+        <source>Enter description</source>
+        <translation>输入描述</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="355"/>
-      <source>Current file, filter, bookmarks and view settings will be saved.</source>
-      <translation>当前文件、过滤器、书签和视图设置将被保存。</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="355"/>
+        <source>Current file, filter, bookmarks and view settings will be saved.</source>
+        <translation>当前文件、过滤器、书签和视图设置将被保存。</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="366"/>
-      <source>Save</source>
-      <translation>保存</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="366"/>
+        <source>Save</source>
+        <translation>保存</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="372"/>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="430"/>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="484"/>
-      <source>Cancel</source>
-      <translation>取消</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="372"/>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="430"/>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="484"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="400"/>
-      <source>Rename Workspace</source>
-      <translation>重命名工作区</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="400"/>
+        <source>Rename Workspace</source>
+        <translation>重命名工作区</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="412"/>
-      <source>New Name:</source>
-      <translation>新名称:</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="412"/>
+        <source>New Name:</source>
+        <translation>新名称:</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="455"/>
-      <source>Delete Workspace</source>
-      <translation>删除工作区</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="455"/>
+        <source>Delete Workspace</source>
+        <translation>删除工作区</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="468"/>
-      <source>Are you sure you want to delete workspace '%1'?</source>
-      <translation>您确定要删除工作区“%1”吗？</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="468"/>
+        <source>Are you sure you want to delete workspace &apos;%1&apos;?</source>
+        <translation>您确定要删除工作区“%1”吗？</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="501"/>
-      <source>Import Workspace</source>
-      <translation>导入工作区</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="501"/>
+        <source>Import Workspace</source>
+        <translation>导入工作区</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="502"/>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="517"/>
-      <source>JSON Files (*.json)</source>
-      <translation>JSON 文件 (*.json)</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="502"/>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="517"/>
+        <source>JSON Files (*.json)</source>
+        <translation>JSON 文件 (*.json)</translation>
     </message>
     <message>
-      <location filename="../src/qml/WorkspaceDialog.qml" line="516"/>
-      <source>Export Workspace</source>
-      <translation>导出工作区</translation>
+        <location filename="../src/qml/WorkspaceDialog.qml" line="516"/>
+        <source>Export Workspace</source>
+        <translation>导出工作区</translation>
     </message>
-  </context>
+</context>
 </TS>

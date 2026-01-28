@@ -78,6 +78,9 @@ int main(int argc, char *argv[]) {
 
     QQmlApplicationEngine engine;
     
+    // 设置 QML 引擎引用，用于语言切换时刷新 UI
+    LanguageManager::instance().setEngine(&engine);
+    
     // Register context properties
     engine.rootContext()->setContextProperty("_themeManager", &themeManager);
     engine.rootContext()->setContextProperty("_logModel", &logModel);

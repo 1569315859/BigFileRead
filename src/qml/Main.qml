@@ -34,7 +34,14 @@ ApplicationWindow {
             tableView.model = newModel
             lineNumberListView.model = null
             lineNumberListView.model = newModel
-            console.log("[Main.qml] TableView model refreshed to:", newModel)
+            // ★★★ 强制刷新 EnhancedScrollBar 的标记数据 ★★★
+            enhancedScrollBar.totalLines = newModel ? newModel.lineCount : 0
+            enhancedScrollBar.bookmarks = newModel ? (newModel.bookmarkLines || []) : []
+            enhancedScrollBar.searchResults = newModel ? (newModel.searchResultLines || []) : []
+            enhancedScrollBar.errorLines = newModel ? (newModel.errorLines || []) : []
+            enhancedScrollBar.warningLines = newModel ? (newModel.warningLines || []) : []
+            enhancedScrollBar.infoLines = newModel ? (newModel.infoLines || []) : []
+            console.log("[Main.qml] All views refreshed with new model")
         }
         function onCurrentTabChanged(index) {
             console.log("[Main.qml] onCurrentTabChanged triggered, index:", index)
@@ -782,22 +789,29 @@ ApplicationWindow {
                     
                     Menu {
                         title: qsTr("Theme")
+                        
+                        // 使用 ActionGroup 实现单选
+                        ActionGroup { id: themeActionGroup; exclusive: true }
+                        
                         MenuItem {
                             text: "Dark"
                             checkable: true
                             checked: _themeManager.currentTheme === "Dark"
+                            ActionGroup.group: themeActionGroup
                             onTriggered: _themeManager.setTheme("Dark")
                         }
                         MenuItem {
                             text: "Light"
                             checkable: true
                             checked: _themeManager.currentTheme === "Light"
+                            ActionGroup.group: themeActionGroup
                             onTriggered: _themeManager.setTheme("Light")
                         }
                         MenuItem {
                             text: "Warm"
                             checkable: true
                             checked: _themeManager.currentTheme === "Warm"
+                            ActionGroup.group: themeActionGroup
                             onTriggered: _themeManager.setTheme("Warm")
                         }
                     }
@@ -805,82 +819,98 @@ ApplicationWindow {
                     Menu {
                         title: qsTr("Language")
                         
+                        // 使用 ActionGroup 实现单选
+                        ActionGroup { id: languageActionGroup; exclusive: true }
+                        
                         MenuItem {
                             text: "English"
                             checkable: true
                             checked: _languageManager.currentLanguage === "en_US"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("en_US")
                         }
                         MenuItem {
                             text: "简体中文"
                             checkable: true
                             checked: _languageManager.currentLanguage === "zh_CN"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("zh_CN")
                         }
                         MenuItem {
                             text: "繁體中文"
                             checkable: true
                             checked: _languageManager.currentLanguage === "zh_TW"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("zh_TW")
                         }
                         MenuItem {
                             text: "日本語"
                             checkable: true
                             checked: _languageManager.currentLanguage === "ja_JP"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("ja_JP")
                         }
                         MenuItem {
                             text: "한국어"
                             checkable: true
                             checked: _languageManager.currentLanguage === "ko_KR"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("ko_KR")
                         }
                         MenuItem {
                             text: "Русский"
                             checkable: true
                             checked: _languageManager.currentLanguage === "ru_RU"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("ru_RU")
                         }
                         MenuItem {
                             text: "Deutsch"
                             checkable: true
                             checked: _languageManager.currentLanguage === "de_DE"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("de_DE")
                         }
                         MenuItem {
                             text: "Français"
                             checkable: true
                             checked: _languageManager.currentLanguage === "fr_FR"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("fr_FR")
                         }
                         MenuItem {
                             text: "Español"
                             checkable: true
                             checked: _languageManager.currentLanguage === "es_ES"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("es_ES")
                         }
                         MenuItem {
                             text: "Português"
                             checkable: true
                             checked: _languageManager.currentLanguage === "pt_BR"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("pt_BR")
                         }
                         MenuItem {
                             text: "Italiano"
                             checkable: true
                             checked: _languageManager.currentLanguage === "it_IT"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("it_IT")
                         }
                         MenuItem {
                             text: "العربية"
                             checkable: true
                             checked: _languageManager.currentLanguage === "ar_SA"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("ar_SA")
                         }
                         MenuItem {
                             text: "हिन्दी"
                             checkable: true
                             checked: _languageManager.currentLanguage === "hi_IN"
+                            ActionGroup.group: languageActionGroup
                             onTriggered: _languageManager.loadLanguage("hi_IN")
                         }
                     }

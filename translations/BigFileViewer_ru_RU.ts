@@ -2676,42 +2676,42 @@ Click &apos;Add Rule&apos; to create one.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/FileTabBar.qml" line="252"/>
+        <location filename="../src/qml/FileTabBar.qml" line="258"/>
         <source>Open New File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/FileTabBar.qml" line="271"/>
+        <location filename="../src/qml/FileTabBar.qml" line="277"/>
         <source>Close</source>
         <translation type="unfinished">Закрыть</translation>
     </message>
     <message>
-        <location filename="../src/qml/FileTabBar.qml" line="280"/>
+        <location filename="../src/qml/FileTabBar.qml" line="286"/>
         <source>Close Others</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/FileTabBar.qml" line="290"/>
+        <location filename="../src/qml/FileTabBar.qml" line="296"/>
         <source>Close All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/FileTabBar.qml" line="299"/>
+        <location filename="../src/qml/FileTabBar.qml" line="305"/>
         <source>Close to the Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/FileTabBar.qml" line="311"/>
+        <location filename="../src/qml/FileTabBar.qml" line="317"/>
         <source>Duplicate Tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/FileTabBar.qml" line="322"/>
+        <location filename="../src/qml/FileTabBar.qml" line="328"/>
         <source>Copy Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/FileTabBar.qml" line="334"/>
+        <location filename="../src/qml/FileTabBar.qml" line="340"/>
         <source>Open Containing Folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3393,576 +3393,576 @@ This action cannot be undone.</source>
 <context>
     <name>Main</name>
     <message>
-        <location filename="../src/qml/Main.qml" line="103"/>
+        <location filename="../src/qml/Main.qml" line="110"/>
         <source>Drop file to open</source>
         <translation>Перетащите файл, чтобы открыть</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="408"/>
+        <location filename="../src/qml/Main.qml" line="415"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="415"/>
+        <location filename="../src/qml/Main.qml" line="422"/>
         <source>Open File...</source>
         <translation>Открыть файл...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="420"/>
+        <location filename="../src/qml/Main.qml" line="427"/>
         <source>Open Remote File...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="430"/>
+        <location filename="../src/qml/Main.qml" line="437"/>
         <source>Recent Files</source>
         <translation>Недавние файлы</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="452"/>
+        <location filename="../src/qml/Main.qml" line="459"/>
         <source>Clear Recent Files</source>
         <translation>Очистить список недавних</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="460"/>
+        <location filename="../src/qml/Main.qml" line="467"/>
         <source>Paste from Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="465"/>
-        <location filename="../src/qml/Main.qml" line="765"/>
+        <location filename="../src/qml/Main.qml" line="472"/>
+        <location filename="../src/qml/Main.qml" line="772"/>
         <source>Reload File</source>
         <translation>Перезагрузить файл</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="473"/>
+        <location filename="../src/qml/Main.qml" line="480"/>
         <source>Export...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="479"/>
+        <location filename="../src/qml/Main.qml" line="486"/>
         <source>Monitor Directory...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="490"/>
+        <location filename="../src/qml/Main.qml" line="497"/>
         <source>Search</source>
         <translation>Поиск</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="501"/>
+        <location filename="../src/qml/Main.qml" line="508"/>
         <source>Filter</source>
         <translation>Фильтр</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="511"/>
+        <location filename="../src/qml/Main.qml" line="518"/>
         <source>Details</source>
         <translation>Детали</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="521"/>
+        <location filename="../src/qml/Main.qml" line="528"/>
         <source>Go To</source>
         <translation>Перейти</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="526"/>
+        <location filename="../src/qml/Main.qml" line="533"/>
         <source>Bookmark</source>
         <translation>Закладка</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="533"/>
+        <location filename="../src/qml/Main.qml" line="540"/>
         <source>Add/Remove Bookmark</source>
         <translation>Добавить/Удалить закладку</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="538"/>
+        <location filename="../src/qml/Main.qml" line="545"/>
         <source>Edit Bookmark Comment...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="547"/>
-        <location filename="../src/qml/Main.qml" line="2145"/>
+        <location filename="../src/qml/Main.qml" line="554"/>
+        <location filename="../src/qml/Main.qml" line="2175"/>
         <source>Next Bookmark</source>
         <translation>Следующая закладка</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="557"/>
-        <location filename="../src/qml/Main.qml" line="2155"/>
+        <location filename="../src/qml/Main.qml" line="564"/>
+        <location filename="../src/qml/Main.qml" line="2185"/>
         <source>Previous Bookmark</source>
         <translation>Предыдущая закладка</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="568"/>
+        <location filename="../src/qml/Main.qml" line="575"/>
         <source>Save Bookmarks...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="573"/>
+        <location filename="../src/qml/Main.qml" line="580"/>
         <source>Load Bookmarks...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="578"/>
+        <location filename="../src/qml/Main.qml" line="585"/>
         <source>Clear All Bookmarks</source>
         <translation>Очистить все закладки</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="588"/>
-        <location filename="../src/qml/Main.qml" line="593"/>
+        <location filename="../src/qml/Main.qml" line="595"/>
+        <location filename="../src/qml/Main.qml" line="600"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="597"/>
+        <location filename="../src/qml/Main.qml" line="604"/>
         <source>Text View (Raw)</source>
         <translation>Текстовый вид (Raw)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="606"/>
+        <location filename="../src/qml/Main.qml" line="613"/>
         <source>Grid View (Parsed)</source>
         <translation>Табличный вид (Parsed)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="620"/>
+        <location filename="../src/qml/Main.qml" line="627"/>
         <source>Columns</source>
         <translation>Столбцы</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="624"/>
+        <location filename="../src/qml/Main.qml" line="631"/>
         <source>Line Number</source>
         <translation>Номер строки</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="630"/>
+        <location filename="../src/qml/Main.qml" line="637"/>
         <source>Time</source>
         <translation>Время</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="636"/>
+        <location filename="../src/qml/Main.qml" line="643"/>
         <source>Level</source>
         <translation>Уровень</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="642"/>
-        <location filename="../src/qml/Main.qml" line="1827"/>
+        <location filename="../src/qml/Main.qml" line="649"/>
+        <location filename="../src/qml/Main.qml" line="1857"/>
         <source>Message</source>
         <translation>Сообщение</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="651"/>
+        <location filename="../src/qml/Main.qml" line="658"/>
         <source>Show All Columns</source>
         <translation>Показать все столбцы</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="658"/>
+        <location filename="../src/qml/Main.qml" line="665"/>
         <source>Hide Optional Columns</source>
         <translation>Скрыть необязательные столбцы</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="670"/>
+        <location filename="../src/qml/Main.qml" line="677"/>
         <source>Navigation Markers</source>
         <translation>Маркеры навигации</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="680"/>
+        <location filename="../src/qml/Main.qml" line="687"/>
         <source>Tools</source>
         <translation>Инструменты</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="687"/>
-        <location filename="../src/qml/Main.qml" line="2211"/>
+        <location filename="../src/qml/Main.qml" line="694"/>
+        <location filename="../src/qml/Main.qml" line="2241"/>
         <source>Advanced Filter...</source>
         <translation>Расширенный фильтр...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="691"/>
+        <location filename="../src/qml/Main.qml" line="698"/>
         <source>Filter Templates...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="699"/>
+        <location filename="../src/qml/Main.qml" line="706"/>
         <source>Workspaces...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="709"/>
+        <location filename="../src/qml/Main.qml" line="716"/>
         <source>Export Visible Lines...</source>
         <translation>Экспорт видимых строк...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="714"/>
+        <location filename="../src/qml/Main.qml" line="721"/>
         <source>Follow Mode (Live)</source>
         <translation>Режим слежения (Live)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="725"/>
+        <location filename="../src/qml/Main.qml" line="732"/>
         <source>Show Delta Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="737"/>
+        <location filename="../src/qml/Main.qml" line="744"/>
         <source>Merge Rolling Logs...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="746"/>
+        <location filename="../src/qml/Main.qml" line="753"/>
         <source>Statistics...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="755"/>
+        <location filename="../src/qml/Main.qml" line="762"/>
         <source>Dashboard...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="760"/>
+        <location filename="../src/qml/Main.qml" line="767"/>
         <source>AI Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="777"/>
+        <location filename="../src/qml/Main.qml" line="784"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="784"/>
+        <location filename="../src/qml/Main.qml" line="791"/>
         <source>Theme</source>
         <translation>Тема</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="806"/>
+        <location filename="../src/qml/Main.qml" line="820"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="889"/>
+        <location filename="../src/qml/Main.qml" line="919"/>
         <source>Encoding</source>
         <translation>Кодировка</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="910"/>
+        <location filename="../src/qml/Main.qml" line="940"/>
         <source>Data Sanitization...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="915"/>
+        <location filename="../src/qml/Main.qml" line="945"/>
         <source>Keyword Colors...</source>
         <translation>Цвета ключевых слов...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="920"/>
+        <location filename="../src/qml/Main.qml" line="950"/>
         <source>Email Alerts...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="929"/>
+        <location filename="../src/qml/Main.qml" line="959"/>
         <source>Jira Integration...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="938"/>
+        <location filename="../src/qml/Main.qml" line="968"/>
         <source>GitHub Integration...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="947"/>
+        <location filename="../src/qml/Main.qml" line="977"/>
         <source>Hide Scroll Markers</source>
         <translation>Скрыть маркеры прокрутки</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="947"/>
+        <location filename="../src/qml/Main.qml" line="977"/>
         <source>Show Scroll Markers</source>
         <translation>Показать маркеры прокрутки</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="954"/>
+        <location filename="../src/qml/Main.qml" line="984"/>
         <source>Register...</source>
         <translation>Регистрация...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="958"/>
+        <location filename="../src/qml/Main.qml" line="988"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="968"/>
+        <location filename="../src/qml/Main.qml" line="998"/>
         <source>Data Source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="975"/>
+        <location filename="../src/qml/Main.qml" line="1005"/>
         <source>Connect Database...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="983"/>
+        <location filename="../src/qml/Main.qml" line="1013"/>
         <source>Cloud Storage...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="991"/>
+        <location filename="../src/qml/Main.qml" line="1021"/>
         <source>Windows Event Log...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1000"/>
+        <location filename="../src/qml/Main.qml" line="1030"/>
         <source>System Trace...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1012"/>
+        <location filename="../src/qml/Main.qml" line="1042"/>
         <source>Analyze</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1019"/>
+        <location filename="../src/qml/Main.qml" line="1049"/>
         <source>SQL Query...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1027"/>
+        <location filename="../src/qml/Main.qml" line="1057"/>
         <source>Correlation Analysis...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1035"/>
+        <location filename="../src/qml/Main.qml" line="1065"/>
         <source>Distinct Values...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1043"/>
+        <location filename="../src/qml/Main.qml" line="1073"/>
         <source>Text Transform...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1052"/>
+        <location filename="../src/qml/Main.qml" line="1082"/>
         <source>Parser Test...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1060"/>
+        <location filename="../src/qml/Main.qml" line="1090"/>
         <source>Advanced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1067"/>
+        <location filename="../src/qml/Main.qml" line="1097"/>
         <source>Rule Wizard...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1075"/>
+        <location filename="../src/qml/Main.qml" line="1105"/>
         <source>Notifications...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1083"/>
+        <location filename="../src/qml/Main.qml" line="1113"/>
         <source>Report Scheduler...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1092"/>
+        <location filename="../src/qml/Main.qml" line="1122"/>
         <source>Plugin Manager...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1096"/>
+        <location filename="../src/qml/Main.qml" line="1126"/>
         <source>Check for Updates...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1167"/>
+        <location filename="../src/qml/Main.qml" line="1197"/>
         <source>High-performance large file viewer</source>
         <translation>Высокопроизводительный просмотрщик больших файлов</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1173"/>
+        <location filename="../src/qml/Main.qml" line="1203"/>
         <source>Supports files over 10GB</source>
         <translation>Поддерживает файлы более 10 ГБ</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1328"/>
+        <location filename="../src/qml/Main.qml" line="1358"/>
         <source>Open Log File</source>
         <translation>Открыть лог-файл</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1351"/>
+        <location filename="../src/qml/Main.qml" line="1381"/>
         <source>Export Visible Lines</source>
         <translation>Экспорт видимых строк</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1391"/>
+        <location filename="../src/qml/Main.qml" line="1421"/>
         <source>Find:</source>
         <translation>Найти:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1400"/>
+        <location filename="../src/qml/Main.qml" line="1430"/>
         <source>Enter search text (supports regex)...</source>
         <translation>Введите текст для поиска (поддержка regex)...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1417"/>
-        <location filename="../src/qml/Main.qml" line="1595"/>
+        <location filename="../src/qml/Main.qml" line="1447"/>
+        <location filename="../src/qml/Main.qml" line="1625"/>
         <source>Regex</source>
         <translation>Regex</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1447"/>
+        <location filename="../src/qml/Main.qml" line="1477"/>
         <source>Find</source>
         <translation>Найти</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1473"/>
+        <location filename="../src/qml/Main.qml" line="1503"/>
         <source>Previous</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1499"/>
+        <location filename="../src/qml/Main.qml" line="1529"/>
         <source>Next</source>
         <translation>Далее</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1521"/>
+        <location filename="../src/qml/Main.qml" line="1551"/>
         <source>matches</source>
         <translation>совпадений</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1569"/>
+        <location filename="../src/qml/Main.qml" line="1599"/>
         <source>Filter:</source>
         <translation>Фильтр:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1578"/>
+        <location filename="../src/qml/Main.qml" line="1608"/>
         <source>Enter filter text (supports regex)...</source>
         <translation>Введите текст фильтра (поддержка regex)...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1625"/>
+        <location filename="../src/qml/Main.qml" line="1655"/>
         <source>Apply</source>
         <translation>Применить</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1647"/>
+        <location filename="../src/qml/Main.qml" line="1677"/>
         <source>Clear</source>
         <translation>Очистить</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1671"/>
+        <location filename="../src/qml/Main.qml" line="1701"/>
         <source>Showing</source>
         <translation>Показано</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1717"/>
-        <location filename="../src/qml/Main.qml" line="1971"/>
+        <location filename="../src/qml/Main.qml" line="1747"/>
+        <location filename="../src/qml/Main.qml" line="2001"/>
         <source>Line</source>
         <translation>Строка</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1971"/>
+        <location filename="../src/qml/Main.qml" line="2001"/>
         <source>Line Details</source>
         <translation>Детали строки</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1982"/>
+        <location filename="../src/qml/Main.qml" line="2012"/>
         <source>Raw</source>
         <translation>Исходный</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1982"/>
+        <location filename="../src/qml/Main.qml" line="2012"/>
         <source>JSON</source>
         <translation>JSON</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2009"/>
+        <location filename="../src/qml/Main.qml" line="2039"/>
         <source>Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2056"/>
+        <location filename="../src/qml/Main.qml" line="2086"/>
         <source>(Select a line to view details)</source>
         <translation>(Выберите строку для просмотра деталей)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2090"/>
+        <location filename="../src/qml/Main.qml" line="2120"/>
         <source>No file opened</source>
         <translation>Файл не открыт</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2100"/>
+        <location filename="../src/qml/Main.qml" line="2130"/>
         <source>Size:</source>
         <translation>Размер:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2109"/>
-        <location filename="../src/qml/Main.qml" line="2110"/>
+        <location filename="../src/qml/Main.qml" line="2139"/>
+        <location filename="../src/qml/Main.qml" line="2140"/>
         <source>Lines:</source>
         <translation>Строк:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2118"/>
+        <location filename="../src/qml/Main.qml" line="2148"/>
         <source>Registered</source>
         <translation>Зарегистрировано</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2118"/>
+        <location filename="../src/qml/Main.qml" line="2148"/>
         <source>Trial:</source>
         <translation>Пробная версия:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2118"/>
+        <location filename="../src/qml/Main.qml" line="2148"/>
         <source>days left</source>
         <translation>дней осталось</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2130"/>
+        <location filename="../src/qml/Main.qml" line="2160"/>
         <source>Copy Line</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2134"/>
+        <location filename="../src/qml/Main.qml" line="2164"/>
         <source>Copy Line Number</source>
         <translation>Копировать номер строки</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2141"/>
+        <location filename="../src/qml/Main.qml" line="2171"/>
         <source>Toggle Bookmark</source>
         <translation>Переключить закладку</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2168"/>
+        <location filename="../src/qml/Main.qml" line="2198"/>
         <source>Show Details</source>
         <translation>Показать детали</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2172"/>
+        <location filename="../src/qml/Main.qml" line="2202"/>
         <source>Format JSON</source>
         <translation>Форматировать JSON</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2183"/>
+        <location filename="../src/qml/Main.qml" line="2213"/>
         <source>Filter This Level</source>
         <translation>Фильтровать этот уровень</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2197"/>
+        <location filename="../src/qml/Main.qml" line="2227"/>
         <source>Filter This Keyword...</source>
         <translation>Фильтровать это ключевое слово...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2207"/>
+        <location filename="../src/qml/Main.qml" line="2237"/>
         <source>Go To Line...</source>
         <translation>Перейти к строке...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2218"/>
+        <location filename="../src/qml/Main.qml" line="2248"/>
         <source>Create Jira Issue...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2229"/>
+        <location filename="../src/qml/Main.qml" line="2259"/>
         <source>Create GitHub Issue...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2243"/>
+        <location filename="../src/qml/Main.qml" line="2273"/>
         <source>Ask AI about this line...</source>
         <translation type="unfinished"></translation>
     </message>

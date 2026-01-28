@@ -99,7 +99,7 @@ Rectangle {
                     RowLayout {
                         anchors.fill: parent
                         anchors.leftMargin: 10
-                        anchors.rightMargin: 4
+                        anchors.rightMargin: 24  // 为关闭按钮留出空间
                         spacing: 4
                         
                         // 文件图标
@@ -123,41 +123,15 @@ Rectangle {
                             ToolTip.text: modelData.filePath || ""
                             ToolTip.delay: 800
                         }
-                        
-                        // 关闭按钮
-                        Rectangle {
-                            id: closeBtn
-                            width: 18
-                            height: 18
-                            radius: 3
-                            color: closeBtnMouseArea.containsMouse ? "#E81123" : "transparent"
-                            visible: isHovered || isActive
-                            Layout.alignment: Qt.AlignVCenter
-                            
-                            Text {
-                                anchors.centerIn: parent
-                                text: "✕"
-                                color: closeBtnMouseArea.containsMouse ? "white" : textColor
-                                font.pixelSize: 10
-                            }
-                            
-                            MouseArea {
-                                id: closeBtnMouseArea
-                                anchors.fill: parent
-                                hoverEnabled: true
-                                onClicked: {
-                                    if (tabManager) {
-                                        tabManager.closeTab(index)
-                                    }
-                                }
-                            }
-                        }
                     }
                     
-                    // 主鼠标区域
+                    // 主鼠标区域 - 不覆盖关闭按钮区域
                     MouseArea {
                         id: tabMouseArea
-                        anchors.fill: parent
+                        anchors.left: parent.left
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.right: closeBtn.left  // 停在关闭按钮之前
                         hoverEnabled: true
                         acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
                         
@@ -186,6 +160,38 @@ Rectangle {
                         
                         onDoubleClicked: {
                             // 双击可以重命名或其他操作
+                        }
+                    }
+                    
+                    // 关闭按钮 - 独立的鼠标区域，不受 tabMouseArea 影响
+                    Rectangle {
+                        id: closeBtn
+                        anchors.right: parent.right
+                        anchors.rightMargin: 4
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: 18
+                        height: 18
+                        radius: 3
+                        color: closeBtnMouseArea.containsMouse ? "#E81123" : "transparent"
+                        visible: tabMouseArea.containsMouse || closeBtnMouseArea.containsMouse || isActive
+                        
+                        Text {
+                            anchors.centerIn: parent
+                            text: "✕"
+                            color: closeBtnMouseArea.containsMouse ? "white" : textColor
+                            font.pixelSize: 10
+                        }
+                        
+                        MouseArea {
+                            id: closeBtnMouseArea
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onClicked: {
+                                console.log("[FileTabBar] Close button clicked, index:", index)
+                                if (tabManager) {
+                                    tabManager.closeTab(index)
+                                }
+                            }
                         }
                     }
                     
