@@ -84,6 +84,8 @@ class AIAnalysisManager : public QObject
     Q_PROPERTY(QString currentService READ currentService WRITE setCurrentService NOTIFY currentServiceChanged)
     Q_PROPERTY(bool isAnalyzing READ isAnalyzing NOTIFY analyzingStateChanged)
     Q_PROPERTY(QString proxyType READ proxyType WRITE setProxyType NOTIFY proxyChanged)
+    Q_PROPERTY(bool useLocalLLM READ useLocalLLM WRITE setUseLocalLLM NOTIFY useLocalLLMChanged)
+    Q_PROPERTY(bool localLLMAvailable READ isLocalLLMAvailable NOTIFY localLLMAvailableChanged)
 
 public:
     /**
@@ -216,6 +218,62 @@ public:
      */
     Q_INVOKABLE QVariantMap getCustomProxy() const;
     
+    // ===================== 本地 LLM 支持 =====================
+    
+    /**
+     * @brief 是否使用本地 LLM
+     */
+    Q_INVOKABLE bool useLocalLLM() const { return m_useLocalLLM; }
+    
+    /**
+     * @brief 设置是否使用本地 LLM
+     * @param use 是否使用
+     */
+    Q_INVOKABLE void setUseLocalLLM(bool use);
+    
+    /**
+     * @brief 检查本地 LLM 是否可用
+     */
+    Q_INVOKABLE bool isLocalLLMAvailable() const;
+    
+    /**
+     * @brief 获取本地 LLM 模型列表
+     */
+    Q_INVOKABLE QVariantList getLocalModels() const;
+    
+    /**
+     * @brief 获取当前本地模型
+     */
+    Q_INVOKABLE QString currentLocalModel() const;
+    
+    /**
+     * @brief 设置当前本地模型
+     */
+    Q_INVOKABLE void setCurrentLocalModel(const QString &modelId);
+    
+    /**
+     * @brief 获取 llama.cpp 路径
+     */
+    Q_INVOKABLE QString getLlamaCppPath() const;
+    
+    /**
+     * @brief 设置 llama.cpp 路径
+     */
+    Q_INVOKABLE void setLlamaCppPath(const QString &path);
+    
+    /**
+     * @brief 添加本地模型
+     * @param modelPath GGUF 模型文件路径
+     * @param name 显示名称
+     * @return 模型 ID
+     */
+    Q_INVOKABLE QString addLocalModel(const QString &modelPath, const QString &name = QString());
+    
+    /**
+     * @brief 移除本地模型
+     */
+    Q_INVOKABLE void removeLocalModel(const QString &modelId);
+    
     // ===================== AI 分析 =====================
     
     /**
@@ -286,6 +344,9 @@ signals:
     void currentServiceChanged();
     void analyzingStateChanged();
     void proxyChanged();
+    void useLocalLLMChanged();
+    void localLLMAvailableChanged();
+    void localModelChanged();
 
 private slots:
     void onNetworkReply(QNetworkReply *reply);
@@ -344,6 +405,9 @@ private:
     // 状态
     bool m_isAnalyzing = false;
     QString m_accumulatedResponse;
+    
+    // 本地 LLM 模式
+    bool m_useLocalLLM = false;
     
     // 加密密钥（简单混淆，非安全级加密）
     static const QByteArray ENCRYPTION_KEY;

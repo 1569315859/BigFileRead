@@ -10,6 +10,10 @@
 #include <QCryptographicHash>
 #include <QSettings>
 #include <QDebug>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QDateTime>
+#include <QCoreApplication>
 
 #ifdef ENABLE_LICENSE_SYSTEM
 // OpenSSL (only included when license system is enabled via CMake)
@@ -221,4 +225,163 @@ bool LicenseManager::isRegistered()
 QString LicenseManager::lastError() const
 {
     return m_lastError;
+}
+
+// ============================================================================
+// Online Activation
+// ============================================================================
+
+bool LicenseManager::activateOnline(const QString &licenseKey)
+{
+    if (verifyLicense(licenseKey)) {
+        saveLicense(licenseKey);
+        m_validated = true;
+        return true;
+    }
+    return false;
+}
+
+// ============================================================================
+// Offline Activation
+// ============================================================================
+
+QString LicenseManager::generateActivationRequest()
+{
+    // Create activation request JSON
+    QJsonObject request;
+    request["machineId"] = getMachineId();
+    request["timestamp"] = QDateTime::currentDateTimeUtc().toString(Qt::ISODate);
+    request["appVersion"] = QCoreApplication::applicationVersion();
+    request["platform"] = QSysInfo::prettyProductName();
+    
+    QJsonDocument doc(request);
+    QByteArray json = doc.toJson(QJsonDocument::Compact);
+    
+    // Return Base64-encoded request
+    return QString::fromLatin1(json.toBase64());
+}
+
+bool LicenseManager::activateOffline(const QString &activationResponse)
+{
+    m_lastError.clear();
+    
+    if (activationResponse.isEmpty()) {
+        m_lastError = "Activation response is empty";
+        return false;
+    }
+    
+    // Decode Base64 response
+    QByteArray responseData = QByteArray::fromBase64(activationResponse.toLatin1());
+    if (responseData.isEmpty()) {
+        m_lastError = "Invalid Base64 encoding in activation response";
+        return false;
+    }
+    
+    // Parse JSON response
+    QJsonDocument doc = QJsonDocument::fromJson(responseData);
+    if (!doc.isObject()) {
+        m_lastError = "Invalid activation response format";
+        return false;
+    }
+    
+    QJsonObject response = doc.object();
+    
+    // Verify machine ID matches
+    QString responseMachineId = response["machineId"].toString();
+    if (responseMachineId != getMachineId()) {
+        m_lastError = "Activation response is for a different machine";
+        return false;
+    }
+    
+    // Get license key from response
+    QString licenseKey = response["licenseKey"].toString();
+    if (licenseKey.isEmpty()) {
+        m_lastError = "No license key in activation response";
+        return false;
+    }
+    
+    // Verify the license key
+    if (!verifyLicense(licenseKey)) {
+        return false; // m_lastError already set by verifyLicense
+    }
+    
+    // Extract tier and expiry info
+    m_licenseTier = response["tier"].toInt(0);
+    m_licenseExpiry = response["expiry"].toString();
+    
+    // Save the license
+    saveLicense(licenseKey);
+    
+    // Save tier and expiry
+    QSettings settings;
+    settings.setValue("license/tier", m_licenseTier);
+    settings.setValue("license/expiry", m_licenseExpiry);
+    
+    m_validated = true;
+    qDebug() << "[LicenseManager] Offline activation successful, tier:" << m_licenseTier;
+    
+    return true;
+}
+
+// ============================================================================
+// License Storage
+// ============================================================================
+
+void LicenseManager::saveLicense(const QString &licenseKey)
+{
+    QSettings settings;
+    settings.setValue("license/key", licenseKey);
+    settings.setValue("license/activatedAt", QDateTime::currentDateTimeUtc().toString(Qt::ISODate));
+    settings.sync();
+    qDebug() << "[LicenseManager] License saved to settings";
+}
+
+QString LicenseManager::loadLicense() const
+{
+    QSettings settings;
+    return settings.value("license/key").toString();
+}
+
+void LicenseManager::clearLicense()
+{
+    QSettings settings;
+    settings.remove("license/key");
+    settings.remove("license/tier");
+    settings.remove("license/expiry");
+    settings.remove("license/activatedAt");
+    settings.sync();
+    qDebug() << "[LicenseManager] License cleared from settings";
+}
+
+int LicenseManager::getLicenseTier() const
+{
+    if (m_licenseTier > 0) {
+        return m_licenseTier;
+    }
+    QSettings settings;
+    return settings.value("license/tier", 0).toInt();
+}
+
+QString LicenseManager::getLicenseExpiry() const
+{
+    if (!m_licenseExpiry.isEmpty()) {
+        return m_licenseExpiry;
+    }
+    QSettings settings;
+    return settings.value("license/expiry").toString();
+}
+
+bool LicenseManager::isLicenseExpired() const
+{
+    QString expiry = getLicenseExpiry();
+    if (expiry.isEmpty()) {
+        return false; // Perpetual license or no expiry set
+    }
+    
+    QDateTime expiryDate = QDateTime::fromString(expiry, Qt::ISODate);
+    if (!expiryDate.isValid()) {
+        return false;
+    }
+    
+    return QDateTime::currentDateTimeUtc() > expiryDate;
 }

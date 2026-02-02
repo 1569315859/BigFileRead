@@ -98,3 +98,135 @@ QString AppController::urlToLocalPath(const QUrl &url) const {
     }
     return path;
 }
+
+void AppController::setCurrentViewMode(int mode) {
+    if (m_currentViewMode != mode) {
+        m_currentViewMode = mode;
+        emit viewModeChanged();
+    }
+}
+
+int AppController::detectFileType(const QString &filePath) const {
+    QFileInfo fileInfo(filePath);
+    QString suffix = fileInfo.suffix().toLower();
+    
+    // 根据文件扩展名初步判断
+    if (suffix == "csv" || suffix == "tsv") {
+        return CSVFile;
+    }
+    if (suffix == "json") {
+        return JSONFile;
+    }
+    if (suffix == "jsonl" || suffix == "ndjson") {
+        return JSONLFile;
+    }
+    if (suffix == "log" || suffix == "txt") {
+        // 需要进一步检测内容
+        QFile file(filePath);
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QByteArray sample = file.read(4096);
+            file.close();
+            
+            QString content = QString::fromUtf8(sample);
+            
+            // 将内容按行分割
+            QStringList lines = content.split('\n', Qt::SkipEmptyParts);
+            
+            // 检测是否为JSON
+            QString trimmed = content.trimmed();
+            if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
+                // 可能是JSON，检查是否为JSONL（每行一个JSON对象）
+                int jsonObjectLines = 0;
+                for (int i = 0; i < qMin(5, lines.size()); ++i) {
+                    QString line = lines[i].trimmed();
+                    if (line.startsWith('{') && line.endsWith('}')) {
+                        jsonObjectLines++;
+                    }
+                }
+                if (jsonObjectLines >= 2) {
+                    return JSONLFile;
+                }
+                return JSONFile;
+            }
+            
+            // 检测是否为CSV（含有逗号、制表符等分隔符）
+            int commaCount = content.count(',');
+            int tabCount = content.count('\t');
+            int semicolonCount = content.count(';');
+            int pipeCount = content.count('|');
+            
+            int maxDelimiter = qMax(qMax(commaCount, tabCount), qMax(semicolonCount, pipeCount));
+            int lineCount = lines.size();
+            
+            // 如果平均每行有多个分隔符，可能是结构化数据
+            if (lineCount > 0 && maxDelimiter / lineCount >= 2) {
+                return CSVFile;
+            }
+        }
+        
+        return LogFile;
+    }
+    
+    // 默认作为日志文件处理
+    return LogFile;
+}
+
+int AppController::suggestViewMode(int fileType) const {
+    switch (static_cast<FileType>(fileType)) {
+        case CSVFile:
+            return CSVTableView;
+        case JSONFile:
+            return JSONTreeView;
+        case JSONLFile:
+            return JSONLTableView;
+        case LogFile:
+        default:
+            return LogView;
+    }
+}
+
+int AppController::openFileWithAutoMode(const QString &filePath) {
+    int fileType = detectFileType(filePath);
+    int suggestedMode = suggestViewMode(fileType);
+    
+    // 添加到最近文件列表
+    addRecentFile(filePath);
+    
+    // 发射信号通知QML
+    emit fileTypeDetected(fileType, suggestedMode);
+    
+    // 自动切换视图模式
+    setCurrentViewMode(suggestedMode);
+    
+    return suggestedMode;
+}
+
+QString AppController::getFileTypeDescription(int fileType) const {
+    switch (static_cast<FileType>(fileType)) {
+        case CSVFile:
+            return tr("CSV/TSV Structured Data");
+        case JSONFile:
+            return tr("JSON Document");
+        case JSONLFile:
+            return tr("JSON Lines (JSONL/NDJSON)");
+        case LogFile:
+            return tr("Log File");
+        default:
+            return tr("Unknown File Type");
+    }
+}
+
+QString AppController::getViewModeDescription(int viewMode) const {
+    switch (static_cast<ViewMode>(viewMode)) {
+        case CSVTableView:
+            return tr("Table View");
+        case JSONTreeView:
+            return tr("Tree View");
+        case JSONLTableView:
+            return tr("JSONL Table View");
+        case LogView:
+        default:
+            return tr("Log View");
+    }
+}
+

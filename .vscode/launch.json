@@ -34,7 +34,7 @@
                     // 注意：下面这个路径要换成你电脑上真实的 Qt bin 路径！
                     // 比如: D:/Qt/6.5.3/msvc2019_64/bin
                     // ${env:PATH} 表示保留系统原本的 PATH，不要覆盖掉了
-                    "value": "E:/QT/6.10.1/msvc2022_64/bin;${env:PATH}"
+                    "value": "E:/QT/6.8.6/msvc2022_64/bin;${env:PATH}"
                 }
             ],
             "console": "integratedTerminal"

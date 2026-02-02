@@ -4,57 +4,67 @@
 <context>
     <name>AIAnalysisManager</name>
     <message>
-        <location filename="../src/AIAnalysisManager.cpp" line="95"/>
+        <location filename="../src/AIAnalysisManager.cpp" line="97"/>
         <source>Qwen (Tongyi Qianwen)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AIAnalysisManager.cpp" line="109"/>
+        <location filename="../src/AIAnalysisManager.cpp" line="111"/>
         <source>Ernie (Wenxin Yiyan)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AIAnalysisManager.cpp" line="123"/>
+        <location filename="../src/AIAnalysisManager.cpp" line="125"/>
         <source>Spark (iFlytek)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AIAnalysisManager.cpp" line="347"/>
+        <location filename="../src/AIAnalysisManager.cpp" line="349"/>
         <source>Analysis already in progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AIAnalysisManager.cpp" line="352"/>
-        <source>Invalid service selected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/AIAnalysisManager.cpp" line="358"/>
-        <source>API Key not configured for service: %1</source>
+        <source>Local LLM not available. Please configure llama.cpp path.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AIAnalysisManager.cpp" line="407"/>
-        <source>Unknown service</source>
+        <location filename="../src/AIAnalysisManager.cpp" line="363"/>
+        <source>No local model selected. Please add and select a model.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/AIAnalysisManager.cpp" line="413"/>
+        <source>Invalid service selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AIAnalysisManager.cpp" line="419"/>
+        <source>API Key not configured for service: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AIAnalysisManager.cpp" line="468"/>
+        <source>Unknown service</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AIAnalysisManager.cpp" line="474"/>
         <source>API Key not configured</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AIAnalysisManager.cpp" line="504"/>
+        <location filename="../src/AIAnalysisManager.cpp" line="565"/>
         <source>API Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AIAnalysisManager.cpp" line="543"/>
+        <location filename="../src/AIAnalysisManager.cpp" line="604"/>
         <source>Connection successful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AIAnalysisManager.cpp" line="582"/>
+        <location filename="../src/AIAnalysisManager.cpp" line="643"/>
         <source>Failed to parse response</source>
         <translation type="unfinished"></translation>
     </message>
@@ -498,6 +508,82 @@
     </message>
 </context>
 <context>
+    <name>AppController</name>
+    <message>
+        <location filename="../src/AppController.cpp" line="207"/>
+        <source>CSV/TSV Structured Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AppController.cpp" line="209"/>
+        <source>JSON Document</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AppController.cpp" line="211"/>
+        <source>JSON Lines (JSONL/NDJSON)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AppController.cpp" line="213"/>
+        <source>Log File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AppController.cpp" line="215"/>
+        <source>Unknown File Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AppController.cpp" line="222"/>
+        <source>Table View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AppController.cpp" line="224"/>
+        <source>Tree View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AppController.cpp" line="226"/>
+        <source>JSONL Table View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AppController.cpp" line="229"/>
+        <source>Log View</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AutomationEngine</name>
+    <message>
+        <location filename="../src/AutomationEngine.cpp" line="145"/>
+        <source>Recording %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AutomationEngine.cpp" line="247"/>
+        <source>No script to play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AutomationEngine.cpp" line="253"/>
+        <source>Failed to load script: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AutomationEngine.cpp" line="259"/>
+        <source>Script has no actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AutomationEngine.cpp" line="648"/>
+        <source>Failed to load script</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BigFileModel</name>
     <message>
         <location filename="../src/BigFileModel.cpp" line="101"/>
@@ -673,6 +759,196 @@
     <message>
         <location filename="../src/qml/BookmarkPanel.qml" line="402"/>
         <source>%1 days ago</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CSVDataSource</name>
+    <message>
+        <location filename="../src/CSVDataSource.cpp" line="38"/>
+        <source>Cannot open file: %1</source>
+        <translation type="unfinished">Datei kann nicht geöffnet werden: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/CSVDataSource.cpp" line="743"/>
+        <source>Loaded %1 rows, %2 columns</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CSVTableView</name>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="108"/>
+        <source>%1 rows × %2 columns</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="117"/>
+        <source>Delimiter:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="125"/>
+        <source>Comma (,)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="126"/>
+        <source>Tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="127"/>
+        <source>Semicolon (;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="128"/>
+        <source>Pipe (|)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="167"/>
+        <source>Has Header</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="205"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="225"/>
+        <source>Export to CSV...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="226"/>
+        <source>Export Selected Rows...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="227"/>
+        <source>Copy to Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="583"/>
+        <source>Loading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="594"/>
+        <source>No data loaded.
+Drag and drop a CSV file here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="615"/>
+        <source>Row: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="621"/>
+        <source>Column: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="629"/>
+        <source>File size: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="643"/>
+        <source>Sort Ascending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="651"/>
+        <source>Sort Descending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="660"/>
+        <source>Auto Fit Width</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="668"/>
+        <source>Hide Column</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="677"/>
+        <source>Column Statistics...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="689"/>
+        <source>Copy Row</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="698"/>
+        <source>Copy Cell</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="708"/>
+        <source>Filter by this value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="740"/>
+        <source>Column Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="759"/>
+        <source>Column:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="762"/>
+        <source>Total Rows:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="765"/>
+        <source>Unique Values:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="768"/>
+        <source>Empty Values:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="772"/>
+        <source>Min:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="785"/>
+        <source>Max:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="798"/>
+        <source>Mean:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/CSVTableView.qml" line="814"/>
+        <source>Close</source>
+        <translation type="unfinished">Schließen</translation>
+    </message>
+</context>
+<context>
+    <name>ChartCanvas</name>
+    <message>
+        <location filename="../src/qml/ChartCanvas.qml" line="606"/>
+        <source>No data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1314,6 +1590,29 @@ Run analysis to find related log entries.</source>
     </message>
 </context>
 <context>
+    <name>DataDiffer</name>
+    <message>
+        <location filename="../src/DataDiffer.cpp" line="47"/>
+        <source>Cannot open left file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/DataDiffer.cpp" line="54"/>
+        <source>Cannot open right file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/DataDiffer.cpp" line="129"/>
+        <source>Cannot open CSV files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/DataDiffer.cpp" line="286"/>
+        <source>Cannot create output file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DataSanitizer</name>
     <message>
         <location filename="../src/DataSanitizer.cpp" line="51"/>
@@ -1723,6 +2022,69 @@ Run analysis to find related log entries.</source>
     <message>
         <location filename="../src/DatabaseConnector.cpp" line="453"/>
         <source>Profile name cannot be empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DiffView</name>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="17"/>
+        <source>Original</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="18"/>
+        <source>Modified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="63"/>
+        <source>Added: %1 | Deleted: %2 | Modified: %3 | Similarity: %4%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="81"/>
+        <source>Previous difference</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="88"/>
+        <source>%1 / %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="89"/>
+        <source>No diff</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="99"/>
+        <source>Next difference</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="109"/>
+        <source>Sync Scroll</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="116"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="123"/>
+        <source>Export as HTML</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="127"/>
+        <source>Export as Patch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DiffView.qml" line="131"/>
+        <source>Export as Text</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2584,108 +2946,228 @@ Click &apos;Add Rule&apos; to create one.</source>
 <context>
     <name>FeatureGate</name>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="275"/>
+        <location filename="../src/FeatureGate.cpp" line="299"/>
         <source>Pro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="279"/>
+        <location filename="../src/FeatureGate.cpp" line="303"/>
         <source>Enterprise</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="283"/>
+        <location filename="../src/FeatureGate.cpp" line="307"/>
         <source>Free</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="291"/>
+        <location filename="../src/FeatureGate.cpp" line="315"/>
         <source>Filter Templates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="292"/>
+        <location filename="../src/FeatureGate.cpp" line="316"/>
         <source>Save and load commonly used filter conditions for quick application of preset filter schemes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="295"/>
+        <location filename="../src/FeatureGate.cpp" line="319"/>
         <source>Workspaces</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="296"/>
+        <location filename="../src/FeatureGate.cpp" line="320"/>
         <source>Save current session state (open files, filter conditions, scroll position) and restore on next startup.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="299"/>
+        <location filename="../src/FeatureGate.cpp" line="323"/>
         <source>Delta Time Column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="300"/>
+        <location filename="../src/FeatureGate.cpp" line="324"/>
         <source>Display time difference between each log line and the previous one to help analyze performance bottlenecks.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="303"/>
+        <location filename="../src/FeatureGate.cpp" line="327"/>
         <source>Rolling Logs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="304"/>
+        <location filename="../src/FeatureGate.cpp" line="328"/>
         <source>Automatically merge segmented log files (log, log.1, log.2, etc.) and view as continuous logs.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="307"/>
+        <location filename="../src/FeatureGate.cpp" line="331"/>
         <source>Statistics Panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="308"/>
+        <location filename="../src/FeatureGate.cpp" line="332"/>
         <source>Visualize log level distribution, time trends, keyword frequency, and other statistical charts.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="311"/>
+        <location filename="../src/FeatureGate.cpp" line="335"/>
         <source>Remote Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="312"/>
+        <location filename="../src/FeatureGate.cpp" line="336"/>
         <source>Connect to remote servers via SFTP/SSH to view and monitor remote log files directly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="315"/>
+        <location filename="../src/FeatureGate.cpp" line="339"/>
         <source>Email Alerts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="316"/>
+        <location filename="../src/FeatureGate.cpp" line="340"/>
         <source>Automatically send email notifications when specific keywords (e.g., FATAL) are detected.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="319"/>
+        <location filename="../src/FeatureGate.cpp" line="343"/>
         <source>Jira Integration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="320"/>
+        <location filename="../src/FeatureGate.cpp" line="344"/>
         <source>Create Jira Issues directly from selected log snippets for bug tracking.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="323"/>
+        <location filename="../src/FeatureGate.cpp" line="347"/>
         <source>GitHub Integration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FeatureGate.cpp" line="324"/>
+        <location filename="../src/FeatureGate.cpp" line="348"/>
         <source>Create GitHub Issues directly from selected log snippets.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="352"/>
+        <source>CSV Support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="353"/>
+        <source>Open and view CSV/TSV files with automatic delimiter detection and column type inference.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="356"/>
+        <source>JSON Support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="357"/>
+        <source>Open and view JSON/JSONL files with tree view, path search, and syntax highlighting.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="360"/>
+        <source>Basic Charts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="361"/>
+        <source>Create basic bar charts, line charts, and pie charts from your data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="364"/>
+        <source>Advanced Charts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="365"/>
+        <source>Create histograms, scatter plots, and advanced visualizations with customization options.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="368"/>
+        <source>Visual Query Builder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="369"/>
+        <source>Build complex filter queries visually without writing code. Combine conditions with AND/OR operators.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="372"/>
+        <source>Data Diff</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="373"/>
+        <source>Compare two files or datasets side-by-side with highlighted differences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="376"/>
+        <source>Unlimited File Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="377"/>
+        <source>Open files of any size. Free version is limited to 1GB files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="380"/>
+        <source>Unlimited Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="381"/>
+        <source>Export all rows without limitation. Free version is limited to 1000 rows.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="384"/>
+        <source>Local AI Analysis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="385"/>
+        <source>Run AI-powered analysis locally using GGUF models. Your data never leaves your machine.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="388"/>
+        <source>Automation Engine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="389"/>
+        <source>Record and replay operations, create scripts for batch processing and scheduled tasks.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="392"/>
+        <source>Cloud AI Analysis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="393"/>
+        <source>Leverage powerful cloud AI models for advanced log analysis and insights.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="396"/>
+        <source>Priority Support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FeatureGate.cpp" line="397"/>
+        <source>Get priority technical support with faster response times and dedicated assistance.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3132,6 +3614,123 @@ Use &apos;Save Current Filter&apos; to create one</source>
     </message>
 </context>
 <context>
+    <name>JSONLTableModel</name>
+    <message>
+        <location filename="../src/JSONViewer.cpp" line="1046"/>
+        <source>Loading cancelled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/JSONViewer.cpp" line="1048"/>
+        <source>Loaded %1 rows, %2 columns</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>JSONTreeModel</name>
+    <message>
+        <location filename="../src/JSONViewer.cpp" line="159"/>
+        <source>JSON parse error: %1 at offset %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/JSONViewer.cpp" line="180"/>
+        <location filename="../src/JSONViewer.cpp" line="634"/>
+        <source>Loaded %1 nodes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/JSONViewer.cpp" line="632"/>
+        <source>Loading cancelled</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>JSONTreeView</name>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="78"/>
+        <source>%1 nodes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="129"/>
+        <source>Search... ($.path or value)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="145"/>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="146"/>
+        <source>Value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="147"/>
+        <source>Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="172"/>
+        <source>%1/%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="219"/>
+        <source>Expand All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="238"/>
+        <source>Collapse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="323"/>
+        <location filename="../src/qml/JSONTreeView.qml" line="598"/>
+        <source>Copy Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="520"/>
+        <source>Loading JSON...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="543"/>
+        <source>No JSON data loaded.
+Drag and drop a JSON file here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="566"/>
+        <source>No selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="590"/>
+        <source>Copy Value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="605"/>
+        <source>Expand All Children</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="612"/>
+        <source>Collapse All Children</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/JSONTreeView.qml" line="620"/>
+        <source>Filter by this value</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>JiraIntegration</name>
     <message>
         <location filename="../src/JiraIntegration.cpp" line="166"/>
@@ -3412,578 +4011,1047 @@ Diese Aktion kann nicht rückgängig gemacht werden.</translation>
     </message>
 </context>
 <context>
+    <name>LocalLLMEngine</name>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="184"/>
+        <location filename="../src/LocalLLMEngine.cpp" line="365"/>
+        <source>Model file not found: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="294"/>
+        <source>Cannot open file: %1</source>
+        <translation type="unfinished">Datei kann nicht geöffnet werden: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="301"/>
+        <source>Not a valid GGUF file (invalid magic number)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="313"/>
+        <source>Unsupported GGUF version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="348"/>
+        <source>llama.cpp not found. Please configure the path in settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="353"/>
+        <source>No model selected. Please add and select a model first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="358"/>
+        <source>Generation already in progress.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="475"/>
+        <source>llama.cpp crashed unexpectedly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="481"/>
+        <source>llama.cpp exited with code %1: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="528"/>
+        <source>Failed to start llama.cpp. Check if the path is correct and the file is executable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="531"/>
+        <source>llama.cpp crashed during execution.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="534"/>
+        <source>llama.cpp timed out.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LocalLLMEngine.cpp" line="537"/>
+        <source>Unknown error occurred while running llama.cpp.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>LocalLLMSettings</name>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="19"/>
+        <source>本地 AI 模型设置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="41"/>
+        <source>你是一个数据分析助手，帮助用户理解和分析日志文件、CSV数据等。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="54"/>
+        <source>模型配置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="58"/>
+        <source>生成参数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="62"/>
+        <source>系统提示词</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="66"/>
+        <source>测试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="91"/>
+        <source>模型文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="104"/>
+        <source>选择 GGUF 模型文件...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="112"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="182"/>
+        <source>浏览...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="119"/>
+        <source>支持的模型格式: GGUF (llama.cpp 格式)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="138"/>
+        <source>模型已加载</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="139"/>
+        <source>模型未加载</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="146"/>
+        <source>卸载模型</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="146"/>
+        <source>加载模型</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="164"/>
+        <source>llama.cpp 可执行文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="177"/>
+        <source>自动检测或手动指定 llama-cli 路径...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="187"/>
+        <source>自动检测</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="198"/>
+        <source>下载地址: https://github.com/ggerganov/llama.cpp/releases</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="213"/>
+        <source>硬件配置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="222"/>
+        <source>GPU 加速层数:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="232"/>
+        <source>(0 = 仅 CPU，增加此值可加速)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="238"/>
+        <source>CPU 线程数:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="248"/>
+        <source>(建议: 物理核心数)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="254"/>
+        <source>上下文长度:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="269"/>
+        <source>(更长 = 更多内存)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="279"/>
+        <source>推荐模型</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="307"/>
+        <source>下载</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="331"/>
+        <source>采样参数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="341"/>
+        <source>Temperature:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="357"/>
+        <source>Top P:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="373"/>
+        <source>Top K:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="392"/>
+        <source>参数说明</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="401"/>
+        <source>• Temperature: 控制输出的随机性。低值(0.1-0.5)更确定性，高值(0.8-1.5)更创意。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="407"/>
+        <source>• Top P: 核采样。只考虑累积概率达到此值的 token。0.9 是常用值。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="413"/>
+        <source>• Top K: 只考虑概率最高的 K 个 token。40 是常用值。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="422"/>
+        <source>快速预设</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="430"/>
+        <source>精确分析</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="438"/>
+        <source>平衡</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="446"/>
+        <source>创意</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="467"/>
+        <source>系统提示词定义 AI 的角色和行为方式：</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="478"/>
+        <source>输入系统提示词...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="488"/>
+        <source>预设:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="493"/>
+        <source>数据分析助手</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="494"/>
+        <source>日志分析专家</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="495"/>
+        <source>代码解释器</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="496"/>
+        <source>通用助手</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="502"/>
+        <source>你是一个数据分析助手，帮助用户理解和分析日志文件、CSV数据等。请给出简洁、准确的分析结果。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="505"/>
+        <source>你是一个日志分析专家，专注于识别错误模式、异常行为和性能问题。请分析日志内容并提供可操作的建议。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="508"/>
+        <source>你是一个代码解释器，帮助用户理解日志中的技术信息、错误堆栈和代码片段。请用通俗易懂的语言解释技术细节。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="511"/>
+        <source>你是一个有帮助的 AI 助手。请尽力回答用户的问题。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="527"/>
+        <source>测试输入</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="536"/>
+        <source>输入测试问题...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="537"/>
+        <source>分析这行日志: [ERROR] 2024-01-15 10:30:45 - Connection timeout after 30s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="542"/>
+        <source>停止</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="542"/>
+        <source>发送测试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="556"/>
+        <source>清空</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="574"/>
+        <source>模型输出</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="585"/>
+        <source>模型输出将显示在这里...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="593"/>
+        <source>性能信息</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="601"/>
+        <source>生成速度: %1 tokens/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="609"/>
+        <source>总 tokens: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="622"/>
+        <source>选择 GGUF 模型文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="632"/>
+        <source>选择 llama-cli 可执行文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="656"/>
+        <source>错误: </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Main</name>
     <message>
-        <location filename="../src/qml/Main.qml" line="109"/>
+        <location filename="../src/qml/Main.qml" line="162"/>
         <source>Drop file to open</source>
         <translation>Datei zum Öffnen hier ablegen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="414"/>
+        <location filename="../src/qml/Main.qml" line="468"/>
         <source>File</source>
         <translation>Datei</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="422"/>
+        <location filename="../src/qml/Main.qml" line="475"/>
         <source>Open File...</source>
         <translation>Datei öffnen...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="427"/>
+        <location filename="../src/qml/Main.qml" line="480"/>
         <source>Open Remote File...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="437"/>
+        <location filename="../src/qml/Main.qml" line="490"/>
         <source>Recent Files</source>
         <translation>Zuletzt verwendete Dateien</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="459"/>
+        <location filename="../src/qml/Main.qml" line="512"/>
         <source>Clear Recent Files</source>
         <translation>Verlauf löschen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="467"/>
+        <location filename="../src/qml/Main.qml" line="520"/>
         <source>Paste from Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="472"/>
-        <location filename="../src/qml/Main.qml" line="775"/>
+        <location filename="../src/qml/Main.qml" line="525"/>
+        <location filename="../src/qml/Main.qml" line="848"/>
         <source>Reload File</source>
         <translation>Datei neu laden</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="480"/>
+        <location filename="../src/qml/Main.qml" line="533"/>
         <source>Export...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="486"/>
+        <location filename="../src/qml/Main.qml" line="539"/>
         <source>Monitor Directory...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="497"/>
+        <location filename="../src/qml/Main.qml" line="546"/>
+        <source>Compare Files...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="561"/>
         <source>Search</source>
         <translation>Suchen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="508"/>
+        <location filename="../src/qml/Main.qml" line="572"/>
         <source>Filter</source>
         <translation>Filtern</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="518"/>
+        <location filename="../src/qml/Main.qml" line="582"/>
         <source>Details</source>
         <translation>Details</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="528"/>
+        <location filename="../src/qml/Main.qml" line="592"/>
         <source>Go To</source>
         <translation>Gehe zu</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="533"/>
+        <location filename="../src/qml/Main.qml" line="597"/>
         <source>Bookmark</source>
         <translation>Lesezeichen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="541"/>
+        <location filename="../src/qml/Main.qml" line="604"/>
         <source>Add/Remove Bookmark</source>
         <translation>Lesezeichen hinzufügen/entfernen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="546"/>
+        <location filename="../src/qml/Main.qml" line="609"/>
         <source>Edit Bookmark Comment...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="555"/>
-        <location filename="../src/qml/Main.qml" line="2190"/>
+        <location filename="../src/qml/Main.qml" line="618"/>
+        <location filename="../src/qml/Main.qml" line="2491"/>
         <source>Next Bookmark</source>
         <translation>Nächstes Lesezeichen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="565"/>
-        <location filename="../src/qml/Main.qml" line="2200"/>
+        <location filename="../src/qml/Main.qml" line="628"/>
+        <location filename="../src/qml/Main.qml" line="2501"/>
         <source>Previous Bookmark</source>
         <translation>Vorheriges Lesezeichen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="576"/>
+        <location filename="../src/qml/Main.qml" line="639"/>
         <source>Save Bookmarks...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="581"/>
+        <location filename="../src/qml/Main.qml" line="644"/>
         <source>Load Bookmarks...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="586"/>
+        <location filename="../src/qml/Main.qml" line="649"/>
         <source>Clear All Bookmarks</source>
         <translation>Alle Lesezeichen löschen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="596"/>
-        <location filename="../src/qml/Main.qml" line="602"/>
+        <location filename="../src/qml/Main.qml" line="659"/>
+        <location filename="../src/qml/Main.qml" line="664"/>
         <source>View</source>
         <translation>Ansicht</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="606"/>
+        <location filename="../src/qml/Main.qml" line="668"/>
         <source>Text View (Raw)</source>
         <translation>Textansicht (Rohdaten)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="615"/>
+        <location filename="../src/qml/Main.qml" line="677"/>
         <source>Grid View (Parsed)</source>
         <translation>Rasteransicht (Geparst)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="629"/>
+        <location filename="../src/qml/Main.qml" line="687"/>
+        <source>JSON Tree View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="703"/>
         <source>Columns</source>
         <translation>Spalten</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="633"/>
+        <location filename="../src/qml/Main.qml" line="707"/>
         <source>Line Number</source>
         <translation>Zeilennummer</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="639"/>
+        <location filename="../src/qml/Main.qml" line="713"/>
         <source>Time</source>
         <translation>Zeit</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="645"/>
+        <location filename="../src/qml/Main.qml" line="719"/>
         <source>Level</source>
         <translation>Level</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="651"/>
-        <location filename="../src/qml/Main.qml" line="1872"/>
+        <location filename="../src/qml/Main.qml" line="725"/>
+        <location filename="../src/qml/Main.qml" line="2162"/>
         <source>Message</source>
         <translation>Nachricht</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="660"/>
+        <location filename="../src/qml/Main.qml" line="734"/>
         <source>Show All Columns</source>
         <translation>Alle Spalten anzeigen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="667"/>
+        <location filename="../src/qml/Main.qml" line="741"/>
         <source>Hide Optional Columns</source>
         <translation>Optionale Spalten verbergen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="679"/>
+        <location filename="../src/qml/Main.qml" line="753"/>
         <source>Navigation Markers</source>
         <translation>Navigationsmarkierungen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="689"/>
+        <location filename="../src/qml/Main.qml" line="763"/>
         <source>Tools</source>
         <translation>Werkzeuge</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="697"/>
-        <location filename="../src/qml/Main.qml" line="2256"/>
+        <location filename="../src/qml/Main.qml" line="770"/>
+        <location filename="../src/qml/Main.qml" line="2557"/>
         <source>Advanced Filter...</source>
         <translation>Erweiterter Filter...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="701"/>
+        <location filename="../src/qml/Main.qml" line="774"/>
         <source>Filter Templates...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="709"/>
+        <location filename="../src/qml/Main.qml" line="782"/>
         <source>Workspaces...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="719"/>
+        <location filename="../src/qml/Main.qml" line="792"/>
         <source>Export Visible Lines...</source>
         <translation>Sichtbare Zeilen exportieren...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="724"/>
+        <location filename="../src/qml/Main.qml" line="797"/>
         <source>Follow Mode (Live)</source>
         <translation>Verfolgungsmodus (Live)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="735"/>
+        <location filename="../src/qml/Main.qml" line="808"/>
         <source>Show Delta Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="747"/>
+        <location filename="../src/qml/Main.qml" line="820"/>
         <source>Merge Rolling Logs...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="756"/>
+        <location filename="../src/qml/Main.qml" line="829"/>
         <source>Statistics...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="765"/>
+        <location filename="../src/qml/Main.qml" line="838"/>
         <source>Dashboard...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="770"/>
+        <location filename="../src/qml/Main.qml" line="843"/>
         <source>AI Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="787"/>
+        <location filename="../src/qml/Main.qml" line="857"/>
+        <source>Visual Query Builder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="866"/>
+        <source>Start Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="875"/>
+        <source>Stop Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="882"/>
+        <source>Play Last Script</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="895"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="795"/>
+        <location filename="../src/qml/Main.qml" line="902"/>
         <source>Theme</source>
         <translation>Design</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="824"/>
+        <location filename="../src/qml/Main.qml" line="931"/>
         <source>Language</source>
         <translation>Sprache</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="923"/>
+        <location filename="../src/qml/Main.qml" line="1030"/>
         <source>Encoding</source>
         <translation>Kodierung</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="944"/>
+        <location filename="../src/qml/Main.qml" line="1051"/>
         <source>Data Sanitization...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="949"/>
+        <location filename="../src/qml/Main.qml" line="1056"/>
         <source>Keyword Colors...</source>
         <translation>Schlüsselwort-Farben...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="954"/>
+        <location filename="../src/qml/Main.qml" line="1061"/>
         <source>Email Alerts...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="963"/>
+        <location filename="../src/qml/Main.qml" line="1070"/>
         <source>Jira Integration...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="972"/>
+        <location filename="../src/qml/Main.qml" line="1079"/>
         <source>GitHub Integration...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="981"/>
+        <location filename="../src/qml/Main.qml" line="1088"/>
         <source>Hide Scroll Markers</source>
         <translation>Scroll-Markierungen verbergen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="981"/>
+        <location filename="../src/qml/Main.qml" line="1088"/>
         <source>Show Scroll Markers</source>
         <translation>Scroll-Markierungen anzeigen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="988"/>
+        <location filename="../src/qml/Main.qml" line="1095"/>
+        <source>Local AI Settings...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1106"/>
         <source>Register...</source>
         <translation>Registrieren...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="992"/>
+        <location filename="../src/qml/Main.qml" line="1110"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1002"/>
+        <location filename="../src/qml/Main.qml" line="1120"/>
         <source>Data Source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1010"/>
+        <location filename="../src/qml/Main.qml" line="1127"/>
         <source>Connect Database...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1018"/>
+        <location filename="../src/qml/Main.qml" line="1135"/>
         <source>Cloud Storage...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1026"/>
+        <location filename="../src/qml/Main.qml" line="1143"/>
         <source>Windows Event Log...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1035"/>
+        <location filename="../src/qml/Main.qml" line="1152"/>
         <source>System Trace...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1047"/>
+        <location filename="../src/qml/Main.qml" line="1164"/>
         <source>Analyze</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1055"/>
+        <location filename="../src/qml/Main.qml" line="1171"/>
         <source>SQL Query...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1063"/>
+        <location filename="../src/qml/Main.qml" line="1179"/>
         <source>Correlation Analysis...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1071"/>
+        <location filename="../src/qml/Main.qml" line="1187"/>
         <source>Distinct Values...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1079"/>
+        <location filename="../src/qml/Main.qml" line="1195"/>
         <source>Text Transform...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1088"/>
+        <location filename="../src/qml/Main.qml" line="1204"/>
         <source>Parser Test...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1096"/>
+        <location filename="../src/qml/Main.qml" line="1212"/>
         <source>Advanced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1104"/>
+        <location filename="../src/qml/Main.qml" line="1219"/>
         <source>Rule Wizard...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1112"/>
+        <location filename="../src/qml/Main.qml" line="1227"/>
         <source>Notifications...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1120"/>
+        <location filename="../src/qml/Main.qml" line="1235"/>
         <source>Report Scheduler...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1129"/>
+        <location filename="../src/qml/Main.qml" line="1244"/>
         <source>Plugin Manager...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1133"/>
+        <location filename="../src/qml/Main.qml" line="1248"/>
         <source>Check for Updates...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1204"/>
+        <location filename="../src/qml/Main.qml" line="1280"/>
+        <source>REC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1347"/>
         <source>High-performance large file viewer</source>
         <translation>Hochleistungs-Betrachter für große Dateien</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1210"/>
+        <location filename="../src/qml/Main.qml" line="1353"/>
         <source>Supports files over 10GB</source>
         <translation>Unterstützt Dateien über 10 GB</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1373"/>
+        <location filename="../src/qml/Main.qml" line="1512"/>
+        <source>Select First File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1517"/>
+        <source>Select Second File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1551"/>
+        <source>First file path...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1560"/>
+        <location filename="../src/qml/Main.qml" line="1579"/>
+        <source>Browse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1570"/>
+        <source>Second file path...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1586"/>
+        <source>Comparing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1586"/>
+        <source>Compare</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1663"/>
         <source>Open Log File</source>
         <translation>Logdatei öffnen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1396"/>
+        <location filename="../src/qml/Main.qml" line="1686"/>
         <source>Export Visible Lines</source>
         <translation>Sichtbare Zeilen exportieren</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1436"/>
+        <location filename="../src/qml/Main.qml" line="1726"/>
         <source>Find:</source>
         <translation>Suchen:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1445"/>
+        <location filename="../src/qml/Main.qml" line="1735"/>
         <source>Enter search text (supports regex)...</source>
         <translation>Suchtext eingeben (unterstützt Regex)...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1462"/>
-        <location filename="../src/qml/Main.qml" line="1640"/>
+        <location filename="../src/qml/Main.qml" line="1752"/>
+        <location filename="../src/qml/Main.qml" line="1930"/>
         <source>Regex</source>
         <translation>Regex</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1492"/>
+        <location filename="../src/qml/Main.qml" line="1782"/>
         <source>Find</source>
         <translation>Suchen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1518"/>
+        <location filename="../src/qml/Main.qml" line="1808"/>
         <source>Previous</source>
         <translation>Vorherige</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1544"/>
+        <location filename="../src/qml/Main.qml" line="1834"/>
         <source>Next</source>
         <translation>Nächste</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1566"/>
+        <location filename="../src/qml/Main.qml" line="1856"/>
         <source>matches</source>
         <translation>Treffer</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1614"/>
+        <location filename="../src/qml/Main.qml" line="1904"/>
         <source>Filter:</source>
         <translation>Filter:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1623"/>
+        <location filename="../src/qml/Main.qml" line="1913"/>
         <source>Enter filter text (supports regex)...</source>
         <translation>Filtertext eingeben (unterstützt Regex)...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1670"/>
+        <location filename="../src/qml/Main.qml" line="1960"/>
         <source>Apply</source>
         <translation>Anwenden</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1692"/>
+        <location filename="../src/qml/Main.qml" line="1982"/>
         <source>Clear</source>
         <translation>Leeren</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1716"/>
+        <location filename="../src/qml/Main.qml" line="2006"/>
         <source>Showing</source>
         <translation>Zeige</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1762"/>
-        <location filename="../src/qml/Main.qml" line="2016"/>
+        <location filename="../src/qml/Main.qml" line="2052"/>
+        <location filename="../src/qml/Main.qml" line="2317"/>
         <source>Line</source>
         <translation>Zeile</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2016"/>
+        <location filename="../src/qml/Main.qml" line="2317"/>
         <source>Line Details</source>
         <translation>Zeilendetails</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2027"/>
+        <location filename="../src/qml/Main.qml" line="2328"/>
         <source>Raw</source>
         <translation>Rohdaten</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2027"/>
+        <location filename="../src/qml/Main.qml" line="2328"/>
         <source>JSON</source>
         <translation>JSON</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2054"/>
+        <location filename="../src/qml/Main.qml" line="2355"/>
         <source>Copy</source>
         <translation>Kopieren</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2101"/>
+        <location filename="../src/qml/Main.qml" line="2402"/>
         <source>(Select a line to view details)</source>
         <translation>(Wählen Sie eine Zeile aus, um Details zu sehen)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2135"/>
+        <location filename="../src/qml/Main.qml" line="2436"/>
         <source>No file opened</source>
         <translation>Keine Datei geöffnet</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2145"/>
+        <location filename="../src/qml/Main.qml" line="2446"/>
         <source>Size:</source>
         <translation>Größe:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2154"/>
-        <location filename="../src/qml/Main.qml" line="2155"/>
+        <location filename="../src/qml/Main.qml" line="2455"/>
+        <location filename="../src/qml/Main.qml" line="2456"/>
         <source>Lines:</source>
         <translation>Zeilen:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2163"/>
+        <location filename="../src/qml/Main.qml" line="2464"/>
         <source>Registered</source>
         <translation>Registriert</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2163"/>
+        <location filename="../src/qml/Main.qml" line="2464"/>
         <source>Trial:</source>
         <translation>Testversion:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2163"/>
+        <location filename="../src/qml/Main.qml" line="2464"/>
         <source>days left</source>
         <translation>Tage übrig</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2175"/>
+        <location filename="../src/qml/Main.qml" line="2476"/>
         <source>Copy Line</source>
         <translation>Zeile kopieren</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2179"/>
+        <location filename="../src/qml/Main.qml" line="2480"/>
         <source>Copy Line Number</source>
         <translation>Zeilennummer kopieren</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2186"/>
+        <location filename="../src/qml/Main.qml" line="2487"/>
         <source>Toggle Bookmark</source>
         <translation>Lesezeichen umschalten</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2213"/>
+        <location filename="../src/qml/Main.qml" line="2514"/>
         <source>Show Details</source>
         <translation>Details anzeigen</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2217"/>
+        <location filename="../src/qml/Main.qml" line="2518"/>
         <source>Format JSON</source>
         <translation>JSON formatieren</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2228"/>
+        <location filename="../src/qml/Main.qml" line="2529"/>
         <source>Filter This Level</source>
         <translation>Diesen Level filtern</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2242"/>
+        <location filename="../src/qml/Main.qml" line="2543"/>
         <source>Filter This Keyword...</source>
         <translation>Nach diesem Schlüsselwort filtern...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2252"/>
+        <location filename="../src/qml/Main.qml" line="2553"/>
         <source>Go To Line...</source>
         <translation>Gehe zu Zeile...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2263"/>
+        <location filename="../src/qml/Main.qml" line="2564"/>
         <source>Create Jira Issue...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2274"/>
+        <location filename="../src/qml/Main.qml" line="2575"/>
         <source>Create GitHub Issue...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2288"/>
+        <location filename="../src/qml/Main.qml" line="2589"/>
         <source>Ask AI about this line...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4758,6 +5826,125 @@ This action cannot be undone.</source>
     <message>
         <location filename="../src/PluginManager.cpp" line="159"/>
         <source>Unknown error</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QueryBuilder</name>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="48"/>
+        <source>Equals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="49"/>
+        <source>Not Equals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="50"/>
+        <source>Contains</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="51"/>
+        <source>Not Contains</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="52"/>
+        <source>Starts With</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="53"/>
+        <source>Ends With</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="54"/>
+        <source>Greater Than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="55"/>
+        <source>Less Than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="56"/>
+        <source>Greater or Equal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="57"/>
+        <source>Less or Equal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="58"/>
+        <source>Is Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="59"/>
+        <source>Is Not Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="60"/>
+        <source>Regex Match</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="188"/>
+        <source>Query Builder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="201"/>
+        <source>Combine:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="285"/>
+        <source>%1 / %2 rows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="436"/>
+        <source>Enter value...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="482"/>
+        <source>+ Add Condition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="506"/>
+        <source>No conditions defined.
+Click &apos;+ Add Condition&apos; to start filtering.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="535"/>
+        <source>%1 condition(s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="536"/>
+        <source>No active filters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="545"/>
+        <source>Clear All</source>
+        <translation type="unfinished">Alles löschen</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/QueryBuilder.qml" line="568"/>
+        <source>Apply Filter</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

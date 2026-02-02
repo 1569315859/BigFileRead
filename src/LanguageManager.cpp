@@ -179,9 +179,6 @@ bool LanguageManager::loadLanguage(const QString& languageCode) {
     if (m_engine) {
         m_engine->retranslate();
         qDebug() << "[LanguageManager] QML engine retranslate() called";
-        
-        // macOS 上可能需要额外的事件处理循环刷新
-        QCoreApplication::processEvents();
     } else {
         qWarning() << "[LanguageManager] No QML engine set, UI may not update!";
     }

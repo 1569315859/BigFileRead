@@ -566,7 +566,7 @@ void SystemTraceReader::parsePerfScriptOutput(const QString& output)
         
         QRegularExpressionMatch match = re.match(line);
         if (match.hasMatch()) {
-            SystemTraceEvent event;
+            TraceEvent event;
             event.provider = match.captured(1); // comm (process name)
             event.processId = match.captured(2).toInt();
             event.threadId = match.captured(3).isEmpty() ? 0 : match.captured(3).toInt();
@@ -664,7 +664,7 @@ void SystemTraceReader::parseDTraceOutput(const QString& output)
         if (m_cancelRequested) break;
         if (line.trimmed().isEmpty()) continue;
         
-        SystemTraceEvent event;
+        TraceEvent event;
         event.timestamp = QDateTime::currentMSecsSinceEpoch() * 1000000 + lineNum;
         event.provider = "dtrace";
         

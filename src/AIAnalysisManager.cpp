@@ -4,6 +4,7 @@
  */
 
 #include "AIAnalysisManager.h"
+#include "LocalLLMEngine.h"
 #include <QNetworkProxy>
 #include <QNetworkRequest>
 #include <QJsonDocument>
@@ -13,6 +14,7 @@
 #include <QCryptographicHash>
 #include <QDebug>
 #include <QUuid>
+#include <memory>
 
 // 简单的混淆密钥（非安全级加密，仅防止明文存储）
 const QByteArray AIAnalysisManager::ENCRYPTION_KEY = "BigFileViewer_AI_Key_2024";
@@ -348,6 +350,65 @@ void AIAnalysisManager::analyzeLog(const QString &logContent, const QString &que
         return;
     }
     
+    // 如果使用本地 LLM，委托给 LocalLLMEngine
+    if (m_useLocalLLM) {
+        LocalLLMEngine &localEngine = LocalLLMEngine::instance();
+        
+        if (!localEngine.isLlamaCppAvailable()) {
+            emit analysisError(tr("Local LLM not available. Please configure llama.cpp path."));
+            return;
+        }
+        
+        if (localEngine.currentModel().isEmpty()) {
+            emit analysisError(tr("No local model selected. Please add and select a model."));
+            return;
+        }
+        
+        m_isAnalyzing = true;
+        m_accumulatedResponse.clear();
+        emit analyzingStateChanged();
+        
+        // 连接本地引擎信号（一次性连接）
+        auto conn1 = std::make_shared<QMetaObject::Connection>();
+        auto conn2 = std::make_shared<QMetaObject::Connection>();
+        auto conn3 = std::make_shared<QMetaObject::Connection>();
+        
+        *conn1 = connect(&localEngine, &LocalLLMEngine::generationResponse, this, 
+            [this, conn1, conn2, conn3](const QString &token, bool isComplete) {
+                m_accumulatedResponse += token;
+                emit analysisResponse(token, isComplete);
+                if (isComplete) {
+                    disconnect(*conn1);
+                    disconnect(*conn2);
+                    disconnect(*conn3);
+                }
+            });
+        
+        *conn2 = connect(&localEngine, &LocalLLMEngine::generationCompleted, this,
+            [this, conn1, conn2, conn3](const QString &fullResponse) {
+                m_isAnalyzing = false;
+                emit analyzingStateChanged();
+                emit analysisCompleted(fullResponse);
+                disconnect(*conn1);
+                disconnect(*conn2);
+                disconnect(*conn3);
+            });
+        
+        *conn3 = connect(&localEngine, &LocalLLMEngine::generationError, this,
+            [this, conn1, conn2, conn3](const QString &error) {
+                m_isAnalyzing = false;
+                emit analyzingStateChanged();
+                emit analysisError(error);
+                disconnect(*conn1);
+                disconnect(*conn2);
+                disconnect(*conn3);
+            });
+        
+        localEngine.analyzeLog(logContent, question, systemPrompt);
+        return;
+    }
+    
+    // 云端 API 模式
     if (!m_services.contains(m_currentServiceId)) {
         emit analysisError(tr("Invalid service selected"));
         return;
@@ -774,4 +835,62 @@ void AIAnalysisManager::setModel(const QString &serviceId, const QString &model)
         saveSettings();
         emit currentServiceChanged();  // 复用现有信号通知模型变化
     }
+}
+
+// ===================== 本地 LLM 支持 =====================
+
+void AIAnalysisManager::setUseLocalLLM(bool use)
+{
+    if (m_useLocalLLM != use) {
+        m_useLocalLLM = use;
+        emit useLocalLLMChanged();
+        saveSettings();
+    }
+}
+
+bool AIAnalysisManager::isLocalLLMAvailable() const
+{
+    return LocalLLMEngine::instance().isLlamaCppAvailable();
+}
+
+QVariantList AIAnalysisManager::getLocalModels() const
+{
+    return LocalLLMEngine::instance().getModels();
+}
+
+QString AIAnalysisManager::currentLocalModel() const
+{
+    return LocalLLMEngine::instance().currentModel();
+}
+
+void AIAnalysisManager::setCurrentLocalModel(const QString &modelId)
+{
+    LocalLLMEngine::instance().setCurrentModel(modelId);
+    emit localModelChanged();
+}
+
+QString AIAnalysisManager::getLlamaCppPath() const
+{
+    return LocalLLMEngine::instance().llamaCppPath();
+}
+
+void AIAnalysisManager::setLlamaCppPath(const QString &path)
+{
+    LocalLLMEngine::instance().setLlamaCppPath(path);
+    emit localLLMAvailableChanged();
+}
+
+QString AIAnalysisManager::addLocalModel(const QString &modelPath, const QString &name)
+{
+    QString modelId = LocalLLMEngine::instance().addModel(modelPath, name);
+    if (!modelId.isEmpty()) {
+        emit localModelChanged();
+    }
+    return modelId;
+}
+
+void AIAnalysisManager::removeLocalModel(const QString &modelId)
+{
+    LocalLLMEngine::instance().removeModel(modelId);
+    emit localModelChanged();
 }

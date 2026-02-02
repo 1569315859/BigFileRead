@@ -74,6 +74,9 @@ FeatureGate::LicenseTier FeatureGate::requiredTier(Feature feature) const
         case Feature::ExportHtml:
         case Feature::ClipboardImport:
         case Feature::DirectoryMonitor:
+        case Feature::CSVSupport:
+        case Feature::JSONSupport:
+        case Feature::BasicCharts:
             return LicenseTier::Free;
         
         // Pro 版功能
@@ -82,6 +85,11 @@ FeatureGate::LicenseTier FeatureGate::requiredTier(Feature feature) const
         case Feature::DeltaTime:
         case Feature::RollingLogs:
         case Feature::Statistics:
+        case Feature::AdvancedCharts:
+        case Feature::QueryBuilder:
+        case Feature::DataDiff:
+        case Feature::UnlimitedFileSize:
+        case Feature::ExportUnlimited:
             return LicenseTier::Pro;
         
         // Enterprise 版功能
@@ -89,6 +97,10 @@ FeatureGate::LicenseTier FeatureGate::requiredTier(Feature feature) const
         case Feature::SmtpAlerts:
         case Feature::JiraIntegration:
         case Feature::GitHubIntegration:
+        case Feature::LocalAI:
+        case Feature::Automation:
+        case Feature::CloudAI:
+        case Feature::PrioritySupport:
             return LicenseTier::Enterprise;
     }
     
@@ -150,6 +162,9 @@ FeatureGate::Feature FeatureGate::parseFeatureName(const QString &name) const
     if (lower == "exporthtml" || lower == "export_html") return Feature::ExportHtml;
     if (lower == "clipboardimport" || lower == "clipboard_import") return Feature::ClipboardImport;
     if (lower == "directorymonitor" || lower == "directory_monitor") return Feature::DirectoryMonitor;
+    if (lower == "csvsupport" || lower == "csv_support" || lower == "csv") return Feature::CSVSupport;
+    if (lower == "jsonsupport" || lower == "json_support" || lower == "json") return Feature::JSONSupport;
+    if (lower == "basiccharts" || lower == "basic_charts") return Feature::BasicCharts;
     
     // Pro 功能
     if (lower == "filtertemplates" || lower == "filter_templates") return Feature::FilterTemplates;
@@ -157,12 +172,21 @@ FeatureGate::Feature FeatureGate::parseFeatureName(const QString &name) const
     if (lower == "deltatime" || lower == "delta_time") return Feature::DeltaTime;
     if (lower == "rollinglogs" || lower == "rolling_logs") return Feature::RollingLogs;
     if (lower == "statistics") return Feature::Statistics;
+    if (lower == "advancedcharts" || lower == "advanced_charts") return Feature::AdvancedCharts;
+    if (lower == "querybuilder" || lower == "query_builder") return Feature::QueryBuilder;
+    if (lower == "datadiff" || lower == "data_diff" || lower == "diff") return Feature::DataDiff;
+    if (lower == "unlimitedfilesize" || lower == "unlimited_file_size") return Feature::UnlimitedFileSize;
+    if (lower == "exportunlimited" || lower == "export_unlimited") return Feature::ExportUnlimited;
     
     // Enterprise 功能
     if (lower == "remotefiles" || lower == "remote_files") return Feature::RemoteFiles;
     if (lower == "smtpalerts" || lower == "smtp_alerts") return Feature::SmtpAlerts;
     if (lower == "jiraintegration" || lower == "jira_integration" || lower == "jira") return Feature::JiraIntegration;
     if (lower == "githubintegration" || lower == "github_integration" || lower == "github") return Feature::GitHubIntegration;
+    if (lower == "localai" || lower == "local_ai") return Feature::LocalAI;
+    if (lower == "automation") return Feature::Automation;
+    if (lower == "cloudai" || lower == "cloud_ai") return Feature::CloudAI;
+    if (lower == "prioritysupport" || lower == "priority_support") return Feature::PrioritySupport;
     
     // 默认返回一个需要最高权限的功能
     qWarning() << "FeatureGate: Unknown feature name:" << name;
@@ -322,6 +346,55 @@ QVariantMap FeatureGate::getFeatureInfo(const QString &featureName) const
         case Feature::GitHubIntegration:
             info["title"] = tr("GitHub Integration");
             info["description"] = tr("Create GitHub Issues directly from selected log snippets.");
+            break;
+        // 新增功能描述
+        case Feature::CSVSupport:
+            info["title"] = tr("CSV Support");
+            info["description"] = tr("Open and view CSV/TSV files with automatic delimiter detection and column type inference.");
+            break;
+        case Feature::JSONSupport:
+            info["title"] = tr("JSON Support");
+            info["description"] = tr("Open and view JSON/JSONL files with tree view, path search, and syntax highlighting.");
+            break;
+        case Feature::BasicCharts:
+            info["title"] = tr("Basic Charts");
+            info["description"] = tr("Create basic bar charts, line charts, and pie charts from your data.");
+            break;
+        case Feature::AdvancedCharts:
+            info["title"] = tr("Advanced Charts");
+            info["description"] = tr("Create histograms, scatter plots, and advanced visualizations with customization options.");
+            break;
+        case Feature::QueryBuilder:
+            info["title"] = tr("Visual Query Builder");
+            info["description"] = tr("Build complex filter queries visually without writing code. Combine conditions with AND/OR operators.");
+            break;
+        case Feature::DataDiff:
+            info["title"] = tr("Data Diff");
+            info["description"] = tr("Compare two files or datasets side-by-side with highlighted differences.");
+            break;
+        case Feature::UnlimitedFileSize:
+            info["title"] = tr("Unlimited File Size");
+            info["description"] = tr("Open files of any size. Free version is limited to 1GB files.");
+            break;
+        case Feature::ExportUnlimited:
+            info["title"] = tr("Unlimited Export");
+            info["description"] = tr("Export all rows without limitation. Free version is limited to 1000 rows.");
+            break;
+        case Feature::LocalAI:
+            info["title"] = tr("Local AI Analysis");
+            info["description"] = tr("Run AI-powered analysis locally using GGUF models. Your data never leaves your machine.");
+            break;
+        case Feature::Automation:
+            info["title"] = tr("Automation Engine");
+            info["description"] = tr("Record and replay operations, create scripts for batch processing and scheduled tasks.");
+            break;
+        case Feature::CloudAI:
+            info["title"] = tr("Cloud AI Analysis");
+            info["description"] = tr("Leverage powerful cloud AI models for advanced log analysis and insights.");
+            break;
+        case Feature::PrioritySupport:
+            info["title"] = tr("Priority Support");
+            info["description"] = tr("Get priority technical support with faster response times and dedicated assistance.");
             break;
         default:
             info["title"] = featureName;

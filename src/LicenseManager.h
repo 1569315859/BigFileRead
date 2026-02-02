@@ -68,6 +68,62 @@ public:
     bool verifyLicense(const QString &licenseKey);
 
     /**
+     * @brief Activate license online
+     * @param licenseKey The license key to activate
+     * @return true if activation successful
+     */
+    bool activateOnline(const QString &licenseKey);
+
+    /**
+     * @brief Generate activation request for offline activation
+     * @details Creates a JSON file containing machine ID and request timestamp
+     * @return Base64-encoded activation request string, or empty on failure
+     */
+    QString generateActivationRequest();
+
+    /**
+     * @brief Process offline activation response
+     * @param activationResponse Base64-encoded activation response from server
+     * @return true if offline activation successful
+     */
+    bool activateOffline(const QString &activationResponse);
+
+    /**
+     * @brief Save license to persistent storage
+     * @param licenseKey The validated license key to save
+     */
+    void saveLicense(const QString &licenseKey);
+
+    /**
+     * @brief Load license from persistent storage
+     * @return The stored license key, or empty string if none
+     */
+    QString loadLicense() const;
+
+    /**
+     * @brief Clear stored license
+     */
+    void clearLicense();
+
+    /**
+     * @brief Get license tier from stored license
+     * @return License tier (0=Free, 1=Pro, 2=Enterprise)
+     */
+    int getLicenseTier() const;
+
+    /**
+     * @brief Get license expiry date
+     * @return Expiry date string in ISO format, or empty if perpetual/no license
+     */
+    QString getLicenseExpiry() const;
+
+    /**
+     * @brief Check if license is expired
+     * @return true if license has expired
+     */
+    bool isLicenseExpired() const;
+
+    /**
      * @brief Check if a valid license is stored in settings
      * @return true if a valid license exists
      */
@@ -100,6 +156,21 @@ private:
      * @brief Store the last error message
      */
     QString m_lastError;
+
+    /**
+     * @brief Cached license tier
+     */
+    int m_licenseTier = 0;
+
+    /**
+     * @brief Cached license expiry date
+     */
+    QString m_licenseExpiry;
+
+    /**
+     * @brief Whether license has been validated this session
+     */
+    bool m_validated = false;
 };
 
 #endif // LICENSEMANAGER_H

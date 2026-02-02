@@ -34,12 +34,13 @@ ApplicationWindow {
             tableView.model = newModel
             lineNumberListView.model = null
             lineNumberListView.model = newModel
-            // ★★★ 强制刷新 TableView 和 ListView 的 model ★★★
-            tableView.model = null
-            tableView.model = newModel
-            lineNumberListView.model = null
-            lineNumberListView.model = newModel
-            
+            // ★★★ 强制刷新 EnhancedScrollBar 的标记数据 ★★★
+            enhancedScrollBar.totalLines = newModel ? newModel.lineCount : 0
+            enhancedScrollBar.bookmarks = newModel ? (newModel.bookmarkLines || []) : []
+            enhancedScrollBar.searchResults = newModel ? (newModel.searchResultLines || []) : []
+            enhancedScrollBar.errorLines = newModel ? (newModel.errorLines || []) : []
+            enhancedScrollBar.warningLines = newModel ? (newModel.warningLines || []) : []
+            enhancedScrollBar.infoLines = newModel ? (newModel.infoLines || []) : []
             console.log("[Main.qml] All views refreshed with new model")
         }
         function onCurrentTabChanged(index) {
@@ -53,10 +54,62 @@ ApplicationWindow {
     property bool isDetailPanelVisible: false
     property bool isFollowMode: false  // 实时加载模式
     property bool isTableViewMode: false  // 表格视图模式
+    property bool isJsonViewMode: false   // JSON 视图模式
+    property string currentJsonContent: "" // 当前JSON内容
     property int rowHeight: 24
     property int selectedRow: -1
+    property var selectedRows: []  // 多选行支持
     property string selectedLineText: ""
     property string formattedJsonText: ""  // JSON 格式化后的文本
+    
+    // 多选行辅助函数
+    function isRowSelected(row) {
+        return selectedRows.indexOf(row) !== -1
+    }
+    function toggleRowSelection(row, ctrlPressed, shiftPressed) {
+        if (shiftPressed && selectedRow >= 0) {
+            // Shift+点击: 范围选择
+            var start = Math.min(selectedRow, row)
+            var end = Math.max(selectedRow, row)
+            var newSelection = []
+            for (var i = start; i <= end; i++) {
+                newSelection.push(i)
+            }
+            selectedRows = newSelection
+        } else if (ctrlPressed) {
+            // Ctrl+点击: 切换选择
+            var idx = selectedRows.indexOf(row)
+            var newRows = selectedRows.slice()
+            if (idx === -1) {
+                newRows.push(row)
+            } else {
+                newRows.splice(idx, 1)
+            }
+            selectedRows = newRows
+        } else {
+            // 普通点击: 单选
+            selectedRows = [row]
+        }
+        selectedRow = row
+    }
+    
+    // 获取选中行的文本（支持多选）
+    function getSelectedLinesText() {
+        if (!currentLogModel) return ""
+        if (selectedRows.length === 0) {
+            if (selectedRow >= 0) {
+                return currentLogModel.data(currentLogModel.index(selectedRow, 0), Qt.DisplayRole) || ""
+            }
+            return ""
+        }
+        var lines = []
+        var sortedRows = selectedRows.slice().sort(function(a, b) { return a - b })
+        for (var i = 0; i < sortedRows.length; i++) {
+            var text = currentLogModel.data(currentLogModel.index(sortedRows[i], 0), Qt.DisplayRole)
+            if (text) lines.push(text)
+        }
+        return lines.join("\n")
+    }
     
     // ========== 列可见性配置（Grid 模式下使用）==========
     property bool showLineColumn: true      // 显示行号列（内置，始终显示）
@@ -161,8 +214,9 @@ ApplicationWindow {
     Shortcut {
         sequence: "Ctrl+C"
         onActivated: {
-            if (selectedLineText) {
-                _appController.copyToClipboard(selectedLineText)
+            var text = getSelectedLinesText()
+            if (text) {
+                _appController.copyToClipboard(text)
             }
         }
     }
@@ -416,7 +470,6 @@ ApplicationWindow {
                 
                 Menu {
                     id: fileMenu
-                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("Open File...")
@@ -486,6 +539,17 @@ ApplicationWindow {
                         text: qsTr("Monitor Directory...")
                         onTriggered: directoryMonitorDialog.open()
                     }
+                    
+                    MenuSeparator {}
+                    
+                    MenuItem {
+                        text: qsTr("Compare Files...") + (_featureGate.isProUser ? "" : " [Pro]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("data_diff")) {
+                                diffViewPopup.open()
+                            }
+                        }
+                    }
                 }
             }
 
@@ -535,7 +599,6 @@ ApplicationWindow {
                 
                 Menu {
                     id: bookmarkMenu
-                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("Add/Remove Bookmark")
@@ -598,7 +661,6 @@ ApplicationWindow {
                 
                 Menu {
                     id: viewMenu
-                    y: parent.height
                     title: qsTr("View")
                     
                     // 视图模式切换
@@ -614,10 +676,22 @@ ApplicationWindow {
                     MenuItem {
                         text: qsTr("Grid View (Parsed)")
                         checkable: true
-                        checked: isTableViewMode
+                        checked: isTableViewMode && !isJsonViewMode
                         onTriggered: {
                             isTableViewMode = true
+                            isJsonViewMode = false
                             currentLogModel.setTableModeEnabled(true)
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("JSON Tree View")
+                        checkable: true
+                        checked: isJsonViewMode
+                        onTriggered: {
+                            isJsonViewMode = checked
+                            if (checked) {
+                                isTableViewMode = false
+                            }
                         }
                     }
                     
@@ -691,7 +765,6 @@ ApplicationWindow {
                 
                 Menu {
                     id: toolsMenu
-                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("Advanced Filter...")
@@ -779,8 +852,43 @@ ApplicationWindow {
                             }
                         }
                     }
+                    MenuSeparator {}
+                    MenuItem {
+                        text: qsTr("Visual Query Builder") + (_featureGate.isProUser ? "" : " [Pro]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("query_builder")) {
+                                queryBuilderDialog.visible = true
+                            }
+                        }
+                    }
+                    MenuSeparator {}
+                    MenuItem {
+                        text: qsTr("Start Recording") + (_featureGate.isEnterpriseUser ? "" : " [Enterprise]")
+                        enabled: !AutomationEngine.isRecording
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("automation")) {
+                                AutomationEngine.startRecording()
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Stop Recording")
+                        enabled: AutomationEngine.isRecording
+                        onTriggered: {
+                            AutomationEngine.stopRecording()
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Play Last Script")
+                        enabled: AutomationEngine.totalActions > 0
+                        onTriggered: {
+                            AutomationEngine.replay()
+                        }
+                    }
                 }
             }
+
+            Rectangle { width: 1; height: 20; color: borderColor }
 
             // ========== 设置 ==========
             ToolBtn {
@@ -789,7 +897,6 @@ ApplicationWindow {
                 
                 Menu {
                     id: settingsMenu
-                    y: parent.height
                     
                     Menu {
                         title: qsTr("Theme")
@@ -985,6 +1092,17 @@ ApplicationWindow {
                     MenuSeparator {}
                     
                     MenuItem {
+                        text: qsTr("Local AI Settings...") + (_featureGate.isEnterpriseUser ? "" : " [Enterprise]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("local_ai")) {
+                                localLLMSettingsDialog.visible = true
+                            }
+                        }
+                    }
+                    
+                    MenuSeparator {}
+                    
+                    MenuItem {
                         text: qsTr("Register...")
                         onTriggered: registrationDialog.open()
                     }
@@ -1004,7 +1122,6 @@ ApplicationWindow {
                 
                 Menu {
                     id: dataSourceMenu
-                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("Connect Database...") + (_featureGate.isProUser ? "" : " [Enterprise]")
@@ -1049,7 +1166,6 @@ ApplicationWindow {
                 
                 Menu {
                     id: analyzeMenu
-                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("SQL Query...") + (_featureGate.isProUser ? "" : " [Pro]")
@@ -1098,7 +1214,6 @@ ApplicationWindow {
                 
                 Menu {
                     id: advancedToolsMenu
-                    y: parent.height
                     
                     MenuItem {
                         text: qsTr("Rule Wizard...") + (_featureGate.isProUser ? "" : " [Pro]")
@@ -1142,6 +1257,34 @@ ApplicationWindow {
             Item { Layout.fillWidth: true }
             
             // ========== 状态指示器 ==========
+            // 录制状态指示器
+            Row {
+                spacing: 4
+                visible: AutomationEngine.isRecording
+                
+                Rectangle {
+                    width: 10
+                    height: 10
+                    radius: 5
+                    color: "#FF0000"
+                    anchors.verticalCenter: parent.verticalCenter
+                    
+                    SequentialAnimation on opacity {
+                        running: AutomationEngine.isRecording
+                        loops: Animation.Infinite
+                        NumberAnimation { from: 1.0; to: 0.3; duration: 500 }
+                        NumberAnimation { from: 0.3; to: 1.0; duration: 500 }
+                    }
+                }
+                Text {
+                    text: qsTr("REC")
+                    color: "#FF0000"
+                    font.pixelSize: 11
+                    font.bold: true
+                }
+            }
+            
+            // 实时跟随指示器
             Text {
                 text: isFollowMode ? "● LIVE" : ""
                 color: "#FF5722"
@@ -1237,7 +1380,7 @@ ApplicationWindow {
 
     RegistrationDialog { id: registrationDialog }
     GoToLineDialog { 
-        id: goToLineDialog 
+        id: goToLineDialog
         logModel: currentLogModel
         onAccepted: {
             if (targetLine > 0) {
@@ -1247,11 +1390,9 @@ ApplicationWindow {
     }
     BookmarkCommentDialog {
         id: bookmarkCommentDialog
-        logModel: currentLogModel
     }
     ExportDialog {
         id: exportDialog
-        logModel: currentLogModel
         onExportCompleted: function(path) {
             console.log("Export completed:", path)
         }
@@ -1302,11 +1443,9 @@ ApplicationWindow {
     }
     StatisticsPanel {
         id: statisticsPanel
-        targetLogModel: currentLogModel
     }
     DashboardPanel {
         id: dashboardPanel
-        targetLogModel: currentLogModel
     }
     AIQueryDialog {
         id: aiQueryDialog
@@ -1346,10 +1485,7 @@ ApplicationWindow {
             root.title = "BigFileViewer - " + remotePath + " (Remote)"
         }
     }
-    AdvancedFilterDialog { 
-        id: advancedFilterDialog 
-        targetLogModel: currentLogModel
-    }
+    AdvancedFilterDialog { id: advancedFilterDialog }
     KeywordConfigDialog { id: keywordConfigDialog }
 
     // ========== 新功能对话框 ==========
@@ -1367,6 +1503,160 @@ ApplicationWindow {
     ReportSchedulerPanel { id: reportSchedulerPanel }
     PluginManagerDialog { id: pluginManagerDialog }
     UpdateDialog { id: updateDialog }
+    
+    // ========== 迭代1-4 新增功能对话框 ==========
+    
+    // 对比文件选择对话框
+    Platform.FileDialog {
+        id: diffFileDialog1
+        title: qsTr("Select First File")
+        onAccepted: diffFile1Path.text = file.toString().replace("file:///", "")
+    }
+    Platform.FileDialog {
+        id: diffFileDialog2
+        title: qsTr("Select Second File")
+        onAccepted: diffFile2Path.text = file.toString().replace("file:///", "")
+    }
+    
+    Popup {
+        id: diffViewPopup
+        modal: true
+        width: parent.width * 0.9
+        height: parent.height * 0.85
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+        
+        background: Rectangle {
+            color: panelColor
+            border.color: borderColor
+            radius: 8
+        }
+        
+        contentItem: ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: 10
+            spacing: 10
+            
+            // 文件选择区域
+            RowLayout {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 36
+                spacing: 8
+                
+                TextField {
+                    id: diffFile1Path
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 32
+                    placeholderText: qsTr("First file path...")
+                    color: textColor
+                    background: Rectangle {
+                        color: Qt.darker(panelColor, 1.2)
+                        border.color: borderColor
+                        radius: 4
+                    }
+                }
+                Button {
+                    text: qsTr("Browse")
+                    Layout.preferredWidth: 70
+                    Layout.preferredHeight: 32
+                    onClicked: diffFileDialog1.open()
+                }
+                
+                TextField {
+                    id: diffFile2Path
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 32
+                    placeholderText: qsTr("Second file path...")
+                    color: textColor
+                    background: Rectangle {
+                        color: Qt.darker(panelColor, 1.2)
+                        border.color: borderColor
+                        radius: 4
+                    }
+                }
+                Button {
+                    text: qsTr("Browse")
+                    Layout.preferredWidth: 70
+                    Layout.preferredHeight: 32
+                    onClicked: diffFileDialog2.open()
+                }
+                
+                Button {
+                    text: _dataDiffer.isComparing ? qsTr("Comparing...") : qsTr("Compare")
+                    Layout.preferredWidth: 90
+                    Layout.preferredHeight: 32
+                    enabled: diffFile1Path.text.length > 0 && diffFile2Path.text.length > 0 && !_dataDiffer.isComparing
+                    onClicked: {
+                        diffViewContent.leftTitle = diffFile1Path.text.split("/").pop().split("\\").pop()
+                        diffViewContent.rightTitle = diffFile2Path.text.split("/").pop().split("\\").pop()
+                        _dataDiffer.compareFiles(diffFile1Path.text, diffFile2Path.text)
+                    }
+                }
+            }
+            
+            // 对比结果显示
+            DiffView {
+                id: diffViewContent
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                diffs: []
+                stats: ({})
+                bgColor: root.bgColor
+                panelColor: root.panelColor
+                textColor: root.textColor
+                borderColor: root.borderColor
+            }
+        }
+        
+        Connections {
+            target: _dataDiffer
+            function onCompareCompleted(stats) {
+                diffViewContent.diffs = _dataDiffer.getAllDiffs(true)
+                diffViewContent.stats = stats
+            }
+            function onCompareError(error) {
+                console.error("Diff error:", error)
+            }
+        }
+    }
+    Popup {
+        id: queryBuilderDialog
+        modal: true
+        width: 700
+        height: 500
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+        
+        background: Rectangle {
+            color: panelColor
+            border.color: borderColor
+            radius: 8
+        }
+        
+        contentItem: QueryBuilder {
+            anchors.fill: parent
+            anchors.margins: 10
+            columns: currentLogModel ? ["Line", "Time", "Level", "Message"] : []
+            bgColor: root.bgColor
+            panelColor: root.panelColor
+            textColor: root.textColor
+            accentColor: root.accentColor
+            borderColor: root.borderColor
+            onQueryApplied: function(conditions) {
+                console.log("Query applied:", JSON.stringify(conditions))
+                queryBuilderDialog.close()
+            }
+            onQueryCleared: {
+                console.log("Query cleared")
+            }
+        }
+    }
+    LocalLLMSettings { 
+        id: localLLMSettingsDialog
+        visible: false
+    }
 
     Platform.FileDialog {
         id: fileDialog
@@ -1885,8 +2175,18 @@ ApplicationWindow {
                 }
             }
 
+            // JSON 树形视图模式
+            JSONTreeView {
+                id: jsonTreeView
+                visible: isJsonViewMode
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                treeModel: _jsonTreeModel
+            }
+
             TableView {
                 id: tableView
+                visible: !isJsonViewMode
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 clip: true
@@ -1909,7 +2209,7 @@ ApplicationWindow {
                     implicitWidth: tableView.width
                     implicitHeight: rowHeight
                     color: {
-                        if (row === selectedRow) return Qt.tint(bgColor, "#40007ACC")
+                        if (isRowSelected(row)) return Qt.tint(bgColor, "#40007ACC")
                         if (isBookmarked) return Qt.tint(row % 2 === 0 ? bgColor : Qt.darker(bgColor, 1.05), "#40FFFF00")
                         return row % 2 === 0 ? bgColor : Qt.darker(bgColor, 1.05)
                     }
@@ -1934,7 +2234,7 @@ ApplicationWindow {
                         anchors.fill: parent
                         acceptedButtons: Qt.LeftButton | Qt.RightButton
                         onClicked: (mouse) => {
-                            selectedRow = row
+                            toggleRowSelection(row, mouse.modifiers & Qt.ControlModifier, mouse.modifiers & Qt.ShiftModifier)
                             selectedLineText = display
                             if (mouse.button === Qt.RightButton) {
                                 globalContextMenu.popup(rowMouseArea, mouse.x, mouse.y)
@@ -1942,6 +2242,7 @@ ApplicationWindow {
                         }
                         onDoubleClicked: {
                             selectedRow = row
+                            selectedRows = [row]
                             selectedLineText = display
                             isDetailPanelVisible = true
                         }
@@ -2172,8 +2473,8 @@ ApplicationWindow {
         id: globalContextMenu
         
         MenuItem {
-            text: qsTr("Copy Line")
-            onTriggered: _appController.copyToClipboard(selectedLineText)
+            text: qsTr("Copy Line") + (selectedRows.length > 1 ? " (" + selectedRows.length + ")" : "")
+            onTriggered: _appController.copyToClipboard(getSelectedLinesText())
         }
         MenuItem {
             text: qsTr("Copy Line Number")

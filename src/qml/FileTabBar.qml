@@ -135,9 +135,9 @@ Rectangle {
                         hoverEnabled: true
                         acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
                         
-                        // 拖拽支持
-                        drag.target: tabItem
-                        drag.axis: Drag.XAxis
+                        // 拖拽支持 - 禁用以避免标签位置混乱
+                        // drag.target: tabItem
+                        // drag.axis: Drag.XAxis
                         
                         onClicked: (mouse) => {
                             if (mouse.button === Qt.LeftButton) {

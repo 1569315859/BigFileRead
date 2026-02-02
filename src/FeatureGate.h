@@ -66,6 +66,9 @@ public:
         ExportHtml,             ///< 导出 HTML
         ClipboardImport,        ///< 剪贴板导入
         DirectoryMonitor,       ///< 目录监控
+        CSVSupport,             ///< CSV 数据源支持
+        JSONSupport,            ///< JSON/JSONL 数据源支持
+        BasicCharts,            ///< 基础图表（柱状图、折线图、饼图）
         
         // === Pro 版功能 ===
         FilterTemplates,        ///< 过滤模板
@@ -73,12 +76,21 @@ public:
         DeltaTime,              ///< 经过时间列
         RollingLogs,            ///< 滚动日志合并
         Statistics,             ///< 统计面板
+        AdvancedCharts,         ///< 高级图表（直方图、散点图）
+        QueryBuilder,           ///< 可视化查询构建器
+        DataDiff,               ///< 数据对比功能
+        UnlimitedFileSize,      ///< 无限文件大小（Free版限1GB）
+        ExportUnlimited,        ///< 无限制导出（Free版限1000行）
         
         // === Enterprise 版功能 ===
         RemoteFiles,            ///< SFTP/SSH 远程文件
         SmtpAlerts,             ///< SMTP 邮件报警
         JiraIntegration,        ///< Jira 集成
-        GitHubIntegration       ///< GitHub 集成
+        GitHubIntegration,      ///< GitHub 集成
+        LocalAI,                ///< 本地 LLM 功能
+        Automation,             ///< 自动化脚本录制/回放
+        CloudAI,                ///< 云端 AI 分析
+        PrioritySupport         ///< 优先技术支持
     };
     Q_ENUM(Feature)
     

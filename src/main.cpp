@@ -39,6 +39,12 @@
 #include "UpdateChecker.h"
 #include "PluginManager.h"
 #include "SessionRecovery.h"
+#include "CSVDataSource.h"
+#include "JSONViewer.h"
+#include "AutomationEngine.h"
+#include "CrashReporter.h"
+#include "LocalLLMEngine.h"
+#include "DataDiffer.h"
 
 /**
  * @brief 程序入口点
@@ -57,6 +63,9 @@ int main(int argc, char *argv[]) {
                        QCoreApplication::applicationDirPath());
 
     QGuiApplication app(argc, argv);
+    
+    // ★★★ 初始化崩溃报告收集器（尽早初始化）★★★
+    CrashReporter::initialize("1.0.0");
 
     // Set application info
     app.setOrganizationName("BigFileRead");
@@ -77,6 +86,15 @@ int main(int argc, char *argv[]) {
     KeywordConfigManager keywordConfig;
 
     QQmlApplicationEngine engine;
+    
+    // ★★★ 注册 QML 类型 ★★★
+    qmlRegisterType<CSVDataSource>("BigFileViewer", 1, 0, "CSVDataSource");
+    qmlRegisterType<JSONTreeModel>("BigFileViewer", 1, 0, "JSONTreeModel");
+    qmlRegisterType<JSONLTableModel>("BigFileViewer", 1, 0, "JSONLTableModel");
+    qmlRegisterType<LocalLLMEngine>("BigFileViewer", 1, 0, "LocalLLMEngine");
+    qmlRegisterType<DataDiffer>("BigFileViewer", 1, 0, "DataDiffer");
+    qmlRegisterSingletonInstance("BigFileViewer", 1, 0, "AutomationEngine", &AutomationEngine::instance());
+    qmlRegisterSingletonInstance("BigFileViewer", 1, 0, "CrashReporter", CrashReporter::instance());
     
     // 设置 QML 引擎引用，用于语言切换时刷新 UI
     LanguageManager::instance().setEngine(&engine);
@@ -113,6 +131,13 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("_pluginManager", &PluginManager::instance());
     engine.rootContext()->setContextProperty("_sessionRecovery", &SessionRecovery::instance());
     
+    // ★★★ JSON 树形视图模型 ★★★
+    static JSONTreeModel jsonTreeModel;
+    engine.rootContext()->setContextProperty("_jsonTreeModel", &jsonTreeModel);
+    
+    // ★★★ 数据对比器 (单例) ★★★
+    engine.rootContext()->setContextProperty("_dataDiffer", &DataDiffer::instance());
+    
     // ★★★ 连接语言切换信号，刷新 QML 界面翻译 ★★★
     QObject::connect(&LanguageManager::instance(), &LanguageManager::languageChanged,
                      &engine, &QQmlApplicationEngine::retranslate);
@@ -135,5 +160,10 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    return app.exec();
+    int result = app.exec();
+    
+    // ★★★ 清理崩溃报告器 ★★★
+    CrashReporter::shutdown();
+    
+    return result;
 }
