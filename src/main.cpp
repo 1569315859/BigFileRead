@@ -44,8 +44,9 @@
 #include "AutomationEngine.h"
 #include "CrashReporter.h"
 #include "LocalLLMEngine.h"
+#include "LogParser.h"
 #include "DataDiffer.h"
-
+#include <QQuickStyle>
 /**
  * @brief 程序入口点
  * @param argc 命令行参数数量
@@ -66,7 +67,7 @@ int main(int argc, char *argv[]) {
     
     // ★★★ 初始化崩溃报告收集器（尽早初始化）★★★
     CrashReporter::initialize("1.0.0");
-
+    //QQuickStyle::setStyle("Material");
     // Set application info
     app.setOrganizationName("BigFileRead");
     app.setOrganizationDomain("bigfileread.local");
@@ -135,8 +136,15 @@ int main(int argc, char *argv[]) {
     static JSONTreeModel jsonTreeModel;
     engine.rootContext()->setContextProperty("_jsonTreeModel", &jsonTreeModel);
     
+    // ★★★ CSV 数据源 ★★★
+    static CSVDataSource csvDataSource;
+    engine.rootContext()->setContextProperty("_csvDataSource", &csvDataSource);
+    
     // ★★★ 数据对比器 (单例) ★★★
     engine.rootContext()->setContextProperty("_dataDiffer", &DataDiffer::instance());
+    
+    // ★★★ 日志解析器 (单例) ★★★
+    engine.rootContext()->setContextProperty("_logParser", &LogParser::instance());
     
     // ★★★ 连接语言切换信号，刷新 QML 界面翻译 ★★★
     QObject::connect(&LanguageManager::instance(), &LanguageManager::languageChanged,

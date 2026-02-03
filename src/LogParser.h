@@ -7,6 +7,7 @@
 #ifndef LOGPARSER_H
 #define LOGPARSER_H
 
+#include <QObject>
 #include <QString>
 #include <QStringList>
 #include <QRegularExpression>
@@ -24,8 +25,17 @@
  * - LRU cache for parsed results (performance optimization)
  * - Thread-safe with mutex protection for cache
  */
-class LogParser
+class LogParser : public QObject
 {
+    Q_OBJECT
+    Q_PROPERTY(QStringList columnHeaders READ columnHeaders NOTIFY columnHeadersChanged)
+    Q_PROPERTY(int columnCount READ columnCount NOTIFY columnHeadersChanged)
+    Q_PROPERTY(QString pattern READ pattern NOTIFY patternChanged)
+    Q_PROPERTY(bool jsonParsingEnabled READ isJsonParsingEnabled WRITE setJsonParsingEnabled NOTIFY jsonParsingEnabledChanged)
+    Q_PROPERTY(bool xmlParsingEnabled READ isXmlParsingEnabled WRITE setXmlParsingEnabled NOTIFY xmlParsingEnabledChanged)
+    Q_PROPERTY(bool dsvParsingEnabled READ isDsvParsingEnabled WRITE setDsvParsingEnabled NOTIFY dsvParsingEnabledChanged)
+    Q_PROPERTY(bool multilineEnabled READ isMultilineEnabled NOTIFY multilineEnabledChanged)
+
 public:
     /**
      * @brief Singleton instance accessor
@@ -191,7 +201,7 @@ public:
      * @return List of field values corresponding to columns
      * @note Lazy parsing - called on-demand from Model::data()
      */
-    QStringList parseLine(const QString &rawLine) const;
+    Q_INVOKABLE QStringList parseLine(const QString &rawLine) const;
 
     /**
      * @brief Parse a log line and cache the result
@@ -313,28 +323,37 @@ public:
      * 5. Known regex patterns (SpringBoot/Logback/Log4j/Apache)
      * 6. Generic text
      */
-    static FormatDetectionResult detectFormat(const QString &sampleContent);
+    Q_INVOKABLE static FormatDetectionResult detectFormat(const QString &sampleContent);
     
     /**
      * @brief Auto-configure parser based on sample content
      * @param sampleContent First N bytes/lines of the file
      * @return true if a format was detected and applied
      */
-    bool autoDetectAndConfigure(const QString &sampleContent);
+    Q_INVOKABLE bool autoDetectAndConfigure(const QString &sampleContent);
 
     /**
      * @brief Apply a preset log format
      * @param preset The preset to apply
      */
-    void applyPreset(Preset preset);
+    Q_INVOKABLE void applyPreset(Preset preset);
 
     /**
      * @brief Get current preset name
      */
     QString presetName() const { return m_presetName; }
 
+signals:
+    void columnHeadersChanged();
+    void patternChanged();
+    void jsonParsingEnabledChanged();
+    void xmlParsingEnabledChanged();
+    void dsvParsingEnabledChanged();
+    void multilineEnabledChanged();
+    void configurationChanged();
+
 private:
-    LogParser();
+    explicit LogParser(QObject *parent = nullptr);
     ~LogParser() = default;
 
     /**

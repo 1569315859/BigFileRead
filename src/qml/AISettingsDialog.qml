@@ -126,7 +126,7 @@ Popup {
                     
                     Label {
                         text: qsTr("Configure API keys for each AI service. Keys are stored encrypted locally.")
-                        color: _themeManager.secondaryTextColor
+                        color: Qt.darker(_themeManager.textColor, 1.3)
                         wrapMode: Text.Wrap
                         Layout.fillWidth: true
                     }
@@ -239,7 +239,7 @@ Popup {
                     
                     Label {
                         text: qsTr("Configure network proxy for AI API requests.")
-                        color: _themeManager.secondaryTextColor
+                        color: Qt.darker(_themeManager.textColor, 1.3)
                         wrapMode: Text.Wrap
                         Layout.fillWidth: true
                     }
@@ -481,7 +481,7 @@ Popup {
                 
                 Label {
                     text: qsTr("Add custom AI services compatible with OpenAI API format.")
-                    color: _themeManager.secondaryTextColor
+                    color: Qt.darker(_themeManager.textColor, 1.3)
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true
                 }
@@ -526,7 +526,7 @@ Popup {
                                     Label {
                                         text: modelData.endpoint
                                         font.pixelSize: 11
-                                        color: _themeManager.secondaryTextColor
+                                        color: Qt.darker(_themeManager.textColor, 1.3)
                                         elide: Text.ElideMiddle
                                         Layout.fillWidth: true
                                     }
@@ -549,7 +549,7 @@ Popup {
                             anchors.centerIn: parent
                             visible: customServiceList.count === 0
                             text: qsTr("No custom services configured")
-                            color: _themeManager.secondaryTextColor
+                            color: Qt.darker(_themeManager.textColor, 1.3)
                         }
                     }
                 }
@@ -782,7 +782,7 @@ Popup {
             Label {
                 text: testResultDialog.message
                 wrapMode: Text.Wrap
-                color: _themeManager.secondaryTextColor
+                color: Qt.darker(_themeManager.textColor, 1.3)
             }
         }
     }

@@ -42,6 +42,8 @@
         <file>qml/DistinctValuePanel.qml</file>
         <file>qml/UpdateDialog.qml</file>
         <file>qml/PluginManagerDialog.qml</file>
+        <file>qml/SessionRecoveryDialog.qml</file>
+        <file>qml/ParserConfigDialog.qml</file>
         <file>qml/CSVTableView.qml</file>
         <file>qml/JSONTreeView.qml</file>
         <file>qml/ChartCanvas.qml</file>

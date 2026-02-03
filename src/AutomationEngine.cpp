@@ -168,8 +168,12 @@ void AutomationEngine::stopRecording()
     m_recordingPaused = false;
     m_recordingScript.modifiedAt = QDateTime::currentDateTime();
     
+    // 将录制的脚本复制到当前脚本，以便回放
+    m_currentScript = m_recordingScript;
+    
     emit isRecordingChanged();
     emit recordingStopped();
+    emit totalActionsChanged();  // 通知QML更新Play按钮状态
     
     qDebug() << "[AutomationEngine] Recording stopped. Actions:" << m_recordingScript.actions.size();
 }

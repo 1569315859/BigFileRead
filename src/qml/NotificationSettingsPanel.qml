@@ -394,7 +394,7 @@ Popup {
                             wrapMode: TextArea.Wrap
                             placeholderText: qsTr("Command execution output will be displayed here")
                             Connections {
-                                target: notificationManager
+                                target: _notificationManager || null
                                 function onCommandOutput(stdOut, stdErr, exitCode) {
                                     commandOutput.text = "Exit code: " + exitCode + "\n" +
                                                          "stdout:\n" + stdOut + "\n" +

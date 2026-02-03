@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import Qt.labs.platform as Platform // For FileDialog (native)
+import BigFileViewer 1.0  // For AutomationEngine, CrashReporter singletons
 
 ApplicationWindow {
     id: window
@@ -37,14 +38,119 @@ ApplicationWindow {
             // ★★★ 强制刷新 EnhancedScrollBar 的标记数据 ★★★
             enhancedScrollBar.totalLines = newModel ? newModel.lineCount : 0
             enhancedScrollBar.bookmarks = newModel ? (newModel.bookmarkLines || []) : []
+
             enhancedScrollBar.searchResults = newModel ? (newModel.searchResultLines || []) : []
             enhancedScrollBar.errorLines = newModel ? (newModel.errorLines || []) : []
             enhancedScrollBar.warningLines = newModel ? (newModel.warningLines || []) : []
             enhancedScrollBar.infoLines = newModel ? (newModel.infoLines || []) : []
+            // 关闭特殊视图模式
+            isJsonViewMode = false
+            isCsvViewMode = false
             console.log("[Main.qml] All views refreshed with new model")
         }
         function onCurrentTabChanged(index) {
             console.log("[Main.qml] onCurrentTabChanged triggered, index:", index)
+        }
+    }
+
+    // ★★★ 启动时检测会话恢复 ★★★
+    Timer {
+        id: sessionRecoveryTimer
+        interval: 500  // 延迟500ms检测，确保UI完全加载
+        running: true
+        repeat: false
+        onTriggered: {
+            if (_sessionRecovery && _sessionRecovery.hasRecoverableSession) {
+                console.log("[Main.qml] Recoverable session detected, showing recovery dialog")
+                sessionRecoveryDialog.open()
+            }
+        }
+    }
+
+    // ★★★ 监听 AutomationEngine 的回放信号 ★★★
+    Connections {
+        target: AutomationEngine
+        function onExecuteAction(actionType, params) {
+            console.log("[Automation] Executing action:", actionType, JSON.stringify(params))
+            
+            switch (actionType) {
+                case "openFile":
+                    if (params.path) {
+                        _tabManager.openTab(params.path)
+                        _appController.addRecentFile(params.path)
+                    }
+                    break
+                case "goToLine":
+                    if (params.line > 0) {
+                        tableView.contentY = (params.line - 1) * rowHeight
+                    }
+                    break
+                case "toggleBookmark":
+                    if (params.line >= 0) {
+                        currentLogModel.toggleBookmark(params.line)
+                    }
+                    break
+                case "navigateBookmark":
+                    if (params.direction === "next") {
+                        var nextBm = currentLogModel.getNextBookmark(Math.floor(tableView.contentY / rowHeight))
+                        if (nextBm >= 0) tableView.contentY = nextBm * rowHeight
+                    } else {
+                        var prevBm = currentLogModel.getPrevBookmark(Math.floor(tableView.contentY / rowHeight))
+                        if (prevBm >= 0) tableView.contentY = prevBm * rowHeight
+                    }
+                    break
+                case "saveBookmarks":
+                    currentLogModel.autoSaveBookmarks()
+                    break
+                case "loadBookmarks":
+                    currentLogModel.autoLoadBookmarks()
+                    break
+                case "search":
+                    if (params.text !== undefined) {
+                        currentLogModel.search(params.text, params.isRegex || false)
+                        searchInput.text = params.text
+                        isSearchVisible = true
+                    }
+                    break
+                case "navigateSearchResult":
+                    if (params.direction === "next") {
+                        var nextSr = currentLogModel.nextSearchResult(Math.floor(tableView.contentY / rowHeight))
+                        if (nextSr >= 0) tableView.contentY = nextSr * rowHeight
+                    } else {
+                        var prevSr = currentLogModel.prevSearchResult(Math.floor(tableView.contentY / rowHeight))
+                        if (prevSr >= 0) tableView.contentY = prevSr * rowHeight
+                    }
+                    break
+                case "applyFilter":
+                    if (params.text !== undefined) {
+                        currentLogModel.applyFilter(params.text, params.isRegex || false)
+                        filterInput.text = params.text
+                        isFilterVisible = true
+                    }
+                    break
+                case "clearFilter":
+                    filterInput.text = ""
+                    currentLogModel.clearFilter()
+                    break
+                case "copy":
+                    var text = getSelectedLinesText()
+                    if (text) _appController.copyToClipboard(text)
+                    break
+                case "loadFromClipboard":
+                    currentLogModel.loadFromClipboard()
+                    break
+                default:
+                    console.log("[Automation] Unknown action type:", actionType)
+            }
+        }
+        function onPlaybackStarted() {
+            console.log("[Automation] Playback started")
+        }
+        function onPlaybackFinished() {
+            console.log("[Automation] Playback finished")
+        }
+        function onPlaybackError(error) {
+            console.log("[Automation] Playback error:", error)
         }
     }
 
@@ -55,6 +161,7 @@ ApplicationWindow {
     property bool isFollowMode: false  // 实时加载模式
     property bool isTableViewMode: false  // 表格视图模式
     property bool isJsonViewMode: false   // JSON 视图模式
+    property bool isCsvViewMode: false    // CSV 表格视图模式
     property string currentJsonContent: "" // 当前JSON内容
     property int rowHeight: 24
     property int selectedRow: -1
@@ -130,6 +237,7 @@ ApplicationWindow {
                 }
                 _tabManager.openTab(filePath)
                 _appController.addRecentFile(filePath)
+                AutomationEngine.recordAction("openFile", {"path": filePath})
             }
         }
         
@@ -217,12 +325,16 @@ ApplicationWindow {
             var text = getSelectedLinesText()
             if (text) {
                 _appController.copyToClipboard(text)
+                AutomationEngine.recordAction("copy", {"lines": selectedRows.length > 0 ? selectedRows.length : 1})
             }
         }
     }
     Shortcut {
         sequence: "Ctrl+Shift+V"
-        onActivated: currentLogModel.loadFromClipboard()
+        onActivated: {
+            currentLogModel.loadFromClipboard()
+            AutomationEngine.recordAction("loadFromClipboard", {})
+        }
     }
 
     // Format file size with appropriate unit (B/KB/MB/GB)
@@ -379,9 +491,9 @@ ApplicationWindow {
             filePath: currentLogModel.filePath || "",
             scrollPosition: tableView.contentY,
             filterKeyword: filterInput.text,
-            caseSensitive: caseSensitiveCheckbox.checked,
-            useRegex: regexCheckbox.checked,
-            logLevel: logLevelCombo.currentIndex > 0 ? logLevelCombo.currentText : "",
+            caseSensitive: false,  // TODO: add caseSensitive UI control
+            useRegex: filterRegexCheck ? filterRegexCheck.checked : false,
+            logLevel: "",  // TODO: add logLevel filter UI control
             bookmarks: currentLogModel.getAllBookmarks(),
             followMode: isFollowMode,
             lineNumberWidth: 80,
@@ -477,6 +589,15 @@ ApplicationWindow {
                     }
                     
                     MenuItem {
+                        text: qsTr("Open CSV/Excel...") + (_featureGate.isProUser ? "" : " [Pro]")
+                        onTriggered: {
+                            if (_featureGate.canUseFeature("csv_support")) {
+                                csvFileDialog.open()
+                            }
+                        }
+                    }
+                    
+                    MenuItem {
                         text: qsTr("Open Remote File...") + (_featureGate.isProUser ? "" : " [Enterprise]")
                         onTriggered: {
                             if (_featureGate.canUseFeature("remote_files")) {
@@ -500,6 +621,7 @@ ApplicationWindow {
                                 onTriggered: {
                                     _tabManager.openTab(modelData)
                                     _appController.addRecentFile(modelData)
+                                    AutomationEngine.recordAction("openFile", {"path": modelData})
                                 }
                             }
                             onObjectAdded: (index, object) => recentFilesMenu.insertItem(index, object)
@@ -603,7 +725,10 @@ ApplicationWindow {
                     MenuItem {
                         text: qsTr("Add/Remove Bookmark")
                         enabled: selectedRow >= 0
-                        onTriggered: currentLogModel.toggleBookmark(selectedRow)
+                        onTriggered: {
+                            currentLogModel.toggleBookmark(selectedRow)
+                            AutomationEngine.recordAction("toggleBookmark", {"line": selectedRow})
+                        }
                     }
                     MenuItem {
                         text: qsTr("Edit Bookmark Comment...")
@@ -621,6 +746,7 @@ ApplicationWindow {
                             var nextRow = currentLogModel.getNextBookmark(currentRow)
                             if (nextRow >= 0) {
                                 tableView.contentY = nextRow * rowHeight
+                                AutomationEngine.recordAction("navigateBookmark", {"direction": "next", "line": nextRow})
                             }
                         }
                     }
@@ -631,6 +757,7 @@ ApplicationWindow {
                             var prevRow = currentLogModel.getPrevBookmark(currentRow)
                             if (prevRow >= 0) {
                                 tableView.contentY = prevRow * rowHeight
+                                AutomationEngine.recordAction("navigateBookmark", {"direction": "previous", "line": prevRow})
                             }
                         }
                     }
@@ -638,11 +765,17 @@ ApplicationWindow {
                     MenuItem {
                         text: qsTr("Save Bookmarks...")
                         enabled: currentLogModel.bookmarkLines.length > 0
-                        onTriggered: currentLogModel.autoSaveBookmarks()
+                        onTriggered: {
+                            currentLogModel.autoSaveBookmarks()
+                            AutomationEngine.recordAction("saveBookmarks", {})
+                        }
                     }
                     MenuItem {
                         text: qsTr("Load Bookmarks...")
-                        onTriggered: currentLogModel.autoLoadBookmarks()
+                        onTriggered: {
+                            currentLogModel.autoLoadBookmarks()
+                            AutomationEngine.recordAction("loadBookmarks", {})
+                        }
                     }
                     MenuSeparator {}
                     MenuItem {
@@ -676,10 +809,11 @@ ApplicationWindow {
                     MenuItem {
                         text: qsTr("Grid View (Parsed)")
                         checkable: true
-                        checked: isTableViewMode && !isJsonViewMode
+                        checked: isTableViewMode && !isJsonViewMode && !isCsvViewMode
                         onTriggered: {
                             isTableViewMode = true
                             isJsonViewMode = false
+                            isCsvViewMode = false
                             currentLogModel.setTableModeEnabled(true)
                         }
                     }
@@ -691,6 +825,31 @@ ApplicationWindow {
                             isJsonViewMode = checked
                             if (checked) {
                                 isTableViewMode = false
+                                isCsvViewMode = false
+                                // 加载当前文件到 JSON 树形视图
+                                if (currentLogModel && currentLogModel.filePath) {
+                                    _jsonTreeModel.loadFile(currentLogModel.filePath)
+                                } else if (currentLogModel && currentLogModel.lineCount > 0) {
+                                    // 从剪贴板或其他来源加载的内容
+                                    var allText = ""
+                                    for (var i = 0; i < Math.min(currentLogModel.lineCount, 10000); i++) {
+                                        allText += currentLogModel.getLine(i) + "\n"
+                                    }
+                                    _jsonTreeModel.loadFromString(allText)
+                                }
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("CSV Table View")
+                        checkable: true
+                        checked: isCsvViewMode
+                        enabled: _csvDataSource && _csvDataSource.totalRowCount > 0
+                        onTriggered: {
+                            isCsvViewMode = checked
+                            if (checked) {
+                                isTableViewMode = false
+                                isJsonViewMode = false
                             }
                         }
                     }
@@ -843,6 +1002,10 @@ ApplicationWindow {
                         text: qsTr("AI Settings...")
                         onTriggered: aiSettingsDialog.open()
                     }
+                    MenuItem {
+                        text: qsTr("Parser Settings...")
+                        onTriggered: parserConfigDialog.open()
+                    }
                     MenuSeparator {}
                     MenuItem {
                         text: qsTr("Reload File")
@@ -882,7 +1045,7 @@ ApplicationWindow {
                         text: qsTr("Play Last Script")
                         enabled: AutomationEngine.totalActions > 0
                         onTriggered: {
-                            AutomationEngine.replay()
+                            AutomationEngine.playScript()
                         }
                     }
                 }
@@ -1385,6 +1548,7 @@ ApplicationWindow {
         onAccepted: {
             if (targetLine > 0) {
                 tableView.contentY = (targetLine - 1) * rowHeight
+                AutomationEngine.recordAction("goToLine", {"line": targetLine})
             }
         }
     }
@@ -1411,22 +1575,22 @@ ApplicationWindow {
     FilterTemplateDialog {
         id: filterTemplateDialog
         currentKeyword: filterInput.text
-        currentCaseSensitive: caseSensitiveCheckbox.checked
-        currentUseRegex: regexCheckbox.checked
-        currentLogLevel: logLevelCombo.currentIndex > 0 ? logLevelCombo.currentText : ""
+        currentCaseSensitive: false  // TODO: add caseSensitive UI control
+        currentUseRegex: filterRegexCheck ? filterRegexCheck.checked : false
+        currentLogLevel: ""  // TODO: add logLevel filter UI control
         
         onTemplateApplied: function(template) {
             if (template) {
                 filterInput.text = template.keyword || ""
-                caseSensitiveCheckbox.checked = template.caseSensitive || false
-                regexCheckbox.checked = template.useRegex || false
+                // caseSensitiveCheckbox.checked = template.caseSensitive || false
+                if (filterRegexCheck) filterRegexCheck.checked = template.useRegex || false
                 // 应用日志级别
-                if (template.logLevel && template.logLevel.length > 0) {
-                    var idx = logLevelCombo.find(template.logLevel)
-                    if (idx >= 0) {
-                        logLevelCombo.currentIndex = idx
-                    }
-                }
+                // if (template.logLevel && template.logLevel.length > 0) {
+                //     var idx = logLevelCombo.find(template.logLevel)
+                //     if (idx >= 0) {
+                //         logLevelCombo.currentIndex = idx
+                //     }
+                // }
             }
         }
     }
@@ -1463,16 +1627,8 @@ ApplicationWindow {
         id: jiraIssueDialog
         jiraIntegration: _jiraIntegration
     }
-    JiraIssueDialog {
-        id: jiraConfigDialog
-        jiraIntegration: _jiraIntegration
-    }
     GitHubIssueDialog {
         id: githubIssueDialog
-        githubIntegration: _githubIntegration
-    }
-    GitHubIssueDialog {
-        id: githubConfigDialog
         githubIntegration: _githubIntegration
     }
     RemoteFileDialog {
@@ -1489,6 +1645,8 @@ ApplicationWindow {
     KeywordConfigDialog { id: keywordConfigDialog }
 
     // ========== 新功能对话框 ==========
+    SessionRecoveryDialog { id: sessionRecoveryDialog }
+    ParserConfigDialog { id: parserConfigDialog }
     DatabaseConnectionDialog { id: databaseConnectionDialog }
     CloudStorageDialog { id: cloudStorageDialog }
     EventLogDialog { id: eventLogDialog }
@@ -1602,10 +1760,10 @@ ApplicationWindow {
                 Layout.fillHeight: true
                 diffs: []
                 stats: ({})
-                bgColor: root.bgColor
-                panelColor: root.panelColor
-                textColor: root.textColor
-                borderColor: root.borderColor
+                bgColor: window.bgColor
+                panelColor: window.panelColor
+                textColor: window.textColor
+                borderColor: window.borderColor
             }
         }
         
@@ -1639,11 +1797,11 @@ ApplicationWindow {
             anchors.fill: parent
             anchors.margins: 10
             columns: currentLogModel ? ["Line", "Time", "Level", "Message"] : []
-            bgColor: root.bgColor
-            panelColor: root.panelColor
-            textColor: root.textColor
-            accentColor: root.accentColor
-            borderColor: root.borderColor
+            bgColor: window.bgColor
+            panelColor: window.panelColor
+            textColor: window.textColor
+            accentColor: window.accentColor
+            borderColor: window.borderColor
             onQueryApplied: function(conditions) {
                 console.log("Query applied:", JSON.stringify(conditions))
                 queryBuilderDialog.close()
@@ -1678,6 +1836,22 @@ ApplicationWindow {
         
         onRejected: {
             console.log("FileDialog rejected/cancelled")
+        }
+    }
+    
+    Platform.FileDialog {
+        id: csvFileDialog
+        title: qsTr("Open CSV/Excel File")
+        nameFilters: ["CSV files (*.csv)", "TSV files (*.tsv)", "All files (*)"]
+        
+        onAccepted: {
+            var path = _appController.urlToLocalPath(file)
+            console.log("CSV file selected:", path)
+            // 使用 CSVDataSource 加载
+            _csvDataSource.loadFile(path)
+            isCsvViewMode = true
+            isJsonViewMode = false
+            _appController.addRecentFile(path)
         }
     }
 
@@ -1744,6 +1918,7 @@ ApplicationWindow {
                     onAccepted: {
                         currentSearchTerm = text
                         currentLogModel.search(text, regexCheck.checked)
+                        AutomationEngine.recordAction("search", {"text": text, "isRegex": regexCheck.checked})
                     }
                 }
                 
@@ -1786,6 +1961,7 @@ ApplicationWindow {
                     onClicked: {
                         currentSearchTerm = searchInput.text
                         currentLogModel.search(searchInput.text, regexCheck.checked)
+                        AutomationEngine.recordAction("search", {"text": searchInput.text, "isRegex": regexCheck.checked})
                     }
                     background: Rectangle {
                         color: parent.down ? Qt.darker(accentColor, 1.2) : accentColor
@@ -1811,6 +1987,7 @@ ApplicationWindow {
                         var prevRow = currentLogModel.prevSearchResult(currentRow)
                         if (prevRow >= 0) {
                             tableView.contentY = prevRow * rowHeight
+                            AutomationEngine.recordAction("navigateSearchResult", {"direction": "previous", "line": prevRow})
                         }
                     }
                     background: Rectangle {
@@ -1837,6 +2014,7 @@ ApplicationWindow {
                         var nextRow = currentLogModel.nextSearchResult(currentRow)
                         if (nextRow >= 0) {
                             tableView.contentY = nextRow * rowHeight
+                            AutomationEngine.recordAction("navigateSearchResult", {"direction": "next", "line": nextRow})
                         }
                     }
                     background: Rectangle {
@@ -1922,6 +2100,7 @@ ApplicationWindow {
                     onAccepted: {
                         currentFilterTerm = text
                         currentLogModel.applyFilter(text, filterRegexCheck.checked)
+                        AutomationEngine.recordAction("applyFilter", {"text": text, "isRegex": filterRegexCheck.checked})
                     }
                 }
                 
@@ -1964,6 +2143,7 @@ ApplicationWindow {
                     onClicked: {
                         currentFilterTerm = filterInput.text
                         currentLogModel.applyFilter(filterInput.text, filterRegexCheck.checked)
+                        AutomationEngine.recordAction("applyFilter", {"text": filterInput.text, "isRegex": filterRegexCheck.checked})
                     }
                     background: Rectangle {
                         color: parent.down ? Qt.darker(accentColor, 1.2) : accentColor
@@ -1987,6 +2167,7 @@ ApplicationWindow {
                         filterInput.text = ""
                         currentFilterTerm = ""
                         currentLogModel.clearFilter()
+                        AutomationEngine.recordAction("clearFilter", {})
                     }
                     background: Rectangle {
                         color: parent.down ? Qt.darker(panelColor, 1.3) : (parent.hovered ? Qt.darker(panelColor, 1.1) : panelColor)
@@ -2182,11 +2363,30 @@ ApplicationWindow {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 treeModel: _jsonTreeModel
+                bgColor: window.bgColor
+                panelColor: window.panelColor
+                textColor: window.textColor
+                accentColor: window.accentColor
+                borderColor: window.borderColor
+            }
+            
+            // CSV 表格视图模式
+            CSVTableView {
+                id: csvTableView
+                visible: isCsvViewMode
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                dataSource: _csvDataSource
+                bgColor: window.bgColor
+                panelColor: window.panelColor
+                textColor: window.textColor
+                accentColor: window.accentColor
+                borderColor: window.borderColor
             }
 
             TableView {
                 id: tableView
-                visible: !isJsonViewMode
+                visible: !isJsonViewMode && !isCsvViewMode
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 clip: true
@@ -2485,7 +2685,10 @@ ApplicationWindow {
         
         MenuItem {
             text: qsTr("Toggle Bookmark")
-            onTriggered: currentLogModel.toggleBookmark(selectedRow)
+            onTriggered: {
+                currentLogModel.toggleBookmark(selectedRow)
+                AutomationEngine.recordAction("toggleBookmark", {"line": selectedRow})
+            }
         }
         MenuItem {
             text: qsTr("Next Bookmark")

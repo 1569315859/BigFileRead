@@ -276,18 +276,19 @@ Popup {
                         GridLayout {
                             anchors.fill: parent
                             columns: 6
+                            property var stats: parent.parent.stats || {}
                             
                             Label { text: qsTr("Min:"); color: "#888" }
-                            Label { text: parent.parent.stats.min?.toFixed(2) || "-"; color: "#fff" }
+                            Label { text: parent.stats && parent.stats.min !== undefined ? parent.stats.min.toFixed(2) : "-"; color: "#fff" }
                             Label { text: qsTr("Max:"); color: "#888" }
-                            Label { text: parent.parent.stats.max?.toFixed(2) || "-"; color: "#fff" }
+                            Label { text: parent.stats && parent.stats.max !== undefined ? parent.stats.max.toFixed(2) : "-"; color: "#fff" }
                             Label { text: qsTr("Avg:"); color: "#888" }
-                            Label { text: parent.parent.stats.avg?.toFixed(2) || "-"; color: "#fff" }
+                            Label { text: parent.stats && parent.stats.avg !== undefined ? parent.stats.avg.toFixed(2) : "-"; color: "#fff" }
                             
                             Label { text: qsTr("Median:"); color: "#888" }
-                            Label { text: parent.parent.stats.median?.toFixed(2) || "-"; color: "#fff" }
+                            Label { text: parent.stats && parent.stats.median !== undefined ? parent.stats.median.toFixed(2) : "-"; color: "#fff" }
                             Label { text: qsTr("StdDev:"); color: "#888" }
-                            Label { text: parent.parent.stats.stdDev?.toFixed(2) || "-"; color: "#fff" }
+                            Label { text: parent.stats && parent.stats.stdDev !== undefined ? parent.stats.stdDev.toFixed(2) : "-"; color: "#fff" }
                         }
                     }
                     

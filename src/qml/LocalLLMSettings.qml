@@ -20,7 +20,28 @@ Dialog {
     width: 700
     height: 600
     modal: true
+    anchors.centerIn: parent
     standardButtons: Dialog.Ok | Dialog.Cancel | Dialog.Apply
+    
+    // 主题颜色
+    property color textColor: _themeManager ? _themeManager.textColor : palette.text
+    property color panelColor: _themeManager ? _themeManager.panelBackground : palette.window
+    property color bgColor: _themeManager ? _themeManager.backgroundColor : palette.base
+    property color accentColor: _themeManager ? _themeManager.accentColor : palette.highlight
+    property color borderColor: _themeManager ? _themeManager.borderColor : palette.mid
+    
+    palette.text: textColor
+    palette.windowText: textColor
+    palette.window: panelColor
+    palette.base: bgColor
+    palette.highlight: accentColor
+    palette.buttonText: textColor
+    
+    background: Rectangle {
+        color: panelColor
+        border.color: borderColor
+        radius: 8
+    }
     
     // 信号
     signal settingsApplied()

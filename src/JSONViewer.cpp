@@ -624,6 +624,11 @@ void JSONTreeModel::loadDataAsync()
 void JSONTreeModel::onLoadingFinished()
 {
     m_isLoading.store(false);
+    
+    // 关键：在主线程中通知视图模型数据已更新
+    beginResetModel();
+    endResetModel();
+    
     emit loadingStateChanged();
     emit totalNodesChanged();
     emit isJsonlChanged();

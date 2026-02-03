@@ -563,22 +563,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AutomationEngine.cpp" line="247"/>
+        <location filename="../src/AutomationEngine.cpp" line="251"/>
         <source>No script to play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AutomationEngine.cpp" line="253"/>
+        <location filename="../src/AutomationEngine.cpp" line="257"/>
         <source>Failed to load script: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AutomationEngine.cpp" line="259"/>
+        <location filename="../src/AutomationEngine.cpp" line="263"/>
         <source>Script has no actions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AutomationEngine.cpp" line="648"/>
+        <location filename="../src/AutomationEngine.cpp" line="652"/>
         <source>Failed to load script</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2292,37 +2292,37 @@ Run analysis to find related log entries.</source>
         <translation>숫자 통계</translation>
     </message>
     <message>
-        <location filename="../src/qml/DistinctValuePanel.qml" line="280"/>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="281"/>
         <source>Min:</source>
         <translation>최소:</translation>
     </message>
     <message>
-        <location filename="../src/qml/DistinctValuePanel.qml" line="282"/>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="283"/>
         <source>Max:</source>
         <translation>최대:</translation>
     </message>
     <message>
-        <location filename="../src/qml/DistinctValuePanel.qml" line="284"/>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="285"/>
         <source>Avg:</source>
         <translation>평균:</translation>
     </message>
     <message>
-        <location filename="../src/qml/DistinctValuePanel.qml" line="287"/>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="288"/>
         <source>Median:</source>
         <translation>중앙값:</translation>
     </message>
     <message>
-        <location filename="../src/qml/DistinctValuePanel.qml" line="289"/>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="290"/>
         <source>StdDev:</source>
         <translation>표준 편차:</translation>
     </message>
     <message>
-        <location filename="../src/qml/DistinctValuePanel.qml" line="296"/>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="297"/>
         <source>Top Values</source>
         <translation>상위 값</translation>
     </message>
     <message>
-        <location filename="../src/qml/DistinctValuePanel.qml" line="349"/>
+        <location filename="../src/qml/DistinctValuePanel.qml" line="350"/>
         <source>Value Patterns</source>
         <translation>값 패턴</translation>
     </message>
@@ -3623,12 +3623,12 @@ Use &apos;Save Current Filter&apos; to create one</source>
 <context>
     <name>JSONLTableModel</name>
     <message>
-        <location filename="../src/JSONViewer.cpp" line="1046"/>
+        <location filename="../src/JSONViewer.cpp" line="1051"/>
         <source>Loading cancelled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/JSONViewer.cpp" line="1048"/>
+        <location filename="../src/JSONViewer.cpp" line="1053"/>
         <source>Loaded %1 rows, %2 columns</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3642,12 +3642,12 @@ Use &apos;Save Current Filter&apos; to create one</source>
     </message>
     <message>
         <location filename="../src/JSONViewer.cpp" line="180"/>
-        <location filename="../src/JSONViewer.cpp" line="634"/>
+        <location filename="../src/JSONViewer.cpp" line="639"/>
         <source>Loaded %1 nodes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/JSONViewer.cpp" line="632"/>
+        <location filename="../src/JSONViewer.cpp" line="637"/>
         <source>Loading cancelled</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4094,318 +4094,318 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="41"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="62"/>
         <source>你是一个数据分析助手，帮助用户理解和分析日志文件、CSV数据等。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="54"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="75"/>
         <source>模型配置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="58"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="79"/>
         <source>生成参数</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="62"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="83"/>
         <source>系统提示词</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="66"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="87"/>
         <source>测试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="91"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="112"/>
         <source>模型文件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="104"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="125"/>
         <source>选择 GGUF 模型文件...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="112"/>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="182"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="133"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="203"/>
         <source>浏览...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="119"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="140"/>
         <source>支持的模型格式: GGUF (llama.cpp 格式)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="138"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="159"/>
         <source>模型已加载</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="139"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="160"/>
         <source>模型未加载</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="146"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="167"/>
         <source>卸载模型</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="146"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="167"/>
         <source>加载模型</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="164"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="185"/>
         <source>llama.cpp 可执行文件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="177"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="198"/>
         <source>自动检测或手动指定 llama-cli 路径...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="187"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="208"/>
         <source>自动检测</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="198"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="219"/>
         <source>下载地址: https://github.com/ggerganov/llama.cpp/releases</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="213"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="234"/>
         <source>硬件配置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="222"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="243"/>
         <source>GPU 加速层数:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="232"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="253"/>
         <source>(0 = 仅 CPU，增加此值可加速)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="238"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="259"/>
         <source>CPU 线程数:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="248"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="269"/>
         <source>(建议: 物理核心数)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="254"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="275"/>
         <source>上下文长度:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="269"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="290"/>
         <source>(更长 = 更多内存)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="279"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="300"/>
         <source>推荐模型</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="307"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="328"/>
         <source>下载</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="331"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="352"/>
         <source>采样参数</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="341"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="362"/>
         <source>Temperature:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="357"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="378"/>
         <source>Top P:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="373"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="394"/>
         <source>Top K:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="392"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="413"/>
         <source>参数说明</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="401"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="422"/>
         <source>• Temperature: 控制输出的随机性。低值(0.1-0.5)更确定性，高值(0.8-1.5)更创意。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="407"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="428"/>
         <source>• Top P: 核采样。只考虑累积概率达到此值的 token。0.9 是常用值。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="413"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="434"/>
         <source>• Top K: 只考虑概率最高的 K 个 token。40 是常用值。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="422"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="443"/>
         <source>快速预设</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="430"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="451"/>
         <source>精确分析</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="438"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="459"/>
         <source>平衡</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="446"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="467"/>
         <source>创意</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="467"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="488"/>
         <source>系统提示词定义 AI 的角色和行为方式：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="478"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="499"/>
         <source>输入系统提示词...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="488"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="509"/>
         <source>预设:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="493"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="514"/>
         <source>数据分析助手</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="494"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="515"/>
         <source>日志分析专家</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="495"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="516"/>
         <source>代码解释器</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="496"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="517"/>
         <source>通用助手</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="502"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="523"/>
         <source>你是一个数据分析助手，帮助用户理解和分析日志文件、CSV数据等。请给出简洁、准确的分析结果。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="505"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="526"/>
         <source>你是一个日志分析专家，专注于识别错误模式、异常行为和性能问题。请分析日志内容并提供可操作的建议。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="508"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="529"/>
         <source>你是一个代码解释器，帮助用户理解日志中的技术信息、错误堆栈和代码片段。请用通俗易懂的语言解释技术细节。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="511"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="532"/>
         <source>你是一个有帮助的 AI 助手。请尽力回答用户的问题。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="527"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="548"/>
         <source>测试输入</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="536"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="557"/>
         <source>输入测试问题...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="537"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="558"/>
         <source>分析这行日志: [ERROR] 2024-01-15 10:30:45 - Connection timeout after 30s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="542"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="563"/>
         <source>停止</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="542"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="563"/>
         <source>发送测试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="556"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="577"/>
         <source>清空</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="574"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="595"/>
         <source>模型输出</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="585"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="606"/>
         <source>模型输出将显示在这里...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="593"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="614"/>
         <source>性能信息</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="601"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="622"/>
         <source>生成速度: %1 tokens/s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="609"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="630"/>
         <source>总 tokens: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="622"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="643"/>
         <source>选择 GGUF 模型文件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="632"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="653"/>
         <source>选择 llama-cli 可执行文件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/LocalLLMSettings.qml" line="656"/>
+        <location filename="../src/qml/LocalLLMSettings.qml" line="677"/>
         <source>错误: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -4413,652 +4413,672 @@ This action cannot be undone.</source>
 <context>
     <name>Main</name>
     <message>
-        <location filename="../src/qml/Main.qml" line="162"/>
+        <location filename="../src/qml/Main.qml" line="270"/>
         <source>Drop file to open</source>
         <translation>파일을 드롭하여 열기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="468"/>
+        <location filename="../src/qml/Main.qml" line="580"/>
         <source>File</source>
         <translation>파일</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="475"/>
+        <location filename="../src/qml/Main.qml" line="587"/>
         <source>Open File...</source>
         <translation>파일 열기...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="490"/>
+        <location filename="../src/qml/Main.qml" line="592"/>
+        <source>Open CSV/Excel...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="611"/>
         <source>Recent Files</source>
         <translation>최근 파일</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="512"/>
+        <location filename="../src/qml/Main.qml" line="634"/>
         <source>Clear Recent Files</source>
         <translation>최근 파일 지우기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="525"/>
-        <location filename="../src/qml/Main.qml" line="848"/>
+        <location filename="../src/qml/Main.qml" line="647"/>
+        <location filename="../src/qml/Main.qml" line="1011"/>
         <source>Reload File</source>
         <translation>파일 다시 로드</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="546"/>
+        <location filename="../src/qml/Main.qml" line="668"/>
         <source>Compare Files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="561"/>
+        <location filename="../src/qml/Main.qml" line="683"/>
         <source>Search</source>
         <translation>검색</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="572"/>
+        <location filename="../src/qml/Main.qml" line="694"/>
         <source>Filter</source>
         <translation>필터</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="582"/>
+        <location filename="../src/qml/Main.qml" line="704"/>
         <source>Details</source>
         <translation>상세 정보</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="592"/>
+        <location filename="../src/qml/Main.qml" line="714"/>
         <source>Go To</source>
         <translation>이동</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="597"/>
+        <location filename="../src/qml/Main.qml" line="719"/>
         <source>Bookmark</source>
         <translation>북마크</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="604"/>
+        <location filename="../src/qml/Main.qml" line="726"/>
         <source>Add/Remove Bookmark</source>
         <translation>북마크 추가/제거</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="618"/>
-        <location filename="../src/qml/Main.qml" line="2491"/>
+        <location filename="../src/qml/Main.qml" line="743"/>
+        <location filename="../src/qml/Main.qml" line="2694"/>
         <source>Next Bookmark</source>
         <translation>다음 북마크</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="628"/>
-        <location filename="../src/qml/Main.qml" line="2501"/>
+        <location filename="../src/qml/Main.qml" line="754"/>
+        <location filename="../src/qml/Main.qml" line="2704"/>
         <source>Previous Bookmark</source>
         <translation>이전 북마크</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="649"/>
+        <location filename="../src/qml/Main.qml" line="782"/>
         <source>Clear All Bookmarks</source>
         <translation>모든 북마크 지우기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="659"/>
-        <location filename="../src/qml/Main.qml" line="664"/>
+        <location filename="../src/qml/Main.qml" line="792"/>
+        <location filename="../src/qml/Main.qml" line="797"/>
         <source>View</source>
         <translation>보기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="668"/>
+        <location filename="../src/qml/Main.qml" line="801"/>
         <source>Text View (Raw)</source>
         <translation>텍스트 보기 (원본)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="677"/>
+        <location filename="../src/qml/Main.qml" line="810"/>
         <source>Grid View (Parsed)</source>
         <translation>그리드 보기 (구문 분석됨)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="687"/>
+        <location filename="../src/qml/Main.qml" line="821"/>
         <source>JSON Tree View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="703"/>
+        <location filename="../src/qml/Main.qml" line="844"/>
+        <source>CSV Table View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="862"/>
         <source>Columns</source>
         <translation>열</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="707"/>
+        <location filename="../src/qml/Main.qml" line="866"/>
         <source>Line Number</source>
         <translation>줄 번호</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="713"/>
+        <location filename="../src/qml/Main.qml" line="872"/>
         <source>Time</source>
         <translation>시간</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="719"/>
+        <location filename="../src/qml/Main.qml" line="878"/>
         <source>Level</source>
         <translation>레벨</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="725"/>
-        <location filename="../src/qml/Main.qml" line="2162"/>
+        <location filename="../src/qml/Main.qml" line="884"/>
+        <location filename="../src/qml/Main.qml" line="2343"/>
         <source>Message</source>
         <translation>메시지</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="734"/>
+        <location filename="../src/qml/Main.qml" line="893"/>
         <source>Show All Columns</source>
         <translation>모든 열 표시</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="741"/>
+        <location filename="../src/qml/Main.qml" line="900"/>
         <source>Hide Optional Columns</source>
         <translation>선택적 열 숨기기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="753"/>
+        <location filename="../src/qml/Main.qml" line="912"/>
         <source>Navigation Markers</source>
         <translation>탐색 마커</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="763"/>
+        <location filename="../src/qml/Main.qml" line="922"/>
         <source>Tools</source>
         <translation>도구</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="770"/>
-        <location filename="../src/qml/Main.qml" line="2557"/>
+        <location filename="../src/qml/Main.qml" line="929"/>
+        <location filename="../src/qml/Main.qml" line="2760"/>
         <source>Advanced Filter...</source>
         <translation>고급 필터...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="792"/>
+        <location filename="../src/qml/Main.qml" line="951"/>
         <source>Export Visible Lines...</source>
         <translation>보이는 줄 내보내기...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="797"/>
+        <location filename="../src/qml/Main.qml" line="956"/>
         <source>Follow Mode (Live)</source>
         <translation>팔로우 모드 (실시간)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="857"/>
+        <location filename="../src/qml/Main.qml" line="1006"/>
+        <source>Parser Settings...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1020"/>
         <source>Visual Query Builder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="866"/>
+        <location filename="../src/qml/Main.qml" line="1029"/>
         <source>Start Recording</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="875"/>
+        <location filename="../src/qml/Main.qml" line="1038"/>
         <source>Stop Recording</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="882"/>
+        <location filename="../src/qml/Main.qml" line="1045"/>
         <source>Play Last Script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="895"/>
+        <location filename="../src/qml/Main.qml" line="1058"/>
         <source>Settings</source>
         <translation>설정</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="902"/>
+        <location filename="../src/qml/Main.qml" line="1065"/>
         <source>Theme</source>
         <translation>테마</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="931"/>
+        <location filename="../src/qml/Main.qml" line="1094"/>
         <source>Language</source>
         <translation>언어</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1030"/>
+        <location filename="../src/qml/Main.qml" line="1193"/>
         <source>Encoding</source>
         <translation>인코딩</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1056"/>
+        <location filename="../src/qml/Main.qml" line="1219"/>
         <source>Keyword Colors...</source>
         <translation>키워드 색상...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1088"/>
+        <location filename="../src/qml/Main.qml" line="1251"/>
         <source>Hide Scroll Markers</source>
         <translation>스크롤 마커 숨기기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1088"/>
+        <location filename="../src/qml/Main.qml" line="1251"/>
         <source>Show Scroll Markers</source>
         <translation>스크롤 마커 표시</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1095"/>
+        <location filename="../src/qml/Main.qml" line="1258"/>
         <source>Local AI Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1106"/>
+        <location filename="../src/qml/Main.qml" line="1269"/>
         <source>Register...</source>
         <translation>등록...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1110"/>
+        <location filename="../src/qml/Main.qml" line="1273"/>
         <source>About</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1280"/>
+        <location filename="../src/qml/Main.qml" line="1443"/>
         <source>REC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1347"/>
+        <location filename="../src/qml/Main.qml" line="1510"/>
         <source>High-performance large file viewer</source>
         <translation>고성능 대용량 파일 뷰어</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1353"/>
+        <location filename="../src/qml/Main.qml" line="1516"/>
         <source>Supports files over 10GB</source>
         <translation>10GB 이상 파일 지원</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1512"/>
+        <location filename="../src/qml/Main.qml" line="1670"/>
         <source>Select First File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1517"/>
+        <location filename="../src/qml/Main.qml" line="1675"/>
         <source>Select Second File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1551"/>
+        <location filename="../src/qml/Main.qml" line="1709"/>
         <source>First file path...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1560"/>
-        <location filename="../src/qml/Main.qml" line="1579"/>
+        <location filename="../src/qml/Main.qml" line="1718"/>
+        <location filename="../src/qml/Main.qml" line="1737"/>
         <source>Browse</source>
         <translation type="unfinished">찾아보기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1570"/>
+        <location filename="../src/qml/Main.qml" line="1728"/>
         <source>Second file path...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1586"/>
+        <location filename="../src/qml/Main.qml" line="1744"/>
         <source>Comparing...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1586"/>
+        <location filename="../src/qml/Main.qml" line="1744"/>
         <source>Compare</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1663"/>
+        <location filename="../src/qml/Main.qml" line="1821"/>
         <source>Open Log File</source>
         <translation>로그 파일 열기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1686"/>
+        <location filename="../src/qml/Main.qml" line="1844"/>
+        <source>Open CSV/Excel File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="1860"/>
         <source>Export Visible Lines</source>
         <translation>보이는 줄 내보내기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1726"/>
+        <location filename="../src/qml/Main.qml" line="1900"/>
         <source>Find:</source>
         <translation>찾기:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1735"/>
+        <location filename="../src/qml/Main.qml" line="1909"/>
         <source>Enter search text (supports regex)...</source>
         <translation>검색어 입력 (정규식 지원)...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1752"/>
-        <location filename="../src/qml/Main.qml" line="1930"/>
+        <location filename="../src/qml/Main.qml" line="1927"/>
+        <location filename="../src/qml/Main.qml" line="2109"/>
         <source>Regex</source>
         <translation>정규식</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1782"/>
+        <location filename="../src/qml/Main.qml" line="1957"/>
         <source>Find</source>
         <translation>찾기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1808"/>
+        <location filename="../src/qml/Main.qml" line="1984"/>
         <source>Previous</source>
         <translation>이전</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1834"/>
+        <location filename="../src/qml/Main.qml" line="2011"/>
         <source>Next</source>
         <translation>다음</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1856"/>
+        <location filename="../src/qml/Main.qml" line="2034"/>
         <source>matches</source>
         <translation>일치</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1904"/>
+        <location filename="../src/qml/Main.qml" line="2082"/>
         <source>Filter:</source>
         <translation>필터:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1913"/>
+        <location filename="../src/qml/Main.qml" line="2091"/>
         <source>Enter filter text (supports regex)...</source>
         <translation>필터 텍스트 입력 (정규식 지원)...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1960"/>
+        <location filename="../src/qml/Main.qml" line="2139"/>
         <source>Apply</source>
         <translation>적용</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1982"/>
+        <location filename="../src/qml/Main.qml" line="2162"/>
         <source>Clear</source>
         <translation>지우기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2006"/>
+        <location filename="../src/qml/Main.qml" line="2187"/>
         <source>Showing</source>
         <translation>표시 중</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2052"/>
-        <location filename="../src/qml/Main.qml" line="2317"/>
+        <location filename="../src/qml/Main.qml" line="2233"/>
+        <location filename="../src/qml/Main.qml" line="2517"/>
         <source>Line</source>
         <translation>줄</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2317"/>
+        <location filename="../src/qml/Main.qml" line="2517"/>
         <source>Line Details</source>
         <translation>줄 상세 정보</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2328"/>
+        <location filename="../src/qml/Main.qml" line="2528"/>
         <source>Raw</source>
         <translation>원본</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2328"/>
+        <location filename="../src/qml/Main.qml" line="2528"/>
         <source>JSON</source>
         <translation>JSON</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2355"/>
+        <location filename="../src/qml/Main.qml" line="2555"/>
         <source>Copy</source>
         <translation>복사</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2402"/>
+        <location filename="../src/qml/Main.qml" line="2602"/>
         <source>(Select a line to view details)</source>
         <translation>(상세 정보를 보려면 줄을 선택하세요)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2436"/>
+        <location filename="../src/qml/Main.qml" line="2636"/>
         <source>No file opened</source>
         <translation>열린 파일 없음</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2446"/>
+        <location filename="../src/qml/Main.qml" line="2646"/>
         <source>Size:</source>
         <translation>크기:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2455"/>
-        <location filename="../src/qml/Main.qml" line="2456"/>
+        <location filename="../src/qml/Main.qml" line="2655"/>
+        <location filename="../src/qml/Main.qml" line="2656"/>
         <source>Lines:</source>
         <translation>줄 수:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2464"/>
+        <location filename="../src/qml/Main.qml" line="2664"/>
         <source>Registered</source>
         <translation>등록됨</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2464"/>
+        <location filename="../src/qml/Main.qml" line="2664"/>
         <source>Trial:</source>
         <translation>체험판:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2464"/>
+        <location filename="../src/qml/Main.qml" line="2664"/>
         <source>days left</source>
         <translation>일 남음</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2476"/>
+        <location filename="../src/qml/Main.qml" line="2676"/>
         <source>Copy Line</source>
         <translation>줄 복사</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2480"/>
+        <location filename="../src/qml/Main.qml" line="2680"/>
         <source>Copy Line Number</source>
         <translation>줄 번호 복사</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2487"/>
+        <location filename="../src/qml/Main.qml" line="2687"/>
         <source>Toggle Bookmark</source>
         <translation>북마크 토글</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2514"/>
+        <location filename="../src/qml/Main.qml" line="2717"/>
         <source>Show Details</source>
         <translation>상세 정보 표시</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2518"/>
+        <location filename="../src/qml/Main.qml" line="2721"/>
         <source>Format JSON</source>
         <translation>JSON 포맷</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2529"/>
+        <location filename="../src/qml/Main.qml" line="2732"/>
         <source>Filter This Level</source>
         <translation>이 레벨 필터링</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2543"/>
+        <location filename="../src/qml/Main.qml" line="2746"/>
         <source>Filter This Keyword...</source>
         <translation>이 키워드 필터링...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2553"/>
+        <location filename="../src/qml/Main.qml" line="2756"/>
         <source>Go To Line...</source>
         <translation>줄 이동...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="480"/>
+        <location filename="../src/qml/Main.qml" line="601"/>
         <source>Open Remote File...</source>
         <translation>원격 파일 열기...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="520"/>
+        <location filename="../src/qml/Main.qml" line="642"/>
         <source>Paste from Clipboard</source>
         <translation>클립보드에서 붙여넣기</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="533"/>
+        <location filename="../src/qml/Main.qml" line="655"/>
         <source>Export...</source>
         <translation>내보내기...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="539"/>
+        <location filename="../src/qml/Main.qml" line="661"/>
         <source>Monitor Directory...</source>
         <translation>디렉터리 모니터링...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="609"/>
+        <location filename="../src/qml/Main.qml" line="734"/>
         <source>Edit Bookmark Comment...</source>
         <translation>북마크 설명 편집...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="639"/>
+        <location filename="../src/qml/Main.qml" line="766"/>
         <source>Save Bookmarks...</source>
         <translation>북마크 저장...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="644"/>
+        <location filename="../src/qml/Main.qml" line="774"/>
         <source>Load Bookmarks...</source>
         <translation>북마크 불러오기...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="774"/>
+        <location filename="../src/qml/Main.qml" line="933"/>
         <source>Filter Templates...</source>
         <translation>필터 템플릿...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="782"/>
+        <location filename="../src/qml/Main.qml" line="941"/>
         <source>Workspaces...</source>
         <translation>워크스페이스...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="808"/>
+        <location filename="../src/qml/Main.qml" line="967"/>
         <source>Show Delta Time</source>
         <translation>시간 차이 표시</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="820"/>
+        <location filename="../src/qml/Main.qml" line="979"/>
         <source>Merge Rolling Logs...</source>
         <translation>롤링 로그 병합...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="829"/>
+        <location filename="../src/qml/Main.qml" line="988"/>
         <source>Statistics...</source>
         <translation>통계...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="838"/>
+        <location filename="../src/qml/Main.qml" line="997"/>
         <source>Dashboard...</source>
         <translation>대시보드...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="843"/>
+        <location filename="../src/qml/Main.qml" line="1002"/>
         <source>AI Settings...</source>
         <translation>AI 설정...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1051"/>
+        <location filename="../src/qml/Main.qml" line="1214"/>
         <source>Data Sanitization...</source>
         <translation>데이터 정리...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1061"/>
+        <location filename="../src/qml/Main.qml" line="1224"/>
         <source>Email Alerts...</source>
         <translation>이메일 알림...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1070"/>
+        <location filename="../src/qml/Main.qml" line="1233"/>
         <source>Jira Integration...</source>
         <translation>Jira 연동...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1079"/>
+        <location filename="../src/qml/Main.qml" line="1242"/>
         <source>GitHub Integration...</source>
         <translation>GitHub 연동...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1120"/>
+        <location filename="../src/qml/Main.qml" line="1283"/>
         <source>Data Source</source>
         <translation>데이터 소스</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1127"/>
+        <location filename="../src/qml/Main.qml" line="1290"/>
         <source>Connect Database...</source>
         <translation>데이터베이스 연결...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1135"/>
+        <location filename="../src/qml/Main.qml" line="1298"/>
         <source>Cloud Storage...</source>
         <translation>클라우드 스토리지...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1143"/>
+        <location filename="../src/qml/Main.qml" line="1306"/>
         <source>Windows Event Log...</source>
         <translation>Windows 이벤트 로그...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1152"/>
+        <location filename="../src/qml/Main.qml" line="1315"/>
         <source>System Trace...</source>
         <translation>시스템 추적...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1164"/>
+        <location filename="../src/qml/Main.qml" line="1327"/>
         <source>Analyze</source>
         <translation>분석</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1171"/>
+        <location filename="../src/qml/Main.qml" line="1334"/>
         <source>SQL Query...</source>
         <translation>SQL 쿼리...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1179"/>
+        <location filename="../src/qml/Main.qml" line="1342"/>
         <source>Correlation Analysis...</source>
         <translation>상관관계 분석...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1187"/>
+        <location filename="../src/qml/Main.qml" line="1350"/>
         <source>Distinct Values...</source>
         <translation>고유 값...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1195"/>
+        <location filename="../src/qml/Main.qml" line="1358"/>
         <source>Text Transform...</source>
         <translation>텍스트 변환...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1204"/>
+        <location filename="../src/qml/Main.qml" line="1367"/>
         <source>Parser Test...</source>
         <translation>파서 테스트...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1212"/>
+        <location filename="../src/qml/Main.qml" line="1375"/>
         <source>Advanced</source>
         <translation>고급</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1219"/>
+        <location filename="../src/qml/Main.qml" line="1382"/>
         <source>Rule Wizard...</source>
         <translation>규칙 마법사...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1227"/>
+        <location filename="../src/qml/Main.qml" line="1390"/>
         <source>Notifications...</source>
         <translation>알림...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1235"/>
+        <location filename="../src/qml/Main.qml" line="1398"/>
         <source>Report Scheduler...</source>
         <translation>보고서 스케줄러...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1244"/>
+        <location filename="../src/qml/Main.qml" line="1407"/>
         <source>Plugin Manager...</source>
         <translation>플러그인 관리자...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1248"/>
+        <location filename="../src/qml/Main.qml" line="1411"/>
         <source>Check for Updates...</source>
         <translation>업데이트 확인...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2564"/>
+        <location filename="../src/qml/Main.qml" line="2767"/>
         <source>Create Jira Issue...</source>
         <translation>Jira 이슈 생성...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2575"/>
+        <location filename="../src/qml/Main.qml" line="2778"/>
         <source>Create GitHub Issue...</source>
         <translation>GitHub 이슈 생성...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2589"/>
+        <location filename="../src/qml/Main.qml" line="2792"/>
         <source>Ask AI about this line...</source>
         <translation>이 라인에 대해 AI에 질문하기...</translation>
     </message>
@@ -5437,6 +5457,282 @@ This action cannot be undone.</source>
         <location filename="../src/qml/NotificationSettingsPanel.qml" line="608"/>
         <source>Close</source>
         <translation>닫기</translation>
+    </message>
+</context>
+<context>
+    <name>ParserConfigDialog</name>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="19"/>
+        <source>Parser Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="67"/>
+        <source>Log Format Preset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="85"/>
+        <source>Generic (Auto-detect)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="86"/>
+        <source>Spring Boot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="87"/>
+        <source>Logback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="88"/>
+        <source>Log4j</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="89"/>
+        <source>Syslog (RFC 5424)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="90"/>
+        <source>Apache Access Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="91"/>
+        <source>JSON Lines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="92"/>
+        <source>XML Log (Generic)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="93"/>
+        <source>Log4j XML</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="94"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="127"/>
+        <source>CSV/DSV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="95"/>
+        <source>Custom Regex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="102"/>
+        <source>Auto Detect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="124"/>
+        <source>Regex Pattern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="125"/>
+        <source>JSON</source>
+        <translation type="unfinished">JSON</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="126"/>
+        <source>XML</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="128"/>
+        <source>Multiline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="145"/>
+        <source>Custom Regex Pattern:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="154"/>
+        <source>Example: ^[(.*?)]s+(w+)s+(.*)$</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="168"/>
+        <source>Column Headers (comma-separated):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="176"/>
+        <source>Time, Level, Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="188"/>
+        <source>Tips:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="194"/>
+        <source>• Use capture groups () to extract fields
+• Number of groups should match column headers
+• Test your pattern with sample data below</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="214"/>
+        <source>Enable JSON Parsing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="219"/>
+        <source>JSON Keys to Extract (comma-separated):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="228"/>
+        <source>timestamp, level, message, logger</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="241"/>
+        <source>For nested keys, use dot notation: data.value, error.code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="260"/>
+        <source>Enable XML Parsing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="266"/>
+        <source>Log4j XML Format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="271"/>
+        <source>Element Paths (comma-separated):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="280"/>
+        <source>message, data/value, error/code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="293"/>
+        <source>Attribute Paths (element@attribute):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="302"/>
+        <source>event@timestamp, log@level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="328"/>
+        <source>Enable DSV Parsing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="337"/>
+        <source>Delimiter:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="344"/>
+        <source>Comma (,)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="345"/>
+        <source>Tab (	)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="346"/>
+        <source>Semicolon (;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="347"/>
+        <source>Pipe (|)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="348"/>
+        <source>Space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="359"/>
+        <source>First row is header</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="366"/>
+        <source>Trim whitespace from fields</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="385"/>
+        <source>Enable Multiline Merging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="391"/>
+        <source>Merge Mode:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="401"/>
+        <source>Indent-based (continuation lines start with whitespace)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="402"/>
+        <source>Regex-based (lines NOT matching pattern are continuations)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="403"/>
+        <source>Both (either condition)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="410"/>
+        <source>Start Pattern (for Regex mode):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="419"/>
+        <source>^d{4}-d{2}-d{2} (matches date at line start)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="436"/>
+        <source>Max lines to merge:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="456"/>
+        <source>Test Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="474"/>
+        <source>Paste a sample log line here to test parsing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="485"/>
+        <source>Test</source>
+        <translation type="unfinished">테스트</translation>
     </message>
 </context>
 <context>
@@ -6448,344 +6744,344 @@ Click &apos;+ Add Condition&apos; to start filtering.</source>
         <translation>예약된 보고서</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="140"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="152"/>
         <source>Add</source>
         <translation>추가</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="146"/>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="703"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="158"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="715"/>
         <source>Delete</source>
         <translation>삭제</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="166"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="178"/>
         <source>Basic Settings</source>
         <translation>기본 설정</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="174"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="186"/>
         <source>Name:</source>
         <translation>이름:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="184"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="196"/>
         <source>Template:</source>
         <translation>템플릿:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="203"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="215"/>
         <source>Format:</source>
         <translation>형식:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="216"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="228"/>
         <source>Schedule</source>
         <translation>일정</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="224"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="236"/>
         <source>Frequency:</source>
         <translation>주기:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="228"/>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="723"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="240"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="735"/>
         <source>Once</source>
         <translation>한 번</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="228"/>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="723"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="240"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="735"/>
         <source>Hourly</source>
         <translation>매시간</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="228"/>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="723"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="240"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="735"/>
         <source>Daily</source>
         <translation>매일</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="229"/>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="724"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="241"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="736"/>
         <source>Weekly</source>
         <translation>매주</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="229"/>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="724"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="241"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="736"/>
         <source>Monthly</source>
         <translation>매월</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="229"/>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="724"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="241"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="736"/>
         <source>Custom</source>
         <translation>사용자 정의</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="237"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="249"/>
         <source>Time:</source>
         <translation>시간:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="257"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="269"/>
         <source>Day:</source>
         <translation>요일:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="260"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="272"/>
         <source>Monday</source>
         <translation>월요일</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="260"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="272"/>
         <source>Tuesday</source>
         <translation>화요일</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="260"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="272"/>
         <source>Wednesday</source>
         <translation>수요일</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="273"/>
         <source>Thursday</source>
         <translation>목요일</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="273"/>
         <source>Friday</source>
         <translation>금요일</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="273"/>
         <source>Saturday</source>
         <translation>토요일</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="261"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="273"/>
         <source>Sunday</source>
         <translation>일요일</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="269"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="281"/>
         <source>Day of Month:</source>
         <translation>일:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="279"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="291"/>
         <source>Next run: %1</source>
         <translation>다음 실행: %1</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="289"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="301"/>
         <source>Time Range</source>
         <translation>시간 범위</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="298"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="310"/>
         <source>Use relative time range</source>
         <translation>상대적 시간 범위 사용</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="305"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="317"/>
         <source>Last</source>
         <translation>최근</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="311"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="323"/>
         <source>hours</source>
         <translation>시간</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="317"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="329"/>
         <source>Output</source>
         <translation>출력</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="325"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="337"/>
         <source>Save to:</source>
         <translation>저장 위치:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="338"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="350"/>
         <source>Filename:</source>
         <translation>파일명:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="348"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="360"/>
         <source>Available: {name}, {date}, {time}, {datetime}</source>
         <translation>사용 가능: {name}, {date}, {time}, {datetime}</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="356"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="368"/>
         <source>Distribution</source>
         <translation>배포</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="365"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="377"/>
         <source>Send via Email</source>
         <translation>이메일로 전송</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="372"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="384"/>
         <source>Recipients:</source>
         <translation>수신자:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="384"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="396"/>
         <source>Send to Webhook</source>
         <translation>Webhook으로 전송</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="391"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="403"/>
         <source>URL:</source>
         <translation>URL:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="407"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="419"/>
         <source>Save Changes</source>
         <translation>변경 사항 저장</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="413"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="425"/>
         <source>Run Now</source>
         <translation>지금 실행</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="418"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="430"/>
         <source>Preview</source>
         <translation>미리보기</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="426"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="438"/>
         <source>Generating: %1 (%2%)</source>
         <translation>생성 중: %1 (%2%)</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="438"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="450"/>
         <source>Select a schedule to edit or create a new one</source>
         <translation>수정할 일정을 선택하거나 새 일정을 만드세요</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="529"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="541"/>
         <source>Template Sections</source>
         <translation>템플릿 섹션</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="541"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="553"/>
         <source>Summary</source>
         <translation>요약</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="542"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="554"/>
         <source>Timeline</source>
         <translation>타임라인</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="543"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="555"/>
         <source>Error Distribution</source>
         <translation>오류 분포</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="544"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="556"/>
         <source>Top Messages</source>
         <translation>주요 메시지</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="545"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="557"/>
         <source>Source Breakdown</source>
         <translation>출처 분석</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="546"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="558"/>
         <source>Keyword Hits</source>
         <translation>키워드 일치 횟수</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="547"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="559"/>
         <source>Bookmarks</source>
         <translation>북마크</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="548"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="560"/>
         <source>Trends</source>
         <translation>트렌드</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="552"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="564"/>
         <source>Styling</source>
         <translation>스타일링</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="575"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="587"/>
         <source>Theme:</source>
         <translation>테마:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="583"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="595"/>
         <source>Company:</source>
         <translation>회사:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="586"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="598"/>
         <source>Company name for report header</source>
         <translation>보고서 헤더용 회사명</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="591"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="603"/>
         <source>Logo:</source>
         <translation>로고:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="594"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="606"/>
         <source>Path to logo image</source>
         <translation>로고 이미지 경로</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="603"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="615"/>
         <source>Create Template</source>
         <translation>템플릿 생성</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="607"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="619"/>
         <source>Duplicate</source>
         <translation>복제</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="610"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="622"/>
         <source>Export</source>
         <translation>내보내기</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="631"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="643"/>
         <source>Report History</source>
         <translation>보고서 기록</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="639"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="651"/>
         <source>Clear History</source>
         <translation>기록 삭제</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="697"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="709"/>
         <source>Open</source>
         <translation>열기</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="730"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="742"/>
         <source>New Schedule</source>
         <translation>새 일정</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="770"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="782"/>
         <source>New Template</source>
         <translation>새 템플릿</translation>
     </message>
     <message>
-        <location filename="../src/qml/ReportSchedulerPanel.qml" line="778"/>
+        <location filename="../src/qml/ReportSchedulerPanel.qml" line="790"/>
         <source>Report Preview</source>
         <translation>보고서 미리보기</translation>
     </message>
@@ -7503,6 +7799,44 @@ newest logs will be at the end.</source>
     </message>
 </context>
 <context>
+    <name>SessionRecoveryDialog</name>
+    <message>
+        <location filename="../src/qml/SessionRecoveryDialog.qml" line="11"/>
+        <source>Session Recovery</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SessionRecoveryDialog.qml" line="71"/>
+        <source>Recover Previous Session?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SessionRecoveryDialog.qml" line="78"/>
+        <source>BigFileViewer closed unexpectedly. Would you like to recover your previous session?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SessionRecoveryDialog.qml" line="91"/>
+        <source>Session Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SessionRecoveryDialog.qml" line="106"/>
+        <source>No session details available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SessionRecoveryDialog.qml" line="127"/>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SessionRecoveryDialog.qml" line="151"/>
+        <source>Recover Session</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SmtpAlertManager</name>
     <message>
         <location filename="../src/SmtpAlertManager.cpp" line="429"/>
@@ -7747,22 +8081,22 @@ Example: SELECT * FROM logs WHERE level = &apos;ERROR&apos; LIMIT 100</source>
         <translation>로그 통계</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="53"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="58"/>
         <source>File: %1</source>
         <translation>파일: %1</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="60"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="65"/>
         <source>Refresh</source>
         <translation>새로고침</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="67"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="72"/>
         <source>Overview</source>
         <translation>개요</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="76"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="81"/>
         <source>Total Lines:</source>
         <translation>총 행 수:</translation>
     </message>
@@ -7771,52 +8105,52 @@ Example: SELECT * FROM logs WHERE level = &apos;ERROR&apos; LIMIT 100</source>
         <translation type="vanished">파일 크기:</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="80"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="85"/>
         <source>Current View:</source>
         <translation>현재 보기:</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="81"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="86"/>
         <source> lines</source>
         <translation> 행</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="83"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="88"/>
         <source>Filter Mode:</source>
         <translation>필터 모드:</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="85"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="90"/>
         <source>Yes</source>
         <translation>예</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="85"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="90"/>
         <source>No</source>
         <translation>아니요</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="94"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="99"/>
         <source>Log Level Distribution</source>
         <translation>로그 레벨 분포</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="210"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="215"/>
         <source>Level Comparison</source>
         <translation>레벨 비교</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="260"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="265"/>
         <source>Export Pie Chart</source>
         <translation>원형 차트 내보내기</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="265"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="270"/>
         <source>Export Bar Chart</source>
         <translation>막대 차트 내보내기</translation>
     </message>
     <message>
-        <location filename="../src/qml/StatisticsPanel.qml" line="272"/>
+        <location filename="../src/qml/StatisticsPanel.qml" line="277"/>
         <source>Close</source>
         <translation>닫기</translation>
     </message>

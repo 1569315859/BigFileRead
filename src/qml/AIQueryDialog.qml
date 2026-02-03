@@ -223,7 +223,7 @@ Popup {
                     // 脱敏级别选择
                     Label {
                         text: qsTr("Level:")
-                        color: _themeManager.secondaryTextColor
+                        color: Qt.darker(_themeManager.textColor, 1.3)
                         font.pixelSize: 11
                     }
                     
@@ -396,7 +396,7 @@ Popup {
                     
                     Label {
                         text: qsTr("Analyzing...")
-                        color: _themeManager.secondaryTextColor
+                        color: Qt.darker(_themeManager.textColor, 1.3)
                         font.pixelSize: 11
                         visible: _aiManager && _aiManager.isAnalyzing
                     }
@@ -405,7 +405,7 @@ Popup {
                     
                     Label {
                         id: statusLabel
-                        color: _themeManager.secondaryTextColor
+                        color: Qt.darker(_themeManager.textColor, 1.3)
                         font.pixelSize: 11
                     }
                 }

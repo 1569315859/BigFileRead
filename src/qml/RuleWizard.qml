@@ -578,7 +578,7 @@ Dialog {
     
     function canProceed() {
         switch (currentStep) {
-        case 0: return ruleData.name.length > 0
+        case 0: return nameField.text.length > 0  // 直接检查nameField
         case 1: return ruleData.conditions.length > 0
         case 2: return ruleData.actions.length > 0
         default: return true

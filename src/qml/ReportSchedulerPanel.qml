@@ -84,28 +84,39 @@ Dialog {
                             Layout.fillHeight: true
                             clip: true
                             model: root.schedules
+                            spacing: 4
 
                             delegate: ItemDelegate {
                                 width: scheduleList.width
+                                height: 56
                                 highlighted: root.selectedScheduleId === modelData.id
+                                
+                                background: Rectangle {
+                                    color: parent.highlighted ? root.accentColor : 
+                                           (parent.hovered ? Qt.lighter(root.panelColor, 1.1) : "transparent")
+                                    border.color: parent.highlighted ? root.accentColor : root.borderColor
+                                    border.width: parent.highlighted ? 2 : 1
+                                    radius: 4
+                                }
 
-                                RowLayout {
-                                    anchors.fill: parent
-                                    anchors.margins: 5
-                                    spacing: 8
+                                contentItem: RowLayout {
+                                    spacing: 10
 
                                     Switch {
+                                        Layout.alignment: Qt.AlignVCenter
                                         checked: modelData.enabled
                                         onToggled: _reportScheduler.setScheduleEnabled(modelData.id, checked)
                                     }
 
                                     ColumnLayout {
                                         Layout.fillWidth: true
-                                        spacing: 2
+                                        Layout.alignment: Qt.AlignVCenter
+                                        spacing: 4
 
                                         Label {
                                             text: modelData.name
                                             font.bold: true
+                                            color: root.textColor
                                             elide: Text.ElideRight
                                             Layout.fillWidth: true
                                         }
@@ -113,6 +124,7 @@ Dialog {
                                         Label {
                                             text: getFrequencyText(modelData.frequency)
                                             font.pixelSize: 11
+                                            color: root.textColor
                                             opacity: 0.7
                                         }
                                     }
@@ -127,7 +139,7 @@ Dialog {
                             Rectangle {
                                 anchors.fill: parent
                                 color: "transparent"
-                                border.color: palette.mid
+                                border.color: root.borderColor
                                 radius: 4
                                 z: -1
                             }
@@ -275,9 +287,9 @@ Dialog {
                                     }
 
                                     Label {
-                                        visible: root.editingSchedule.nextRun
+                                        visible: root.editingSchedule && root.editingSchedule.nextRun !== undefined && root.editingSchedule.nextRun !== ""
                                         text: qsTr("Next run: %1").arg(
-                                            root.editingSchedule.nextRun ? 
+                                            root.editingSchedule && root.editingSchedule.nextRun ? 
                                             Qt.formatDateTime(root.editingSchedule.nextRun, "yyyy-MM-dd hh:mm") : "")
                                         font.italic: true
                                         opacity: 0.7

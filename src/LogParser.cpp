@@ -21,8 +21,9 @@ LogParser& LogParser::instance()
     return instance;
 }
 
-LogParser::LogParser()
-    : m_cache(m_cacheSize)
+LogParser::LogParser(QObject *parent)
+    : QObject(parent)
+    , m_cache(m_cacheSize)
 {
     // Default JSON keys for common log formats
     m_jsonKeys = QStringList{

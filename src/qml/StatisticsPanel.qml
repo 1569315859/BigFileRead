@@ -42,6 +42,11 @@ Dialog {
     // 加载状态
     property bool isLoading: false
     
+    // 计算百分比
+    function getPercentage(val) {
+        return statistics.total > 0 ? ((val / statistics.total) * 100).toFixed(1) : "0.0"
+    }
+    
     contentItem: ColumnLayout {
         spacing: 12
         
