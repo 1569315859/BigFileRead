@@ -608,6 +608,13 @@ public:
   Q_INVOKABLE QString getRawLine(int row) const;
 
   /**
+   * @brief 获取指定行的完整文本（不截断，用于详情面板）
+   * @param row 视图行号（从 0 开始）
+   * @return 该行的完整 QString 内容，包括 HTML 实体解码
+   */
+  Q_INVOKABLE QString getFullLine(int viewRow) const;
+
+  /**
    * @brief 导出可见行到文件
    * @param filePath 导出文件路径
    * @param sanitizationLevel 脱敏级别 (0=不脱敏, 1=标准, 2=严格)

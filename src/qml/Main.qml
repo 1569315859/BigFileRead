@@ -856,6 +856,34 @@ ApplicationWindow {
                     
                     MenuSeparator {}
                     
+                    // 解析格式配置
+                    Menu {
+                        title: qsTr("Parse Format")
+                        
+                        MenuItem {
+                            text: qsTr("Enable XML/HTML Entity Decoding")
+                            checkable: true
+                            checked: _logParser ? _logParser.xmlParsingEnabled : false
+                            onTriggered: {
+                                if (_logParser) {
+                                    _logParser.setXmlParsingEnabled(checked)
+                                    if (currentLogModel) currentLogModel.refreshLineCache()
+                                }
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Auto-detect Format")
+                            onTriggered: {
+                                if (_logParser && currentLogModel && currentLogModel.filePath) {
+                                    _logParser.autoDetectFormat(currentLogModel.filePath)
+                                    if (currentLogModel) currentLogModel.refreshLineCache()
+                                }
+                            }
+                        }
+                    }
+                    
+                    MenuSeparator {}
+                    
                     // 列显示配置子菜单
                     Menu {
                         id: columnsMenu
@@ -2271,6 +2299,12 @@ ApplicationWindow {
                     interactive: false  // 禁用独立滚动，由 tableView 控制
                     
                     delegate: Rectangle {
+                        // 必须声明 required property 来访问 model 数据
+                        required property string display
+                        required property int realRow
+                        required property bool isBookmarked
+                        required property int index
+                        
                         width: lineNumberListView.width
                         height: rowHeight
                         color: {
@@ -2311,9 +2345,12 @@ ApplicationWindow {
                         
                         MouseArea {
                             anchors.fill: parent
+                            // 通过 parent 访问 delegate 的 required property
+                            property string delegateDisplay: parent.display
+                            property int delegateIndex: parent.index
                             onClicked: {
-                                selectedRow = index
-                                selectedLineText = display
+                                selectedRow = delegateIndex
+                                selectedLineText = delegateDisplay
                             }
                         }
                     }
@@ -2396,17 +2433,29 @@ ApplicationWindow {
                 columnSpacing: 0
                 rowSpacing: 0
                 
-                // 强制单列布局 - 只显示第一列（原始内容）
-                // 多列解析模式在未来版本中实现
+                // 列宽：只有打开文件后才考虑扩展宽度
+                property bool hasContent: currentLogModel && currentLogModel.lineCount > 0
+                property real minColumnWidth: tableView.width
+                
                 columnWidthProvider: function(column) {
                     if (column === 0) {
-                        return tableView.width
+                        // 没有内容时，列宽等于视图宽度（不需要水平滚动）
+                        // 有内容时，使用较大的宽度支持长行
+                        return hasContent ? Math.max(minColumnWidth, 4000) : minColumnWidth
                     }
                     return 0  // 隐藏其他列
                 }
                 
+                // 只有有内容时才设置较大的内容宽度
+                contentWidth: hasContent ? columnWidthProvider(0) : width
+                
                 delegate: Rectangle {
-                    implicitWidth: tableView.width
+                    // 必须声明 required property 来访问 model 数据
+                    required property string display
+                    required property int row
+                    required property bool isBookmarked
+                    
+                    implicitWidth: tableView.columnWidthProvider(0)
                     implicitHeight: rowHeight
                     color: {
                         if (isRowSelected(row)) return Qt.tint(bgColor, "#40007ACC")
@@ -2424,27 +2473,38 @@ ApplicationWindow {
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
                         anchors.leftMargin: 8
-                        anchors.right: parent.right
-                        anchors.rightMargin: 5
-                        elide: Text.ElideRight
+                        // 不设置右锚点，允许文本超出单元格宽度
+                        // 不使用 elide，完整显示文本
                     }
 
                     MouseArea {
                         id: rowMouseArea
                         anchors.fill: parent
                         acceptedButtons: Qt.LeftButton | Qt.RightButton
+                        
+                        // MouseArea 需要通过 parent 访问 delegate 的 required property
+                        property string delegateDisplay: parent.display
+                        property int delegateRow: parent.row
+                        
                         onClicked: (mouse) => {
-                            toggleRowSelection(row, mouse.modifiers & Qt.ControlModifier, mouse.modifiers & Qt.ShiftModifier)
-                            selectedLineText = display
+                            toggleRowSelection(delegateRow, mouse.modifiers & Qt.ControlModifier, mouse.modifiers & Qt.ShiftModifier)
+                            // 单击时使用 display（已截断，快速）
+                            selectedLineText = delegateDisplay
+                            console.log("[Debug] Click row:", delegateRow, "display length:", delegateDisplay.length)
                             if (mouse.button === Qt.RightButton) {
                                 globalContextMenu.popup(rowMouseArea, mouse.x, mouse.y)
                             }
                         }
                         onDoubleClicked: {
-                            selectedRow = row
-                            selectedRows = [row]
-                            selectedLineText = display
+                            selectedRow = delegateRow
+                            selectedRows = [delegateRow]
+                            // 双击打开详情时，延迟加载完整内容
+                            selectedLineText = delegateDisplay  // 先显示截断版本
                             isDetailPanelVisible = true
+                            // 异步加载完整内容
+                            Qt.callLater(function() {
+                                selectedLineText = currentLogModel.getFullLine(delegateRow)
+                            })
                         }
                     }
                 }
@@ -2454,7 +2514,12 @@ ApplicationWindow {
                     id: vbar
                     visible: false  // 隐藏，由 EnhancedScrollBar 替代
                 }
-                ScrollBar.horizontal: ScrollBar { }
+                // 水平滚动条：只在需要时显示
+                ScrollBar.horizontal: ScrollBar { 
+                    id: hbar
+                    active: hbar.size < 1.0  // 只在内容超出时激活
+                    policy: tableView.hasContent && tableView.contentWidth > tableView.width ? ScrollBar.AsNeeded : ScrollBar.AlwaysOff
+                }
             }
             }  // End of inner ColumnLayout
             
@@ -2493,6 +2558,7 @@ ApplicationWindow {
             clip: true
             
             property bool showFormattedJson: false
+            property bool showFullContent: false  // 是否显示完整内容（超长文本时使用）
             
             Behavior on Layout.preferredHeight { NumberAnimation { duration: 200 } }
             Behavior on opacity { NumberAnimation { duration: 200 } }
@@ -2592,17 +2658,27 @@ ApplicationWindow {
                 
                 // Scrollable text area
                 ScrollView {
+                    id: detailScrollView
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     clip: true
                     
+                    // 详情文本显示限制，防止渲染超长文本卡顿
+                    property int maxDisplayLength: 50000  // 最大显示 50K 字符
+                    property bool isTruncated: selectedLineText.length > maxDisplayLength
+                    property string displayText: {
+                        if (!selectedLineText) return qsTr("(Select a line to view details)")
+                        if (detailPanel.showFormattedJson && formattedJsonText) return formattedJsonText
+                        if (isTruncated && !detailPanel.showFullContent) {
+                            return selectedLineText.substring(0, maxDisplayLength) + "\n\n... [" + 
+                                   qsTr("Content truncated. Total: %1 characters. Click 'Show Full' to view all.").arg(selectedLineText.length) + "]"
+                        }
+                        return selectedLineText
+                    }
+                    
                     TextArea {
                         id: detailTextArea
-                        text: {
-                            if (!selectedLineText) return qsTr("(Select a line to view details)")
-                            if (detailPanel.showFormattedJson && formattedJsonText) return formattedJsonText
-                            return selectedLineText
-                        }
+                        text: detailScrollView.displayText
                         color: selectedLineText ? textColor : Qt.darker(textColor, 1.5)
                         font.family: "Consolas"
                         font.pixelSize: 13
@@ -2614,6 +2690,27 @@ ApplicationWindow {
                             border.color: borderColor
                             radius: 4
                         }
+                    }
+                }
+                
+                // 显示完整内容按钮（仅在截断时显示）
+                Button {
+                    Layout.alignment: Qt.AlignRight
+                    text: detailPanel.showFullContent ? qsTr("Truncate") : qsTr("Show Full Content")
+                    visible: selectedLineText.length > 50000
+                    implicitHeight: 28
+                    onClicked: detailPanel.showFullContent = !detailPanel.showFullContent
+                    background: Rectangle {
+                        color: parent.down ? Qt.darker(accentColor, 1.2) : (parent.hovered ? accentColor : panelColor)
+                        border.color: accentColor
+                        radius: 4
+                    }
+                    contentItem: Text {
+                        text: parent.text
+                        color: parent.hovered ? "white" : accentColor
+                        font.pixelSize: 11
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
                     }
                 }
             }

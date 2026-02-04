@@ -116,7 +116,12 @@ public:
     /**
      * @brief Enable/disable XML parsing mode
      */
-    void setXmlParsingEnabled(bool enabled) { m_xmlParsingEnabled = enabled; }
+    void setXmlParsingEnabled(bool enabled) { 
+        if (m_xmlParsingEnabled != enabled) {
+            m_xmlParsingEnabled = enabled; 
+            emit xmlParsingEnabledChanged();
+        }
+    }
     bool isXmlParsingEnabled() const { return m_xmlParsingEnabled; }
     
     /**
@@ -124,6 +129,13 @@ public:
      */
     void setLog4jXmlMode(bool enabled) { m_log4jXmlMode = enabled; }
     bool isLog4jXmlMode() const { return m_log4jXmlMode; }
+    
+    /**
+     * @brief Decode HTML entities in text
+     * @param text Input text with HTML entities (e.g., &lt;p&gt;)
+     * @return Decoded text (e.g., <p>)
+     */
+    static QString decodeHtmlEntities(const QString &text);
     
     // ===================== DSV Configuration =====================
     

@@ -130,6 +130,20 @@ bool BigFileModel::loadFile(const QString &filePath) {
 
   // 清除 LogParser 缓存
   LogParser::instance().clearCache();
+  
+  // ★★★ 自动检测文件格式并配置解析器 ★★★
+  // 读取文件前4KB进行格式检测
+  {
+    qint64 sampleSize = qMin(m_fileSize, static_cast<qint64>(4096));
+    QString sampleContent = QString::fromUtf8(
+        reinterpret_cast<const char*>(m_mapPtr), 
+        static_cast<int>(sampleSize));
+    qDebug() << "[BigFileModel] Auto-detecting format, sample:" << sampleContent.left(200);
+    bool detected = LogParser::instance().autoDetectAndConfigure(sampleContent);
+    qDebug() << "[BigFileModel] Format detected:" << detected 
+             << "XML enabled:" << LogParser::instance().isXmlParsingEnabled()
+             << "Preset:" << LogParser::instance().presetName();
+  }
 
   // *** 关键：先重置模型，然后立即显示第一行 ***
   beginResetModel();
@@ -562,6 +576,11 @@ QVariant BigFileModel::data(const QModelIndex &index, int role) const {
       return field;
     }
 
+    // ★★★ 非表格模式下，如果启用了 XML 解析，也解码 HTML 实体 ★★★
+    if (LogParser::instance().isXmlParsingEnabled()) {
+      return LogParser::decodeHtmlEntities(rawLine);
+    }
+    
     return rawLine;
   }
 
@@ -628,6 +647,53 @@ void BigFileModel::refreshTableStructure() {
 }
 
 QString BigFileModel::getRawLine(int row) const { return getLine(row); }
+
+QString BigFileModel::getFullLine(int viewRow) const {
+  int realRow = toRealRow(viewRow);
+  if (realRow < 0 || realRow >= static_cast<int>(m_lineOffsets.size())) {
+    return QString();
+  }
+  
+  // 计算行的起止位置
+  qint64 startOffset = m_lineOffsets[static_cast<size_t>(realRow)];
+  qint64 endOffset = (static_cast<size_t>(realRow + 1) < m_lineOffsets.size())
+                         ? m_lineOffsets[static_cast<size_t>(realRow + 1)]
+                         : m_fileSize;
+
+  qint64 length = endOffset - startOffset;
+  
+  // 移除行尾的换行符
+  while (length > 0) {
+    char ch = static_cast<char>(m_mapPtr[startOffset + length - 1]);
+    if (ch == '\n' || ch == '\r') {
+      --length;
+    } else {
+      break;
+    }
+  }
+
+  if (length <= 0) {
+    return QString();
+  }
+
+  // 不截断，获取完整内容（限制最大 100KB 防止内存爆炸）
+  static constexpr qint64 MAX_FULL_LINE_LENGTH = 102400;
+  if (length > MAX_FULL_LINE_LENGTH) {
+    length = MAX_FULL_LINE_LENGTH;
+  }
+
+  const char *lineStart =
+      reinterpret_cast<const char *>(m_mapPtr + startOffset);
+  QString result = m_decoder.decode(
+      QByteArrayView(lineStart, static_cast<qsizetype>(length)));
+
+  // 如果启用了 XML 解析，解码 HTML 实体
+  if (LogParser::instance().isXmlParsingEnabled()) {
+    result = LogParser::decodeHtmlEntities(result);
+  }
+  
+  return result;
+}
 
 // ========== 编码设置实现 ==========
 

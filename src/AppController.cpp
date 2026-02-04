@@ -230,3 +230,19 @@ QString AppController::getViewModeDescription(int viewMode) const {
     }
 }
 
+QString AppController::readFileContent(const QUrl &fileUrl, int maxLines) const {
+    QString filePath = fileUrl.toLocalFile();
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        return QString();
+    }
+    QTextStream stream(&file);
+    QStringList lines;
+    int count = 0;
+    while (!stream.atEnd() && count < maxLines) {
+        lines.append(stream.readLine());
+        count++;
+    }
+    file.close();
+    return lines.join("\n");
+}

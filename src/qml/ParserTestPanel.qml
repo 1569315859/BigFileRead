@@ -317,18 +317,25 @@ Popup {
                     }
                 }
                 
-                // Summary
+                // Summary - 固定在底部
                 Rectangle {
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 30
-                    color: "#f5f5f5"
+                    Layout.minimumHeight: 40
+                    Layout.maximumHeight: 40
+                    color: Qt.darker(root.panelColor, 1.05)
+                    border.color: root.borderColor
+                    border.width: 1
+                    radius: 4
                     
                     RowLayout {
                         anchors.fill: parent
-                        anchors.margins: 5
+                        anchors.leftMargin: 10
+                        anchors.rightMargin: 10
+                        spacing: 15
                         
                         Label {
-                            text: qsTr("Total: %1 lines").arg(root.parsedResults.length)
+                            text: qsTr("Total:") + " " + root.parsedResults.length + " " + qsTr("lines")
+                            color: root.textColor
                         }
                         
                         Label {
@@ -339,7 +346,7 @@ Popup {
                                 }
                                 return count
                             }
-                            text: qsTr("Errors: %1").arg(errorCount)
+                            text: qsTr("Errors:") + " " + errorCount
                             color: errorCount > 0 ? "#f44336" : "#4caf50"
                         }
                         
@@ -347,15 +354,40 @@ Popup {
                         
                         Button {
                             text: qsTr("Re-parse")
-                            icon.name: "view-refresh"
+                            implicitHeight: 28
+                            implicitWidth: 80
                             onClicked: parseTimer.restart()
+                            background: Rectangle {
+                                color: parent.down ? Qt.darker(root.panelColor, 1.2) : (parent.hovered ? Qt.darker(root.panelColor, 1.1) : root.panelColor)
+                                border.color: root.borderColor
+                                radius: 4
+                            }
+                            contentItem: Text {
+                                text: parent.text
+                                color: root.textColor
+                                font.pixelSize: 12
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                            }
                         }
                         
                         Button {
-                            text: qsTr("Export Results")
-                            icon.name: "document-save"
+                            text: qsTr("Export")
+                            implicitHeight: 28
+                            implicitWidth: 80
                             enabled: root.parsedResults.length > 0
                             onClicked: exportResults()
+                            background: Rectangle {
+                                color: parent.enabled ? (parent.down ? Qt.darker(root.accentColor, 1.2) : root.accentColor) : "#ccc"
+                                radius: 4
+                            }
+                            contentItem: Text {
+                                text: parent.text
+                                color: parent.enabled ? "white" : "#888"
+                                font.pixelSize: 12
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                            }
                         }
                     }
                 }
@@ -449,9 +481,17 @@ Popup {
     }
     
     function loadSampleFromFile(fileUrl) {
-        // Use FileIO or request from C++ side
-        // For now, just set a placeholder
-        console.log("Loading from:", fileUrl)
+        // Load file content via AppController
+        if (_appController) {
+            var content = _appController.readFileContent(fileUrl, 100) // Read first 100 lines
+            if (content) {
+                sampleInput.text = content
+                root.sampleText = content
+                parseTimer.restart()
+            }
+        } else {
+            console.log("AppController not available, loading from:", fileUrl)
+        }
     }
     
     function exportResults() {

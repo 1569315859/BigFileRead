@@ -95,6 +95,14 @@ public:
      */
     Q_INVOKABLE QString getViewModeDescription(int viewMode) const;
 
+    /**
+     * @brief 读取文件内容（用于解析器测试工具）
+     * @param fileUrl 文件URL
+     * @param maxLines 最大读取行数
+     * @return 文件内容字符串
+     */
+    Q_INVOKABLE QString readFileContent(const QUrl &fileUrl, int maxLines = 100) const;
+
 signals:
     void licenseChanged();
     void recentFilesChanged();

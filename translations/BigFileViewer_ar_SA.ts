@@ -601,27 +601,27 @@
         <translation>فشل تخطيط الذاكرة: %1</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="289"/>
+        <location filename="../src/BigFileModel.cpp" line="303"/>
         <source>Load complete: %1 lines</source>
         <translation>اكتمل التحميل: %1 أسطر</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="371"/>
+        <location filename="../src/BigFileModel.cpp" line="385"/>
         <source>Done: %1 lines, %2 MB, %3 ms</source>
         <translation>تم: %1 أسطر، %2 ميجابايت، %3 مللي ثانية</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="529"/>
+        <location filename="../src/BigFileModel.cpp" line="543"/>
         <source>Content</source>
         <translation>المحتوى</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="571"/>
+        <location filename="../src/BigFileModel.cpp" line="590"/>
         <source>Line %1 (Original length: %2 chars, truncated)</source>
         <translation>السطر %1 (الطول الأصلي: %2 حرف، مقطوع)</translation>
     </message>
     <message>
-        <location filename="../src/BigFileModel.cpp" line="575"/>
+        <location filename="../src/BigFileModel.cpp" line="594"/>
         <source>Line %1</source>
         <translation>السطر %1</translation>
     </message>
@@ -4444,7 +4444,7 @@ This action cannot be undone.</source>
     </message>
     <message>
         <location filename="../src/qml/Main.qml" line="647"/>
-        <location filename="../src/qml/Main.qml" line="1011"/>
+        <location filename="../src/qml/Main.qml" line="1039"/>
         <source>Reload File</source>
         <translation>إعادة تحميل الملف</translation>
     </message>
@@ -4485,13 +4485,13 @@ This action cannot be undone.</source>
     </message>
     <message>
         <location filename="../src/qml/Main.qml" line="743"/>
-        <location filename="../src/qml/Main.qml" line="2694"/>
+        <location filename="../src/qml/Main.qml" line="2791"/>
         <source>Next Bookmark</source>
         <translation>الإشارة المرجعية التالية</translation>
     </message>
     <message>
         <location filename="../src/qml/Main.qml" line="754"/>
-        <location filename="../src/qml/Main.qml" line="2704"/>
+        <location filename="../src/qml/Main.qml" line="2801"/>
         <source>Previous Bookmark</source>
         <translation>الإشارة المرجعية السابقة</translation>
     </message>
@@ -4527,368 +4527,398 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="862"/>
+        <location filename="../src/qml/Main.qml" line="861"/>
+        <source>Parse Format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="864"/>
+        <source>Enable XML/HTML Entity Decoding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="875"/>
+        <source>Auto-detect Format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="890"/>
         <source>Columns</source>
         <translation>أعمدة</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="866"/>
+        <location filename="../src/qml/Main.qml" line="894"/>
         <source>Line Number</source>
         <translation>رقم السطر</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="872"/>
+        <location filename="../src/qml/Main.qml" line="900"/>
         <source>Time</source>
         <translation>الوقت</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="878"/>
+        <location filename="../src/qml/Main.qml" line="906"/>
         <source>Level</source>
         <translation>المستوى</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="884"/>
-        <location filename="../src/qml/Main.qml" line="2343"/>
+        <location filename="../src/qml/Main.qml" line="912"/>
+        <location filename="../src/qml/Main.qml" line="2380"/>
         <source>Message</source>
         <translation>الرسالة</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="893"/>
+        <location filename="../src/qml/Main.qml" line="921"/>
         <source>Show All Columns</source>
         <translation>إظهار كافة الأعمدة</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="900"/>
+        <location filename="../src/qml/Main.qml" line="928"/>
         <source>Hide Optional Columns</source>
         <translation>إخفاء الأعمدة الاختيارية</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="912"/>
+        <location filename="../src/qml/Main.qml" line="940"/>
         <source>Navigation Markers</source>
         <translation>علامات التنقل</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="922"/>
+        <location filename="../src/qml/Main.qml" line="950"/>
         <source>Tools</source>
         <translation>أدوات</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="929"/>
-        <location filename="../src/qml/Main.qml" line="2760"/>
+        <location filename="../src/qml/Main.qml" line="957"/>
+        <location filename="../src/qml/Main.qml" line="2857"/>
         <source>Advanced Filter...</source>
         <translation>تصفية متقدمة...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="951"/>
+        <location filename="../src/qml/Main.qml" line="979"/>
         <source>Export Visible Lines...</source>
         <translation>تصدير الأسطر المرئية...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="956"/>
+        <location filename="../src/qml/Main.qml" line="984"/>
         <source>Follow Mode (Live)</source>
         <translation>وضع المتابعة (مباشر)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1006"/>
+        <location filename="../src/qml/Main.qml" line="1034"/>
         <source>Parser Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1020"/>
+        <location filename="../src/qml/Main.qml" line="1048"/>
         <source>Visual Query Builder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1029"/>
+        <location filename="../src/qml/Main.qml" line="1057"/>
         <source>Start Recording</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1038"/>
+        <location filename="../src/qml/Main.qml" line="1066"/>
         <source>Stop Recording</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1045"/>
+        <location filename="../src/qml/Main.qml" line="1073"/>
         <source>Play Last Script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1058"/>
+        <location filename="../src/qml/Main.qml" line="1086"/>
         <source>Settings</source>
         <translation>الإعدادات</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1065"/>
+        <location filename="../src/qml/Main.qml" line="1093"/>
         <source>Theme</source>
         <translation>المظهر</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1094"/>
+        <location filename="../src/qml/Main.qml" line="1122"/>
         <source>Language</source>
         <translation>اللغة</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1193"/>
+        <location filename="../src/qml/Main.qml" line="1221"/>
         <source>Encoding</source>
         <translation>الترميز</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1219"/>
+        <location filename="../src/qml/Main.qml" line="1247"/>
         <source>Keyword Colors...</source>
         <translation>ألوان الكلمات المفتاحية...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1251"/>
+        <location filename="../src/qml/Main.qml" line="1279"/>
         <source>Hide Scroll Markers</source>
         <translation>إخفاء علامات التمرير</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1251"/>
+        <location filename="../src/qml/Main.qml" line="1279"/>
         <source>Show Scroll Markers</source>
         <translation>إظهار علامات التمرير</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1258"/>
+        <location filename="../src/qml/Main.qml" line="1286"/>
         <source>Local AI Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1269"/>
+        <location filename="../src/qml/Main.qml" line="1297"/>
         <source>Register...</source>
         <translation>تسجيل...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1273"/>
+        <location filename="../src/qml/Main.qml" line="1301"/>
         <source>About</source>
         <translation>حول</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1443"/>
+        <location filename="../src/qml/Main.qml" line="1471"/>
         <source>REC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1510"/>
+        <location filename="../src/qml/Main.qml" line="1538"/>
         <source>High-performance large file viewer</source>
         <translation>عارض ملفات ضخمة عالي الأداء</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1516"/>
+        <location filename="../src/qml/Main.qml" line="1544"/>
         <source>Supports files over 10GB</source>
         <translation>يدعم ملفات أكبر من 10 جيجابايت</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1670"/>
+        <location filename="../src/qml/Main.qml" line="1698"/>
         <source>Select First File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1675"/>
+        <location filename="../src/qml/Main.qml" line="1703"/>
         <source>Select Second File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1709"/>
+        <location filename="../src/qml/Main.qml" line="1737"/>
         <source>First file path...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1718"/>
-        <location filename="../src/qml/Main.qml" line="1737"/>
+        <location filename="../src/qml/Main.qml" line="1746"/>
+        <location filename="../src/qml/Main.qml" line="1765"/>
         <source>Browse</source>
         <translation type="unfinished">تصفح</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1728"/>
+        <location filename="../src/qml/Main.qml" line="1756"/>
         <source>Second file path...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1744"/>
+        <location filename="../src/qml/Main.qml" line="1772"/>
         <source>Comparing...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1744"/>
+        <location filename="../src/qml/Main.qml" line="1772"/>
         <source>Compare</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1821"/>
+        <location filename="../src/qml/Main.qml" line="1849"/>
         <source>Open Log File</source>
         <translation>فتح ملف سجل</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1844"/>
+        <location filename="../src/qml/Main.qml" line="1872"/>
         <source>Open CSV/Excel File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1860"/>
+        <location filename="../src/qml/Main.qml" line="1888"/>
         <source>Export Visible Lines</source>
         <translation>تصدير الأسطر المرئية</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1900"/>
+        <location filename="../src/qml/Main.qml" line="1928"/>
         <source>Find:</source>
         <translation>بحث:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1909"/>
+        <location filename="../src/qml/Main.qml" line="1937"/>
         <source>Enter search text (supports regex)...</source>
         <translation>أدخل نص البحث (يدعم Regex)...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1927"/>
-        <location filename="../src/qml/Main.qml" line="2109"/>
+        <location filename="../src/qml/Main.qml" line="1955"/>
+        <location filename="../src/qml/Main.qml" line="2137"/>
         <source>Regex</source>
         <translation>Regex</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1957"/>
+        <location filename="../src/qml/Main.qml" line="1985"/>
         <source>Find</source>
         <translation>بحث</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1984"/>
+        <location filename="../src/qml/Main.qml" line="2012"/>
         <source>Previous</source>
         <translation>السابق</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2011"/>
+        <location filename="../src/qml/Main.qml" line="2039"/>
         <source>Next</source>
         <translation>التالي</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2034"/>
+        <location filename="../src/qml/Main.qml" line="2062"/>
         <source>matches</source>
         <translation>تطابقات</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2082"/>
+        <location filename="../src/qml/Main.qml" line="2110"/>
         <source>Filter:</source>
         <translation>تصفية:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2091"/>
+        <location filename="../src/qml/Main.qml" line="2119"/>
         <source>Enter filter text (supports regex)...</source>
         <translation>أدخل نص التصفية (يدعم Regex)...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2139"/>
+        <location filename="../src/qml/Main.qml" line="2167"/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2162"/>
+        <location filename="../src/qml/Main.qml" line="2190"/>
         <source>Clear</source>
         <translation>مسح</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2187"/>
+        <location filename="../src/qml/Main.qml" line="2215"/>
         <source>Showing</source>
         <translation>عرض</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2233"/>
-        <location filename="../src/qml/Main.qml" line="2517"/>
+        <location filename="../src/qml/Main.qml" line="2261"/>
+        <location filename="../src/qml/Main.qml" line="2583"/>
         <source>Line</source>
         <translation>سطر</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2517"/>
+        <location filename="../src/qml/Main.qml" line="2583"/>
         <source>Line Details</source>
         <translation>تفاصيل السطر</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2528"/>
+        <location filename="../src/qml/Main.qml" line="2594"/>
         <source>Raw</source>
         <translation>خام</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2528"/>
+        <location filename="../src/qml/Main.qml" line="2594"/>
         <source>JSON</source>
         <translation>JSON</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2555"/>
+        <location filename="../src/qml/Main.qml" line="2621"/>
         <source>Copy</source>
         <translation>نسخ</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2602"/>
+        <location filename="../src/qml/Main.qml" line="2670"/>
         <source>(Select a line to view details)</source>
         <translation>(حدد سطراً لعرض التفاصيل)</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2636"/>
+        <location filename="../src/qml/Main.qml" line="2674"/>
+        <source>Content truncated. Total: %1 characters. Click &apos;Show Full&apos; to view all.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2699"/>
+        <source>Truncate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2699"/>
+        <source>Show Full Content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Main.qml" line="2733"/>
         <source>No file opened</source>
         <translation>لم يتم فتح أي ملف</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2646"/>
+        <location filename="../src/qml/Main.qml" line="2743"/>
         <source>Size:</source>
         <translation>الحجم:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2655"/>
-        <location filename="../src/qml/Main.qml" line="2656"/>
+        <location filename="../src/qml/Main.qml" line="2752"/>
+        <location filename="../src/qml/Main.qml" line="2753"/>
         <source>Lines:</source>
         <translation>الأسطر:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2664"/>
+        <location filename="../src/qml/Main.qml" line="2761"/>
         <source>Registered</source>
         <translation>مسجل</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2664"/>
+        <location filename="../src/qml/Main.qml" line="2761"/>
         <source>Trial:</source>
         <translation>تجريبي:</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2664"/>
+        <location filename="../src/qml/Main.qml" line="2761"/>
         <source>days left</source>
         <translation>أيام متبقية</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2676"/>
+        <location filename="../src/qml/Main.qml" line="2773"/>
         <source>Copy Line</source>
         <translation>نسخ السطر</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2680"/>
+        <location filename="../src/qml/Main.qml" line="2777"/>
         <source>Copy Line Number</source>
         <translation>نسخ رقم السطر</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2687"/>
+        <location filename="../src/qml/Main.qml" line="2784"/>
         <source>Toggle Bookmark</source>
         <translation>تبديل الإشارة المرجعية</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2717"/>
+        <location filename="../src/qml/Main.qml" line="2814"/>
         <source>Show Details</source>
         <translation>إظهار التفاصيل</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2721"/>
+        <location filename="../src/qml/Main.qml" line="2818"/>
         <source>Format JSON</source>
         <translation>تنسيق JSON</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2732"/>
+        <location filename="../src/qml/Main.qml" line="2829"/>
         <source>Filter This Level</source>
         <translation>تصفية هذا المستوى</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2746"/>
+        <location filename="../src/qml/Main.qml" line="2843"/>
         <source>Filter This Keyword...</source>
         <translation>تصفية هذه الكلمة المفتاحية...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2756"/>
+        <location filename="../src/qml/Main.qml" line="2853"/>
         <source>Go To Line...</source>
         <translation>الذهاب إلى السطر...</translation>
     </message>
@@ -4928,157 +4958,157 @@ This action cannot be undone.</source>
         <translation>تحميل الإشارات المرجعية...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="933"/>
+        <location filename="../src/qml/Main.qml" line="961"/>
         <source>Filter Templates...</source>
         <translation>قوالب التصفية...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="941"/>
+        <location filename="../src/qml/Main.qml" line="969"/>
         <source>Workspaces...</source>
         <translation>مساحات العمل...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="967"/>
+        <location filename="../src/qml/Main.qml" line="995"/>
         <source>Show Delta Time</source>
         <translation>إظهار الوقت التفاضلي</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="979"/>
+        <location filename="../src/qml/Main.qml" line="1007"/>
         <source>Merge Rolling Logs...</source>
         <translation>دمج السجلات الدورية...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="988"/>
+        <location filename="../src/qml/Main.qml" line="1016"/>
         <source>Statistics...</source>
         <translation>الإحصائيات...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="997"/>
+        <location filename="../src/qml/Main.qml" line="1025"/>
         <source>Dashboard...</source>
         <translation>لوحة القيادة...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1002"/>
+        <location filename="../src/qml/Main.qml" line="1030"/>
         <source>AI Settings...</source>
         <translation>إعدادات الذكاء الاصطناعي...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1214"/>
+        <location filename="../src/qml/Main.qml" line="1242"/>
         <source>Data Sanitization...</source>
         <translation>تنقية البيانات...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1224"/>
+        <location filename="../src/qml/Main.qml" line="1252"/>
         <source>Email Alerts...</source>
         <translation>تنبيهات البريد الإلكتروني...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1233"/>
+        <location filename="../src/qml/Main.qml" line="1261"/>
         <source>Jira Integration...</source>
         <translation>التكامل مع Jira...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1242"/>
+        <location filename="../src/qml/Main.qml" line="1270"/>
         <source>GitHub Integration...</source>
         <translation>التكامل مع GitHub...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1283"/>
+        <location filename="../src/qml/Main.qml" line="1311"/>
         <source>Data Source</source>
         <translation>مصدر البيانات</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1290"/>
+        <location filename="../src/qml/Main.qml" line="1318"/>
         <source>Connect Database...</source>
         <translation>الاتصال بقاعدة البيانات...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1298"/>
+        <location filename="../src/qml/Main.qml" line="1326"/>
         <source>Cloud Storage...</source>
         <translation>التخزين السحابي...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1306"/>
+        <location filename="../src/qml/Main.qml" line="1334"/>
         <source>Windows Event Log...</source>
         <translation>سجل أحداث ويندوز...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1315"/>
+        <location filename="../src/qml/Main.qml" line="1343"/>
         <source>System Trace...</source>
         <translation>تتبع النظام...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1327"/>
+        <location filename="../src/qml/Main.qml" line="1355"/>
         <source>Analyze</source>
         <translation>تحليل</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1334"/>
+        <location filename="../src/qml/Main.qml" line="1362"/>
         <source>SQL Query...</source>
         <translation>استعلام SQL...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1342"/>
+        <location filename="../src/qml/Main.qml" line="1370"/>
         <source>Correlation Analysis...</source>
         <translation>تحليل الارتباط...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1350"/>
+        <location filename="../src/qml/Main.qml" line="1378"/>
         <source>Distinct Values...</source>
         <translation>القيم الفريدة...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1358"/>
+        <location filename="../src/qml/Main.qml" line="1386"/>
         <source>Text Transform...</source>
         <translation>تحويل النص...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1367"/>
+        <location filename="../src/qml/Main.qml" line="1395"/>
         <source>Parser Test...</source>
         <translation>اختبار المحلل (Parser)...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1375"/>
+        <location filename="../src/qml/Main.qml" line="1403"/>
         <source>Advanced</source>
         <translation>متقدم</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1382"/>
+        <location filename="../src/qml/Main.qml" line="1410"/>
         <source>Rule Wizard...</source>
         <translation>معالج القواعد...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1390"/>
+        <location filename="../src/qml/Main.qml" line="1418"/>
         <source>Notifications...</source>
         <translation>الإشعارات...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1398"/>
+        <location filename="../src/qml/Main.qml" line="1426"/>
         <source>Report Scheduler...</source>
         <translation>جدولة التقارير...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1407"/>
+        <location filename="../src/qml/Main.qml" line="1435"/>
         <source>Plugin Manager...</source>
         <translation>مدير الإضافات...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="1411"/>
+        <location filename="../src/qml/Main.qml" line="1439"/>
         <source>Check for Updates...</source>
         <translation>التحقق من وجود تحديثات...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2767"/>
+        <location filename="../src/qml/Main.qml" line="2864"/>
         <source>Create Jira Issue...</source>
         <translation>إنشاء مشكلة في Jira...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2778"/>
+        <location filename="../src/qml/Main.qml" line="2875"/>
         <source>Create GitHub Issue...</source>
         <translation>إنشاء مشكلة في GitHub...</translation>
     </message>
     <message>
-        <location filename="../src/qml/Main.qml" line="2792"/>
+        <location filename="../src/qml/Main.qml" line="2889"/>
         <source>Ask AI about this line...</source>
         <translation>اسأل الذكاء الاصطناعي عن هذا السطر...</translation>
     </message>
@@ -5818,32 +5848,49 @@ This action cannot be undone.</source>
         <translation>خطأ في التحليل</translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserTestPanel.qml" line="331"/>
-        <source>Total: %1 lines</source>
-        <translation>الإجمالي: %1 أسطر</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="337"/>
+        <source>Total:</source>
+        <translation type="unfinished">الإجمالي:</translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserTestPanel.qml" line="342"/>
-        <source>Errors: %1</source>
-        <translation>الأخطاء: %1</translation>
+        <location filename="../src/qml/ParserTestPanel.qml" line="337"/>
+        <source>lines</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/ParserTestPanel.qml" line="349"/>
+        <source>Errors:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserTestPanel.qml" line="375"/>
+        <source>Export</source>
+        <translation type="unfinished">تصدير</translation>
+    </message>
+    <message>
+        <source>Total: %1 lines</source>
+        <translation type="vanished">الإجمالي: %1 أسطر</translation>
+    </message>
+    <message>
+        <source>Errors: %1</source>
+        <translation type="vanished">الأخطاء: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/ParserTestPanel.qml" line="356"/>
         <source>Re-parse</source>
         <translation>إعادة التحليل</translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserTestPanel.qml" line="355"/>
         <source>Export Results</source>
-        <translation>تصدير النتائج</translation>
+        <translation type="vanished">تصدير النتائج</translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserTestPanel.qml" line="376"/>
+        <location filename="../src/qml/ParserTestPanel.qml" line="408"/>
         <source>Load Sample Log File</source>
         <translation>تحميل ملف سجل عينة</translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserTestPanel.qml" line="440"/>
+        <location filename="../src/qml/ParserTestPanel.qml" line="472"/>
         <source>No fields extracted - pattern may not match</source>
         <translation>لم يتم استخراج أي حقول - قد لا يتطابق النمط</translation>
     </message>

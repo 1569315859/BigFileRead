@@ -125,6 +125,7 @@ QStringList LogParser::parseLine(const QString &rawLine) const
     if (m_log4jXmlMode && rawLine.trimmed().contains(QLatin1String("<log4j:"))) {
         QStringList xmlResult = parseLog4jXmlLine(rawLine);
         if (!xmlResult.isEmpty()) {
+            qDebug() << "[LogParser] Log4j XML parsed:" << xmlResult;
             return xmlResult;
         }
     }
@@ -133,8 +134,10 @@ QStringList LogParser::parseLine(const QString &rawLine) const
     if (m_xmlParsingEnabled && rawLine.trimmed().startsWith(QLatin1Char('<'))) {
         QStringList xmlResult = parseXmlLine(rawLine);
         if (!xmlResult.isEmpty()) {
+            qDebug() << "[LogParser] XML parsed:" << xmlResult;
             return xmlResult;
         }
+        qDebug() << "[LogParser] XML parse failed for:" << rawLine.left(100);
     }
     
     // Try JSON first if enabled and line starts with '{'
@@ -149,6 +152,14 @@ QStringList LogParser::parseLine(const QString &rawLine) const
     // Try regex parsing
     if (m_regex.isValid() && !m_patternString.isEmpty()) {
         return parseRegexLine(rawLine);
+    }
+    
+    // ★★★ XML模式启用时，对普通文本行也解码HTML实体 ★★★
+    // 这样 &lt;p&gt; 会显示为 <p>
+    if (m_xmlParsingEnabled) {
+        QString decoded = decodeHtmlEntities(rawLine);
+        qDebug() << "[LogParser] HTML entity decoded:" << decoded.left(100);
+        return QStringList{decoded};
     }
     
     // No parser configured - return raw line as single column
@@ -552,6 +563,26 @@ void LogParser::setXmlAttributePaths(const QStringList &paths)
 // XML Parsing
 // ============================================================================
 
+/**
+ * @brief Decode HTML entities in text
+ * @param text Input text with HTML entities (e.g., &lt;p&gt;)
+ * @return Decoded text (e.g., <p>)
+ */
+QString LogParser::decodeHtmlEntities(const QString &text)
+{
+    QString result = text;
+    // Decode common HTML entities
+    result.replace(QLatin1String("&lt;"), QLatin1String("<"));
+    result.replace(QLatin1String("&gt;"), QLatin1String(">"));
+    result.replace(QLatin1String("&quot;"), QLatin1String("\""));
+    result.replace(QLatin1String("&#39;"), QLatin1String("'"));
+    result.replace(QLatin1String("&apos;"), QLatin1String("'"));
+    result.replace(QLatin1String("&nbsp;"), QLatin1String(" "));
+    result.replace(QLatin1String("&#160;"), QLatin1String(" "));
+    result.replace(QLatin1String("&amp;"), QLatin1String("&"));  // Must be last!
+    return result;
+}
+
 QStringList LogParser::parseXmlLine(const QString &rawLine) const
 {
     QStringList result;
@@ -576,18 +607,19 @@ QStringList LogParser::parseXmlLine(const QString &rawLine) const
             pathStack.append(elementName);
             currentPath = pathStack.join(QLatin1Char('/'));
             
-            // Extract attributes
+            // Extract attributes and decode HTML entities
             for (const QXmlStreamAttribute &attr : xml.attributes()) {
                 QString attrPath = elementName + QLatin1Char('@') + attr.name().toString();
                 QString fullAttrPath = currentPath + QLatin1Char('@') + attr.name().toString();
-                attributeValues[attrPath] = attr.value().toString();
-                attributeValues[fullAttrPath] = attr.value().toString();
+                QString decodedValue = decodeHtmlEntities(attr.value().toString());
+                attributeValues[attrPath] = decodedValue;
+                attributeValues[fullAttrPath] = decodedValue;
             }
         }
         else if (xml.isCharacters() && !xml.isWhitespace()) {
-            // Store element text content
+            // Store element text content with HTML entity decoding
             if (!currentPath.isEmpty()) {
-                QString text = xml.text().toString().trimmed();
+                QString text = decodeHtmlEntities(xml.text().toString().trimmed());
                 if (!text.isEmpty()) {
                     elementValues[currentPath] = text;
                     // Also store just the element name for simpler lookup
@@ -672,24 +704,24 @@ QStringList LogParser::parseLog4jXmlLine(const QString &rawLine) const
                 
                 // level
                 if (attrs.hasAttribute(QLatin1String("level"))) {
-                    result[1] = attrs.value(QLatin1String("level")).toString();
+                    result[1] = decodeHtmlEntities(attrs.value(QLatin1String("level")).toString());
                 }
                 
                 // logger
                 if (attrs.hasAttribute(QLatin1String("logger"))) {
-                    result[2] = attrs.value(QLatin1String("logger")).toString();
+                    result[2] = decodeHtmlEntities(attrs.value(QLatin1String("logger")).toString());
                 }
                 
                 // thread
                 if (attrs.hasAttribute(QLatin1String("thread"))) {
-                    result[3] = attrs.value(QLatin1String("thread")).toString();
+                    result[3] = decodeHtmlEntities(attrs.value(QLatin1String("thread")).toString());
                 }
             }
             else if (elementName == QLatin1String("message")) {
-                result[4] = xml.readElementText();
+                result[4] = decodeHtmlEntities(xml.readElementText());
             }
             else if (elementName == QLatin1String("throwable")) {
-                result[5] = xml.readElementText();
+                result[5] = decodeHtmlEntities(xml.readElementText());
             }
         }
     }

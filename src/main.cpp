@@ -58,12 +58,13 @@ int main(int argc, char *argv[]) {
     // 1. 强制使用 INI 文件格式（不使用 Windows 注册表）
     QSettings::setDefaultFormat(QSettings::IniFormat);
     
-    // 2. 将配置文件存储在 exe 所在目录（而非 %APPDATA%）
+    // 2. 必须先创建 QApplication，才能调用 applicationDirPath()
+    QGuiApplication app(argc, argv);
+    
+    // 3. 将配置文件存储在 exe 所在目录（而非 %APPDATA%）
     //    这样可以将整个程序文件夹拷贝到 U 盘随身携带
     QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, 
                        QCoreApplication::applicationDirPath());
-
-    QGuiApplication app(argc, argv);
     
     // ★★★ 初始化崩溃报告收集器（尽早初始化）★★★
     CrashReporter::initialize("1.0.0");
