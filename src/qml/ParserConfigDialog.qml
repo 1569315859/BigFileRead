@@ -65,6 +65,19 @@ Dialog {
         GroupBox {
             Layout.fillWidth: true
             title: qsTr("Log Format Preset")
+
+            label: Label {
+                x: 8
+                y: -height / 2
+                text: parent.title
+                font.bold: true
+                color: textColor
+                width: implicitWidth
+                padding: 4
+                background: Rectangle {
+                    color: panelColor
+                }
+            }
             
             background: Rectangle {
                 color: Qt.darker(panelColor, 1.05)
@@ -454,6 +467,19 @@ Dialog {
             Layout.fillWidth: true
             Layout.preferredHeight: 100
             title: qsTr("Test Preview")
+
+            label: Label {
+                x: 8
+                y: -height / 2
+                text: parent.title
+                font.bold: true
+                color: textColor
+                width: implicitWidth
+                padding: 4
+                background: Rectangle {
+                    color: panelColor
+                }
+            }
             
             background: Rectangle {
                 color: Qt.darker(panelColor, 1.05)

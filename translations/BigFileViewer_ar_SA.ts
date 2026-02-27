@@ -5502,265 +5502,265 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="85"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="93"/>
         <source>Generic (Auto-detect)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="86"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="94"/>
         <source>Spring Boot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="87"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="95"/>
         <source>Logback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="88"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="96"/>
         <source>Log4j</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="89"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="97"/>
         <source>Syslog (RFC 5424)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="90"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="98"/>
         <source>Apache Access Log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="91"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="99"/>
         <source>JSON Lines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="92"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="100"/>
         <source>XML Log (Generic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="93"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="101"/>
         <source>Log4j XML</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="94"/>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="127"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="102"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="135"/>
         <source>CSV/DSV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="95"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="103"/>
         <source>Custom Regex</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="102"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="110"/>
         <source>Auto Detect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="124"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="132"/>
         <source>Regex Pattern</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="125"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="133"/>
         <source>JSON</source>
         <translation type="unfinished">JSON</translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="126"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="134"/>
         <source>XML</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="128"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="136"/>
         <source>Multiline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="145"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="153"/>
         <source>Custom Regex Pattern:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="154"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="162"/>
         <source>Example: ^[(.*?)]s+(w+)s+(.*)$</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="168"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="176"/>
         <source>Column Headers (comma-separated):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="176"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="184"/>
         <source>Time, Level, Message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="188"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="196"/>
         <source>Tips:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="194"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="202"/>
         <source>• Use capture groups () to extract fields
 • Number of groups should match column headers
 • Test your pattern with sample data below</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="214"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="222"/>
         <source>Enable JSON Parsing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="219"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="227"/>
         <source>JSON Keys to Extract (comma-separated):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="228"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="236"/>
         <source>timestamp, level, message, logger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="241"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="249"/>
         <source>For nested keys, use dot notation: data.value, error.code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="260"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="268"/>
         <source>Enable XML Parsing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="266"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="274"/>
         <source>Log4j XML Format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="271"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="279"/>
         <source>Element Paths (comma-separated):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="280"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="288"/>
         <source>message, data/value, error/code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="293"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="301"/>
         <source>Attribute Paths (element@attribute):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="302"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="310"/>
         <source>event@timestamp, log@level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="328"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="336"/>
         <source>Enable DSV Parsing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="337"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="345"/>
         <source>Delimiter:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="344"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="352"/>
         <source>Comma (,)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="345"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="353"/>
         <source>Tab (	)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="346"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="354"/>
         <source>Semicolon (;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="347"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="355"/>
         <source>Pipe (|)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="348"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="356"/>
         <source>Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="359"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="367"/>
         <source>First row is header</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="366"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="374"/>
         <source>Trim whitespace from fields</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="385"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="393"/>
         <source>Enable Multiline Merging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="391"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="399"/>
         <source>Merge Mode:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="401"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="409"/>
         <source>Indent-based (continuation lines start with whitespace)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="402"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="410"/>
         <source>Regex-based (lines NOT matching pattern are continuations)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="403"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="411"/>
         <source>Both (either condition)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="410"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="418"/>
         <source>Start Pattern (for Regex mode):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="419"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="427"/>
         <source>^d{4}-d{2}-d{2} (matches date at line start)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="436"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="444"/>
         <source>Max lines to merge:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="456"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="464"/>
         <source>Test Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="474"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="490"/>
         <source>Paste a sample log line here to test parsing...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/ParserConfigDialog.qml" line="485"/>
+        <location filename="../src/qml/ParserConfigDialog.qml" line="501"/>
         <source>Test</source>
         <translation type="unfinished">اختبار</translation>
     </message>

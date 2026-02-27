@@ -1261,7 +1261,7 @@ ApplicationWindow {
                         text: qsTr("Jira Integration...") + (_featureGate.isProUser ? "" : " [Enterprise]")
                         onTriggered: {
                             if (_featureGate.canUseFeature("jira_integration")) {
-                                jiraConfigDialog.open()
+                                jiraIssueDialog.open()
                             }
                         }
                     }
@@ -1270,7 +1270,7 @@ ApplicationWindow {
                         text: qsTr("GitHub Integration...") + (_featureGate.isProUser ? "" : " [Enterprise]")
                         onTriggered: {
                             if (_featureGate.canUseFeature("github_integration")) {
-                                githubConfigDialog.open()
+                                githubIssueDialog.open()
                             }
                         }
                     }
